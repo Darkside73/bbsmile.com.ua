@@ -1,0 +1,492 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ls",
+				"letter-spacing"
+			],
+			[
+				"border-left",
+				"border-left-color"
+			],
+			[
+				"padding",
+				"padding-left"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"bordec",
+				"border-color"
+			],
+			[
+				"border-color",
+				"border-left-color"
+			],
+			[
+				"paddin",
+				"padding-left"
+			],
+			[
+				"pad",
+				"padding-right"
+			],
+			[
+				"he",
+				"header  (element)"
+			],
+			[
+				"class",
+				"class=  (attribute)"
+			],
+			[
+				"sty",
+				"style=  (attribute)"
+			],
+			[
+				"wid",
+				"width:   (property)"
+			],
+			[
+				"fl",
+				"fl-l	float: left;"
+			],
+			[
+				"margi",
+				"margin-left"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"bor",
+				"border-top"
+			],
+			[
+				"pa",
+				"padding-left"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"pl",
+				"Package Control: List Packages"
+			],
+			[
+				"ph",
+				"Placehold.it: Insert Image"
+			],
+			[
+				"pain",
+				"Package Control: Install Package"
+			],
+			[
+				"pali",
+				"Package Control: List Packages"
+			],
+			[
+				"pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"pare",
+				"Package Control: Remove Package"
+			],
+			[
+				"parem",
+				"Package Control: Remove Package"
+			]
+		],
+		"width": 602.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/category.html",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/js/application.js",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/stylesheets/lib/variables.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/stylesheets/category.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/stylesheets/lib/mixins.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/stylesheets/responsive.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/main.html",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/stylesheets/main.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/stylesheets/responsive.css",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/components/bootstrap/less/variables.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/js/follow_scroll.js",
+		"/home/darkside/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/darkside/.config/sublime-text-2/Packages/SublimeCodeIntel/Base File.sublime-settings",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/components/bootstrap/less/type.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/test.html",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/stylesheets/lib/builder.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/stylesheets/lib/resposive.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/components/bootstrap/less/bootstrap.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/test.css",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/components/bootstrap/bootstrap.css",
+		"/home/darkside/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/.git-ftp-ignore",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/.git/config",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/stylesheets/main.css",
+		"/home/darkside/.config/sublime-text-2/Packages/LESS/readme.md",
+		"/home/darkside/.config/sublime-text-2/Packages/LESS/tests.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/components/bootstrap/less/hero-unit.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/.gitignore",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/stylesheets/variables.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/stylesheets/less/builder.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/stylesheets/less/variables.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/stylesheets/mixins.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/stylesheets/variables.css",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/main.css",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/layout/stylesheets/main.less",
+		"/home/darkside/projects/ps/layout.bbsmile.com.ua/layout/main.html",
+		"/home/darkside/projects/ps/rails.bbsmile.com.ua/layout/category.html",
+		"/home/darkside/projects/ps/rails.bbsmile.com.ua/.gitignore",
+		"/home/darkside/projects/ps/rails.bbsmile.com.ua/layout/components/bootstrap/.gitignore",
+		"/home/darkside/projects/ps/rails.bbsmile.com.ua/layouts/stylesheets/main.less",
+		"/home/darkside/projects/ps/rails.bbsmile.com.ua/layouts/main.html",
+		"/home/darkside/projects/ps/rails.bbsmile.com.ua/stylesheets/main.less",
+		"/home/darkside/projects/ps/rails.bbsmile.com.ua/stylesheets/main.css",
+		"/home/darkside/.config/sublime-text-2/Packages/Emmet/Emmet.sublime-settings",
+		"/home/darkside/Sublime Text 2/bbsmile.com.ua.sublime-project",
+		"/usr/share/applications/sublime.desktop",
+		"/usr/share/applications/zend-studio.desktop",
+		"/usr/share/applications/defaults.list"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			".\n",
+			"@color",
+			"color",
+			"10px",
+			"70%",
+			"p>",
+			"p",
+			"<br>",
+			"address",
+			"popover",
+			"&gt;",
+			"&lt;",
+			"filterByPrice",
+			" class=\"filter-type\"",
+			"collapseTwo",
+			"collapseOne",
+			" class=\"icon-remove-sign\"",
+			"убрать",
+			"trash",
+			"-remove",
+			" <span class=\"divider\">/</span>",
+			">\n",
+			"sidebar",
+			"<a href=\"#\" class=\"btn\">Подробнее</a>",
+			"@blue",
+			"#0069d6",
+			"rgba(0, 105, 214, 0.25)",
+			"img-polaroid",
+			"span4",
+			"item",
+			"deiv",
+			"li",
+			"small",
+			"padding",
+			"\n  ",
+			"div",
+			"\">\n",
+			"media",
+			"respo",
+			"div",
+			"}\n",
+			"orangeBrownLighten",
+			"yellowLighten",
+			"yellowDarken",
+			"purpleDarken",
+			"menuCartBackground",
+			"pink",
+			"orangeBrown",
+			"B39B91",
+			"%),",
+			"B39B91",
+			"624b21",
+			"purpleSaturated",
+			"#624199",
+			"#dbc293",
+			"small",
+			"E5E5E5",
+			".5",
+			"myCarousel",
+			"          \n",
+			"div",
+			">\n",
+			"main-padding",
+			"          \n",
+			"    \n",
+			"bootstrap",
+			"gedit.desktop"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"orangeBrownLight",
+			"yellowLight",
+			"yellowDark",
+			"purpleDark",
+			"sublime.desktop"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 48.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"app",
+				"js/application.js"
+			],
+			[
+				"cal",
+				"stylesheets/category.less"
+			],
+			[
+				"cah",
+				"category.html"
+			],
+			[
+				"mil",
+				"stylesheets/lib/mixins.less"
+			],
+			[
+				"catl",
+				"stylesheets/category.less"
+			],
+			[
+				"vl",
+				"stylesheets/lib/variables.less"
+			],
+			[
+				"ml",
+				"stylesheets/main.less"
+			],
+			[
+				"mh",
+				"main.html"
+			],
+			[
+				"rel",
+				"stylesheets/responsive.less"
+			],
+			[
+				"res",
+				"stylesheets/responsive.css"
+			],
+			[
+				"reles",
+				"stylesheets/responsive.less"
+			],
+			[
+				"val",
+				"stylesheets/lib/variables.less"
+			],
+			[
+				"re",
+				"stylesheets/responsive.css"
+			],
+			[
+				"fo",
+				"js/follow_scroll.js"
+			],
+			[
+				"bvl",
+				"components/bootstrap/less/variables.less"
+			],
+			[
+				"var",
+				"stylesheets/lib/variables.less"
+			],
+			[
+				"type",
+				"components/bootstrap/less/type.less"
+			],
+			[
+				"caless",
+				"stylesheets/category.less"
+			],
+			[
+				"cat",
+				"category.html"
+			],
+			[
+				"te",
+				"test.html"
+			],
+			[
+				"tes",
+				"test.html"
+			],
+			[
+				"boo",
+				"components/bootstrap/less/bootstrap.less"
+			],
+			[
+				"bui",
+				"stylesheets/lib/builder.less"
+			],
+			[
+				"macs",
+				"stylesheets/main.css"
+			],
+			[
+				"her",
+				"components/bootstrap/less/hero-unit.less"
+			],
+			[
+				"less/ty",
+				"components/bootstrap/less/type.less"
+			],
+			[
+				"vale",
+				"stylesheets/lib/variables.less"
+			],
+			[
+				".giti",
+				".gitignore"
+			],
+			[
+				"boole",
+				"components/bootstrap/less/bootstrap.less"
+			],
+			[
+				"mc",
+				"stylesheets/main.css"
+			],
+			[
+				"varia",
+				"components/bootstrap/less/variables.less"
+			],
+			[
+				"mainl",
+				"stylesheets/main.less"
+			],
+			[
+				"main",
+				"layout/main.html"
+			],
+			[
+				"adpricom",
+				"classes/Admin/Actions/Pricelist/Common.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 225.0,
+	"status_bar_visible": true
+}
