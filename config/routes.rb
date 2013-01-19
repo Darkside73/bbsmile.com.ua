@@ -1,6 +1,7 @@
 Bbsmile::Application.routes.draw do
 
   match 'main' => 'layout#main'
+  match 'category' => 'layout#category'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

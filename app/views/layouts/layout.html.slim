@@ -1,0 +1,21 @@
+doctype 5
+html
+  title
+    | Детские товары - Интернет-магазин
+  meta charset="UTF-8"
+  meta name="viewport" content="width=device-width, initial-scale=1.0"
+  link href="components/bootstrap/bootstrap.css" rel="stylesheet" media="screen"
+  link rel="stylesheet" href="components/font-awesome/css/font-awesome.min.css"
+  /[if IE 7]
+    link rel="stylesheet" href="components/font-awesome/css/font-awesome-ie7.min.css"
+  /[if lt IE 9]
+    link rel="stylesheet" href="stylesheets/ie.css"
+  link href="stylesheets/main.css" rel="stylesheet" media="screen"
+  link href="stylesheets/responsive.css" rel="stylesheet" media="screen"
+  script src="components/jquery/jquery.min.js"
+  script src="components/bootstrap/bootstrap.js"
+  script src="js/application.js"
+  = yield :head
+
+  body
+    = yield

@@ -1,5 +1,8 @@
 class LayoutController < ApplicationController
+
   def main
-    render 'main'
+  end
+
+  def category
   end
 end
