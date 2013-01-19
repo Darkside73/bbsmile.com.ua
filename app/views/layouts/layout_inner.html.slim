@@ -1,0 +1,9 @@
+- content_for :head do
+  link href="stylesheets/category.css" rel="stylesheet" media="screen"
+
+- content_for :main_menu do
+  .navbar-inner: .container-fluid.container-wide: ul.nav
+    a.brand href="/main" bbsmile.com.ua
+    = render 'main_menu'
+
+= render :file => 'layouts/application'
