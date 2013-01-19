@@ -6,4 +6,11 @@
     a.brand href="/main" bbsmile.com.ua
     = render 'main_menu'
 
+- content_for :header do
+  = render 'header'
+
+- content_for :footer do
+  .container-wide: .row-fluid
+    = render 'footer'
+
 = render :file => 'layouts/application'
