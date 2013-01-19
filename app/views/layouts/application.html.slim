@@ -20,7 +20,7 @@ html
   body
     #main-menu.navbar.navbar-fixed-top
       = yield :main_menu
-    = yield :header
+    = content_for?(:header) ? yield(:header) : render('header')
     = yield :promotions
     = yield
     .footer: .container-fluid
