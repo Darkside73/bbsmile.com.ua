@@ -1,10 +1,16 @@
+// Category page stylesheets
+
+/*
+* = require "application"
+*/
+
 @import "lib/variables";
 @import "lib/mixins";
 @import "lib/prefixer";
 
 .container-wide {
-	max-width: @maxWidth;
-	margin: 0 auto;
+  max-width: @maxWidth;
+  margin: 0 auto;
 }
 
 #site-header {
@@ -59,10 +65,10 @@
     line-height: @baseFontSize*1.4;
   }
 
-	p { margin-bottom: 10px; }
-	.price {
+  p { margin-bottom: 10px; }
+  .price {
     .label {
-  		padding: 0;
+      padding: 0;
       vertical-align: middle;
       background: none;
       font-size: @baseFontSize*1.7;
@@ -71,7 +77,7 @@
       font-weight: normal;
     }
     .btn.disabled { opacity: 1; background: none; }
-	}
+  }
 
   .product-filters {
     .accordion {

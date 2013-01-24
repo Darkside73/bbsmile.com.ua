@@ -1,0 +1,27 @@
+// Inner page stylesheets (fluid layout, small page header)
+
+/*
+* = require "application"
+*/
+
+@import "lib/variables";
+@import "lib/mixins";
+@import "lib/prefixer";
+
+.container-wide {
+  max-width: @maxWidth;
+  margin: 0 auto;
+}
+
+#site-header {
+  margin-bottom: 20px;
+  padding: 60px 0 10px;
+  background-color: @yellowLight;
+  h1 { font-size: @baseFontSize * 2; }
+  h1 small { font-size: @baseFontSize * 1.5; }
+  .contacts .actions {
+    padding-top: 5px;
+    .popover {
+    }
+  }
+}

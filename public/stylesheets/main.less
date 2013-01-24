@@ -1,57 +1,12 @@
+// Main page stylesheets
+
+/*
+* = require "application"
+*/
+
 @import "lib/variables";
 @import "lib/mixins";
 @import "lib/prefixer";
-
-body {
-	min-width: @minWidth;
-}
-
-a.thumbnail:hover {
-	box-shadow: 0 1px 4px fadeout(@purple, 75%);
-}
-
-#main-menu {
-	min-width: @minWidth;
-	.navbar-inner {
-		padding: 0 20px;
-	}
-	li.cart {
-		background-color: @pinkLight;
-		a { text-shadow: 0 1px 0 @pinkLight; position: relative }
-		span.badge { .sup; background: darken(@pinkLight, 25%); }
-	}
-}
-
-#site-header {
-	background: url(../images/bg.png) repeat-x;
-	.contacts {
-	  .actions {
-  		.social-contact-links(@pink, @white);
-  		a.active {
-  			i { .box-shadow(0 0 4px 5px @pinkLight); }
-  			&:hover i { background: @pink; }
-  		}
-  		.popover {
-				width: 146px;
-				margin: 10px 0 -10px 0px;
-				padding: 0;
-				.box-shadow(-5px 7px 10px -3px fadeout(@black, 85%));
-				color: @gray;
-		    text-shadow: 0px 1px 0px @grayLight;
-		    letter-spacing: normal;
-	      font-size: 18px;
-	      line-height: 30px;
-	      text-align: center;
-	      &.visible { display: block; position: relative; }
-	      .popover-title { display: none; }
-		  }
-	  }
-	}
-	h1 {
-		small { color: @pink }
-	}
-	border-bottom: 1px solid @dropdownDividerTop;
-}
 
 #site-header.hero-unit {
 	padding: 60px 40px 45px;
@@ -67,18 +22,15 @@ a.thumbnail:hover {
 
 #promotions {
 	background: @grayLighter;
-}
-
-#promotions h4 {
-	margin-top: 75px;
-}
-
-#promotions img {
-	box-shadow: 2px 0 20px 4px fadeout(@black, 90%);
-}
-
-.carousel {
+	h4 {
+		margin-top: 75px;
+	}
+	img {
+		box-shadow: 2px 0 20px 4px fadeout(@black, 90%);
+	}
+	.carousel {
     line-height: 1.4;
+	}
 }
 
 #catalog-items {

@@ -1,3 +1,6 @@
+- content_for :head do
+  = stylesheet_link_tag 'main'
+
 - content_for :main_menu do
   .navbar-inner: .container: ul.nav
     = render 'main_menu'

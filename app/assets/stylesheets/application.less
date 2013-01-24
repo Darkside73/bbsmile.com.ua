@@ -1,3 +1,5 @@
+// Common stylesheet
+
 /*
 * = require "lib/bootstrap"
 * = require "font-awesome/less/font-awesome"
@@ -56,65 +58,6 @@ a.thumbnail:hover {
     small { color: @pink }
   }
   border-bottom: 1px solid @dropdownDividerTop;
-}
-
-#site-header.hero-unit {
-  padding: 60px 40px 45px;
-  h1 { font-size: @baseFontSize * 3.5; }
-  .container {
-    margin-top: 10px;
-    margin-bottom: -10px;
-    .naming {
-      margin-top: 7px;
-    }
-  }
-}
-
-#promotions {
-  background: @grayLighter;
-}
-
-#promotions h4 {
-  margin-top: 75px;
-}
-
-#promotions img {
-  box-shadow: 2px 0 20px 4px fadeout(@black, 90%);
-}
-
-.carousel {
-    line-height: 1.4;
-}
-
-#catalog-items {
-  margin-top: 15px;
-
-  .row {
-    margin-bottom: 30px;
-  }
-
-  h3 {
-    position: relative;
-    span {
-      display: block;
-      position: absolute;
-      .backgroundTransition(0.5s);
-      background: fadeout(@purpleDark, 50%);
-      color: @white;
-      bottom: 5px;
-      left: 5px;
-      width: 281px;
-      line-height: 1.1;
-      padding: 7px 0 10px 10px;
-      font-weight: normal;
-    }
-    a:hover span {
-      background: fadeout(@purpleDark, 30%);
-    }
-  }
-  img {
-    width: 291px; // temporary fix while images aren't resized properly
-  }
 }
 
 .footer {
