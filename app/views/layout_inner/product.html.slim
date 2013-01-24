@@ -1,0 +1,41 @@
+- content_for :head do
+  = stylesheet_link_tag 'product'
+
+#product-container.container-fluid.container-wide
+  ul.breadcrumb
+    li
+      a href="#" Каталог
+      span.divider: i.icon-angle-right
+    li
+      a href="#" Детские коляски
+      span.divider: i.icon-angle-right
+    li
+      a href="#" Прогулочные
+      span.divider: i.icon-angle-right
+    li
+      a href="#" от 1 года до 2 лет
+      span.divider: i.icon-angle-right
+    li: a.active href="#" Chicco
+  .container-fluid: .row-fluid
+    .gallery.span6
+      = image_tag "content/product_full_size.gif"
+    .description.span6
+      h2 Прогулочная коляска GT3 Completo 2012
+      .code.pull-left: span.label
+        | Артикул: 123456
+      ul.nav.nav-pills.pull-right
+        li: a href="#" 6 отзывов
+        li: a href="#" Варианты цветов
+        li: a href="#" Видео
+      .clearfix
+      hr
+  ul.nav.nav-tabs
+    li.active: a href="#description" data-toggle="tab" Описание
+    li: a href="#additionalInfo" data-toggle="tab" Варианты цветов
+    li: a href="#reviews" data-toggle="tab" Отзывы
+    li: a href="#video" data-toggle="tab" Видеообзор
+  .tab-content
+    .tab-pane.active#description Описание
+    .tab-pane#additionalInfo Цвета
+    .tab-pane#reviews Отзывы
+    .tab-pane#video Видео
