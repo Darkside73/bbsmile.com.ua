@@ -5,15 +5,11 @@ html
   meta charset="UTF-8"
   meta name="viewport" content="width=device-width, initial-scale=1.0"
   = stylesheet_link_tag 'responsive'
-  / link rel="stylesheet" href="components/font-awesome/css/font-awesome.min.css"
   /[if IE 7]
-    / link rel="stylesheet" href="components/font-awesome/css/font-awesome-ie7.min.css"
     = stylesheet_link_tag 'font-awesome/less/font-awesome-ie7'
   /[if lt IE 9]
     = stylesheet_link_tag 'ie'
-  script src="components/jquery/jquery.min.js"
-  script src="components/bootstrap/bootstrap.js"
-  script src="js/application.js"
+  = javascript_include_tag 'application'
   = yield :head
 
   body
