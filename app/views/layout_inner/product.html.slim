@@ -1,5 +1,8 @@
 - content_for :head do
   = stylesheet_link_tag 'product'
+  = stylesheet_link_tag 'http://raw.github.com/blueimp/Bootstrap-Image-Gallery/master/css/bootstrap-image-gallery.css'
+  = javascript_include_tag 'http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js'
+  = javascript_include_tag 'http://raw.github.com/blueimp/Bootstrap-Image-Gallery/master/js/bootstrap-image-gallery.js'
 
 #product-container.container-fluid.container-wide
   ul.breadcrumb
@@ -18,7 +21,20 @@
     li: a.active href="#" Chicco
   .container-fluid: .row-fluid
     .gallery.span6
-      = image_tag "content/product_full_size.gif"
+      #modal-gallery.modal.modal-gallery.hide.fade tabindex="-1"
+        .modal-header
+          a.close data-dismiss="modal" &times;
+          h3.modal-title Test image
+        .modal-body: .modal-image
+        .modal-footer
+          a.btn.btn-primary.modal-next
+            | Next
+            i.icon-arrow-right.icon-white
+          a.btn.btn-info.modal-prev
+            i.icon-arrow-left.icon-white
+            | Previous
+      #gallery data-toggle="modal-gallery" data-target="#modal-gallery"
+        a href="#{asset_path 'content/product_full_size.gif'}" data-gallery="gallery" product
     .description.span6
       h2 Прогулочная коляска GT3 Completo 2012
       .code.pull-left: span.label
