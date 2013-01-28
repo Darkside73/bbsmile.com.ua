@@ -1,8 +1,7 @@
 - content_for :head do
   = stylesheet_link_tag 'product'
-  = stylesheet_link_tag 'http://raw.github.com/blueimp/Bootstrap-Image-Gallery/master/css/bootstrap-image-gallery.css'
-  = javascript_include_tag 'http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js'
-  = javascript_include_tag 'http://raw.github.com/blueimp/Bootstrap-Image-Gallery/master/js/bootstrap-image-gallery.js'
+  = javascript_include_tag 'javaScript-load-image/load-image.min.js'
+  = javascript_include_tag 'bootstrap-image-gallery/js/bootstrap-image-gallery.js'
 
 #product-container.container-fluid.container-wide
   ul.breadcrumb
@@ -24,17 +23,23 @@
       #modal-gallery.modal.modal-gallery.hide.fade tabindex="-1"
         .modal-header
           a.close data-dismiss="modal" &times;
-          h3.modal-title Test image
+          h3.modal-title
         .modal-body: .modal-image
         .modal-footer
+          a.btn.btn-success.modal-play.modal-slideshow  data-slideshow="3000"
+            | Слайдшоу
+            i.icon-play.icon-white
           a.btn.btn-primary.modal-next
-            | Next
+            | Вперед
             i.icon-arrow-right.icon-white
           a.btn.btn-info.modal-prev
             i.icon-arrow-left.icon-white
-            | Previous
+            | Назад
       #gallery data-toggle="modal-gallery" data-target="#modal-gallery"
-        a href="#{asset_path 'content/product_full_size.gif'}" data-gallery="gallery" product
+        a href="#{asset_path 'content/product_full_size.gif'}" title="Прогулочная коляска GT3 Completo 2012" data-gallery="gallery"
+          = image_tag 'content/product_thumb.gif'
+        a href="#{asset_path 'content/product_full_size_2.gif'}" title="Прогулочная коляска GT3 Completo 2012" data-gallery="gallery"
+          = image_tag 'content/product_thumb.gif'
     .description.span6
       h2 Прогулочная коляска GT3 Completo 2012
       .code.pull-left: span.label
