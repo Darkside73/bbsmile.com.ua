@@ -49,15 +49,15 @@
       .code.pull-left: span.label
         | Артикул: 123456
       ul.nav.nav-pills.pull-right
-        li: a data-href="reviews" href="#reviewsTab" 6 отзывов
-        li: a data-href="additionalInfo" href="#additionalInfoTab" Варианты цветов
-        li: a data-href="video" href="#videoTab" Видео
+        li: a.tab-toggle data-href="reviews" href="#reviewsTab" 6 отзывов
+        li: a.tab-toggle data-href="additionalInfo" href="#additionalInfoTab" Варианты цветов
+        li: a.tab-toggle data-href="video" href="#videoTab" Видео
       .clearfix
       hr
       .pull-left
         p.price 1250 грн
         p.in-stock Есть в наличии
-        p: a.tab-toggle id="descriptionTab" href="#description" Смотреть описание
+        p: a.tab-toggle data-href="description" href="#descriptionTab" Смотреть описание
         p.shipping
           | Доставка бесплатно &nbsp;
           a href="#" Подробнее о доставке
@@ -70,10 +70,10 @@
         p: a.btn.btn-large.btn-success Быстрая покупка
         p: a.btn.btn-info В корзину
   ul.nav.nav-tabs id="product-info-tabs"
-    li.active: a id="descriptionTab" href="#description" Описание
-    li: a.tab-toggle id="additionalInfoTab" href="#additionalInfo" Варианты цветов
-    li: a.tab-toggle id="reviewsTab" href="#reviews" Отзывы
-    li: a.tab-toggle id="videoTab" href="#video" Видеообзор
+    li.active: a id="descriptionTab" href="#description" data-toggle="tab" Описание
+    li: a.tab-toggle id="additionalInfoTab" href="#additionalInfo" data-toggle="tab" Варианты цветов
+    li: a.tab-toggle id="reviewsTab" href="#reviews" data-toggle="tab" Отзывы
+    li: a.tab-toggle id="videoTab" href="#video" data-toggle="tab" Видеообзор
   .tab-content
     .tab-pane.active#description
       p Какими бы красивыми или практичными не казались нашим мамочкам коляски-трости, книжки, или любые другие подобные модели, все же они не смогут справиться ни с неровными дорогами, которых в любом городе, не говоря уже о поселках, очень много, ни со снегом, ни с осенней слякотью. Любая модель с маленькими колесами может не выдержать испытания реальными условиями. Поэтому вынужденная мера – это покупка мощной коляски с большими резиновыми колесами, надежной рамой, высокой ручкой и всеми необходимыми аксессуарами. Лучшая из лучших в этом плане – прогулочная коляска GT3 Completo 2012 и предыдущих годов выпуска.
