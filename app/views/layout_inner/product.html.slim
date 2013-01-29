@@ -31,16 +31,16 @@
           a.btn.btn-success.modal-play.modal-slideshow  data-slideshow="3000"
             | Слайдшоу&nbsp;&nbsp;
             i.icon-play.icon-white
-          a.btn.btn-primary.modal-next
-            | Вперед &nbsp;&nbsp;
-            i.icon-arrow-right.icon-white
           a.btn.btn-info.modal-prev
             i.icon-arrow-left.icon-white
             | &nbsp;&nbsp;Назад
+          a.btn.btn-primary.modal-next
+            | Вперед&nbsp;&nbsp;
+            i.icon-arrow-right.icon-white
       .first-image
         = image_tag "content/product_full_size_1.gif"
       .other-images data-toggle="modal-gallery" data-target="#modal-gallery"
-        - 6.times do
+        - 4.times do
           - big_image = asset_path "content/product_full_size_#{Random.new.rand(1...3)}.gif"
           a href="#{big_image}" title="Прогулочная коляска GT3 Completo 2012" data-gallery="gallery"
             = image_tag "content/product_gallery_thumb_#{Random.new.rand(1...3)}.gif"
@@ -54,11 +54,26 @@
         li: a data-href="video" href="#videoTab" Видео
       .clearfix
       hr
+      .pull-left
+        p.price 1250 грн
+        p.in-stock Есть в наличии
+        p: a.tab-toggle id="descriptionTab" href="#description" Смотреть описание
+        p.shipping
+          | Доставка бесплатно &nbsp;
+          a href="#" Подробнее о доставке
+        p.share
+          | Поделиться: &nbsp;
+          a.icon-facebook href="#"
+          a.icon-twitter href="#"
+          a.icon-google-plus href="#"
+      .pull-right.btns
+        p: a.btn.btn-large.btn-success Быстрая покупка
+        p: a.btn.btn-info В корзину
   ul.nav.nav-tabs id="product-info-tabs"
-    li.active: a id="description" href="#description" data-toggle="tab" Описание
-    li: a id="additionalInfoTab" href="#additionalInfo" data-toggle="tab" Варианты цветов
-    li: a id="reviewsTab" href="#reviews" data-toggle="tab" Отзывы
-    li: a id="videoTab" href="#video" data-toggle="tab" Видеообзор
+    li.active: a id="descriptionTab" href="#description" Описание
+    li: a.tab-toggle id="additionalInfoTab" href="#additionalInfo" Варианты цветов
+    li: a.tab-toggle id="reviewsTab" href="#reviews" Отзывы
+    li: a.tab-toggle id="videoTab" href="#video" Видеообзор
   .tab-content
     .tab-pane.active#description
       p Какими бы красивыми или практичными не казались нашим мамочкам коляски-трости, книжки, или любые другие подобные модели, все же они не смогут справиться ни с неровными дорогами, которых в любом городе, не говоря уже о поселках, очень много, ни со снегом, ни с осенней слякотью. Любая модель с маленькими колесами может не выдержать испытания реальными условиями. Поэтому вынужденная мера – это покупка мощной коляски с большими резиновыми колесами, надежной рамой, высокой ручкой и всеми необходимыми аксессуарами. Лучшая из лучших в этом плане – прогулочная коляска GT3 Completo 2012 и предыдущих годов выпуска.

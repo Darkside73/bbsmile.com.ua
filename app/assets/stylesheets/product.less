@@ -10,13 +10,23 @@
 @import "lib/prefixer";
 
 #product-container {
-  .code { margin: 5px 0 }
-  hr { margin-top: 0; }
+  .description {
+    .code { margin: 5px 0 }
+    hr { margin-top: 0; }
+    .nav-pills a { color: @pink; }
+  }
   .gallery {
     .first-image, .other-images { text-align: center; }
   }
   .nav-tabs {
     margin-top: 15px;
+  }
+  .price {
+    font-size: @baseFontSize*2;
+    color: @pinkDark;
+  }
+  .btns {
+    text-align: right;
   }
 }
 
