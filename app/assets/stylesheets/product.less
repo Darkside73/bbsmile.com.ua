@@ -13,20 +13,28 @@
   .description {
     .code { margin: 5px 0 }
     hr { margin-top: 0; }
-    .nav-pills a { color: @pink; }
+    .nav-pills a, a.to-description { color: @pink; }
   }
   .gallery {
     .first-image, .other-images { text-align: center; }
   }
   .nav-tabs {
     margin-top: 15px;
+    // li a { color: @pink; }
   }
   .price {
     font-size: @baseFontSize*2;
     color: @pinkDark;
   }
-  .btns {
-    text-align: right;
+  .in-stock { color: @green; }
+  .btns { text-align: right; }
+  .share {
+    a {
+      color: lighten(@orange, 20%);
+      font-size: @baseFontSize*1.8;
+      letter-spacing: .5em;
+      &:hover { text-decoration: none; color: @orange; }
+    }
   }
 }
 
