@@ -11,25 +11,29 @@
 
 #product-container {
   .description {
-    .code { margin: 5px 0 }
-    hr { margin-top: 0; }
-    .nav-pills a, a.to-description { color: @pink; }
+    .bages { margin: 5px 0; font-size: 117%; }
+    hr { margin-top: 5px; }
   }
   .gallery {
     .first-image, .other-images { text-align: center; }
   }
   .nav-tabs {
     margin-top: 15px;
-    // li a { color: @pink; }
+    li a { color: @blue; }
   }
   .price {
     font-size: @baseFontSize*2;
     color: @pinkDark;
   }
-  .in-stock { color: @green; }
-  .btns { text-align: right; }
+  .btns {
+    text-align: right;
+    .to-cart {
+      margin-right: 30px;
+    }
+  }
   .share {
     a {
+      vertical-align: middle;
       color: lighten(@orange, 20%);
       font-size: @baseFontSize*1.8;
       letter-spacing: .5em;
