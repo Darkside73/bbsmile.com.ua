@@ -15,7 +15,10 @@
     hr { margin-top: 5px; }
   }
   .gallery {
-    .first-image, .other-images { text-align: center; }
+    .first-image { text-align: center; }
+    .other-images {
+      a.thumbnail { display: inline-block; margin: 10px 10px 0 0; }
+    }
   }
   .nav-tabs {
     margin-top: 15px;
@@ -34,10 +37,10 @@
   .share {
     a {
       vertical-align: middle;
-      color: lighten(@orange, 20%);
+      color: @purple;
       font-size: @baseFontSize*1.8;
-      letter-spacing: .5em;
-      &:hover { color: @orange; }
+      margin-left: 10px;
+      &:hover { color: lighten(@purple, 20%); }
     }
   }
 }

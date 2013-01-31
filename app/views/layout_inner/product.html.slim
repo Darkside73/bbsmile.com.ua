@@ -30,17 +30,17 @@
     .other-images data-toggle="modal-gallery" data-target="#modal-gallery"
       - 4.times do
         - big_image = asset_path "content/product_full_size_#{Random.new.rand(1...3)}.gif"
-        a href="#{big_image}" title="Прогулочная коляска GT3 Completo 2012" data-gallery="gallery"
+        a.thumbnail href="#{big_image}" title="Прогулочная коляска GT3 Completo 2012" data-gallery="gallery"
           = image_tag "content/product_gallery_thumb_#{Random.new.rand(1...3)}.gif"
   .description.span8
     .bages.pull-left
       span.label.label-success Есть в наличии
       | &nbsp;
-      span.label.label-info от 1 года до 2 лет
-      | &nbsp;
       span.label Артикул: 123456
+      | &nbsp;
+      span.label от 1 года до 2 лет
     .share.pull-right
-      | Поделиться: &nbsp;
+      | Поделиться:
       a.icon-facebook-sign href="#"
       a.icon-twitter-sign href="#"
       a.icon-google-plus-sign href="#"
