@@ -17,6 +17,8 @@ Bbsmile::Application.configure do
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
 
+  config.assets.precompile += ['main.css', 'category.css', 'product.css', 'ie.css', 'font-awesome-ie7.min.css']
+
   # Generate digests for assets URLs
   config.assets.digest = true
 
