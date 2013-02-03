@@ -6,6 +6,7 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'slim', '1.3.6'
+gem 'slim-rails'
 
 gem 'sqlite3'
 
@@ -22,10 +23,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
-group :development do
-  gem 'slim-rails'
-end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
