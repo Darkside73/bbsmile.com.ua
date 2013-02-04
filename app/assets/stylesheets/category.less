@@ -8,11 +8,6 @@
 @import "lib/mixins";
 @import "lib/prefixer";
 
-.container-wide {
-  max-width: @maxWidth;
-  margin: 0 auto;
-}
-
 #site-header {
   margin-bottom: 20px;
   padding: 60px 0 10px;
@@ -82,7 +77,7 @@
 
   .product-filters {
     .accordion {
-      .box-shadow(1px 1px 3px 0 fadeout(@orange, 60%));
+      .box-shadow(1px 1px 3px 0 @dropdownDividerTop);
       background: @yellowLight;
       hr { margin: 0; }
       ul {
