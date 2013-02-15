@@ -5,4 +5,4 @@ Feature: Admin Engine
 
   Scenario: Empty Admin Engine
     When I go to main admin page
-    Then I should get http response 200
+    Then I should get a response with status 200

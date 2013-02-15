@@ -4,6 +4,8 @@ module NavigationHelpers
 
     when /home page/
       root_path
+    when /admin page/
+      admin_path
     # Add more page name => path mappings here
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
