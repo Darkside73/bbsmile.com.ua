@@ -31,6 +31,7 @@ end
 group :test do
   gem 'cucumber-rails'
   gem 'capybara'
+  gem 'shoulda'
   gem 'faker'
   gem 'launchy'
   gem 'guard-rspec'
