@@ -1,5 +1,7 @@
 Bbsmile::Application.routes.draw do
 
+  root :to => 'layout_main#index'
+
   match 'main' => 'layout_main#index'
   match 'category' => 'layout_inner#category'
   match 'product' => 'layout_inner#product'
