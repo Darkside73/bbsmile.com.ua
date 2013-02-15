@@ -10,6 +10,8 @@ gem 'slim-rails'
 
 gem 'sqlite3'
 
+gem 'admin', path: 'admin'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

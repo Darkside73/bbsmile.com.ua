@@ -1,3 +1,9 @@
+PATH
+  remote: admin
+  specs:
+    admin (0.0.1)
+      rails (~> 3.2.12)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -227,6 +233,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  admin!
   capistrano
   capybara
   coffee-rails (~> 3.2.1)

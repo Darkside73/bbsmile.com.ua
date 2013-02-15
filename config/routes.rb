@@ -1,5 +1,7 @@
 Bbsmile::Application.routes.draw do
 
+  mount Admin::Engine, at: 'admin'
+
   root :to => 'layout_main#index'
 
   match 'main' => 'layout_main#index'
