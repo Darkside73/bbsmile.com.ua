@@ -3,6 +3,9 @@
     a.brand href="/main" bbsmile.com.ua
     = render 'main_menu'
 
+- content_for :header do
+  = render 'header_inner'
+
 - content_for :footer do
   .container-wide: .row-fluid
     = render 'footer'
