@@ -2,7 +2,7 @@ Bbsmile::Application.routes.draw do
 
   mount Admin::Engine, at: 'admin'
 
-  root :to => 'layout_main#index'
+  root :to => 'main#index'
 
   match 'main' => 'layout_main#index'
   match 'category' => 'layout_inner#category'
