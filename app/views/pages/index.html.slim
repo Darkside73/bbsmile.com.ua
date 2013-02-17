@@ -1,8 +1,10 @@
 - content_for :head do
   = stylesheet_link_tag 'inner'
 
+- content_for :title do
+  = @page.title
 - content_for :h1 do
-  | Статическая страница
+  = @page.title
 
 .container-fluid.container-wide: .row-fluid
   .span12 Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
