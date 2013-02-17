@@ -13,3 +13,7 @@ Feature: Static pages
       And I should see link "Доставка" in page content
       And I should see link "Оплата" in page content
       And I should see link "Гарантии" in page content
+
+  Scenario: Access non-existen page
+    When PENDING I am go to non-existen page
+    Then PENDING I should get http status code 404
