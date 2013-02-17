@@ -15,3 +15,4 @@ module NavigationHelpers
 end
 
 World(NavigationHelpers)
+World(FactoryGirl::Syntax::Methods)
