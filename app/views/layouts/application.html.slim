@@ -1,8 +1,7 @@
 doctype 5
 html
   title
-    ==' content_for?(:title) ? yield(:title) : ''
-    ==' content_for?(:title) ? '&mdash;' : ''
+    ==' yield(:title) +  ' &mdash;'.html_safe if content_for?(:title)
     | Детские товары - Интернет-магазин
   meta charset="UTF-8"
   meta name="viewport" content="width=device-width, initial-scale=1.0"
