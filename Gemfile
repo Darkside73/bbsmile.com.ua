@@ -37,6 +37,7 @@ group :test do
   gem 'faker'
   gem 'launchy'
   gem 'guard-rspec'
+  gem 'database_cleaner'
 end
 
 gem 'jquery-rails'
