@@ -1,7 +1,22 @@
 - title "Информация"
+- content_for :head do
+  = stylesheet_link_tag 'information_page'
 
 .container-fluid.container-wide: .row-fluid
   #page-content
-    p: a href="/delivery" Доставка
-    p: a href="/payment" Оплата
-    p: a href="/warranty" Гарантии
+    .information-items
+      .item.delivery
+        h3
+          span.icon-truck
+          = link_to "Доставка", "/information/delivery"
+        .details Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+      .item.payment
+        h3
+          span.icon-money
+          = link_to "Оплата", "/information/payment"
+        .details Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+      .item.warranty
+        h3
+          span.icon-edit
+          = link_to "Гарантии", "/information/warranty"
+        .details Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
