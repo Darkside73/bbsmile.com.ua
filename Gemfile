@@ -8,7 +8,7 @@ gem 'rails', '3.2.12'
 gem 'slim', '1.3.6'
 gem 'slim-rails'
 
-gem 'mysql2'
+gem 'pg'
 
 gem 'admin', path: 'admin'
 

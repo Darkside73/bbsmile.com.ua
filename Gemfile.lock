@@ -128,7 +128,6 @@ GEM
     mocha (0.10.5)
       metaclass (~> 0.0.1)
     multi_json (1.6.0)
-    mysql2 (0.3.11)
     net-scp (1.1.0)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.1)
@@ -137,6 +136,7 @@ GEM
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     nokogiri (1.5.6)
+    pg (0.14.1)
     polyglot (0.3.3)
     pry (0.9.12)
       coderay (~> 1.0.5)
@@ -247,7 +247,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   less-rails-bootstrap
-  mysql2
+  pg
   rails (= 3.2.12)
   rspec-rails
   shoulda
