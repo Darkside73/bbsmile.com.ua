@@ -12,6 +12,11 @@ module ApplicationHelper
     end
   end
 
+  def link_to(*args)
+    return super args.first.title, "/#{args.first.url}" if args.first.is_a? Page
+    super
+  end
+
   private
     def current_layout
       layout = controller.send(:_layout)
