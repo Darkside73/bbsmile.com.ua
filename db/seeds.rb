@@ -12,3 +12,5 @@ pages = Page.create [
   {title: 'Оплата', url: 'information/payment'},
   {title: 'Гарантии', url: 'information/warranty'}
 ]
+category = Category.create({title: 'Детские коляски', url: 'detskie-kolyaski'})
+Category.create({title: 'Прогулочные', url: 'detskie-kolyaski/progulochnye', parent: category})
