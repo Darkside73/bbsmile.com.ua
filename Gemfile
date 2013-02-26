@@ -27,13 +27,13 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.13.0'
   gem 'factory_girl_rails'
   gem 'faker'
 end
 
 group :test do
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', require: false
   gem 'capybara'
   gem 'shoulda'
   gem 'launchy'
