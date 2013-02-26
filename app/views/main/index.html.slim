@@ -3,5 +3,5 @@
   - @categories.each do |category, subcategories|
     .span4
       h3: a href="/#{category.url}" #{category.title}
-      - subcategories.keys.each do |subcategory|
+      - subcategories.keys.first(3).each do |subcategory|
         p: a href="/#{subcategory.url}" #{subcategory.title}
