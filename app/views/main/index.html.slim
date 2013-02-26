@@ -1,40 +1,7 @@
 #catalog-items.container
   .row
+  - @categories.each do |category, subcategories|
     .span4
-      h3: a href="#"
-        = image_tag "content/kolyaski.jpg", :class => "img-polaroid"
-        span Детские коляски
-    .span4
-      h3: a href="#"
-        = image_tag "content/avtokresla.jpg", :class => "img-polaroid"
-        span Автокресла
-    .span4
-      h3: a href="#"
-        = image_tag "content/igrushki.jpg", :class => "img-polaroid"
-        span Игрушки
-  .row
-    .span4
-      h3: a href="#"
-        = image_tag "content/mebel.jpg", :class => "img-polaroid"
-        span Детская мебель
-    .span4
-      h3: a href="#"
-        = image_tag "content/17.jpg", :class => "img-polaroid"
-        span Парты, доски, столики
-    .span4
-      h3: a href="#"
-        = image_tag "content/mamam.jpg", :class => "img-polaroid"
-        span Мамам в помощь
-  .row
-    .span4
-      h3: a href="#"
-        = image_tag "content/son.jpg", :class => "img-polaroid"
-        span Детский сон
-    .span4
-      h3: a href="#"
-        = image_tag "content/health.jpg", :class => "img-polaroid"
-        span Гигиена и здоровье
-    .span4
-      h3: a href="#"
-        = image_tag "content/complex.jpg", :class => "img-polaroid"
-        span Игровые комплексы
+      h3: a href="/#{category.url}" #{category.title}
+      - subcategories.keys.each do |subcategory|
+        p: a href="/#{subcategory.url}" #{subcategory.title}
