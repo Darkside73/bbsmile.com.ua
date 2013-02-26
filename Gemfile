@@ -9,6 +9,7 @@ gem 'slim', '1.3.6'
 gem 'slim-rails'
 
 gem 'pg'
+gem 'ancestry'
 
 gem 'admin', path: 'admin'
 
@@ -28,13 +29,13 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :test do
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'shoulda'
-  gem 'faker'
   gem 'launchy'
   gem 'guard-rspec'
   gem 'database_cleaner'
