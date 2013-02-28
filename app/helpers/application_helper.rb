@@ -13,10 +13,22 @@ module ApplicationHelper
   end
 
   def link_to(*args)
-    # TODO refactoring
-    return super args.first.title, "/#{args.first.url}" if args.first.is_a? Page
-    return super args.second.title, "/#{args.second.url}" if args.second.is_a? Page
-    super
+    where_page = Proc.new { |a| a.is_a? Page }
+    if page = args.find(&where_page)
+      url = "/#{page.url}"
+      index_where_page = args.index &where_page
+      if index_where_page == 0
+        title = page.title
+      elsif index_where_page == 1
+        title = args.first
+      else
+        raise ActionView::TemplateError,
+          "Page object given as #{index_where_page + 1} argument but expecting as 1 or 2"
+      end
+      super title, url, *args.drop(index_where_page + 1)
+    else
+      super
+    end
   end
 
   private
