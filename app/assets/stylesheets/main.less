@@ -62,4 +62,20 @@
   img {
     width: 291px; // temporary fix while images aren't resized properly
   }
+
+  .item {
+    h3 {
+      padding-bottom: 0;
+      a {
+        color: @pink;
+        .transition(color 0.5s);
+        &:hover { color: @pinkDark }
+      }
+    }
+    .subitems {
+      a {
+        .transition(color 0.5s);
+      }
+    }
+  }
 }

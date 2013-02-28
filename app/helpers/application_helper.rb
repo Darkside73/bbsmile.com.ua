@@ -13,7 +13,9 @@ module ApplicationHelper
   end
 
   def link_to(*args)
+    # TODO refactoring
     return super args.first.title, "/#{args.first.url}" if args.first.is_a? Page
+    return super args.second.title, "/#{args.second.url}" if args.second.is_a? Page
     super
   end
 
