@@ -5,11 +5,11 @@ FactoryGirl.define do
 
   factory :category do
     ignore do
-      subcategory Faker::Name.title
+      subcategory ''
     end
     url { generate(:random_url) }
     after(:create) do |category, evaluator|
-      create(:subcategory, title: evaluator.subcategory, parent: category)
+      create(:subcategory, title: evaluator.subcategory, parent: category) unless evaluator.subcategory.blank?
     end
   end
 
