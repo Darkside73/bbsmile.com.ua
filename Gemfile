@@ -5,11 +5,12 @@ gem 'rails', '3.2.12'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'slim', '1.3.6'
-gem 'slim-rails'
-
 gem 'pg'
 gem 'ancestry'
+
+gem 'slim', '1.3.6'
+gem 'slim-rails'
+gem 'cells'
 
 gem 'admin', path: 'admin'
 

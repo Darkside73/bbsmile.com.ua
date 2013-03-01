@@ -2,16 +2,7 @@ li.dropdown.active
   a.dropdown-toggle href="#" data-toggle="dropdown"
     | Каталог&nbsp;
     b.caret
-  ul.dropdown-menu
-    li: a href="#" Детские коляски
-    li: a href="#" Автокресла
-    li: a href="#" Детская мебель
-    li: a href="#" Игрушки
-    li: a href="#" Парты, доски, столики
-    li: a href="#" Детский транспорт
-    li: a href="#" Игровые комлексы
-    li: a href="#" Детский сон
-    li: a href="#" Гигиена и здоровье
+  = render_cell :catalog_menu, :display
 li: a href="/information" Информация
 li: a href="#" Статьи
 li: a href="#" Новости
