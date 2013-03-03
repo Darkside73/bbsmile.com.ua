@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225154555) do
+ActiveRecord::Schema.define(:version => 20130303202852) do
 
   create_table "pages", :force => true do |t|
-    t.string   "title",                    :null => false
-    t.string   "url",                      :null => false
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.string   "title",                                   :null => false
+    t.string   "url",                                     :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.string   "ancestry"
     t.string   "type",       :limit => 20
+    t.integer  "position",                 :default => 0
   end
 
   add_index "pages", ["ancestry"], :name => "index_pages_on_ancestry"
