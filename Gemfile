@@ -14,6 +14,8 @@ gem 'cells'
 
 gem 'admin', path: 'admin'
 
+gem 'jquery-rails'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -27,6 +29,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development do
+  gem 'rb-inotify', require: false
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
+  gem 'zeus'
+end
+
 group :development, :test do
   gem 'rspec-rails', '~> 2.13.0'
   gem 'factory_girl_rails'
@@ -38,11 +47,9 @@ group :test do
   gem 'capybara'
   gem 'shoulda'
   gem 'launchy'
-  gem 'guard-rspec'
   gem 'database_cleaner'
 end
 
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
