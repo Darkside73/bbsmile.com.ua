@@ -33,7 +33,7 @@ group :development do
   gem 'rb-inotify', require: false
   gem 'guard-rspec'
   gem 'guard-cucumber'
-  gem 'zeus'
+  gem 'guard-zeus-client'
 end
 
 group :development, :test do

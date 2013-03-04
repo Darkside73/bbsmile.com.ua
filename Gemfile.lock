@@ -106,6 +106,9 @@ GEM
     guard-rspec (2.4.1)
       guard (>= 1.1)
       rspec (~> 2.11)
+    guard-zeus-client (0.1.1)
+      guard (>= 1.1)
+      zeus
     highline (1.6.15)
     hike (1.2.1)
     i18n (0.6.4)
@@ -263,6 +266,7 @@ DEPENDENCIES
   font-awesome-rails
   guard-cucumber
   guard-rspec
+  guard-zeus-client
   jquery-rails
   launchy
   less-rails-bootstrap
@@ -276,4 +280,3 @@ DEPENDENCIES
   therubyracer
   uglifier (>= 1.0.3)
   unicorn
-  zeus
