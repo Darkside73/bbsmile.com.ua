@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  sequence(:random_url) { Faker::Lorem.word }
+  sequence(:random_url) { Faker::Lorem.word + rand(100).to_s }
 
   factory :page
 

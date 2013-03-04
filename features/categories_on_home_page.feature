@@ -22,5 +22,10 @@ Scenario: Show categories and subcategories by defined position
     | Шкафы           |     2    |
 
   When I go to home page
-  Then I should see at first position category "Детская комната"
-    And I should see at first position subcategory "Комоды"
+  Then I should see categories in this order
+    | Детская комната |
+    | Детские коляски |
+    And I should see subcategories from "Детская комната" in this order
+      | Комоды   |
+      | Кроватки |
+      | Шкафы    |
