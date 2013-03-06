@@ -12,8 +12,6 @@ gem 'slim', '1.3.6'
 gem 'slim-rails'
 gem 'cells'
 
-gem 'admin', path: 'admin'
-
 gem 'jquery-rails'
 
 # Gems used only for assets and not required
