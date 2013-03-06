@@ -3,6 +3,6 @@ Feature: Admin Engine
   As a administrator
   I want to access admin page
 
-  Scenario: Empty Admin Engine
+  Scenario: Empty admin namespace
     When I go to main admin page
     Then I should get a response with status 200

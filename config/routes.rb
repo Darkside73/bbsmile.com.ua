@@ -6,6 +6,10 @@ Bbsmile::Application.routes.draw do
   match 'category' => 'layout_inner#category'
   match 'product' => 'layout_inner#product'
 
+  namespace :admin do
+    get '/' => 'main#index'
+  end
+
   get '*page' => 'pages#show', format: false
 
   # The priority is based upon order of creation:
