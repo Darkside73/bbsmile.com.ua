@@ -1,8 +1,6 @@
-module Admin
-  class MainController < ApplicationController
+class Admin::MainController < Admin::ApplicationController
 
-    def index
-      @categories = Category.arrange
-    end
+  def index
+    @categories = Category.arrange
   end
 end

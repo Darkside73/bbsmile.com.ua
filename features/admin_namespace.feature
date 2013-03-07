@@ -3,6 +3,7 @@ Feature: Admin Engine
   As a administrator
   I want to access admin page
 
-  Scenario: Empty admin namespace
+  Scenario: Enter to admin with default credentials
     When I go to main admin page
-    Then I should get a response with status 200
+      And Enter user "admin" and password "Y5petRup"
+    Then I should see admin page
