@@ -1,0 +1,4 @@
+h1 = @category.title
+ul.subcategories-list
+  - @category.children.each do |subcategory|
+    li = link_to subcategory.title, admin_category_path(subcategory)

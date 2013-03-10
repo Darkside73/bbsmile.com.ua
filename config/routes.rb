@@ -1,13 +1,14 @@
 Bbsmile::Application.routes.draw do
 
-  root :to => 'main#index'
+  root to: 'main#index'
 
   match 'main' => 'layout_main#index'
   match 'category' => 'layout_inner#category'
   match 'product' => 'layout_inner#product'
 
   namespace :admin do
-    get '/' => 'main#index'
+    root to: 'main#index'
+    resources :categories
   end
 
   get '*page' => 'pages#show', format: false
