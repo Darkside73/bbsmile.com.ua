@@ -8,7 +8,12 @@ Bbsmile::Application.routes.draw do
 
   namespace :admin do
     root to: 'main#index'
-    resources :categories
+    resources :categories do
+      member do
+        get 'new_subcategory'
+        post 'create_subcategory'
+      end
+    end
   end
 
   get '*page' => 'pages#show', format: false

@@ -7,29 +7,30 @@ Background:
     And I go to admin categories page
 
 Scenario: Root categories list
-  Then I shoud see root categories list
+  Then I should see root categories list
 
 Scenario: Subcategories list
   When I click on category link
-  Then I shoud see it subcategories list
+  Then I should see it subcategories list
 
 Scenario: Add new category
   When I click on new category link
     And fill in "category[title]" with "New category"
     And fill in "category[url]" with "new-category"
     And press button "Создать"
-  Then I shoud see category "New category" in categories list
+  Then I should see "New category"
 
 Scenario: Edit category
-  When I click on category link
+  When I click on category edit link
     And fill in "category[title]" with "New title"
     And press button "Обновить"
-  Then I shoud see category with title "New title" in categories list
+  Then I should see "New title"
 
 Scenario: Add new subcategory
   Given I am viewing some category page
-  When I click on add new subcategory link
-    And fill in title field and url field
-    And select parent category
-    And press button "Добавить"
-  Then I shoud see created subcategory in subcategories list
+  When I click "Добавить подкатегорию"
+    And fill in "category[title]" with "New subcategory"
+    And fill in "category[url]" with "new-subcategory"
+    And press button "Создать"
+    And return to parent category page
+  Then I should see "New subcategory"

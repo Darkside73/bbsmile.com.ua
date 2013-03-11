@@ -17,11 +17,16 @@ describe Category do
     end
     before do
       @url = 'some/url'
-      create :category, title: 'Some category', url: @url
+      @category = create :category, title: 'Some category', url: @url
     end
     it 'not allow url duplication' do
       category = build :category, title: 'Some category', url: @url
       category.save.should be_false
+    end
+    it 'create children' do
+      child = Category.new(title: 'Some category', url: Faker::Lorem.word, parent: @category)
+      expect { child.save }.to change { @category.children.count }
+      child.type.should == 'Category'
     end
   end
 end
