@@ -2,6 +2,6 @@ ul.categories-list
   - @categories.each do |category|
     li
       =' link_to category.title, [:admin, category], class: 'name'
-      =  link_to 'edit', edit_admin_category_path(category)
+      =  link_to 'edit', [:edit, :admin, category]
 
-= link_to "Новая категория", new_admin_category_path, id: 'new-category'
+= link_to "Новая категория", [:new, :admin, :category], id: 'new-category'
