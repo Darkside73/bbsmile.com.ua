@@ -1,4 +1,1 @@
-= form_for @category, url: {action: 'create'} do |f|
- = f.text_field :title
- = f.text_field :url
- = f.submit 'Создать'
+= render_form_for_category
