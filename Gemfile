@@ -11,6 +11,7 @@ gem 'ancestry'
 gem 'slim', '1.3.6'
 gem 'slim-rails'
 gem 'cells'
+gem 'simple_form'
 
 gem 'jquery-rails'
 
