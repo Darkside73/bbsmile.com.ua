@@ -41,10 +41,10 @@ class Admin::CategoriesController < Admin::ApplicationController
 
   def create_subcategory
     @category = Category.find params[:id]
-    subcategory = Category.new params[:category]
-    subcategory.parent = @category
-    if subcategory.save
-      redirect_to [:admin, subcategory], notice: 'Subcategory created'
+    @subcategory = Category.new params[:category]
+    @subcategory.parent = @category
+    if @subcategory.save
+      redirect_to [:admin, @subcategory], notice: 'Subcategory created'
     else
       render :new_subcategory
     end
