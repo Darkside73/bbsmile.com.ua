@@ -15,7 +15,7 @@ When(/^I click on category link$/) do
 end
 
 Then(/^I should see it subcategories list$/) do
-  all('.subcategories-list a').collect(&:text).should =~ @category.children.collect(&:title)
+  all('.subcategories-list a.name').collect(&:text).should =~ @category.children.collect(&:title)
 end
 
 When(/^I click on new category link$/) do

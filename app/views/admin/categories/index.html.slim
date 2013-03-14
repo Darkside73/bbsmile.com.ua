@@ -1,7 +1,8 @@
-ul.categories-list
-  - @categories.each do |category|
-    li
-      =' link_to category.title, [:admin, category], class: 'name'
-      =  link_to 'edit', [:edit, :admin, category]
+= render layout: 'boxed', locals: {title: 'Список категорий'} do
+  .categories-list
+    - @categories.each do |category|
+      p
+        =' link_to category.title, [:admin, category], class: 'name'
+        =  link_to '', [:edit, :admin, category], class: 'icon-edit', title: 'Редактировать'
 
-= link_to "Новая категория", [:new, :admin, :category], id: 'new-category'
+  = link_to "Новая категория", [:new, :admin, :category], id: 'new-category', class: 'btn btn-success'

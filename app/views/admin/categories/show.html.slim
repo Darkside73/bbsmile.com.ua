@@ -1,6 +1,10 @@
-- content_for :header do
+- content_for :box_title do
   = @category.title
-ul.subcategories-list
-  - @category.children.each do |subcategory|
-    li = link_to subcategory.title, admin_category_path(subcategory)
-= link_to "Добавить подкатегорию", new_subcategory_admin_category_path(@category)
+= render layout: 'boxed' do
+  .subcategories-list
+    - @category.children.each do |subcategory|
+      p
+        =' link_to subcategory.title, [:admin, subcategory], class: 'name'
+        =  link_to '', [:edit, :admin, subcategory], class: 'icon-edit', title: 'Редактировать'
+  =' link_to "Добавить подкатегорию", new_subcategory_admin_category_path(@category), class: 'btn btn-success'
+  = link_to "Назад", [:admin, @category.is_root? ? :categories : @category.parent ], class: 'btn'
