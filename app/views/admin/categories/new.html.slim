@@ -1,1 +1,4 @@
-= render_form_for_category
+- content_for :box_title do
+  | Добавление категории
+= render layout: 'boxed' do
+  = render_form_for_category @category

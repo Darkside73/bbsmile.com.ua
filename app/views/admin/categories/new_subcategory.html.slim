@@ -1,1 +1,5 @@
-= render_form_for_category @subcategory, create_subcategory_admin_category_path(@category)
+- content_for :box_title do
+  b = @category.title
+  | &nbsp;&mdash; добавление подкатегории
+= render layout: 'boxed' do
+  = render_form_for_category @subcategory, create_subcategory_admin_category_path(@category)
