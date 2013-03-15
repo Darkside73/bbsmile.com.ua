@@ -47,6 +47,10 @@ describe Admin::CategoriesController do
       flash[:notice].should have_content(/updated/i)
       response.should redirect_to([:admin, category])
     end
+    it 'remove spaces around' do
+      put :update, id: category.id, category: {title: "      #{category.title}      "}
+      expect { category.reload }.to_not change { category.title }
+    end
   end
   describe 'POST create_subcategory' do
     let(:category) { create :category, title: Faker::Name.title }
