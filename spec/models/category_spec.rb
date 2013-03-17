@@ -29,4 +29,31 @@ describe Category do
       child.type.should == 'Category'
     end
   end
+  context 'acts as list' do
+    let(:category) { create :category, title: 'Category', subcategories: ['Subcategory 1', 'Subcategory 2'] }
+    context 'create new record' do
+      it 'sorted to the end of the list' do
+        subcategory = Category.new(title: 'Subcategory 3', url: Faker::Lorem.word, parent: category)
+        subcategory.save
+        subcategory.position.should == 3
+        subcategory.lower_items.should be_empty
+      end
+      # add another category as noise
+      let(:another_category) { create :category, title: 'Another Category', subcategories: ['Another Subcategory 1', 'Another Subcategory 2'] }
+      describe '#insert_at' do
+        it 'create record in given position' do
+          second_subcategory = category.children.second
+          subcategory = Category.new(title: 'Subcategory 3', url: Faker::Lorem.word, parent: category)
+          subcategory.save
+          subcategory.insert_at(2)
+          subcategory.new_record?.should be_false
+          subcategory.position.should == 2
+          expect { second_subcategory.reload }.to change { second_subcategory.position }.to(3)
+          expect { another_category.reload }.not_to change {
+            another_category.children.first
+          }
+        end
+      end
+    end
+  end
 end

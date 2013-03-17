@@ -12,6 +12,7 @@ Bbsmile::Application.routes.draw do
       member do
         get 'new_subcategory'
         post 'create_subcategory'
+        post 'sort/:position', constraints: { position: /\d/ }, action: 'sort'
       end
     end
   end

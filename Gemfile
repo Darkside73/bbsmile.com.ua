@@ -13,6 +13,7 @@ gem 'slim-rails'
 gem 'cells'
 gem 'simple_form'
 gem 'attribute_normalizer'
+gem 'acts_as_list'
 
 gem 'jquery-rails'
 

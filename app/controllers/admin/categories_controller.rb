@@ -49,4 +49,10 @@ class Admin::CategoriesController < Admin::ApplicationController
       render :new_subcategory
     end
   end
+
+  def sort
+    category = Category.find params[:id]
+    category.insert_at params[:position].to_i
+    render nothing: true
+  end
 end
