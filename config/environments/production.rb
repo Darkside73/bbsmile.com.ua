@@ -18,7 +18,9 @@ Bbsmile::Application.configure do
   config.assets.compile = false
 
   config.assets.precompile += ['main.css', 'inner.css', 'category.css', 'product.css', 'information_page.css',
-    'ie.css', 'font-awesome-ie7.min.css', 'product.js']
+    'ie.css', 'font-awesome-ie7.min.css', 'product.js',
+    'admin/categories'
+  ]
 
   # Generate digests for assets URLs
   config.assets.digest = true

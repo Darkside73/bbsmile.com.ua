@@ -1,10 +1,23 @@
 - content_for :box_title do
   = @category.title
+
+- content_for :head do
+  = javascript_include_tag 'admin/categories'
+
 = render layout: 'boxed' do
-  .subcategories-list
+  table.table.sortable.categories-list.table-striped
+    thead
+      tr
+        th Название
+        th Действия
+    tbody
     - @category.children.each do |subcategory|
-      p
-        =' link_to subcategory.title, [:admin, subcategory], class: 'name'
-        =  link_to '', [:edit, :admin, subcategory], class: 'icon-edit', title: 'Редактировать'
+      tr.item*{'data-sort-url' => sort_admin_category_path(subcategory)}
+        td width="75%"
+          = link_to subcategory.title, [:admin, subcategory], class: 'name'
+        td width="25%"
+          =' link_to 'Редактировать', [:edit, :admin, subcategory], class: 'btn btn-info'
+          =  link_to 'Удалить', [:admin, subcategory], method: :delete, class: 'btn btn-warning'
+
   =' link_to "Добавить подкатегорию", new_subcategory_admin_category_path(@category), class: 'btn btn-success'
   = link_to "Назад", [:admin, @category.is_root? ? :categories : @category.parent ], class: 'btn'
