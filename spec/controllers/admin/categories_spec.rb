@@ -62,11 +62,15 @@ describe Admin::CategoriesController do
   describe 'POST sort' do
     let(:category) { create :category, title: Faker::Name.title, subcategories: [Faker::Name.title, Faker::Name.title] }
     it 'put categories in desired order' do
+      first_subcategory = category.children.first
+      second_subcategory = category.children.second
       expect {
         expect {
-          post :sort, id: category.children.second, position: 1
-        }.to change { category.children.second.position }.from(2).to(1)
-      }.to change { category.children.first.position }.from(1).to(2)
+          post :sort, id: second_subcategory.id, position: 1
+          first_subcategory.reload
+          second_subcategory.reload
+        }.to change { second_subcategory.position }.from(2).to(1)
+      }.to change { first_subcategory.position }.from(1).to(2)
       response.should be_success
     end
   end
