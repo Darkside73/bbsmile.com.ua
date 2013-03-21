@@ -1,5 +1,5 @@
 .row-fluid: .block
   .navbar.navbar-inner.block-header
-    .muted.pull-left = yield(:box_title).presence || local_assigns[:title]
+    = yield(:box_title).presence || local_assigns[:title]
   .block-content.collapse.in
     = yield
