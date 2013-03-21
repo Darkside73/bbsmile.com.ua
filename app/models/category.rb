@@ -4,6 +4,6 @@ class Category < Page
   validates :url, uniqueness: true
 
   def self.arrange
-    Page.where(type: self.model_name).arrange(order: 'position')
+    Page.unscoped.where(type: self.model_name).arrange(order: 'position')
   end
 end

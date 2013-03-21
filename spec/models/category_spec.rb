@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Category do
   context 'tree behavior' do
     subject { Category }
-    before { category = create :category, title: 'Category', subcategories: ['Subcategory'] }
+    before (:each) { category = create :category, title: 'Category', subcategories: ['Subcategory'] }
     its(:arrange) { should respond_to :each }
   end
   context 'save' do
