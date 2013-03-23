@@ -3,7 +3,7 @@
     - @category.ancestors.each do |ancestor|
       li
         = link_to ancestor.title, [:admin, ancestor]
-        span.divider: i.icon-caret-right &nbsp;
+        span.divider: i.icon-caret-right
     li.active = @category.title
 
 - content_for :head do
