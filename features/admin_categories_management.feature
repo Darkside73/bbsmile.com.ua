@@ -34,3 +34,17 @@ Scenario: Add new subcategory
     And press button "Создать"
     And return to parent category page
   Then I should see "New subcategory"
+
+Scenario: Categories with subcategories could not be a leaves
+  Given I am editing some category page
+  Then I should not see "конечная категория"
+
+Scenario: Categories without subcategories could be a leaves
+  Given I am editing some subcategory page
+  When I check "конечная категория"
+    And press button "Обновить"
+  Then Subcategory should be a leaf
+
+Scenario: Leaf category could not have children
+  Given I am viewing some leaf category
+  Then I should not see "Добавить подкатегорию"

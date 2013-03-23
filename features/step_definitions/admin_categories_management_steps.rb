@@ -39,3 +39,23 @@ end
 When(/^return to parent category page$/) do
   visit admin_category_path(@some_category)
 end
+
+Given(/^I am editing some category page$/) do
+  visit url_for [:edit, :admin, @categories.first]
+end
+
+Given(/^I am editing some subcategory page$/) do
+  @some_subcategory = @categories.first.children.second
+  visit url_for [:edit, :admin, @some_subcategory]
+end
+
+Then(/^Subcategory should be a leaf$/) do
+  expect { @some_subcategory.reload }.to change { @some_subcategory.leaf }.from(false).to(true)
+end
+
+Given(/^I am viewing some leaf category$/) do
+  leaf_category = @categories.first.children.second
+  leaf_category.leaf = true
+  leaf_category.save
+  visit url_for [:admin, leaf_category]
+end

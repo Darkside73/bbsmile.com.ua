@@ -56,4 +56,17 @@ describe Category do
       end
     end
   end
+  context 'when category is leaf' do
+    describe 'save' do
+      let(:leaf_category) { create :category, title: 'Leaf', leaf: true }
+      it 'not allow add children' do
+        expect {
+          create :category, title: 'Hey ya', parent: leaf_category
+        }.to raise_error(ActiveRecord::ActiveRecordError)
+        expect {
+          leaf_category.reload
+        }.not_to change { leaf_category.is_childless? }
+      end
+    end
+  end
 end
