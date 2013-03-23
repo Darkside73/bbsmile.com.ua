@@ -33,7 +33,7 @@ html
               i.icon-chevron-right.show-sidebar style="display:none"
                 a rel="tooltip" title="Show Sidebar" href="#" &nbsp;
               li
-                a href="#" Главная
+                = link_to 'Главная', admin_root_path
                 span.divider: i.icon-caret-right
               li.active Каталог
           = yield
