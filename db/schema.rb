@@ -11,20 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322232840) do
+ActiveRecord::Schema.define(:version => 20130324210709) do
 
-  create_table "pages", :force => true do |t|
-    t.string   "title",                                       :null => false
-    t.string   "url",                                         :null => false
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+  create_table "categories", :force => true do |t|
     t.string   "ancestry"
-    t.string   "type",       :limit => 20
-    t.integer  "position",                 :default => 0
-    t.boolean  "leaf",                     :default => false
+    t.integer  "position"
+    t.boolean  "leaf",       :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
-  add_index "pages", ["ancestry"], :name => "index_pages_on_ancestry"
+  create_table "pages", :force => true do |t|
+    t.string   "title",         :null => false
+    t.string   "url",           :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "pageable_id"
+    t.string   "pageable_type"
+  end
+
   add_index "pages", ["url"], :name => "index_pages_on_url", :unique => true
 
 end
