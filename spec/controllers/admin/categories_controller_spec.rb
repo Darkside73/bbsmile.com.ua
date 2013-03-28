@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Admin::CategoriesController do
   describe 'GET index' do
-    let(:categories) { create_list :category, 3, title: Faker::Name.title }
+    let(:categories) { create_list :category, 3 }
     it 'assings categories' do
       get :index
       assigns(:categories).should be
@@ -21,46 +21,56 @@ describe Admin::CategoriesController do
   describe 'POST create' do
     context 'with valid data' do
       it 'create category and redirect to index' do
-        post :create, category: { title: Faker::Name.title, url: Faker::Lorem.word }
+        post :create, category: {
+          page_attributes: attributes_for(:page)
+        }
         flash[:notice].should have_content(/created/i)
       end
     end
     context 'with invalid data' do
       it 'not redirect to index' do
-        post :create, category: { title: Faker::Name.title }
+        post :create, category: {
+          page_attributes: { title: Faker::Name.title }
+        }
         response.should be_success
       end
     end
   end
   describe 'GET edit' do
-    let(:category) { create :category, title: Faker::Name.title }
+    let(:category) { create :category }
     it 'assigns not new category' do
       get :edit, id: category.id
       assigns(:category).should_not be_a_new(Category)
     end
   end
   describe 'PUT update' do
-    let(:category) { create :category, title: Faker::Name.title }
+    let(:category) { create :category }
     it 'update category and redirect to index' do
-      put :update, id: category.id, category: {title: 'New title'}
-      expect { category.reload }.to change { category.title }
+      put :update, id: category.id, category: { page_attributes: attributes_for(:page) }
       flash[:notice].should have_content(/updated/i)
       response.should redirect_to([:admin, category])
+      expect { category.reload }.to change { category.page.title }
     end
     it 'remove spaces around' do
-      put :update, id: category.id, category: {title: "      #{category.title}      "}
-      expect { category.reload }.to_not change { category.title }
+      put :update,
+        id: category.id,
+        category: {
+          page_attributes: { title: "  #{category.page.title}  ", url: Faker::Lorem.word }
+        }
+      expect { category.reload }.to_not change { category.page.title }
     end
   end
   describe 'POST create_subcategory' do
-    let(:category) { create :category, title: Faker::Name.title }
+    let(:category) { create :category }
     it 'create subcategory' do
-      post :create_subcategory, id: category.id, category: { title: Faker::Name.title, url: Faker::Lorem.word }
+      post :create_subcategory,
+        id: category.id,
+        category: { page_attributes: attributes_for(:page) }
       flash[:notice].should have_content(/created/i)
     end
   end
   describe 'POST sort' do
-    let(:category) { create :category, title: Faker::Name.title, subcategories: [Faker::Name.title, Faker::Name.title] }
+    let(:category) { create :category, children_count: 2 }
     it 'put categories in desired order' do
       first_subcategory = category.children.first
       second_subcategory = category.children.second

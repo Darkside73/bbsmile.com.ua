@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'Admin categories routing' do
   before :all do
-    @categories = create_list :category, 3, title: Faker::Name.title
+    @categories = create_list :category, 3
   end
   context 'sort' do
     it 'routable' do
