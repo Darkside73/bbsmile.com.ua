@@ -1,15 +1,13 @@
 class Category < ActiveRecord::Base
 
-  attr_accessible :parent, :position, :leaf
+  attr_accessible :parent, :position, :leaf, :page_attributes
 
   has_one :page, as: :pageable
+  accepts_nested_attributes_for :page
 
   has_ancestry
   acts_as_list scope: [:ancestry]
   default_scope order: :position
-
-  validates :title, :url, presence: true
-  validates :url, uniqueness: true
 
   before_save do |category|
     raise ActiveRecord::ActiveRecordError if category.parent && category.parent.leaf

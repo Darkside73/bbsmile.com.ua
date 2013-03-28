@@ -1,54 +1,59 @@
 require 'spec_helper'
 
 describe Category do
-  context 'tree behavior' do
-    subject { Category }
-    before (:each) { category = create :category, title: 'Category', subcategories: ['Subcategory'] }
-    its(:arrange) { should respond_to :each }
-  end
-  context 'save' do
-    it 'saves valid data' do
-      category = build :category, title: 'Some category'
-      expect { category.save.should be_true }.to change { Category.count }.by(1)
+  context 'when save' do
+    it 'create record with page' do
+      expect {
+        category = Category.create(
+          leaf: true,
+          page_attributes: { title: 'Some category', url: 'some/url' }
+        )
+      }.to change { Category.count }.by(1)
     end
-    it 'does not save invalid data' do
-      category = build :category
+    it 'not create record if invalid data' do
+      category = build :category, page_attributes: { title: 'valid', url: '' }
       expect { category.save.should be_false }.not_to change { Category.count }
     end
-    before do
-      @url = 'some/url'
-      @category = create :category, title: 'Some category', url: @url
+    it 'update category title' do
+      category = create :category
+      old_title = category.page.title
+      category.update_attributes page_attributes: attributes_for(:page)
+      category.save.should be_true
+      category.page.title.should_not == old_title
     end
-    it 'not allow url duplication' do
-      category = build :category, title: 'Some category', url: @url
-      category.save.should be_false
-    end
+  end
+  context 'ancestry' do
+    subject { Category }
+    its(:arrange) { should respond_to :each }
     it 'create children' do
-      child = Category.new(title: 'Some category', url: Faker::Lorem.word, parent: @category)
-      expect { child.save }.to change { @category.children.count }
-      child.type.should == 'Category'
+      category = create :category
+      child = Category.new(
+        parent: category,
+        page_attributes: attributes_for(:page)
+      )
+      expect { child.save }.to change { category.children.count }
     end
   end
   context 'acts as list' do
-    let(:category) { create :category, title: 'Category', subcategories: ['Subcategory 1', 'Subcategory 2'] }
-    context 'create new record' do
+    let(:category) { create :category, children_count: 2 }
+    context 'when create new record' do
       it 'sorted to the end of the list' do
-        subcategory = Category.new(title: 'Subcategory 3', url: Faker::Lorem.word, parent: category)
-        subcategory.save
+        subcategory = create :category, parent: category
         subcategory.position.should == 3
         subcategory.lower_items.should be_empty
       end
-      # add another category as noise
-      let(:another_category) { create :category, title: 'Another Category', subcategories: ['Another Subcategory 1', 'Another Subcategory 2'] }
+      # add another category as noise for testing sorting scope
+      let(:another_category) { create :category, children_count: 2 }
       describe '#insert_at' do
         it 'create record in given position' do
           second_subcategory = category.children.second
-          subcategory = Category.new(title: 'Subcategory 3', url: Faker::Lorem.word, parent: category)
-          subcategory.save
+          subcategory = create :category, parent: category
           subcategory.insert_at(2)
-          subcategory.new_record?.should be_false
+          subcategory.should_not be_a_new(Category)
           subcategory.position.should == 2
-          expect { second_subcategory.reload }.to change { second_subcategory.position }.to(3)
+          expect { second_subcategory.reload }.to change {
+            second_subcategory.position
+          }.to(3)
           expect { another_category.reload }.not_to change {
             another_category.children.first
           }
@@ -58,10 +63,10 @@ describe Category do
   end
   context 'when category is leaf' do
     describe 'save' do
-      let(:leaf_category) { create :category, title: 'Leaf', leaf: true }
+      let(:leaf_category) { create :category, leaf: true }
       it 'not allow add children' do
         expect {
-          create :category, title: 'Hey ya', parent: leaf_category
+          create :category, parent: leaf_category
         }.to raise_error(ActiveRecord::ActiveRecordError)
         expect {
           leaf_category.reload

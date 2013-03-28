@@ -1,21 +1,9 @@
 FactoryGirl.define do
-  sequence(:random_url) { |n| Faker::Lorem.word + n.to_s }
+  sequence(:url) { |n| Faker::Lorem.word + n.to_s }
+  sequence(:title) { |n| Faker::Name.title }
 
-  factory :page
-
-  factory :category do
-    ignore do
-      subcategories []
-    end
-    url { generate(:random_url) }
-    after(:create) do |category, evaluator|
-      evaluator.subcategories.each do |subcategory|
-        create(:subcategory, title: subcategory, parent: category)
-      end
-    end
-  end
-
-  factory :subcategory, class: Category do
-    url { generate(:random_url) }
+  factory :page do
+    url { generate :url }
+    title { generate :title }
   end
 end
