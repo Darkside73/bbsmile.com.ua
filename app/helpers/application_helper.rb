@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def link_to(*args)
-    where_page = Proc.new { |a| a.is_a? Page }
+    where_page = Proc.new { |a| a.is_a?(Page) || a.respond_to?(:page) }
     if page = args.find(&where_page)
       url = "/#{page.url}"
       index_where_page = args.index &where_page
