@@ -10,6 +10,7 @@ class Admin::CategoriesController < Admin::ApplicationController
 
   def new
     @category = Category.new
+    @category.build_page
   end
 
   def create
@@ -37,6 +38,7 @@ class Admin::CategoriesController < Admin::ApplicationController
   def new_subcategory
     @category = Category.find params[:id]
     @subcategory = Category.new
+    @subcategory.build_page
   end
 
   def create_subcategory

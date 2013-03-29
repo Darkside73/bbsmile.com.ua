@@ -1,5 +1,5 @@
 Given /^Some catalog categories$/ do
-  create_list :category, 3, title: Faker::Name.title
+  create_list :category, 3
 end
 
 Then /^I should see categories submenu$/ do

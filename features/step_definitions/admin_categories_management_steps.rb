@@ -1,7 +1,7 @@
 Given(/^Some categories and subcategories$/) do
   @categories = []
   3.times do
-    @categories << create(:category, title: Faker::Name.title, subcategories: [Faker::Name.title, Faker::Name.title])
+    @categories << create(:category, children_count: 2)
   end
 end
 
