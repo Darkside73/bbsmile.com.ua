@@ -84,4 +84,18 @@ describe Admin::CategoriesController do
       response.should be_success
     end
   end
+  describe 'DELETE' do
+    it 'destroy Category' do
+      category = create :category
+      expect {
+        xhr :delete, :destroy, id: category.id
+        category.reload
+      }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+    it 'flash error if Category has children' do
+      category = create :category, children_count: 3
+      xhr :delete, :destroy, id: category.id
+      flash[:error].should have_content(/forbidden/i)
+    end
+  end
 end

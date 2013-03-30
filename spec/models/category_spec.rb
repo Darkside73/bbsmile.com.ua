@@ -74,4 +74,15 @@ describe Category do
       end
     end
   end
+  describe '.destroy' do
+    it 'allow destroy model' do
+      category = create :category
+      category.destroy
+      expect { category.reload }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+    it 'disallow destroy model with children' do
+      category = create :category, children_count: 3
+      expect { category.destroy }.to raise_error(Ancestry::AncestryException)
+    end
+  end
 end

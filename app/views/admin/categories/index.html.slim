@@ -9,11 +9,11 @@
         th Действия
     tbody
     - @categories.each do |category|
-      tr.item*{'data-sort-url' => sort_admin_category_path(category)}
+      tr.item*{'data-sort-url' => sort_admin_category_path(category), 'id' => dom_id(category)}
         td width="75%"
           = link_to category.title, [:admin, category], class: 'name'
         td width="25%"
           =' link_to 'Редактировать', [:edit, :admin, category], class: 'btn btn-info'
-          =  link_to 'Удалить', [:admin, category], method: :delete, class: 'btn btn-warning'
+          =  link_to 'Удалить', [:admin, category], method: :delete, remote: true, class: 'btn btn-warning', confirm: "Удалить категорию #{category.title}?"
 
   = link_to "Новая категория", [:new, :admin, :category], id: 'new-category', class: 'btn btn-success'

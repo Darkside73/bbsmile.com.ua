@@ -18,11 +18,11 @@
           th Действия
       tbody
       - @category.children.each do |subcategory|
-        tr.item*{'data-sort-url' => sort_admin_category_path(subcategory)}
+        tr.item*{'data-sort-url' => sort_admin_category_path(subcategory), 'id' => dom_id(subcategory)}
           td width="75%"
             = link_to subcategory.title, [:admin, subcategory], class: 'name'
           td width="25%"
             =' link_to 'Редактировать', [:edit, :admin, subcategory], class: 'btn btn-info'
-            =  link_to 'Удалить', [:admin, subcategory], method: :delete, class: 'btn btn-warning'
+            =  link_to 'Удалить', [:admin, subcategory], method: :delete, remote: true, class: 'btn btn-warning', confirm: "Удалить категорию #{subcategory.title}?"
   =' link_to "Добавить подкатегорию", new_subcategory_admin_category_path(@category), class: 'btn btn-success' unless @category.leaf
   = link_to "Назад", [:admin, @category.is_root? ? :categories : @category.parent ], class: 'btn'

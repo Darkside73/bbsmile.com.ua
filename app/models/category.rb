@@ -2,12 +2,13 @@ class Category < ActiveRecord::Base
 
   attr_accessible :parent, :position, :leaf, :page_attributes
 
-  has_one :page, as: :pageable
+  has_one :page, as: :pageable, dependent: :destroy
   accepts_nested_attributes_for :page
 
   delegate :title, :url, to: :page
 
-  has_ancestry
+  has_ancestry orphan_strategy: :restrict
+
   acts_as_list scope: [:ancestry]
   default_scope order: :position
 

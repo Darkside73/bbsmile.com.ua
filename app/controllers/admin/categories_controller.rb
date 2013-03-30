@@ -57,4 +57,17 @@ class Admin::CategoriesController < Admin::ApplicationController
     category.insert_at params[:position].to_i
     render nothing: true
   end
+
+  def destroy
+    @category = Category.find params[:id]
+    begin
+      @category.destroy
+    rescue Ancestry::AncestryException
+      flash.now[:error] = "Forbidden. Category has children"
+    end
+    respond_to do |format|
+      format.html { redirect_to @category }
+      format.js
+    end
+  end
 end
