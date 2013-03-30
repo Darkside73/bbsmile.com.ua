@@ -12,25 +12,26 @@ Page.create [
   {title: 'Оплата', url: 'information/payment'},
   {title: 'Гарантии', url: 'information/warranty'}
 ]
-Category.create({title: 'Детские коляски', url: 'detskie-kolyaski'}).children.create [
-  {title: 'Прогулочные', url: 'detskie-kolyaski/progulochnye', type: 'Category', position: 2},
-  {title: 'Трансформеры', url: 'detskie-kolyaski/transformery', type: 'Category', position: 4},
-  {title: 'Аксессуары', url: 'detskie-kolyaski/accessories', type: 'Category', position: 3},
-  {title: 'Коляски 2 в 1', url: 'detskie-kolyaski/2in1', type: 'Category', position: 0},
-  {title: 'Коляски 3 в 1', url: 'detskie-kolyaski/3in1', type: 'Category', position: 1}
+
+Category.create(page_attributes: {title: 'Детские коляски', url: 'detskie-kolyaski'}).children.create [
+  {page_attributes: {title: 'Прогулочные', url: 'detskie-kolyaski/progulochnye'}},
+  {page_attributes: {title: 'Трансформеры', url: 'detskie-kolyaski/transformery'}},
+  {page_attributes: {title: 'Аксессуары', url: 'detskie-kolyaski/accessories'}},
+  {page_attributes: {title: 'Коляски 2 в 1', url: 'detskie-kolyaski/2in1'}},
+  {page_attributes: {title: 'Коляски 3 в 1', url: 'detskie-kolyaski/3in1'}}
 ]
-Category.create({title: 'Автокресла', url: 'avtokresla', position: 2}).children.create [
-  {title: 'Бустеры', url: 'avtokresla/bustery', type: 'Category', position: 0},
-  {title: 'Аксессуары', url: 'avtokresla/accessories', type: 'Category', position: 1}
+Category.create(page_attributes: {title: 'Автокресла', url: 'avtokresla'}).children.create [
+  {page_attributes: {title: 'Бустеры', url: 'avtokresla/bustery'}},
+  {page_attributes: {title: 'Аксессуары', url: 'avtokresla/accessories'}}
 ]
-Category.create({title: 'Детская комната', url: 'detskaya-komnata', position: 3}).children.create [
-  {title: 'Кроватки', url: 'detskaya-komnata/krovatki', type: 'Category', position: 0},
-  {title: 'Матрасы', url: 'detskaya-komnata/matrasy', type: 'Category', position: 1},
-  {title: 'Шкафы', url: 'detskaya-komnata/shkafy', type: 'Category', position: 2},
-  {title: 'Столы, стулья', url: 'detskaya-komnata/stoly-stulya', type: 'Category', position: 3}
+Category.create(page_attributes: {title: 'Детская комната', url: 'detskaya-komnata'}).children.create [
+  {page_attributes: {title: 'Кроватки', url: 'detskaya-komnata/krovatki'}},
+  {page_attributes: {title: 'Матрасы', url: 'detskaya-komnata/matrasy'}},
+  {page_attributes: {title: 'Шкафы', url: 'detskaya-komnata/shkafy'}},
+  {page_attributes: {title: 'Столы, стулья', url: 'detskaya-komnata/stoly-stulya'}}
 ]
-Category.create({title: 'Электроприборы', url: 'elektropribory', position: 1}).children.create [
-  {title: 'Радионяни, видеоняни', url: 'elektropribory/radionyani', type: 'Category', position: 0},
-  {title: 'Весы и термометры', url: 'elektropribory/vesy', type: 'Category', position: 1},
-  {title: 'Увлажнители воздуха', url: 'elektropribory/uvlazhniteli', type: 'Category', position: 3}
+Category.create(page_attributes: {title: 'Электроприборы', url: 'elektropribory'}).children.create [
+  {page_attributes: {title: 'Радионяни, видеоняни', url: 'elektropribory/radionyani'}},
+  {page_attributes: {title: 'Весы и термометры', url: 'elektropribory/vesy'}},
+  {page_attributes: {title: 'Увлажнители воздуха', url: 'elektropribory/uvlazhniteli'}}
 ]

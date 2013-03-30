@@ -11,9 +11,8 @@ class Category < ActiveRecord::Base
   acts_as_list scope: [:ancestry]
   default_scope order: :position
 
-  before_save do |category|
-    raise ActiveRecord::ActiveRecordError if category.parent && category.parent.leaf
-  end
+  before_create :ensure_leaf_has_no_child,
+    if: Proc.new { |category| begin category.parent; rescue ActiveRecord::RecordNotFound; false; end }
 
   class << self
     alias_method :ancestry_arrange, :arrange
@@ -21,5 +20,10 @@ class Category < ActiveRecord::Base
       self.unscoped.ancestry_arrange(order: :position)
     end
   end
+
+  private
+    def ensure_leaf_has_no_child
+      raise ActiveRecord::ActiveRecordError if parent && parent.leaf
+    end
 
 end
