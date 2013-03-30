@@ -10,14 +10,14 @@
   = javascript_include_tag 'admin/categories'
 
 = render layout: 'boxed' do
-  - if @category.children.any?
+  - if @subcategories.any?
     table.table.sortable.categories-list.table-striped
       thead
         tr
           th Название
           th Действия
       tbody
-      - @category.children.each do |subcategory|
+      - @subcategories.each do |subcategory|
         tr.item*{'data-sort-url' => sort_admin_category_path(subcategory), 'id' => dom_id(subcategory)}
           td width="75%"
             = link_to subcategory.title, [:admin, subcategory], class: 'name'

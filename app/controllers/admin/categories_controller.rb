@@ -1,11 +1,12 @@
 class Admin::CategoriesController < Admin::ApplicationController
 
   def index
-    @categories = Category.roots
+    @categories = Category.includes(:page).roots
   end
 
   def show
     @category = Category.find params[:id]
+    @subcategories = @category.children.includes(:page)
   end
 
   def new
