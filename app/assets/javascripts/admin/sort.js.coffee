@@ -18,7 +18,7 @@ jQuery ->
     stop: (e, ui) ->
       ui.item.children('td').effect('highlight', {}, 1000)
     update: (e, ui) ->
-      position = ui.item.index()
+      position = ui.item.index() + 1
       $.ajax(
         type: 'POST'
         url: ui.item.data('sort-url')
