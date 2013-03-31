@@ -15,3 +15,7 @@ en:
         subcategory_created: Subcategory created
         destroyed:
           forbidden: Forbidden. Category has children
+  errors:
+    messages:
+      blank: "%{attribute} can't be blank"
+      uniqueness: "%{attribute} not unique"
