@@ -17,7 +17,7 @@ class Admin::CategoriesController < Admin::ApplicationController
   def create
     @category = Category.new params[:category]
     if @category.save
-      redirect_to [:admin, @category], notice: 'Category created'
+      redirect_to [:admin, @category], notice: I18n.t('flash.message.categories.created')
     else
       render :new
     end
@@ -30,7 +30,7 @@ class Admin::CategoriesController < Admin::ApplicationController
   def update
     @category = Category.find params[:id]
     if @category.update_attributes params[:category]
-      redirect_to [:admin, @category], notice: 'Category updated'
+      redirect_to [:admin, @category], notice: I18n.t('flash.message.categories.updated')
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class Admin::CategoriesController < Admin::ApplicationController
     @subcategory = Category.new params[:category]
     @subcategory.parent = @category
     if @subcategory.save
-      redirect_to [:admin, @subcategory], notice: 'Subcategory created'
+      redirect_to [:admin, @subcategory], notice: I18n.t('flash.message.categories.subcategory_created')
     else
       render :new_subcategory
     end
@@ -64,7 +64,7 @@ class Admin::CategoriesController < Admin::ApplicationController
     begin
       @category.destroy
     rescue Ancestry::AncestryException
-      flash.now[:error] = "Forbidden. Category has children"
+      flash.now[:error] = I18n.t 'flash.message.categories.destroyed.forbidden'
     end
     respond_to do |format|
       format.html { redirect_to @category }

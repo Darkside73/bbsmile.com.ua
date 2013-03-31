@@ -2,4 +2,16 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  flash:
+    caption:
+      notice: Heads up!
+      alert: Warning
+      error: Oh snap!
+      success: Well done!
+    message:
+      categories:
+        created: Category created
+        updated: Category updated
+        subcategory_created: Subcategory created
+        destroyed:
+          forbidden: Forbidden. Category has children

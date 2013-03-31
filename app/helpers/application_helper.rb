@@ -31,6 +31,14 @@ module ApplicationHelper
     end
   end
 
+  def flash_class(level)
+    case level
+    when :notice then "info"
+    when :alert then "block"
+    else level.to_s
+    end
+  end
+
   private
     def current_layout
       layout = controller.send(:_layout)
