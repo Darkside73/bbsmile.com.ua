@@ -1,0 +1,17 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+ru:
+  flash:
+    caption:
+      notice: Получилось!
+      alert: Ой-ой...
+      error: Упс
+      success: Отлично!
+    message:
+      categories:
+        created: Категория создана
+        updated: Категория обновлена
+        subcategory_created: Подкатегория создана
+        destroyed:
+          forbidden: "Нельзя удалить удалять категорию, содержащую подкатегории"
