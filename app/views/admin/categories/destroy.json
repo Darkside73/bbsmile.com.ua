@@ -1,0 +1,4 @@
+{
+  "error": "<%= escape_javascript flash[:error] %>",
+  "flash": "<%= escape_javascript render(partial: 'flashes') %>"
+}

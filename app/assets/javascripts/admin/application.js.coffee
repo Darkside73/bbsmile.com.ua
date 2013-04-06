@@ -19,3 +19,11 @@ $ ->
     $('.show-sidebar').hide()
     $('.hide-sidebar').show()
     $('#sidebar').show('fast')
+
+  $(document).ajaxComplete (event, request) ->
+    try
+      data = JSON.parse request.responseText
+      if data.flash
+        $('#content').prepend(data.flash)
+        $('.flash-message').delay(5000).slideUp()
+    catch e

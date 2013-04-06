@@ -63,12 +63,9 @@ class Admin::CategoriesController < Admin::ApplicationController
     @category = Category.find params[:id]
     begin
       @category.destroy
+      flash.now[:notice] = I18n.t 'flash.message.categories.destroyed.success'
     rescue Ancestry::AncestryException
       flash.now[:error] = I18n.t 'flash.message.categories.destroyed.forbidden'
-    end
-    respond_to do |format|
-      format.html { redirect_to @category }
-      format.js
     end
   end
 end

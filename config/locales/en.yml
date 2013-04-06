@@ -14,6 +14,7 @@ en:
         updated: Category updated
         subcategory_created: Subcategory created
         destroyed:
+          success: Category destroyed
           forbidden: Forbidden. Category has children
   errors:
     messages:

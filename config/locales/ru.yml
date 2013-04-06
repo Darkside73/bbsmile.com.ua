@@ -14,6 +14,7 @@ ru:
         updated: Категория обновлена
         subcategory_created: Подкатегория создана
         destroyed:
+          success: Категория удалена
           forbidden: "Нельзя удалить удалять категорию, содержащую подкатегории"
   errors:
     messages:
