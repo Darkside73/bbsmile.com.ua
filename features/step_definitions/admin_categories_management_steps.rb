@@ -41,7 +41,8 @@ When(/^return to parent category page$/) do
 end
 
 Given(/^I am editing some category page$/) do
-  visit url_for [:edit, :admin, @categories.first]
+  @some_category = @categories.first
+  visit url_for [:edit, :admin, @some_category]
 end
 
 Given(/^I am editing some subcategory page$/) do
@@ -58,4 +59,14 @@ Given(/^I am viewing some leaf category$/) do
   leaf_category.leaf = true
   leaf_category.save
   visit url_for [:admin, leaf_category]
+end
+
+Then(/^I should( not)? see hidden category$/) do |negation|
+  page.send("should#{'_not' if negation}", have_content(@some_category.title))
+end
+
+Then(/^Subcategories should be hidden$/) do
+  @some_category.children.each do |child|
+    child.page.hidden.should be_true
+  end
 end

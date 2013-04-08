@@ -2,6 +2,7 @@
   = f.simple_fields_for :page do |p|
     = p.input :title, label: 'Название'
     = p.input :url, label: 'URL', input_html: {type: 'text'}
+    = p.input :hidden, label: 'скрытая'
   - if category.new_record? || category.is_childless?
     = f.input :leaf, label: 'конечная категория'
   = f.button :submit,  category.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'

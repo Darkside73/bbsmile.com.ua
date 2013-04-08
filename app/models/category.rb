@@ -14,11 +14,12 @@ class Category < ActiveRecord::Base
 
   before_create :ensure_leaf_has_no_child,
     if: Proc.new { |category| begin category.parent; rescue ActiveRecord::RecordNotFound; false; end }
+  after_save :toggle_children_hidden
 
   class << self
     alias_method :ancestry_arrange, :arrange
     def arrange
-      self.unscoped.includes(:page).ancestry_arrange(order: :position)
+      self.unscoped.includes(:page).merge(Page.visible).ancestry_arrange(order: :position)
     end
   end
 
@@ -27,4 +28,9 @@ class Category < ActiveRecord::Base
       raise ActiveRecord::ActiveRecordError if parent && parent.leaf
     end
 
+    def toggle_children_hidden
+      self.children.each do |child|
+        child.page.update_attribute :hidden, page.hidden
+      end
+    end
 end

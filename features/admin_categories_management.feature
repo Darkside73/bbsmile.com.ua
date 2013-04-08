@@ -48,3 +48,12 @@ Scenario: Categories without subcategories could be a leaves
 Scenario: Leaf category could not have children
   Given I am viewing some leaf category
   Then I should not see "Добавить подкатегорию"
+
+Scenario: Hidden categories
+  Given I am editing some category page
+  When I check "скрытая"
+    And press button "Обновить"
+  Then I should see hidden category
+  Then Subcategories should be hidden
+  When I go to home page
+Then I should not see hidden category

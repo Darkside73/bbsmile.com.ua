@@ -12,3 +12,11 @@ end
 Then /^I should see link "(.+)" in page content$/ do |text|
   find_by_id('page-content').find_link text
 end
+
+Given(/^Hidden page$/) do
+  @hidden_page = create :page, hidden: true
+end
+
+Then(/^Hidden page should be inaccessible$/) do
+  expect { visit "/#{@hidden_page.url}" }.to raise_error
+end
