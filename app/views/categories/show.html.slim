@@ -1,0 +1,137 @@
+- content_for :head do
+  = stylesheet_link_tag 'category'
+
+- content_for :h1 do
+  =' @category.title
+  small подбор товаров
+
+#category-content.container-fluid.container-wide
+  / .subnav data-spy="affix" data-offset-top="60"
+  /   ul.nav.nav-pills
+  /     li: a href="#" title="удалить фильтр"
+  /       i.icon-remove-sign
+  /       | для новорожденных
+  /     li: a href="#" title="удалить фильтр"
+  /       i.icon-remove-sign
+  /       | от 0 до 1 года
+  /     li: a href="#" title="удалить фильтр"
+  /       i.icon-remove-sign
+  /       | Bebecomfort
+  /     li.pull-right: a href="#"
+  /       i.icon-remove-sign
+  /       | удалить все фильтры
+  .row-fluid
+    .product-filters.span3
+      #product-filters.accordion
+        .accordion-group
+          .accordion-heading
+            a.accordion-toggle data-toggle="collapse" data-parent="false" href="#filterByCategory" = @category.title
+          #filterByCategory.accordion-body.collapse.in: .accordion-inner: ul
+            - @category.children.each do |subcategory|
+              li = link_to subcategory
+              / li.active: a href="#" Для новорожденных
+        hr
+        .accordion-group
+          .accordion-heading
+            a.accordion-toggle data-toggle="collapse" data-parent="false" href="#filterByCategory" = @category.title
+          #filterBySubategory.accordion-body.collapse.in: .accordion-inner: ul
+            - @category.children.each do |subcategory|
+              li = link_to subcategory
+        hr
+        .accordion-group
+          .accordion-heading
+            a.accordion-toggle data-toggle="collapse" data-parent="false" href="#filterByAge" Возраст
+          #filterByAge.accordion-body.collapse.in: .accordion-inner: ul
+            li.active: a href="#" 0 &mdash; 1
+            li: a href="#" 1 &mdash; 2
+            li: a href="#" 3 &mdash; 6
+            li: a href="#" 7 &mdash; 12
+        hr
+        .accordion-group
+          .accordion-heading
+            a.accordion-toggle data-toggle="collapse" data-parent="false" href="#filterByPrice" Цена
+          #filterByPrice.accordion-body.collapse.in: .accordion-inner: ul
+            li: a href="#" меньше 500 грн
+            li: a href="#" 500 &mdash; 1000
+            li.active: a href="#" 1000 &mdash; 2000
+            li: a href="#" больше 2000
+        hr
+        .accordion-group
+          .accordion-heading
+            a.accordion-toggle data-toggle="collapse" data-parent="false" href="#filterByBrand" Бренд
+          #filterByBrand.accordion-body.collapse: .accordion-inner: ul
+            li.active: a href="#" Bebecomfort
+            li: a href="#" Chicco
+            li: a href="#" Maxi-Cosi
+            li: a href="#" Fisher Price
+        hr
+        .accordion-group
+          .accordion-heading
+            a.accordion-toggle data-toggle="collapse" data-parent="false" href="#filterByGender" Пол
+          #filterByGender.accordion-body.collapse.in: .accordion-inner: ul
+            li: a href="#" для всех
+            li: a href="#" мальчики
+            li.active: a href="#" девочки
+    .products-list.span9
+      .row-fluid
+        .span4
+            a.thumbnail href="#"
+              = image_tag "content/product_thumb.jpg"
+            .caption
+              h3
+                a href="#"
+                  | Игровая комната
+                br
+                small MyBaby (Украина)
+              .price.btn-group
+                a.btn.disabled: span.label 1250 грн.
+                button.btn.btn-success Купить
+        .span4
+            a.thumbnail href="#"
+              = image_tag "content/product2_thumb.jpg"
+            .caption
+              h3
+                a href="#"
+                  | Постельный комплект Feretti Orsetti Blue
+                br
+                small MyBaby (Украина)
+              .price.btn-group
+                a.btn.disabled: span.label 1100 грн.
+                button.btn.btn-success Купить
+        .span4
+            a.thumbnail href="#"
+              = image_tag "content/product3_thumb.jpg"
+            .caption
+              h3
+                a href="#"
+                  | Автокресло Baby Shield
+                br
+                small MyBaby (Украина)
+              .price.btn-group
+                a.btn.disabled: span.label 800 грн.
+                button.btn.btn-success Купить
+      .row-fluid
+        .span4
+            a.thumbnail href="#"
+              = image_tag "content/product4_thumb.jpg"
+            .caption
+              h3
+                a href="#"
+                  | Манеж Bertoni Play Station
+                br
+                small MyBaby (Украина)
+              .price.btn-group
+                a.btn.disabled: span.label 449 грн.
+                button.btn.btn-success Купить
+        .span4
+            a.thumbnail href="#"
+              = image_tag "content/product5_thumb.jpg"
+            .caption
+              h3
+                a href="#"
+                  | Шкаф MyBaby - Funny Bears
+                br
+                small MyBaby (Украина)
+              .price.btn-group
+                a.btn.disabled: span.label 999 грн.
+                button.btn.btn-success Купить
