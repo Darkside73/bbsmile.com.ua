@@ -12,16 +12,20 @@ Then(/^I should see subcategories list$/) do
     @category.children.collect(&:title)
 end
 
+When(/^I visit subcategory without own categories page$/) do
+  visit "/#{@category.children.second.url}"
+end
+
+Then(/^I should see it siblings$/) do
+  all('#filterByCategory ul li').collect(&:text).should ==
+    @category.children.second.siblings.collect(&:title)
+end
+
+Then(/^I should see active current category$/) do
+  find('#filterByCategory li.active a').text.should ==
+    @category.children.second.title
+end
+
 When(/^I visit subcategory with own categories page$/) do
   visit "/#{@subcategory.url}"
-end
-
-Then(/^I should see it subcategory's siblings$/) do
-  all('#filterByCategory ul li').collect(&:text).should ==
-    @subcategory.siblings.collect(&:title)
-end
-
-Then(/^I should see it subcategories list in #filterBySubcategory$/) do
-  all('#filterBySubcategory ul li').collect(&:text).should ==
-    @category.children.collect(&:title)
 end
