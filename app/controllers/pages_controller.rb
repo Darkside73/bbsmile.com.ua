@@ -5,8 +5,7 @@ class PagesController < ApplicationController
   end
 
   def show
-    @page = Page.visible.find_by_url(params[:page])
-    render params[:page] and return unless @page
-    @category = @page.pageable and render('categories/show') and return if @page.pageable.is_a? Category
+    @page = Page.visible.find_by_url(params[:slug])
+    render params[:slug] and return unless @page
   end
 end

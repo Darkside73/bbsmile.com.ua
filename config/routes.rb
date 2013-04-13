@@ -2,9 +2,9 @@ Bbsmile::Application.routes.draw do
 
   root to: 'main#index'
 
-  match 'main' => 'layout_main#index'
-  match 'category' => 'layout_inner#category'
-  match 'product' => 'layout_inner#product'
+  get 'main' => 'layout_main#index'
+  get 'category' => 'layout_inner#category'
+  get 'product' => 'layout_inner#product'
 
   namespace :admin do
     root to: 'main#index'
@@ -17,7 +17,8 @@ Bbsmile::Application.routes.draw do
     end
   end
 
-  get '*page' => 'pages#show', format: false
+  get '*slug' => 'categories#show', format: false, constraints: CategoryConstraint
+  get '*slug' => 'pages#show', format: false
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
