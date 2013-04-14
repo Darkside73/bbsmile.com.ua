@@ -1,17 +1,17 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '4.0.0beta1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'ancestry'
+gem 'ancestry', github: 'stefankroes/ancestry', branch: 'master'
 
 gem 'slim'
 gem 'slim-rails'
 gem 'cells'
-gem 'simple_form'
+gem 'simple_form', '>= 3.0.0beta1'
 gem 'attribute_normalizer'
 gem 'acts_as_list'
 
@@ -22,7 +22,7 @@ gem 'jquery-rails'
 group :assets do
   gem 'less-rails-bootstrap'
   gem 'font-awesome-rails'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'coffee-rails', '>= 4.0.0beta1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
@@ -44,7 +44,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'cucumber-rails', require: false
+  gem 'cucumber-rails', require: false, github: 'cucumber/cucumber-rails', branch: 'master_rails4_test'
   gem 'capybara'
   gem 'shoulda'
   gem 'launchy'
