@@ -8,7 +8,7 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'ancestry'
 
-gem 'slim', '1.3.6'
+gem 'slim'
 gem 'slim-rails'
 gem 'cells'
 gem 'simple_form'
