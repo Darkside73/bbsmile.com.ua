@@ -1,7 +1,5 @@
 class Category < ActiveRecord::Base
 
-  attr_accessible :parent, :position, :leaf, :page_attributes
-
   has_one :page, as: :pageable, dependent: :destroy
   accepts_nested_attributes_for :page
 
@@ -19,7 +17,7 @@ class Category < ActiveRecord::Base
   class << self
     alias_method :ancestry_arrange, :arrange
     def arrange
-      self.unscoped.includes(:page).merge(Page.visible).ancestry_arrange(order: :position)
+      self.unscoped.includes(:page).merge(Page.visible).references(:pages).ancestry_arrange(order: :position)
     end
   end
 
