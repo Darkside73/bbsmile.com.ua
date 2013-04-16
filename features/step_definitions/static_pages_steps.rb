@@ -5,8 +5,12 @@ Given /^Some published pages$/ do
   create :page, title: 'Гарантии', url: 'warranty'
 end
 
-Then /^I should see "(.+)" in (\d+|\w+)$/ do |text, tag|
-  find(tag).native.text.should have_content(text)
+Then /^I should see "(.+)" in (\d+|\w+) tag$/ do |text, tag|
+  find(tag).text.should have_content(text)
+end
+
+Then(/^I should see "(.*?)" in page title$/) do |title|
+  page.title.should have_content(title)
 end
 
 Then /^I should see link "(.+)" in page content$/ do |text|

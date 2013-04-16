@@ -15,7 +15,7 @@ class Admin::CategoriesController < Admin::ApplicationController
   end
 
   def create
-    @category = Category.new params[:category]
+    @category = Category.new category_params
     if @category.save
       redirect_to [:admin, @category], notice: I18n.t('flash.message.categories.created')
     else
@@ -29,7 +29,7 @@ class Admin::CategoriesController < Admin::ApplicationController
 
   def update
     @category = Category.find params[:id]
-    if @category.update_attributes params[:category]
+    if @category.update_attributes category_params
       redirect_to [:admin, @category], notice: I18n.t('flash.message.categories.updated')
     else
       render :edit
@@ -44,7 +44,7 @@ class Admin::CategoriesController < Admin::ApplicationController
 
   def create_subcategory
     @category = Category.find params[:id]
-    @subcategory = Category.new params[:category]
+    @subcategory = Category.new category_params
     @subcategory.parent = @category
     if @subcategory.save
       redirect_to [:admin, @subcategory], notice: I18n.t('flash.message.categories.subcategory_created')
@@ -68,4 +68,11 @@ class Admin::CategoriesController < Admin::ApplicationController
       flash.now[:error] = I18n.t 'flash.message.categories.destroyed.forbidden'
     end
   end
+
+  private
+    def category_params
+      params.require(:category).permit(
+        :leaf, page_attributes: [:title, :url, :hidden]
+      )
+    end
 end
