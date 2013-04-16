@@ -9,28 +9,40 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130408123510) do
+ActiveRecord::Schema.define(version: 20130414172619) do
 
-  create_table "categories", :force => true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "categories", force: true do |t|
     t.string   "ancestry"
     t.integer  "position"
-    t.boolean  "leaf",       :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "leaf",       default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
-  create_table "pages", :force => true do |t|
-    t.string   "title",                            :null => false
-    t.string   "url",                              :null => false
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+  create_table "pages", force: true do |t|
+    t.string   "title",                         null: false
+    t.string   "url",                           null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "pageable_id"
     t.string   "pageable_type"
-    t.boolean  "hidden",        :default => false
+    t.boolean  "hidden",        default: false
   end
 
-  add_index "pages", ["url"], :name => "index_pages_on_url", :unique => true
+  add_index "pages", ["url"], name: "index_pages_on_url", unique: true
+
+  create_table "products", force: true do |t|
+    t.float    "price"
+    t.boolean  "available"
+    t.string   "sku"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
 end
