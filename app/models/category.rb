@@ -8,7 +8,7 @@ class Category < ActiveRecord::Base
   has_ancestry orphan_strategy: :restrict
 
   acts_as_list scope: [:ancestry]
-  default_scope order: :position
+  default_scope -> { order(:position) }
 
   before_create :ensure_leaf_has_no_child,
     if: Proc.new { |category| begin category.parent; rescue ActiveRecord::RecordNotFound; false; end }
