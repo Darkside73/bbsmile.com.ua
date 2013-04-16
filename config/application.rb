@@ -53,9 +53,6 @@ module Bbsmile
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    # TODO remove this line when updated to slim 2.0
-    Slim::Engine.default_options[:escaped_quoted_attrs] = true
-
     # Rspec generators
     config.generators do |g|
       g.test_framework :rspec,

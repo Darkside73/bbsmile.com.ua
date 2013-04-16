@@ -10,7 +10,7 @@
           th Действия
       tbody
       - @categories.each do |category|
-        tr.item*{'data-sort-url' => sort_admin_category_path(category), 'id' => dom_id(category)}
+        tr.item data={sort_url: sort_admin_category_path(category)}
           td width="75%"
             = link_to category.title, [:admin, category], class: 'name'
           td width="25%"

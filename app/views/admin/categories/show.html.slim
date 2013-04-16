@@ -18,7 +18,7 @@
           th Действия
       tbody
       - @subcategories.each do |subcategory|
-        tr.item*{'data-sort-url' => sort_admin_category_path(subcategory), 'id' => dom_id(subcategory)}
+        tr.item data={sort_url: sort_admin_category_path(subcategory)}
           td width="75%"
             = link_to subcategory.title, [:admin, subcategory], class: 'name'
           td width="25%"
