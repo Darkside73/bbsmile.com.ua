@@ -15,6 +15,7 @@ Bbsmile::Application.routes.draw do
         post 'sort'
       end
     end
+    resources :products
   end
 
   get '*slug' => 'categories#show', format: false, constraints: CategoryConstraint

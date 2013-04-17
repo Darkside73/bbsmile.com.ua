@@ -1,4 +1,8 @@
-| Hello admin
-h1 Admin page
-- @categories.keys.each do |category|
-    p = link_to category
+.row-fluid
+  .span6.products
+    = render layout: 'boxed', locals: {title: 'Товары'} do
+      .text-center = link_to "Новый товар", [:new, :admin, :product], class: ['btn', 'btn-large', 'btn-success']
+
+  .span6.categorie
+    = render layout: 'boxed', locals: {title: 'Категории'} do
+      .text-center = link_to "Новая категория", [:new, :admin, :category], class: ['btn', 'btn-large', 'btn-success']
