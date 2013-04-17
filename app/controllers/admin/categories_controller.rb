@@ -17,7 +17,7 @@ class Admin::CategoriesController < Admin::ApplicationController
   def create
     @category = Category.new category_params
     if @category.save
-      redirect_to [:admin, @category], notice: I18n.t('flash.message.categories.created')
+      redirect_to redirect_location, notice: I18n.t('flash.message.categories.created')
     else
       render :new
     end
@@ -30,7 +30,7 @@ class Admin::CategoriesController < Admin::ApplicationController
   def update
     @category = Category.find params[:id]
     if @category.update_attributes category_params
-      redirect_to [:admin, @category], notice: I18n.t('flash.message.categories.updated')
+      redirect_to redirect_location, notice: I18n.t('flash.message.categories.updated')
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class Admin::CategoriesController < Admin::ApplicationController
     @subcategory = Category.new category_params
     @subcategory.parent = @category
     if @subcategory.save
-      redirect_to [:admin, @subcategory], notice: I18n.t('flash.message.categories.subcategory_created')
+      redirect_to redirect_location, notice: I18n.t('flash.message.categories.subcategory_created')
     else
       render :new_subcategory
     end
@@ -74,5 +74,9 @@ class Admin::CategoriesController < Admin::ApplicationController
       params.require(:category).permit(
         :leaf, page_attributes: [:title, :url, :hidden]
       )
+    end
+
+    def redirect_location
+      [:admin, @category.is_root? ? :categories : @category.parent]
     end
 end

@@ -27,3 +27,5 @@ $ ->
         $('#content').prepend(data.flash)
         $('.flash-message').delay(5000).slideUp()
     catch e
+
+  $('.flash-message').delay(5000).slideUp()

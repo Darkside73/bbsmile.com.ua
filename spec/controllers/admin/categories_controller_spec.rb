@@ -45,11 +45,18 @@ describe Admin::CategoriesController do
   end
   describe 'PUT update' do
     let(:category) { create :category }
-    it 'update category and redirect to index' do
-      put :update, id: category.id, category: { page_attributes: attributes_for(:page) }
-      flash[:notice].should have_content(/updated/i)
-      response.should redirect_to([:admin, category])
-      expect { category.reload }.to change { category.page.title }
+    context 'redirect_to' do
+      it 'update category and redirect to categories if category is root' do
+        put :update, id: category.id, category: { page_attributes: attributes_for(:page) }
+        flash[:notice].should have_content(/updated/i)
+        response.should redirect_to([:admin, :categories])
+        expect { category.reload }.to change { category.page.title }
+      end
+      let(:subcategory) { create :category, parent: category }
+      it 'update category and redirect to categories if category is not root' do
+        put :update, id: subcategory.id, category: { page_attributes: attributes_for(:page) }
+        response.should redirect_to([:admin, subcategory.parent])
+      end
     end
     it 'remove spaces around' do
       put :update,
