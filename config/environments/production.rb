@@ -19,12 +19,6 @@ Bbsmile::Application.configure do
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
 
-  config.assets.precompile += ['main.css', 'inner.css', 'category.css', 'product.css', 'information_page.css',
-    'ie.css',
-    'font-awesome-ie7.min.css', 'fontawesome-webfont.ttf', 'fontawesome-webfont.eot', 'fontawesome-webfont.svg', 'fontawesome-webfont.woff',
-    'product.js', 'admin/categories.js'
-  ]
-
   # Generate digests for assets URLs
   config.assets.digest = true
 
