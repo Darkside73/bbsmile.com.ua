@@ -13,9 +13,15 @@ Bbsmile::Application.routes.draw do
         get 'new_subcategory'
         post 'create_subcategory'
         post 'sort'
+        get 'new_product', controller: 'products', action: 'new_in_category'
+        get 'products'
       end
     end
-    resources :products
+    resources :products do
+      member do
+        post 'sort'
+      end
+    end
   end
 
   get '*slug' => 'categories#show', format: false, constraints: CategoryConstraint

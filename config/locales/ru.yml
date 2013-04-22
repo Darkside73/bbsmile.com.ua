@@ -16,7 +16,12 @@ ru:
         destroyed:
           success: Категория удалена
           forbidden: "Нельзя удалить удалять категорию, содержащую подкатегории"
+      products:
+        created: Продукт создан
+        updated: Продукт обновлен
+        destroyed: Продукт удален
   errors:
     messages:
       blank: "нужно заполнить"
       uniqueness: "должен быть уникальным"
+      taken: "уже занят"

@@ -1,0 +1,21 @@
+- content_for :box_title do
+  strong =' @product.title
+  | &mdash; #{link_to @product.category.title, [:admin, @product.category] }
+= render layout: 'boxed' do
+  - if @product.available
+    p.text-success
+      i.icon-check &nbsp;
+      | доступен для заказа
+  - else
+    p.muted
+      i.icon-minus-sign &nbsp;
+      | нет на складе
+  table.table.table-hover#product-card
+    tr
+      td Цена
+      td = @product.price
+    tr
+      td Артикул
+      td = @product.sku
+
+  =' link_to 'Редактировать', [:edit, :admin, @product], class: 'btn btn-info'

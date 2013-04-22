@@ -8,6 +8,13 @@ describe Admin::ProductsController do
       assigns(:products).should be
     end
   end
+  describe 'GET show' do
+    let(:product) { create :product }
+    it 'product' do
+      get :show, id: product
+      assigns(:product).should be
+    end
+  end
   describe 'GET new' do
     it 'assigns new product and leaf categories' do
       get :new
@@ -17,36 +24,41 @@ describe Admin::ProductsController do
   end
   describe 'POST create' do
     let(:category) { create :category}
-    it 'create product and redirect to index' do
+    it 'create product and redirect to category' do
       post :create, product: {
         category_id: category.id,
         page_attributes: attributes_for(:page)
       }
       flash[:notice].should have_content(/created/i)
+      should redirect_to([:admin, category])
     end
   end
-  # describe 'GET edit' do
-  #   let(:category) { create :category }
-  #   it 'assigns not new category' do
-  #     get :edit, id: category.id
-  #     assigns(:category).should_not be_a_new(Category)
-  #   end
-  # end
-  # describe 'PUT update' do
-  #   let(:category) { create :category }
-  #   it 'update category and redirect to categories if category is root' do
-  #     put :update, id: category.id, category: { page_attributes: attributes_for(:page) }
-  #     flash[:notice].should have_content(/updated/i)
-  #     response.should redirect_to([:admin, :categories])
-  #     expect { category.reload }.to change { category.page.title }
-  #   end
-  # describe 'DELETE' do
-  #   it 'destroy Category' do
-  #     category = create :category
-  #     expect {
-  #       xhr :delete, :destroy, id: category.id
-  #       category.reload
-  #     }.to raise_error(ActiveRecord::RecordNotFound)
-  #   end
-  # end
+  describe 'GET edit' do
+    let(:product) { create :product }
+    it 'assigns product and category' do
+      get :edit, id: product.id
+      assigns(:product).should be_a(Product)
+      assigns(:category).should be_a(Category)
+    end
+  end
+  describe 'PUT update' do
+    let(:product) { create :product }
+    it 'update product and redirect to show' do
+      put :update,
+        id: product.id,
+        product: { price: 13.99, page_attributes: attributes_for(:page) }
+      flash[:notice].should have_content(/updated/i)
+      response.should redirect_to([:admin, product])
+      expect { product.reload }.to change { product.price }
+    end
+  end
+  describe 'DELETE' do
+    it 'destroy Product' do
+      product = create :product
+      expect {
+        xhr :delete, :destroy, id: product.id
+        product.reload
+      }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+  end
 end

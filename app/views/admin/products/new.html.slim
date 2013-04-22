@@ -1,12 +1,7 @@
 - content_for :box_title do
   | Добавление товара
+  - if @category.present?
+    | &nbsp;в категорию&nbsp;
+    strong = @category.title
 = render layout: 'boxed' do
-  = simple_form_for [:admin, @product] do |f|
-    = f.simple_fields_for :page do |p|
-      = p.input :title, label: 'Название'
-      = p.input :url, label: 'URL', input_html: {type: 'text'}
-      = p.input :hidden, label: 'скрытый'
-    = f.association :category, collection: @leaf_categories, label: "Категория", input_html: { 'data-placeholder' => 'Категория' }
-    = f.button :submit,  @product.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
-    | &nbsp;или&nbsp;
-    = link_to 'Отменить', :back
+  = render 'form'

@@ -1,0 +1,5 @@
+- content_for :box_title do
+  | Редактирование товара &mdash;&nbsp;
+  strong = @product.title
+= render layout: 'boxed' do
+  = render 'form'

@@ -1,6 +1,7 @@
 class Category < ActiveRecord::Base
 
   has_one :page, as: :pageable, dependent: :destroy
+  has_many :products
   accepts_nested_attributes_for :page
 
   delegate :title, :url, to: :page

@@ -25,4 +25,21 @@
             =' link_to 'Редактировать', [:edit, :admin, subcategory], class: 'btn btn-info'
             =  link_to 'Удалить', [:admin, subcategory], method: :delete, class: 'btn btn-warning'
   =' link_to "Добавить подкатегорию", new_subcategory_admin_category_path(@category), class: 'btn btn-success' unless @category.leaf
+
+  - if @products.present? && @products.any?
+    table.table.sortable.product-list.table-striped
+      thead
+        tr
+          th Название
+          th Действия
+      tbody
+      - @products.each do |product|
+        tr.item data={sort_url: sort_admin_product_path(product)}
+          td width="75%"
+            = link_to product.title, [:admin, product], class: 'name'
+          td width="25%"
+            =' link_to 'Редактировать', [:edit, :admin, product], class: 'btn btn-info'
+            =  link_to 'Удалить', [:admin, product], method: :delete, class: 'btn btn-warning'
+
+  =' link_to "Добавить товар", new_product_admin_category_path(@category), class: 'btn btn-success' if @category.leaf
   = link_to "Назад", [:admin, @category.is_root? ? :categories : @category.parent ], class: 'btn'

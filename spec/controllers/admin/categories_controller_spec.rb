@@ -7,9 +7,13 @@ describe Admin::CategoriesController do
       get :index
       assigns(:categories).should be
     end
-    it 'assings category' do
-      get :show, id: categories.first.id
+  end
+  describe 'GET show' do
+    let(:category) { create :category }
+    it 'assign category and products' do
+      get :show, id: category.id
       assigns(:category).should be
+      assigns(:products).should be
     end
   end
   describe 'GET new' do

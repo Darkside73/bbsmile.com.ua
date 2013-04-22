@@ -1,0 +1,12 @@
+= simple_form_for [:admin, @product] do |f|
+  = f.simple_fields_for :page do |p|
+    = p.input :title, label: 'Название'
+    = p.input :url, label: 'URL', input_html: {type: 'text'}
+    = p.input :hidden, label: 'скрытый'
+  = f.input :available, label: 'Доступность'
+  = f.association :category, collection: @leaf_categories, label: "Категория", selected: @category, input_html: { 'data-placeholder' => 'Категория' }
+  = f.input :price, label: 'Цена'
+  = f.input :sku, label: 'Артикул'
+  = f.button :submit,  @product.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
+  | &nbsp;или&nbsp;
+  = link_to 'Отменить', :back

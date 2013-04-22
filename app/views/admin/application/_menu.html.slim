@@ -3,6 +3,10 @@ ul.nav.nav-list.bs-docs-sidenav.nav-collapse.collapse
     a href="#{admin_categories_path}"
       | Каталог
       i.icon-chevron-right
+  li*unless_active_attr('admin/products')
+    a href="#{admin_products_path}"
+      | Товары
+      i.icon-chevron-right
   li: a href="#"
     | Заказы
     i.icon-chevron-right
