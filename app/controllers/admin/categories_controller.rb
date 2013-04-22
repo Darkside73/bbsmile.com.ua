@@ -6,6 +6,7 @@ class Admin::CategoriesController < Admin::ApplicationController
 
   def show
     @category = Category.find params[:id]
+    @products = @category.products
     @subcategories = @category.children.includes(:page)
   end
 
@@ -67,6 +68,7 @@ class Admin::CategoriesController < Admin::ApplicationController
     rescue Ancestry::AncestryException
       flash.now[:error] = I18n.t 'flash.message.categories.destroyed.forbidden'
     end
+    render json: flashes_in_json
   end
 
   private

@@ -2,8 +2,8 @@
 //= require ./sort
 
 $ ->
-  $('.btn[data-method="delete"]').click ->
-    if confirm('Удалить категорию?')
+  $('.btn[data-method="delete"]').click (e) ->
+    if confirm('Точно удалять?')
       $.post(
         @href
         _method: 'delete'
