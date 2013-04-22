@@ -3,9 +3,12 @@ Feature: Products management
   I want to manage products
 
 Scenario: Add new product
+  Given Leaf category "Детская мебель"
   When I go to admin page
     And I click "Новый товар"
-    And fill in "product[page_attributes][title]" with "New Product"
-    And fill in "product[page_attributes][url]" with "new-product"
+    And I select "Детская мебель" from "product[category_id]"
+    And fill in "product[page_attributes][title]" with "Кроватка"
+    And fill in "product[page_attributes][url]" with "krovatka"
+    And uncheck "product[available]"
     And press button "Создать"
-  Then I should see "New product"
+  Then I should see "Кроватка"

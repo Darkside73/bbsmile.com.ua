@@ -18,7 +18,7 @@ Category.create(page_attributes: {title: 'Детские коляски', url: '
   {page_attributes: {title: 'Трансформеры', url: 'detskie-kolyaski/transformery'}},
   {page_attributes: {title: 'Аксессуары', url: 'detskie-kolyaski/accessories'}},
   {page_attributes: {title: 'Коляски 2 в 1', url: 'detskie-kolyaski/2in1'}},
-  {page_attributes: {title: 'Коляски 3 в 1', url: 'detskie-kolyaski/3in1'}}
+  {page_attributes: {title: 'Коляски 3 в 1', url: 'detskie-kolyaski/3in1'}, leaf: true}
 ]
 Category.create(page_attributes: {title: 'Автокресла', url: 'avtokresla'}).children.create [
   {page_attributes: {title: 'Бустеры', url: 'avtokresla/bustery'}},

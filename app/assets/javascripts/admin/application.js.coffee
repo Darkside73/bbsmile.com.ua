@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require select2/select2
 
 $ ->
   $('.hide-sidebar').click ->
@@ -29,3 +30,5 @@ $ ->
     catch e
 
   $('.flash-message').delay(5000).slideUp()
+
+  $('select').select2()

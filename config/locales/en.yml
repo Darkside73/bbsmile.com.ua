@@ -16,6 +16,10 @@ en:
         destroyed:
           success: Category destroyed
           forbidden: Forbidden. Category has children
+      products:
+        created: Product created
+        updated: Product updated
+        destroyed: Product destroyed
   errors:
     messages:
       blank: "%{attribute} can't be blank"
