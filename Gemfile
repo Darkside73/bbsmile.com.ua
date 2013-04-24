@@ -35,6 +35,7 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'guard-zeus-client'
+  gem 'meta_request'
 end
 
 group :development, :test do
