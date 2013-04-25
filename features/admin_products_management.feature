@@ -37,7 +37,7 @@ Scenario: Edit product
     And press button "Обновить"
   Then I should see "Другая кроватка"
 
-Scenario: View Product
+Scenario: View product
   Given Some product
   When I go to this product
   Then I should see product properties

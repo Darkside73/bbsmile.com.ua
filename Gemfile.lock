@@ -76,6 +76,10 @@ GEM
     cells (3.8.8)
       actionpack (>= 3.0)
       railties (>= 3.0)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.1)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.0.9)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -168,6 +172,12 @@ GEM
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     nokogiri (1.5.9)
+    paperclip (3.4.1)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.0)
+      mime-types
     pg (0.15.1)
     polyglot (0.3.3)
     pry (0.9.12.1)
@@ -285,6 +295,7 @@ DEPENDENCIES
   launchy
   less-rails-bootstrap
   meta_request
+  paperclip
   pg
   rails (= 4.0.0beta1)
   rb-inotify
