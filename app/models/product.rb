@@ -1,8 +1,10 @@
 class Product < ActiveRecord::Base
   has_one :page, as: :pageable, dependent: :destroy
   belongs_to :category
+  has_many :images, as: :imageable
 
   accepts_nested_attributes_for :page
+  accepts_nested_attributes_for :images
   delegate :title, :url, to: :page
 
   acts_as_list scope: [:category_id]
