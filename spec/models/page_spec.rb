@@ -12,5 +12,11 @@ describe Page do
       page = create :page, url: 'duplication'
       subject.should_not allow_value('duplication').for(:url)
     end
+    it 'normalize default attributes on save' do
+      page = build :page
+      page.title = '    title with spaces    '
+      page.save
+      expect { page.reload }.not_to change { page.title }
+    end
   end
 end

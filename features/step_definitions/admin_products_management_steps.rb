@@ -36,3 +36,12 @@ Then(/^I should see product properties$/) do
     page.should have_content(attribute)
   end
 end
+
+When(/attach the file "(.*?)" to "(.*?)"$/) do |file, field|
+  attach_file field, File.expand_path("features/fixtures/#{file}")
+end
+
+Then(/^file should be uploaded$/) do
+  pending
+  File.open
+end

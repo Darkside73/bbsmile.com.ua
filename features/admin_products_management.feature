@@ -13,9 +13,11 @@ Scenario: Add new product
     And fill in "product[page_attributes][url]" with "krovatka"
     And fill in "product[price]" with "10.10"
     And fill in "product[sku]" with "code123"
+    And attach the file "product_image.jpg" to "product[images_attributes][][asset]"
     And I uncheck "product[available]"
     And press button "Создать"
   Then I should see "Кроватка"
+    And file should be uploaded
 
 Scenario: Add new product in category
   Given I go to this category
