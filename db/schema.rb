@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130425153117) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20130501223355) do
 
   create_table "categories", force: true do |t|
     t.string   "ancestry"
@@ -31,6 +28,8 @@ ActiveRecord::Schema.define(version: 20130425153117) do
     t.datetime "asset_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
   end
 
   create_table "pages", force: true do |t|
