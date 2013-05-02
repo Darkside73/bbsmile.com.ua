@@ -38,7 +38,13 @@ Category.create(page_attributes: {title: 'Электроприборы', url: 'e
 ]
 
 # Products
+require 'action_dispatch/testing/test_process'
+include ActionDispatch::TestProcess
+FileUtils.rm_rf Rails.root.join('public/system')
 Page.find_by(url: 'detskie-kolyaski/progulochnye').pageable.products.create [
-  {page_attributes: {title: 'Коляска прогулочная', url: 'kolyaska-progulochnaya'}, price: 3500, sku: 'asd123'},
+  {
+    page_attributes: {title: 'Коляска прогулочная', url: 'kolyaska-progulochnaya'}, price: 3500, sku: 'asd123',
+    images_attributes: [{ asset: fixture_file_upload(Rails.root.join('spec/fixtures/files/product_image.jpg'), 'image/jpeg')}]
+  },
   {page_attributes: {title: 'Коляска трехколесная', url: 'kolyaska-trehkolesnaya'}, price: 1599, sku: 'qwe456', available: false}
 ]

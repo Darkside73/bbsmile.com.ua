@@ -1,6 +1,3 @@
-//= require jquery-ui
-//= require ./sort
-
 $ ->
   $('.btn[data-method="delete"]').click (e) ->
     if confirm('Точно удалять?')

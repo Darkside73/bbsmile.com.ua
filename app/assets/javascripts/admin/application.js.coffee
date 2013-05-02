@@ -1,7 +1,11 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require twitter/bootstrap
 //= require select2/select2
+//= require tabs_memory
+//= require admin/destroy_helper
+//= require admin/sort
 
 $ ->
   $('.hide-sidebar').click ->

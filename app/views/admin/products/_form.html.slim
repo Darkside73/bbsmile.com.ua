@@ -1,4 +1,4 @@
-= simple_form_for [:admin, @product], html: {multipart: true} do |f|
+= simple_form_for [:admin, @product] do |f|
   = f.simple_fields_for :page do |p|
     = p.input :title, label: 'Название'
     = p.input :url, label: 'URL', input_html: {type: 'text'}
@@ -7,8 +7,9 @@
   = f.association :category, collection: @leaf_categories, label: "Категория", selected: @category, input_html: { 'data-placeholder' => 'Категория' }
   = f.input :price, label: 'Цена'
   = f.input :sku, label: 'Артикул'
-  = file_field_tag('product_images_asset', multiple: true, name: "product[images_attributes][][asset]")
-  br
-  = f.button :submit,  @product.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
+  - if @product.new_record?
+    = f.simple_fields_for :images, @product.images.build do |i|
+      = i.input :asset, label: 'Фото'
+  = f.button :submit, @product.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
   | &nbsp;или&nbsp;
   = link_to 'Отменить', :back

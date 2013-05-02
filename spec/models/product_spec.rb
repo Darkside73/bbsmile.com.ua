@@ -12,4 +12,10 @@ describe Product do
       }.to change { Product.count }.by(1)
     end
   end
+
+  let(:product) { create :product }
+  it 'has attached image' do
+    image = product.images.first
+    image.asset.url.should be
+  end
 end

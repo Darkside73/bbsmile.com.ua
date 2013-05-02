@@ -20,6 +20,9 @@ ru:
         created: Продукт создан
         updated: Продукт обновлен
         destroyed: Продукт удален
+      images:
+        created: Фотография загружена
+        destroyed: Фотография удалена
   errors:
     messages:
       blank: "нужно заполнить"

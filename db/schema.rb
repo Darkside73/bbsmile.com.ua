@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130501223355) do
+ActiveRecord::Schema.define(version: 20130502142457) do
 
   create_table "categories", force: true do |t|
     t.string   "ancestry"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20130501223355) do
     t.datetime "updated_at"
     t.integer  "imageable_id"
     t.string   "imageable_type"
+    t.integer  "position",           default: 0
   end
 
   create_table "pages", force: true do |t|

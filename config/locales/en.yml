@@ -20,6 +20,9 @@ en:
         created: Product created
         updated: Product updated
         destroyed: Product destroyed
+      images:
+        created: Image uploaded
+        destroyed: Image destroyed
   errors:
     messages:
       blank: "%{attribute} can't be blank"

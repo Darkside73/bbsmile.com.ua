@@ -24,10 +24,13 @@ describe Admin::ProductsController do
   end
   describe 'POST create' do
     let(:category) { create :category}
+    before { Image.any_instance.stub(:save_attached_files) }
     it 'create product and redirect to category' do
+      file = fixture_file_upload(Rails.root.join('spec/fixtures/files/product_image.jpg'), 'image/jpeg')
       post :create, product: {
         category_id: category.id,
-        page_attributes: attributes_for(:page)
+        page_attributes: attributes_for(:page),
+        images_attributes: [{ asset: file }]
       }
       flash[:notice].should have_content(/created/i)
       should redirect_to([:admin, category])

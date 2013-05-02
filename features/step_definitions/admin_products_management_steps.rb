@@ -41,7 +41,6 @@ When(/attach the file "(.*?)" to "(.*?)"$/) do |file, field|
   attach_file field, File.expand_path("features/fixtures/#{file}")
 end
 
-Then(/^file should be uploaded$/) do
-  pending
-  File.open
+Then(/^product should have image$/) do
+  @product.images.should have(1).item
 end

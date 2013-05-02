@@ -1,6 +1,3 @@
-- content_for :head do
-  = javascript_include_tag 'admin/categories'
-
 = render layout: 'boxed', locals: {title: 'Список категорий'} do
   - if @categories.any?
     table.table.sortable.categories-list.table-striped

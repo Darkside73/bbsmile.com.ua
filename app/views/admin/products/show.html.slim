@@ -2,20 +2,36 @@
   strong =' @product.title
   | &mdash; #{link_to @product.category.title, [:admin, @product.category] }
 = render layout: 'boxed' do
-  - if @product.available
-    p.text-success
-      i.icon-check &nbsp;
-      | доступен для заказа
-  - else
-    p.muted
-      i.icon-minus-sign &nbsp;
-      | нет на складе
-  table.table.table-hover#product-card
-    tr
-      td Цена
-      td = @product.price
-    tr
-      td Артикул
-      td = @product.sku
+  ul.nav.nav-tabs
+    li.active: a data-toggle="tab" href="#main" Основное
+    li: a data-toggle="tab" href="#photos" Фото
 
-  =' link_to 'Редактировать', [:edit, :admin, @product], class: 'btn btn-info'
+  .tab-content
+    #main.tab-pane.fade.in.active
+      - if @product.available
+        p.text-success
+          i.icon-check &nbsp;
+          | доступен для заказа
+      - else
+        p.muted
+          i.icon-minus-sign &nbsp;
+          | нет на складе
+      table.table.table-hover#product-card
+        tr
+          td Цена
+          td = @product.price
+        tr
+          td Артикул
+          td = @product.sku
+      =' link_to 'Редактировать', [:edit, :admin, @product], class: 'btn btn-info'
+    #photos.tab-pane.fade
+      .row-fluid
+        .span8
+          - if @product.images.any?
+            table.table.sortable.photos-list.table-striped
+              = render @product.images
+          - else
+            | нет фотографий, попробуйте добавить
+        .span4
+          = render 'new_image_form'
+

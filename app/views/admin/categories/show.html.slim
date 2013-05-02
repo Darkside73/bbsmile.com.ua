@@ -6,9 +6,6 @@
         span.divider: i.icon-caret-right
     li.active = @category.title
 
-- content_for :head do
-  = javascript_include_tag 'admin/categories'
-
 = render layout: 'boxed' do
   - if @subcategories.any?
     table.table.sortable.categories-list.table-striped

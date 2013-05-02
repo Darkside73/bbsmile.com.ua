@@ -1,0 +1,3 @@
+= simple_form_for [:admin, @product, @product.images.build] do |f|
+  = f.input :asset, label: 'Добавить фото'
+  = f.button :submit, 'Загрузить', class: 'btn btn-primary'

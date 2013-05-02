@@ -12,12 +12,21 @@ Bbsmile::Application.routes.draw do
       member do
         get 'new_subcategory'
         post 'create_subcategory'
+        # TODO refactoring with routes conserns (sortable)
         post 'sort'
+        # TODO replace by nested product resource
         get 'new_product', controller: 'products', action: 'new_in_category'
         get 'products'
       end
     end
     resources :products do
+      member do
+        post 'sort'
+      end
+      # TODO use shallow routes
+      resources :images, only: [:create]
+    end
+    resources :images, only: [:destroy] do
       member do
         post 'sort'
       end

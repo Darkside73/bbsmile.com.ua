@@ -5,5 +5,6 @@ class Image < ActiveRecord::Base
   validates_attachment :asset, presence: true,
                        # content_type: { content_type: ['image/jpg', 'image/png', 'image/gif'] },
                        size: { in: 0..1.megabytes }
-
+  acts_as_list scope: [:imageable_id]
+  default_scope -> { order(:position) }
 end
