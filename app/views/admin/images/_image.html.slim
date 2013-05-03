@@ -1,5 +1,6 @@
-tr.item data={sort_url: sort_admin_image_path(image)}
-  td width="75%"
-    = image_tag image.asset.url(:thumb)
-  td width="25%"
-    = link_to 'Удалить', admin_image_path(image), method: :delete, class: 'btn btn-warning'
+- unless image.new_record?
+  tr.item data={sort_url: sort_admin_image_path(image)}
+    td width="75%"
+      = image_tag image.asset.url(:thumb)
+    td width="25%"
+      = link_to 'Удалить', admin_image_path(image), method: :delete, class: 'btn btn-warning'

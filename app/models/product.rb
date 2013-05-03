@@ -2,7 +2,7 @@ class Product < ActiveRecord::Base
   has_one :page, as: :pageable, dependent: :destroy
   belongs_to :category
   belongs_to :brand
-  has_many :images, as: :imageable
+  has_many :images, as: :imageable, dependent: :destroy
 
   accepts_nested_attributes_for :page
   accepts_nested_attributes_for :images

@@ -1,3 +1,4 @@
+
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
@@ -30,3 +31,28 @@ ru:
       taken: "уже занят"
       not_a_number: "не похоже на число"
       greater_than_or_equal_to: "нужно число больше %{count}"
+      paperclip:
+        content_type_image: "не похоже на файл изображения"
+        size: "размерчик не тот, нужно меньше %{max}"
+
+  number:
+    format:
+      separator: "."
+      delimiter: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      format:
+        delimiter: ""
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            other: "байт"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"

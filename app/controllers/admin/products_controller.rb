@@ -8,6 +8,7 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def show
     @product = Product.find params[:id]
+    @image = @product.images.new
   end
 
   def new
@@ -61,8 +62,8 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def create_image
     @product = Product.find params[:id]
-    image = @product.images.build image_params
-    if image.save
+    @image = @product.images.new image_params
+    if @image.save
       flash.now[:notice] = I18n.t 'flash.message.images.created'
       redirect_to [:admin, @product]
     else
