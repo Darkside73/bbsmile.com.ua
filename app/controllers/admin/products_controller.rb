@@ -82,8 +82,7 @@ class Admin::ProductsController < Admin::ApplicationController
     end
 
     def image_params
-      # TODO avoid missing "image" parameter exception
-      params.require(:image).permit(:asset)
+      params.fetch(:image, {}).permit(:asset)
     end
 
     def assign_leaf_categories
