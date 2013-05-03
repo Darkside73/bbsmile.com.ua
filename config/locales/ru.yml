@@ -28,3 +28,5 @@ ru:
       blank: "нужно заполнить"
       uniqueness: "должен быть уникальным"
       taken: "уже занят"
+      not_a_number: "не похоже на число"
+      greater_than_or_equal_to: "нужно число больше %{count}"

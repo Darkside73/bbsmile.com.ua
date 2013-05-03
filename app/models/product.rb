@@ -13,6 +13,8 @@ class Product < ActiveRecord::Base
   scope :recent, lambda { |n| order(created_at: :desc).limit(n) }
 
   validates :category, presence: true
-  validates :price, numericality: { greater_than_or_equal_to: 0 },
-                    allow_nil: true
+  validates :price, :price_old,
+            numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
+  validates :available, :novelty, :topicality, :hit,
+            inclusion: { in: [true, false] }
 end
