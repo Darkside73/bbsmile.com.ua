@@ -37,6 +37,11 @@ Category.create(page_attributes: {title: 'Электроприборы', url: 'e
   {page_attributes: {title: 'Увлажнители воздуха', url: 'elektropribory/uvlazhniteli'}, leaf: true}
 ]
 
+# Brands
+Brand.create [
+  { name: 'Kids' }, { name: 'Fisher Price' }, { name: 'Geoby' }
+]
+
 # Products
 require 'action_dispatch/testing/test_process'
 include ActionDispatch::TestProcess

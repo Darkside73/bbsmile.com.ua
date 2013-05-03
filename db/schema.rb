@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130502142457) do
+ActiveRecord::Schema.define(version: 20130502185721) do
+
+  create_table "brands", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", force: true do |t|
     t.string   "ancestry"
@@ -50,9 +56,16 @@ ActiveRecord::Schema.define(version: 20130502142457) do
     t.boolean  "available",   default: true
     t.string   "sku"
     t.integer  "category_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "position",    default: 0
+    t.float    "price_old"
+    t.boolean  "novelty",     default: false
+    t.boolean  "topicality",  default: false
+    t.boolean  "hit",         default: false
+    t.integer  "brand_id"
   end
+
+  add_index "products", ["brand_id"], name: "index_products_on_brand_id"
 
 end

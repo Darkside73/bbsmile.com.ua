@@ -8,6 +8,7 @@ FactoryGirl.define do
     end
 
     category
+    brand
     images { |images| [images.association(:image)] }
 
     # TODO DRY pageable factories

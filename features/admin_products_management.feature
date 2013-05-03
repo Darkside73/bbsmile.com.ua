@@ -4,11 +4,16 @@ Feature: Products management
 
 Background:
   Given Leaf category "Детская мебель"
+    And some brands
+      | Kids         |
+      | Fisher Price |
+      | Geoby        |
 
 Scenario: Add new product
   When I go to admin page
     And I click "Новый товар"
     And I select "Детская мебель" from "product[category_id]"
+    And I select "Fisher Price" from "product[brand_id]"
     And fill in "product[page_attributes][title]" with "Кроватка"
     And fill in "product[page_attributes][url]" with "krovatka"
     And fill in "product[price]" with "10.10"

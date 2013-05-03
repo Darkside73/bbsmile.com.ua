@@ -8,18 +8,33 @@
 
   .tab-content
     #main.tab-pane.fade.in.active
-      - if @product.available
-        p.text-success
-          i.icon-check &nbsp;
-          | доступен для заказа
-      - else
-        p.muted
-          i.icon-minus-sign &nbsp;
-          | нет на складе
+      p.bages
+        - if @product.available
+          span.text-success
+            i.icon-check &nbsp;
+            | доступен для заказа
+        - else
+          span.muted
+            i.icon-minus-sign &nbsp;
+            | нет на складе
+        - if @product.novelty
+          span.label.label-info новинка
+        - if @product.topicality
+          span.label.label-info актуальный
+        - if @product.hit
+          span.label.label-info хит продаж
       table.table.table-hover#product-card
+        - if @product.brand.present?
+          tr
+            td Бренд
+            td = @product.brand.name
         tr
           td Цена
           td = @product.price
+        - if @product.price_old
+          tr
+            td Старая цена
+            td = @product.price_old
         tr
           td Артикул
           td = @product.sku

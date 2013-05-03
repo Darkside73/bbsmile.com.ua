@@ -2,6 +2,12 @@ Given(/^Leaf category "(.*?)"$/) do |category|
   @category = create :category, leaf: true, page_title: category
 end
 
+Given(/^some brands$/) do |table|
+  table.rows.flatten.each do |name|
+    create :brand, name: name
+  end
+end
+
 Given(/^I go to this category$/) do
   visit url_for([:admin, @category])
 end
