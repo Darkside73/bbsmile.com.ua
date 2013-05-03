@@ -8,28 +8,26 @@ Bbsmile::Application.routes.draw do
 
   namespace :admin do
     root to: 'main#index'
-    resources :categories do
+    concern :sortable do
+      member do
+        post 'sort'
+      end
+    end
+    resources :categories, concerns: :sortable do
       member do
         get 'new_subcategory'
         post 'create_subcategory'
-        # TODO refactoring with routes conserns (sortable)
-        post 'sort'
         # TODO replace by nested product resource
         get 'new_product', controller: 'products', action: 'new_in_category'
         get 'products'
       end
     end
-    resources :products do
+    resources :products, concerns: :sortable do
       member do
-        post 'sort'
         post 'create_image'
       end
     end
-    resources :images, only: [:destroy] do
-      member do
-        post 'sort'
-      end
-    end
+    resources :images, only: [:destroy], concerns: :sortable
   end
 
   get '*slug' => 'categories#show', format: false, constraints: CategoryConstraint
