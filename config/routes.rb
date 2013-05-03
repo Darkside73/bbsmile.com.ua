@@ -22,9 +22,8 @@ Bbsmile::Application.routes.draw do
     resources :products do
       member do
         post 'sort'
+        post 'create_image'
       end
-      # TODO use shallow routes
-      resources :images, only: [:create]
     end
     resources :images, only: [:destroy] do
       member do

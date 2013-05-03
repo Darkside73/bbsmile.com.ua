@@ -59,6 +59,17 @@ class Admin::ProductsController < Admin::ApplicationController
     render json: flashes_in_json
   end
 
+  def create_image
+    @product = Product.find params[:id]
+    image = @product.images.build image_params
+    if image.save
+      flash.now[:notice] = I18n.t 'flash.message.images.created'
+      redirect_to [:admin, @product]
+    else
+      render :show
+    end
+  end
+
   private
     def products_params
       params.require(:product).permit(
@@ -67,6 +78,11 @@ class Admin::ProductsController < Admin::ApplicationController
         page_attributes: [:title, :url, :hidden],
         images_attributes: [[:asset]]
       )
+    end
+
+    def image_params
+      # TODO avoid missing "image" parameter exception
+      params.require(:image).permit(:asset)
     end
 
     def assign_leaf_categories
