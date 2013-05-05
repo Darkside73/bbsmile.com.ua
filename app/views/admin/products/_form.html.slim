@@ -8,6 +8,7 @@
       = f.input :available, label: 'Доступность'
       = f.association :category, collection: @leaf_categories, label: "Категория", selected: @category, input_html: { 'data-placeholder' => 'Категория' }
       = f.association :brand, collection: Brand.all, label: "Бренд", input_html: { 'data-placeholder' => 'Бренд' }
+      = f.input :video, label: 'Видео', as: :text
       - if @product.new_record?
         = f.simple_fields_for :images, @product.images.build do |i|
           = i.input :asset, label: 'Фото'

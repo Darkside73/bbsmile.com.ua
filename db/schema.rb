@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130502185721) do
+ActiveRecord::Schema.define(version: 20130505150316) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20130502185721) do
     t.boolean  "topicality",  default: false
     t.boolean  "hit",         default: false
     t.integer  "brand_id"
+    t.string   "video"
   end
 
   add_index "products", ["brand_id"], name: "index_products_on_brand_id"
