@@ -30,7 +30,17 @@ Bbsmile::Application.routes.draw do
     resources :images, only: [:destroy], concerns: :sortable
   end
 
-  get '*slug' => 'categories#show', format: false, constraints: CategoryConstraint
+  # TODO deal with odd rails server behavior: it complains that "A copy of PageTypeConstraint has been removed from the module tree but is still active!"
+  # get '*slug' => 'products#show', format: false, constraints: PageTypeConstraint.new(Product)
+  # get '*slug' => 'categories#show', format: false, constraints: PageTypeConstraint.new(Category)
+  %w(product category).each do |type|
+    get '*slug' => "#{type.pluralize}#show", format: false, constraints: lambda { |req|
+      Page.visible.find_by(url: req.fullpath.sub(/^[\/]*/, '')).try {
+        |p| p.pageable.is_a?(type.camelize.constantize)
+      }
+    }
+  end
+
   get '*slug' => 'pages#show', format: false
 
   # The priority is based upon order of creation:

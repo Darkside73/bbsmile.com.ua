@@ -9,7 +9,7 @@ describe 'Admin categories' do
   end
 end
 
-describe 'Pages and categories' do
+describe 'Pages and specific items' do
   let(:page) { create :page }
   it 'route to pages controller if page requested' do
     { get: "/#{page.url}" }.should route_to(
@@ -24,6 +24,14 @@ describe 'Pages and categories' do
       controller: "categories",
       action: "show",
       slug: category.url
+    )
+  end
+  let(:product) { create :product }
+  it 'route to products controller if product requested' do
+    { get: "/#{product.url}" }.should route_to(
+      controller: "products",
+      action: "show",
+      slug: product.url
     )
   end
 end
