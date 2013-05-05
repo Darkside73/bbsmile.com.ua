@@ -13,7 +13,7 @@ describe Product do
     end
   end
 
-  let(:product) { create :product }
+  let(:product) { create :product_with_images }
   it 'has attached image' do
     image = product.images.first
     image.asset.url.should be

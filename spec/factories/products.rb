@@ -9,7 +9,6 @@ FactoryGirl.define do
 
     category
     brand
-    images { |images| [images.association(:image)] }
 
     # TODO DRY pageable factories
     page {
@@ -20,13 +19,9 @@ FactoryGirl.define do
     price 1.5
     available false
     sku { generate :sku }
-  end
 
-  # TODO use factories inheritance
-  factory :product_without_images, class: Product do
-    category
-    page {
-      build(:page)
-    }
+    factory :product_with_images do
+      images { |images| [images.association(:image)] }
+    end
   end
 end
