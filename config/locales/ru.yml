@@ -24,6 +24,8 @@ ru:
       images:
         created: Фотография загружена
         destroyed: Фотография удалена
+      content:
+        saved: Описание сохранено
   errors:
     messages:
       blank: "нужно заполнить"

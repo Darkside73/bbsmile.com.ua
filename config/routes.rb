@@ -25,6 +25,7 @@ Bbsmile::Application.routes.draw do
     resources :products, concerns: :sortable do
       member do
         post 'create_image'
+        put 'save_content'
       end
     end
     resources :images, only: [:destroy], concerns: :sortable

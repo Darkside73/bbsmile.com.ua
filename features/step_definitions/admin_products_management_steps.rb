@@ -47,6 +47,6 @@ When(/attach the file "(.*?)" to "(.*?)"$/) do |file, field|
   attach_file field, File.expand_path("features/fixtures/#{file}")
 end
 
-Then(/^product should have image$/) do
-  @product.images.should have(1).item
+Then(/^I should see uploaded image$/) do
+  all('#photos img').should have(1).item
 end

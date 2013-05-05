@@ -16,6 +16,7 @@ gem 'attribute_normalizer'
 gem 'acts_as_list'
 
 gem 'jquery-rails'
+gem 'bootstrap-wysihtml5-rails'
 gem 'paperclip'
 
 # Gems used only for assets and not required

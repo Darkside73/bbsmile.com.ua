@@ -2,4 +2,11 @@
   | Редактирование товара &mdash;&nbsp;
   strong = @product.title
 = render layout: 'boxed' do
-  = render 'form'
+  ul.nav.nav-tabs
+    li.active: a data-toggle="tab" href="#main" Основное
+    li: a data-toggle="tab" href="#product-content" Описание
+  .tab-content
+    #main.tab-pane.fade.in.active
+      = render 'form'
+    #product-content.tab-pane.fade
+      = render 'content_form'

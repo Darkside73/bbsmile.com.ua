@@ -9,6 +9,7 @@ FactoryGirl.define do
 
     category
     brand
+    content
 
     # TODO DRY pageable factories
     page {
@@ -16,7 +17,7 @@ FactoryGirl.define do
       page_attrs[:title] = page_title if page_title
       build(:page, page_attrs)
     }
-    price 1.5
+    price { generate :price }
     available false
     sku { generate :sku }
 

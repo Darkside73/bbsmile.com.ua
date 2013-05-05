@@ -5,6 +5,7 @@
   ul.nav.nav-tabs
     li.active: a data-toggle="tab" href="#main" Основное
     li: a data-toggle="tab" href="#photos" Фото
+    li: a data-toggle="tab" href="#product-content" Описание
 
   .tab-content
     #main.tab-pane.fade.in.active
@@ -38,6 +39,7 @@
         tr
           td Артикул
           td = @product.sku
+      hr
       =' link_to 'Редактировать', [:edit, :admin, @product], class: 'btn btn-info'
     #photos.tab-pane.fade
       .row-fluid
@@ -49,3 +51,8 @@
             | нет фотографий, попробуйте добавить
         .span4
           = render 'new_image_form'
+    #product-content.tab-pane.fade
+      .text
+        == @content.text || 'нет описания, попробуйте добавить'
+      hr
+      = link_to @content.text.blank? ? 'Добавить' : 'Редактировать', [:edit, :admin, @product], class: 'btn btn-info'

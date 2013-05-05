@@ -3,6 +3,8 @@
 //= require jquery-ui
 //= require twitter/bootstrap
 //= require select2/select2
+//= require bootstrap-wysihtml5
+//= require bootstrap-wysihtml5/locales/ru-RU
 //= require tabs_memory
 //= require admin/destroy_helper
 //= require admin/sort
@@ -36,3 +38,5 @@ $ ->
   $('.flash-message').delay(5000).slideUp()
 
   $('select').select2()
+
+  $('.wysihtml5').wysihtml5 locale: 'ru-RU'

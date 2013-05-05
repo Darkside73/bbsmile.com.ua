@@ -23,6 +23,8 @@ en:
       images:
         created: Image uploaded
         destroyed: Image destroyed
+      content:
+        saved: Content saved
   errors:
     messages:
       blank: "%{attribute} can't be blank"

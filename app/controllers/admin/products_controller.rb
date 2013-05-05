@@ -9,6 +9,7 @@ class Admin::ProductsController < Admin::ApplicationController
   def show
     @product = Product.find params[:id]
     @image = @product.images.new
+    @content = @product.content || @product.build_content
   end
 
   def new
@@ -36,11 +37,12 @@ class Admin::ProductsController < Admin::ApplicationController
   def edit
     @product = Product.find params[:id]
     @category = @product.category
+    @content = @product.content || @product.build_content
   end
 
   def update
     @product = Product.find params[:id]
-    if @product.update_attributes products_params
+    if @product.update products_params
       redirect_to [:admin, @product], notice: I18n.t('flash.message.products.updated')
     else
       render :edit
@@ -62,12 +64,26 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def create_image
     @product = Product.find params[:id]
+    @content = @product.content || @product.build_content
     @image = @product.images.new image_params
     if @image.save
       flash.now[:notice] = I18n.t 'flash.message.images.created'
       redirect_to [:admin, @product]
     else
       render :show
+    end
+  end
+
+  def save_content
+    @product = Product.find params[:id]
+    # TODO remove duplication by using AJAX (thumbs up!) or separate pages or before action callback
+    @image = @product.images.new
+    @content = @product.content || @product.build_content
+    if @content.update params.require(:content).permit(:text)
+      flash.now[:notice] = I18n.t 'flash.message.content.saved'
+      redirect_to [:admin, @product]
+    else
+      render :edit
     end
   end
 

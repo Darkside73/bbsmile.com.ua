@@ -74,4 +74,13 @@ describe Admin::ProductsController do
       should redirect_to([:admin, product])
     end
   end
+  describe 'PUT save_content' do
+    let(:product) { create :product}
+    it 'save content' do
+      put :save_content, id: product.id, content: { text: 'new content' }
+      expect { product.content.reload }.to change { product.content.text }
+      flash[:notice].should have_content(/saved/i)
+      should redirect_to([:admin, product])
+    end
+  end
 end

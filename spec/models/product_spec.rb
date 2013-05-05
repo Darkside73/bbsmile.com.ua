@@ -18,4 +18,8 @@ describe Product do
     image = product.images.first
     image.asset.url.should be
   end
+
+  it 'has content' do
+    product.content.text.should be
+  end
 end

@@ -43,6 +43,13 @@ Scenario: Edit product
     And press button "Обновить"
   Then I should see "Другая кроватка"
 
+Scenario: Save content
+  Given Some product
+  When I go to this product edit
+    And fill in "content[text]" with "Новое описание"
+    And press button "Сохранить"
+  Then I should see "Новое описание"
+
 Scenario: View product
   Given Some product
   When I go to this product
@@ -52,4 +59,5 @@ Scenario: Add image to product
   Given Some product
   When I go to this product
     And attach the file "product_image.jpg" to "image[asset]"
-  Then product should have image
+    And press button "Загрузить"
+  Then I should see uploaded image

@@ -47,5 +47,6 @@
     .tab-content
       .tab-pane.active#description
         .page-content
+          == @product.content.try(:text)
       .tab-pane#additionalInfo Цвета
       .tab-pane#video == @product.video

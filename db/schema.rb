@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130505150316) do
+ActiveRecord::Schema.define(version: 20130505175710) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20130505150316) do
     t.boolean  "leaf",       default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "contents", force: true do |t|
+    t.text     "text"
+    t.integer  "contentable_id"
+    t.string   "contentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "images", force: true do |t|
