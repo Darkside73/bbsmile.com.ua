@@ -24,5 +24,8 @@ FactoryGirl.define do
     factory :product_with_images do
       images { |images| [images.association(:image)] }
     end
+    factory :tagged_product do
+      tag_list 'tag1, tag2'
+    end
   end
 end

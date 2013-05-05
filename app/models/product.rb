@@ -10,6 +10,8 @@ class Product < ActiveRecord::Base
   delegate :title, :url, to: :page
 
   acts_as_list scope: [:category_id]
+  acts_as_taggable
+
   default_scope -> { order(:position) }
   scope :recent, lambda { |n| order(created_at: :desc).limit(n) }
 

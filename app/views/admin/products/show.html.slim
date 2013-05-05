@@ -39,6 +39,10 @@
         tr
           td Артикул
           td = @product.sku
+        - if @product.tag_list.present?
+          tr
+            td Теги
+            td = @product.tag_list
       hr
       =' link_to 'Редактировать', [:edit, :admin, @product], class: 'btn btn-info'
     #photos.tab-pane.fade

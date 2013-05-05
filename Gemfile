@@ -14,6 +14,7 @@ gem 'cells'
 gem 'simple_form', '>= 3.0.0beta1'
 gem 'attribute_normalizer'
 gem 'acts_as_list'
+gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
 
 gem 'jquery-rails'
 gem 'bootstrap-wysihtml5-rails'

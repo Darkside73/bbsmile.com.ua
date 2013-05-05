@@ -29,6 +29,10 @@ Given(/^Some product$/) do
   @product = create :product
 end
 
+Given(/^Some tagged product$/) do
+  @product = create :tagged_product
+end
+
 When(/^I go to this product edit$/) do
   visit url_for([:edit, :admin, @product])
 end
@@ -38,7 +42,7 @@ When(/^I go to this product$/) do
 end
 
 Then(/^I should see product properties$/) do
-  [@product.title, @product.price, @product.category.title].each do |attribute|
+  ([@product.title, @product.price, @product.category.title] + @product.tag_list).each do |attribute|
     page.should have_content(attribute)
   end
 end

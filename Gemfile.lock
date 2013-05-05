@@ -10,6 +10,13 @@ GIT
       rails (>= 3.0.0)
 
 GIT
+  remote: git://github.com/mbleigh/acts-as-taggable-on.git
+  revision: c181f18a74739da393bd612dda73de90b38152e4
+  specs:
+    acts-as-taggable-on (2.4.1.pre)
+      rails (>= 3, < 5)
+
+GIT
   remote: git://github.com/slim-template/slim.git
   revision: 594f4f9007ba35dea28c2f1c6236b72512a89067
   specs:
@@ -278,6 +285,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on!
   acts_as_list
   ancestry!
   attribute_normalizer
