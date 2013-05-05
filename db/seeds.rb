@@ -39,7 +39,7 @@ Category.create(page_attributes: {title: 'Электроприборы', url: 'e
 
 # Brands
 Brand.create [
-  { name: 'Kids' }, { name: 'Fisher Price' }, { name: 'Geoby' }
+  { name: 'Kids' }, { name: 'Fisher Price' }, { name: 'Geoby' }, { name: 'Chicco' }
 ]
 
 # Products
@@ -48,8 +48,17 @@ include ActionDispatch::TestProcess
 FileUtils.rm_rf Rails.root.join('public/system')
 Page.find_by(url: 'detskie-kolyaski/progulochnye').pageable.products.create [
   {
-    page_attributes: {title: 'Коляска прогулочная', url: 'kolyaska-progulochnaya'}, price: 3500, sku: 'asd123',
-    images_attributes: [{ asset: fixture_file_upload(Rails.root.join('spec/fixtures/files/product_image.jpg'), 'image/jpeg')}]
+    page_attributes: {title: 'Прогулочная коляска Multiway', url: 'Kolyaska-Progulochnaya-Multiway'},
+    price: 1606, price_old: 1690, sku: '61613.16',
+    brand_id: Brand.find_by(name: 'Chicco').id,
+    images_attributes: [
+      { asset: fixture_file_upload(Rails.root.join('spec/fixtures/files/product_image1.jpg'), 'image/jpeg') },
+      { asset: fixture_file_upload(Rails.root.join('spec/fixtures/files/product_image2.jpg'), 'image/jpeg') },
+      { asset: fixture_file_upload(Rails.root.join('spec/fixtures/files/product_image3.jpg'), 'image/jpeg') }
+    ]
   },
-  {page_attributes: {title: 'Коляска трехколесная', url: 'kolyaska-trehkolesnaya'}, price: 1599, sku: 'qwe456', available: false}
+  {
+    page_attributes: {title: 'Коляска трехколесная', url: 'kolyaska-trehkolesnaya'},
+    price: 1599, sku: 'qwe456', available: false
+  }
 ]

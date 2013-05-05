@@ -11,7 +11,10 @@
 
 #product-container {
   .description {
-    .bages { margin: 5px 0; font-size: 117%; }
+    .bages {
+      margin: 5px 0; font-size: 117%;
+      span { margin-right: 10px; }
+    }
     hr { margin-top: 5px; }
   }
   .gallery {
@@ -27,6 +30,10 @@
   .price {
     font-size: @baseFontSize*2;
     color: @pinkDark;
+    span.old {
+      font-size: @baseFontSize*1.5;
+      text-decoration: line-through;
+    }
   }
   .btns {
     text-align: right;

@@ -21,4 +21,12 @@ FactoryGirl.define do
     available false
     sku { generate :sku }
   end
+
+  # TODO use factories inheritance
+  factory :product_without_images, class: Product do
+    category
+    page {
+      build(:page)
+    }
+  end
 end

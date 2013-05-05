@@ -17,4 +17,8 @@ class Product < ActiveRecord::Base
             numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
   validates :available, :novelty, :topicality, :hit,
             inclusion: { in: [true, false] }
+
+  def free_shipping
+    price >= 1500
+  end
 end

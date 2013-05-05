@@ -1,0 +1,52 @@
+- title @product.title
+
+- content_for :head do
+  = stylesheet_link_tag 'product'
+  = javascript_include_tag 'product'
+
+#product-container.container-fluid.container-wide: .row-fluid
+  .gallery.span4
+    = gallery_for(@product)
+  .description.span8
+    .bages.pull-left
+      - if @product.available
+        span.label.label-success Есть в наличии
+      - else
+        span.label.label-inverse Нет в наличии
+      span.label Артикул: #{@product.sku}
+    .share.pull-right
+      | Поделиться:
+      a.icon-facebook-sign href="#"
+      a.icon-twitter-sign href="#"
+      a.icon-google-plus-sign href="#"
+    .clearfix
+    hr
+    .pull-left
+      p.price
+        - if @product.price_old
+          span.old.muted = @product.price_old
+          | &nbsp;
+        | #{@product.price} грн
+      p.shipping
+        - if @product.free_shipping
+          | Доставка бесплатно &nbsp;
+        - else
+          | Доставка около 50 грн &nbsp;
+        a.icon-info-sign href="/information/delivery" title="Подробнее о доставке"
+    .pull-right.btns
+      p
+        / a.to-cart.btn
+        /   i.icon-shopping-cart
+        /   | &nbsp;В корзину
+        a.quick-shop.btn.btn-large.btn-success Быстрая покупка
+    .clearfix
+    ul.nav.nav-tabs id="product-info-tabs"
+      li.active: a href="#description" data-toggle="tab" Описание
+      li: a href="#additionalInfo" data-toggle="tab" Варианты цветов
+      li: a href="#video" data-toggle="tab" Видеообзор
+    .tab-content
+      .tab-pane.active#description
+        .page-content
+      .tab-pane#additionalInfo Цвета
+      .tab-pane#video
+        iframe width="640" height="360" src="http://www.youtube.com/embed/dp7UN_BsVWY" frameborder="0" allowfullscreen>

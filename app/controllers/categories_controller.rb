@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
 
   def show
-    @category = Page.visible.find_by_url!(params[:slug]).pageable
+    @category = pageable_from_slug
   end
 end
