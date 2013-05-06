@@ -87,6 +87,14 @@ class Admin::ProductsController < Admin::ApplicationController
     end
   end
 
+  def tags
+    tags = ActsAsTaggableOn::Tag.where('name LIKE ?', "%#{params[:q]}%").limit(5)
+    tags.map! { |tag| { text: tag.name, id: tag.name } }
+    respond_to do |format|
+      format.json { render json: tags }
+    end
+  end
+
   private
     def products_params
       params.require(:product).permit(

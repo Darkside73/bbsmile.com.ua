@@ -27,6 +27,7 @@ Bbsmile::Application.routes.draw do
         post 'create_image'
         put 'save_content'
       end
+      get 'tags', on: :collection
     end
     resources :images, only: [:destroy], concerns: :sortable
   end

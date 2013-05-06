@@ -3,11 +3,13 @@
 //= require jquery-ui
 //= require twitter/bootstrap
 //= require select2/select2
+//= require select2/select2_locale_ru
 //= require bootstrap-wysihtml5
 //= require bootstrap-wysihtml5/locales/ru-RU
 //= require tabs_memory
-//= require admin/destroy_helper
-//= require admin/sort
+//= require ./destroy_helper
+//= require ./sort
+//= require ./products
 
 $ ->
   $('.hide-sidebar').click ->

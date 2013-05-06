@@ -83,4 +83,11 @@ describe Admin::ProductsController do
       should redirect_to([:admin, product])
     end
   end
+
+  describe 'GET tags' do
+    it 'success' do
+      xhr :get, :tags, format: :json
+      response.should be_success
+    end
+  end
 end
