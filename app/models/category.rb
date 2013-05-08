@@ -18,7 +18,7 @@ class Category < ActiveRecord::Base
   class << self
     alias_method :ancestry_arrange, :arrange
     def arrange
-      self.unscoped.includes(:page).merge(Page.visible).references(:pages).ancestry_arrange(order: :position)
+      self.includes(:page).merge(Page.visible).references(:pages).ancestry_arrange(order: :position)
     end
   end
 

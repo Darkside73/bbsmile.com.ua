@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0beta1'
+gem 'rails', '4.0.0.rc1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -8,7 +8,7 @@ gem 'rails', '4.0.0beta1'
 gem 'pg'
 gem 'ancestry', github: 'stefankroes/ancestry', branch: 'master'
 
-gem 'slim', github: 'slim-template/slim'
+gem 'slim', github: 'slim-template/slim', ref: '594f4f90'
 # gem 'slim-rails', github: 'slim-template/slim-rails'
 gem 'cells'
 gem 'simple_form', '>= 3.0.0beta1'
@@ -17,6 +17,7 @@ gem 'acts_as_list'
 gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
 
 gem 'jquery-rails'
+gem 'json', '~> 1.7.7'
 gem 'bootstrap-wysihtml5-rails'
 gem 'paperclip'
 
