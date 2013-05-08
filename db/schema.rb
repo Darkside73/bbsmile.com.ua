@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130505220233) do
+ActiveRecord::Schema.define(version: 20130508211015) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -55,9 +55,11 @@ ActiveRecord::Schema.define(version: 20130505220233) do
     t.integer  "pageable_id"
     t.string   "pageable_type"
     t.boolean  "hidden",        default: false
+    t.string   "url_old"
   end
 
-  add_index "pages", ["url"], name: "index_pages_on_url", unique: true
+  add_index "pages", ["url"], name: "index_pages_on_url", unique: true, using: :btree
+  add_index "pages", ["url_old"], name: "index_pages_on_url_old", unique: true, using: :btree
 
   create_table "products", force: true do |t|
     t.float    "price"
@@ -75,7 +77,7 @@ ActiveRecord::Schema.define(version: 20130505220233) do
     t.string   "video"
   end
 
-  add_index "products", ["brand_id"], name: "index_products_on_brand_id"
+  add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
@@ -87,8 +89,8 @@ ActiveRecord::Schema.define(version: 20130505220233) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: true do |t|
     t.string "name"
