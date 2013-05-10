@@ -1,4 +1,4 @@
-li.dropdown.active
+li.dropdown*unless_catalog_active_attr
   a.dropdown-toggle href="#" data-toggle="dropdown"
     | Каталог&nbsp;
     b.caret
@@ -7,6 +7,6 @@ li: a href="/information" Информация
 li: a href="#" Статьи
 li: a href="#" Новости
 li: a href="#" О нас
-li.cart: a href="#"
-  | Корзина&nbsp;
-  span.badge 2
+/ li.cart: a href="#"
+/   | Корзина&nbsp;
+/   span.badge 2

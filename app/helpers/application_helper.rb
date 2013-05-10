@@ -39,6 +39,22 @@ module ApplicationHelper
     end
   end
 
+  def controller?(*controller)
+    controller.include?(params[:controller])
+  end
+
+  def action?(*action)
+    action.include?(params[:action])
+  end
+
+  def unless_active_attr(page)
+    controller?(page) ? {class: :active} : {}
+  end
+
+  def unless_catalog_active_attr
+    controller?('categories', 'products') ? {class: :active} : {}
+  end
+
   private
     def current_layout
       layout = controller.send(:_layout)

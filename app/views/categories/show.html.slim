@@ -1,11 +1,10 @@
 - content_for :head do
   = stylesheet_link_tag 'category'
 
-- content_for :h1 do
-  =' @category.title
-  small подбор товаров
-
 #category-content.container-fluid.container-wide
+  h1.page-title.text-center
+    =' @category.title
+    small подбор товаров
   = render 'breadcrumb'
   .row-fluid
     .product-filters.span3
