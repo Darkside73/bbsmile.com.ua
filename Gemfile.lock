@@ -237,6 +237,7 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
+    seedbank (0.2.1)
     shoulda (3.4.0)
       shoulda-context (~> 1.0, >= 1.0.1)
       shoulda-matchers (~> 1.0, >= 1.4.1)
@@ -312,6 +313,7 @@ DEPENDENCIES
   rails (= 4.0.0.rc1)
   rb-inotify
   rspec-rails (~> 2.13.0)
+  seedbank
   shoulda
   simple_form (>= 3.0.0beta1)
   slim!

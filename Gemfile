@@ -35,6 +35,7 @@ group :assets do
 end
 
 group :development do
+  gem 'seedbank'
   gem 'rb-inotify', require: false
   gem 'guard-rspec'
   gem 'guard-cucumber'
