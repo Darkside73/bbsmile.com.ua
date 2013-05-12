@@ -25,4 +25,14 @@
             | 066 717-37-07
     .span1
 
-.container = render 'form_search'
+.container
+  = render 'form_search'
+  hr
+  .subnav data-spy="affix" data-offset-top="330"
+    ul.nav.nav-pills
+      li: a href="#" Акции
+      li: a href="#" Новинки
+      li: a href="#" Хиты продаж
+      li: a href="#" Актуально
+      li: a href="#" Весь каталог
+  hr
