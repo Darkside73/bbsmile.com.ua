@@ -8,7 +8,7 @@ gem 'rails', '4.0.0.rc1'
 gem 'pg'
 gem 'ancestry', github: 'stefankroes/ancestry', branch: 'master'
 
-gem 'slim', github: 'slim-template/slim'
+gem 'slim', github: 'slim-template/slim', ref: '594f4f90'
 # gem 'slim-rails', github: 'slim-template/slim-rails'
 gem 'cells'
 gem 'simple_form', '>= 3.0.0beta1'

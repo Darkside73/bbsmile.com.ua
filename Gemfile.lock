@@ -18,7 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/slim-template/slim.git
-  revision: 38d8694938133cef1e53cb3ccc4e18915bf3d302
+  revision: 594f4f9007ba35dea28c2f1c6236b72512a89067
+  ref: 594f4f90
   specs:
     slim (2.0.0.pre.8)
       temple (~> 0.6.4)
