@@ -9,6 +9,7 @@
     =' @product.title
     - if @product.brand.present?
       small.muted = @product.brand.name
+  = render 'breadcrumb', category: @product.category
   .row-fluid
     .gallery.span4
       = gallery_for(@product)

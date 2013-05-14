@@ -1,0 +1,8 @@
+- category ||= @category
+- unless category.is_root?
+  ul.breadcrumb
+    - category.ancestors.each do |ancestor|
+      li
+        = link_to ancestor
+        span.divider: i.icon-caret-right
+    li.active = category.title
