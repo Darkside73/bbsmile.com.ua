@@ -64,26 +64,6 @@ describe Admin::ProductsController do
       }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
-  describe 'POST create_image' do
-    let(:product) { create :product}
-    before { Image.any_instance.stub(:save_attached_files) }
-    it 'create image' do
-      file = fixture_file_upload(Rails.root.join('spec/fixtures/files/product_image.jpg'), 'image/jpeg')
-      post :create_image, id: product.id, image: { asset: file }
-      flash[:notice].should have_content(/uploaded/i)
-      should redirect_to([:admin, product])
-    end
-  end
-  describe 'PUT save_content' do
-    let(:product) { create :product}
-    it 'save content' do
-      put :save_content, id: product.id, content: { text: 'new content' }
-      expect { product.content.reload }.to change { product.content.text }
-      flash[:notice].should have_content(/saved/i)
-      should redirect_to([:admin, product])
-    end
-  end
-
   describe 'GET tags' do
     it 'success' do
       xhr :get, :tags, format: :json

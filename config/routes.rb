@@ -1,6 +1,6 @@
 Bbsmile::Application.routes.draw do
 
-  root to: 'main#index'
+  root 'main#index'
 
   get 'main' => 'layout_main#index'
   get 'category' => 'layout_inner#category'
@@ -22,14 +22,12 @@ Bbsmile::Application.routes.draw do
         get 'products'
       end
     end
-    resources :products, concerns: :sortable do
-      member do
-        post 'create_image'
-        put 'save_content'
-      end
+    resources :products, concerns: :sortable, shallow: true do
+      resources :images, concerns: :sortable, only: [:index, :new, :create, :destroy]
+      resources :contents, only: [:new, :create, :edit, :update]
       get 'tags', on: :collection
+      get 'content', on: :member
     end
-    resources :images, only: [:destroy], concerns: :sortable
   end
 
   # TODO deal with odd rails server behavior: it complains that "A copy of PageTypeConstraint has been removed from the module tree but is still active!"

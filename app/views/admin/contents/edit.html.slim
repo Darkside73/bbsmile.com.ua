@@ -3,4 +3,4 @@
   strong = @product.title
 = render layout: 'boxed' do
   = render layout: 'product_edit_tabs' do
-    = render 'form'
+    = render 'form', path: [:admin, @product.content]

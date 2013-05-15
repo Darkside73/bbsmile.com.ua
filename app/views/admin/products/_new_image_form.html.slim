@@ -1,7 +1,0 @@
-- if @image.errors.any?
-  .control-group.error
-    - @image.errors.full_messages.each do |msg|
-      p.help-block = msg
-= simple_form_for [:admin, @product, @product.images.build], url: [:create_image, :admin, @product] do |f|
-  = f.input :asset, label: 'Добавить фото'
-  = f.button :submit, 'Загрузить', class: 'btn btn-primary'

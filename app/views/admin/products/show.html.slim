@@ -2,61 +2,40 @@
   strong =' @product.title
   | &mdash; #{link_to @product.category.title, [:admin, @product.category] }
 = render layout: 'boxed' do
-  ul.nav.nav-tabs
-    li.active: a data-toggle="tab" href="#main" Основное
-    li: a data-toggle="tab" href="#photos" Фото
-    li: a data-toggle="tab" href="#product-content" Описание
-
-  .tab-content
-    #main.tab-pane.fade.in.active
-      p.bages
-        - if @product.available
-          span.text-success
-            i.icon-check &nbsp;
-            | доступен для заказа
-        - else
-          span.muted
-            i.icon-minus-sign &nbsp;
-            | нет на складе
-        - if @product.novelty
-          span.label.label-info новинка
-        - if @product.topicality
-          span.label.label-info актуальный
-        - if @product.hit
-          span.label.label-info хит продаж
-      table.table.table-hover#product-card
-        - if @product.brand.present?
-          tr
-            td Бренд
-            td = @product.brand.name
+  = render layout: 'product_info_tabs' do
+    p.bages
+      - if @product.available
+        span.text-success
+          i.icon-check &nbsp;
+          | доступен для заказа
+      - else
+        span.muted
+          i.icon-minus-sign &nbsp;
+          | нет на складе
+      - if @product.novelty
+        span.label.label-info новинка
+      - if @product.topicality
+        span.label.label-info актуальный
+      - if @product.hit
+        span.label.label-info хит продаж
+    table.table.table-hover#product-card
+      - if @product.brand.present?
         tr
-          td Цена
-          td = @product.price
-        - if @product.price_old
-          tr
-            td Старая цена
-            td = @product.price_old
+          td Бренд
+          td = @product.brand.name
+      tr
+        td Цена
+        td = @product.price
+      - if @product.price_old
         tr
-          td Артикул
-          td = @product.sku
-        - if @product.tag_list.present?
-          tr
-            td Теги
-            td = @product.tag_list
-      hr
-      =' link_to 'Редактировать', [:edit, :admin, @product], class: 'btn btn-info'
-    #photos.tab-pane.fade
-      .row-fluid
-        .span8
-          - if @product.images.any?
-            table.table.sortable.photos-list.table-striped
-              = render @product.images
-          - else
-            | нет фотографий, попробуйте добавить
-        .span4
-          = render 'new_image_form'
-    #product-content.tab-pane.fade
-      .text
-        == @content.text || 'нет описания, попробуйте добавить'
-      hr
-      = link_to @content.text.blank? ? 'Добавить' : 'Редактировать', [:edit, :admin, @product], class: 'btn btn-info'
+          td Старая цена
+          td = @product.price_old
+      tr
+        td Артикул
+        td = @product.sku
+      - if @product.tag_list.present?
+        tr
+          td Теги
+          td = @product.tag_list
+    hr
+    =' link_to 'Редактировать', [:edit, :admin, @product], class: 'btn btn-info'

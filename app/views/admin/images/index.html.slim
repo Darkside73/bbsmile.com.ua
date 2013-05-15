@@ -1,0 +1,14 @@
+- content_for :box_title do
+  strong =' @product.title
+  | &mdash; #{link_to @product.category.title, [:admin, @product.category] }
+= render layout: 'boxed' do
+  = render layout: 'product_info_tabs' do
+    .row-fluid
+      .span8
+        - if @product.images.any?
+          table.table.sortable.photos-list.table-striped
+            = render @product.images
+        - else
+          | нет фотографий, попробуйте добавить
+      .span4
+        = render 'form'

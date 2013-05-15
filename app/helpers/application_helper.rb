@@ -47,8 +47,8 @@ module ApplicationHelper
     action.include?(params[:action])
   end
 
-  def unless_active_attr(page)
-    controller?(page) ? {class: :active} : {}
+  def unless_active_attr(controller, action = nil)
+    controller?(controller) && (action.nil? || action?(action)) ? {class: :active} : {}
   end
 
   def unless_catalog_active_attr

@@ -9,7 +9,6 @@ FactoryGirl.define do
 
     category
     brand
-    content
 
     # TODO DRY pageable factories
     page {
@@ -21,6 +20,9 @@ FactoryGirl.define do
     available false
     sku { generate :sku }
 
+    factory :product_with_content do
+      association :content
+    end
     factory :product_with_images do
       images { |images| [images.association(:image)] }
     end

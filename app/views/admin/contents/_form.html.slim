@@ -1,4 +1,4 @@
-= simple_form_for [:admin, @product, @content], url: [:save_content, :admin, @product], method: :put do |f|
+= simple_form_for path do |f|
   = f.input :text, label: false, input_html: {class: 'wysihtml5'}
   = f.button :submit, 'Сохранить', class: 'btn btn-primary'
   | &nbsp;или&nbsp;

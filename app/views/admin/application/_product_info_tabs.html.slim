@@ -1,0 +1,7 @@
+ul.nav.nav-tabs
+  li*unless_active_attr('admin/products', 'show') = link_to "Основное", [:admin, @product]
+  li*unless_active_attr('admin/images') = link_to "Фото", [:admin, @product, :images]
+  li*unless_active_attr('admin/products', 'content') = link_to "Описание", [:content, :admin, @product]
+
+.tab-content
+  = yield

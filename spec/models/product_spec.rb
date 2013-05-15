@@ -13,13 +13,18 @@ describe Product do
     end
   end
 
-  let(:product) { create :product_with_images }
-  it 'has attached image' do
-    image = product.images.first
-    image.asset.url.should be
+  context "content relation" do
+    let(:product) { create :product_with_content }
+    it 'has content' do
+      product.content.text.should be
+    end
   end
 
-  it 'has content' do
-    product.content.text.should be
+  context "images relation" do
+    let(:product) { create :product_with_images }
+    it 'has attached image' do
+      image = product.images.first
+      image.asset.url.should be
+    end
   end
 end

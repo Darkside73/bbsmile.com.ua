@@ -29,6 +29,14 @@ Given(/^Some product$/) do
   @product = create :product
 end
 
+Given(/^Some product without content$/) do
+  @product = create :product
+end
+
+Given(/^Some product with content$/) do
+  @product = create :product_with_content
+end
+
 Given(/^Some tagged product$/) do
   @product = create :tagged_product
 end
@@ -52,5 +60,5 @@ When(/attach the file "(.*?)" to "(.*?)"$/) do |file, field|
 end
 
 Then(/^I should see uploaded image$/) do
-  all('#photos img').should have(1).item
+  all('.tab-content img').should have(1).item
 end
