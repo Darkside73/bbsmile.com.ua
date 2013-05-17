@@ -1,0 +1,12 @@
+- variant = path.last
+= simple_form_for path do |f|
+  = f.input :name, label: 'Название'
+  = f.input :master, label: 'Основной', hint: 'Что это за свойство такое..'
+  = f.input :price, label: 'Цена'
+  = f.input :price_old, label: 'Старая цена'
+  = f.input :available, label: 'Доступность'
+  = f.input :sku, label: 'Артикул'
+  = f.simple_fields_for(:image, variant.image || variant.build_image) do |i|
+    = i.input :asset, label: 'Фото'
+  = f.input(:delete_image, as: :boolean, label: false, inline_label: 'удалить фото') unless variant.image.new_record?
+  = f.button :submit, variant.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'

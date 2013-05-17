@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130517154012) do
+ActiveRecord::Schema.define(version: 20130517195110) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -96,5 +96,20 @@ ActiveRecord::Schema.define(version: 20130517154012) do
   create_table "tags", force: true do |t|
     t.string "name"
   end
+
+  create_table "variants", force: true do |t|
+    t.string   "name"
+    t.boolean  "master",     default: false
+    t.float    "price"
+    t.float    "price_old"
+    t.string   "sku"
+    t.boolean  "available",  default: true
+    t.integer  "position",   default: 0
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "variants", ["product_id"], name: "index_variants_on_product_id", using: :btree
 
 end

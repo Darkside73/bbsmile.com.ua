@@ -25,6 +25,7 @@ Bbsmile::Application.routes.draw do
     resources :products, concerns: :sortable, shallow: true do
       resources :images, concerns: :sortable, only: [:index, :new, :create, :destroy]
       resources :contents, only: [:new, :create, :edit, :update]
+      resources :variants, only: [:index, :create, :edit, :update, :destroy]
       get 'tags', on: :collection
       get 'content', on: :member
     end

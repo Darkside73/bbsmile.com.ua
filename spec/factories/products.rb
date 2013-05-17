@@ -1,6 +1,4 @@
 FactoryGirl.define do
-  sequence(:sku) { |n| Faker::Lorem.word + n.to_s }
-  sequence(:price) { |n| Random.new.rand(0.0..n*100).round(2) }
 
   factory :product do
     ignore do
@@ -16,10 +14,11 @@ FactoryGirl.define do
       page_attrs[:title] = page_title if page_title
       build(:page, page_attrs)
     }
-    price { generate :price }
     available false
-    sku { generate :sku }
 
+    factory :product_with_variants do
+      variants { create_list :variant, 3 }
+    end
     factory :product_with_content do
       association :content
     end

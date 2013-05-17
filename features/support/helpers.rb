@@ -17,6 +17,8 @@ module NavigationHelpers
 end
 
 module CapybaraHelpers
+  include ActionView::RecordIdentifier
+
   def basic_auth(name, password)
     if page.driver.respond_to?(:basic_auth)
       page.driver.basic_auth(name, password)

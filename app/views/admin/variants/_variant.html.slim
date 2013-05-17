@@ -1,0 +1,12 @@
+tr.item*{id: dom_id(variant)}
+  td.thumb width="25%"
+    = image_tag variant.image.asset.url(:thumb) if variant.image.present?
+  td width="50%"
+    p = variant.name
+    p = variant.sku
+    p = variant.price
+    p = variant.available
+    p = variant.master
+  td width="25%"
+    =' link_to 'Редактировать', [:edit, :admin, variant], class: 'edit btn btn-info'
+    =  link_to 'Удалить', admin_variant_path(variant), method: :delete, class: 'btn btn-warning'

@@ -1,0 +1,13 @@
+= render layout: 'product_info_tabs' do
+  .row-fluid
+    .span8
+      .new-variant
+        h4 Добавить вариант
+        = render 'form', path: [:admin, @product, @new_variant]
+
+      - if @product.variants.any?
+        table.table.variants-list.table-striped
+          = render @product.variants
+      - else
+        | нет вариантов, попробуйте добавить
+    .span4

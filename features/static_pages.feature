@@ -7,7 +7,7 @@ Feature: Static pages
 Scenario: Access information page
   Given I am on home page
     And Some published pages
-  When I click "Информация" in main menu
+  When I click "Информация"
   Then I should see "Информация" in h1 tag
     And I should see "Информация" in page title
     And I should see link "Доставка" in page content
