@@ -1,8 +1,21 @@
 require 'spec_helper'
 
 describe Product do
-  let(:category) { create :category }
+  context "instance methods" do
+    describe "#description" do
+      it "return text from content" do
+        product = create :product_with_content
+        product.description.should == product.content.text
+      end
+      it "return nil if no content" do
+        product = create :product
+        product.description.should be_nil
+      end
+    end
+  end
+
   context 'when save' do
+    let(:category) { create :category }
     it 'create record with page' do
       expect {
         Product.create(

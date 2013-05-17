@@ -24,4 +24,8 @@ class Product < ActiveRecord::Base
   def free_shipping
     price >= 1500
   end
+
+  def description
+    content.try(:text)
+  end
 end

@@ -1,14 +1,8 @@
-/ # TODO remove code duplication
-- content_for :box_title do
-  strong =' @product.title
-  | &mdash; #{link_to @product.category.title, [:admin, @product.category] }
-= render layout: 'boxed' do
-  = render layout: 'product_info_tabs' do
-    .text
-      / # TODO extract to model
-      == @product.content.try(:text) || 'нет описания, попробуйте добавить'
-    hr
-    - if @product.content.try(:text).blank?
-      = link_to 'Добавить', [:new, :admin, @product, :content], class: 'btn btn-info'
-    - else
-      = link_to 'Редактировать', [:edit, :admin, @product.content], class: 'btn btn-info'
+= render layout: 'product_info_tabs' do
+  .text
+    == @product.description || 'нет описания, попробуйте добавить'
+  hr
+  - unless @product.description
+    = link_to 'Добавить', [:new, :admin, @product, :content], class: 'btn btn-info'
+  - else
+    = link_to 'Редактировать', [:edit, :admin, @product.content], class: 'btn btn-info'

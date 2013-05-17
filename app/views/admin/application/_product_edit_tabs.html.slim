@@ -1,10 +1,14 @@
-ul.nav.nav-tabs
-  li*unless_active_attr('admin/products') = link_to "Основное", [:edit, :admin, @product]
-  li*unless_active_attr('admin/contents')
-    - if @product.content.present?
-      = link_to "Описание", edit_admin_content_path(@product.content)
-    - else
-      = link_to "Описание", [:new, :admin, @product, :content]
+- content_for :box_title do
+  | Редактирование товара &mdash;&nbsp;
+  strong = link_to @product.title, [:admin, @product], title: "Перейти к просмотру"
+= render layout: 'boxed' do
+  ul.nav.nav-tabs
+    li*unless_active_attr('admin/products') = link_to "Основное", [:edit, :admin, @product]
+    li*unless_active_attr('admin/contents')
+      - if @product.content.present?
+        = link_to "Описание", edit_admin_content_path(@product.content)
+      - else
+        = link_to "Описание", [:new, :admin, @product, :content]
 
-.tab-content
-  = yield
+  .tab-content
+    = yield
