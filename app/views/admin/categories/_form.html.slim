@@ -1,6 +1,7 @@
 = simple_form_for [:admin, category], url: url do |f|
   = f.simple_fields_for :page do |p|
     = p.input :title, label: 'Название'
+    = p.input :name, label: 'Краткое название'
     = p.input :url, label: 'URL', input_html: {type: 'text'}
     = p.input :hidden, label: 'скрытая'
   - if category.new_record? || category.is_childless?

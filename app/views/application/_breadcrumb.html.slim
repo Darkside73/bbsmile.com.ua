@@ -3,6 +3,6 @@
   ul.breadcrumb
     - category.ancestors.each do |ancestor|
       li
-        = link_to ancestor
+        = link_to ancestor.name, ancestor
         span.divider: i.icon-caret-right
-    li.active = category.title
+    li.active = category.name

@@ -1,10 +1,5 @@
 - content_for :box_title do
-  ul.breadcrumb
-    - @category.ancestors.each do |ancestor|
-      li
-        = link_to ancestor.title, [:admin, ancestor]
-        span.divider: i.icon-caret-right
-    li.active = @category.title
+  = render 'breadcrumb'
 
 = render layout: 'boxed' do
   - if @subcategories.any?

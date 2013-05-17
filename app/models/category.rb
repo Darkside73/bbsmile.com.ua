@@ -4,7 +4,7 @@ class Category < ActiveRecord::Base
   has_many :products
   accepts_nested_attributes_for :page
 
-  delegate :title, :url, to: :page
+  delegate :title, :name, :url, to: :page
 
   has_ancestry orphan_strategy: :restrict
 

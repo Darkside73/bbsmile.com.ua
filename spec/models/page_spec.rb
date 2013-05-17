@@ -18,5 +18,10 @@ describe Page do
       page.save
       expect { page.reload }.not_to change { page.title }
     end
+    it "set title to name unless name" do
+      page = build :page, title: 'pretty page', name: nil
+      page.save
+      page.name.should == page.title
+    end
   end
 end

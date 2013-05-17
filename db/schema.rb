@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130508211015) do
+ActiveRecord::Schema.define(version: 20130517154012) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20130508211015) do
     t.string   "pageable_type"
     t.boolean  "hidden",        default: false
     t.string   "url_old"
+    t.string   "name"
   end
 
   add_index "pages", ["url"], name: "index_pages_on_url", unique: true, using: :btree

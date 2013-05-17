@@ -1,0 +1,6 @@
+ul.breadcrumb
+  - @category.ancestors.each do |ancestor|
+    li
+      = link_to ancestor.name, [:admin, ancestor]
+      span.divider: i.icon-caret-right
+  li.active = @category.name
