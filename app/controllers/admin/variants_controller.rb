@@ -45,7 +45,7 @@ class Admin::VariantsController < Admin::ApplicationController
   private
     def variant_params
       params.require(:variant).permit(
-        :name, :sku, :price, :price_old, :available, :delete_image,
+        :name, :sku, :price, :price_old, :available, :master, :delete_image,
         image_attributes: [:asset, :id]
       )
     end
