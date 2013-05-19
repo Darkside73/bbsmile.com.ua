@@ -6,7 +6,7 @@ Background:
   Given Some product
 
 Scenario: Add new variant
-  When I go to this product edit
+  When I go to this product
     And I click "Цены"
     And fill in "variant[name]" with "зеленый цвет"
     And fill in "variant[price]" with "10.10"

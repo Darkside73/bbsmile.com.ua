@@ -1,9 +1,14 @@
 = render layout: 'product_info_tabs' do
   .row-fluid
     .span8
-      .new-variant
-        h4 Добавить вариант
-        = render 'form', path: [:admin, @product, @new_variant]
+      #new-variant-form.accordion
+        .accordion-group
+          .accordion-heading
+            .accordion-toggle data-toggle="collapse" data-parent="#new-variant-form" href="#collapse-form"
+              strong Добавить вариант
+          #collapse-form.accordion-body.collapse
+            .accordion-inner
+              = render 'form', path: [:admin, @product, @new_variant]
 
       - if @product.variants.any?
         table.table.variants-list.table-striped

@@ -13,6 +13,13 @@ class Variant < ActiveRecord::Base
 
   before_save :destroy_image, if: "delete_image"
 
+  # TODO move to module (example https://gist.github.com/equivalent/3825916)
+  def delete_image
+    return true if @delete_image == true || @delete_image =~ (/^(true|t|yes|y|1)$/i)
+    return false if @delete_image == false || @delete_image.blank? || @delete_image =~ (/^(false|f|no|n|0)$/i)
+    raise ArgumentError.new("invalid value for Boolean: \"#{@delete_image}\"")
+  end
+
   private
     def destroy_image
       self.image = nil

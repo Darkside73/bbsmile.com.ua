@@ -1,2 +1,7 @@
-= render layout: 'product_edit_tabs' do
+- content_for :box_title do
+  | Редактирование варианта товара &mdash;&nbsp;
+  strong =' link_to "#{@product.title}", [:admin, @product], title: "Перейти к просмотру"
+  - if @variant.name.present?
+   span = @variant.name
+= render layout: 'boxed' do
   = render 'form', path: [:admin, @variant]

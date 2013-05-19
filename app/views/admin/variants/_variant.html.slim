@@ -1,12 +1,21 @@
 tr.item*{id: dom_id(variant)}
-  td.thumb width="25%"
-    = image_tag variant.image.asset.url(:thumb) if variant.image.present?
-  td width="50%"
-    p = variant.name
+  td.available
+    p: strong = variant.name
     p = variant.sku
-    p = variant.price
-    p = variant.available
-    p = variant.master
-  td width="25%"
+    / # TODO move to partial
+    - if variant.available
+      span.text-success
+        i.icon-check &nbsp;
+        | доступен
+    - else
+      span.muted
+        i.icon-minus-sign &nbsp;
+        | нет на складе
+  td.thumb
+    = image_tag variant.image.asset.url(:thumb) if variant.image.present?
+  td
+    p: strong.text-info = variant.price
+    p: span.old.muted title="старая цена" = variant.price_old
+  td
     =' link_to 'Редактировать', [:edit, :admin, variant], class: 'edit btn btn-info'
     =  link_to 'Удалить', admin_variant_path(variant), method: :delete, class: 'btn btn-warning'
