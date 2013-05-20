@@ -43,7 +43,8 @@ module Converter
           page_attributes: {
             title: source['title'], url: source['url_old'], url_old: source['url_old']
           },
-          category: Page.find_by!(title: category_title).pageable, price: source['price'],
+          category: Page.find_by!(title: category_title).pageable,
+          variants_attributes: [{price: source['price']}],
           brand: Brand.find_or_create_by(name: source['brand'])
         )
         create_images(product, source)

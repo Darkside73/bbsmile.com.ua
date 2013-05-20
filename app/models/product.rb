@@ -8,7 +8,10 @@ class Product < ActiveRecord::Base
 
   accepts_nested_attributes_for :page
   accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :variants
   delegate :title, :url, to: :page
+  delegate :price, :price_old, :available, :sku, to: :master_variant,
+            allow_nil: true
 
   acts_as_list scope: [:category_id]
   acts_as_taggable
@@ -17,10 +20,13 @@ class Product < ActiveRecord::Base
   scope :recent, lambda { |n| order(created_at: :desc).limit(n) }
 
   validates :category, presence: true
-  validates :price, :price_old,
-            numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
-  validates :available, :novelty, :topicality, :hit,
-            inclusion: { in: [true, false] }
+  validates :novelty, :topicality, :hit, inclusion: { in: [true, false] }
+
+  before_create :make_master_variant
+
+  def master_variant
+    variants.detect { |v| v.master } || variants.first
+  end
 
   def free_shipping
     price >= 1500
@@ -29,4 +35,9 @@ class Product < ActiveRecord::Base
   def description
     content.try(:text)
   end
+
+  private
+    def make_master_variant
+      master_variant.master = true if master_variant
+    end
 end

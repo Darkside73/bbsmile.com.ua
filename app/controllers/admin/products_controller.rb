@@ -24,7 +24,7 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def create
     @category = Category.find(params[:product][:category_id])
-    @product = Product.new products_params
+    @product = Product.new product_params
     if @product.save
       redirect_to [:admin, @category], notice: I18n.t('flash.message.products.created')
     else
@@ -39,7 +39,7 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def update
     @product = Product.find params[:id]
-    if @product.update products_params
+    if @product.update product_params
       redirect_to [:admin, @product], notice: I18n.t('flash.message.products.updated')
     else
       render :edit
@@ -72,11 +72,12 @@ class Admin::ProductsController < Admin::ApplicationController
   end
 
   private
-    def products_params
+    def product_params
       params.require(:product).permit(
-        :sku, :price, :price_old, :category_id, :brand_id,
-        :available, :novelty, :topicality, :hit, :video, :tag_list,
+        :category_id, :brand_id,
+        :novelty, :topicality, :hit, :video, :tag_list,
         page_attributes: [:id, :title, :url, :hidden],
+        variants_attributes: [[:id, :sku, :price, :price_old, :available]],
         images_attributes: [[:asset]]
       )
     end

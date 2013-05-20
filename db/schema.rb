@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130517195110) do
+ActiveRecord::Schema.define(version: 20130520203020) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -63,14 +63,10 @@ ActiveRecord::Schema.define(version: 20130517195110) do
   add_index "pages", ["url_old"], name: "index_pages_on_url_old", unique: true, using: :btree
 
   create_table "products", force: true do |t|
-    t.float    "price"
-    t.boolean  "available",   default: true
-    t.string   "sku"
     t.integer  "category_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "position",    default: 0
-    t.float    "price_old"
     t.boolean  "novelty",     default: false
     t.boolean  "topicality",  default: false
     t.boolean  "hit",         default: false

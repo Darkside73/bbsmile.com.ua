@@ -30,7 +30,8 @@ describe Admin::ProductsController do
       post :create, product: {
         category_id: category.id,
         page_attributes: attributes_for(:page),
-        images_attributes: [{ asset: file }]
+        images_attributes: [{ asset: file }],
+        variants_attributes: [{ price: 20, sku: 'code123', available: true }]
       }
       flash[:notice].should have_content(/created/i)
       should redirect_to([:admin, category])
@@ -45,14 +46,17 @@ describe Admin::ProductsController do
     end
   end
   describe 'PUT update' do
-    let(:product) { create :product }
+    let(:product) { create :product_with_single_variant }
     it 'update product and redirect to show' do
       put :update,
         id: product.id,
-        product: { price: 13.99, page_attributes: attributes_for(:page) }
+        product: {
+          page_attributes: attributes_for(:page),
+          variants_attributes: [{ id: product.master_variant.id, price: 13.99 }]
+        }
       flash[:notice].should have_content(/updated/i)
       response.should redirect_to([:admin, product])
-      expect { product.reload }.to change { product.price }
+      expect { product.reload }.to change { product.master_variant.price }
     end
   end
   describe 'DELETE' do

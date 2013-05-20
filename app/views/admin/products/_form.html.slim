@@ -5,7 +5,6 @@
         = p.input :title, label: 'Название'
         = p.input :url, label: 'URL', input_html: {type: 'text'}
         = p.input :hidden, label: 'скрытый'
-      = f.input :available, label: 'Доступность'
       = f.association :category, collection: @leaf_categories, label: "Категория", selected: @category, input_html: { 'data-placeholder' => 'Категория' }
       = f.association :brand, collection: Brand.all, label: "Бренд", input_html: { 'data-placeholder' => 'Бренд' }
       = f.input :video, label: 'Видео', as: :text
@@ -13,9 +12,11 @@
         = f.simple_fields_for :images, @product.images.build do |i|
           = i.input :asset, label: 'Фото'
     .span6
-      = f.input :price, label: 'Цена'
-      = f.input :price_old, label: 'Старая цена'
-      = f.input :sku, label: 'Артикул'
+      = f.simple_fields_for(:variants, @product.master_variant || @product.variants.new) do |v|
+        = v.input :price, label: 'Цена'
+        = v.input :price_old, label: 'Старая цена'
+        = v.input :available, label: 'Доступность'
+        = v.input :sku, label: 'Артикул'
       = f.input :novelty, label: 'Новинка'
       = f.input :topicality, label: 'Актуальность'
       = f.input :hit, label: 'Хит продаж'

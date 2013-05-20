@@ -9,17 +9,17 @@ Background:
       | Fisher Price |
       | Geoby        |
 
-Scenario: Add new product
+Scenario: Add new product with single price
   When I go to admin page
     And I click "Новый товар"
     And I select "Детская мебель" from "product[category_id]"
     And I select "Fisher Price" from "product[brand_id]"
     And fill in "product[page_attributes][title]" with "Кроватка"
     And fill in "product[page_attributes][url]" with "krovatka"
-    And fill in "product[price]" with "10.10"
-    And fill in "product[sku]" with "code123"
+    And fill in "product[variants_attributes][0][price]" with "10.10"
+    And fill in "product[variants_attributes][0][sku]" with "code123"
+    And I uncheck "product[variants_attributes][0][available]"
     And attach the file "product_image.jpg" to "product[images_attributes][0][asset]"
-    And I uncheck "product[available]"
     And press button "Создать"
   Then I should see "Кроватка"
 
@@ -41,8 +41,10 @@ Scenario: Edit product
   Given Some product
   When I go to this product edit
     And fill in "product[page_attributes][title]" with "Другая кроватка"
+    And fill in "product[variants_attributes][0][price]" with "20.99"
     And press button "Обновить"
   Then I should see "Другая кроватка"
+    And I should see "20.99"
 
 Scenario: Add content
   Given Some product without content

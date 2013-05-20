@@ -14,8 +14,10 @@ FactoryGirl.define do
       page_attrs[:title] = page_title if page_title
       build(:page, page_attrs)
     }
-    available false
 
+    factory :product_with_single_variant do
+      variants { |variants| [variants.association(:variant)] }
+    end
     factory :product_with_variants do
       variants { create_list :variant, 3 }
     end
