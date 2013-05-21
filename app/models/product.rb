@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  FREE_SHIPPING_PRICE = 1500
+
   has_one :page, as: :pageable, dependent: :destroy
   has_one :content, as: :contentable, dependent: :destroy
   has_many :images, as: :imageable, dependent: :destroy
@@ -29,7 +31,7 @@ class Product < ActiveRecord::Base
   end
 
   def free_shipping
-    price >= 1500
+    price && price >= FREE_SHIPPING_PRICE
   end
 
   def description

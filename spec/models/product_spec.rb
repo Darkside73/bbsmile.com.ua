@@ -27,7 +27,6 @@ describe Product do
         product.master_variant.master.should be_true
       }.to change { Product.count }.by(1)
     end
-    # it "not create variant if variant price is blank"
   end
 
   describe "variants relation" do

@@ -1,10 +1,12 @@
 tr.item*{id: dom_id(variant)} data={sort_url: sort_admin_variant_path(variant)}
   td.available
-    - if variant.master
-      p: strong title="Основной вариант" = variant.name
-    -else
-      p = variant.name
-    p = variant.sku
+    - if variant.name.present?
+      - if variant.master
+        p: strong title="Основной вариант" = variant.name
+      -else
+        p = variant.name
+    - if variant.sku.present?
+      p = variant.sku
     / # TODO move to partial
     - if variant.available
       span.text-success

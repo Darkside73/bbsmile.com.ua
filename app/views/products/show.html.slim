@@ -19,7 +19,8 @@
           span.label.label-success Есть в наличии
         - else
           span.label.label-inverse Нет в наличии
-        span.label Артикул: #{@product.sku}
+        - if @product.sku.present?
+          span.label Артикул: #{@product.sku}
       .share.pull-right
         | Поделиться:
         a.icon-facebook-sign href="#"
@@ -28,17 +29,18 @@
       .clearfix
       hr
       .pull-left
-        p.price
-          - if @product.price_old
-            span.old.muted = @product.price_old
-            | &nbsp;
-          | #{@product.price} грн
-        p.shipping
-          - if @product.free_shipping
-            | Доставка бесплатно &nbsp;
-          - else
-            | Доставка около 50 грн &nbsp;
-          a.icon-info-sign href="/information/delivery" title="Подробнее о доставке"
+        - if @product.price
+          p.price
+            - if @product.price_old
+              span.old.muted = @product.price_old
+              | &nbsp;
+            | #{@product.price} грн
+          p.shipping
+            - if @product.free_shipping
+              | Доставка бесплатно &nbsp;
+            - else
+              | Доставка около 50 грн &nbsp;
+            a.icon-info-sign href="/information/delivery" title="Подробнее о доставке"
       .pull-right.btns
         p
           / a.to-cart.btn
