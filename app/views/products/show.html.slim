@@ -30,9 +30,9 @@
       hr
       .pull-left
         - if @product.price
-          p.price
+          p.price.big
             - if @product.price_old
-              span.old.muted = @product.price_old
+              span.old.muted.big = @product.price_old
               | &nbsp;
             | #{@product.price} грн
           p.shipping
@@ -50,11 +50,37 @@
       .clearfix
       ul.nav.nav-tabs id="product-info-tabs"
         li.active: a href="#description" data-toggle="tab" Описание
-        li: a href="#additionalInfo" data-toggle="tab" Варианты цветов
+        - if @product.variants.count > 1
+          li: a href="#productVariants" data-toggle="tab" Варианты цветов
         li: a href="#video" data-toggle="tab" Видеообзор
       .tab-content
         .tab-pane.active#description
           .page-content
-            == @product.content.try(:text)
-        .tab-pane#additionalInfo Цвета
+            == @product.description
+        - if @product.variants.count > 1
+          .tab-pane#productVariants
+            ul.thubmnails
+            - @product.variants.each do |variant|
+              li.item.span3
+                .thumbnail
+                  - if variant.image.present?
+                    = image_tag variant.image.asset.url(:thumb)
+                  - else
+                    - if variant.master? && @product.images.any?
+                      = image_tag @product.images.first.asset.url(:thumb)
+                  .caption
+                    h5 = variant.name
+                    - if variant.available?
+                      p.text-success
+                        i.icon-check &nbsp;
+                        | есть в наличии
+                    - else
+                      p.muted
+                        i.icon-minus-sign &nbsp;
+                        | нет в наличии
+                    p = variant.sku
+                    p.price
+                      - if variant.price_old?
+                        span.old.muted =' variant.price_old
+                      strong == "#{variant.price}&nbsp;грн"
         .tab-pane#video == @product.video

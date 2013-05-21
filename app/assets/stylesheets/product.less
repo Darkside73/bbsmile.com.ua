@@ -28,10 +28,10 @@
     li a { color: @blue; }
   }
   .price {
-    font-size: @baseFontSize*2;
+    &.big { font-size: @baseFontSize*2; }
     color: @pinkDark;
     span.old {
-      font-size: @baseFontSize*1.5;
+      &.big { font-size: @baseFontSize*1.5; }
       text-decoration: line-through;
     }
   }
@@ -49,6 +49,9 @@
       margin-left: 10px;
       &:hover { color: lighten(@purple, 20%); }
     }
+  }
+  #productVariants {
+
   }
 }
 
