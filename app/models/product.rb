@@ -12,8 +12,8 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :images
   accepts_nested_attributes_for :variants
   delegate :title, :url, to: :page
-  delegate :price, :price_old, :available, :sku, to: :master_variant,
-            allow_nil: true
+  delegate :price, :price_old, :price_old?, :available, :sku, :sku?,
+           to: :master_variant, allow_nil: true
 
   acts_as_list scope: [:category_id]
   acts_as_taggable

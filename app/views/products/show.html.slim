@@ -19,7 +19,7 @@
           span.label.label-success Есть в наличии
         - else
           span.label.label-inverse Нет в наличии
-        - if @product.sku.present?
+        - if @product.sku?
           span.label Артикул: #{@product.sku}
       .share.pull-right
         | Поделиться:

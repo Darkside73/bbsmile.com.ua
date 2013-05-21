@@ -22,7 +22,7 @@
     tr
       td Цена
       td = @product.price
-    - if @product.price_old
+    - if @product.price_old?
       tr
         td Старая цена
         td = @product.price_old
