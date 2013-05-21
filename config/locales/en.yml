@@ -20,6 +20,10 @@ en:
         created: Product created
         updated: Product updated
         destroyed: Product destroyed
+      variants:
+        created: Product variant created
+        updated: Product variant updated
+        destroyed: Product variant destroyed
       images:
         created: Image uploaded
         destroyed: Image destroyed

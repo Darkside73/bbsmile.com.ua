@@ -21,6 +21,10 @@ ru:
         created: Продукт создан
         updated: Продукт обновлен
         destroyed: Продукт удален
+      variants:
+        created: Вариант цены создан
+        updated: Вариант цены обновлен
+        destroyed: Вариант цены удален
       images:
         created: Фотография загружена
         destroyed: Фотография удалена

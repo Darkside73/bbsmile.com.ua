@@ -38,7 +38,7 @@ class Admin::VariantsController < Admin::ApplicationController
 
   def destroy
     variant.destroy
-    flash.now[:notice] = I18n.t 'flash.message.variants.destroy'
+    flash.now[:notice] = I18n.t 'flash.message.variants.destroyed'
     render json: flashes_in_json
   end
 
