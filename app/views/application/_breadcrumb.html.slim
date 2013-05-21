@@ -5,4 +5,10 @@
       li
         = link_to ancestor.name, ancestor
         span.divider: i.icon-caret-right
-    li.active = category.name
+    - if @product.present?
+      li
+        = link_to category.name, category
+        span.divider: i.icon-caret-right
+      li.active = @product.title
+    - else
+      li.active = category.name
