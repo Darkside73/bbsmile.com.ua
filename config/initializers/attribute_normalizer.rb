@@ -4,6 +4,11 @@ AttributeNormalizer.configure do |config|
     value.is_a?(String) ? value.gsub(/[^0-9\.]+/, '') : value
   end
 
+  config.normalizers[:booleanize] = lambda do |value, options|
+    return !!value if !!value == value || value.nil?
+    value == 'false' ? false : true
+  end
+
   config.normalizers[:truncate] = lambda do |text, options|
     if text.is_a?(String)
       options.reverse_merge!(:length => 30, :omission => "...")
@@ -17,7 +22,7 @@ AttributeNormalizer.configure do |config|
 
   # The default normalizers if no :with option or block is given is to apply the :strip and :blank normalizers (in that order).
   # You can change this if you would like as follows:
-  # config.default_normalizers = :strip, :blank
+  # config.default_normalizers = :strip, :blank, :falsize
 
   # You can enable the attribute normalizers automatically if the specified attributes exist in your column_names. It will use
   # the default normalizers for each attribute (e.g. config.default_normalizers)
