@@ -39,6 +39,6 @@ $ ->
 
   $('.flash-message').delay(5000).slideUp()
 
-  $('select').select2()
+  $('select').select2(allowClear: true)
 
   $('.wysihtml5').wysihtml5 locale: 'ru-RU'
