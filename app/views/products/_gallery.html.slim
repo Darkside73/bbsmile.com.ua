@@ -1,19 +1,4 @@
-#modal-gallery.modal.modal-gallery.hide.fade tabindex="-1"
-  .modal-header
-    a.close data-dismiss="modal"
-      i.icon-remove
-    h3.modal-title
-  .modal-body: .modal-image
-  .modal-footer
-    a.btn.btn-success.modal-play.modal-slideshow  data-slideshow="3000"
-      | Слайдшоу&nbsp;&nbsp;
-      i.icon-play.icon-white
-    a.btn.btn-info.modal-prev
-      i.icon-arrow-left.icon-white
-      | &nbsp;&nbsp;Назад
-    a.btn.btn-primary.modal-next
-      | Вперед&nbsp;&nbsp;
-      i.icon-arrow-right.icon-white
+= render 'gallery_modal', id: 'modal-gallery'
 .product-gallery data={toggle: "modal-gallery", target: "#modal-gallery"}
   .first-image
     = link_to image_tag(first_image.asset.url(:medium)), first_image.asset.url, data: { gallery: 'gallery' }, title: product.title
