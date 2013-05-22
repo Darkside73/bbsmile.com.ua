@@ -59,24 +59,41 @@
             == @product.description
         - if @product.variants.count > 1
           .tab-pane#productVariants
-            ul.thubmnails
-            - @product.variants.each do |variant|
-              li.item.span3
-                .thumbnail
-                  = image_tag variant_image_url(variant, :thumb)
-                  .caption
-                    h5 = variant.name
-                    - if variant.available?
-                      p.text-success
-                        i.icon-check &nbsp;
-                        | есть в наличии
-                    - else
-                      p.muted
-                        i.icon-minus-sign &nbsp;
-                        | нет в наличии
-                    p = variant.sku
-                    p.price
-                      - if variant.price_old?
-                        span.old.muted =' variant.price_old
-                      strong == "#{variant.price}&nbsp;грн"
+            #variants-gallery.modal.modal-gallery.hide.fade tabindex="-1"
+              .modal-header
+                a.close data-dismiss="modal"
+                  i.icon-remove
+                h3.modal-title
+              .modal-body: .modal-image
+              .modal-footer
+                a.btn.btn-success.modal-play.modal-slideshow  data-slideshow="3000"
+                  | Слайдшоу&nbsp;&nbsp;
+                  i.icon-play.icon-white
+                a.btn.btn-info.modal-prev
+                  i.icon-arrow-left.icon-white
+                  | &nbsp;&nbsp;Назад
+                a.btn.btn-primary.modal-next
+                  | Вперед&nbsp;&nbsp;
+                  i.icon-arrow-right.icon-white
+            ul.thubmnails data={toggle: "modal-gallery", target: "#variants-gallery"}
+              - @product.variants.each do |variant|
+                li.item.span3
+                  .thumbnail
+                    a.thumbnail href="#{variant_image_url(variant)}" title="#{variant.name} #{variant.price} грн" data-gallery="gallery"
+                      = image_tag variant_image_url(variant, :thumb)
+                    .caption
+                      h5 = variant.name
+                      - if variant.available?
+                        p.text-success
+                          i.icon-check &nbsp;
+                          | есть в наличии
+                      - else
+                        p.muted
+                          i.icon-minus-sign &nbsp;
+                          | нет в наличии
+                      p = variant.sku
+                      p.price
+                        - if variant.price_old?
+                          span.old.muted =' variant.price_old
+                        strong == "#{variant.price}&nbsp;грн"
         .tab-pane#video == @product.video
