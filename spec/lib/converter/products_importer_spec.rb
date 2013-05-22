@@ -31,4 +31,11 @@ describe Converter::ProductsImporter do
     product = Page.find_by(url: 'url/old/sample').pageable
     product.images.should have(1).item
   end
+
+  it "create content" do
+    Converter::ProductsImporter::ContentParser.
+      any_instance.stub(:content).and_return(double(:content).as_null_object)
+    subject.data_base_path = data_base_path
+    subject.import
+  end
 end

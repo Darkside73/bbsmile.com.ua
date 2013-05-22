@@ -1,5 +1,6 @@
 require 'csv'
 require 'action_dispatch/testing/test_process'
+require 'converter/products_importer/content_parser'
 
 module Converter
 
@@ -48,6 +49,7 @@ module Converter
           brand: Brand.find_or_create_by(name: source['brand'])
         )
         create_images(product, source)
+        create_content(product, source)
       end
 
       def create_images(product, source)
@@ -57,6 +59,14 @@ module Converter
             content_type = "image/#{File.extname(file_path).sub('.', '')}"
             product.images.create asset: fixture_file_upload(file_path, content_type)
           end
+        end
+      end
+
+      def create_content(product, source)
+        content = ContentParser.new("#{@data_base_path}/content/#{source['id']}.html").content
+        if content
+          content.contentable = product
+          content.save
         end
       end
   end
