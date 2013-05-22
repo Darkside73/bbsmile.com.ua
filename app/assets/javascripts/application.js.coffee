@@ -1,5 +1,6 @@
-#= require jquery
-#= require twitter/bootstrap
+//= require jquery
+//= require twitter/bootstrap
+//= require tabs_memory
 
 do ($ = jQuery) ->
   $ ->
