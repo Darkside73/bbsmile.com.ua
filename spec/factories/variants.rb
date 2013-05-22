@@ -11,5 +11,9 @@ FactoryGirl.define do
     factory :variant_with_image do
       image
     end
+    factory :master_variant_without_image do
+      master true
+      product { create :product_with_images }
+    end
   end
 end

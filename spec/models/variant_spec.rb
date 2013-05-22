@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Variant do
-  context "images relation" do
+  describe "images relation" do
     let(:variant) { create :variant_with_image }
     it 'has attached image' do
       variant.image.asset.url.should be

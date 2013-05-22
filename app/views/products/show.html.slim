@@ -63,11 +63,7 @@
             - @product.variants.each do |variant|
               li.item.span3
                 .thumbnail
-                  - if variant.image.present?
-                    = image_tag variant.image.asset.url(:thumb)
-                  - else
-                    - if variant.master? && @product.images.any?
-                      = image_tag @product.images.first.asset.url(:thumb)
+                  = image_tag variant_image_url(variant, :thumb)
                   .caption
                     h5 = variant.name
                     - if variant.available?
