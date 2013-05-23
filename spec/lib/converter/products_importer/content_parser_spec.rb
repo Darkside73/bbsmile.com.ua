@@ -6,7 +6,8 @@ describe Converter::ProductsImporter::ContentParser do
   context 'when content file exists' do
     let(:content_file) { "#{Rails.root}/spec/fixtures/files/converter/content/5533.html" }
     it 'create content model' do
-      expect { subject.content }.to change { Content.count }
+      subject.content.should be_a(Content)
+      subject.content.should be_new_record
     end
     its(:content) { should be_an_instance_of(Content) }
   end
