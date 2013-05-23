@@ -6,6 +6,7 @@ class Page < ActiveRecord::Base
 
   validates :title, :url, presence: true
   validates :url, uniqueness: true
+  validates :url_old, uniqueness: true, allow_nil: true
 
   before_create :set_name_as_title, unless: :name
 

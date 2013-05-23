@@ -74,7 +74,7 @@ class Admin::CategoriesController < Admin::ApplicationController
   private
     def category_params
       params.require(:category).permit(
-        :leaf, page_attributes: [:id, :title, :name, :url, :hidden]
+        :leaf, page_attributes: [:id, :title, :name, :url, :url_old, :hidden]
       )
     end
 

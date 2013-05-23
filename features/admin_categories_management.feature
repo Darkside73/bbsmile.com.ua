@@ -18,6 +18,7 @@ Scenario: Add new category
     And fill in "category[page_attributes][title]" with "New category"
     And fill in "category[page_attributes][name]" with "New category"
     And fill in "category[page_attributes][url]" with "new-category"
+    And fill in "category[page_attributes][url_old]" with "category/old/url"
     And press button "Создать"
   Then I should see "New category"
 
