@@ -3,7 +3,7 @@
     = p.input :title, label: 'Название'
     = p.input :name, label: 'Краткое название'
     = p.input :url, label: 'URL', input_html: {type: 'text'}
-    = p.input :url_old, label: 'Старый URL'
+    = p.input :url_old, label: 'Старый URL', input_html: {type: 'text'}
     = p.input :hidden, label: 'скрытая'
   - if category.new_record? || category.is_childless?
     = f.input :leaf, label: 'конечная категория'
