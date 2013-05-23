@@ -9,6 +9,10 @@ AttributeNormalizer.configure do |config|
     value == 'false' ? false : true
   end
 
+  config.normalizers[:strip_slashes] = lambda do |value, options|
+    value.sub(/^[\/](.*)[\/]$/, '\1')
+  end
+
   config.normalizers[:truncate] = lambda do |text, options|
     if text.is_a?(String)
       options.reverse_merge!(:length => 30, :omission => "...")

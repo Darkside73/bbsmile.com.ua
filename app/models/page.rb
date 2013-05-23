@@ -9,6 +9,7 @@ class Page < ActiveRecord::Base
   validates :url_old, uniqueness: true, allow_nil: true
 
   before_create :set_name_as_title, unless: :name
+  normalize_attribute :url, :url_old, with: :strip_slashes
 
   private
     def set_name_as_title

@@ -18,6 +18,13 @@ describe Page do
       page.save
       expect { page.reload }.not_to change { page.title }
     end
+    it 'normalize url* attributes with strip slashes on save' do
+      page = build :page
+      page.url = page.url_old = '/url/with/leading/slashes/'
+      page.save
+      page.url.should == 'url/with/leading/slashes'
+      page.url_old.should == 'url/with/leading/slashes'
+    end
     it "set title to name unless name" do
       page = build :page, title: 'pretty page', name: nil
       page.save
