@@ -9,8 +9,9 @@ AttributeNormalizer.configure do |config|
     value == 'false' ? false : true
   end
 
+  # TODO rename to "trim" with :char option
   config.normalizers[:strip_slashes] = lambda do |value, options|
-    value.sub(/^[\/](.*)[\/]$/, '\1')
+    value.sub(/^[\/]?(.*?)[\/]?$/, '\1')
   end
 
   config.normalizers[:truncate] = lambda do |text, options|
