@@ -46,6 +46,7 @@ module Converter
           },
           category: Page.find_by!(title: category_title).pageable,
           old_id: source['id'],
+          video: source['video'],
           variants_attributes: [{price: source['price']}],
           brand: Brand.find_or_create_by(name: source['brand'])
         )

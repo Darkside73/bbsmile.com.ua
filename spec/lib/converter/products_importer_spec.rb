@@ -23,6 +23,7 @@ describe Converter::ProductsImporter do
     product.category.title.should == 'cat 1'
     product.brand.name.should == 'Brand 1'
     product.old_id.should == 5533
+    product.video.should == 'video from youtube'
   end
 
   before { Image.any_instance.stub(:save_attached_files) }
