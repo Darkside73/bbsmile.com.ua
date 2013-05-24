@@ -45,15 +45,16 @@ module Converter
             title: source['title'], url: source['url_old'], url_old: source['url_old']
           },
           category: Page.find_by!(title: category_title).pageable,
+          old_id: source['id'],
           variants_attributes: [{price: source['price']}],
           brand: Brand.find_or_create_by(name: source['brand'])
         )
-        create_images(product, source)
-        create_content(product, source)
+        create_images(product)
+        create_content(product)
       end
 
-      def create_images(product, source)
-        Dir.glob("#{@data_base_path}/images/#{source['id']}/*") do |file_path|
+      def create_images(product)
+        Dir.glob("#{@data_base_path}/images/#{product.old_id}/*") do |file_path|
           dimensions = Paperclip::Geometry.from_file(file_path)
           if dimensions.width >= MIN_IMAGE_WIDTH && dimensions.height >= MIN_IMAGE_HEIGHT
             content_type = "image/#{File.extname(file_path).sub('.', '')}"
@@ -62,8 +63,8 @@ module Converter
         end
       end
 
-      def create_content(product, source)
-        content = ContentParser.new("#{@data_base_path}/content/#{source['id']}.html").content
+      def create_content(product)
+        content = ContentParser.new("#{@data_base_path}/content/#{product.old_id}.html").content
         if content
           content.contentable = product
           content.save
