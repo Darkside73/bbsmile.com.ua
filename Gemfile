@@ -7,6 +7,7 @@ gem 'rails', '4.0.0.rc1'
 
 gem 'pg'
 gem 'ancestry', github: 'stefankroes/ancestry', branch: 'master'
+gem 'nilify_blanks'
 
 gem 'slim', github: 'slim-template/slim', ref: '594f4f90'
 # gem 'slim-rails', github: 'slim-template/slim-rails'

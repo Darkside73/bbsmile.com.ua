@@ -31,5 +31,11 @@ describe Page do
       page.save
       page.name.should == page.title
     end
+    it "nilify url_old if it blank" do
+      page = build :page
+      page.url_old = ''
+      page.save
+      page.url_old.should be_nil
+    end
   end
 end

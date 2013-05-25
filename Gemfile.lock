@@ -177,6 +177,9 @@ GEM
     net-ssh (2.6.7)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    nilify_blanks (1.0.1)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
     nokogiri (1.5.9)
     paperclip (3.4.1)
       activemodel (>= 3.0.0)
@@ -301,6 +304,7 @@ DEPENDENCIES
   launchy
   less-rails-bootstrap
   meta_request
+  nilify_blanks
   paperclip
   pg
   rails (= 4.0.0.rc1)
