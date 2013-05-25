@@ -48,7 +48,7 @@ class Admin::CategoriesController < Admin::ApplicationController
     @subcategory = Category.new category_params
     @subcategory.parent = @category
     if @subcategory.save
-      redirect_to redirect_location, notice: I18n.t('flash.message.categories.subcategory_created')
+      redirect_to [:admin, @category], notice: I18n.t('flash.message.categories.subcategory_created')
     else
       render :new_subcategory
     end
