@@ -1,4 +1,5 @@
 class Admin::CategoriesController < Admin::ApplicationController
+  before_action :populate_parent_param, only: [:update]
 
   def index
     @categories = Category.includes(:page).roots
@@ -26,6 +27,8 @@ class Admin::CategoriesController < Admin::ApplicationController
 
   def edit
     @category = Category.find params[:id]
+    @parent_categories = Category.includes(:page).where(leaf: false).to_a
+    @parent_categories.reject! {|c| c == @category }
   end
 
   def update
@@ -74,11 +77,15 @@ class Admin::CategoriesController < Admin::ApplicationController
   private
     def category_params
       params.require(:category).permit(
-        :leaf, page_attributes: [:id, :title, :name, :url, :url_old, :hidden]
+        :leaf, :parent_id, page_attributes: [:id, :title, :name, :url, :url_old, :hidden]
       )
     end
 
     def redirect_location
       [:admin, @category.is_root? ? :categories : @category.parent]
+    end
+
+    def populate_parent_param
+      params[:parent] = Category.find(category_params[:parent_id]) if category_params[:parent_id].present?
     end
 end

@@ -21,6 +21,13 @@ describe Category do
       category.save.should be_true
       category.page.title.should_not == old_title
     end
+
+    let(:leaf_category) { create :leaf_category }
+    it "disallow set leaf parent" do
+      category = build :category
+      category.parent = leaf_category
+      category.should have(1).error_on(:parent)
+    end
   end
   context 'ancestry' do
     subject { Category }
@@ -63,7 +70,7 @@ describe Category do
   end
   context 'when category is leaf' do
     describe 'save' do
-      let(:leaf_category) { create :category, leaf: true }
+      let(:leaf_category) { create :leaf_category }
       it 'not allow add children' do
         expect {
           create :category, parent: leaf_category

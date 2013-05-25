@@ -70,6 +70,14 @@ describe Admin::CategoriesController do
         }
       expect { category.reload }.to_not change { category.page.title }
     end
+
+    let(:parent_category) { create :category }
+    it "change parent" do
+      put :update,
+        id: category.id,
+        category: { parent_id: parent_category.id }
+      expect { category.reload }.to change { category.parent }
+    end
   end
   describe 'POST create_subcategory' do
     let(:category) { create :category }

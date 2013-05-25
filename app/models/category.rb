@@ -15,6 +15,8 @@ class Category < ActiveRecord::Base
     if: Proc.new { |category| begin category.parent; rescue ActiveRecord::RecordNotFound; false; end }
   after_save :toggle_children_hidden
 
+  validate :parent_could_not_be_leaf
+
   class << self
     alias_method :ancestry_arrange, :arrange
     def arrange
@@ -31,5 +33,9 @@ class Category < ActiveRecord::Base
       self.children.each do |child|
         child.page.update_attribute :hidden, page.hidden
       end
+    end
+
+    def parent_could_not_be_leaf
+      errors.add :parent, I18n.t() if parent.try(:leaf)
     end
 end

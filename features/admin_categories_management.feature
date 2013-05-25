@@ -28,6 +28,13 @@ Scenario: Edit category
     And press button "Обновить"
   Then I should see "New title"
 
+Scenario: Move category to other parent
+  Given Destination parent category "Игрушки"
+  When I go to subcategory edit
+    And I select "Игрушки" from "category[parent_id]"
+    And press button "Обновить"
+  Then I should see "Игрушки"
+
 Scenario: Add new subcategory
   Given I am viewing some category page
   When I click "Добавить подкатегорию"

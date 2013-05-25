@@ -31,6 +31,11 @@ When(/^I click on category edit link$/) do
   find("a[href='#{edit_admin_category_path(@category)}']").click
 end
 
+When(/^I go to subcategory edit$/) do
+  @subcategory = @categories.first.children.first
+  visit url_for [:edit, :admin, @subcategory]
+end
+
 Given(/^I am viewing some category page$/) do
   @some_category = @categories.second
   visit url_for [:admin, @some_category]
@@ -69,4 +74,8 @@ Then(/^Subcategories should be hidden$/) do
   @some_category.children.each do |child|
     child.page.hidden.should be_true
   end
+end
+
+Given(/^Destination parent category "(.*?)"$/) do |title|
+  @destination_category = create(:category, page_title: title)
 end

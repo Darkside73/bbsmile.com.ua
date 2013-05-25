@@ -21,5 +21,9 @@ FactoryGirl.define do
         end
       end
     end
+
+    factory :leaf_category do
+      leaf true
+    end
   end
 end

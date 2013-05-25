@@ -7,6 +7,8 @@
     = p.input :hidden, label: 'скрытая'
   - if category.new_record? || category.is_childless?
     = f.input :leaf, label: 'конечная категория'
+  - unless category.new_record?
+    = f.input :parent_id, collection: @parent_categories, label: false, selected: category.parent.try(:id), include_blank: true, label_method: :title, input_html: { 'data-placeholder' => 'Родительская категория' }
   = f.button :submit,  category.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
   | &nbsp;или&nbsp;
   = link_to 'Отменить', :back
