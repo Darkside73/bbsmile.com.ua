@@ -19,4 +19,17 @@ describe Converter::ProductsImporter::ContentParser do
     end
     its(:content) { should be_nil }
   end
+
+  describe "clean_html" do
+    let(:dirty_html) { '<img />&NBSp; <b class="warning">bold</b><p>paragraph</p><p> <b></b></p>' }
+    subject { Converter::ProductsImporter::ContentParser.new('').clean_html(dirty_html) }
+    it { should_not include('<img') }
+    it { should_not include('class="warning"') }
+    it { should_not include('&NBSp;') }
+    it { should_not include('<p> <b></b></p>') }
+    it { should_not include('<b></b>') }
+    it { should_not include('<p> </p>') }
+    it { should include('<b>bold</b>') }
+    it { should include('<p>paragraph</p>') }
+  end
 end
