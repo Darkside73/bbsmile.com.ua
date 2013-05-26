@@ -17,6 +17,10 @@ class Variant < ActiveRecord::Base
 
   before_save :destroy_image, if: "delete_image"
 
+  def self.image_styles
+    { thumb: '98x112#' }
+  end
+
   private
     def destroy_image
       self.image = nil

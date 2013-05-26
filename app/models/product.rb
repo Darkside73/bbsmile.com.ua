@@ -38,6 +38,10 @@ class Product < ActiveRecord::Base
     content.try(:text)
   end
 
+  def self.image_styles
+    { thumb: '98x112#', medium: '444' }
+  end
+
   private
     def make_master_variant
       master_variant.master = true if master_variant
