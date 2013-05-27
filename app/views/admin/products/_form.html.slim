@@ -10,7 +10,7 @@
       = f.input :video, label: 'Видео', as: :text
       - if @product.new_record?
         = f.simple_fields_for :images, @product.images.build do |i|
-          = i.input :asset, label: 'Фото'
+          = i.input :attachment, label: 'Фото'
     .span6
       = f.simple_fields_for(:variants, @product.master_variant || @product.variants.new) do |v|
         = v.input :price, label: 'Цена'

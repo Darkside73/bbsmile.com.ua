@@ -23,7 +23,7 @@ describe Admin::ImagesController do
     before { Product::Image.any_instance.stub(:save_attached_files) }
     it 'create Image' do
       file = fixture_file_upload(Rails.root.join('spec/fixtures/files/product_image.jpg'), 'image/jpeg')
-      post :create, product_id: product.id, image: { attachment: file }
+      post :create, product_id: product.id, product_image: { attachment: file }
       flash[:notice].should have_content(/uploaded/i)
       should redirect_to([:admin, product, :images])
     end

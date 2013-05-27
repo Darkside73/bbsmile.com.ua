@@ -11,7 +11,7 @@ Scenario: Add new variant
     And fill in "variant[name]" with "зеленый цвет"
     And fill in "variant[price]" with "10.10"
     And fill in "variant[sku]" with "code123"
-    And attach the file "product_image.jpg" to "variant[image_attributes][asset]"
+    And attach the file "product_image.jpg" to "variant[image_attributes][attachment]"
     And I check "variant[master]"
     And I uncheck "variant[available]"
     And press button "Создать"

@@ -9,15 +9,15 @@ after 'development:categories' do
       page_attributes: {title: 'Прогулочная коляска Multiway', url: 'Kolyaska-Progulochnaya-Multiway'},
       brand_id: Brand.find_by(name: 'Chicco').id,
       images_attributes: [
-        { asset: seed_file_fixture('product_image1.jpg') },
-        { asset: seed_file_fixture('product_image2.jpg') },
-        { asset: seed_file_fixture('product_image3.jpg') }
+        { attachment: seed_file_fixture('product_image1.jpg') },
+        { attachment: seed_file_fixture('product_image2.jpg') },
+        { attachment: seed_file_fixture('product_image3.jpg') }
       ],
       variants_attributes: [
         { name: 'синяя', price: 1606, price_old: 1690, sku: '61613.16' },
         {
           name: 'красная', price: 1700, sku: '61614.16', available: false,
-          image_attributes: { asset: seed_file_fixture('product_image2.jpg') }
+          image_attributes: { attachment: seed_file_fixture('product_image2.jpg') }
         }
       ]
     },

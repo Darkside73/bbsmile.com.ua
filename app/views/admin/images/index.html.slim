@@ -3,7 +3,7 @@
     .span8
       - if @product.images.any?
         table.table.sortable.photos-list.table-striped
-          = render @product.images
+          = render partial: 'image', collection: @product.images, as: :image
       - else
         | нет фотографий, попробуйте добавить
     .span4

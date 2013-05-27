@@ -1,8 +1,8 @@
 = render 'gallery_modal', id: 'modal-gallery'
 .product-gallery data={toggle: "modal-gallery", target: "#modal-gallery"}
   .first-image
-    = link_to image_tag(first_image.asset.url(:medium)), first_image.asset.url, data: { gallery: 'gallery' }, title: product.title
+    = link_to image_tag(first_image.url(:medium)), first_image.url, data: { gallery: 'gallery' }, title: product.title
   .other-images
     - other_images.each do |image|
-      a.thumbnail href="#{image.asset.url}" title="#{product.title}" data-gallery="gallery"
-        = image_tag image.asset.url(:thumb)
+      a.thumbnail href="#{image.url}" title="#{product.title}" data-gallery="gallery"
+        = image_tag image.url(:thumb)

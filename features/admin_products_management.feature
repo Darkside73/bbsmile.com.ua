@@ -19,7 +19,7 @@ Scenario: Add new product with single price
     And fill in "product[variants_attributes][0][price]" with "10.10"
     And fill in "product[variants_attributes][0][sku]" with "code123"
     And I uncheck "product[variants_attributes][0][available]"
-    And attach the file "product_image.jpg" to "product[images_attributes][0][asset]"
+    And attach the file "product_image.jpg" to "product[images_attributes][0][attachment]"
     And press button "Создать"
   Then I should see "Кроватка"
 
@@ -40,6 +40,7 @@ Scenario: View products in leaf category
 Scenario: Edit product
   Given Some product
   When I go to this product edit
+    And I select "Детская мебель" from "product[category_id]"
     And fill in "product[page_attributes][title]" with "Другая кроватка"
     And fill in "product[variants_attributes][0][price]" with "20.99"
     And press button "Обновить"
@@ -68,11 +69,3 @@ Scenario: View product
   Given Some tagged product
   When I go to this product
   Then I should see product properties
-
-Scenario: Add image to product
-  Given Some product
-  When I go to this product
-    And I click "Фото"
-    And attach the file "product_image.jpg" to "image[asset]"
-    And press button "Загрузить"
-  Then I should see uploaded image
