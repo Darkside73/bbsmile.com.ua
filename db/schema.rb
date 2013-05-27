@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130524162714) do
+ActiveRecord::Schema.define(version: 20130527133043) do
+
+  create_table "assets", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "assetable_id"
+    t.string   "assetable_type"
+    t.integer  "position",                default: 0
+    t.string   "type"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -33,18 +46,6 @@ ActiveRecord::Schema.define(version: 20130524162714) do
     t.string   "contentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "images", force: true do |t|
-    t.string   "asset_file_name"
-    t.string   "asset_content_type"
-    t.integer  "asset_file_size"
-    t.datetime "asset_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "imageable_id"
-    t.string   "imageable_type"
-    t.integer  "position",           default: 0
   end
 
   create_table "pages", force: true do |t|
