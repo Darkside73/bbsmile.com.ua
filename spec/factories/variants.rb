@@ -9,11 +9,11 @@ FactoryGirl.define do
     product
 
     factory :variant_with_image do
-      image
+      association :image, factory: :variant_image
     end
     factory :master_variant_without_image do
       master true
-      product { create :product_with_images }
+      association :product, factory: :product_with_images
     end
   end
 end

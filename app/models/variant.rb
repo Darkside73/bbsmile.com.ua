@@ -1,6 +1,6 @@
 class Variant < ActiveRecord::Base
   belongs_to :product
-  has_one :image, as: :imageable, dependent: :destroy
+  has_one :image, as: :assetable, dependent: :destroy
 
   attr_accessor :delete_image
 
@@ -16,10 +16,6 @@ class Variant < ActiveRecord::Base
   normalize_attribute :delete_image, with: :booleanize
 
   before_save :destroy_image, if: "delete_image"
-
-  def self.image_styles
-    { thumb: '98x112#' }
-  end
 
   private
     def destroy_image

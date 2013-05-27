@@ -4,7 +4,8 @@ describe Variant do
   describe "images relation" do
     let(:variant) { create :variant_with_image }
     it 'has attached image' do
-      variant.image.asset.url.should be
+      variant.image.should be_a_kind_of(Variant::Image)
+      variant.image.url.should be
     end
     it 'delete image if delete_image is on' do
       variant.delete_image = true

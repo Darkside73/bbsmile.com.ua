@@ -50,7 +50,8 @@ describe Product do
     let(:product) { create :product_with_images }
     it 'has attached image' do
       image = product.images.first
-      image.asset.url.should be
+      image.should be_a_kind_of(Product::Image)
+      image.url.should be
     end
   end
 end

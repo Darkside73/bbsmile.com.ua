@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
 
   has_one :page, as: :pageable, dependent: :destroy
   has_one :content, as: :contentable, dependent: :destroy
-  has_many :images, as: :imageable, dependent: :destroy
+  has_many :images, as: :assetable, dependent: :destroy
   has_many :variants, dependent: :destroy
   belongs_to :category
   belongs_to :brand
