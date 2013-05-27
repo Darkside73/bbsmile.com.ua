@@ -101,7 +101,7 @@ module Converter
           dimensions = Paperclip::Geometry.from_file(file_path)
           if dimensions.width >= MIN_IMAGE_WIDTH && dimensions.height >= MIN_IMAGE_HEIGHT
             content_type = "image/#{File.extname(file_path).sub('.', '')}"
-            product.images.create asset: fixture_file_upload(file_path, content_type)
+            product.images.create attachment: fixture_file_upload(file_path, content_type)
           end
         end
       end

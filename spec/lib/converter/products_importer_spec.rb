@@ -27,7 +27,7 @@ describe Converter::ProductsImporter do
     product.video.should == 'video from youtube'
   end
 
-  before { Image.any_instance.stub(:save_attached_files) }
+  before { Product::Image.any_instance.stub(:save_attached_files) }
   it 'create product images' do
     subject.data_base_path = data_base_path
     subject.import

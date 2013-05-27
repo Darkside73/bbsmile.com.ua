@@ -10,12 +10,12 @@ describe Admin::VariantsController do
   end
   describe 'POST create' do
     let(:product) { create :product}
-    before { Image.any_instance.stub(:save_attached_files) }
+    before { Variant::Image.any_instance.stub(:save_attached_files) }
     it 'create variant and redirect to index' do
       file = fixture_file_upload(Rails.root.join('spec/fixtures/files/product_image.jpg'), 'image/jpeg')
       post :create, product_id: product.id, variant: {
         price: 10.50, sku: 'code123', master: false,
-        image_attributes: { asset: file }
+        image_attributes: { attachment: file }
       }
       flash[:notice].should have_content(/created/i)
       should redirect_to([:admin, product, :variants])

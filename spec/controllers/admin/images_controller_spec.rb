@@ -11,7 +11,7 @@ describe Admin::ImagesController do
   end
   describe 'DELETE' do
     it 'destroy Image' do
-      image = create :image
+      image = create :product_image
       expect {
         xhr :delete, :destroy, id: image.id
         image.reload
@@ -20,10 +20,10 @@ describe Admin::ImagesController do
   end
   describe 'POST create' do
     let(:product) { create :product }
-    before { Image.any_instance.stub(:save_attached_files) }
+    before { Product::Image.any_instance.stub(:save_attached_files) }
     it 'create Image' do
       file = fixture_file_upload(Rails.root.join('spec/fixtures/files/product_image.jpg'), 'image/jpeg')
-      post :create, product_id: product.id, image: { asset: file }
+      post :create, product_id: product.id, image: { attachment: file }
       flash[:notice].should have_content(/uploaded/i)
       should redirect_to([:admin, product, :images])
     end

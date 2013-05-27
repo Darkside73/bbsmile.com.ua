@@ -6,6 +6,6 @@ module ProductsHelper
     elsif variant.master?
       variant.product.images.first
     end
-    image.asset.url(style) if image
+    image.url(style) if image
   end
 end

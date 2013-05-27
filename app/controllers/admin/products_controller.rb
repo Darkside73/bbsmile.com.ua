@@ -78,7 +78,7 @@ class Admin::ProductsController < Admin::ApplicationController
         :novelty, :topicality, :hit, :video, :tag_list,
         page_attributes: [:id, :title, :url, :hidden],
         variants_attributes: [[:id, :sku, :price, :price_old, :available]],
-        images_attributes: [[:asset]]
+        images_attributes: [[:attachment]]
       )
     end
 

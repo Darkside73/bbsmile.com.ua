@@ -6,7 +6,7 @@ describe ProductsHelper do
       let(:variant) { create :variant_with_image }
       subject { helper.variant_image_url(variant, :thumb) }
       it "return variant image url" do
-        should == variant.image.asset.url(:thumb)
+        should == variant.image.url(:thumb)
       end
     end
     context "variant without image" do
@@ -18,7 +18,7 @@ describe ProductsHelper do
       let(:variant) { create :master_variant_without_image }
       subject { helper.variant_image_url(variant, :thumb) }
       it "returns product first image" do
-        should == variant.product.images.first.asset.url(:thumb)
+        should == variant.product.images.first.url(:thumb)
       end
     end
     context "master variant without image and product image" do
