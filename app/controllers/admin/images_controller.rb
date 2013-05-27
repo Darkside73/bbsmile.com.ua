@@ -3,10 +3,7 @@ class Admin::ImagesController < Admin::ApplicationController
 
   def index
     @product = product
-  end
-
-  def new
-    @product = product
+    @image = @product.images.new
   end
 
   def destroy
