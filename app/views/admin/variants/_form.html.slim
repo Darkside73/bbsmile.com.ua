@@ -11,7 +11,7 @@
       = f.input :price_old, label: 'Старая цена'
       = f.simple_fields_for(:image, variant.image || variant.build_image) do |i|
         = i.input :attachment, label: 'Фото'
-      - unless variant.image.new_record?
+      - if variant.image.valid?
         .variant-image = image_tag variant.image.url(:thumb)
         = f.input :delete_image, as: :boolean, label: false, inline_label: 'удалить фото', unchecked_value: false
   = f.button :submit, variant.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
