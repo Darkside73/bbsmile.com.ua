@@ -1,7 +1,7 @@
 # encoding : utf-8
 
 after 'development:categories' do
-  FileUtils.rm_rf Rails.root.join('public/system')
+  FileUtils.rm_rf Rails.root.join('public/uploads')
 
   category = Page.find_by(url: 'detskie-kolyaski/progulochnye').pageable
   category.products.create [

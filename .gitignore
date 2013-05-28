@@ -17,7 +17,7 @@
 *.sublime-*
 .rvmrc
 
-/public/system
+/public/uploads
 
 /old_content/images/
 /old_content/content/
