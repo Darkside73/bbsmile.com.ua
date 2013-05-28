@@ -1,4 +1,9 @@
 = render layout: 'product_info_tabs' do
+  - unless @variant.valid?
+    coffee:
+      $ ->
+        $('#collapse-form').collapse('show')
+
   .row-fluid
     .span8
       #new-variant-form.accordion
@@ -8,7 +13,7 @@
               strong Добавить вариант
           #collapse-form.accordion-body.collapse
             .accordion-inner
-              = render 'form', path: [:admin, @product, @new_variant]
+              = render 'form', path: [:admin, @product, @variant]
 
       - if @product.variants.any?
         table.table.variants-list.table-striped.sortable

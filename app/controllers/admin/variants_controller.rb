@@ -2,7 +2,7 @@ class Admin::VariantsController < Admin::ApplicationController
 
   def index
     @product = product
-    @new_variant = @product.variants.new
+    @variant = @product.variants.new
     @product.variants.reload
   end
 
@@ -12,6 +12,7 @@ class Admin::VariantsController < Admin::ApplicationController
     if @variant.save
       redirect_to [:admin, @product, :variants], notice: I18n.t('flash.message.variants.created')
     else
+      @product.variants.reload
       render :index
     end
   end
