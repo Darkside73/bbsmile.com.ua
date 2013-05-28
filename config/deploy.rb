@@ -82,6 +82,8 @@ set :scm,             :git
 set :repository,    "ssh://git@bitbucket.org/darkside73/rails.bbsmile.com.ua.git"
 set :git_enable_submodules, 1
 
+set :shared_children, shared_children + %w{public/uploads}
+
 ## --- Ниже этого места ничего менять скорее всего не нужно ---
 
 before 'deploy:finalize_update', 'set_current_release'

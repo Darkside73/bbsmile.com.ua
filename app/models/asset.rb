@@ -1,7 +1,9 @@
 class Asset < ActiveRecord::Base
   belongs_to :assetable, polymorphic: true
-
   delegate :url, to: :attachment
+
+  DEFAULT_URL  = '/uploads/:class/:id_partition/:style/:filename'
+  DEFAULT_PATH = ':rails_root/public:url'
 
   has_attached_file :attachment
   validates_attachment_presence :attachment
