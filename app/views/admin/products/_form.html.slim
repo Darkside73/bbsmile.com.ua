@@ -5,7 +5,7 @@
         = p.input :title, label: 'Название'
         = p.input :url, label: 'URL', input_html: {type: 'text'}
         = p.input :hidden, label: 'скрытый'
-      = f.association :category, collection: @leaf_categories, label: "Категория", selected: @category.try(:id), input_html: { 'data-placeholder' => 'Категория' }, include_blank: true
+      = f.association :category, collection: @leaf_categories, label: "Категория", selected: @category.try(:id), label_method: :title, input_html: { 'data-placeholder' => 'Категория' }, include_blank: true
       = f.association :brand, collection: Brand.all, label: "Бренд", input_html: { 'data-placeholder' => 'Бренд' }
       = f.input :video, label: 'Видео', as: :text
       - if @product.new_record?

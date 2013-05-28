@@ -23,8 +23,8 @@ class Admin::ProductsController < Admin::ApplicationController
   end
 
   def create
-    @category = Category.find(params[:product][:category_id])
     @product = Product.new product_params
+    @category = @product.category
     if @product.save
       redirect_to [:admin, @category], notice: I18n.t('flash.message.products.created')
     else
