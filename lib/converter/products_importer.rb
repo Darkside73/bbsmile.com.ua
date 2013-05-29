@@ -77,7 +77,7 @@ module Converter
         end
 
         category = Page.find_by!(title: category_title).pageable
-        raise ActiveRecord::RecordNotFound if category.leaf?
+        raise ActiveRecord::RecordNotFound unless category.leaf?
 
         product = Product.create!(
           page_attributes: {

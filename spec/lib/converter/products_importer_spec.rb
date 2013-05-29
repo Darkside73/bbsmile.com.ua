@@ -4,8 +4,8 @@ require 'converter/products_importer'
 describe Converter::ProductsImporter do
 
   before do
-    create :category, page_title: 'cat 1'
-    create :category, page_title: 'cat 2'
+    create :leaf_category, page_title: 'cat 1'
+    create :leaf_category, page_title: 'cat 2'
     create :product, page_url_old: 'exist/product/url'
   end
 
