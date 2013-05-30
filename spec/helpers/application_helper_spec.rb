@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ApplicationHelper do
   subject { ApplicationHelper }
-  let(:page) { build :page, { title: 'Some page', url: 'url/to' } }
+  let(:page) { build :page, { name: 'Some page', url: 'url/to' } }
   let(:category) { build :category }
   describe '.link_to' do
     it 'create link from regular args' do
@@ -10,11 +10,11 @@ describe ApplicationHelper do
       url = 'http://google.com/'
       link_to(title, url).should include(title, url)
     end
-    it 'create link to Page object' do
-      link_to(page).should include(page.title, "/#{page.url}")
+    it 'create link to Page object using name attribute' do
+      link_to(page).should include(page.name, "/#{page.url}")
     end
     it 'create link to pageable object' do
-      link_to(category).should include(category.title, "/#{category.url}")
+      link_to(category).should include(category.name, "/#{category.url}")
     end
     it 'create link to Page object with custom title' do
       custom_title = 'My awesome link'

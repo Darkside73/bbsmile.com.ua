@@ -18,7 +18,7 @@ module ApplicationHelper
       url = "/#{page.url}"
       index_where_page = args.index &where_page
       if index_where_page == 0
-        title = page.title
+        title = page.name
       elsif index_where_page == 1
         title = args.first
       else
