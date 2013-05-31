@@ -1,4 +1,8 @@
+# TODO deal with rails autoload mechanism
+require 'category/search'
+
 class Category < ActiveRecord::Base
+  include Models::Category::Search
 
   has_one :page, as: :pageable, dependent: :destroy
   has_many :products
@@ -22,16 +26,6 @@ class Category < ActiveRecord::Base
     def arrange
       self.includes(:page).merge(Page.visible).references(:pages).ancestry_arrange(order: :position)
     end
-  end
-
-  def products_grid options = {}
-    default_sort = 'variants.price'
-    default_direction = 'ASC'
-    sort_columns = { price: 'variants.price' }
-    sort = sort_columns[options[:sort]] || default_sort
-    direction = options[:direction] || default_direction
-    products.includes(:page, :variants, :images, :brand)
-            .order("#{sort} #{direction}")
   end
 
   private
