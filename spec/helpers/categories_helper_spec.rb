@@ -8,6 +8,16 @@ describe CategoriesHelper do
       it "returns category children " do
         helper.category_menu_items.should == category.children
       end
+      context "hidden children" do
+        let(:category) {
+          category = create(:category)
+          category.children.create attributes_for(:hidden_category)
+          category
+        }
+        it "it not include hidden categories " do
+          helper.category_menu_items.should be_empty
+        end
+      end
     end
 
     context 'category without children assings' do

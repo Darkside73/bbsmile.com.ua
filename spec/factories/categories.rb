@@ -26,6 +26,10 @@ FactoryGirl.define do
       leaf true
     end
 
+    factory :hidden_category do
+      page { create(:page, hidden: true) }
+    end
+
     factory :category_with_products do
       products { create_list :product_with_variants, 3 }
     end

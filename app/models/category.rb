@@ -4,7 +4,7 @@ class Category < ActiveRecord::Base
   has_many :products
   accepts_nested_attributes_for :page
 
-  delegate :title, :name, :url, to: :page
+  delegate :title, :name, :url, :hidden, to: :page
 
   has_ancestry orphan_strategy: :restrict
 
@@ -28,7 +28,7 @@ class Category < ActiveRecord::Base
     default_sort = 'variants.price'
     default_direction = 'ASC'
     sort_columns = { price: 'variants.price' }
-    sort = sort_columns[options[:sort].to_sym] || default_sort
+    sort = sort_columns[options[:sort]] || default_sort
     direction = options[:direction] || default_direction
     products.includes(:page, :variants, :images, :brand)
             .order("#{sort} #{direction}")
