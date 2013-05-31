@@ -5,6 +5,5 @@ FactoryGirl.define do
   factory :page do
     url { generate :url }
     title { generate :title }
-    name { generate :title }
   end
 end
