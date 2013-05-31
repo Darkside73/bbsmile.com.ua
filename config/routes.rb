@@ -36,7 +36,7 @@ Bbsmile::Application.routes.draw do
   # get '*slug' => 'categories#show', format: false, constraints: PageTypeConstraint.new(Category)
   %w(product category).each do |type|
     get '*slug' => "#{type.pluralize}#show", format: false, constraints: lambda { |req|
-      Page.visible.find_by(url: req.fullpath.sub(/^[\/]*/, '')).try {
+      Page.visible.find_by(url: req.params['slug']).try {
         |p| p.pageable.is_a?(type.camelize.constantize)
       }
     }
