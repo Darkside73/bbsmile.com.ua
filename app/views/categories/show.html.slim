@@ -21,7 +21,16 @@
               - else
                 li = link_to subcategory
     .products-list.span9
-      - @category.products_grid.each_slice(3) do |products|
+      .show-options
+        ul.nav.nav-pills
+          - if params[:direction] == 'desc'
+            li = link_to "От дешевых к дорогим", "?sort=price&direction=asc"
+            li.active = link_to "От дорогих к дешевым", "?sort=price&direction=desc"
+          - else
+            li.active = link_to "От дешевых к дорогим", "?sort=price&direction=asc"
+            li = link_to "От дорогих к дешевым", "?sort=price&direction=desc"
+
+      - @products.each_slice(3) do |products|
         .row-fluid
           - products.each do |product|
             .product.span4

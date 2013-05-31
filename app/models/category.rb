@@ -24,8 +24,14 @@ class Category < ActiveRecord::Base
     end
   end
 
-  def products_grid
-    products.includes(:page, :variants, :images, :brand).order("variants.price")
+  def products_grid options = {}
+    default_sort = 'variants.price'
+    default_direction = 'ASC'
+    sort_columns = { price: 'variants.price' }
+    sort = sort_columns[options[:sort].to_sym] || default_sort
+    direction = options[:direction] || default_direction
+    products.includes(:page, :variants, :images, :brand)
+            .order("#{sort} #{direction}")
   end
 
   private

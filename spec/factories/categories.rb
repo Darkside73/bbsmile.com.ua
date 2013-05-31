@@ -25,5 +25,9 @@ FactoryGirl.define do
     factory :leaf_category do
       leaf true
     end
+
+    factory :category_with_products do
+      products { create_list :product_with_variants, 3 }
+    end
   end
 end
