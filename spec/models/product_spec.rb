@@ -54,4 +54,19 @@ describe Product do
       image.url.should be
     end
   end
+
+  describe "#top_image" do
+    let!(:product) { create(:product_with_images) }
+    subject { product.top_image :grid }
+    it "return first image url" do
+      should == product.images.first.url(:grid)
+    end
+  end
+  describe "#top_image?" do
+    let!(:product) { create(:product) }
+    subject { product.top_image? }
+    it "return false if product without images" do
+      should be_false
+    end
+  end
 end

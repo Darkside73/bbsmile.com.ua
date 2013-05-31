@@ -24,6 +24,10 @@ class Category < ActiveRecord::Base
     end
   end
 
+  def products_grid
+    products.includes(:page, :variants, :images, :brand).order("variants.price")
+  end
+
   private
     def ensure_leaf_has_no_child
       raise ActiveRecord::ActiveRecordError if parent && parent.leaf
