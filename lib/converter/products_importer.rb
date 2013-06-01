@@ -86,7 +86,7 @@ module Converter
           category: category,
           old_id: source['id'],
           video: source['video'],
-          variants_attributes: [{price: source['price']}],
+          variants_attributes: [{price: source['price'], sku: source['sku']}],
           brand: Brand.find_or_create_by(name: source['brand'])
         )
 
