@@ -20,6 +20,13 @@
                 li.active = link_to subcategory
               - else
                 li = link_to subcategory
+        - if @category.leaf? && @category.tags.any?
+          .accordion-group
+            .accordion-heading
+              a.accordion-toggle data-toggle="collapse" data-parent="false" href="#filterByTags" Теги
+            #filterByTags.accordion-body.collapse.in: .accordion-inner: ul
+              - @category.tags.each do |tag|
+                li = link_to tag, "?tags[]=#{tag}"
     .products-list.span9
       - if @products.any?
         .show-options
@@ -34,10 +41,12 @@
             - else
               li.active = link_to "Сначала дешевле", "?sort=price&direction=asc"
               li = link_to "Сначала дороже", "?sort=price&direction=desc"
-      - else
+      - elsif @category.leaf?
         .alert
           strong Извините,&nbsp;
           | ничего не нашлось
+      - else
+        .offers Акции, новинки,..
 
       - @products.each_slice(3) do |products|
         .row-fluid.line

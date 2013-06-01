@@ -31,7 +31,9 @@ FactoryGirl.define do
     end
 
     factory :category_with_products do
-      products { create_list :product_with_variants, 3 }
+      products {
+        create_list(:product_with_variants, 3) + create_list(:tagged_product, 3)
+      }
     end
   end
 end

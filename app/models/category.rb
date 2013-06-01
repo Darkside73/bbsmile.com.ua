@@ -28,6 +28,10 @@ class Category < ActiveRecord::Base
     end
   end
 
+  def tags
+    @tags ||= products.collect(&:tag_list).flatten.uniq
+  end
+
   private
     def ensure_leaf_has_no_child
       raise ActiveRecord::ActiveRecordError if parent && parent.leaf
