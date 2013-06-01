@@ -49,7 +49,7 @@ module Converter
       results.all = @csv.count
       @csv.each_with_index do |row, index|
         source = row.to_hash
-        category_title = @categories_map[source['category']]
+        category_title = @categories_map[source['category'].strip]
         unless category_title.blank?
           begin
             product = create_product_from_source(source, category_title)
