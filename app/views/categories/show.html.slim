@@ -25,8 +25,8 @@
             .accordion-heading
               a.accordion-toggle data-toggle="collapse" data-parent="false" href="#filterByTags" Теги
             #filterByTags.accordion-body.collapse.in: .accordion-inner: ul
-              - @category.tags.each do |tag|
-                li = link_to tag, "?tags[]=#{tag}"
+              - @category.tags.each do |tag_name|
+                li = link_to_tag tag_name
     .products-list.span9
       - if @products.any?
         .show-options
@@ -35,12 +35,8 @@
               .btn.disabled
                 | Всего товаров:&nbsp;
                 strong = @products.count
-            - if params[:direction] == 'desc'
-              li = link_to "Сначала дешевле", "?sort=price&direction=asc"
-              li.active = link_to "Сначала дороже", "?sort=price&direction=desc"
-            - else
-              li.active = link_to "Сначала дешевле", "?sort=price&direction=asc"
-              li = link_to "Сначала дороже", "?sort=price&direction=desc"
+            = link_to_sortable_price "Сначала дешевле", "asc"
+            = link_to_sortable_price "Сначала дороже",  "desc"
       - elsif @category.leaf?
         .alert
           strong Извините,&nbsp;

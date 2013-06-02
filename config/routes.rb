@@ -39,7 +39,7 @@ Bbsmile::Application.routes.draw do
       Page.visible.find_by(url: req.params['slug']).try {
         |p| p.pageable.is_a?(type.camelize.constantize)
       }
-    }
+    }, as: "#{type}_page"
   end
 
   get '*slug' => 'pages#show', format: false

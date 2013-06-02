@@ -28,4 +28,15 @@ describe CategoriesHelper do
       end
     end
   end
+
+  # TODO finish spec
+  # describe "#price_sortable_link_to" do
+  #   before :all do
+  #     helper.stub!(:params).and_return({slug: 'some/category'})
+  #   end
+  #   subject { helper.price_sortable_link_to }
+  #   it "return ascending price sort link by default" do
+  #     should include('direction=asc', 'active')
+  #   end
+  # end
 end
