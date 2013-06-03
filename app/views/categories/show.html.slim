@@ -8,6 +8,18 @@
     =' @category.title
     small подбор товаров
   = render 'breadcrumb'
+  .subnav data-spy="affix" data-offset-top="60"
+    ul.nav.nav-pills
+      - selected_tags.each do |tag_name|
+        li: a href="#{remove_tag_path(tag_name)}" title="удалить фильтр"
+          i.icon-remove-sign
+          = tag_name
+      li: a href="#" title="удалить фильтр"
+        i.icon-remove-sign
+        | Bebecomfort
+      li.pull-right: a href="#{category_page_path}"
+        i.icon-remove-sign
+        | удалить все фильтры
   .row-fluid
     .product-filters.span3
       #product-filters.accordion
@@ -26,7 +38,7 @@
               a.accordion-toggle data-toggle="collapse" data-parent="false" href="#filterByTags" Теги
             #filterByTags.accordion-body.collapse.in: .accordion-inner: ul
               - @category.tags.each do |tag_name|
-                li = link_to_tag tag_name
+                = link_to_add_tag tag_name
     .products-list.span9
       - if @products.any?
         .show-options
@@ -35,8 +47,9 @@
               .btn.disabled
                 | Всего товаров:&nbsp;
                 strong = @products.count
-            = link_to_sortable_price "Сначала дешевле", "asc"
-            = link_to_sortable_price "Сначала дороже",  "desc"
+            - if @products.count > 1
+              = link_to_sortable_price "Сначала дешевле", "asc"
+              = link_to_sortable_price "Сначала дороже",  "desc"
       - elsif @category.leaf?
         .alert
           strong Извините,&nbsp;

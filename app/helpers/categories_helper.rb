@@ -14,8 +14,15 @@ module CategoriesHelper
     end
   end
 
-  def link_to_tag(name)
+  def link_to_add_tag(name)
     tags = (selected_tags + [name]).uniq
-    link_to name, category_page_path(params.merge(tags: tags))
+    content_tag :li, class: (selected_tags.include?(name) ? 'active' : '') do
+      link_to name, category_page_path(params.merge(tags: tags))
+    end
+  end
+
+  def remove_tag_path(name)
+    tags = selected_tags - [name]
+    category_page_path(params.merge(tags: tags))
   end
 end
