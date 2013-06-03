@@ -6,8 +6,9 @@ module Models
 
       def products_grid options = {}
         grid = products.includes(:page, :variants, :images, :brand)
-                       .merge(Page.visible).references(:pages)
+                       .merge(Page.visible).references(:pages).references(:brand)
         grid = grid.tagged_with options[:tags] if options[:tags]
+        grid = grid.where('brands.name IN (:names)', names: options[:brands]) if options[:brands]
 
         sort = sort_columns[options[:sort].try(:to_sym)] || DEFAULT_SORT
         direction = options[:direction] || DEFAULT_DIRECTION

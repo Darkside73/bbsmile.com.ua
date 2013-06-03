@@ -32,6 +32,11 @@ class Category < ActiveRecord::Base
     @tags ||= products.collect(&:tag_list).flatten.uniq
   end
 
+  # TODO use AR to reduce number of queries
+  def brands
+    @brands ||= products.collect(&:brand).uniq.sort {|x, y| x.name <=> y.name }
+  end
+
   private
     def ensure_leaf_has_no_child
       raise ActiveRecord::ActiveRecordError if parent && parent.leaf

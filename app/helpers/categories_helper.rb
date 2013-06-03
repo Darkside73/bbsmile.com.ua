@@ -25,4 +25,16 @@ module CategoriesHelper
     tags = selected_tags - [name]
     category_page_path(params.merge(tags: tags))
   end
+
+  def link_to_add_brand(name)
+    brands = (selected_brands + [name]).uniq
+    content_tag :li, class: (selected_brands.include?(name) ? 'active' : '') do
+      link_to name, category_page_path(params.merge(brands: brands))
+    end
+  end
+
+  def remove_brand_path(name)
+    brands = selected_brands - [name]
+    category_page_path(params.merge(brands: brands))
+  end
 end

@@ -14,9 +14,10 @@
         li: a href="#{remove_tag_path(tag_name)}" title="удалить фильтр"
           i.icon-remove-sign
           = tag_name
-      li: a href="#" title="удалить фильтр"
-        i.icon-remove-sign
-        | Bebecomfort
+      - selected_brands.each do |brand_name|
+        li: a href="#{remove_brand_path(brand_name)}" title="удалить фильтр"
+          i.icon-remove-sign
+          = brand_name
       li.pull-right: a href="#{category_page_path}"
         i.icon-remove-sign
         | удалить все фильтры
@@ -39,6 +40,12 @@
             #filterByTags.accordion-body.collapse.in: .accordion-inner: ul
               - @category.tags.each do |tag_name|
                 = link_to_add_tag tag_name
+          .accordion-group
+            .accordion-heading
+              a.accordion-toggle data-toggle="collapse" data-parent="false" href="#filterByBrand" Бренды
+            #filterByBrand.accordion-body.collapse.in: .accordion-inner: ul
+              - @category.brands.each do |brand|
+                li = link_to_add_brand brand.name
     .products-list.span9
       - if @products.any?
         .show-options
