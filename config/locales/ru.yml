@@ -17,6 +17,10 @@ ru:
         destroyed:
           success: Категория удалена
           forbidden: "Нельзя удалить удалять категорию, содержащую подкатегории"
+      price_ranges:
+        created: Диапазон цен создан
+        updated: Диапазон цен обновлен
+        destroyed: Диапазон цен удален
       products:
         created: Продукт создан
         updated: Продукт обновлен

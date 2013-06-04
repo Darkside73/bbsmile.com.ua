@@ -1,0 +1,23 @@
+= render layout: 'category_edit_tabs' do
+  - if @price_range.errors.any?
+    coffee:
+      $ ->
+        $('#collapse-form').collapse('show')
+
+  .row-fluid
+    .span8
+      #new-price-range-form.accordion
+        .accordion-group
+          .accordion-heading
+            .accordion-toggle data-toggle="collapse" data-parent="#new-price-range-form" href="#collapse-form"
+              strong Добавить диапазон
+          #collapse-form.accordion-body.collapse
+            .accordion-inner
+              = render 'form', path: [:admin, @category, @price_range]
+
+      - if @category.price_ranges.any?
+        table.table.price-ranges-list.table-striped
+          = render @category.price_ranges
+      - else
+        | нет диапазонов цен, попробуйте добавить
+    .span4

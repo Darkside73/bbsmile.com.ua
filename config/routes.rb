@@ -13,7 +13,7 @@ Bbsmile::Application.routes.draw do
         post 'sort'
       end
     end
-    resources :categories, concerns: :sortable do
+    resources :categories, concerns: :sortable, shallow: true do
       member do
         get 'new_subcategory'
         post 'create_subcategory'
@@ -21,6 +21,7 @@ Bbsmile::Application.routes.draw do
         get 'new_product', controller: 'products', action: 'new_in_category'
         get 'products'
       end
+      resources :price_ranges, only: [:index, :create, :edit, :update, :destroy]
     end
     resources :products, concerns: :sortable, shallow: true do
       resources :images, concerns: :sortable, only: [:index, :new, :create, :destroy]

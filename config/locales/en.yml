@@ -16,6 +16,10 @@ en:
         destroyed:
           success: Category destroyed
           forbidden: Forbidden. Category has children
+      price_ranges:
+        created: Price range created
+        updated: Price range updated
+        destroyed: Price range destroyed
       products:
         created: Product created
         updated: Product updated

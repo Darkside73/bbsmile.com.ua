@@ -1,0 +1,4 @@
+- content_for :box_title do
+  | Редактирование диапазона цен
+= render layout: 'boxed' do
+  = render 'form', path: [:admin, @price_range]

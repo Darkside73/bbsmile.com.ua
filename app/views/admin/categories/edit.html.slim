@@ -1,5 +1,2 @@
-- content_for :box_title do
-  b = @category.title
-  | &nbsp;&mdash; редактирование
-= render layout: 'boxed' do
+= render layout: 'category_edit_tabs' do
   = render_form_for_category @category
