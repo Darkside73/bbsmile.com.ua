@@ -38,6 +38,10 @@ class Category < ActiveRecord::Base
     @brands ||= products.collect(&:brand).uniq.sort {|x, y| x.name <=> y.name }
   end
 
+  def find_price_ranges
+    price_ranges.any? ? price_ranges : parent.find_price_ranges
+  end
+
   private
     def ensure_leaf_has_no_child
       raise ActiveRecord::ActiveRecordError if parent && parent.leaf

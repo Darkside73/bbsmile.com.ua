@@ -92,4 +92,20 @@ describe Category do
       expect { category.destroy }.to raise_error(Ancestry::AncestryException)
     end
   end
+
+  describe "#find_price_ranges" do
+    let(:category) { create :category_with_price_ranges, children_count: 3 }
+    context "when category has price ranges" do
+      subject { category.find_price_ranges }
+      it "return price ranges" do
+        should == category.price_ranges
+      end
+    end
+    context "when category has no price ranges" do
+      subject { category.children.sample.find_price_ranges }
+      it "return parent category price ranges" do
+        should == category.price_ranges
+      end
+    end
+  end
 end

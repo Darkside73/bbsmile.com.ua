@@ -37,4 +37,12 @@ module CategoriesHelper
     brands = selected_brands - [name]
     category_page_path(params.merge(brands: brands))
   end
+
+  def price_ranges
+    return @category.price_ranges if @category.price_ranges.any?
+    @category.descendants.each do |category|
+      return category.price_ranges if category.price_ranges.any?
+    end
+
+  end
 end
