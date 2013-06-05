@@ -37,3 +37,6 @@ en:
     messages:
       blank: "%{attribute} can't be blank"
       uniqueness: "%{attribute} not unique"
+    models:
+      price_range:
+        range: "can't be greather than to"

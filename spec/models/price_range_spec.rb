@@ -7,4 +7,10 @@ describe PriceRange do
     price_range.save
     price_range.from.should be_nil
   end
+  it "fails validation if range from is greather than range to" do
+    expect(PriceRange.new(from: 10, to: 5)).to have(1).error_on(:from)
+  end
+  it "valid if range from is empty" do
+    expect(PriceRange.new(from: '', to: 5)).to be_valid
+  end
 end

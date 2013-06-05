@@ -44,6 +44,9 @@ ru:
       paperclip:
         content_type_image: "не похоже на файл изображения"
         size: "размерчик не тот, нужно меньше %{max}"
+    models:
+      price_range:
+        range: "не может быть больше, чем До"
 
   number:
     format:
