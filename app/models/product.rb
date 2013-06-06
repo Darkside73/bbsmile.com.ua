@@ -46,6 +46,16 @@ class Product < ActiveRecord::Base
     @top_image ||= images.first.try {|image| image.url(style) }
   end
 
+  def in_range? price_range
+    if price_range.from.blank?
+      price < price_range.to
+    elsif price_range.to.blank?
+      price > price_range.from
+    else
+      price >= price_range.from && price <= price_range.to
+    end
+  end
+
   private
     def make_master_variant
       master_variant.master = true if master_variant

@@ -1,0 +1,6 @@
+- if price_range.from.blank?
+  | меньше #{price_range.to} грн
+- elsif price_range.to.blank?
+  | свыше #{price_range.from} грн
+- else
+  | от #{price_range.from} грн до #{price_range.to} грн

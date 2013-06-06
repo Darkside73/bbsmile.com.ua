@@ -38,11 +38,18 @@ module CategoriesHelper
     category_page_path(params.merge(brands: brands))
   end
 
-  def price_ranges
-    return @category.price_ranges if @category.price_ranges.any?
-    @category.descendants.each do |category|
-      return category.price_ranges if category.price_ranges.any?
+  def link_to_add_price_range(price_range, &block)
+    id = price_range.id.to_s
+    ranges = (selected_prices + [id]).uniq
+    link_text = capture &block
+    content_tag :li, class: (selected_prices.include?(id) ? 'active' : '') do
+      link_to link_text, category_page_path(params.merge(prices: ranges))
     end
+  end
 
+  def remove_price_range_path(price_range)
+    id = price_range.id.to_s
+    ranges = selected_prices - [id]
+    category_page_path(params.merge(prices: ranges))
   end
 end

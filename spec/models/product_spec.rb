@@ -69,4 +69,12 @@ describe Product do
       should be_false
     end
   end
+
+  describe "#in_range?" do
+    let!(:product) { create(:product_with_variants) }
+    it "checks product price for matching price range" do
+      price_range = create :price_range, from: product.price - 10
+      product.in_range?(price_range).should be_true
+    end
+  end
 end

@@ -39,7 +39,7 @@ class Category < ActiveRecord::Base
   end
 
   def find_price_ranges
-    price_ranges.any? ? price_ranges : parent.find_price_ranges
+    @price_ranges ||= price_ranges.any? ? price_ranges : (is_root? ? [] : parent.find_price_ranges)
   end
 
   private

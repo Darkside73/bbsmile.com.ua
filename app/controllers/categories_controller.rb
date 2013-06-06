@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
-  helper_method :sort_direction, :selected_tags, :selected_brands
+  helper_method :sort_direction, :selected_tags, :selected_brands,
+                :selected_prices, :selected_ranges
 
   def show
     @category = pageable_from_slug
@@ -7,7 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def sort_direction
-    params[:direction] || 'asc'
+    @category.sort_direction
   end
 
   def selected_tags
@@ -16,5 +17,13 @@ class CategoriesController < ApplicationController
 
   def selected_brands
     params[:brands] || []
+  end
+
+  def selected_prices
+    params[:prices] || []
+  end
+
+  def selected_ranges
+    @category.selected_price_ranges || []
   end
 end
