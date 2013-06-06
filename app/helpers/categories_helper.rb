@@ -8,6 +8,13 @@ module CategoriesHelper
     items.reject(&:hidden)
   end
 
+  def accordion_group(id, name, options = {}, &block)
+    return nil if options[:if] && @category.send(options[:if]).empty?
+    render layout: 'accordion_group', locals: { id: id, name: name } do
+      capture &block
+    end
+  end
+
   def link_to_sortable_price(name, direction)
     content_tag :li, class: (direction == sort_direction ? 'active' : '') do
       link_to name, category_page_path(params.merge(sort: 'price', direction: direction))
@@ -51,5 +58,9 @@ module CategoriesHelper
     id = price_range.id.to_s
     ranges = selected_prices - [id]
     category_page_path(params.merge(prices: ranges))
+  end
+
+  def any_filtering?
+    selected_prices.any? || selected_brands.any? || selected_tags.any?
   end
 end

@@ -8,57 +8,27 @@
     =' @category.title
     small подбор товаров
   = render 'breadcrumb'
-  .subnav data-spy="affix" data-offset-top="60"
-    ul.nav.nav-pills
-      - selected_ranges.each do |range|
-        li: a href="#{remove_price_range_path(range)}" title="удалить фильтр"
-          i.icon-remove-sign
-          = render range
-      - selected_tags.each do |tag_name|
-        li: a href="#{remove_tag_path(tag_name)}" title="удалить фильтр"
-          i.icon-remove-sign
-          = tag_name
-      - selected_brands.each do |brand_name|
-        li: a href="#{remove_brand_path(brand_name)}" title="удалить фильтр"
-          i.icon-remove-sign
-          = brand_name
-      li.pull-right: a href="#{category_page_path}"
-        i.icon-remove-sign
-        | удалить все фильтры
+  = render 'selected_filters' if any_filtering?
   .row-fluid
     .product-filters.span3
       #product-filters.accordion
-        .accordion-group
-          .accordion-heading
-            a.accordion-toggle data-toggle="collapse" data-parent="false" href="#filterByCategory" Категории
-          #filterByCategory.accordion-body.collapse.in: .accordion-inner: ul
-            - category_menu_items.each do |subcategory|
-              - if @category.url == subcategory.url
-                li.active = link_to subcategory
-              - else
-                li = link_to subcategory
+        = accordion_group "filterByCategory", "Категория" do
+          - category_menu_items.each do |subcategory|
+            - if @category.url == subcategory.url
+              li.active = link_to subcategory
+            - else
+              li = link_to subcategory
         - if @category.leaf?
-          .accordion-group
-            .accordion-heading
-              a.accordion-toggle data-toggle="collapse" data-parent="false" href="#filterByPrice" Цены
-            #filterByPrice.accordion-body.collapse.in: .accordion-inner: ul
-              - @category.find_price_ranges.each do |range|
-                = link_to_add_price_range range do
-                  = render range
-          - if @category.tags.any?
-            .accordion-group
-              .accordion-heading
-                a.accordion-toggle data-toggle="collapse" data-parent="false" href="#filterByTags" Теги
-              #filterByTags.accordion-body.collapse.in: .accordion-inner: ul
-                - @category.tags.each do |tag_name|
-                  = link_to_add_tag tag_name
-          - if @category.brands.any?
-            .accordion-group
-              .accordion-heading
-                a.accordion-toggle data-toggle="collapse" data-parent="false" href="#filterByBrand" Бренды
-              #filterByBrand.accordion-body.collapse.in: .accordion-inner: ul
-                - @category.brands.each do |brand|
-                  li = link_to_add_brand brand.name
+          = accordion_group "filterByPrice", "Цены", if: :find_price_ranges do
+            - @category.find_price_ranges.each do |range|
+              = link_to_add_price_range range do
+                = render range
+          = accordion_group "filterByTags", "Теги", if: :tags do
+            - @category.tags.each do |tag_name|
+              = link_to_add_tag tag_name
+          = accordion_group "filterByBrand", "Бренды", if: :brands do
+            - @category.brands.each do |brand|
+              li = link_to_add_brand brand.name
     .products-list.span9
       - if @products.any?
         .show-options
