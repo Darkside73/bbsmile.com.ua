@@ -25,5 +25,19 @@ FactoryGirl.define do
     factory :leaf_category do
       leaf true
     end
+
+    factory :hidden_category do
+      page { create(:page, hidden: true) }
+    end
+
+    factory :category_with_products do
+      products {
+        create_list(:product_with_variants, 3) + create_list(:tagged_product, 3)
+      }
+    end
+
+    factory :category_with_price_ranges do
+      price_ranges { create_list :price_range, 3 }
+    end
   end
 end

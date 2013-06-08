@@ -1,10 +1,15 @@
+# TODO deal with rails autoload mechanism
+require 'category/search'
+
 class Category < ActiveRecord::Base
+  include Models::Category::Search
 
   has_one :page, as: :pageable, dependent: :destroy
   has_many :products
+  has_many :price_ranges
   accepts_nested_attributes_for :page
 
-  delegate :title, :name, :url, to: :page
+  delegate :title, :name, :url, :hidden, to: :page
 
   has_ancestry orphan_strategy: :restrict
 
@@ -22,6 +27,19 @@ class Category < ActiveRecord::Base
     def arrange
       self.includes(:page).merge(Page.visible).references(:pages).ancestry_arrange(order: :position)
     end
+  end
+
+  def tags
+    @tags ||= products.collect(&:tag_list).flatten.uniq
+  end
+
+  # TODO use AR to reduce number of queries
+  def brands
+    @brands ||= products.collect(&:brand).uniq.sort {|x, y| x.name <=> y.name }
+  end
+
+  def find_price_ranges
+    @price_ranges ||= price_ranges.any? ? price_ranges : (is_root? ? [] : parent.find_price_ranges)
   end
 
   private

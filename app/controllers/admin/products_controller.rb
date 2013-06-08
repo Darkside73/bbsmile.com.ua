@@ -60,7 +60,7 @@ class Admin::ProductsController < Admin::ApplicationController
   end
 
   def tags
-    tags = ActsAsTaggableOn::Tag.where('name LIKE ?', "%#{params[:q]}%").limit(5)
+    tags = Tag.where(params[:q])
     tags.map! { |tag| { text: tag.name, id: tag.name } }
     respond_to do |format|
       format.json { render json: tags }

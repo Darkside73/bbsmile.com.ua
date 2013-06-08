@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/cucumber/cucumber-rails.git
-  revision: d5bded34c28b8c5d3541aee7cb047da7870209a1
+  revision: 0e5704719871974d8d2eb243fbb145574d23a46c
   branch: master_rails4_test
   specs:
     cucumber-rails (1.3.1)
@@ -18,12 +18,11 @@ GIT
 
 GIT
   remote: git://github.com/slim-template/slim.git
-  revision: 594f4f9007ba35dea28c2f1c6236b72512a89067
-  ref: 594f4f90
+  revision: 34f4517658838f17457a7ca046da49a866885d0e
   specs:
-    slim (2.0.0.pre.8)
-      temple (~> 0.6.4)
-      tilt (~> 1.3.6)
+    slim (2.0.0)
+      temple (~> 0.6.5)
+      tilt (~> 1.3, >= 1.3.3)
 
 GIT
   remote: git://github.com/stefankroes/ancestry.git
@@ -98,7 +97,7 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     commonjs (0.2.6)
-    cucumber (1.3.1)
+    cucumber (1.3.2)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
       gherkin (~> 2.12.0)
@@ -116,8 +115,8 @@ GEM
     faker (1.1.2)
       i18n (~> 0.5)
     ffi (1.8.1)
-    font-awesome-rails (3.1.1.0)
-      railties (>= 3.1)
+    font-awesome-rails (3.1.1.2)
+      railties (>= 3.2, < 5.0)
     formatador (0.2.4)
     gherkin (2.12.0)
       multi_json (~> 1.3)
@@ -130,7 +129,7 @@ GEM
     guard-cucumber (1.4.0)
       cucumber (>= 1.2.0)
       guard (>= 1.1.0)
-    guard-rspec (3.0.0)
+    guard-rspec (3.0.1)
       guard (>= 1.8)
       rspec (~> 2.13)
     guard-zeus-client (0.1.1)
@@ -154,7 +153,7 @@ GEM
     less-rails-bootstrap (2.3.2)
       less-rails (~> 2.3.1)
     libv8 (3.11.8.17)
-    listen (1.1.0)
+    listen (1.1.4)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
       rb-kqueue (>= 0.2)
@@ -169,7 +168,7 @@ GEM
     method_source (0.8.1)
     mime-types (1.23)
     minitest (4.7.4)
-    multi_json (1.7.3)
+    multi_json (1.7.4)
     net-scp (1.1.1)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -181,7 +180,7 @@ GEM
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
     nokogiri (1.5.9)
-    paperclip (3.4.1)
+    paperclip (3.4.2)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -227,7 +226,7 @@ GEM
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.13.1)
-    rspec-rails (2.13.1)
+    rspec-rails (2.13.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
@@ -238,14 +237,14 @@ GEM
     shoulda (3.5.0)
       shoulda-context (~> 1.0, >= 1.0.1)
       shoulda-matchers (>= 1.4.1, < 3.0)
-    shoulda-context (1.1.1)
+    shoulda-context (1.1.2)
     shoulda-matchers (2.1.0)
       activesupport (>= 3.0.0)
     simple_form (3.0.0.rc)
       actionpack (>= 4.0.0.rc1, < 4.1)
       activemodel (>= 4.0.0.rc1, < 4.1)
-    slop (3.4.4)
-    sprockets (2.9.3)
+    slop (3.4.5)
+    sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -254,19 +253,19 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    temple (0.6.4)
+    temple (0.6.5)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
     thor (0.18.1)
     thread_safe (0.1.0)
       atomic
-    tilt (1.3.7)
+    tilt (1.4.1)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.37)
-    uglifier (2.1.0)
+    uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     unicorn (4.6.2)
@@ -299,7 +298,7 @@ DEPENDENCIES
   guard-cucumber
   guard-rspec
   guard-zeus-client
-  jquery-rails
+  jquery-rails (~> 2.2.1)
   json (~> 1.7.7)
   launchy
   less-rails-bootstrap

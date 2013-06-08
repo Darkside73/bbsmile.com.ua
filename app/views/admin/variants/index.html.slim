@@ -1,5 +1,5 @@
 = render layout: 'product_info_tabs' do
-  - unless @variant.valid?
+  - if @variant.errors.any?
     coffee:
       $ ->
         $('#collapse-form').collapse('show')

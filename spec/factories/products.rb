@@ -31,6 +31,7 @@ FactoryGirl.define do
     end
     factory :tagged_product do
       tag_list 'tag1, tag2'
+      variants { create_list :variant, 3 }
     end
   end
 end

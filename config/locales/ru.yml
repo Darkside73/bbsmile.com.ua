@@ -17,6 +17,10 @@ ru:
         destroyed:
           success: Категория удалена
           forbidden: "Нельзя удалить удалять категорию, содержащую подкатегории"
+      price_ranges:
+        created: Диапазон цен создан
+        updated: Диапазон цен обновлен
+        destroyed: Диапазон цен удален
       products:
         created: Продукт создан
         updated: Продукт обновлен
@@ -40,6 +44,9 @@ ru:
       paperclip:
         content_type_image: "не похоже на файл изображения"
         size: "размерчик не тот, нужно меньше %{max}"
+    models:
+      price_range:
+        range: "не может быть больше, чем До"
 
   number:
     format:

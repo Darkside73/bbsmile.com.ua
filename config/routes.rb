@@ -13,7 +13,7 @@ Bbsmile::Application.routes.draw do
         post 'sort'
       end
     end
-    resources :categories, concerns: :sortable do
+    resources :categories, concerns: :sortable, shallow: true do
       member do
         get 'new_subcategory'
         post 'create_subcategory'
@@ -21,6 +21,7 @@ Bbsmile::Application.routes.draw do
         get 'new_product', controller: 'products', action: 'new_in_category'
         get 'products'
       end
+      resources :price_ranges, only: [:index, :create, :edit, :update, :destroy]
     end
     resources :products, concerns: :sortable, shallow: true do
       resources :images, concerns: :sortable, only: [:index, :new, :create, :destroy]
@@ -36,10 +37,10 @@ Bbsmile::Application.routes.draw do
   # get '*slug' => 'categories#show', format: false, constraints: PageTypeConstraint.new(Category)
   %w(product category).each do |type|
     get '*slug' => "#{type.pluralize}#show", format: false, constraints: lambda { |req|
-      Page.visible.find_by(url: req.fullpath.sub(/^[\/]*/, '')).try {
+      Page.visible.find_by(url: req.params['slug']).try {
         |p| p.pageable.is_a?(type.camelize.constantize)
       }
-    }
+    }, as: "#{type}_page"
   end
 
   get '*slug' => 'pages#show', format: false

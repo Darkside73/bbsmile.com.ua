@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe ApplicationHelper do
   subject { ApplicationHelper }
-  let(:page) { build :page, { name: 'Some page', url: 'url/to' } }
-  let(:category) { build :category }
+  let(:page) { create :page, { name: 'Some page', url: 'url/to' } }
+  let(:category) { create :category }
   describe '.link_to' do
     it 'create link from regular args' do
       title = 'some link'

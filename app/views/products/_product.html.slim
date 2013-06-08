@@ -1,0 +1,13 @@
+.product.span4
+  - if product.top_image?
+    = link_to image_tag(product.top_image :grid), product, class: 'thumbnail'
+  .caption
+    h3
+      = link_to product
+      - if product.brand.present?
+        br
+        small = product.brand.name
+  - if product.price
+    .price.btn-group
+      a.btn.disabled: span.label #{product.price} грн.
+      button.btn.btn-success Купить

@@ -16,6 +16,10 @@ en:
         destroyed:
           success: Category destroyed
           forbidden: Forbidden. Category has children
+      price_ranges:
+        created: Price range created
+        updated: Price range updated
+        destroyed: Price range destroyed
       products:
         created: Product created
         updated: Product updated
@@ -33,3 +37,6 @@ en:
     messages:
       blank: "%{attribute} can't be blank"
       uniqueness: "%{attribute} not unique"
+    models:
+      price_range:
+        range: "can't be greather than to"
