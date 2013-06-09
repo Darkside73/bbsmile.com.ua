@@ -1,14 +1,17 @@
 /*
-* = require "twitter/bootstrap"
+* = require "lib/bootstrap"
 * = require "font-awesome"
 * = require "admin/theme"
 * = require "select2/select2"
 * = require "bootstrap-wysihtml5"
 */
 
+@import "twitter/bootstrap/variables";
+@import "twitter/bootstrap/mixins";
+
 a[class^="icon-"] {
   color: gray;
-  &:hover { text-decoration: none; color: darken(gray, 20%) }
+  &:hover { text-decoration: none; color: @linkColor }
 }
 
 .bs-docs-sidenav {
@@ -39,4 +42,12 @@ p.bages {
 .wysihtml5 {
   width: 80%;
   height: 350px;
+}
+
+form.simple_form {
+  margin-left: 5px;
+  input.autogrow {
+    .transition(width 0.3s ease);
+    &:focus { width: 90%; }
+  }
 }

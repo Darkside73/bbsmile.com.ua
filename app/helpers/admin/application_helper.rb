@@ -4,4 +4,17 @@ module Admin::ApplicationHelper
   def render_form_for_category(category = nil, url= nil)
     render partial: 'form', locals: { category: category.blank? ? @category : category, url: url }
   end
+
+  def breadcrumb_items
+    items = []
+    if @category.present?
+      items += @category.ancestors
+      items << @category
+    elsif @product.present? && !@product.new_record?
+      items += @product.category.ancestors
+      items << @product.category
+      items << @product
+    end
+    items
+  end
 end

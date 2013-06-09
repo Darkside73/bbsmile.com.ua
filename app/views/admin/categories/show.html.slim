@@ -1,7 +1,7 @@
-- content_for :box_title do
-  = render 'breadcrumb'
+- content_for :box_actions do
+  = link_to '', [:edit, :admin, @category], class: "icon-edit", title: "Редактировать категорию"
 
-= render layout: 'boxed' do
+= render layout: 'boxed', locals: { title: @category.title } do
   - if @subcategories.any?
     table.table.sortable.categories-list.table-striped
       thead

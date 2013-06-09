@@ -1,0 +1,15 @@
+ul.breadcrumb
+  i.icon-chevron-left.hide-sidebar title="Скрыть панель"
+    a rel="tooltip" href="#" &nbsp;
+  i.icon-chevron-right.show-sidebar style="display:none"
+    a rel="tooltip" title="Показать панель" href="#" &nbsp;
+  li
+    = link_to 'Главная', admin_root_path
+    span.divider: i.icon-caret-right
+  - breadcrumb_items.each do |item|
+    li
+      - unless breadcrumb_items.last == item
+        = link_to item.name, [:admin, item]
+        span.divider: i.icon-caret-right
+      - else
+        li.active = item.name

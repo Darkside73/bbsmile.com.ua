@@ -1,7 +1,7 @@
-- content_for :box_title do
-  strong =' @product.title
-  | &mdash; #{link_to @product.category.title, [:admin, @product.category], title: "Категория" }
-= render layout: 'boxed' do
+- content_for :box_actions do
+  = link_to '', [:edit, :admin, @product], class: "icon-edit", title: "Редактировать товар"
+
+= render layout: 'boxed', locals: { title: @product.title } do
   ul.nav.nav-tabs
     li*unless_active_attr('admin/products', 'show') = link_to "Основное", [:admin, @product]
     li*unless_active_attr('admin/images') = link_to "Фото", [:admin, @product, :images]
