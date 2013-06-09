@@ -2,6 +2,8 @@ class Asset < ActiveRecord::Base
   belongs_to :assetable, polymorphic: true
   delegate :url, to: :attachment
 
+  attr_reader :attachment_url
+
   DEFAULT_URL  = '/uploads/:class/:id_partition/:style/:filename'
   DEFAULT_PATH = ':rails_root/public:url'
 
@@ -12,4 +14,8 @@ class Asset < ActiveRecord::Base
 
   acts_as_list scope: [:assetable_id, :type]
   default_scope -> { order(:position) }
+
+  def attachment_url= url
+    self.attachment = URI.parse(url) if url.present?
+  end
 end

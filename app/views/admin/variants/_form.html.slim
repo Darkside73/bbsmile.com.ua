@@ -10,7 +10,8 @@
       = f.input :price, label: 'Цена'
       = f.input :price_old, label: 'Старая цена'
       = f.simple_fields_for(:image, variant.image || variant.build_image) do |i|
-        = i.input :attachment, label: 'Фото'
+        = i.input :attachment, label: 'Загрузить фото'
+        = i.input :attachment_url, label: 'или указать ссылку'
       - if variant.image.valid?
         .variant-image = image_tag variant.image.url(:thumb)
         = f.input :delete_image, as: :boolean, label: false, inline_label: 'удалить фото', unchecked_value: false
