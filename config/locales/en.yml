@@ -33,10 +33,13 @@ en:
         destroyed: Image destroyed
       content:
         saved: Content saved
+      orders:
+        created: Order created
   errors:
     messages:
       blank: "%{attribute} can't be blank"
       uniqueness: "%{attribute} not unique"
+      email: "should be valid email address"
     models:
       price_range:
         range: "can't be greather than to"

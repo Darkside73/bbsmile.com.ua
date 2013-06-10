@@ -2,9 +2,7 @@ Bbsmile::Application.routes.draw do
 
   root 'main#index'
 
-  get 'main' => 'layout_main#index'
-  get 'category' => 'layout_inner#category'
-  get 'product' => 'layout_inner#product'
+  resources :orders, only: :create
 
   namespace :admin do
     root to: 'main#index'

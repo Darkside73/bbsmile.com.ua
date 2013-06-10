@@ -4,6 +4,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = pageable_from_slug
+    @order = Order.new
+    @order.build_user
   end
 
   def gallery_for(product)

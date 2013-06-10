@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130604183219) do
+ActiveRecord::Schema.define(version: 20130611131525) do
 
   create_table "assets", force: true do |t|
     t.datetime "created_at"
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 20130604183219) do
     t.text     "text"
     t.integer  "contentable_id"
     t.string   "contentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.string   "user_name"
+    t.string   "user_phone"
+    t.integer  "user_id"
+    t.float    "price"
+    t.integer  "variant_id"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -101,6 +112,15 @@ ActiveRecord::Schema.define(version: 20130604183219) do
 
   create_table "tags", force: true do |t|
     t.string "name"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.boolean  "subscribed", default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "variants", force: true do |t|

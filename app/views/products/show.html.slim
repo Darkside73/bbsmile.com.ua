@@ -5,15 +5,15 @@
   = javascript_include_tag 'product'
 
 #product-container.container-fluid.container-wide
-  h1.page-title
-    =' @product.title
-    - if @product.brand.present?
-      small.muted = @product.brand.name
   = render 'breadcrumb', category: @product.category
   .row-fluid
     .gallery.span4
       = gallery_for(@product)
     .description.span8
+      h1.page-title
+        =' @product.title
+        - if @product.brand.present?
+          small.muted = @product.brand.name
       .bages.pull-left
         - if @product.available
           span.label.label-success Есть в наличии
@@ -41,12 +41,34 @@
             - else
               | Доставка около 50 грн &nbsp;
             a.icon-info-sign href="/information/delivery" title="Подробнее о доставке"
+
+      #quickShopDialog.modal.hide.fade tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+        .modal-header
+          button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+          h3
+           | Покупка&nbsp;
+           .muted = @product.title
+        = simple_form_for @order, remote: true, html: { data: { type: :json } } do |f|
+          .modal-body
+            .row-fluid
+              = f.simple_fields_for :user do |u|
+                .span6
+                  = u.input :name, label: "Имя"
+                  = u.input :phone, label: "Телефон"
+                .span6
+                  = u.input :email, label: "E-mail"
+                  = u.input :subscribed, label: "Хочу получать акционные и скидочные предложения"
+            = f.input :notes, label: "Дополнительная информация"
+            = f.hidden_field :variant_id, value: @product.master_variant.id
+          .modal-footer
+            button.btn data-dismiss="modal" aria-hidden="true" Закрыть
+            = f.button :submit, "Купить", class: 'btn btn-success'
       .pull-right.btns
         p
           / a.to-cart.btn
           /   i.icon-shopping-cart
           /   | &nbsp;В корзину
-          a.quick-shop.btn.btn-large.btn-success Быстрая покупка
+          a.quick-shop.btn.btn-large.btn-success data-toggle="modal" href="#quickShopDialog" Купить
       .clearfix
       ul.nav.nav-tabs id="product-info-tabs"
         li.active: a href="#description" data-toggle="tab" Описание

@@ -34,6 +34,8 @@ ru:
         destroyed: Фотография удалена
       content:
         saved: Описание сохранено
+      orders:
+        created: "Номер вашего заказа <b>%{order_id}</b>. Наш менеджер свяжется с вами в ближайшее время"
   errors:
     messages:
       blank: "нужно заполнить"
@@ -41,6 +43,7 @@ ru:
       taken: "уже занят"
       not_a_number: "не похоже на число"
       greater_than_or_equal_to: "нужно число больше %{count}"
+      email: "не похоже на e-mail"
       paperclip:
         content_type_image: "не похоже на файл изображения"
         size: "размерчик не тот, нужно меньше %{max}"
