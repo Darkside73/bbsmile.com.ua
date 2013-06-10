@@ -76,7 +76,7 @@ class Admin::ProductsController < Admin::ApplicationController
       params.require(:product).permit(
         :category_id, :brand_id,
         :novelty, :topicality, :hit, :video, :tag_list,
-        page_attributes: [:id, :title, :url, :hidden],
+        page_attributes: [:id, :title, :name, :url, :hidden],
         variants_attributes: [[:id, :sku, :price, :price_old, :available]],
         images_attributes: [[:attachment]]
       )
