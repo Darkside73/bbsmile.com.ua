@@ -74,6 +74,14 @@ ActiveRecord::Schema.define(version: 20130620204008) do
   add_index "pages", ["url"], name: "index_pages_on_url", unique: true, using: :btree
   add_index "pages", ["url_old"], name: "index_pages_on_url_old", unique: true, using: :btree
 
+  create_table "pg_search_documents", force: true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "price_ranges", force: true do |t|
     t.integer "from"
     t.integer "to"
