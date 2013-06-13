@@ -42,33 +42,27 @@
               | Доставка около #{number_to_currency 50} &nbsp;
             a.icon-info-sign href="/information/delivery" title="Подробнее о доставке"
 
-      #quickShopDialog.modal.hide.fade tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-        .modal-header
-          button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
-          h3
-           | Покупка&nbsp;
-           .muted = @product.title
-        = simple_form_for @order, remote: true, html: { data: { type: :json } } do |f|
+        = simple_form_for @order, remote: true, html: { class: "quick-shop-dialog modal hide fade", data: { type: :json }, tabindex: -1, role: "dialog", "aria-hidden" => true } do |f|
+          .modal-header
+            button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+            h3 = @product.title
           .modal-body
             .row-fluid
               = f.simple_fields_for :user do |u|
                 .span6
                   = u.input :name, label: "Имя"
                   = u.input :phone, label: "Телефон"
-                .span6
                   = u.input :email, label: "E-mail"
-                  = u.input :subscribed, label: "Хочу получать акционные и скидочные предложения"
-            = f.input :notes, label: "Дополнительная информация"
+                .span6
+                  = f.input :notes, label: "Дополнительная информация", input_html: { rows: 5 }
+                  = u.input :subscribed, label: false, inline_label: "хочу получать акционные и скидочные предложения"
             = f.hidden_field :variant_id, value: @product.master_variant.id
           .modal-footer
-            button.btn data-dismiss="modal" aria-hidden="true" Закрыть
+            a.btn data-dismiss="modal" aria-hidden="true" Закрыть
             = f.button :submit, "Купить", class: 'btn btn-success'
       .pull-right.btns
         p
-          / a.to-cart.btn
-          /   i.icon-shopping-cart
-          /   | &nbsp;В корзину
-          a.quick-shop.btn.btn-large.btn-success data-toggle="modal" href="#quickShopDialog" Купить
+          a.quick-shop.btn.btn-large.btn-success data-toggle="modal" href="##{dom_id @order}" Купить
       .clearfix
       ul.nav.nav-tabs id="product-info-tabs"
         li.active: a href="#description" data-toggle="tab" Описание
@@ -83,24 +77,5 @@
           .tab-pane#productVariants
             = render 'gallery_modal', id: 'variants-gallery'
             ul.thubmnails data={toggle: "modal-gallery", target: "#variants-gallery"}
-              - @product.variants.each do |variant|
-                li.item.span3
-                  .thumbnail
-                    a.thumbnail href="#{variant_image_url(variant)}" title="#{variant.name} #{number_to_currency variant.price}" data-gallery="gallery"
-                      = image_tag variant_image_url(variant, :thumb)
-                    .caption
-                      h5 = variant.name
-                      - if variant.available?
-                        p.text-success
-                          i.icon-check &nbsp;
-                          | есть в наличии
-                      - else
-                        p.muted
-                          i.icon-minus-sign &nbsp;
-                          | нет в наличии
-                      p = variant.sku
-                      p.price
-                        - if variant.price_old?
-                          span.old.muted =' number_to_currency variant.price_old
-                        strong == "#{number_to_currency variant.price}"
+              = render @product.variants
         .tab-pane#video == @product.video
