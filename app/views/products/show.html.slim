@@ -32,14 +32,14 @@
         - if @product.price
           p.price.big
             - if @product.price_old
-              span.old.muted.big = @product.price_old
+              span.old.muted.big = number_to_currency @product.price_old
               | &nbsp;
-            | #{@product.price} грн
+            | #{number_to_currency @product.price}
           p.shipping
             - if @product.free_shipping
               | Доставка бесплатно &nbsp;
             - else
-              | Доставка около 50 грн &nbsp;
+              | Доставка около #{number_to_currency 50} &nbsp;
             a.icon-info-sign href="/information/delivery" title="Подробнее о доставке"
 
       #quickShopDialog.modal.hide.fade tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
@@ -86,7 +86,7 @@
               - @product.variants.each do |variant|
                 li.item.span3
                   .thumbnail
-                    a.thumbnail href="#{variant_image_url(variant)}" title="#{variant.name} #{variant.price} грн" data-gallery="gallery"
+                    a.thumbnail href="#{variant_image_url(variant)}" title="#{variant.name} #{number_to_currency variant.price}" data-gallery="gallery"
                       = image_tag variant_image_url(variant, :thumb)
                     .caption
                       h5 = variant.name
@@ -101,6 +101,6 @@
                       p = variant.sku
                       p.price
                         - if variant.price_old?
-                          span.old.muted =' variant.price_old
-                        strong == "#{variant.price}&nbsp;грн"
+                          span.old.muted =' number_to_currency variant.price_old
+                        strong == "#{number_to_currency variant.price}"
         .tab-pane#video == @product.video

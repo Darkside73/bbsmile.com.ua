@@ -1,6 +1,6 @@
 - if price_range.from.blank?
-  | меньше #{price_range.to} грн
+  | меньше #{number_to_currency price_range.to}
 - elsif price_range.to.blank?
-  | свыше #{price_range.from} грн
+  | свыше #{number_to_currency price_range.from}
 - else
-  | от #{price_range.from} грн до #{price_range.to} грн
+  | от #{number_to_currency price_range.from} до #{number_to_currency price_range.to}

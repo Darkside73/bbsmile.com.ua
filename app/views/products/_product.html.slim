@@ -9,5 +9,5 @@
         small = product.brand.name
   - if product.price
     .price.btn-group
-      a.btn.disabled: span.label #{product.price} грн.
+      a.btn.disabled: span.label #{number_to_currency product.price}
       button.btn.btn-success Купить

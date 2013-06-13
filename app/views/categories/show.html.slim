@@ -4,11 +4,11 @@
 - title @category.title
 
 #category-content.container-fluid.container-wide
+  = render 'breadcrumb'
+  = render 'selected_filters' if any_filtering?
   h1.page-title
     =' @category.title
     small подбор товаров
-  = render 'breadcrumb'
-  = render 'selected_filters' if any_filtering?
   .row-fluid
     .product-filters.span3
       #product-filters.accordion
