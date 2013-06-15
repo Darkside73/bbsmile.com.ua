@@ -6,6 +6,7 @@ class Order < ActiveRecord::Base
 
   before_validation :disable_user_email_uniqueness_validation, on: :create
   before_save :populate_order_user_attributes, on: :create
+  before_save :memorize_variant_price, on: :create
 
   validates :variant, presence: true
 
@@ -26,9 +27,7 @@ class Order < ActiveRecord::Base
       self.user_name, self.user_phone = user.name, user.phone
     end
 
-  # validates_associated :user
-
-  # def user_attributes=(user_attributes)
-  #   self.user = User.create_with(user_attributes).find_or_create_by(name: user_attributes[:name])
-  # end
+    def memorize_variant_price
+      self.price = variant.price
+    end
 end

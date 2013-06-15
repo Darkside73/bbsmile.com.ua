@@ -18,4 +18,11 @@ describe Variant do
       variant.image.should be
     end
   end
+
+  describe "#title" do
+    let(:variant) { create :variant }
+    it "is product title and variant name" do
+      variant.title.should == "#{variant.product.title} #{variant.name}"
+    end
+  end
 end

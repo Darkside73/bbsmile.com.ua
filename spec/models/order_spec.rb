@@ -29,9 +29,13 @@ describe Order do
       expect { order.save.should be_true }.not_to change { User.count }.by(1)
       expect { user.reload }.not_to change { user.name + user.phone }
     end
+    let(:order) { order = Order.new variant: variant, user_attributes: attributes_for(:user) }
     it "saves current values of user name and phone in order" do
-      order = Order.new variant: variant, user_attributes: attributes_for(:user)
       expect { order.save }.to change { order.user_phone and order.user_name }
+    end
+    it "saves current variant price in order" do
+      order.save
+      order.price.should == variant.price
     end
   end
 end

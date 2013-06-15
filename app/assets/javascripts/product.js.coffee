@@ -2,13 +2,18 @@
 //= require bootstrap-image-gallery/js/bootstrap-image-gallery
 
 $ ->
-  $('.variant-quick-shop').click (e) ->
-    console.log $(@).data('variant-id')
-
-  class Dialog
+  class OrderDialog
     constructor: (selector) ->
       @dialog = $(selector)
       @bind()
+
+    setTitle: (title) ->
+      $('> .modal-header h3', @dialog).html title
+      @
+
+    setVariantId: (id) ->
+      $('#order_variant_id', @dialog).val id
+      @
 
     bind: ->
       @dialog.bind(
@@ -52,4 +57,8 @@ $ ->
     toggleSubmitButton: ->
       $('.btn-success', @dialog).toggleClass('disabled')
 
-  new Dialog('.quick-shop-dialog')
+  dialog = new OrderDialog('.quick-shop-dialog')
+
+  $('.variant-quick-shop').click (e) ->
+    dialog.setTitle $(@).data('dialog-title')
+    dialog.setVariantId $(@).data('variant-id')
