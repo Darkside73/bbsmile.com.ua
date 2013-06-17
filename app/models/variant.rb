@@ -18,7 +18,7 @@ class Variant < ActiveRecord::Base
   before_save :destroy_image, if: "delete_image"
 
   def title
-    "#{product.title} #{name}"
+    [product.title, name, sku] * ' '
   end
 
   private

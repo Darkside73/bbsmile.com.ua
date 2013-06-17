@@ -19,10 +19,9 @@ describe Variant do
     end
   end
 
-  describe "#title" do
+  describe "instance methods" do
     let(:variant) { create :variant }
-    it "is product title and variant name" do
-      variant.title.should == "#{variant.product.title} #{variant.name}"
-    end
+    subject { variant }
+    its(:title) { variant.title.should include(variant.product.title, variant.name, variant.sku) }
   end
 end
