@@ -79,6 +79,5 @@
             ul.thubmnails data={toggle: "modal-gallery", target: "#variants-gallery"}
               - @product.variants.each_slice(4) do |variants|
                 .row-fluid
-                  - variants.each do |variant|
-                    = render variant
+                  = render variants
         .tab-pane#video == @product.video
