@@ -1,9 +1,10 @@
 - content_for :head do
   = stylesheet_link_tag 'category'
+  = javascript_include_tag 'category'
 
 - title @category.title
 
-#category-content.container-fluid.container-wide
+#category-content.container-fluid.container-wide.order-flashable
   = render 'breadcrumb'
   = render 'selected_filters' if any_filtering?
   h1.page-title
@@ -47,6 +48,7 @@
       - else
         .offers Акции, новинки,..
 
+      = render 'order/form', order: @order
       - @products.each_slice(3) do |products|
         .row-fluid.line
           = render products

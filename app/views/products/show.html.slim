@@ -4,7 +4,7 @@
   = stylesheet_link_tag 'product'
   = javascript_include_tag 'product'
 
-#product-container.container-fluid.container-wide
+#product-container.container-fluid.container-wide.order-flashable
   = render 'breadcrumb', category: @product.category
   .row-fluid
     .gallery.span4
@@ -42,24 +42,7 @@
               | Доставка около #{number_to_currency 50} &nbsp;
             a.icon-info-sign href="/information/delivery" title="Подробнее о доставке"
 
-        = simple_form_for @order, remote: true, html: { class: "quick-shop-dialog modal hide fade", data: { type: :json }, tabindex: -1, role: "dialog", "aria-hidden" => true } do |f|
-          .modal-header
-            button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
-            h3 = @product.master_variant.title
-          .modal-body
-            .row-fluid
-              = f.simple_fields_for :user do |u|
-                .span6
-                  = u.input :name, label: "Имя"
-                  = u.input :phone, label: "Телефон"
-                  = u.input :email, label: "E-mail"
-                .span6
-                  = f.input :notes, label: "Дополнительная информация", input_html: { rows: 5 }
-                  = u.input :subscribed, label: false, inline_label: "хочу получать акционные и скидочные предложения"
-            = f.hidden_field :variant_id, value: @product.master_variant.id
-          .modal-footer
-            a.btn data-dismiss="modal" aria-hidden="true" Закрыть
-            = f.button :submit, "Купить", class: 'btn btn-success'
+          = render 'order/form', order: @order, product: @product
       .pull-right.btns
         p
           a.quick-shop.btn.btn-large.btn-success data-toggle="modal" href="##{dom_id @order}" Купить

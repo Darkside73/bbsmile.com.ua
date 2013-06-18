@@ -1,0 +1,18 @@
+= simple_form_for order, remote: true, html: { class: "quick-shop-dialog modal hide fade", data: { type: :json }, tabindex: -1, role: "dialog", "aria-hidden" => true } do |f|
+  .modal-header
+    button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+    h3 = product.master_variant.title if local_assigns[:product]
+  .modal-body
+    .row-fluid
+      = f.simple_fields_for :user do |u|
+        .span6
+          = u.input :name, label: "Имя"
+          = u.input :phone, label: "Телефон"
+          = u.input :email, label: "E-mail"
+        .span6
+          = f.input :notes, label: "Дополнительная информация", input_html: { rows: 5 }
+          = u.input :subscribed, label: false, inline_label: "хочу получать акционные и скидочные предложения"
+    = f.hidden_field :variant_id, value: local_assigns[:product] ? product.master_variant.id : nil
+  .modal-footer
+    a.btn data-dismiss="modal" aria-hidden="true" Закрыть
+    = f.button :submit, "Купить", class: 'btn btn-success'

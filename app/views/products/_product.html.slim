@@ -10,4 +10,4 @@
   - if product.price
     .price.btn-group
       a.btn.disabled: span.label #{number_to_currency product.price}
-      button.btn.btn-success Купить
+      button.quick-shop.btn.btn-success href="#new_order" data={toggle: "modal", variant_id: product.master_variant.id, dialog_title: product.master_variant.title} Купить

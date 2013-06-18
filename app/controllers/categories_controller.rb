@@ -5,6 +5,8 @@ class CategoriesController < ApplicationController
   def show
     @category = pageable_from_slug
     @products = @category.products_grid(params)
+    @order = Order.new
+    @order.build_user
   end
 
   def sort_direction
