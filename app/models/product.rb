@@ -44,7 +44,7 @@ class Product < ActiveRecord::Base
 
   def top_image(style = nil)
     # TODO why default scope is not applied?
-    @top_image ||= images.order(:position).first.try {|image| image.url(style) }
+    @top_image ||= images.sort {|x, y| x.position <=> y.position}.first.try {|image| image.url(style) }
   end
 
   def in_range? price_range
