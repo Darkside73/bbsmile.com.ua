@@ -48,7 +48,10 @@ class @OrderDialog
       $('span.help-inline', @).remove()
 
   showFlashMessagesFrom: (data) ->
-    $('.order-flashable').prepend(data.flash) if data.flash
+    if data.flash
+      $('.order-flashable').prepend(data.flash)
+      $.scrollTo '#site-header', 800
+
 
   toggleSubmitButton: ->
     $('.btn-success', @dialog).toggleClass('disabled')

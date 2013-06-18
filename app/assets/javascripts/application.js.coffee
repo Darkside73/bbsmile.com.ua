@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require tabs_memory
+//= require jquery.scrollTo/jquery.scrollTo
 
 do ($ = jQuery) ->
   $ ->
