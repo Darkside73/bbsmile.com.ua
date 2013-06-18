@@ -1,0 +1,13 @@
+h3 Спасибо за покупку!
+p
+  | Номер вашего заказа &nbsp;
+  strong = @order.id
+  | .
+p
+  | Вы купили &nbsp;
+  strong =' @order.variant.title
+  | за &nbsp;
+  strong = number_to_currency @order.price
+  | .
+
+p Наш менеджер свяжется с вами в ближайшее время

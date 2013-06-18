@@ -35,6 +35,10 @@ en:
         saved: Content saved
       orders:
         created: Order created
+  mailers:
+    order:
+      new_order:
+        subject: New order has been placed
   errors:
     messages:
       blank: "%{attribute} can't be blank"

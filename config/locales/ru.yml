@@ -50,6 +50,10 @@ ru:
     models:
       price_range:
         range: "не может быть больше, чем До"
+  mailers:
+    order:
+      new_order:
+        subject: Новый заказ на bbsmile.com.ua
 
   number:
     format:

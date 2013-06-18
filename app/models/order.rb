@@ -18,9 +18,13 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def number
+    id.to_s
+  end
+
   private
     def disable_user_email_uniqueness_validation
-      user.creation_with_order = true
+      user.creation_with_order = true if user
     end
 
     def populate_order_user_attributes
