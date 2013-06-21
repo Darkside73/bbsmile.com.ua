@@ -15,5 +15,8 @@ FactoryGirl.define do
       master true
       association :product, factory: :product_with_images
     end
+    factory :hidden_variant do
+      product { create :hidden_product }
+    end
   end
 end

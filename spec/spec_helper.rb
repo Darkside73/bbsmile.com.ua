@@ -29,4 +29,13 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
   config.include Paperclip::Shoulda::Matchers
+
+  # use simple dictionary in specs
+  module PgSearch
+    class Configuration
+      def default_options
+        { using: { tsearch: { dictionary: "simple" } } }
+      end
+    end
+  end
 end

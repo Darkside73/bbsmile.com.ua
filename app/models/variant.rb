@@ -1,6 +1,11 @@
 class Variant < ActiveRecord::Base
+  include PgSearch
+
   belongs_to :product
   has_one :image, as: :assetable, dependent: :destroy
+
+  scope :visible, -> { joins(product: [:page]).where("pages.hidden" => false) }
+  pg_search_scope :by_sku, against: :sku
 
   attr_accessor :delete_image
 

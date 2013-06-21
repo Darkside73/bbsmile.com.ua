@@ -1,8 +1,13 @@
 class Page < ActiveRecord::Base
+  include PgSearch
 
   belongs_to :pageable, polymorphic: true
 
   scope :visible, -> { where(hidden: false) }
+  scope :products, -> { where(pageable_type: 'Product') }
+  scope :categories, -> { where(pageable_type: 'Category') }
+
+  pg_search_scope :by_title, against: :title
 
   validates :title, :url, presence: true
   validates :url, uniqueness: true
