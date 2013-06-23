@@ -7,6 +7,7 @@
 //= require bootstrap-wysihtml5
 //= require bootstrap-wysihtml5/locales/ru-RU
 //= require tabs_memory
+//= require ./transliterate
 //= require ./destroy_helper
 //= require ./sort
 //= require ./products
@@ -42,3 +43,10 @@ $ ->
   $('select').select2(allowClear: true)
 
   $('.wysihtml5').wysihtml5 locale: 'ru-RU'
+
+  $('.transliterate').click (e) ->
+    val = transliterate($('#product_page_attributes_title').val())
+    val = val.replace /\s/g, '-'
+    val = val.replace /[^A-z0-9\'\-]/g, ''
+    $('#product_page_attributes_url').val val.toLowerCase()
+    false
