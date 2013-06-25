@@ -2,22 +2,6 @@ $ ->
   labels = []
   results = {}
 
-  # sourceRequest = _.debounce(
-  #   (query, process) ->
-  #     labels = []
-  #     results = {}
-  #     data = try
-  #       JSON.parse $.ajax(
-  #         "/search-anything.json?q=#{query}"
-  #         async: false
-  #       ).responseText
-  #     catch e
-  #     $.each data.products, (i, product) ->
-  #       results[product.title] = product
-  #       labels.push product.title
-  #     labels
-  #   300
-  # )
   sourceRequest = _.debounce(
     (query, process) ->
       labels = []
@@ -37,6 +21,7 @@ $ ->
     minLength: 3
     source: (query, process) ->
       sourceRequest query, process
+      return
 
     updater: (item) ->
       results[item]
