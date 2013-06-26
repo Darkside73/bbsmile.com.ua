@@ -108,4 +108,18 @@ describe Category do
       end
     end
   end
+
+  context "when search" do
+    before do
+      create_list :category, 3
+      @matched = create :category, page_title: 'test'
+    end
+    describe "#by_title" do
+      subject { Category.visible.by_title('test') }
+      it { should be_an ActiveRecord::Relation }
+      it "include matched page" do
+        should include(@matched)
+      end
+    end
+  end
 end

@@ -38,18 +38,4 @@ describe Page do
       page.url_old.should be_nil
     end
   end
-
-  context "when search" do
-    before do
-      create_list :product_page, 3
-      @matched_page = create :product_page, title: 'test'
-    end
-    describe "#by_title" do
-      subject { Page.products.by_title('test') }
-      it { should be_an ActiveRecord::Relation }
-      it "include matched page" do
-        should include(@matched_page)
-      end
-    end
-  end
 end

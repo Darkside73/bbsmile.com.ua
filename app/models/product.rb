@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  include PgSearch
+
   FREE_SHIPPING_PRICE = 1500
 
   has_one :page, as: :pageable, dependent: :destroy
@@ -19,7 +21,12 @@ class Product < ActiveRecord::Base
   acts_as_taggable
 
   default_scope -> { order(:position) }
+  # TODO replace by AR query interface (see bellow) then https://github.com/Casecommons/pg_search/issues/88 will be fixed
+  scope :visible, -> { joins("INNER JOIN pages AS p ON p.pageable_id = products.id AND p.pageable_type = 'Product'").where("p.hidden IS false") }
+  # scope :visible, -> { includes(:page).merge(Page.visible).references(:pages) }
   scope :recent, lambda { |n| order(created_at: :desc).limit(n) }
+
+  pg_search_scope :by_title, associated_against: { page: :title }
 
   validates :category, presence: true
   validates :novelty, :topicality, :hit, inclusion: { in: [true, false] }
