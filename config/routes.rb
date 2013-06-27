@@ -2,6 +2,7 @@ Bbsmile::Application.routes.draw do
 
   root 'main#index'
 
+  get 'search-anything' => 'search#autocomplete'
   resources :orders, only: :create
 
   namespace :admin do

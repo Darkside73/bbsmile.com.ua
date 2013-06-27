@@ -5,5 +5,9 @@ FactoryGirl.define do
   factory :page do
     url { generate :url }
     title { generate :title }
+
+    factory :hidden_page do
+      hidden true
+    end
   end
 end

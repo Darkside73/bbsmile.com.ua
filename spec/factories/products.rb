@@ -33,5 +33,8 @@ FactoryGirl.define do
       tag_list 'tag1, tag2'
       variants { create_list :variant, 3 }
     end
+    factory :hidden_product do
+      page { create :hidden_page }
+    end
   end
 end

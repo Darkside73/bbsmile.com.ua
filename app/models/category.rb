@@ -2,6 +2,7 @@
 require 'category/search'
 
 class Category < ActiveRecord::Base
+  include PgSearch
   include Models::Category::Search
 
   has_one :page, as: :pageable, dependent: :destroy
@@ -15,6 +16,11 @@ class Category < ActiveRecord::Base
 
   acts_as_list scope: [:ancestry]
   default_scope -> { order(:position) }
+
+  # TODO replace by AR query interface (see bellow) then https://github.com/Casecommons/pg_search/issues/88 will be fixed
+  scope :visible, -> { joins("INNER JOIN pages AS p ON p.pageable_id = categories.id AND p.pageable_type = 'Category'").where("p.hidden IS false") }
+  # scope :visible, -> { includes(:page).merge(Page.visible).references(:pages) }
+  pg_search_scope :by_title, associated_against: { page: :title }
 
   before_create :ensure_leaf_has_no_child,
     if: Proc.new { |category| begin category.parent; rescue ActiveRecord::RecordNotFound; false; end }

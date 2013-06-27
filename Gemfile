@@ -6,6 +6,7 @@ gem 'rails', '4.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'pg_search'
 gem 'ancestry', github: 'stefankroes/ancestry', branch: 'master'
 gem 'nilify_blanks'
 

@@ -77,4 +77,18 @@ describe Product do
       product.in_range?(price_range).should be_true
     end
   end
+
+  context "when search" do
+    before do
+      create_list :product, 3
+      @matched = create :product, page_title: 'test'
+    end
+    describe "#by_title" do
+      subject { Product.visible.by_title('test') }
+      it { should be_an ActiveRecord::Relation }
+      it "include matched page" do
+        should include(@matched)
+      end
+    end
+  end
 end

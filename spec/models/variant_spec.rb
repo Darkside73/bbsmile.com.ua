@@ -24,4 +24,20 @@ describe Variant do
     subject { variant }
     its(:title) { variant.title.should include(variant.product.title, variant.name, variant.sku) }
   end
+
+
+  context "when search" do
+    before { create_list :variant, 3 }
+    describe ".by_sku" do
+      subject { Variant.by_sku('test') }
+      it { should be_an ActiveRecord::Relation }
+    end
+    describe ".visible" do
+      before { @hidden_variant = create :hidden_variant }
+      subject { Variant.visible }
+      it "not include hidden variant" do
+        should_not include(@hidden_variant)
+      end
+    end
+  end
 end
