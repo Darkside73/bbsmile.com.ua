@@ -1,21 +1,21 @@
+require 'site_search/autocomplete'
+
 class SearchController < ApplicationController
 
   def autocomplete
-    brands = Brand.by_name(params[:q]).limit(5)
-    variants = Variant.visible.by_sku(params[:q]).limit(5)
-    products = Product.visible.by_title(params[:q]).limit(5)
-    categories = Category.visible.by_title(params[:q]).limit(5)
-    results = {
-      brands: brands.as_json(only: [:id, :name]),
-      products: products.as_json(
-        methods: [:top_image], only: [:id],
-        include: { page: { only: [:title, :name, :url] } }
-      ),
-      categories: categories.as_json(
-        only: [:id],
-        include: { page: { only: [:title, :name, :url] } }
-      )
-    }
+    sleep 1
+    results = []
+    SiteSearch::Autocomplete.results_for(params[:q]).each do |item|
+      results << {
+        id:   item.id,
+        type: item.class.name,
+        name: item.name,
+        url: "/#{item.url}",
+        html: render_to_string(object: item,
+                               partial: "autocomplete/#{item.class.name.underscore}.html")
+      }
+    end
+
     respond_to do |format|
       format.json { render json: results }
     end

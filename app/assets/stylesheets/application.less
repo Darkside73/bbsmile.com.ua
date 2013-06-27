@@ -26,6 +26,15 @@ a[class^="icon-"]:hover {
 .pink { color: @pink; }
 .purple { color: @purpleDark }
 
+.price {
+  &.big { font-size: @baseFontSize*2; }
+  color: @pinkDark;
+  span.old {
+    &.big { font-size: @baseFontSize*1.5; }
+    text-decoration: line-through;
+  }
+}
+
 .simple_form {
   .radio input[type="radio"], .checkbox input[type="checkbox"] {
     margin-right: 5px;
@@ -91,7 +100,7 @@ h1.page-title {
     height: 34px;
     font-size: @baseFontSize * 1.5;
   }
-  .icon-search {
+  i.search {
     position: absolute;
     top: 14px;
     left: 11px;
@@ -100,6 +109,29 @@ h1.page-title {
   ul.typeahead {
     text-align: left;
     width: 316px;
+    h5 {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    li {
+      &.active {
+        position: relative;
+        .image {
+          display: block;
+          left: -126px;
+          top: -25px;
+        }
+        .price {
+          color: @white;
+        }
+      }
+      a {
+        white-space: normal !important;
+      }
+      .image {
+        display: none;
+      }
+    }
   }
 }
 
