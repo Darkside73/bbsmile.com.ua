@@ -75,7 +75,7 @@ class Admin::ProductsController < Admin::ApplicationController
     end
     flash.now[:notice] = I18n.t(
       'flash.message.products.moved',
-      dest_category_path: admin_categories_path(dest_category),
+      dest_category_path:  admin_category_path(dest_category),
       dest_category_title: dest_category.title
     )
     render json: flashes_in_json

@@ -6,11 +6,13 @@
 //= require select2/select2_locale_ru
 //= require bootstrap-wysihtml5
 //= require bootstrap-wysihtml5/locales/ru-RU
+//= require jquery.scrollTo/jquery.scrollTo
 //= require tabs_memory
 //= require ./transliterate
 //= require ./destroy_helper
 //= require ./sort
 //= require ./products
+//= require ./category
 
 $ ->
   $('.hide-sidebar').click ->
@@ -43,6 +45,10 @@ $ ->
   $('select').select2(allowClear: true)
 
   $('.wysihtml5').wysihtml5 locale: 'ru-RU'
+
+  $('a.top').click (e) ->
+    $.scrollTo 'body', 500
+    e.preventDefault()
 
   $('.transliterate').click (e) ->
     val = transliterate($('#product_page_attributes_title').val())

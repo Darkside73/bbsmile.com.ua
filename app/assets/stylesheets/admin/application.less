@@ -10,8 +10,14 @@
 @import "twitter/bootstrap/mixins";
 
 a[class^="icon-"] {
-  color: gray;
+  color: @gray;
   &:hover { text-decoration: none; color: @linkColor }
+}
+
+a {
+  i[class^="icon-"] {
+    text-decoration: none;
+  }
 }
 
 .bs-docs-sidenav {
@@ -46,6 +52,24 @@ p.bages {
 
 .select2-container.category.category {
   width: 300px;
+}
+
+.actions-panel {
+  padding: 15px;
+  &.affix {
+    left: 0;
+    top: 40px;
+    width: 100%;
+    padding-left: 390px;
+    background: fadeout(#F5F5F5, 10%);
+    a.top {
+      position: absolute;
+      left: 10px;
+      display: block;
+      color: @grayLight;
+      text-decoration: none;
+    }
+  }
 }
 
 form.simple_form {

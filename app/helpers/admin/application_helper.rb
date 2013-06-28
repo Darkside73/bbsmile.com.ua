@@ -7,13 +7,13 @@ module Admin::ApplicationHelper
 
   def breadcrumb_items
     items = []
-    if @category.present?
-      items += @category.ancestors
-      items << @category
-    elsif @product.present? && !@product.new_record?
+    if @product.present? && !@product.new_record?
       items += @product.category.ancestors
       items << @product.category
       items << @product
+    elsif @category.present?
+      items += @category.ancestors
+      items << @category
     end
     items
   end

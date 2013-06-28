@@ -2,6 +2,6 @@
   | Добавление товара
   - if @category.present?
     | &nbsp;в категорию&nbsp;
-    strong = @category.title
+    = link_to @category.title, [:admin, @category]
 = render layout: 'boxed' do
   = render 'form'
