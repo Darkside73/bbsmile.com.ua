@@ -7,11 +7,11 @@ $ ->
 
   sourceRequest = _.debounce(
     (query, process) ->
-      labels = []
-      results = {}
       $.ajax(
         "/search-anything.json?q=#{query}",
         success: (data) ->
+          labels = []
+          results = {}
           $.each data, (i, item) ->
             results[item.name] = item
             labels.push item.name
@@ -19,7 +19,7 @@ $ ->
         beforeSend: toggleSearchLoader
         complete: toggleSearchLoader
       )
-    500
+    300
   )
 
   $('input.search-query').typeahead(
@@ -34,6 +34,9 @@ $ ->
 
     matcher: (item) ->
       true
+
+    sorter: (item) ->
+      labels
 
     highlighter: (item) ->
       results[item].html
