@@ -2,4 +2,4 @@
   = content_tag :div, class: ["flash-message", "alert", "alert-#{flash_class(name)}"] do
     button.close data-dismiss="alert" type="button" &times;
     h4 = I18n.t "flash.caption.#{name}"
-    = message
+    == message

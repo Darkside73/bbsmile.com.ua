@@ -9,6 +9,9 @@ class Admin::CategoriesController < Admin::ApplicationController
     @category = Category.find params[:id]
     @products = @category.products
     @subcategories = @category.children.includes(:page)
+    # TODO refactoring with "except" scope
+    @dest_categories = Category.leaves.reject { |c| c == @category }
+    # @dest_categories = Category.leaves.except(@category)
   end
 
   def new
@@ -28,6 +31,7 @@ class Admin::CategoriesController < Admin::ApplicationController
   def edit
     @category = Category.find params[:id]
     @parent_categories = Category.includes(:page).where(leaf: false).to_a
+    # TODO refactoring with "except" scope
     @parent_categories.reject! {|c| c == @category }
   end
 

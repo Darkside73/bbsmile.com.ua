@@ -24,6 +24,7 @@ en:
         created: Product created
         updated: Product updated
         destroyed: Product destroyed
+        moved: Products moved
       variants:
         created: Product variant created
         updated: Product variant updated

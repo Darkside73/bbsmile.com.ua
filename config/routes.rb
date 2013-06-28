@@ -26,8 +26,9 @@ Bbsmile::Application.routes.draw do
       resources :images, concerns: :sortable, only: [:index, :new, :create, :destroy]
       resources :contents, only: [:new, :create, :edit, :update]
       resources :variants, concerns: :sortable, only: [:index, :create, :edit, :update, :destroy]
-      get 'tags', on: :collection
       get 'content', on: :member
+      get 'tags', on: :collection
+      post 'bulk_move', on: :collection
     end
   end
 

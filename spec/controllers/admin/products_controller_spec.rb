@@ -74,4 +74,16 @@ describe Admin::ProductsController do
       response.should be_success
     end
   end
+  describe 'POST bulk_move' do
+    let(:category) { create :category }
+    let(:products) { create_list :product, 3 }
+    it "move several products to specified category" do
+      product1 = products.first
+      product2 = products.second
+      xhr :post, :bulk_move,
+          dest_category_id: category.id,
+          ids: [product1.id, product2.id]
+      expect { product1.reload }. to change { product1.category }
+    end
+  end
 end

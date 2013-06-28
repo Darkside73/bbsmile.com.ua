@@ -67,6 +67,20 @@ class Admin::ProductsController < Admin::ApplicationController
     end
   end
 
+  def bulk_move
+    dest_category = Category.find params[:dest_category_id]
+    Product.where(id: params[:ids]).map do |product|
+      product.category = dest_category
+      product.save
+    end
+    flash.now[:notice] = I18n.t(
+      'flash.message.products.moved',
+      dest_category_path: admin_categories_path(dest_category),
+      dest_category_title: dest_category.title
+    )
+    render json: flashes_in_json
+  end
+
   def content
     @product = Product.find params[:id]
   end
@@ -83,10 +97,10 @@ class Admin::ProductsController < Admin::ApplicationController
     end
 
     def assign_leaf_categories
-      @leaf_categories = Category.includes(:page).where(leaf: true).to_a
+      @leaf_categories = Category.leaves.to_a
     end
 
     def category_for_new_product(category_id)
-      Category.find_by! leaf: true, id: category_id
+      Category.leaves.find category_id
     end
 end

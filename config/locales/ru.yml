@@ -22,9 +22,10 @@ ru:
         updated: Диапазон цен обновлен
         destroyed: Диапазон цен удален
       products:
-        created: Продукт создан
-        updated: Продукт обновлен
-        destroyed: Продукт удален
+        created: Товар создан
+        updated: Товар обновлен
+        destroyed: Товар удален
+        moved: Товары перемещены в <a href="%{dest_category_path}">%{dest_category_title}</a>
       variants:
         created: Вариант цены создан
         updated: Вариант цены обновлен

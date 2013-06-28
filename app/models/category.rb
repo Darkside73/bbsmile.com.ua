@@ -15,7 +15,9 @@ class Category < ActiveRecord::Base
   has_ancestry orphan_strategy: :restrict
 
   acts_as_list scope: [:ancestry]
-  default_scope -> { order(:position) }
+  default_scope -> { order :position }
+  scope :leaves, -> { where(leaf: true).includes(:page).order("pages.title") }
+  # scope :except, lambda { |except| where('categories.id <> 1', expect.respond_to?(:id) ? except.id : except) }
 
   # TODO replace by AR query interface (see bellow) then https://github.com/Casecommons/pg_search/issues/88 will be fixed
   scope :visible, -> { joins("INNER JOIN pages AS p ON p.pageable_id = categories.id AND p.pageable_type = 'Category'").where("p.hidden IS false") }
