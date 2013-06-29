@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require underscore
 //= require twitter/bootstrap
 //= require select2/select2
 //= require select2/select2_locale_ru
@@ -8,6 +9,7 @@
 //= require bootstrap-wysihtml5/locales/ru-RU
 //= require jquery.scrollTo/jquery.scrollTo
 //= require tabs_memory
+//= require ./search-box
 //= require ./transliterate
 //= require ./destroy_helper
 //= require ./sort

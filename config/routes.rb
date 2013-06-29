@@ -30,7 +30,9 @@ Bbsmile::Application.routes.draw do
       get 'tags', on: :collection
       post 'bulk_move', on: :collection
     end
+    get 'search-products.json' => 'search#autocomplete', format: :json, as: 'search_products'
   end
+
 
   # TODO deal with odd rails server behavior: it complains that "A copy of PageTypeConstraint has been removed from the module tree but is still active!"
   # get '*slug' => 'products#show', format: false, constraints: PageTypeConstraint.new(Product)

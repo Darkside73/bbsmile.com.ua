@@ -9,18 +9,7 @@ html
   = yield :head
 
   body
-    .navbar.navbar-fixed-top: .navbar-inner: .container-fluid
-      = link_to 'Админ-панель', admin_root_path, class: 'brand'
-      .nav-collapse.collapse
-        ul.nav.pull-right
-          li.dropdown
-            a.dropdown-toggle data-toggle="dropdown" role="button" href="#"
-              i.icon-user
-              | admin
-              i.caret
-            ul.dropdown-menu
-              li
-                a href="#" tabindex="-1" Выход
+    = render 'navbar'
     .container-fluid.wide
       .row-fluid
         #sidebar.span3

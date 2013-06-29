@@ -1,0 +1,15 @@
+.navbar.navbar-fixed-top: .navbar-inner: .container-fluid
+  = link_to 'Админ-панель', admin_root_path, class: 'brand'
+  .pull-right
+    form.form-search.pull-left
+      input.search-query type="text" placeholder="поиск товара" data-provide="typeahead" autocomplete="off" data-url="#{admin_search_products_path}"
+    .nav-collapse.collapse.pull-right
+      ul.nav
+        li.dropdown
+          a.dropdown-toggle data-toggle="dropdown" role="button" href="#"
+            i.icon-user
+            | &nbsp;admin
+            i.caret
+          ul.dropdown-menu
+            li
+              a href="#" tabindex="-1" Выход
