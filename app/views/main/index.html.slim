@@ -1,13 +1,45 @@
-#catalog-items.container
-  - @categories.each_slice(3) do |categories|
-    .row
-      - categories.each do |category, subcategories|
-        .span4.item
-          h3 = link_to category
-          .subitems
-            - subcategories.keys.first(3).each do |subcategory|
-              h4
-                i.icon-angle-right.icon-small
-                = link_to subcategory
-            = link_to 'Смотреть все', category, class: 'btn btn-small'
-    hr
+.container
+  = render 'form_search'
+  .landing-nav.subnav data-spy="affix" data-offset-top="330"
+    ul.nav.nav-pills
+      li: a href="#promotions" data-target="#promotions" data-offset="-130"
+        i.icon-gift &nbsp;
+        | Акции
+      li: a href="#novelties" data-target="#novelties" data-offset="-130" Новинки
+      li: a href="#hits" data-target="#hits" Хиты продаж
+      li: a href="#topicalities" data-target="#topicalities" Актуально
+      li: a href="#whole-catalog" data-target="#whole-catalog" Весь каталог
+  hr
+
+.landing-container
+
+  = render 'promotions'
+
+  #novelties-items.container-fluid
+    .container
+      = render 'special_products', title: 'Новинки', products: novelties, type: :novelties, icon: 'cog'
+  #hits-items.container-fluid
+    .container
+      = render 'special_products', title: 'Хиты продаж', products: hits, type: :hits, icon: 'heart-empty'
+  #topicalities-items.container-fluid
+    .container
+      = render 'special_products', title: 'Актуально', products: topicalities, type: :topicalities, icon: 'bullhorn'
+
+  #catalog-items.container-fluid
+    .container
+      h2#whole-catalog
+        i.icon-reorder &nbsp;
+        | Весь каталог
+      hr
+      - @categories.each_slice(3) do |categories|
+        .row
+          - categories.each do |category, subcategories|
+            .span4.item
+              h3 = link_to category
+              .subitems
+                - subcategories.keys.first(3).each do |subcategory|
+                  h4
+                    i.icon-angle-right.icon-small
+                    = link_to subcategory
+                = link_to 'Смотреть все', category, class: 'btn btn-small'
+        hr

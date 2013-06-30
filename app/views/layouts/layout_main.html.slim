@@ -5,12 +5,8 @@
   .navbar-inner: .container: ul.nav
     = render 'main_menu'
 
-- content_for :promotions do
-  = render 'promotions'
-
 - content_for :footer do
   .container: .row
     = render 'footer'
-
 
 = render :file => 'layouts/application'

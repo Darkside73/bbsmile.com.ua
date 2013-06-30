@@ -24,7 +24,10 @@ class Product < ActiveRecord::Base
   # TODO replace by AR query interface (see bellow) then https://github.com/Casecommons/pg_search/issues/88 will be fixed
   scope :visible, -> { joins("INNER JOIN pages AS p ON p.pageable_id = products.id AND p.pageable_type = 'Product'").where("p.hidden IS false") }
   # scope :visible, -> { includes(:page).merge(Page.visible).references(:pages) }
-  scope :recent, lambda { |n| order(created_at: :desc).limit(n) }
+  scope :recent, ->(n) { order(created_at: :desc).limit(n) }
+  scope :novelties, -> { visible.where(novelty: true) }
+  scope :hits, -> { visible.where(hit: true) }
+  scope :topicalities, -> { visible.where(topicality: true) }
 
   pg_search_scope :by_title, associated_against: { page: :title }
 

@@ -21,9 +21,12 @@
   }
 }
 
-.subnav {
+.landing-nav.subnav {
   width: 100%;
   font-size: @baseFontSize*1.5;
+  .nav-pills > li > a {
+    line-height: 18px;
+  }
   &.affix {
     background: fadeout(lighten(@pinkLight, 10%), 15%);
     box-shadow: 0 2px 10px fadeout(@dropdownDividerTop, 5%);
@@ -45,6 +48,18 @@
   }
   .carousel {
     line-height: 1.4;
+  }
+}
+
+.landing-container {
+  .container {
+    margin-bottom: 15px;
+  }
+  h2 {
+    color: @gray;
+    text-align: center;
+  }
+  #novelties-items {
   }
 }
 
@@ -73,9 +88,6 @@
     a:hover span {
       background: fadeout(@purpleDark, 30%);
     }
-  }
-  img {
-    width: 291px; // temporary fix while images aren't resized properly
   }
 
   .item {
