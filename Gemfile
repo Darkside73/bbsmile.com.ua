@@ -37,6 +37,8 @@ group :assets do
 end
 
 group :development do
+  # Freeze rake version due some instability
+  gem 'rake', '10.0.4'
   gem 'seedbank'
   gem 'rb-inotify', require: false
   gem 'guard-rspec'
