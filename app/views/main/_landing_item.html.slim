@@ -1,0 +1,10 @@
+.container-fluid id="#{id}-items"
+  .container
+    h2 id="#{id}"
+      i class="icon-#{icon}" &nbsp;
+      = title
+    hr
+    - items.each_slice(3) do |items_by_three|
+      .row
+        = yield items_by_three
+      hr

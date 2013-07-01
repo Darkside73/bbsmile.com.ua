@@ -15,31 +15,9 @@
 
   = render 'promotions'
 
-  #novelties-items.container-fluid
-    .container
-      = render 'special_products', title: 'Новинки', products: novelties, type: :novelties, icon: 'cog'
-  #hits-items.container-fluid
-    .container
-      = render 'special_products', title: 'Хиты продаж', products: hits, type: :hits, icon: 'heart-empty'
-  #topicalities-items.container-fluid
-    .container
-      = render 'special_products', title: 'Актуально', products: topicalities, type: :topicalities, icon: 'bullhorn'
-
-  #catalog-items.container-fluid
-    .container
-      h2#whole-catalog
-        i.icon-reorder &nbsp;
-        | Весь каталог
-      hr
-      - @categories.each_slice(3) do |categories|
-        .row
-          - categories.each do |category, subcategories|
-            .span4.item
-              h3 = link_to category
-              .subitems
-                - subcategories.keys.first(3).each do |subcategory|
-                  h4
-                    i.icon-angle-right.icon-small
-                    = link_to subcategory
-                = link_to 'Смотреть все', category, class: 'btn btn-small'
-        hr
+  = landing_item_for novelties, id: 'novelties', icon: 'cog', title: 'Новинки'
+  = landing_item_for hits, id: 'hits', icon: 'heart-empty', title: 'Хиты продаж'
+  = landing_item_for topicalities, id: 'topicalities', icon: 'cog', title: 'Актуально'
+  = landing_item_for @categories, id: 'whole-catalog', icon: 'reorder', title: 'Весь каталог' do |categories|
+    - categories.each do |category, subcategories|
+      = render 'category', category: category, subcategories: subcategories
