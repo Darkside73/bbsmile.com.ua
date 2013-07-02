@@ -55,6 +55,14 @@ module ApplicationHelper
     controller?('categories', 'products') ? {class: :active} : {}
   end
 
+  def body_attributes
+    case controller.controller_name
+    when 'main' then { data: { spy: 'scroll', target: '.subnav', offset: 150 } }
+    else
+      {}
+    end
+  end
+
   private
     def current_layout
       layout = controller.send(:_layout)

@@ -13,7 +13,7 @@ html
   = javascript_include_tag 'application'
   = yield :head
 
-  body data-spy="scroll" data-target=".subnav" data-offset="150"
+  body *body_attributes
     #main-menu.navbar.navbar-fixed-top
       = yield :main_menu
     = content_for?(:header) ? yield(:header) : render('header')
