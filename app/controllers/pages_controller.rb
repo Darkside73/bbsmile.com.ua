@@ -6,6 +6,6 @@ class PagesController < ApplicationController
 
   def show
     @page = current_page
-    render params[:slug] and return unless @page
+    render "pages/#{params[:slug]}" and return unless @page
   end
 end
