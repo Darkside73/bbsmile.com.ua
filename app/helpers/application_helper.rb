@@ -55,6 +55,10 @@ module ApplicationHelper
     controller?('categories', 'products') ? {class: :active} : {}
   end
 
+  def unless_url_active_attr(url)
+    /^#{url}/ =~ params[:slug] ? {class: :active} : {}
+  end
+
   def body_attributes
     case controller.controller_name
     when 'main' then { data: { spy: 'scroll', target: '.subnav', offset: 150 } }
