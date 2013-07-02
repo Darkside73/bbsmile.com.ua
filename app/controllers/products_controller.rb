@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   helper_method :gallery_for
 
   def show
-    @product = pageable_from_slug
+    @product = current_page.pageable
     @order = Order.new
     @order.build_user
   end

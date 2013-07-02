@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
                 :selected_prices, :selected_ranges
 
   def show
-    @category = pageable_from_slug
+    @category = current_page.pageable
     @products = @category.products_grid(params)
     @order = Order.new
     @order.build_user

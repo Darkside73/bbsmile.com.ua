@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
 
   def show
-    @page = Page.visible.find_by_url(params[:slug])
+    @page = current_page
     render params[:slug] and return unless @page
   end
 end
