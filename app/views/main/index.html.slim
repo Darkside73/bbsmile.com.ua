@@ -1,4 +1,4 @@
-.container
+.container.order-flashable
   = render 'form_search'
   .landing-nav.subnav data-spy="affix" data-offset-top="330"
     ul.nav.nav-pills
@@ -14,6 +14,8 @@
 .landing-container
 
   = render 'promotions'
+
+  = render 'order/form', order: @order
 
   = landing_item_for novelties, id: 'novelties', icon: 'cog', title: 'Новинки'
   = landing_item_for hits, id: 'hits', icon: 'heart-empty', title: 'Хиты продаж'

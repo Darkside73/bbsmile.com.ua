@@ -5,6 +5,7 @@
 //= require tabs_memory
 //= require jquery.scrollTo/jquery.scrollTo
 //= require search-box
+//= require order-from-grid
 
 $ ->
   $('a[rel=popover]').popover().click (e) ->

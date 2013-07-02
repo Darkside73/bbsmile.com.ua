@@ -4,6 +4,8 @@ class MainController < ApplicationController
 
   def index
     @categories = Category.arrange
+    @order = Order.new
+    @order.build_user
   end
 
   def novelties
