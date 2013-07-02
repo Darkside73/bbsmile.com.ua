@@ -17,9 +17,9 @@
 
   = render 'order/form', order: @order
 
-  = landing_item_for novelties, id: 'novelties', icon: 'cog', title: 'Новинки'
+  = landing_item_for novelties, id: 'novelties', icon: 'certificate', title: 'Новинки'
   = landing_item_for hits, id: 'hits', icon: 'heart-empty', title: 'Хиты продаж'
-  = landing_item_for topicalities, id: 'topicalities', icon: 'cog', title: 'Актуально'
+  = landing_item_for topicalities, id: 'topicalities', icon: 'bullhorn', title: 'Актуально'
   = landing_item_for @categories, id: 'whole-catalog', icon: 'reorder', title: 'Весь каталог' do |categories|
     - categories.each do |category, subcategories|
       = render 'category', category: category, subcategories: subcategories
