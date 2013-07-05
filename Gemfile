@@ -10,6 +10,8 @@ gem 'pg_search'
 gem 'ancestry', github: 'stefankroes/ancestry', branch: 'master'
 gem 'nilify_blanks'
 
+gem 'russian'
+
 gem 'slim', github: 'slim-template/slim'
 # gem 'slim-rails', github: 'slim-template/slim-rails'
 gem 'cells'
