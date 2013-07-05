@@ -1,6 +1,8 @@
 - category ||= @category
 - unless category.is_root?
   ul.breadcrumb
+    - if content_for? :back_button
+      li = yield :back_button
     - category.ancestors.each do |ancestor|
       li
         = link_to ancestor

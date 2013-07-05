@@ -4,6 +4,11 @@
   = stylesheet_link_tag 'product'
   = javascript_include_tag 'product'
 
+- content_for :back_button do
+  - if request.referer
+    = link_to :back, class: "btn", title: 'Назад' do
+      i.icon-long-arrow-left
+
 #product-container.container-fluid.container-wide.order-flashable
   = render 'breadcrumb', category: @product.category
   .row-fluid
