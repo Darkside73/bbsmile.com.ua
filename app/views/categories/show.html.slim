@@ -48,6 +48,14 @@
         .offers Акции, новинки,..
 
       = render 'order/form', order: @order
-      - @products.each_slice(3) do |products|
-        .row-fluid.line
+      - @products.to_enum.each_slice(3).with_index do |products, index|
+        .row-fluid.line class="#{'hide' if index > 6}"
           = render products
+      - rest_products = @products.count - 21
+      - if rest_products > 0
+        .row-fluid
+          button#show-rest-products.span6.offset3.btn.btn-large
+            i.icon-arrow-down>
+            ' Показать еще
+            b
+              | #{rest_products} #{Russian.p rest_products, 'товар', 'товара', 'товаров'}

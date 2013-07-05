@@ -6,6 +6,7 @@
 //= require jquery.scrollTo/jquery.scrollTo
 //= require search-box
 //= require order-from-grid
+//= require category
 
 $ ->
   $('a[rel=popover]').popover().click (e) ->
