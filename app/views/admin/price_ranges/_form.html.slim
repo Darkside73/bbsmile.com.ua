@@ -1,7 +1,7 @@
 = simple_form_for path do |f|
   = f.input :from, label: 'От'
   = f.input :to, label: 'До'
-  = f.button :submit, @price_range.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
+  => f.button :submit, @price_range.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
   - unless @price_range.new_record?
-    | &nbsp;или&nbsp;
+    ' или
     = link_to 'Отменить', :back

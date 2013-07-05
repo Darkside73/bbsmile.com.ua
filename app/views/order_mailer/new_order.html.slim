@@ -1,12 +1,12 @@
 h3 Спасибо за покупку!
 p
-  | Номер вашего заказа &nbsp;
+  ' Номер вашего заказа
   strong = @order.id
   | .
 p
-  | Вы купили &nbsp;
-  strong =' @order.variant.title
-  | за &nbsp;
+  ' Вы купили
+  strong => @order.variant.title
+  ' за
   strong = number_to_currency @order.price
   | .
 

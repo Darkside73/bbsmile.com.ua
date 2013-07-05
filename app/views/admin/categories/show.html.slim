@@ -5,17 +5,15 @@
 
   = render layout: 'actions_panel' do
     - if @category.leaf
-      =' link_to "Добавить товар", new_product_admin_category_path(@category), class: 'btn btn-success' if @category.leaf
-      = link_to "Назад", [:admin, @category.is_root? ? :categories : @category.parent ], class: 'btn'
+      => link_to "Добавить товар", new_product_admin_category_path(@category), class: 'btn btn-success' if @category.leaf
+      => link_to "Назад", [:admin, @category.is_root? ? :categories : @category.parent ], class: 'btn'
       span.bulk-actions.hide
-        | &nbsp;
-        = link_to 'Переместить в', bulk_move_admin_products_path, class: "move btn btn-info"
-        | &nbsp;
+        => link_to 'Переместить в', bulk_move_admin_products_path, class: "move btn btn-info"
         select.category name="dest_category_id"
           - @dest_categories.each do |category|
             option value="#{category.id}" = category.title
     - else
-      =' link_to "Добавить подкатегорию", new_subcategory_admin_category_path(@category), class: 'btn btn-success'
+      => link_to "Добавить подкатегорию", new_subcategory_admin_category_path(@category), class: 'btn btn-success'
 
   - if @subcategories.any?
     table.table.sortable.categories-list.table-striped
@@ -29,7 +27,7 @@
           td width="75%"
             = link_to subcategory.title, [:admin, subcategory], class: 'name'
           td width="25%"
-            =' link_to 'Редактировать', [:edit, :admin, subcategory], class: 'btn btn-info'
+            => link_to 'Редактировать', [:edit, :admin, subcategory], class: 'btn btn-info'
             =  link_to 'Удалить', [:admin, subcategory], method: :delete, class: 'btn btn-warning'
 
   - if @products.present? && @products.any?
@@ -46,5 +44,5 @@
           td width="75%"
             = link_to product.title, [:admin, product], class: 'name'
           td width="25%"
-            =' link_to 'Редактировать', [:edit, :admin, product], class: 'btn btn-info'
+            => link_to 'Редактировать', [:edit, :admin, product], class: 'btn btn-info'
             =  link_to 'Удалить', [:admin, product], method: :delete, class: 'btn btn-warning'

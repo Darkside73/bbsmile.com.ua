@@ -1,5 +1,5 @@
 tr.item
   td #{price_range.from || '...'} &mdash; #{price_range.to || '...'}
   td
-    =' link_to 'Редактировать', [:edit, :admin, price_range], class: 'edit btn btn-info'
+    => link_to 'Редактировать', [:edit, :admin, price_range], class: 'edit btn btn-info'
     =  link_to 'Удалить', admin_price_range_path(price_range), method: :delete, class: 'btn btn-warning'

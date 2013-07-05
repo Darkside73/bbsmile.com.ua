@@ -7,7 +7,7 @@
   = render 'breadcrumb'
   = render 'selected_filters' if any_filtering?
   h1.page-title
-    =' @category.title
+    => @category.title
     small подбор товаров
   .row-fluid
     .product-filters.span3
@@ -35,14 +35,14 @@
           ul.nav.nav-pills
             li
               .btn.disabled
-                | Всего товаров:&nbsp;
+                ' Всего товаров:
                 strong = @products.count
             - if @products.count > 1
               = link_to_sortable_price "Сначала дешевле", "asc"
               = link_to_sortable_price "Сначала дороже",  "desc"
       - elsif @category.leaf?
         .alert
-          strong Извините,&nbsp;
+          strong> Извините
           | ничего не нашлось
       - else
         .offers Акции, новинки,..

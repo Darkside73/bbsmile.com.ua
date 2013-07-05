@@ -1,7 +1,7 @@
 - content_for :box_title do
-  | Добавление товара
+  ' Добавление товара
   - if @category.present?
-    | &nbsp;в категорию&nbsp;
+    ' в категорию
     = link_to @category.title, [:admin, @category]
 = render layout: 'boxed' do
   = render 'form'

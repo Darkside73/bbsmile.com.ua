@@ -1,5 +1,5 @@
 - content_for :box_title do
-  | Редактирование товара &mdash;&nbsp;
+  ' Редактирование товара &mdash;
   strong = link_to @product.title, [:admin, @product], title: "Перейти к просмотру"
 = render layout: 'boxed' do
   ul.nav.nav-tabs

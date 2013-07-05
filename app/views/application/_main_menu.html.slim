@@ -1,6 +1,6 @@
 li.dropdown*unless_catalog_active_attr
   a.dropdown-toggle href="#" data-toggle="dropdown"
-    | Каталог&nbsp;
+    ' Каталог
     b.caret
   = render_cell :catalog_menu, :display
 li*unless_url_active_attr('information')

@@ -7,7 +7,7 @@ li.item.span3
       p = variant.sku
       p.price
         - if variant.price_old?
-          span.old.muted =' number_to_currency variant.price_old
+          span.old.muted => number_to_currency variant.price_old
         strong = "#{number_to_currency variant.price}"
       - if variant.available?
         a.variant-quick-shop.btn.btn-success data-toggle="modal" href="##{dom_id @order}" data-variant-id="#{variant.id}" data-dialog-title="#{variant.title}" Купить

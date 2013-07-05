@@ -11,7 +11,7 @@
           td width="75%"
             = link_to product.title, [:admin, product], class: 'name'
           td width="25%"
-            =' link_to 'Редактировать', [:edit, :admin, product], class: 'btn btn-info'
+            => link_to 'Редактировать', [:edit, :admin, product], class: 'btn btn-info'
             =  link_to 'Удалить', [:admin, product], method: :delete, class: 'btn btn-warning'
 
   = link_to "Новый товар", [:new, :admin, :product], id: 'new-product', class: 'btn btn-success'

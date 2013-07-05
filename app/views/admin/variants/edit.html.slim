@@ -1,6 +1,6 @@
 - content_for :box_title do
-  | Редактирование варианта товара &mdash;&nbsp;
-  strong =' link_to "#{@product.title}", [:admin, @product], title: "Перейти к просмотру"
+  ' Редактирование варианта товара &mdash;
+  strong => link_to "#{@product.title}", [:admin, @product], title: "Перейти к просмотру"
   - if @variant.name?
    span = @variant.name
 = render layout: 'boxed' do

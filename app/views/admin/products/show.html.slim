@@ -2,11 +2,11 @@
   p.bages
     - if @product.available
       span.text-success
-        i.icon-check &nbsp;
+        i.icon-check>
         | доступен для заказа
     - else
       span.muted
-        i.icon-minus-sign &nbsp;
+        i.icon-minus-sign>
         | нет на складе
     - if @product.novelty
       span.label.label-info новинка
@@ -34,6 +34,6 @@
         td Теги
         td = @product.tag_list
   hr
-  =' link_to 'Редактировать', [:edit, :admin, @product], class: 'btn btn-info'
-  =' link_to "Посмотреть на сайте", @product, class: 'btn', target: '_blank'
-  =' link_to "Посмотреть на старом сайте", "http://bbsmile.com.ua/#{@product.url_old}", class: 'btn', target: '_blank'
+  => link_to 'Редактировать', [:edit, :admin, @product], class: 'btn btn-info'
+  => link_to "Посмотреть на сайте", @product, class: 'btn', target: '_blank'
+  => link_to "Посмотреть на старом сайте", "http://bbsmile.com.ua/#{@product.url_old}", class: 'btn', target: '_blank'

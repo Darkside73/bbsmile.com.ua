@@ -1,5 +1,5 @@
 - content_for :box_title do
-  | Редактирование категории &mdash;&nbsp;
+  ' Редактирование категории &mdash;
   strong = link_to @category.title, [:admin, @category], title: "Перейти к просмотру"
 = render layout: 'boxed' do
   ul.nav.nav-tabs

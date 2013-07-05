@@ -11,7 +11,7 @@
       = gallery_for(@product)
     .description.span8
       h1.page-title
-        =' @product.title
+        => @product.title
         - if @product.brand.present?
           small.muted = @product.brand.name
       .bages.pull-left
@@ -32,14 +32,13 @@
         - if @product.price
           p.price.big
             - if @product.price_old
-              span.old.muted.big = number_to_currency @product.price_old
-              | &nbsp;
+              span.old.muted.big => number_to_currency @product.price_old
             | #{number_to_currency @product.price}
           p.shipping
             - if @product.free_shipping
-              | Доставка бесплатно &nbsp;
+              ' Доставка бесплатно
             - else
-              | Доставка около #{number_to_currency 50} &nbsp;
+              ' Доставка около #{number_to_currency 50}
             a.icon-info-sign href="/information/delivery" title="Подробнее о доставке"
 
           = render 'order/form', order: @order, product: @product
