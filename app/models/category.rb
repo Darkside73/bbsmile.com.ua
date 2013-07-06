@@ -50,18 +50,35 @@ class Category < ActiveRecord::Base
     @price_ranges ||= price_ranges.any? ? price_ranges : (is_root? ? [] : parent.find_price_ranges)
   end
 
+  def novelties(limit = 3)
+    products_relation.novelties.limit(limit)
+  end
+
+  def hits(limit = 3)
+    products_relation.hits.limit(limit)
+  end
+
+  def topicalities(limit = 3)
+    products_relation.topicalities.limit(limit)
+  end
+
   private
-    def ensure_leaf_has_no_child
-      raise ActiveRecord::ActiveRecordError if parent && parent.leaf
-    end
 
-    def toggle_children_hidden
-      self.children.each do |child|
-        child.page.update_attribute :hidden, page.hidden
-      end
-    end
+  def ensure_leaf_has_no_child
+    raise ActiveRecord::ActiveRecordError if parent && parent.leaf
+  end
 
-    def parent_could_not_be_leaf
-      errors.add :parent, I18n.t() if parent.try(:leaf)
+  def toggle_children_hidden
+    self.children.each do |child|
+      child.page.update_attribute :hidden, page.hidden
     end
+  end
+
+  def parent_could_not_be_leaf
+    errors.add :parent, I18n.t() if parent.try(:leaf)
+  end
+
+  def products_relation
+    leaf? ? products : Product.where(category_id: descendant_ids)
+  end
 end

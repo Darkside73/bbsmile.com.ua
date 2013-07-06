@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/Darkside73/bootstrap-components-helpers.git
+  revision: 7975e6e15fe450eec137bd415573936bd6dc3941
+  specs:
+    bootstrap-components-helpers (0.0.3)
+      actionpack (>= 3.2.0)
+
+GIT
   remote: git://github.com/cucumber/cucumber-rails.git
   revision: 3e6cc89489f8553c698ed944fe683b75d700ec23
   branch: master_rails4_test
@@ -293,6 +300,7 @@ DEPENDENCIES
   acts_as_list
   ancestry!
   attribute_normalizer
+  bootstrap-components-helpers!
   bootstrap-wysihtml5-rails
   capistrano
   capybara

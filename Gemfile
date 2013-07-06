@@ -23,6 +23,7 @@ gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
 gem 'jquery-rails', '~> 2.2.1'
 gem 'json', '~> 1.7.7'
 gem 'bootstrap-wysihtml5-rails'
+gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-helpers'
 gem 'paperclip'
 
 # Gems used only for assets and not required
