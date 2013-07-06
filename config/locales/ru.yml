@@ -25,7 +25,7 @@ ru:
         created: Товар создан
         updated: Товар обновлен
         destroyed: Товар удален
-        moved: Товары перемещены в <a href="%{dest_category_path}">%{dest_category_title}</a>
+        moved: 'Товары перемещены в <a href="%{dest_category_path}">%{dest_category_title}</a>'
       variants:
         created: Вариант цены создан
         updated: Вариант цены обновлен
@@ -49,6 +49,8 @@ ru:
         content_type_image: "не похоже на файл изображения"
         size: "размерчик не тот, нужно меньше %{max}"
     models:
+      variant:
+        price_old: "не может быть меньше, чем Цена"
       price_range:
         range: "не может быть больше, чем До"
   mailers:

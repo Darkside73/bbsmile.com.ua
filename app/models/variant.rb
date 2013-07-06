@@ -18,6 +18,7 @@ class Variant < ActiveRecord::Base
   validates :price, :price_old,
             numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
   validates :available, :master, inclusion: { in: [true, false] }
+  validate :price_old_cannot_be_less_than_price
 
   normalize_attribute :delete_image, with: :booleanize
 
@@ -28,7 +29,14 @@ class Variant < ActiveRecord::Base
   end
 
   private
-    def destroy_image
-      self.image = nil
+
+  def destroy_image
+    self.image = nil
+  end
+
+  def price_old_cannot_be_less_than_price
+    if price_old && price_old <= price
+      errors.add :price_old, I18n.t('errors.models.variant.price_old')
     end
+  end
 end

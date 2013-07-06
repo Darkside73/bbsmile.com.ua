@@ -46,5 +46,7 @@ en:
       uniqueness: "%{attribute} not unique"
       email: "should be valid email address"
     models:
+      variant:
+        price_old: "can't be less than price"
       price_range:
         range: "can't be greather than to"
