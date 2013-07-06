@@ -6,6 +6,7 @@
         i.icon-gift>
         | Акции
       li: a href="#novelties" data-target="#novelties" data-offset="-130" Новинки
+      li: a href="#discounts" data-target="#discounts" Скидки
       li: a href="#hits" data-target="#hits" Хиты продаж
       li: a href="#whole-catalog" data-target="#whole-catalog" Весь каталог
   hr
@@ -17,6 +18,7 @@
   = render 'order/form', order: @order
 
   = landing_item_for novelties, id: 'novelties', icon: 'certificate', title: 'Новинки'
+  = landing_item_for discounts, id: 'discounts', icon: 'fire', title: 'Скидки'
   = landing_item_for hits, id: 'hits', icon: 'heart-empty', title: 'Хиты продаж'
   = landing_item_for @categories, id: 'whole-catalog', icon: 'reorder', title: 'Весь каталог' do |categories|
     - categories.each do |category, subcategories|

@@ -122,4 +122,20 @@ describe Category do
       end
     end
   end
+
+  describe "#novelties" do
+    let!(:category) { create :category, leaf: false }
+    subject { category.novelties }
+    it { should be_an ActiveRecord::Relation }
+  end
+  describe "#hits" do
+    let!(:category) { create :category, leaf: false }
+    subject { category.hits }
+    it { should be_an ActiveRecord::Relation }
+  end
+  describe "#discounts" do
+    let!(:category) { create :category, leaf: false }
+    subject { category.discounts }
+    it { should be_an ActiveRecord::Relation }
+  end
 end

@@ -1,5 +1,7 @@
 = tabs do |tabs|
   - tabs.pane "Новинки", id: 'novelties', icon: 'certificate', class: 'fade' do
     = render 'products', products: @category.novelties
+  - tabs.pane "Скидки", id: 'discounts', icon: 'fire', class: 'fade' do
+    = render 'products', products: @category.discounts
   - tabs.pane "Хиты продаж", id: 'hits', icon: 'heart-empty', class: 'fade' do
     = render 'products', products: @category.hits

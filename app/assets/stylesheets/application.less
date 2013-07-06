@@ -36,7 +36,15 @@ a>[class^="icon-"]:before, a>[class*=" icon-"]:before {
   color: @pinkDark;
   span.old {
     &.big { font-size: @baseFontSize*1.5; }
+    &.medium { font-size: @baseFontSize*1.2; }
     text-decoration: line-through;
+  }
+}
+
+.row, .row-fluid {
+  .product .price span.old {
+    color: @gray;
+    font-weight: bold;
   }
 }
 

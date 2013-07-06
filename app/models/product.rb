@@ -27,6 +27,7 @@ class Product < ActiveRecord::Base
   scope :recent, ->(n) { order(created_at: :desc).limit(n) }
   scope :novelties, -> { visible.where(novelty: true) }
   scope :hits, -> { visible.where(hit: true) }
+  scope :discounts, -> { visible.includes(:variants).references(:variants).merge(Variant.discounts) }
 
   pg_search_scope :by_title, associated_against: { page: :title }
 

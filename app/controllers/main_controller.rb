@@ -1,6 +1,6 @@
 class MainController < ApplicationController
   layout "layout_main"
-  helper_method :novelties, :hits
+  helper_method :novelties, :discounts, :hits
 
   def index
     @categories = Category.arrange
@@ -8,8 +8,14 @@ class MainController < ApplicationController
     @order.build_user
   end
 
+  private
+
   def novelties
     Product.novelties.limit(3)
+  end
+
+  def discounts
+    Product.discounts.limit(6)
   end
 
   def hits
