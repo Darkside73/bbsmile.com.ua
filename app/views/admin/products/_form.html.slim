@@ -21,7 +21,6 @@
         = v.input :available, label: 'Доступность'
         = v.input :sku, label: 'Артикул'
       = f.input :novelty, label: 'Новинка'
-      = f.input :topicality, label: 'Актуальность'
       = f.input :hit, label: 'Хит продаж'
       = f.input :tag_list, label: 'Теги', input_html: { class: 'tags', 'data-autocomplete-url' => tags_admin_products_path }
   => f.button :submit, @product.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'

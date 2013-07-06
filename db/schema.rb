@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130620204008) do
+ActiveRecord::Schema.define(version: 20130706180326) do
 
   create_table "assets", force: true do |t|
     t.datetime "created_at"
@@ -74,14 +74,6 @@ ActiveRecord::Schema.define(version: 20130620204008) do
   add_index "pages", ["url"], name: "index_pages_on_url", unique: true, using: :btree
   add_index "pages", ["url_old"], name: "index_pages_on_url_old", unique: true, using: :btree
 
-  create_table "pg_search_documents", force: true do |t|
-    t.text     "content"
-    t.integer  "searchable_id"
-    t.string   "searchable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "price_ranges", force: true do |t|
     t.integer "from"
     t.integer "to"
@@ -96,7 +88,6 @@ ActiveRecord::Schema.define(version: 20130620204008) do
     t.datetime "updated_at"
     t.integer  "position",    default: 0
     t.boolean  "novelty",     default: false
-    t.boolean  "topicality",  default: false
     t.boolean  "hit",         default: false
     t.integer  "brand_id"
     t.string   "video"

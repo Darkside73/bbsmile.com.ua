@@ -3,5 +3,3 @@
     = render 'products', products: @category.novelties
   - tabs.pane "Хиты продаж", id: 'hits', icon: 'heart-empty', class: 'fade' do
     = render 'products', products: @category.hits
-  - tabs.pane "Актуально", id: 'topicalities', icon: 'bullhorn', class: 'fade' do
-    = render 'products', products: @category.topicalities

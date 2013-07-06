@@ -27,12 +27,11 @@ class Product < ActiveRecord::Base
   scope :recent, ->(n) { order(created_at: :desc).limit(n) }
   scope :novelties, -> { visible.where(novelty: true) }
   scope :hits, -> { visible.where(hit: true) }
-  scope :topicalities, -> { visible.where(topicality: true) }
 
   pg_search_scope :by_title, associated_against: { page: :title }
 
   validates :category, presence: true
-  validates :novelty, :topicality, :hit, inclusion: { in: [true, false] }
+  validates :novelty, :hit, inclusion: { in: [true, false] }
 
   before_create :make_master_variant
 

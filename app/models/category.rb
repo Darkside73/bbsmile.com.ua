@@ -58,10 +58,6 @@ class Category < ActiveRecord::Base
     products_relation.hits.limit(limit)
   end
 
-  def topicalities(limit = 3)
-    products_relation.topicalities.limit(limit)
-  end
-
   private
 
   def ensure_leaf_has_no_child
