@@ -46,7 +46,27 @@ $ ->
 
   $('select').select2(allowClear: true)
 
-  $('.wysihtml5').wysihtml5 locale: 'ru-RU'
+  $.extend(
+    true
+    $.fn.wysihtml5.defaultOptions
+    parserRules:
+      tags:
+        h1: { 'remove': 1 }
+        p: {}
+  )
+  $.extend(
+    true
+    $.fn.wysihtml5.locale["ru-RU"]
+    font_styles:
+      h4: 'Заголовок 4'
+      h5: 'Заголовок 5'
+      h6: 'Заголовок 6'
+  )
+
+  $('.wysihtml5').wysihtml5
+    locale: 'ru-RU'
+    html: true
+    image: false
 
   $('a.top').click (e) ->
     $.scrollTo 'body', 500
