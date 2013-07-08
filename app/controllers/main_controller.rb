@@ -11,14 +11,14 @@ class MainController < ApplicationController
   private
 
   def novelties
-    Product.novelties.limit(3)
+    Product.novelties.random(3)
   end
 
   def discounts
-    Product.discounts.limit(6)
+    Product.discounts.random(6)
   end
 
   def hits
-    Product.hits.limit(3)
+    Product.hits.random(3)
   end
 end
