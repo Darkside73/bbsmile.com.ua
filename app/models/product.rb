@@ -1,19 +1,17 @@
 class Product < ActiveRecord::Base
   include PgSearch
+  include Pageable
+  include Contentable
 
   FREE_SHIPPING_PRICE = 1500
 
-  has_one :page, as: :pageable, dependent: :destroy
-  has_one :content, as: :contentable, dependent: :destroy
   has_many :images, as: :assetable, dependent: :destroy
   has_many :variants, dependent: :destroy
   belongs_to :category
   belongs_to :brand
 
-  accepts_nested_attributes_for :page
   accepts_nested_attributes_for :images
   accepts_nested_attributes_for :variants
-  delegate :title, :url, :url_old, :name, to: :page
   delegate :price, :price_old, :price_old?, :available, :sku, :sku?,
            to: :master_variant, allow_nil: true
 
@@ -42,10 +40,6 @@ class Product < ActiveRecord::Base
 
   def free_shipping
     price && price >= FREE_SHIPPING_PRICE
-  end
-
-  def description
-    content.try(:text)
   end
 
   def top_image?

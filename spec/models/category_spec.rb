@@ -29,6 +29,7 @@ describe Category do
       category.should have(1).error_on(:parent)
     end
   end
+
   context 'ancestry' do
     subject { Category }
     its(:arrange) { should respond_to :each }
@@ -41,6 +42,7 @@ describe Category do
       expect { child.save }.to change { category.children.count }
     end
   end
+
   context 'acts as list' do
     let(:category) { create :category, children_count: 2 }
     context 'when create new record' do
@@ -68,6 +70,7 @@ describe Category do
       end
     end
   end
+
   context 'when category is leaf' do
     describe 'save' do
       let(:leaf_category) { create :leaf_category }
@@ -81,6 +84,14 @@ describe Category do
       end
     end
   end
+
+  describe "content relation" do
+    let(:category) { create :category_with_content }
+    it 'has content' do
+      category.content.text.should be
+    end
+  end
+
   describe '.destroy' do
     it 'allow destroy model' do
       category = create :category

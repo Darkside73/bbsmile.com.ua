@@ -39,5 +39,9 @@ FactoryGirl.define do
     factory :category_with_price_ranges do
       price_ranges { create_list :price_range, 3 }
     end
+
+    factory :category_with_content do
+      association :content
+    end
   end
 end
