@@ -78,6 +78,11 @@ class Admin::CategoriesController < Admin::ApplicationController
     render json: flashes_in_json
   end
 
+  def content
+    @category = Category.find params[:id]
+  end
+
+
   private
     def category_params
       params.require(:category).permit(

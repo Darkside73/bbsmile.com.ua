@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::ContentsController do
+describe Admin::ProductContentsController do
   describe 'POST create' do
     let(:product) { create :product }
     it 'create Content' do

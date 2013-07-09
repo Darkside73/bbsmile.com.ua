@@ -7,5 +7,10 @@
       = link_to "Основное", [:edit, :admin, @category]
     li*unless_active_attr('admin/price_ranges')
       = link_to "Диапазоны цен", [:admin, @category, :price_ranges]
+    li*unless_active_attr('admin/category_contents')
+      - if @category.content.present?
+        = link_to "Описание", edit_admin_category_content_path(@category.content)
+      - else
+        = link_to "Описание", [:new, :admin, @category, :content]
   .tab-content
     = yield

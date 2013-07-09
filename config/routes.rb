@@ -20,12 +20,16 @@ Bbsmile::Application.routes.draw do
         get 'new_product', controller: 'products', action: 'new_in_category'
         get 'products'
       end
-      resources :price_ranges, only: [:index, :create, :edit, :update, :destroy]
+      resources :price_ranges, except: [:new, :show]
+      resources :contents, only: [:new, :create, :edit, :update],
+                controller: 'category_contents', shallow_prefix: 'category', shallow_path: 'category'
+      get 'content', on: :member
     end
     resources :products, concerns: :sortable, shallow: true do
       resources :images, concerns: :sortable, only: [:index, :new, :create, :destroy]
-      resources :contents, only: [:new, :create, :edit, :update]
-      resources :variants, concerns: :sortable, only: [:index, :create, :edit, :update, :destroy]
+      resources :contents, only: [:new, :create, :edit, :update],
+                controller: 'product_contents', shallow_prefix: 'product', shallow_path: 'product'
+      resources :variants, concerns: :sortable, except: [:new, :show]
       get 'content', on: :member
       get 'tags', on: :collection
       post 'bulk_move', on: :collection

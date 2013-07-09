@@ -1,0 +1,7 @@
+.text
+  == contentable.description || 'нет описания, попробуйте добавить'
+hr
+- unless contentable.description
+  = link_to 'Добавить', [:new, :admin, contentable, :content], class: 'btn btn-info'
+- else
+  = link_to 'Редактировать', [:edit, :admin, contentable.class.name.underscore.to_sym, contentable.content], class: 'btn btn-info'

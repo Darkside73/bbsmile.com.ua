@@ -1,8 +1,3 @@
 = render layout: 'product_info_tabs' do
-  .text
-    == @product.description || 'нет описания, попробуйте добавить'
-  hr
-  - unless @product.description
-    = link_to 'Добавить', [:new, :admin, @product, :content], class: 'btn btn-info'
-  - else
-    = link_to 'Редактировать', [:edit, :admin, @product.content], class: 'btn btn-info'
+  = render 'content_show', contentable: @product
+

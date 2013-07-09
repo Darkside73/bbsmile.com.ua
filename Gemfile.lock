@@ -6,6 +6,16 @@ GIT
       actionpack (>= 3.2.0)
 
 GIT
+  remote: git://github.com/Darkside73/randumb.git
+  revision: cc44f4174e77444dab57f23fd9ce69abee2aea9a
+  branch: rails4
+  specs:
+    randumb (0.3.1)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      rake
+
+GIT
   remote: git://github.com/cucumber/cucumber-rails.git
   revision: 3e6cc89489f8553c698ed944fe683b75d700ec23
   branch: master_rails4_test
@@ -225,10 +235,6 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.11.0)
     rake (10.0.4)
-    randumb (0.3.1)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      rake
     rb-fsevent (0.9.3)
     rb-inotify (0.9.0)
       ffi (>= 0.5.0)
@@ -329,7 +335,7 @@ DEPENDENCIES
   pg_search
   rails (= 4.0.0)
   rake (= 10.0.4)
-  randumb
+  randumb!
   rb-inotify
   rspec-rails (~> 2.13.0)
   russian

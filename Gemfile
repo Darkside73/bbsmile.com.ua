@@ -9,7 +9,7 @@ gem 'pg'
 gem 'pg_search'
 gem 'ancestry', github: 'stefankroes/ancestry', branch: 'master'
 gem 'nilify_blanks'
-gem 'randumb'
+gem 'randumb', github: 'Darkside73/randumb', branch: 'rails4'
 
 gem 'russian'
 
