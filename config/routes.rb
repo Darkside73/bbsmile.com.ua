@@ -6,13 +6,21 @@ Bbsmile::Application.routes.draw do
   resources :orders, only: :create
 
   namespace :admin do
+
     root to: 'main#index'
+
     concern :sortable do
-      member do
-        post 'sort'
+      member { post 'sort' }
+    end
+    %w(category product).each do |type|
+      concern "contentable_for_#{type}".to_sym do
+        get 'content', on: :member
+        resources :contents, only: [:new, :create, :edit, :update],
+          controller: "#{type}_contents", shallow_prefix: type, shallow_path: type
       end
     end
-    resources :categories, concerns: :sortable, shallow: true do
+
+    resources :categories, concerns: [:sortable, :contentable_for_category], shallow: true do
       member do
         get 'new_subcategory'
         post 'create_subcategory'
@@ -21,16 +29,10 @@ Bbsmile::Application.routes.draw do
         get 'products'
       end
       resources :price_ranges, except: [:new, :show]
-      resources :contents, only: [:new, :create, :edit, :update],
-                controller: 'category_contents', shallow_prefix: 'category', shallow_path: 'category'
-      get 'content', on: :member
     end
-    resources :products, concerns: :sortable, shallow: true do
+    resources :products, concerns: [:sortable, :contentable_for_product], shallow: true do
       resources :images, concerns: :sortable, only: [:index, :new, :create, :destroy]
-      resources :contents, only: [:new, :create, :edit, :update],
-                controller: 'product_contents', shallow_prefix: 'product', shallow_path: 'product'
       resources :variants, concerns: :sortable, except: [:new, :show]
-      get 'content', on: :member
       get 'tags', on: :collection
       post 'bulk_move', on: :collection
     end
