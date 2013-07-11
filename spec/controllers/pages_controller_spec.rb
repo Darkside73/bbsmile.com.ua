@@ -11,6 +11,14 @@ describe PagesController do
       end
     end
 
+    context "when page found by old url" do
+      let(:page) { create :page, url_old: 'old/url' }
+      it "redirect to page actual url" do
+        get :show, slug: page.url_old
+        expect(response.code).to eq('301')
+      end
+    end
+
     context 'when page not found' do
       it 'render template' do
         get :show, slug: 'information'
