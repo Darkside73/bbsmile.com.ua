@@ -41,6 +41,10 @@
             - if @products.count > 1
               = link_to_sortable_price "Сначала дешевле", "asc"
               = link_to_sortable_price "Сначала дороже",  "desc"
+              - if @category.description.present? && no_filtering?
+                button.more.btn
+                  i.icon-info-sign>
+                  | Подробнее о категории
         = render 'products'
       - elsif @category.leaf?
         .alert
@@ -48,3 +52,7 @@
           | ничего не нашлось
       - else
         .offers = render 'special_products'
+
+    - if @category.description.present? && no_filtering?
+      .row-fluid: .page-content.span12
+        == @category.description

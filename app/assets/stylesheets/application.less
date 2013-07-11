@@ -19,12 +19,11 @@ a.thumbnail:hover {
   border-color: @purple;
 }
 
-a[class^="icon-"]:hover {
+a[class^="icon-"]:hover, a[class*=" icon-"] {
   text-decoration: none;
-  cursor: pointer;
 }
 
-a>[class^="icon-"]:before, a>[class*=" icon-"]:before {
+a[class^="icon-"]:before, a[class*=" icon-"]:before {
   cursor: pointer;
 }
 
