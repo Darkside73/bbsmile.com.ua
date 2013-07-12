@@ -5,10 +5,9 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if order.save
         OrderMailer.new_order(order).deliver if order.user.email.present?
+        ManagerMailer.new_order(order).deliver
         flash.now[:success] = I18n.t 'flash.message.orders.created', order_id: order.id
-        format.json {
-            render json: order.as_json.merge(flashes_in_json), status: :created
-        }
+        format.json { render json: order.as_json.merge(flashes_in_json), status: :created }
       else
         format.json { render json: order.errors, status: :unprocessable_entity }
       end

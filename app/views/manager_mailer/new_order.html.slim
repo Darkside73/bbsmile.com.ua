@@ -1,0 +1,11 @@
+p
+  ' Пользователь
+  strong> #{@order.user.name} #{@order.user.email}
+  ' оформил заказ №
+  strong = @order.id
+  | :
+p
+  strong => @order.variant.title
+  ' за
+  strong = number_to_currency @order.price
+  | .
