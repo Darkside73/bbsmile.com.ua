@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   layout "layout_inner"
 
-  http_basic_authenticate_with(name: 'admin', password: 'Y5petRup') if Rails.env == 'production'
+  http_basic_authenticate_with(Settings.http_auth.to_hash) if Settings.http_auth
 
   before_action :current_page_from_slug
   attr_reader :current_page
