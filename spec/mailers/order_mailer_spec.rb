@@ -12,7 +12,6 @@ describe OrderMailer do
       subject { mail.body.encoded }
       it { should include(order.number) }
       it { should include(order.variant.title) }
-      it { should include(order.price.to_s) }
     end
   end
 end
