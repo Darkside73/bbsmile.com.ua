@@ -55,7 +55,8 @@
         li.active: a href="#description" data-toggle="tab" Описание
         - if @product.variants.count > 1
           li: a href="#productVariants" data-toggle="tab" Варианты цветов
-        li: a href="#video" data-toggle="tab" Видеообзор
+        - if @product.video?
+          li: a href="#video" data-toggle="tab" Видеообзор
       .tab-content
         .tab-pane.active#description
           .page-content
@@ -67,4 +68,5 @@
               - @product.variants.each_slice(4) do |variants|
                 .row-fluid
                   = render variants
-        .tab-pane#video == @product.video
+        - if @product.video?
+          .tab-pane#video = render partial: 'video', object: @product.video

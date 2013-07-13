@@ -1,0 +1,6 @@
+.video-container
+  - if video.start_with? 'http'
+    iframe src="#{video}?rel=0" frameborder="0" allowfullscreen="allowfullscreen"
+  - else
+    == video
+
