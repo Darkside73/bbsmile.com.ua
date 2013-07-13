@@ -11,6 +11,7 @@ gem 'ancestry', github: 'stefankroes/ancestry', branch: 'master'
 gem 'nilify_blanks'
 gem 'randumb', github: 'Darkside73/randumb', branch: 'rails4'
 
+gem 'rails_config'
 gem 'russian'
 
 gem 'slim', github: 'slim-template/slim'
