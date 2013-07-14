@@ -52,7 +52,9 @@
           | ничего не нашлось
       - else
         .offers = render 'special_products'
+        .page-content
+          == @category.description
 
-    - if @category.description.present? && no_filtering?
+    - if @category.leaf? && @category.description.present? && no_filtering?
       .row-fluid: .page-content.span12
         == @category.description
