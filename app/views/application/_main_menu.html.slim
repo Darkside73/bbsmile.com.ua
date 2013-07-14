@@ -3,11 +3,14 @@ li.dropdown*unless_catalog_active_attr
     ' Каталог
     b.caret
   = render_cell :catalog_menu, :display
-li*unless_url_active_attr('information')
-  a href="/information" Информация
-li: a href="#" Статьи
-li: a href="#" Новости
-li: a href="#" О нас
+li*unless_url_active_attr('shipping')
+  a href="/shipping" Доставка и оплата
+li*unless_url_active_attr('warranty')
+  a href="/warranty" Гарантия
+li*unless_url_active_attr('contacts')
+  a href="/contacts" Контакты
+li*unless_url_active_attr('about')
+  a href="/about" О нас
 / li.cart: a href="#"
 /   | Корзина&nbsp;
 /   span.badge 2
