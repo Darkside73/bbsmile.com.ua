@@ -50,6 +50,7 @@ group :development do
   gem 'guard-cucumber'
   gem 'guard-zeus-client'
   gem 'meta_request', '0.2.5'
+  gem 'better_errors'
 end
 
 group :development, :test do
