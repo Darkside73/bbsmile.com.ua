@@ -12,6 +12,7 @@ html
     = stylesheet_link_tag 'ie'
   = javascript_include_tag 'application'
   = yield :head
+  = render 'analytics'
 
   body *body_attributes
     #main-menu.navbar.navbar-fixed-top
