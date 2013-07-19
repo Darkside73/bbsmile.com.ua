@@ -1,7 +1,10 @@
 = simple_form_for order, remote: true, html: { class: "quick-shop-dialog modal hide fade", data: { type: :json }, tabindex: -1, role: "dialog", "aria-hidden" => true } do |f|
   .modal-header
     button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
-    h3 = product.master_variant.title if local_assigns[:product]
+    h3.modal-title
+      - if local_assigns[:product]
+        = product.master_variant.title
+        span.price = number_to_currency product.price
   .modal-body
     .row-fluid
       = f.simple_fields_for :user do |u|

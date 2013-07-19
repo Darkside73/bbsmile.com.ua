@@ -31,8 +31,9 @@ a[class^="icon-"], a[class*=" icon-"], a i[class^="icon-"]:before, a i[class*=" 
 .purple { color: @purpleDark }
 
 .price {
-  &.big { font-size: @baseFontSize*2; }
   color: @pinkDark;
+  white-space: nowrap;
+  &.big { font-size: @baseFontSize*2; }
   span.old {
     &.big { font-size: @baseFontSize*1.5; }
     &.medium { font-size: @baseFontSize*1.2; }
@@ -51,6 +52,11 @@ a[class^="icon-"], a[class*=" icon-"], a i[class^="icon-"]:before, a i[class*=" 
   .radio input[type="radio"], .checkbox input[type="checkbox"] {
     margin-right: 5px;
   }
+}
+
+.modal-gallery .modal-title {
+  padding-bottom: 5px;
+  max-height: 100%;
 }
 
 #main-menu {

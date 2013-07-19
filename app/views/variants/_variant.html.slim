@@ -1,6 +1,6 @@
 li.item.span3
   .thumbnail
-    a.thumbnail href="#{variant_image_url(variant)}" title="#{variant.name} #{variant.sku} #{number_to_currency variant.price}" data-gallery="gallery"
+    a.thumbnail href="#{variant_image_url(variant)}" title="#{variant.title}" data-gallery="gallery" data-price="#{number_to_currency variant.price}"
       = image_tag variant_image_url(variant, :thumb)
     .caption
       h5 = variant.name
@@ -10,6 +10,6 @@ li.item.span3
           span.old.muted => number_to_currency variant.price_old
         strong = "#{number_to_currency variant.price}"
       - if variant.available?
-        a.variant-quick-shop.btn.btn-success data-toggle="modal" href="##{dom_id @order}" data-variant-id="#{variant.id}" data-dialog-title="#{variant.title}" Купить
+        a.variant-quick-shop.btn.btn-success data-toggle="modal" href="##{dom_id @order}" data-variant-id="#{variant.id}" data-dialog-title="#{variant.title} <span class='price'>#{number_to_currency variant.price}</span>" Купить
       - else
         a.btn.disabled нет в наличии

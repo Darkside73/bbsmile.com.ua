@@ -14,4 +14,4 @@
       a.btn.disabled
         span.old.medium => number_to_currency product.price_old
         span.label = number_to_currency product.price
-      button.quick-shop.btn.btn-success href="#new_order" data={toggle: "modal", variant_id: product.master_variant.id, dialog_title: product.title} Купить
+      button.quick-shop.btn.btn-success href="#new_order" data={toggle: "modal", variant_id: product.master_variant.id, dialog_title: "#{product.title} <span class='price'>#{number_to_currency product.price}</span>"} Купить
