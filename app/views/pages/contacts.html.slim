@@ -1,9 +1,34 @@
-- content_for :head do
-  = stylesheet_link_tag 'information_page'
+= render layout: 'static_page', locals: { title: 'Контакты' } do
+  .contacts.row-fluid
+    .span4.left
+      .phone
+        i.icon-phone.pull-left>
+        p 056 788-23-83
+      .mobile
+        i.icon-mobile-phone.pull-left>
+        p 067 561-82-52
+      .mobile
+        i.icon-mobile-phone.pull-left>
+        p 066 717-37-07
 
-- title "Контакты"
+    .span4.center
+      .vk
+        i.icon-vk.pull-left>
+        p: a href="http://vk.com/babysmile_ua" Вконтакте
+      .facebook
+        i.icon-facebook.pull-left>
+        p: a href="#" Facebook
+      .twitter
+        i.icon-twitter.pull-left>
+        p: a href="#" Twitter
 
-.container-fluid.container-wide: .row-fluid
-  h1.page-title Контакты
-  .page-content
-    p
+    .span4.right
+      .mail
+        i.icon-envelope-alt.pull-left>
+        p = mail_to 'smile@bbsmile.com.ua'
+      .skype
+        i.icon-skype.pull-left>
+        p bebiksmile
+      address
+        i.icon-building.pull-left>
+        p: a href="http://goo.gl/bxRX4" title="Посмотреть на карте" г. Днепропетровск, ул.&nbsp;Нижнеднепровская, 17

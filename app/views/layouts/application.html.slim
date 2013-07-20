@@ -2,7 +2,7 @@ doctype 5
 html
   title
     ==> yield(:title) +  ' &mdash;'.html_safe if content_for?(:title)
-    | Детские товары - Интернет-магазин
+    | Интернет-магазин BabySmile
   meta charset="UTF-8"
   meta name="viewport" content="width=device-width, initial-scale=1.0"
   = stylesheet_link_tag default_stylesheet unless content_for?(:head)

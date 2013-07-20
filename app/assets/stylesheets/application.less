@@ -14,12 +14,17 @@ body {
   min-width: @minWidth;
 }
 
+.page-content a, a.ease {
+  .ease(@linkColor);
+}
+
 a.thumbnail:hover {
   box-shadow: 0 1px 4px fadeout(@purple, 75%);
   border-color: @purple;
 }
 
-a[class^="icon-"]:hover, a[class*=" icon-"] {
+a[class*=" icon-"], a[class^="icon-"], a[class^="icon-"]:hover, a[class*=" icon-"]:hover,
+a[class^="icon-"]:active, a[class*=" icon-"]:active, a[class^="icon-"]:focus, a[class*=" icon-"]:focus {
   text-decoration: none;
 }
 

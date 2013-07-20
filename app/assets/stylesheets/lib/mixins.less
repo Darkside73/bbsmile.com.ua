@@ -7,6 +7,13 @@
   top: -5px; position: relative;
 }
 
+.ease(@color) {
+  .transition(color 0.2s ease-in-out 0s);
+  &:hover {
+    text-shadow: 0 0 10px fadeout(@color, 75%);
+  }
+}
+
 // applies to links container
 .social-contact-links(@backgroundColor: @brownLight, @color: @yellowLight) {
   letter-spacing: 0.5em;

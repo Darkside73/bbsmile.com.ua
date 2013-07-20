@@ -1,0 +1,8 @@
+- content_for :head do
+  = stylesheet_link_tag 'information_page'
+
+- title title
+
+.container-fluid.container-wide.static-page: .row-fluid
+  h1.page-title = title
+  .page-content = yield

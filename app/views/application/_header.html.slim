@@ -3,11 +3,11 @@
     .naming.span8
       = image_tag "content/logo.png"
       h1
-        ' Детские товары
-        small интернет-магазин
+        ' Интернет-магазин
+        small детские товары
     .contacts.span3
       .actions
-        a.email href="#" title="Написать нам"
+        = mail_to 'smile@bbsmile.com.ua', class: 'email', title: "Написать нам" do
           i.icon-envelope>
         a.phone.active href="#" title="Позвонить нам"
           i.icon-phone>
