@@ -16,6 +16,7 @@ gem 'russian'
 
 gem 'slim', github: 'slim-template/slim'
 # gem 'slim-rails', github: 'slim-template/slim-rails'
+gem 'redcarpet'
 gem 'cells'
 gem 'simple_form', '>= 3.0.0beta1'
 gem 'attribute_normalizer'

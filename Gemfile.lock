@@ -245,6 +245,7 @@ GEM
       ffi (>= 0.5.0)
     rb-kqueue (0.2.0)
       ffi (>= 0.5.0)
+    redcarpet (3.0.0)
     ref (1.0.5)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
@@ -344,6 +345,7 @@ DEPENDENCIES
   rake (= 10.0.4)
   randumb!
   rb-inotify
+  redcarpet
   rspec-rails (~> 2.13.0)
   russian
   seedbank
