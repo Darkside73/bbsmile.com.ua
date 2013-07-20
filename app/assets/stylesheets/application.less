@@ -80,6 +80,10 @@ a[class^="icon-"], a[class*=" icon-"], a i[class^="icon-"]:before, a i[class*=" 
         i { .box-shadow(0 0 4px 5px @pinkLight); }
         &:hover i { background: @pink; }
       }
+      a:active, a:hover, a:focus {
+        text-decoration: none;
+        outline: none;
+      }
       .popover {
         width: 146px;
         margin: 10px 0 -10px 0px;

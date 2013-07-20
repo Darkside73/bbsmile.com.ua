@@ -14,7 +14,9 @@ $ ->
   $('.contacts .actions a[rel=popover]').click (e) ->
     $(@).toggleClass 'active'
     top = parseFloat($(@).next('.popover').css('top')) + 20
-    $(@).next('.popover').css 'top', "#{top}px"
+    left = parseFloat($(@).next('.popover').css('left')) - 7
+    $(@).next('.popover').css('top',  "#{top}px")
+                         .css('left', "#{left}px")
     e.preventDefault()
 
   $('.landing-nav .nav a').click (e) ->
