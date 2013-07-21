@@ -5,6 +5,7 @@ html
     | Интернет-магазин Babysmile
   meta charset="UTF-8"
   meta name="viewport" content="width=device-width, initial-scale=1.0"
+  = favicon_link_tag
   = stylesheet_link_tag default_stylesheet unless content_for?(:head)
   /[if IE 7]
     = stylesheet_link_tag 'font-awesome-ie7.min'
