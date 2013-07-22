@@ -7,8 +7,8 @@
       = f.input :master, label: 'Основной'
       = f.input :available, label: 'Доступность'
     .span6
-      = f.input :price, label: 'Цена', input_html: { value: variant.product.price }
-      = f.input :price_old, label: 'Старая цена', input_html: { value: variant.product.price_old }
+      = f.input :price, label: 'Цена', input_html: { value: variant.new_record? ? variant.product.price : variant.price }
+      = f.input :price_old, label: 'Старая цена', input_html: { value: variant.new_record? ? variant.product.price_old : variant.price_old }
       = f.simple_fields_for(:image, variant.image || variant.build_image) do |i|
         = i.input :attachment, label: 'Загрузить фото'
         = i.input :attachment_url, label: 'или указать ссылку'
