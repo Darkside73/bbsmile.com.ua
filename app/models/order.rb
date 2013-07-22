@@ -11,8 +11,9 @@ class Order < ActiveRecord::Base
   validates :variant, presence: true
 
   def autosave_associated_records_for_user
-    if new_user = User.find_by(email: user.email)
-      self.user = new_user
+    if user.email.present?
+      new_user = User.find_by(email: user.email)
+      self.user = new_user if new_user
     else
       self.user.save!
     end
@@ -20,6 +21,12 @@ class Order < ActiveRecord::Base
 
   def number
     id.to_s
+  end
+
+  def as_json(options={})
+    super include: {
+      variant: { only: [:sku], methods: [:category_title, :title] }
+    }
   end
 
   private
