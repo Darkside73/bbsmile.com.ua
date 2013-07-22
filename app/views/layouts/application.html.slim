@@ -11,9 +11,9 @@ html
     = stylesheet_link_tag 'font-awesome-ie7.min'
   /[if lt IE 9]
     = stylesheet_link_tag 'ie'
+  = render 'analytics'
   = javascript_include_tag 'application'
   = yield :head
-  = render 'analytics'
 
   body *body_attributes
     #main-menu.navbar.navbar-fixed-top

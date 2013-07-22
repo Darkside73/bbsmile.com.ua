@@ -9,8 +9,6 @@ $ ->
     dialog.setTitle $(@).data('dialog-title')
     dialog.setVariantId $(@).data('variant-id')
 
-  $('#productVariants .item a.thumbnail').click (e) ->
-
   $('#variants-gallery').on 'display', ->
     modalData = $(this).data('modal')
     currentLink = modalData.$links[modalData.options.index]

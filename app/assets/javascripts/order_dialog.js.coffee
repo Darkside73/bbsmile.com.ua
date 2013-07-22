@@ -1,6 +1,8 @@
 class @OrderDialog
   constructor: (selector) ->
     @dialog = $(selector)
+    @dialog.on 'shown', ->
+      _gaq.push ['_trackPageview', '/ordering']
     @bind()
 
   setTitle: (title) ->
@@ -22,6 +24,7 @@ class @OrderDialog
         @clearErrors()
         @showFlashMessagesFrom data
         @dialog.modal 'hide'
+        _gaq.push ['_trackPageview', '/checkout']
     ).bind(
       'ajax:error'
       (event, xhr, status, error) =>

@@ -1,6 +1,9 @@
 - title @product.title
 
 - content_for :head do
+  coffee:
+    _gaq.push ['_trackPageview', '/product']
+
   = stylesheet_link_tag 'product'
   = javascript_include_tag 'product'
 
