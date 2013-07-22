@@ -1,8 +1,8 @@
 //= require order_dialog
 
 $ ->
-  dialog = new OrderDialog('.quick-shop-dialog')
+  dialog = new OrderDialog('.products-list .quick-shop-dialog')
 
-  $('.quick-shop').click (e) ->
+  $('.products-list .quick-shop').click (e) ->
     dialog.setTitle $(@).data('dialog-title')
-    dialog.setVariantId $(@).data('variant-id')
+    dialog.setVariantId $(@).data('variant-id') if $(@).data('variant-id')
