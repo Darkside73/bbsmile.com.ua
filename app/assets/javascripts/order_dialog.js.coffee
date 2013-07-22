@@ -25,6 +25,12 @@ class @OrderDialog
         @showFlashMessagesFrom data
         @dialog.modal 'hide'
         _gaq.push ['_trackPageview', '/checkout']
+        _gaq.push ['_addTrans', data.id, data.variant.title, data.price]
+        _gaq.push [
+          '_addItem', data.id, data.variant.sku || data.variant_id,
+          data.variant.title, data.variant.category_title, data.price, '1'
+        ]
+        _gaq.push ['_trackTrans']
     ).bind(
       'ajax:error'
       (event, xhr, status, error) =>
