@@ -30,10 +30,7 @@
         - if @product.sku?
           span.label Артикул: #{@product.sku}
       .share.pull-right
-        | Поделиться:
-        a.icon-facebook-sign href="#"
-        a.icon-twitter-sign href="#"
-        a.icon-google-plus-sign href="#"
+        = render 'share_links'
       .clearfix
       hr
       .pull-left
