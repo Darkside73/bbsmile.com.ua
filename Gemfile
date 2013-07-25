@@ -2,26 +2,23 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'pg'
 gem 'pg_search'
-gem 'ancestry', github: 'stefankroes/ancestry', branch: 'master'
+gem 'ancestry'
 gem 'nilify_blanks'
 gem 'randumb', github: 'Darkside73/randumb', branch: 'rails4'
 
 gem 'rails_config'
 gem 'russian'
 
-gem 'slim', github: 'slim-template/slim'
-# gem 'slim-rails', github: 'slim-template/slim-rails'
+gem 'slim'
+gem 'slim-rails'
 gem 'redcarpet'
 gem 'cells'
 gem 'simple_form', '>= 3.0.0beta1'
 gem 'attribute_normalizer'
 gem 'acts_as_list'
-gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
+gem 'acts-as-taggable-on'
 
 gem 'jquery-rails', '~> 2.2.1'
 gem 'json', '~> 1.7.7'
@@ -29,12 +26,10 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-helpers'
 gem 'paperclip'
 
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
   gem 'less-rails-bootstrap'
   gem 'font-awesome-rails'
-  gem 'coffee-rails', '>= 4.0.0beta1'
+  gem 'coffee-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
