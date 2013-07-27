@@ -58,8 +58,20 @@
   h2 {
     color: @gray;
     text-align: center;
+    a {
+      color: @gray;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
-  #novelties-items {
+  a.see-all {
+    font-size: 80%;
+    color: @linkColor;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 

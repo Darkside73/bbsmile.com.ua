@@ -5,5 +5,6 @@ module Pageable
     has_one :page, as: :pageable, dependent: :destroy
     accepts_nested_attributes_for :page
     delegate :title, :name, :url, :url_old, :hidden, to: :page
+    scope :by_url, ->(url) { Page.find_by(url: url).try(:pageable) }
   end
 end

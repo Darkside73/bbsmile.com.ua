@@ -1,0 +1,32 @@
+- content_for :head do
+  = stylesheet_link_tag 'category'
+
+- title "#{type_title}#{' - ' + @selected_category.title if @selected_category}"
+
+#category-content.container-fluid.container-wide.order-flashable
+  h1.page-title
+    - if @selected_category
+      => @selected_category.title
+      small = type_title.mb_chars.downcase.to_s
+    - else
+      = type_title
+  .row-fluid
+    .product-filters.span3
+      #product-filters.accordion
+        = accordion_group "filterByCategory", "Категория" do
+          - @categories.each do |category|
+            - if category.url == params[:category_slug]
+              li.active = category.title
+            - else
+              li = link_to category.title, self.send(@special_products_path, category.url)
+    .products-list.span9
+      = render 'order/form', order: @order
+      - if @products.any?
+        .show-options
+          ul.nav.nav-pills
+            li: .btn.disabled
+              ' Всего товаров:
+              strong = @products.count
+            - if @selected_category
+              li = link_to 'Показать все', self.send(@special_products_path), class: 'btn'
+        = render 'categories/products'

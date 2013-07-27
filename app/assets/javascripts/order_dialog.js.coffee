@@ -1,6 +1,7 @@
 class @OrderDialog
   constructor: (selector) ->
     @dialog = $(selector)
+    throw new Error("Could not find #{selector}") unless @dialog.length
     @dialog.on 'shown', ->
       _gaq.push ['_trackPageview', '/ordering']
     @bind()
