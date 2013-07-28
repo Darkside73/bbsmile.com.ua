@@ -3,7 +3,7 @@
     button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
     h3.modal-title
       - if local_assigns[:product]
-        = product.master_variant.title
+        => product.master_variant.title
         span.price = number_to_currency product.price
   .modal-body
     .row-fluid
