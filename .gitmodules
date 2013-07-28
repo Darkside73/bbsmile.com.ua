@@ -1,6 +1,0 @@
-[submodule "vendor/assets/javascripts/bootstrap-image-gallery"]
-	path = vendor/assets/javascripts/bootstrap-image-gallery
-	url = https://github.com/blueimp/Bootstrap-Image-Gallery.git
-[submodule "vendor/assets/javascripts/javaScript-load-image"]
-	path = vendor/assets/javascripts/javaScript-load-image
-	url = https://github.com/blueimp/JavaScript-Load-Image.git
