@@ -21,8 +21,8 @@ describe PagesController do
 
     context 'when page not found' do
       it 'render template' do
-        get :show, slug: 'information'
-        should render_template(:information)
+        get :show, slug: 'shipping'
+        should render_template(:shipping)
       end
 
       it 'raise error if template not found' do
