@@ -10,6 +10,7 @@ gem 'randumb', github: 'Darkside73/randumb', branch: 'rails4'
 
 gem 'rails_config'
 gem 'russian'
+gem 'metamagic'
 
 gem 'slim'
 gem 'slim-rails'
