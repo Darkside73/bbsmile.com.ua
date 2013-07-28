@@ -1,4 +1,8 @@
-.container: #promotions.carousel.slide data-pause="true"
+.container: #promotions.carousel.slide
+  ol.carousel-indicators
+    li.active data-target="#promotions" data-slide-to="0"
+    li data-target="#promotions" data-slide-to="1"
+    li data-target="#promotions" data-slide-to="2"
   .carousel-inner
     .item.active
       = image_tag "content/Nochnichok.jpg"
@@ -6,19 +10,18 @@
       .span8
         = image_tag "content/68.jpg"
       .span3
-        h4 First Thumbnail label
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque deleniti ducimus totam quasi corporis placeat architecto odio fuga assumenda explicabo quae incidunt dolorum necessitatibus. Laborum esse at iusto autem non!
+        h4 Супер акция!
+        p Скидки до 50%
     .item: .row
       .span8
         = image_tag "content/70.jpg"
       .span3
-        h4 First Thumbnail label
-        p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem sequi animi nostrum
-    .item: .row
-      .span8
-        = image_tag "content/128.jpg"
-      .span3
-        h4 First Thumbnail label
-        p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-  a.left.carousel-control href="#promotions" data-slide="prev" &lsaquo;
-  a.right.carousel-control href="#promotions" data-slide="next" &rsaquo;
+        h4 Третий товар за полцены
+        markdown:
+          Купите два товара и получите третий за полцены. [Узнать больше](#)
+
+
+  a.left.carousel-control href="#promotions" data-slide="prev"
+    i.icon-angle-left
+  a.right.carousel-control href="#promotions" data-slide="next"
+    i.icon-angle-right

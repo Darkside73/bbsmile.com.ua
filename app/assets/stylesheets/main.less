@@ -39,7 +39,7 @@
 }
 
 #promotions {
-  background: @grayLighter;
+  background: #D5EBEA;
   h4 {
     margin-top: 75px;
   }
@@ -48,6 +48,24 @@
   }
   .carousel {
     line-height: 1.4;
+  }
+  .carousel-control {
+    top: 45%;
+    outline: none;
+    font-size: 36px;
+    &:hover {
+      opacity: .8;
+    }
+    i {
+      padding: 1px 0 0 5px;
+      display: block;
+    }
+    &.left {
+      i { padding: 1px 4px 0 0; }
+    }
+  }
+  .carousel-indicators {
+    li { cursor: pointer; }
   }
 }
 
