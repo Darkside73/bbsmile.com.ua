@@ -7,7 +7,7 @@
   h1.page-title
     - if @selected_category
       => @selected_category.title
-      small = type_title.mb_chars.downcase.to_s
+      small = type_title
     - else
       = type_title
   .row-fluid
