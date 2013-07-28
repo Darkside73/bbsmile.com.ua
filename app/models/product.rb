@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
   include Pageable
   include Contentable
 
-  FREE_SHIPPING_PRICE = 1500
+  FREE_SHIPPING_PRICE = 400
 
   has_many :images, as: :assetable, dependent: :destroy
   has_many :variants, dependent: :destroy
