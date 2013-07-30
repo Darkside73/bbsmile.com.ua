@@ -71,3 +71,10 @@ Bbsmile::Application.configure do
 
   Slim::Engine.set_default_options pretty: true, sort_attrs: false
 end
+
+Bbsmile::Application.config.middleware.use ExceptionNotification::Rack,
+  email: {
+    email_prefix: "[Bbsmile Error] ",
+    sender_address: %{"Exception Notifier" <no-reply@bbsmile.com.ua>},
+    exception_recipients: %w{andrey.garbuz@gmail.com}
+  }

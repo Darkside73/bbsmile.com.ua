@@ -7,9 +7,13 @@ gem 'pg_search'
 gem 'ancestry'
 gem 'nilify_blanks'
 gem 'randumb', github: 'Darkside73/randumb', branch: 'rails4'
+gem 'acts_as_list'
+gem 'acts-as-taggable-on'
 
 gem 'rails_config'
 gem 'russian'
+gem 'exception_notification'
+
 gem 'metamagic'
 
 gem 'slim'
@@ -18,8 +22,6 @@ gem 'redcarpet'
 gem 'cells'
 gem 'simple_form', '>= 3.0.0beta1'
 gem 'attribute_normalizer'
-gem 'acts_as_list'
-gem 'acts-as-taggable-on'
 
 gem 'jquery-rails', '~> 2.2.1'
 gem 'json', '~> 1.7.7'
