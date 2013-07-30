@@ -40,7 +40,7 @@ class Category < ActiveRecord::Base
 
   # TODO use AR to reduce number of queries
   def brands
-    @brands ||= products.collect(&:brand).uniq.sort {|x, y| x.name <=> y.name }
+    @brands ||= products.select(&:brand).collect(&:brand).uniq.sort {|x, y| x.name <=> y.name }
   end
 
   def find_price_ranges
