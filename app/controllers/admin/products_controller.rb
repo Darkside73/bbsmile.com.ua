@@ -26,7 +26,7 @@ class Admin::ProductsController < Admin::ApplicationController
     @product = Product.new product_params
     @category = @product.category
     if @product.save
-      redirect_to [:admin, @category], notice: I18n.t('flash.message.products.created')
+      redirect_to [:admin, @product], notice: I18n.t('flash.message.products.created')
     else
       render :new
     end

@@ -34,7 +34,7 @@ describe Admin::ProductsController do
         variants_attributes: [{ price: 20, sku: 'code123', available: true }]
       }
       flash[:notice].should have_content(/created/i)
-      should redirect_to([:admin, category])
+      should redirect_to([:admin, Product.last])
     end
   end
   describe 'GET edit' do
