@@ -8,4 +8,12 @@ module ProductsHelper
     end
     image.url(style) if image
   end
+
+  def product_share_data
+    {
+      url:   product_page_url(@product.url),
+      title: @product.title,
+      image: URI.join(request.url, @product.top_image(:medium))
+    }
+  end
 end

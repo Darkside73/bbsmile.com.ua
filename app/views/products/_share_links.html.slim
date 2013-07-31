@@ -1,9 +1,4 @@
 | Поделиться:
-a.icon-facebook-sign href="#" onclick=" \
-    window.open( \
-      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), \
-      'facebook-share-dialog', \
-      'width=626,height=436'); \
-    return false;"
-a.icon-twitter-sign href="#"
-a.icon-google-plus-sign href="#"
+a.icon-vk target="_blank" href="http://vk.com/share.php?title=#{title}&url=#{url}&image=#{image}" title="Поделиться ВКонтакте"
+a.icon-facebook target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=#{url}" title="Поделиться в Фейсбуке"
+a.icon-twitter target="_blank" href="http://twitter.com/share?text=#{title}&url=#{url}" title="Твитнуть"

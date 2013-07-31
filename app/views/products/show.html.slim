@@ -31,7 +31,7 @@
         - if @product.sku?
           span.label Артикул: #{@product.sku}
       .share.pull-right
-        = render 'share_links'
+        = render partial: 'share_links', locals: product_share_data
       .clearfix
       hr
       .pull-left
