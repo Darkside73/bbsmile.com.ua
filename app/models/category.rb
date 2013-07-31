@@ -47,16 +47,31 @@ class Category < ActiveRecord::Base
     @price_ranges ||= price_ranges.any? ? price_ranges : (is_root? ? [] : parent.find_price_ranges)
   end
 
-  def novelties(limit = 3)
-    products_relation.novelties.limit(limit)
+  def novelties(limit = :all)
+    result = products_relation.novelties
+    if limit == :all
+      result
+    else
+      result.limit(limit)
+    end
   end
 
-  def hits(limit = 3)
-    products_relation.hits.limit(limit)
+  def hits(limit = :all)
+    result = products_relation.hits
+    if limit == :all
+      result
+    else
+      result.limit(limit)
+    end
   end
 
-  def discounts(limit = 6)
-    products_relation.discounts.limit(limit)
+  def discounts(limit = :all)
+    result = products_relation.discounts
+    if limit == :all
+      result
+    else
+      result.limit(limit)
+    end
   end
 
   private
