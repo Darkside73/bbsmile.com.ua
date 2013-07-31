@@ -15,7 +15,7 @@ class MainController < ApplicationController
   end
 
   def discounts
-    Product.discounts.random(6)
+    Product.discounts.random(3)
   end
 
   def hits
