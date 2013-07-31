@@ -45,7 +45,7 @@
               - if @product.free_shipping
                 span.text-success> Доставка бесплатно
               - else
-                span.text-warning> Доставка около #{number_to_currency 50}
+                span.text-warning> Доставка около #{number_to_currency 30}
               i.icon-info-sign
 
           = render 'order/form', order: @order, product: @product
