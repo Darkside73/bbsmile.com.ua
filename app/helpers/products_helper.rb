@@ -13,7 +13,8 @@ module ProductsHelper
     {
       url:   product_page_url(@product.url),
       title: @product.title,
-      image: URI.join(request.url, @product.top_image(:medium))
+      image: @product.top_image? ?
+               URI.join(request.url, @product.top_image(:medium)) : ''
     }
   end
 end
