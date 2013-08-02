@@ -4,6 +4,8 @@ class @OrderDialog
     throw new Error("Could not find #{selector}") unless @dialog.length
     @dialog.on 'shown', ->
       _gaq.push ['_trackPageview', '/ordering']
+    @dialog.on 'hidden', ->
+      _gaq.push ['_trackPageview', '/cancel-ordering']
     @bind()
 
   setTitle: (title) ->
