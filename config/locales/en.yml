@@ -36,10 +36,15 @@ en:
         saved: Content saved
       orders:
         created: Order created
+      sync_prices:
+        updated: "Updated %{count}"
   mailers:
     order:
       new_order:
         subject: New order has been placed
+  sync_prices:
+    errors:
+      variant_not_found: Variant not found
   errors:
     messages:
       blank: "%{attribute} can't be blank"

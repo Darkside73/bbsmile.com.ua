@@ -57,7 +57,7 @@ class PricesSync
     variant.price     = row['price']
     variant.price_old = row['price_old']
     variant.available = row['available'] == '1' ? true : false
-    variant.sku       = row['sku']
+    variant.sku       = row['sku'].present? ? row['sku'] : nil
   end
 
   def variant_to_push(variant)
