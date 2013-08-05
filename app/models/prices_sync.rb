@@ -1,24 +1,22 @@
 require 'google_drive'
 
 class PricesSync
+  include ActionView::Helpers::NumberHelper
 
-  attr_reader :worksheet, :variants_to_update, :invalid_rows
+  attr_reader :variants_to_update, :invalid_rows
 
   def initialize
     session = GoogleDrive.login *Settings.gdrive.auth.to_hash.values
     @spreadsheet = session.spreadsheet_by_key Settings.gdrive.docs.prices
-    @worksheet = @spreadsheet.worksheets.first
   end
 
-  def prices
-    @worksheet
-  end
-
-  def diff
+  def diff(category)
     @variants_to_update = []
     @invalid_rows = {}
 
-    @worksheet.list.each_with_index do |row, index|
+    worksheet = find_worksheet_or_create(category.title)
+
+    worksheet.list.each_with_index do |row, index|
       number = index + 1
       begin
         variant = Variant.find(row['id'])
@@ -36,15 +34,19 @@ class PricesSync
     self
   end
 
-  def load
-    keys = @worksheet.list.keys
-    @worksheet.delete
-    @worksheet = @spreadsheet.add_worksheet I18n.l(Time.now), Variant.count
-    @worksheet.list.keys = keys
-    variants = Variant.includes(product: [:category, :page])
-                      .order('categories.position', 'pages.title')
-    variants.each { |variant| @worksheet.list.push variant_to_push(variant) }
-    @worksheet.save
+  def load(category)
+    worksheet = find_worksheet_or_create(category.title)
+    clear_worksheet(worksheet)
+
+    variants = Variant.includes(product: [:page, :brand])
+                      .where('products.category_id' => category.descendant_ids)
+                      .visible.order('brands.name')
+    variants.each do |variant|
+      worksheet.list.push variant_to_push(variant)
+    end
+    worksheet.save
+
+    variants
   end
 
   def update
@@ -53,15 +55,45 @@ class PricesSync
 
   private
 
+  def find_worksheet_or_create(title)
+    worksheet = @spreadsheet.worksheet_by_title(title)
+    unless worksheet
+      worksheet = @spreadsheet.add_worksheet(title)
+      worksheet.list.keys = ['id', 'name', 'brand', 'price', 'price_old', 'available']
+      worksheet.save
+    end
+    worksheet
+  end
+
   def update_from_row(variant, row)
     variant.price     = row['price']
     variant.price_old = row['price_old']
     variant.available = row['available'] == '1' ? true : false
-    variant.sku       = row['sku'].present? ? row['sku'] : nil
   end
 
   def variant_to_push(variant)
-    variant.as_json(only: [:id, :sku, :price, :price_old, :available])
-           .merge({category: variant.category_title, name: variant.title})
+    data = variant.as_json(only: [:id, :price, :price_old])
+                  .merge({brand: variant.brand_name, name: variant.title})
+                  .symbolize_keys
+    data[:available] = variant.available ? '1' : '0'
+    data[:price]     = format_price data[:price]
+    data[:price_old] = format_price data[:price_old]
+    data
+  end
+
+  def format_price(value)
+    if value
+      number_with_delimiter(value, delimiter: " ", separator: ",")
+    else
+      value
+    end
+  end
+
+  def clear_worksheet(worksheet)
+    for row in 2..worksheet.num_rows
+      for col in 1..worksheet.num_cols
+        worksheet[row, col] = ''
+      end
+    end
   end
 end

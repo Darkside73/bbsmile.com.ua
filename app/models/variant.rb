@@ -32,6 +32,10 @@ class Variant < ActiveRecord::Base
     product.category.title
   end
 
+  def brand_name
+    product.brand.try(:name)
+  end
+
   private
 
   def destroy_image
