@@ -38,6 +38,7 @@ en:
         created: Order created
       sync_prices:
         updated: "Updated %{count}"
+        loaded: "Loaded %{count}"
   mailers:
     order:
       new_order:

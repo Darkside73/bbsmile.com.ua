@@ -39,6 +39,7 @@ ru:
         created: "Номер вашего заказа <b>%{order_id}</b>. Наш менеджер свяжется с вами в ближайшее время"
       sync_prices:
         updated: "Обновлено вариантов цен: %{count}"
+        loaded: "Загружено вариантов цен: %{count}"
   errors:
     messages:
       blank: "нужно заполнить"

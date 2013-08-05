@@ -44,9 +44,10 @@ Bbsmile::Application.routes.draw do
     get 'search-products.json' => 'search#autocomplete', format: :json, as: 'search_products'
 
     scope path: '/prices', as: 'prices', controller: 'gdrive_sync' do
-      get '/', action: 'index'
-      get '/diff', action: 'variants_to_update'
-      get '/update', action: 'update_variants'
+      get '/',      action: 'index'
+      get 'diff/:category_id',   action: 'variants_to_update', as: 'diff'
+      get 'update/:category_id', action: 'update_variants',    as: 'update'
+      get 'load/:category_id',   action: 'load_to_drive',      as: 'load'
     end
   end
 

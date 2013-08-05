@@ -13,11 +13,10 @@
               th Цена
               th Старая цена
               th Наличие
-              th Артикул
           tbody
             - @variants.each do |variant|
               tr
-                td = "#{variant.product.title} #{variant.name} #{variant.sku_was}"
+                td = variant.title
                 td
                   - if variant.price_changed?
                     span.text-error> = variant.price_was
@@ -33,15 +32,12 @@
                     span.text-error> = variant.available_was ? 'да' : 'нет'
                     i.icon-long-arrow-right>
                     span.text-success = variant.available ? 'да' : 'нет'
-                td
-                  - if variant.sku_changed?
-                    span.text-error> = variant.sku_was
-                    i.icon-long-arrow-right>
-                    span.text-success = variant.sku
       - else
         .alert.alert-block
           strong> Упс...
-          ' Нет изменений. Нужно изменить что-нибудь в прайсе и еще раз
+          ' Нет изменений. Можно поработать
+          => link_to 'с прайсом', "https://docs.google.com/spreadsheet/ccc?key=#{Settings.gdrive.docs.prices}"
+          ' и еще раз
           = link_to 'обновить', admin_prices_diff_path
     - if @invalid_rows
       - tabs.pane "Ошибки" do
