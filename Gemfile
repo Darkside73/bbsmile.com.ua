@@ -29,6 +29,8 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-helpers'
 gem 'paperclip'
 
+gem 'google_drive', require: false
+
 group :assets do
   gem 'less-rails-bootstrap'
   gem 'font-awesome-rails'

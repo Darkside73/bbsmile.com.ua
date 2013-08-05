@@ -42,6 +42,13 @@ Bbsmile::Application.routes.draw do
       post 'bulk_move', on: :collection
     end
     get 'search-products.json' => 'search#autocomplete', format: :json, as: 'search_products'
+
+    scope path: '/prices', as: 'prices', controller: 'gdrive_sync' do
+      get '/',      action: 'index'
+      get 'diff/:category_id',   action: 'variants_to_update', as: 'diff'
+      get 'update/:category_id', action: 'update_variants',    as: 'update'
+      get 'load/:category_id',   action: 'load_to_drive',      as: 'load'
+    end
   end
 
   get '*slug' => 'products#show', format: false,

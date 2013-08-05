@@ -1,0 +1,9 @@
+= render layout: 'boxed', locals: {title: 'Синхронизация цен'} do
+  table.table.table-striped
+    tbody
+      - Category.roots.each do |category|
+        tr
+          td = category.title
+          td
+            => link_to 'Загрузить из прайса', admin_prices_diff_path(category), class: 'btn'
+            =  link_to 'Выгрузить в прайс', admin_prices_load_path(category), class: 'btn', data: { confirm: 'Cуществующий прайс будет удален. Продолжить?' }

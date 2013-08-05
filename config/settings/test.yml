@@ -1,3 +1,9 @@
 managers_emails: test@localhost
 ga:
   tracking_id: 'fake-id'
+gdrive:
+  auth:
+    user: user
+    password: pass
+  docs:
+    prices: doc-key

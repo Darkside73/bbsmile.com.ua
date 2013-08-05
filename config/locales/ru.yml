@@ -37,6 +37,9 @@ ru:
         saved: Описание сохранено
       orders:
         created: "Номер вашего заказа <b>%{order_id}</b>. Наш менеджер свяжется с вами в ближайшее время"
+      sync_prices:
+        updated: "Обновлено вариантов цен: %{count}"
+        loaded: "Загружено вариантов цен: %{count}"
   errors:
     messages:
       blank: "нужно заполнить"
@@ -53,10 +56,19 @@ ru:
         price_old: "не может быть меньше, чем Цена"
       price_range:
         range: "не может быть больше, чем До"
+  activerecord:
+    attributes:
+      variant:
+        price: Цена
+        price_old: Старая цена
+        sku: Артикул
   mailers:
     order:
       new_order:
         subject: Новый заказ на bbsmile.com.ua
+  sync_prices:
+    errors:
+      variant_not_found: Вариант цены не найден по id
 
   number:
     format:

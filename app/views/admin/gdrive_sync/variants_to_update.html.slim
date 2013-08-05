@@ -1,0 +1,56 @@
+= render layout: 'boxed', locals: {title: 'Синхронизация цен'} do
+  p
+    = link_to :back, class: 'btn' do
+      i.icon-arrow-left>
+      | Назад
+  = tabs do |tabs|
+    - tabs.pane "Изменения" do
+      - if @variants.any?
+        table.table.table-striped
+          thead
+            tr
+              th Название
+              th Цена
+              th Старая цена
+              th Наличие
+          tbody
+            - @variants.each do |variant|
+              tr
+                td = variant.title
+                td
+                  - if variant.price_changed?
+                    span.text-error> = variant.price_was
+                    i.icon-long-arrow-right>
+                    span.text-success = variant.price
+                td
+                  - if variant.price_old_changed?
+                    span.text-error> = variant.price_old_was
+                    i.icon-long-arrow-right>
+                    span.text-success> = variant.price_old
+                td
+                  - if variant.available_changed?
+                    span.text-error> = variant.available_was ? 'да' : 'нет'
+                    i.icon-long-arrow-right>
+                    span.text-success = variant.available ? 'да' : 'нет'
+      - else
+        .alert.alert-block
+          strong> Упс...
+          ' Нет изменений. Можно поработать
+          => link_to 'с прайсом', "https://docs.google.com/spreadsheet/ccc?key=#{Settings.gdrive.docs.prices}"
+          ' и еще раз
+          = link_to 'обновить', admin_prices_diff_path
+    - if @invalid_rows
+      - tabs.pane "Ошибки" do
+        - @invalid_rows.each do |row, error|
+          p
+            strong> = "Строка #{row}:"
+            - if error.is_a?(Array)
+              = error.join(', ')
+            - else
+              = error
+  - if @variants.any?
+    => link_to admin_prices_update_path, class: 'btn btn-info' do
+      i.icon-refresh>
+      | Синхронизировать
+    ' или
+    = link_to 'Отменить', :back
