@@ -9,6 +9,7 @@ gem 'nilify_blanks'
 gem 'randumb', github: 'Darkside73/randumb', branch: 'rails4'
 gem 'acts_as_list'
 gem 'acts-as-taggable-on'
+gem 'delayed_job_active_record'
 
 gem 'rails_config'
 gem 'russian'

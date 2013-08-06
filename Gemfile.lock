@@ -105,6 +105,11 @@ GEM
       multi_json (~> 1.7.5)
       multi_test (>= 0.0.2)
     database_cleaner (1.0.1)
+    delayed_job (4.0.0)
+      activesupport (>= 3.0, < 4.1)
+    delayed_job_active_record (4.0.0)
+      activerecord (>= 3.0, < 4.1)
+      delayed_job (>= 3.0, < 4.1)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     exception_notification (4.0.0)
@@ -338,6 +343,7 @@ DEPENDENCIES
   coffee-rails
   cucumber-rails!
   database_cleaner
+  delayed_job_active_record
   exception_notification
   factory_girl_rails
   faker

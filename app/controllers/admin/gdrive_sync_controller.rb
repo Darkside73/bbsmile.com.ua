@@ -20,9 +20,9 @@ class Admin::GdriveSyncController < Admin::ApplicationController
 
   def load_to_drive
     category = Category.find params[:category_id]
-    @variants = sync.load category
+    sync.delay.load(category)
     redirect_to admin_prices_path,
-      notice: I18n.t('flash.message.sync_prices.loaded', count: @variants.count)
+      notice: I18n.t('flash.message.sync_prices.enqueued')
   end
 
   private
