@@ -5,8 +5,8 @@ class Admin::GdriveSyncController < Admin::ApplicationController
   end
 
   def variants_to_update
-    category = Category.find params[:category_id]
-    @variants = sync.diff(category).variants_to_update
+    @category = Category.find params[:category_id]
+    @variants = sync.diff(@category).variants_to_update
     @invalid_rows = sync.invalid_rows
   end
 

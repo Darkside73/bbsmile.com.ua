@@ -1,4 +1,4 @@
-= render layout: 'boxed', locals: {title: 'Синхронизация цен'} do
+= render layout: 'boxed', locals: {title: "#{@category.title} - cинхронизация цен"} do
   p
     = link_to :back, class: 'btn' do
       i.icon-arrow-left>
@@ -36,7 +36,7 @@
         .alert.alert-block
           strong> Упс...
           ' Нет изменений. Можно поработать
-          => link_to 'с прайсом', "https://docs.google.com/spreadsheet/ccc?key=#{Settings.gdrive.docs.prices}"
+          => link_to_prices 'с прайсом'
           ' и еще раз
           = link_to 'обновить', admin_prices_diff_path
     - if @invalid_rows
