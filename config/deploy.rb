@@ -12,6 +12,7 @@
 # закомментируйте эту строку.
 require 'bundler/capistrano'
 
+
 ## Чтобы не хранить database.yml в системе контроля версий, поместите
 ## dayabase.yml в shared-каталог проекта на сервере и раскомментируйте
 ## следующие строки.
@@ -121,3 +122,13 @@ namespace :backup do
     run "cd #{deploy_to}; pg_dump -U darkside_bbsmi52 darkside_bbsmi52 -h postgresql5.locum.ru -f backups/#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.sql"
   end
 end
+
+# use delayed_job recipes
+require 'delayed/recipes'
+set :rails_env,   "production"
+set :delayed_job_command, "rvm use #{rvm_ruby_string} do bin/delayed_job"
+after "deploy:stop",    "delayed_job:stop"
+after "deploy:start",   "delayed_job:start"
+after "deploy:restart", "delayed_job:restart"
+
+
