@@ -66,6 +66,9 @@ ru:
     order:
       new_order:
         subject: Новый заказ на bbsmile.com.ua
+  system:
+      price_loaded:
+        subject: Прайс загружен
   sync_prices:
     errors:
       variant_not_found: Вариант цены не найден по id

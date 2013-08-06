@@ -43,6 +43,9 @@ en:
     order:
       new_order:
         subject: New order has been placed
+    system:
+      price_loaded:
+        subject: Prices been loaded
   sync_prices:
     errors:
       variant_not_found: Variant not found

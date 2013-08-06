@@ -46,6 +46,7 @@ class PricesSync
     end
     worksheet.save
 
+    ManagerMailer.price_loaded(category).deliver
     variants
   end
 

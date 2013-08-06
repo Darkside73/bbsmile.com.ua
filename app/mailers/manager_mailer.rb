@@ -1,8 +1,14 @@
 class ManagerMailer < ActionMailer::Base
-  default from: "notifier@bbsmile.com.ua"
+  default to:   Settings.managers_emails,
+          from: "notifier@bbsmile.com.ua"
 
   def new_order(order)
     @order = order
-    mail to: Settings.managers_emails, subject: 'New order'
+    mail subject: I18n.t('mailers.order.new_order.subject')
+  end
+
+  def price_loaded(category)
+    @category = category
+    mail subject: I18n.t('mailers.system.price_loaded.subject')
   end
 end
