@@ -285,6 +285,8 @@ GEM
     simple_form (3.0.0.rc)
       actionpack (>= 4.0.0.rc1, < 4.1)
       activemodel (>= 4.0.0.rc1, < 4.1)
+    sitemap_generator (4.1.1)
+      builder
     slim (2.0.0)
       temple (~> 0.6.5)
       tilt (~> 1.3, >= 1.3.3)
@@ -375,6 +377,7 @@ DEPENDENCIES
   seedbank
   shoulda
   simple_form (>= 3.0.0beta1)
+  sitemap_generator
   slim
   slim-rails
   therubyracer

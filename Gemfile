@@ -17,6 +17,7 @@ gem 'russian'
 gem 'exception_notification'
 
 gem 'metamagic'
+gem 'sitemap_generator'
 
 gem 'slim'
 gem 'slim-rails'
