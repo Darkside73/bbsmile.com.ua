@@ -10,6 +10,16 @@ describe Category do
         )
       }.to change { Category.count }.by(1)
     end
+
+    context "updated_at" do
+      let(:category) { create :category }
+      it "page has same as category time updated at" do
+        page = category.page
+        page.update updated_at: 1.day.ago
+        category.update leaf: !category.leaf
+        page.updated_at.to_s.should == category.updated_at.to_s
+      end
+    end
     it 'not create record if invalid data' do
       category = build :category, page_attributes: { title: 'valid', url: '' }
       expect { category.save.should be_false }.not_to change { Category.count }
