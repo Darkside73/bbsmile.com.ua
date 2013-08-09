@@ -19,6 +19,7 @@
       h1.page-title
         => @product.title
         - if @product.brand.present?
+          br
           small.muted = @product.brand.name
       .bages.pull-left
         - if @product.available
