@@ -185,6 +185,24 @@ h1.page-title {
   }
 }
 
+a.go-top {
+  position: fixed;
+  display: none;
+  right: 50px;
+  bottom: 135px;
+  padding: 1em;
+  background: fadeout(@grayLight, 70%);
+  font-size: 22px;
+  font-weight: bold;
+  color: @grayLight;
+  opacity: .5;
+  outline: none;
+  &:hover, &:focus {
+    text-decoration: none;
+    opacity: 1;
+  }
+}
+
 #sh_button {
   top: 280px;
 }

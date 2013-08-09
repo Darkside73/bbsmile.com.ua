@@ -9,7 +9,7 @@
 //= require category
 
 $ ->
-  $('a[rel=popover]').popover().click (e) ->
+  $('a[rel=popover]').click (e) ->
     e.preventDefault()
   $('.contacts .actions a[rel=popover]').click (e) ->
     $(@).toggleClass 'active'
@@ -24,3 +24,15 @@ $ ->
     offset = -85 unless offset?
     $.scrollTo $(@).data('target'), 800, offset: offset
     e.preventDefault()
+
+  toggleGoTop = ->
+    if $(@).scrollTop() > 200
+      $('a.go-top').fadeIn 200
+    else
+      $('a.go-top').fadeOut 200
+  toggleGoTop()
+  $(window).scroll toggleGoTop
+
+  $('a.go-top').click (e) ->
+    e.preventDefault()
+    $('html, body').animate scrollTop: 0, 300

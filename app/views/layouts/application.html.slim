@@ -22,6 +22,7 @@ html
       = yield :main_menu
     = content_for?(:header) ? yield(:header) : render('header')
     = yield
+    a.go-top href="#" title="К началу страницы": i.icon-long-arrow-up
     .footer: .container-fluid
       = yield :footer
     = render 'siteheart'
