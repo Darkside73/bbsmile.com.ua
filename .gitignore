@@ -18,6 +18,7 @@
 .rvmrc
 
 /public/uploads
+/public/sitemap*
 
 /old_content/images/
 /old_content/content/

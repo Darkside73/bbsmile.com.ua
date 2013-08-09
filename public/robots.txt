@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: http://bbsmile.com.ua/sitemap.xml.gz
+Host: bbsmile.com.ua
