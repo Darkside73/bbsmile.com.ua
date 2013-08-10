@@ -14,6 +14,7 @@ class Admin::BrandsController < Admin::ApplicationController
     if @brand.save
       redirect_to [:admin, :brands], notice: I18n.t('flash.message.brands.created')
     else
+      clear_content_errors
       render :new
     end
   end
@@ -28,6 +29,7 @@ class Admin::BrandsController < Admin::ApplicationController
     if @brand.update_attributes brands_params
       redirect_to [:admin, :brands], notice: I18n.t('flash.message.brands.updated')
     else
+      clear_content_errors
       render :edit
     end
   end
@@ -40,9 +42,19 @@ class Admin::BrandsController < Admin::ApplicationController
   end
 
   private
-    def brands_params
-      params.require(:brand).permit(
-        :name, content_attributes: [:id, :text]
-      )
+
+  def brands_params
+    params.require(:brand).permit(
+      :name, content_attributes: [:id, :text]
+    )
+  end
+
+  # clear validation errors since we do not need content validation
+  def clear_content_errors
+    if @brand.content
+      @brand.content.errors.clear
+    else
+      @brand.build_content
     end
+  end
 end
