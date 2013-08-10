@@ -7,6 +7,10 @@ ul.nav.nav-list.bs-docs-sidenav.nav-collapse.collapse
     a href="#{admin_products_path}"
       | Товары
       i.icon-chevron-right
+  li*unless_active_attr('admin/brands')
+    a href="#{admin_brands_path}"
+      | Бренды
+      i.icon-chevron-right
   li*unless_active_attr('admin/gdrive_sync')
     a href="#{admin_prices_path}"
       | Прайсы

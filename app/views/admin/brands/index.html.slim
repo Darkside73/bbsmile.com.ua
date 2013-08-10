@@ -1,0 +1,17 @@
+= render layout: 'boxed', locals: {title: 'Список категорий'} do
+  = render layout: 'actions_panel' do
+    = link_to "Добавить бренд", [:new, :admin, :brand], class: 'btn btn-success'
+  - if @brands.any?
+    table.table.brands-list.table-striped
+      thead
+        tr
+          th Название
+          th Действия
+      tbody
+      - @brands.each do |brand|
+        tr.item
+          td width="75%"
+            = link_to brand.name, [:edit, :admin, brand], class: 'name'
+          td width="25%"
+            => link_to 'Редактировать', [:edit, :admin, brand], class: 'btn btn-info'
+            =  link_to 'Удалить', [:admin, brand], method: :delete, class: 'btn btn-warning'

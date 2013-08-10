@@ -1,0 +1,5 @@
+- content_for :box_title do
+  ' Редактирование бренда &mdash;
+  strong = link_to @brand.name, [:admin, @brand], title: "Перейти к просмотру"
+= render layout: 'boxed' do
+  = render 'form'

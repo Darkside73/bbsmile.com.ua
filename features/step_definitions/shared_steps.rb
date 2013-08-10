@@ -10,8 +10,8 @@ When /^I go to (.+page)$/ do |page_name|
   visit path_to(page_name)
 end
 
-When /^I press "([^\"]*)"$/ do |button|
-  click_button(button)
+When(/press button "(.*?)"$/) do |text|
+  click_button text
 end
 
 When /^I click "([^\"]*)"$/ do |link|

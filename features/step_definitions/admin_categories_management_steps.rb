@@ -22,10 +22,6 @@ When(/^I click on new category link$/) do
   find('a#new-category').click
 end
 
-When(/^press button "(.*?)"$/) do |text|
-  click_button text
-end
-
 When(/^I click on category edit link$/) do
   @category = @categories.first
   find("a[href='#{edit_admin_category_path(@category)}']").click

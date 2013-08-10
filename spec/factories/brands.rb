@@ -3,5 +3,8 @@ FactoryGirl.define do
 
   factory :brand do
     name { generate :name }
+    factory :brand_with_content do
+      association :content
+    end
   end
 end

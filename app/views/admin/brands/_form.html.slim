@@ -1,0 +1,7 @@
+= simple_form_for [:admin, @brand] do |f|
+  = f.input :name, label: 'Название'
+  = f.simple_fields_for :content do |p|
+    = p.input :text, label: false, input_html: {class: 'wysihtml5'}
+  => f.button :submit, @brand.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
+  ' или
+  = link_to 'Отменить', :back

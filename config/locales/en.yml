@@ -29,6 +29,10 @@ en:
         created: Product variant created
         updated: Product variant updated
         destroyed: Product variant destroyed
+      brands:
+        created: Brand created
+        updated: Brand updated
+        destroyed: Brand destroyed
       images:
         created: Image uploaded
         destroyed: Image destroyed

@@ -8,4 +8,11 @@ describe Brand do
       it { should be_an ActiveRecord::Relation }
     end
   end
+
+  describe "content relation" do
+    let(:brand) { create :brand_with_content }
+    it 'has content' do
+      brand.description.should be
+    end
+  end
 end

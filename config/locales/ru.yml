@@ -30,6 +30,10 @@ ru:
         created: Вариант цены создан
         updated: Вариант цены обновлен
         destroyed: Вариант цены удален
+      brands:
+        created: Бренд создан
+        updated: Бренд обновлен
+        destroyed: Бренд удален
       images:
         created: Фотография загружена
         destroyed: Фотография удалена
