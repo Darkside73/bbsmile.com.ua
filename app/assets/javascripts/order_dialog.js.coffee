@@ -1,11 +1,12 @@
 class @OrderDialog
   constructor: (selector) ->
     @dialog = $(selector)
+    @success = false
     throw new Error("Could not find #{selector}") unless @dialog.length
     @dialog.on 'shown', ->
       _gaq.push ['_trackPageview', '/ordering']
-    @dialog.on 'hidden', ->
-      _gaq.push ['_trackPageview', '/cancel-ordering']
+    @dialog.on 'hidden', =>
+      _gaq.push ['_trackPageview', '/cancel-ordering'] unless @success
     @bind()
 
   setTitle: (title) ->
@@ -27,6 +28,7 @@ class @OrderDialog
         @clearErrors()
         @showFlashMessagesFrom data
         @dialog.modal 'hide'
+        @success = true
         _gaq.push ['_trackPageview', '/checkout']
         _gaq.push ['_addTrans', data.id, data.variant.title, data.price]
         _gaq.push [
