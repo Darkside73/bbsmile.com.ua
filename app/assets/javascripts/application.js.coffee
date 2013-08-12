@@ -9,6 +9,7 @@
 //= require category
 
 $ ->
+  $('a[rel=popover]').popover()
   $('a[rel=popover]').click (e) ->
     e.preventDefault()
   $('.contacts .actions a[rel=popover]').click (e) ->
