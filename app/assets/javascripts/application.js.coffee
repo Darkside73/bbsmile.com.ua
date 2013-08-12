@@ -19,6 +19,8 @@ $ ->
                          .css('left', "#{left}px")
     e.preventDefault()
 
+  $('#promotions.carousel').carousel 'cycle'
+
   $('.landing-nav .nav a').click (e) ->
     offset = $(@).data('offset')
     offset = -85 unless offset?
