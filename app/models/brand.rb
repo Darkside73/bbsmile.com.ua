@@ -9,4 +9,12 @@ class Brand < ActiveRecord::Base
   pg_search_scope :by_name, against: :name, using: :trigram
 
   validates :name, presence: true, uniqueness: true
+
+  def full_name
+    if country.present?
+      "#{name} (#{country})"
+    else
+      name
+    end
+  end
 end

@@ -20,7 +20,7 @@
         => @product.title
         - if @product.brand.present?
           br
-          small.muted = link_to @product.brand.name, brand_path(@product.brand.name)
+          small.muted = link_to @product.brand.full_name, brand_path(@product.brand.name)
       .bages.pull-left
         - if @product.available
           span.label.label-success Есть в наличии

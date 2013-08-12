@@ -6,7 +6,7 @@
       = link_to product
       - if product.brand.present?
         br
-        small = product.brand.name
+        small = product.brand.full_name
   - if product.price
     - if product.price_old
       .price
