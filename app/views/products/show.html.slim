@@ -45,11 +45,14 @@
               - else
                 span.text-warning> Доставка около #{number_to_currency 30}
               i.icon-info-sign
+        - else
+          p.muted: strong под заказ
 
           = render 'order/form', order: @order, product: @product
-      .pull-right.btns
-        p
-          a.quick-shop.btn.btn-large.btn-success data-toggle="modal" href="##{dom_id @order}" Купить
+      - if @product.price
+        .pull-right.btns
+          p
+            a.quick-shop.btn.btn-large.btn-success data-toggle="modal" href="##{dom_id @order}" Купить
       .clearfix
       ul.nav.nav-tabs id="product-info-tabs"
         li.active: a href="#description" data-toggle="tab" Описание
