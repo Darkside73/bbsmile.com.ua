@@ -2,7 +2,7 @@ class Brand < ActiveRecord::Base
   include PgSearch
   include Contentable
 
-  has_many :products
+  has_many :products, dependent: :nullify
   accepts_nested_attributes_for :content, reject_if: :all_blank
 
   default_scope -> { order(:name) }

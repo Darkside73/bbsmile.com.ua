@@ -37,7 +37,7 @@ class Admin::BrandsController < Admin::ApplicationController
   def destroy
     @brand = Brand.find params[:id]
     @brand.destroy
-    flash.now[:notice] = I18n.t 'flash.message.categories.destroyed.success'
+    flash.now[:notice] = I18n.t 'flash.message.brands.destroyed'
     render json: flashes_in_json
   end
 
