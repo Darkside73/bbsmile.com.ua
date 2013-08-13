@@ -1,6 +1,6 @@
 p
   ' Пользователь
-  strong> #{@order.user.name} #{@order.user.email}
+  strong> #{@order.user_name} #{@order.user_phone} #{@order.user.email}
   ' оформил заказ №
   strong = @order.id
   | :
@@ -9,3 +9,6 @@ p
   ' за
   strong = number_to_currency @order.price
   | .
+- if @order.notes.present?
+  p: strong Дополнительная информация:
+  p = @order.notes
