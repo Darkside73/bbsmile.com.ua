@@ -48,7 +48,7 @@
         - else
           p.muted: strong под заказ
 
-          = render 'order/form', order: @order, product: @product
+        = render 'order/form', order: @order, product: @product
       - if @product.price
         .pull-right.btns
           p
