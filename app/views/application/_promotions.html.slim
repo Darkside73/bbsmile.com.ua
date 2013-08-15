@@ -6,20 +6,21 @@
   .carousel-inner
     .item.active
       - luvion_promo_items.each_with_index do |item, index|
-        = link_to '', item, class: "item item#{index+1}", title: item.title
+        = link_to '', page_path(item.url, utm_campaign: 'luvion', utm_medium: 'main_page_promotions', utm_source: 'local'), class: "item item#{index+1}", title: item.title
       = image_tag "content/Nochnichok.jpg"
     .item.bebecar: .row
       .span8
         = image_tag "content/bebecar-2013-new-collection.jpg"
       .span3
-        h4: a href="/universalnyie-kolyaski?brands[]=Bebecar"
-          | НОВАЯ
-          br
-          | коллекция
-          br
-          | Bebecar
-          br
-          | 2013
+        h4
+          = link_to page_path('universalnyie-kolyaski', brands: ['Bebecar'], utm_campaign: 'Bebecar 2013', utm_medium: 'main_page_promotions', utm_source: 'local') do
+            | НОВАЯ
+            br
+            | коллекция
+            br
+            | Bebecar
+            br
+            | 2013
     .item: .row
       .span8
         = image_tag "content/70.jpg"
