@@ -11,6 +11,6 @@ module MainHelper
       'videonyanya-luvion-prestige-touch', 'mnogotsvetnyiy-nochnichok-luvion-ecoled'
     ]
 
-    slugs.map! { |slug| slug = Page.find_by(url: slug) }
+    slugs.map { |slug| slug = Page.find_by(url: slug) }.reject(&:nil?)
   end
 end
