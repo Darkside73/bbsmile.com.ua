@@ -5,6 +5,8 @@
     li data-target="#promotions" data-slide-to="2"
   .carousel-inner
     .item.active
+      - luvion_promo_items.each_with_index do |item, index|
+        = link_to '', item, class: "item item#{index+1}", title: item.title
       = image_tag "content/Nochnichok.jpg"
     .item: .row
       .span8

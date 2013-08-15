@@ -67,6 +67,20 @@
   .carousel-indicators {
     li { cursor: pointer; }
   }
+  .item.active {
+    position: relative;
+    a.item {
+      position: absolute;
+      top: 0;
+      height: 310px;
+      width: 200px;
+      outline: none;
+    }
+    a.item1 { left: 0;  }
+    a.item2 { left: 200px; }
+    a.item3 { left: 400px; }
+    a.item4 { left: 600px; width: 320px; }
+  }
 }
 
 .landing-container {
