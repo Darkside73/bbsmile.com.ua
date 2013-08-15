@@ -20,7 +20,9 @@ $ ->
                          .css('left', "#{left}px")
     e.preventDefault()
 
-  # $('#promotions.carousel').carousel 'cycle'
+  $('#promotions.carousel').carousel 'cycle'
+  $('.carousel-indicators li, .carousel-control').click ->
+    $('#promotions.carousel').carousel 'pause'
 
   $('.landing-nav .nav a').click (e) ->
     offset = $(@).data('offset')
