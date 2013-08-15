@@ -6,7 +6,13 @@ class OrdersController < ApplicationController
       if order.save
         OrderMailer.new_order(order).deliver if order.user.email.present?
         ManagerMailer.new_order(order).deliver
-        flash.now[:success] = I18n.t 'flash.message.orders.created', order_id: order.id
+        when_callback = Time.current > Time.current.change(hour: 19) ? 'tomorrow' : 'now'
+        flash.now[:success] =
+          I18n.t(
+            'flash.message.orders.created',
+            order_id: order.id,
+            when_callback: I18n.t("flash.message.orders.call_#{when_callback}")
+          )
         format.json { render json: order.as_json.merge(flashes_in_json), status: :created }
       else
         format.json { render json: order.errors, status: :unprocessable_entity }
