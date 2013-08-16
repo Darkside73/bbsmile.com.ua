@@ -4,11 +4,7 @@
     li data-target="#promotions" data-slide-to="1"
     li data-target="#promotions" data-slide-to="2"
   .carousel-inner
-    .item.active
-      - luvion_promo_items.each_with_index do |item, index|
-        = link_to '', page_path(item.url, utm_campaign: 'luvion', utm_medium: 'main_page_promotions', utm_source: 'local'), class: "item item#{index+1}", title: item.title
-      = image_tag "content/Nochnichok.jpg"
-    .item.bebecar: .row
+    .item.active.bebecar: .row
       .span8
         = image_tag "content/bebecar-2013-new-collection.jpg"
       .span3
@@ -20,15 +16,16 @@
             br
             | Bebecar
             br
-            | 2013
-    .item: .row
-      .span8
-        = image_tag "content/70.jpg"
-      .span3
-        h4 Третий товар за полцены
-        markdown:
-          Купите два товара и получите третий за полцены. [Узнать больше](#)
-
+    .item
+      .image_map.luvion_night_light
+        - luvion_promo_items(:night_light).each_with_index do |item, index|
+          = link_to '', page_path(item.url, utm_campaign: 'luvion_night_light', utm_medium: 'main_page_promotions', utm_source: 'local'), class: "item item#{index+1}", title: item.title
+        = image_tag "content/Nochnichok.jpg"
+    .item
+      .image_map.luvion_thermometer
+        - luvion_promo_items(:thermometer).each_with_index do |item, index|
+          = link_to '', page_path(item.url, utm_campaign: 'luvion_thermometer', utm_medium: 'main_page_promotions', utm_source: 'local'), class: "item item#{index+1}", title: item.title
+        = image_tag "content/luvion_thermometer.jpg"
 
   a.left.carousel-control href="#promotions" data-slide="prev"
     i.icon-angle-left
