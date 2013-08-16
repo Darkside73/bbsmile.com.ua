@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  http_basic_authenticate_with(Settings.http_auth.to_hash) if Settings.http_auth
-
   before_action :current_page_from_slug
   attr_reader :current_page
   helper_method :current_page
