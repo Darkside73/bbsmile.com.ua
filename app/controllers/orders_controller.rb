@@ -6,7 +6,6 @@ class OrdersController < ApplicationController
       if order.save
         OrderMailer.new_order(order).deliver if order.user.email.present?
         ManagerMailer.new_order(order).deliver
-        when_callback = Time.current > Time.current.change(hour: 19) ? 'tomorrow' : 'now'
         flash.now[:success] =
           I18n.t(
             'flash.message.orders.created',
@@ -21,10 +20,22 @@ class OrdersController < ApplicationController
   end
 
   private
-    def order_params
-      params.require(:order).permit(
-        :variant_id, :notes,
-        user_attributes: [:name, :email, :phone, :subscribed]
-      )
+
+  def order_params
+    params.require(:order).permit(
+      :variant_id, :notes,
+      user_attributes: [:name, :email, :phone, :subscribed]
+    )
+  end
+
+  def when_callback
+    case Time.current.hour
+    when 9..19
+      'now'
+    when 19..23
+      'tomorrow'
+    else
+      'morning'
     end
+  end
 end

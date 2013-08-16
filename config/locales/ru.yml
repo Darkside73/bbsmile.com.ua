@@ -42,7 +42,8 @@ ru:
       orders:
         created: "Спасибо за покупку! Номер вашего заказа <b>%{order_id}</b>. Мы перезвоним вам %{when_callback}"
         call_now: в течение часа
-        call_tomorrow: завтра
+        call_morning: утром с 9 до 11 часов
+        call_tomorrow: завтра с 9 до 11 часов
       sync_prices:
         updated: "Обновлено вариантов цен: %{count}"
         enqueued: Задание поставлено в очередь. По его завершению придет уведомление на почту
