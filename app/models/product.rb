@@ -52,6 +52,7 @@ class Product < ActiveRecord::Base
   end
 
   def in_range? price_range
+    return false unless price
     if price_range.from.blank?
       price < price_range.to
     elsif price_range.to.blank?
