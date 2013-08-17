@@ -1,21 +1,22 @@
 doctype 5
 html
-  title
-    ==> yield(:title) +  ' &mdash;'.html_safe if content_for?(:title)
-    | Интернет-магазин Babysmile
-  meta charset="UTF-8"
-  meta name="viewport" content="width=device-width, initial-scale=1.0"
-  = render 'meta_seo'
-  = csrf_meta_tag
-  = favicon_link_tag
-  = stylesheet_link_tag default_stylesheet unless content_for?(:head)
-  /[if IE 7]
-    = stylesheet_link_tag 'font-awesome-ie7.min'
-  /[if lt IE 9]
-    = stylesheet_link_tag 'ie'
-  = render 'analytics'
-  = javascript_include_tag 'application'
-  = yield :head
+  head
+    title
+      ==> yield(:title) +  ' &mdash;'.html_safe if content_for?(:title)
+      | Интернет-магазин Babysmile
+    meta charset="UTF-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    = render 'meta_seo'
+    = csrf_meta_tag
+    = favicon_link_tag
+    = stylesheet_link_tag default_stylesheet unless content_for?(:head)
+    /[if IE 7]
+      = stylesheet_link_tag 'font-awesome-ie7.min'
+    /[if lt IE 9]
+      = stylesheet_link_tag 'ie'
+    = render 'analytics'
+    = javascript_include_tag 'application'
+    = yield :head
 
   body *body_attributes
     #main-menu.navbar.navbar-fixed-top
