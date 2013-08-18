@@ -8,7 +8,7 @@ Bbsmile::Application.routes.draw do
   get 'hity-prodazh(/:category_slug)' => 'products#hits',      as: 'hits'
   get 'skidki(/:category_slug)'       => 'products#discounts', as: 'discounts'
 
-  get 'brand/:name' => 'brands#show', as: 'brand'
+  get 'brand/*name' => 'brands#show', as: 'brand', format: false
 
   resources :orders, only: :create
 
