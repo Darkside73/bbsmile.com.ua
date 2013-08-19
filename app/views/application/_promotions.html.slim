@@ -19,12 +19,12 @@
     .item
       .image_map.luvion_night_light
         - luvion_promo_items(:night_light).each_with_index do |item, index|
-          = link_to '', page_path(item.url, utm_campaign: 'luvion_night_light', utm_medium: 'main_page_promotions', utm_source: 'local'), class: "item item#{index+1}", title: item.title
+          = link_to '', page_path(item.url, utm_campaign: 'luvion_night_light', utm_medium: 'main_page_promotions', utm_source: 'local'), class: "map-item map-item#{index+1}", title: item.title
         = image_tag "content/Nochnichok.jpg"
     .item
       .image_map.luvion_thermometer
         - luvion_promo_items(:thermometer).each_with_index do |item, index|
-          = link_to '', page_path(item.url, utm_campaign: 'luvion_thermometer', utm_medium: 'main_page_promotions', utm_source: 'local'), class: "item item#{index+1}", title: item.title
+          = link_to '', page_path(item.url, utm_campaign: 'luvion_thermometer', utm_medium: 'main_page_promotions', utm_source: 'local'), class: "map-item map-item#{index+1}", title: item.title
         = image_tag "content/luvion_thermometer.jpg"
 
   a.left.carousel-control href="#promotions" data-slide="prev"
