@@ -1,14 +1,30 @@
 body {
   .sh_btn {
     background: @chatScheme;
-    margin-left: -7px;
-    width: 28px;
-    opacity: .8;
+    margin-left: -5px;
+    width: 30px;
+    opacity: 0.9;
+  }
+  .shc.sh_logo {
+    margin-left: 2px;
+  }
+  .shc.sh_pay_logo {
+    margin-right: -2px;
+  }
+  .sh_btn .sh_btn_char {
+    font-family: @sansFontFamily;
   }
   .sh_btn:hover {
-    background: darken(@chatScheme, 5%);
+    background: darken(@chatScheme, 10%);
     margin-left: 0px;
     width: 35px;
+    .transition(width .2s linear);
+    .shc.sh_logo {
+      margin-left: 0px;
+    }
+    .shc.sh_pay_logo {
+      margin-right: 0px;
+    }
   }
   .sh_chat,.sh_btn_left .sh_title_text, .sh_btn_right .sh_title_text, .sh_btn_left .sh_title_text, .sh_btn_right .sh_title_text, .sh_btn_top .sh_title_text, .sh_btn_bottom .sh_title_text {
     border-color: darken(@chatScheme, 7%);
