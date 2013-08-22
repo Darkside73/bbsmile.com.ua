@@ -40,7 +40,7 @@ class PricesSync
 
     variants = Variant.includes(product: [:page, :brand])
                       .where('products.category_id' => category.descendant_ids)
-                      .visible.order('brands.name')
+                      .visible.order('brands.name', 'products.id')
     variants.each do |variant|
       worksheet.list.push variant_to_push(variant)
     end
