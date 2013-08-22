@@ -35,7 +35,7 @@ gem 'paperclip'
 gem 'google_drive', require: false
 
 group :assets do
-  gem 'less-rails-bootstrap'
+  gem 'less-rails-bootstrap', '~> 2'
   gem 'font-awesome-rails'
   gem 'coffee-rails'
 
