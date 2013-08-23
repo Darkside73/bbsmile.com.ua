@@ -57,6 +57,7 @@ set :deploy_to,       "/home/#{user}/projects/#{application}"
 set :unicorn_conf,    "/etc/unicorn/#{application}.#{login}.rb"
 set :unicorn_pid,     "/var/run/unicorn/#{application}.#{login}.pid"
 set :bundle_dir,      File.join(fetch(:shared_path), 'gems')
+set :rails_env,       "production"
 role :web,            deploy_server
 role :app,            deploy_server
 role :db,             deploy_server, :primary => true
@@ -64,8 +65,8 @@ role :db,             deploy_server, :primary => true
 
 # Следующие строки необходимы, т.к. ваш проект использует rvm.
 set :rvm_ruby_string, "1.9.3"
-set :rake,            "rvm use #{rvm_ruby_string} do bundle exec rake"
-set :bundle_cmd,      "rvm use #{rvm_ruby_string} do bundle"
+set :rake,            "RAILS_ENV=#{rails_env} rvm use #{rvm_ruby_string} do rake"
+set :bundle_cmd,      "RAILS_ENV=#{rails_env} rvm use #{rvm_ruby_string} do bundle"
 
 
 # Настройка системы контроля версий и репозитария,
@@ -83,7 +84,7 @@ set :scm,             :git
 set :repository,    "ssh://git@bitbucket.org/darkside73/rails.bbsmile.com.ua.git"
 set :git_enable_submodules, 1
 
-set :shared_children, shared_children + %w{public/uploads sitemap.xml.gz}
+set :shared_children, shared_children + %w{public/uploads}
 
 ## --- Ниже этого места ничего менять скорее всего не нужно ---
 
@@ -93,7 +94,7 @@ task :set_current_release, :roles => :app do
 end
 
 
-  set :unicorn_start_cmd, "(cd #{deploy_to}/current; rvm use #{rvm_ruby_string} do bundle exec unicorn_rails -Dc #{unicorn_conf})"
+set :unicorn_start_cmd, "(cd #{deploy_to}/current; rvm use #{rvm_ruby_string} do bundle exec unicorn_rails -Dc #{unicorn_conf})"
 
 
 
@@ -115,6 +116,21 @@ namespace :deploy do
   end
 end
 
+namespace :sitemap do
+  task :copy_old do
+    run <<-EOF
+      if [ -e #{previous_release}/public/sitemap.xml.gz ]; then
+        cp #{previous_release}/public/sitemap* #{current_release}/public/;
+      else
+        echo "No sitemap found. Try to refresh";
+      fi
+    EOF
+  end
+  task :refresh do
+    run "cd #{latest_release} && #{rake} sitemap:refresh"
+  end
+end
+
 namespace :backup do
   desc "Backup the database"
   task :db, :roles => :db do
@@ -125,10 +141,11 @@ end
 
 # use delayed_job recipes
 require 'delayed/recipes'
-set :rails_env,   "production"
 set :delayed_job_command, "rvm use #{rvm_ruby_string} do bin/delayed_job"
+
 after "deploy:stop",    "delayed_job:stop"
 after "deploy:start",   "delayed_job:start"
 after "deploy:restart", "delayed_job:restart"
 
-
+after "deploy:update_code", "sitemap:copy_old"
+after "sitemap:refresh",    "sitemap:copy_old"
