@@ -5,6 +5,8 @@ $ ->
   toggleSearchLoader = ->
     $('.form-search i.search').toggleClass('icon-search icon-spinner icon-spin')
 
+  currentQuery = false
+
   sourceRequest = _.debounce(
     (query, process) ->
       $.ajax(
@@ -16,10 +18,11 @@ $ ->
             results[item.name] = item
             labels.push item.name
           process labels
+          currentQuery = query
         beforeSend: toggleSearchLoader
         complete: toggleSearchLoader
       )
-    300
+    500
   )
 
   $('input.search-query').typeahead(
@@ -29,7 +32,10 @@ $ ->
       return
 
     updater: (item) ->
-      window.location.href = results[item].url
+      pathname = $(location).attr('pathname')
+      _gaq.push ['_trackPageview', "#{pathname}?autocomplete-q=#{currentQuery}"]
+      _gaq.push ->
+        window.location.href = results[item].url
       return
 
     matcher: (item) ->
