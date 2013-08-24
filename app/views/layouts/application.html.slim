@@ -15,7 +15,6 @@ html
     /[if lt IE 9]
       = stylesheet_link_tag 'ie'
     = render 'analytics'
-    = javascript_include_tag 'application'
     = yield :head
 
   body *body_attributes
@@ -26,4 +25,6 @@ html
     a.go-top href="#" title="К началу страницы": i.icon-long-arrow-up
     .footer: .container-fluid
       = yield :footer
+    = javascript_include_tag 'application'
+    = yield :js_footer
     = render 'siteheart'
