@@ -32,6 +32,7 @@ gem 'json', '~> 1.7.7'
 gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-helpers'
 gem 'paperclip'
+gem 'dimensions-rails'
 
 gem 'google_drive', require: false
 
