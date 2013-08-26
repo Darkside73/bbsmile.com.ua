@@ -21,7 +21,7 @@ FactoryGirl.define do
       variants { |variants| [variants.association(:variant)] }
     end
     factory :product_with_variants do
-      variants { create_list :variant, 3 }
+      variants { create_list :variant_with_image, 3 }
     end
     factory :product_with_content do
       association :content
