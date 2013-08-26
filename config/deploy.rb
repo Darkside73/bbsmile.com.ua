@@ -148,4 +148,3 @@ after "deploy:start",   "delayed_job:start"
 after "deploy:restart", "delayed_job:restart"
 
 after "deploy:update_code", "sitemap:copy_old"
-after "sitemap:refresh",    "sitemap:copy_old"
