@@ -3,7 +3,9 @@ class @OrderDialog
     @dialog = $(selector)
     @success = false
     throw new Error("Could not find #{selector}") unless @dialog.length
-    @dialog.on 'shown', ->
+    @dialog.on 'shown', =>
+      if $('.btn-success', @dialog).hasClass 'disabled'
+        @toggleSubmitButton()
       _gaq.push ['_trackPageview', '/ordering']
     @dialog.on 'hidden', =>
       _gaq.push ['_trackPageview', '/cancel-ordering'] unless @success
@@ -20,8 +22,6 @@ class @OrderDialog
   bind: ->
     @dialog.bind(
       'ajax:beforeSend', => @toggleSubmitButton()
-    ).bind(
-      'ajax:complete', => @toggleSubmitButton()
     ).bind(
       'ajax:success'
       (event, data, status, xhr) =>
@@ -40,6 +40,7 @@ class @OrderDialog
       'ajax:error'
       (event, xhr, status, error) =>
         @clearErrors()
+        @toggleSubmitButton()
         @showErrors $.parseJSON(xhr.responseText)
     )
 
@@ -68,4 +69,9 @@ class @OrderDialog
 
 
   toggleSubmitButton: ->
-    $('.btn-success', @dialog).toggleClass('disabled')
+    button = $('.btn-success', @dialog)
+    button.toggleClass('disabled')
+    if button.hasClass('disabled')
+      button.attr 'disabled', 'disabled'
+    else
+      button.removeAttr 'disabled'
