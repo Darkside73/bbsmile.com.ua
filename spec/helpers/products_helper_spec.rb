@@ -12,7 +12,7 @@ describe ProductsHelper do
     context "variant without image" do
       let(:variant) { create :variant }
       subject { helper.variant_image_url(variant, :thumb) }
-      it { should be_nil }
+      it { should == 'no_image.png' }
     end
     context "master variant without image" do
       let(:variant) { create :master_variant_without_image }
@@ -25,7 +25,7 @@ describe ProductsHelper do
       let(:variant) { create :variant }
       before { variant.master = true }
       subject { helper.variant_image_url(variant, :thumb) }
-      it { should be_nil }
+      it { should == 'no_image.png' }
     end
   end
 end

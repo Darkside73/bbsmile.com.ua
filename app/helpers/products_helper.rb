@@ -6,7 +6,11 @@ module ProductsHelper
     elsif variant.master?
       variant.product.images.first
     end
-    image.url(style) if image
+    if image
+      image.url(style)
+    else
+      'no_image.png'
+    end
   end
 
   def product_share_data
