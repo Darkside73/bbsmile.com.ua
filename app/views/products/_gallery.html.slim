@@ -1,4 +1,4 @@
-= render 'gallery_modal', id: 'modal-gallery'
+= render 'gallery_modal', id: 'modal-gallery', product: product
 .product-gallery data={toggle: "modal-gallery", target: "#modal-gallery"}
   .first-image
     = link_to image_tag(first_image.url(:medium)), first_image.url, data: { gallery: 'gallery' }, title: product.title

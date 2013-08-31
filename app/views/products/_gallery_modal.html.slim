@@ -3,7 +3,7 @@
     a.close data-dismiss="modal"
       i.icon-remove
     h3.modal-title
-    strong.price
+    strong.price = local_assigns.has_key?(:product) ? number_to_currency(product.price) : ''
   .modal-body: .modal-image
   .modal-footer
     a.btn.btn-success.modal-play.modal-slideshow data-slideshow="3000"
