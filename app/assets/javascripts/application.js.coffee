@@ -7,6 +7,8 @@
 //= require search-box
 //= require order-from-grid
 //= require category
+//= require promotions
+//= require ga-events
 
 $ ->
   $('a[rel=popover]').popover()
@@ -20,14 +22,11 @@ $ ->
                          .css('left', "#{left}px")
     e.preventDefault()
 
-  $('#promotions.carousel').carousel 'cycle'
-  $('.carousel-indicators li, .carousel-control').click ->
-    $('#promotions.carousel').carousel 'pause'
-
   $('.landing-nav .nav a').click (e) ->
     offset = $(@).data('offset')
     offset = -85 unless offset?
     $.scrollTo $(@).data('target'), 800, offset: offset
+    _gaq.push ['_trackEvent', 'Навигация', $(this).text()]
     e.preventDefault()
 
   toggleGoTop = ->
@@ -41,3 +40,4 @@ $ ->
   $('a.go-top').click (e) ->
     e.preventDefault()
     $('html, body').animate scrollTop: 0, 300
+    _gaq.push ['_trackEvent', 'Навигация', 'К началу страницы', 0, true]

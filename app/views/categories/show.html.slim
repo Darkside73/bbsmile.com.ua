@@ -1,10 +1,14 @@
 - content_for :head do
   = stylesheet_link_tag 'category'
+- content_for :js_footer do
+  coffee:
+    $ ->
+      _gaq.push ['_trackEvent', 'Категория', 'Просмотреть', $('#category-content').data('title'), 0, true ]
 
 - title @category.title
 - meta description: "#{@category.title} купить в Днепропетровске, Украина", keywords: @category.title.split
 
-#category-content.container-fluid.container-wide.order-flashable
+#category-content.container-fluid.container-wide.order-flashable data-title="#{@category.title}"
   = render 'breadcrumb'
   = render 'selected_filters' if any_filtering?
   h1.page-title

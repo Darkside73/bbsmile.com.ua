@@ -5,13 +5,16 @@
   = stylesheet_link_tag 'product'
 - content_for :js_footer do
   = javascript_include_tag 'product'
+  coffee:
+    $ ->
+      _gaq.push ['_trackEvent', 'Товар', 'Просмотреть', $('#product-container').data('title'), 0, true]
 
 - content_for :back_button do
   - if request.referer
-    = link_to :back, class: "btn", title: 'Назад' do
+    = link_to :back, class: "btn product-back", title: 'Назад', data: { title: @product.title } do
       i.icon-long-arrow-left
 
-#product-container.container-fluid.container-wide.order-flashable
+#product-container.container-fluid.container-wide.order-flashable data-title="#{@product.title}"
   = render 'breadcrumb', category: @product.category
   .row-fluid
     .gallery.span4

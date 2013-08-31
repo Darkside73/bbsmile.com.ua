@@ -4,7 +4,7 @@
     li data-target="#promotions" data-slide-to="1"
     li data-target="#promotions" data-slide-to="2"
   .carousel-inner
-    .item.active.bebecar: .row
+    .item.active.bebecar data-title="Bebecar 2013 Новая коллекция": .row
       .span8
         = image_tag "content/bebecar-2013-new-collection.jpg"
       .span3
@@ -16,12 +16,12 @@
             br
             | Bebecar
             br
-    .item
+    .item data-title="Luvion ночничок в подарок"
       .image_map.luvion_night_light
         - luvion_promo_items(:night_light).each_with_index do |item, index|
           = link_to '', page_path(item.url, utm_campaign: 'luvion_night_light', utm_medium: 'main_page_promotions', utm_source: 'local'), class: "map-item map-item#{index+1}", title: item.title
         = image_tag "content/Nochnichok.jpg"
-    .item
+    .item data-title="Luvion термометр в подарок"
       .image_map.luvion_thermometer
         - luvion_promo_items(:thermometer).each_with_index do |item, index|
           = link_to '', page_path(item.url, utm_campaign: 'luvion_thermometer', utm_medium: 'main_page_promotions', utm_source: 'local'), class: "map-item map-item#{index+1}", title: item.title

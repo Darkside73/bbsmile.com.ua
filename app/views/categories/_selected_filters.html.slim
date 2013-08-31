@@ -1,4 +1,4 @@
-.subnav data-spy="affix" data-offset-top="60"
+.subnav.selected-filters data-spy="affix" data-offset-top="60"
   ul.nav.nav-pills
     - selected_ranges.each do |range|
       li: a href="#{remove_price_range_path(range)}" title="удалить фильтр"
@@ -12,6 +12,6 @@
       li: a href="#{remove_brand_path(brand_name)}" title="удалить фильтр"
         i.icon-remove-sign
         = brand_name
-    li.pull-right: a href="#{category_page_path}"
+    li.pull-right: a.remove-all href="#{category_page_path}"
       i.icon-remove-sign
       | удалить все фильтры
