@@ -9,6 +9,7 @@ Bbsmile::Application.routes.draw do
   get 'skidki(/:category_slug)'       => 'products#discounts', as: 'discounts'
 
   get 'brand/*name' => 'brands#show', as: 'brand', format: false
+  get 'produced/*name', to: redirect('/brand/%{name}')
 
   resources :orders, only: :create
 
