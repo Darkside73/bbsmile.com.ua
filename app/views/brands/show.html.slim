@@ -1,7 +1,37 @@
-- title @brand.full_name
 - meta description: "#{@brand.full_name} купить в Днепропетровске, Украина", keywords: @brand.name
+- title "#{@brand.full_name}#{' - ' + @selected_category.title if @selected_category}"
 
+- content_for :head do
+  = stylesheet_link_tag 'category'
 
-#brand-container.container-fluid.container-wide.order-flashable
-  h1.page-title = @brand.full_name
-  == @brand.description
+#brand-container.products-list.container-fluid.container-wide.order-flashable
+  h1.page-title
+    => @brand.full_name
+    small = @selected_category.title if @selected_category
+  .row-fluid
+    .product-filters.span3
+      #product-filters.accordion
+        = accordion_group "filterByCategory", "Категория" do
+          - @categories.each do |category|
+            - if category.url == params[:category_slug]
+              li.active = category.title
+            - else
+              li = link_to category.title, brand_path(@brand.name, category.url)
+    .products-list.span9
+      = render 'order/form', order: @order
+      - if @products.any?
+        .show-options
+          ul.nav.nav-pills
+            li: .btn.disabled
+              ' Всего товаров:
+              strong = @products.count
+            - if @selected_category
+              li = link_to 'Показать все', brand_path(@brand.name), class: 'btn'
+            - if @brand.description.present? && @selected_category.nil?
+                button.more.btn
+                  i.icon-info-sign>
+                  | Подробнее о бренде
+        = render 'categories/products'
+  - if @brand.description.present? && @selected_category.nil?
+    .row-fluid: .page-content.span12
+      == @brand.description
