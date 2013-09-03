@@ -7,6 +7,7 @@ class Brand < ActiveRecord::Base
 
   default_scope -> { order(:name) }
   pg_search_scope :by_name, against: :name, using: :trigram
+  scope :by_slug, ->(name) { where('LOWER(name) = ?', name.mb_chars.downcase.to_s).first! }
 
   validates :name, presence: true, uniqueness: true
 

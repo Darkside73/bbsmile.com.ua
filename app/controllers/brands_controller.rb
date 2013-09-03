@@ -1,7 +1,7 @@
 class BrandsController < ApplicationController
 
   def show
-    @brand = Brand.find_by! name: params[:name]
+    @brand = Brand.by_slug params[:name]
     @order = Order.new
     @order.build_user
     @products = @brand.products.visible.order(:category_id)
