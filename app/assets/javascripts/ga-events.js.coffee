@@ -27,6 +27,8 @@ $ ->
     _gaq.push ['_trackEvent', 'Категория', 'Сортировать по цене', $(this).text()]
   $('.show-options .more').click ->
     _gaq.push ['_trackEvent', 'Категория', 'Просмотреть информацию']
+  $('#show-rest-products').click ->
+    _gaq.push ['_trackEvent', 'Категория', 'Показать остальные товары']
 
   $('a.product-back').click ->
     _gaq.push ['_trackEvent', 'Навигация', 'Вернуться назад', $(this).data('title')]
