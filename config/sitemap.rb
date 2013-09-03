@@ -27,4 +27,7 @@ SitemapGenerator::Sitemap.create do
   Page.visible.find_each do |page|
     add page_path(page.url), lastmod: page.updated_at
   end
+  Brand.find_each do |brand|
+    add brand_path(brand.name), lastmod: brand.updated_at
+  end
 end
