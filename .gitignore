@@ -15,7 +15,8 @@
 /tmp
 
 *.sublime-*
-.rvmrc
+.ruby-version
+.ruby-gemset
 
 /public/uploads
 /public/sitemap*
