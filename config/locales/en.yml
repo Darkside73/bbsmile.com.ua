@@ -58,6 +58,7 @@ en:
       blank: "%{attribute} can't be blank"
       uniqueness: "%{attribute} not unique"
       email: "should be valid email address"
+      phone: "should be valid phone number"
     models:
       variant:
         price_old: "can't be less than price"

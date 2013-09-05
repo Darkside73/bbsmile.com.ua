@@ -55,6 +55,7 @@ ru:
       not_a_number: "не похоже на число"
       greater_than_or_equal_to: "нужно число больше %{count}"
       email: "не похоже на e-mail"
+      phone: "не похоже на номер телефона"
       paperclip:
         content_type_image: "не похоже на файл изображения"
         size: "размерчик не тот, нужно меньше %{max}"
