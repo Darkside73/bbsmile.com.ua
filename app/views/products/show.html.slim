@@ -1,5 +1,5 @@
-- title @product.title
-- meta description: "#{@product.title} купить в Днепропетровске, Украина", keywords: @product.title.split
+- title "#{@product.title} #{Settings.seo.products_title}"
+- meta description: "#{@product.title} #{Settings.seo.products_description}", keywords: @product.title.split
 
 - content_for :head do
   = stylesheet_link_tag 'product'
