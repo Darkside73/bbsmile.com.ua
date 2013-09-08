@@ -16,7 +16,7 @@ set :use_sudo,        false
 set(:deploy_to)       { "/home/#{user}/projects/#{application_dir}" }
 set(:unicorn_conf)    { "/etc/unicorn/#{application_dir}.#{login}.rb" }
 set(:unicorn_pid)     { "/var/run/unicorn/#{application_dir}.#{login}.pid" }
-set(:unicorn_start_cmd) { "(cd #{deploy_to}/current; rvm use #{rvm_ruby_string} do bundle exec unicorn_rails -Dc #{unicorn_conf})" }
+set(:unicorn_start_cmd) { "(cd #{deploy_to}/current; RAILS_ENV=#{rails_env} rvm use #{rvm_ruby_string} do bundle exec unicorn_rails -Dc #{unicorn_conf})" }
 set(:bundle_dir)      { File.join(fetch(:shared_path), 'gems') }
 role :web,            deploy_server
 role :app,            deploy_server
@@ -35,10 +35,6 @@ set :shared_children, shared_children + %w{public/uploads}
 before 'deploy:finalize_update', 'set_current_release'
 task :set_current_release, roles: :app do
   set :current_release, latest_release
-end
-
-task :show_var do
-  puts shared_path
 end
 
 namespace :deploy do
