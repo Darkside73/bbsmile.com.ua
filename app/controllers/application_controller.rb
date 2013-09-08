@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   layout "layout_inner"
 
+  http_basic_authenticate_with(Settings.http_auth.to_hash) if Settings.http_auth && Settings.http_auth.protect_front
+
   protect_from_forgery
 
   before_action :current_page_from_slug
