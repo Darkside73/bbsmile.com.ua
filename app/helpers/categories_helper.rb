@@ -67,4 +67,10 @@ module CategoriesHelper
   def no_filtering?
     !any_filtering?
   end
+
+  def category_seo_title
+    title_parts = [@category.title]
+    title_parts << selected_brands.first if selected_brands.count == 1
+    title_parts.join(' ')
+  end
 end
