@@ -1,7 +1,4 @@
-load 'deploy/assets'
-
 set :application_dir, "bbsmile"
-
 set :rails_env, "production"
 
 namespace :sitemap do
