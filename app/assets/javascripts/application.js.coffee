@@ -9,6 +9,7 @@
 //= require category
 //= require promotions
 //= require ga-events
+//= require contact_dialog
 
 $ ->
   $('a[rel=popover]').popover()
@@ -41,3 +42,5 @@ $ ->
     e.preventDefault()
     $('html, body').animate scrollTop: 0, 300
     _gaq.push ['_trackEvent', 'Навигация', 'К началу страницы', 0, true]
+
+  new ContactDialog('#send-message')

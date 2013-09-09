@@ -40,6 +40,8 @@ en:
         saved: Content saved
       orders:
         created: Order created
+      contacts:
+        created: Contact created
       sync_prices:
         updated: "Updated %{count}"
         enqueued: "Enqueued"
@@ -47,6 +49,9 @@ en:
     order:
       new_order:
         subject: New order has been placed
+    contacts:
+      new_contact:
+        subject: New contact message
     system:
       price_loaded:
         subject: Prices been loaded

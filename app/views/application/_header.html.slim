@@ -7,7 +7,7 @@
         small детские товары
     .contacts.span3
       .actions
-        = mail_to 'smile@bbsmile.com.ua', class: 'email', title: "Написать нам" do
+        = link_to '#send-message', class: 'email', title: "Написать нам", data: { toggle: "modal" } do
           i.icon-envelope>
         a.phone.active href="#" title="Позвонить нам"
           i.icon-phone>

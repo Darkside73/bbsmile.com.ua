@@ -7,6 +7,11 @@ class ManagerMailer < ActionMailer::Base
     mail subject: I18n.t('mailers.order.new_order.subject')
   end
 
+  def contact_message(contact)
+    @contact = contact
+    mail subject: I18n.t('mailers.contacts.new_contact.subject')
+  end
+
   def price_loaded(category)
     @category = category
     mail subject: I18n.t('mailers.system.price_loaded.subject')

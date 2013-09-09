@@ -12,6 +12,7 @@ Bbsmile::Application.routes.draw do
   get 'produced/*name', to: redirect('/brand/%{name}')
 
   resources :orders, only: :create
+  resources :contacts, only: :create
 
   namespace :admin do
 

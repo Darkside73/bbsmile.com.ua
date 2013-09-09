@@ -44,6 +44,8 @@ ru:
         call_now: в течение часа
         call_morning: утром с 9 до 11 часов
         call_tomorrow: завтра с 9 до 11 часов
+      contacts:
+        created: Ваше сообщение успешно дошло к нам
       sync_prices:
         updated: "Обновлено вариантов цен: %{count}"
         enqueued: Задание поставлено в очередь. По его завершению придет уведомление на почту
@@ -74,6 +76,9 @@ ru:
     order:
       new_order:
         subject: Новый заказ на bbsmile.com.ua
+    contacts:
+      new_contact:
+        subject: Сообщение с сайта
     system:
         price_loaded:
           subject: Прайс загружен
