@@ -33,6 +33,6 @@
         td = @product.tag_list
   hr
   => link_to 'Редактировать', [:edit, :admin, @product], class: 'btn btn-info'
-  => link_to "Посмотреть на сайте", @product, class: 'btn', target: '_blank'
-  => link_to "Посмотреть на старом сайте", "http://bbsmile.com.ua/#{@product.url_old}", class: 'btn', target: '_blank'
+  => link_to "Посмотреть на сайте", product_page_url(@product.url, subdomain: 'beta'), class: 'btn', target: '_blank'
+  => link_to "Посмотреть на старом сайте", product_page_url(@product.url_old, subdomain: 'old'), class: 'btn', target: '_blank'
   =  link_to 'Удалить', [:admin, @product], method: :delete, class: 'btn btn-warning'
