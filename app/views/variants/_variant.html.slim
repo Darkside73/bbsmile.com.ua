@@ -1,7 +1,7 @@
 li.item.span3
   .thumbnail
     a.thumbnail href="#{variant_image_url(variant)}" title="#{variant.title}" data-gallery="gallery" data-price="#{number_to_currency variant.price}"
-      = image_tag variant_image_url(variant, :thumb)
+      = image_tag variant_image_url(variant, :thumb), alt: variant.title
     .caption
       h5 = variant.name
       p = variant.sku
