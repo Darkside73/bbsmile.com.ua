@@ -37,19 +37,24 @@ task :set_current_release, roles: :app do
   set :current_release, latest_release
 end
 
+desc 'Show deployed revision'
+task :show_revision, roles: :app do
+  run "cat #{current_path}/REVISION"
+end
+
 namespace :deploy do
   desc "Start application"
-  task :start, :roles => :app do
+  task :start, roles: :app do
     run unicorn_start_cmd
   end
 
   desc "Stop application"
-  task :stop, :roles => :app do
+  task :stop, roles: :app do
     run "[ -f #{unicorn_pid} ] && kill -QUIT `cat #{unicorn_pid}`"
   end
 
   desc "Restart Application"
-  task :restart, :roles => :app do
+  task :restart, roles: :app do
     run "[ -f #{unicorn_pid} ] && kill -USR2 `cat #{unicorn_pid}` || #{unicorn_start_cmd}"
   end
 end
