@@ -11,7 +11,7 @@ AttributeNormalizer.configure do |config|
 
   # TODO rename to "trim" with :char option
   config.normalizers[:strip_slashes] = lambda do |value, options|
-    value.sub(/^[\/]?(.*?)[\/]?$/, '\1')
+    value.is_a?(String) ? value.sub(/^[\/]?(.*?)[\/]?$/, '\1') : value
   end
 
   config.normalizers[:truncate] = lambda do |text, options|
