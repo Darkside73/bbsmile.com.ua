@@ -27,6 +27,12 @@ describe Product do
         product.master_variant.master.should be_true
       }.to change { Product.count }.by(1)
     end
+    let(:video) { 'http://youtube.com/watch?v=code&other=params' }
+    it "convert youtube watch link to embed link" do
+      product = build :product, video: video
+      product.save
+      product.video.should == 'http://youtube.com/embed/code'
+    end
   end
 
   describe "variants relation" do

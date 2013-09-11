@@ -32,7 +32,8 @@ class Product < ActiveRecord::Base
   validates :category, presence: true
   validates :novelty, :hit, inclusion: { in: [true, false] }
 
-  before_create :make_master_variant
+  before_create    :make_master_variant
+  after_validation :convert_video_link, if: :video?
 
   def master_variant
     variants.detect { |v| v.master } || variants.first
@@ -63,7 +64,12 @@ class Product < ActiveRecord::Base
   end
 
   private
-    def make_master_variant
-      master_variant.master = true if master_variant
-    end
+
+  def make_master_variant
+    master_variant.master = true if master_variant
+  end
+
+  def convert_video_link
+    self.video = video.gsub(/^(http.+\/)watch\?v=([^&]+).*/, '\1embed/\2')
+  end
 end
