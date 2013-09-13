@@ -64,7 +64,7 @@ class @OrderDialog
 
   showFlashMessagesFrom: (data) ->
     if data.flash
-      $('.order-flashable').prepend(data.flash)
+      $('.flashable').prepend(data.flash)
       $.scrollTo '#site-header', 800
 
 

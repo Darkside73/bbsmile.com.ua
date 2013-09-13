@@ -14,7 +14,7 @@
     = link_to :back, class: "btn product-back", title: 'Назад', data: { title: @product.title } do
       i.icon-long-arrow-left
 
-#product-container.container-fluid.container-wide.order-flashable data-title="#{@product.title}"
+#product-container.container-fluid.container-wide.flashable data-title="#{@product.title}"
   = render 'breadcrumb', category: @product.category
   .row-fluid
     .gallery.span4

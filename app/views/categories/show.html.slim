@@ -8,7 +8,7 @@
 - title "#{category_seo_title} #{Settings.seo.products_title}"
 - meta description: "#{category_seo_title}  #{Settings.seo.products_description}", keywords: @category.title.split
 
-#category-content.products-list.container-fluid.container-wide.order-flashable data-title="#{@category.title}"
+#category-content.products-list.container-fluid.container-wide.flashable data-title="#{@category.title}"
   = render 'breadcrumb'
   = render 'selected_filters' if any_filtering?
   h1.page-title
