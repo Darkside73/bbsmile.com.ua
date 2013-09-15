@@ -21,4 +21,12 @@ module MainHelper
 
     slugs[promo_id].map { |slug| slug = Page.find_by(url: slug) }.reject(&:nil?)
   end
+
+  def promo_gift? product
+    product.brand_id.in?([172, 201]) && product.category_id == 14
+  end
+
+  def promo_discount? product
+    product.brand_id.in?([172]) && product.category_id == 15
+  end
 end
