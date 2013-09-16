@@ -1,3 +1,4 @@
+# encoding : utf-8
 Bbsmile::Application.routes.draw do
 
   root 'main#index'
@@ -10,6 +11,11 @@ Bbsmile::Application.routes.draw do
 
   get 'brand/*name(/:category_slug)' => 'brands#show', as: 'brand', format: false, constraints: { name: /[^\/]+/ }
   get 'produced/*name', to: redirect('/brand/%{name}')
+
+  get 'krovatki-veres-gandylyan-2013-podarok' => 'categories#show',
+    defaults: { slug: 'detskie-krovatki', promo: 'on', brands: ['Верес', 'Gandylyan'] }
+  get 'duetyi-veres-2013-discount' => 'categories#show',
+    defaults: { slug: 'duetyi-krovat-komod', promo: 'on', brands: ['Верес'] }
 
   resources :orders, only: :create
   resources :contacts, only: :create

@@ -3,7 +3,7 @@
     = link_to image_tag(product.top_image(:grid), alt: product.name), product, class: 'thumbnail'
     - if promo_gift? product
       .sticker.gift
-        a href="#" data={toggle: "popover", title: "Ура! Подарок!", content: "Получите <a href='/nabor-dlya-novorozhdennyih-57408'>набор&nbsp;для&nbsp;новорожденных</a> в подарок при покупке этого товара", html: "true", trigger: 'hover', delay: 500, placement: "right"} rel="popover"
+        a href="#" data={toggle: "popover", title: "Ура! Подарок!", content: "Получите <a href='/nabor-dlya-novorozhdennyih-12257'>набор&nbsp;для&nbsp;новорожденных</a> в подарок при покупке этого товара", html: "true", trigger: 'hover', delay: 500, placement: "right"} rel="popover"
           i.icon-gift
     - promo_discount = promo_discount(product)
     - if promo_discount.present?

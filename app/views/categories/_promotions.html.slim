@@ -1,0 +1,37 @@
+- unless @category.id == 15 || cookies['promo-2013-gift-viewed']
+  #gift-promo.category-offer.alert.alert-info
+    button.close.promo-forget type="button" data-dismiss="alert" ×
+    h3 Акция!
+    p.lead
+      ' При покупке любой кроватки
+      a.red> href="/detskie-krovatki?brands[]=Верес" Верес
+      ' или
+      a.red> href="/detskie-krovatki?brands[]=Gandylyan" Gandylyan
+      ' в подарок
+      a.red href="/nabor-dlya-novorozhdennyih-12257"
+        i.icon-gift>
+        | набор для новорожденных
+    p.lead
+      ' До конца акции осталось:
+      strong.text-warning> #{promo_days_remain} дней
+      a.small.more href="#" подробнее об условиях
+
+    a.btn.btn-info.btn-large.shopping.promo-forget class="#{'scroll-to' if @promo}" href="/detskie-krovatki?brands[]=Верес&brands[]=Gandylyan" Начать покупки
+    a.pull-right.muted.just-close.promo-forget href="#" data-dismiss="alert" Не интересно, просто закрыть
+
+- if @category.id == 15 && !cookies['promo-2013-discount-viewed']
+  #discount-promo.category-offer.alert.alert-info
+    button.close.promo-forget type="button" data-dismiss="alert" ×
+    h3 Акция!
+    p.lead
+      ' При покупке мебельного дуэта (кровать + комод) торговой марки
+      a.red> href="/detskie-krovatki?brands[]=Верес" Верес
+      ' получите скидку до
+      strong.text-success 10%
+    p.lead
+      ' До конца акции осталось:
+      strong.text-warning> #{promo_days_remain} дней
+      a.small.more href="#" подробнее об условиях
+
+    a.btn.btn-info.btn-large.shopping.scroll-to.promo-forget href="/duetyi-krovat-komod?brands[]=Верес" Начать покупки
+    a.pull-right.muted.just-close.promo-forget href="#" data-dismiss="alert" Не интересно, просто закрыть

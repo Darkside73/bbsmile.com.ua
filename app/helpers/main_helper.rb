@@ -33,4 +33,8 @@ module MainHelper
       false
     end
   end
+
+  def promo_days_remain
+    (Time.parse('2013-10-17') - Time.zone.now).to_i / 1.day
+  end
 end
