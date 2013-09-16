@@ -1,0 +1,30 @@
+- if promo_gift? @product
+  .popover.right.promo
+    .arrow
+    h3.red.popover-title Акция!
+    .popover-content
+      p.lead
+        a.red href="/nabor-dlya-novorozhdennyih-12257"
+          i.icon-gift>
+          ' набор&nbsp;для&nbsp;новорожденных
+        br
+        | в подарок.
+        br
+        ' До конца акции осталось:
+        strong.text-error> #{promo_days_remain}&nbsp;дней
+        br
+        a.small.more href="#" подробнее об условиях
+
+- if promo_discount @product
+  .popover.right.promo
+    .arrow
+    h3.red.popover-title Акция!
+    .popover-content
+      p.lead
+        ' Скидка на товар
+        strong.red #{promo_discount(@product)}%
+        br
+        ' До конца акции осталось:
+        strong.text-error> #{promo_days_remain}&nbsp;дней
+        br
+        a.small.more href="#" подробнее об условиях

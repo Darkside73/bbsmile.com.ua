@@ -28,6 +28,7 @@ a[class*=" icon-"], a[class^="icon-"], a[class^="icon-"]:hover, a[class*=" icon-
 a[class^="icon-"]:active, a[class*=" icon-"]:active, a[class^="icon-"]:focus, a[class*=" icon-"]:focus {
   text-decoration: none;
 }
+a:hover i { text-decoration: none; }
 
 a[class^="icon-"], a[class*=" icon-"], a i[class^="icon-"]:before, a i[class*=" icon-"]:before,
 a[class^="icon-"]:before, a[class*=" icon-"]:before {
@@ -44,6 +45,10 @@ a[class^="icon-"]:before, a[class*=" icon-"]:before {
 
 .pink { color: @pink; }
 .purple { color: @purpleDark }
+
+.red {
+  color: lighten(@red, 15%);
+}
 
 .price {
   color: @pinkDark;

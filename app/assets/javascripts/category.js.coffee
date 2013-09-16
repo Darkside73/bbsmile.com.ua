@@ -12,5 +12,5 @@ $ ->
     $.cookie 'promo-2013-discount-viewed', 1, expires: 30
 
   $('.category-offer .scroll-to').click (e) ->
-    $.scrollTo('.products-list', 500, offset: 160)
+    $.scrollTo('.products-list', 500, offset: 180)
     e.preventDefault()
