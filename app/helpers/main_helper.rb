@@ -26,7 +26,11 @@ module MainHelper
     product.brand_id.in?([172, 201]) && product.category_id == 14
   end
 
-  def promo_discount? product
-    product.brand_id.in?([172]) && product.category_id == 15
+  def promo_discount product
+    if product.brand_id.in?([172]) && product.category_id == 15 && product.price_old
+      ((1 - product.price / product.price_old) * 100).floor
+    else
+      false
+    end
   end
 end
