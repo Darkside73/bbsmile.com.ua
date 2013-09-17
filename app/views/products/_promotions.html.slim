@@ -22,7 +22,8 @@
     .popover-content
       p.lead
         ' Скидка на товар
-        strong.red #{promo_discount(@product)}%
+        strong.red> #{promo_discount(@product)}%
+        ' и бесплатная доставка по Украине.
         br
         ' До конца акции осталось:
         strong.text-warning> #{promo_days_remain}&nbsp;дней
