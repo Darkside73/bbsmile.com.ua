@@ -9,6 +9,9 @@
     = f.input :name, label: "Имя"
     = f.input :email, label: "E-mail"
     = f.input :message, as: :text, label: "Сообщение", input_html: { rows: 5 }
+    label.hide
+      ' Заполните это поле, если вы - робот
+      input type="text" name="text"
   .modal-footer
     a.btn data-dismiss="modal" aria-hidden="true" Закрыть
     = f.button :submit, "Готово", class: 'btn btn-success'

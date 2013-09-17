@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  before_action :reject_spam
 
   def create
     contact = Contact.new contacts_params
@@ -17,5 +18,9 @@ class ContactsController < ApplicationController
 
   def contacts_params
     params.require(:contact).permit(:name, :email, :message)
+  end
+
+  def reject_spam
+    render nothing: true, status: 403 if params[:text].present?
   end
 end

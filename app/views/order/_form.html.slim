@@ -16,6 +16,9 @@
           = f.input :notes, label: "Дополнительная информация", input_html: { rows: 5 }
           = u.input :subscribed, label: false, inline_label: "хочу получать акционные и скидочные предложения"
     = f.hidden_field :variant_id, value: local_assigns[:product] ? product.master_variant.id : nil
+    label.hide
+      ' Заполните это поле, если вы - робот
+      input type="text" name="text"
   .modal-footer
     a.btn data-dismiss="modal" aria-hidden="true" Закрыть
     = f.button :submit, "Купить", class: 'btn btn-success'

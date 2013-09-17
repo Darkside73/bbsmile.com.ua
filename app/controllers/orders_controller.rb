@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :reject_spam
 
   def create
     order = Order.new order_params
@@ -37,5 +38,9 @@ class OrdersController < ApplicationController
     else
       'morning'
     end
+  end
+
+  def reject_spam
+    render nothing: true, status: 403 if params[:text].present?
   end
 end
