@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
       @promo = true
       params.except! :promo
     end
-    if selected_brands.include? Brand.find(172)
+    if selected_brands.include? Brand.find_by(id: 172)
       @promo = true
     end
   end

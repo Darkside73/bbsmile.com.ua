@@ -11,7 +11,7 @@
         | в подарок.
         br
         ' До конца акции осталось:
-        strong.text-error> #{promo_days_remain}&nbsp;дней
+        strong.text-warning> #{promo_days_remain}&nbsp;дней
         br
         a.small.more href="#" подробнее об условиях
 
@@ -25,6 +25,6 @@
         strong.red #{promo_discount(@product)}%
         br
         ' До конца акции осталось:
-        strong.text-error> #{promo_days_remain}&nbsp;дней
+        strong.text-warning> #{promo_days_remain}&nbsp;дней
         br
         a.small.more href="#" подробнее об условиях

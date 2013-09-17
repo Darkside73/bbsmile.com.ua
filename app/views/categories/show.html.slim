@@ -12,7 +12,7 @@
   = render 'promotions'
   = render 'breadcrumb'
   = render 'selected_filters' if any_filtering?
-  h1.page-title
+  h1#products.page-title
     => @category.title
     small подбор товаров
   .row-fluid
