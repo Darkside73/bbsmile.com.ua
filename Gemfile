@@ -6,7 +6,7 @@ gem 'pg'
 gem 'pg_search'
 gem 'ancestry'
 gem 'nilify_blanks'
-gem 'randumb', github: 'Darkside73/randumb', branch: 'rails4'
+gem 'randumb'
 gem 'acts_as_list'
 gem 'acts-as-taggable-on'
 gem 'delayed_job_active_record'
@@ -66,7 +66,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'cucumber-rails', require: false, github: 'cucumber/cucumber-rails', branch: 'master_rails4_test'
+  gem 'cucumber-rails', require: false
   gem 'capybara'
   gem 'shoulda'
   gem 'launchy'
