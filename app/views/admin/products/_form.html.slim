@@ -6,7 +6,7 @@
         = p.input :name, label: 'Название', input_html: { class: 'autogrow' }
         = p.input :url, label: 'URL',  wrapper: :append do
           = p.input_field :url, type: 'text', class: 'autogrow'
-          span.add-on: a.icon-random.transliterate href="#" title="Сгенерировать из заголовка"
+          span.add-on: a.icon-random.transliterate href="#" data-source="#product_page_attributes_title" data-target="#product_page_attributes_url" title="Сгенерировать из заголовка"
         = p.input :url_old, label: 'Старый URL', input_html: {type: 'text'}
         = p.input :hidden, label: 'скрытый'
       = f.association :category, collection: @leaf_categories, label: "Категория", selected: @category.try(:id), label_method: :title, input_html: { 'data-placeholder' => 'Категория' }, include_blank: true

@@ -74,9 +74,9 @@ $ ->
     e.preventDefault()
 
   $('.transliterate').click (e) ->
-    val = transliterate($('#product_page_attributes_title').val())
+    val = transliterate($($(this).data('source')).val())
     val = val.replace /\s+/g, '-'
     val = val.replace /\-+/g, '-'
     val = val.replace /[^A-z0-9\-]/g, ''
-    $('#product_page_attributes_url').val val.toLowerCase()
+    $($(this).data('target')).val val.toLowerCase()
     false
