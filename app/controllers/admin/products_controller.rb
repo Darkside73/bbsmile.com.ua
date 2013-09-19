@@ -85,11 +85,15 @@ class Admin::ProductsController < Admin::ApplicationController
     @product = Product.find params[:id]
   end
 
+  def properties
+    @product = Product.find params[:id]
+  end
+
   private
     def product_params
       params.require(:product).permit(
         :category_id, :brand_id,
-        :novelty, :hit, :video, :tag_list,
+        :novelty, :hit, :video, :tag_list, :properties,
         page_attributes: [:id, :title, :name, :url, :url_old, :hidden],
         variants_attributes: [[:id, :sku, :price, :price_old, :available]],
         images_attributes: [[:attachment]]

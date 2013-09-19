@@ -1,0 +1,6 @@
+= render layout: 'product_edit_tabs' do
+  = simple_form_for [:admin, @product] do |f|
+    = f.input :properties, label: false, input_html: {class: 'wysihtml5'}
+    => f.button :submit, 'Сохранить', class: 'btn btn-primary'
+    ' или
+    = link_to 'Отменить', :back

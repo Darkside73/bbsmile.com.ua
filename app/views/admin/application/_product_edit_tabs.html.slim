@@ -4,6 +4,7 @@
 = render layout: 'boxed' do
   ul.nav.nav-tabs
     li*unless_active_attr('admin/products', 'edit') = link_to "Основное", [:edit, :admin, @product]
+    li*unless_active_attr('admin/products', 'properties') = link_to "Характеристики", [:properties, :admin, @product]
     li*unless_active_attr('admin/product_contents')
       - if @product.content.present?
         = link_to "Описание", edit_admin_product_content_path(@product.content)

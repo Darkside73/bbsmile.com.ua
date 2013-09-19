@@ -1,37 +1,44 @@
 = render layout: 'product_info_tabs' do
-  p.bages
-    - if @product.available
-      span.text-success
-        i.icon-check>
-        | доступен для заказа
-    - else
-      span.muted
-        i.icon-minus-sign>
-        | нет на складе
-    - if @product.novelty
-      span.label.label-info новинка
-    - if @product.hit
-      span.label.label-info хит продаж
-  table.table.table-hover#product-card
-    - if @product.brand.present?
-      tr
-        td Бренд
-        td = @product.brand.name
-    tr
-      td Цена
-      td = @product.price
-    - if @product.price_old?
-      tr
-        td Старая цена
-        td = @product.price_old
-    tr
-      td Артикул
-      td = @product.sku
-    - if @product.tag_list.present?
-      tr
-        td Теги
-        td = @product.tag_list
-  hr
+  .row-fluid
+    .span6
+      p.bages
+        - if @product.available
+          span.text-success
+            i.icon-check>
+            | доступен для заказа
+        - else
+          span.muted
+            i.icon-minus-sign>
+            | нет на складе
+        - if @product.novelty
+          span.label.label-info новинка
+        - if @product.hit
+          span.label.label-info хит продаж
+      table.table.table-hover#product-card
+        - if @product.brand.present?
+          tr
+            td Бренд
+            td = @product.brand.name
+        tr
+          td Цена
+          td = @product.price
+        - if @product.price_old?
+          tr
+            td Старая цена
+            td = @product.price_old
+        tr
+          td Артикул
+          td = @product.sku
+        - if @product.tag_list.present?
+          tr
+            td Теги
+            td = @product.tag_list
+    .span6
+      - if @product.properties.present?
+        h4.muted Характеристики
+        == @product.properties
+        p = link_to 'Изменить', [:properties, :admin, @product]
+    hr
   => link_to 'Редактировать', [:edit, :admin, @product], class: 'btn btn-info'
   => link_to "Посмотреть на сайте", product_page_url(@product.url, domain: request.host, subdomain: 'beta'), class: 'btn', target: '_blank'
   - if @product.url_old.present?

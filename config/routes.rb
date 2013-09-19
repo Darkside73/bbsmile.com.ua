@@ -48,8 +48,11 @@ Bbsmile::Application.routes.draw do
     resources :products, concerns: [:sortable, :contentable_for_product], shallow: true do
       resources :images, concerns: :sortable, only: [:index, :new, :create, :destroy]
       resources :variants, concerns: :sortable, except: [:new, :show]
-      get 'tags', on: :collection
-      post 'bulk_move', on: :collection
+      collection do
+        get 'tags'
+        post 'bulk_move'
+      end
+      get 'properties', on: :member
     end
     resources :brands
     get 'search-products.json' => 'search#autocomplete', format: :json, as: 'search_products'
