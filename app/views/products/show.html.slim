@@ -60,13 +60,19 @@
             a.quick-shop.btn.btn-large.btn-success data-toggle="modal" href="##{dom_id @order}" Купить
       .clearfix
       ul.nav.nav-tabs id="product-info-tabs"
-        li.active: a href="#description" data-toggle="tab" Описание
+        - if @product.properties.present?
+          li.active: a href="#properties" data-toggle="tab" Характеристики
+        li class="#{'active' unless @product.properties.present?}": a href="#description" data-toggle="tab" Описание
         - if @product.variants.count > 1
           li: a href="#productVariants" data-toggle="tab" Варианты цветов
         - if @product.video?
           li: a href="#video" data-toggle="tab" Видеообзор
       .tab-content
-        .tab-pane.active#description
+        - if @product.properties.present?
+          .tab-pane.active#properties
+            .page-content
+              == @product.properties
+        .tab-pane#description class="#{'active' unless @product.properties.present?}"
           .page-content
             == @product.description
         - if @product.variants.count > 1
