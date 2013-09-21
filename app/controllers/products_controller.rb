@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
     @products = Product.send(scope).order(:category_id)
     @categories = @products.collect { |p| p.category.root }.uniq
     if params[:category_slug]
-      @selected_category = Category.by_url(params[:category_slug])
+      @selected_category = Category.by_url!(params[:category_slug])
       if @selected_category.is_a? Category
         @products = @products.reject { |p| p.category.root != @selected_category }
       end
