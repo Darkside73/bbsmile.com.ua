@@ -21,6 +21,11 @@ class ContactsController < ApplicationController
   end
 
   def reject_spam
-    render nothing: true, status: 403 if params[:text].present?
+    render nothing: true if params[:text].present? || message_with_alien_link?
+  end
+
+  def message_with_alien_link?
+    contacts_params[:message].include?('http://') &&
+      !contacts_params[:message].include?('http://bbsmile')
   end
 end
