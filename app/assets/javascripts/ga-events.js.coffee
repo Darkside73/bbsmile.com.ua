@@ -48,7 +48,7 @@ $ ->
   $('#gift-promo .more').click ->
     _gaq.push ['_trackEvent', 'Акции', 'Кроватка+подарок', 'Подробнее об условиях']
   $('#gift-promo .just-close, #gift-promo button.close').click ->
-    _gaq.push ['_trackEvent', 'Акции', 'Кроватка+подарок', 'Закрыть']
+    _gaq.push ['_trackEvent', 'Акции', 'Кроватка+подарок', 'Закрыть', true]
   $('#gift-promo a.red').click ->
     _gaq.push ['_trackEvent', 'Акции', 'Кроватка+подарок', "Перейти по ссылке #{$(this).text()}"]
 
@@ -57,6 +57,6 @@ $ ->
   $('#discount-promo .more').click ->
     _gaq.push ['_trackEvent', 'Акции', 'Скидка на дуэты', 'Подробнее об условиях']
   $('#discount-promo .just-close, #discount-promo button.close').click ->
-    _gaq.push ['_trackEvent', 'Акции', 'Скидка на дуэты', 'Закрыть']
+    _gaq.push ['_trackEvent', 'Акции', 'Скидка на дуэты', 'Закрыть', true]
   $('#discount-promo a.red').click ->
     _gaq.push ['_trackEvent', 'Акции', 'Скидка на дуэты', "Перейти по ссылке #{$(this).text()}"]
