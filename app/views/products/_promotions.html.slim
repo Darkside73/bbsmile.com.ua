@@ -11,7 +11,7 @@
         | в подарок.
         br
         ' До конца акции осталось:
-        strong.text-warning> #{promo_days_remain}&nbsp;дней
+        strong.text-warning> #{promo_days_remain}&nbsp;#{Russian.p promo_days_remain, 'день', 'дня', 'дней'}
         br
         a.small.more href="/promotions" Подробнее об условиях
 
@@ -26,6 +26,6 @@
         ' и бесплатная доставка по Украине.
         br
         ' До конца акции осталось:
-        strong.text-warning> #{promo_days_remain}&nbsp;дней
+        strong.text-warning> #{promo_days_remain}&nbsp;#{Russian.p promo_days_remain, 'день', 'дня', 'дней'}
         br
         a.small.more href="/promotions" Подробнее об условиях
