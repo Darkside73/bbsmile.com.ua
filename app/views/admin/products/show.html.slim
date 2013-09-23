@@ -34,10 +34,12 @@
             td Теги
             td = @product.tag_list
     .span6
+      h4.muted Характеристики
       - if @product.properties.present?
-        h4.muted Характеристики
         == @product.properties
-        p = link_to 'Изменить', [:properties, :admin, @product]
+        p = link_to 'Изменить', [:properties, :admin, @product], class: 'btn'
+      - else
+        p = link_to 'Добавить', [:properties, :admin, @product], class: 'btn'
     hr
   => link_to 'Редактировать', [:edit, :admin, @product], class: 'btn btn-info'
   => link_to "Посмотреть на сайте", product_page_url(@product.url, domain: request.host, subdomain: 'beta'), class: 'btn', target: '_blank'
