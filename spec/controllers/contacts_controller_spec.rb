@@ -10,7 +10,7 @@ describe ContactsController do
     it 'reject to create contact message if honey pot filled' do
       ManagerMailer.should_not_receive(:contact_message) { double deliver: true }
       xhr :post, :create, contact: { name: 'Joe', message: 'Hi!' }, text: 'Hello from spam bot'
-      response.should_not be_success
+      response.should be_success
     end
   end
 end
