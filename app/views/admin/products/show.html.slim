@@ -29,6 +29,10 @@
         tr
           td Артикул
           td = @product.sku
+        - if @product.age.present?
+          tr
+            td Возраст
+            td = @product.age
         - if @product.tag_list.present?
           tr
             td Теги

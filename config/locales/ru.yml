@@ -66,6 +66,9 @@ ru:
         price_old: "не может быть меньше, чем Цена"
       price_range:
         range: "не может быть больше, чем До"
+      product:
+        age_range: "задайте возраст от меньшего к большему"
+
   activerecord:
     attributes:
       variant:

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130919151019) do
+ActiveRecord::Schema.define(version: 20130927210537) do
 
   create_table "assets", force: true do |t|
     t.datetime "created_at"
@@ -110,6 +110,8 @@ ActiveRecord::Schema.define(version: 20130919151019) do
     t.string   "video"
     t.integer  "old_id"
     t.text     "properties"
+    t.integer  "age_from"
+    t.integer  "age_to"
   end
 
   add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree

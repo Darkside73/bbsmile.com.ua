@@ -12,6 +12,36 @@ describe Product do
         product.description.should be_nil
       end
     end
+    describe "#age=" do
+      let(:product) { create :product }
+      context "when from and to are present" do
+        it "assigns both values" do
+          product.age = '1-2'
+          product.age_from.should == 1
+          product.age_to.should == 2
+        end
+      end
+      context "when one value given" do
+        it "assigns value" do
+          product.age = '1'
+          product.age_from.should == 1
+          product.age_to.should == 1
+        end
+      end
+      context "when to given" do
+        it "assigns 0 to from" do
+          product.age = '-1'
+          product.age_from.should == 0
+        end
+      end
+      context "when empty string given" do
+        it "assigns nil" do
+          product.age = ''
+          product.age_from.should be_nil
+          product.age_to.should be_nil
+        end
+      end
+    end
   end
 
   describe 'when save' do

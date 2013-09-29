@@ -21,6 +21,7 @@
         = v.input :price_old, label: 'Старая цена'
         = v.input :available, label: 'Доступность'
         = v.input :sku, label: 'Артикул'
+      = f.input :age, label: 'Возраст (например 0-3)'
       = f.input :novelty, label: 'Новинка'
       = f.input :hit, label: 'Хит продаж'
       = f.input :tag_list, label: 'Теги', input_html: { class: 'tags', 'data-autocomplete-url' => tags_admin_products_path }

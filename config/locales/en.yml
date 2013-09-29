@@ -69,3 +69,5 @@ en:
         price_old: "can't be less than price"
       price_range:
         range: "can't be greather than to"
+      product:
+        age_range: "can't be greather than to"
