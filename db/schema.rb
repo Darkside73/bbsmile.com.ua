@@ -110,8 +110,8 @@ ActiveRecord::Schema.define(version: 20130927210537) do
     t.string   "video"
     t.integer  "old_id"
     t.text     "properties"
-    t.integer  "age_from"
-    t.integer  "age_to"
+    t.float    "age_from"
+    t.float    "age_to"
   end
 
   add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree
