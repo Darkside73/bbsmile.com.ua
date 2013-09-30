@@ -16,8 +16,8 @@ describe Product do
       let(:product) { create :product }
       context "when from and to are present" do
         it "assigns both values" do
-          product.age = '1-2'
-          product.age_from.should == 1
+          product.age = '0.5-2'
+          product.age_from.should == 0.5
           product.age_to.should == 2
         end
       end
