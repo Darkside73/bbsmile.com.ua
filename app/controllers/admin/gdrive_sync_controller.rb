@@ -6,28 +6,28 @@ class Admin::GdriveSyncController < Admin::ApplicationController
 
   def variants_to_update
     @category = Category.find params[:category_id]
-    @variants = sync.diff(@category).variants_to_update
-    @invalid_rows = sync.invalid_rows
+    @variants = prices_sync.diff(@category).items_to_update
+    @invalid_rows = prices_sync.invalid_rows
   end
 
   def update_variants
     category = Category.find params[:category_id]
-    @variants = sync.diff(category).variants_to_update
-    sync.update
+    @variants = prices_sync.diff(category).items_to_update
+    prices_sync.update
     redirect_to admin_prices_path,
-      notice: I18n.t('flash.message.sync_prices.updated', count: @variants.count)
+      notice: I18n.t('flash.message.gdrive_sync.updated', count: @variants.count)
   end
 
   def load_to_drive
     category = Category.find params[:category_id]
-    sync.delay.load(category)
+    prices_sync.delay.load(category)
     redirect_to admin_prices_path,
-      notice: I18n.t('flash.message.sync_prices.enqueued')
+      notice: I18n.t('flash.message.gdrive_sync.enqueued')
   end
 
   private
 
-  def sync
-    @sync ||= PricesSync.new
+  def prices_sync
+    @prices_sync ||= PricesSync.new
   end
 end

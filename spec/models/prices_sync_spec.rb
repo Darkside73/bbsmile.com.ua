@@ -25,7 +25,7 @@ describe PricesSync do
       worksheet = @worksheets.first
       @spreadsheet.should_receive(:worksheet_by_title).with(category.title).and_return worksheet
       worksheet.should_receive(:list).and_return [row_changing, row_not_changing]
-      subject.diff(category).variants_to_update.should == [variant1]
+      subject.diff(category).items_to_update.should == [variant1]
       variant2.should_not be_changed
     end
   end

@@ -2,9 +2,8 @@ require 'google_drive'
 
 module Gdrive::Syncable
   extend ActiveSupport::Concern
-  include ActionView::Helpers::NumberHelper
 
-  attr_reader :variants_to_update, :invalid_rows
+  attr_reader :items_to_update, :invalid_rows
 
   def initialize
     session = GoogleDrive.login *Settings.gdrive.auth.to_hash.values
@@ -12,7 +11,7 @@ module Gdrive::Syncable
   end
 
   def diff(category)
-    @variants_to_update = []
+    @items_to_update = []
     @invalid_rows = {}
 
     worksheet = find_worksheet_or_create(category.title)
@@ -20,15 +19,15 @@ module Gdrive::Syncable
     worksheet.list.each_with_index do |row, index|
       number = index + 1
       begin
-        variant = Variant.find(row['id'])
-        update_from_row variant, row
-        if variant.valid?
-          @variants_to_update << variant if variant.changed?
+        item = find_item.call(row['id'])
+        update_item_from_row.call item, row
+        if item.valid?
+          @items_to_update << item if item.changed?
         else
-          @invalid_rows[number] = variant.errors.full_messages
+          @invalid_rows[number] = item.errors.full_messages
         end
       rescue ActiveRecord::RecordNotFound
-        @invalid_rows[number] = I18n.t 'sync_prices.errors.variant_not_found'
+        @invalid_rows[number] = I18n.t 'gdrive_sync.errors.item_not_found'
       end
     end
 
@@ -39,52 +38,28 @@ module Gdrive::Syncable
     worksheet = find_worksheet_or_create(category.title)
     clear_worksheet(worksheet)
 
-    variants = items.call(category)
-    variants.each do |variant|
-      worksheet.list.push variant_to_push(variant)
+    items = items_to_sync.call(category)
+    items.each do |variant|
+      worksheet.list.push item_to_push.call(variant)
     end
     worksheet.save
 
-    ManagerMailer.price_loaded(category).deliver
-    variants
+    after_finishing category
+    items
   end
 
   def update
-    @variants_to_update.each(&:save)
+    @items_to_update.each(&:save)
   end
 
   def find_worksheet_or_create(title)
     worksheet = @spreadsheet.worksheet_by_title(title)
     unless worksheet
       worksheet = @spreadsheet.add_worksheet(title)
-      worksheet.list.keys = ['id', 'name', 'brand', 'price', 'price_old', 'available']
+      worksheet.list.keys = worksheet_columns_names
       worksheet.save
     end
     worksheet
-  end
-
-  def update_from_row(variant, row)
-    variant.price     = row['price']
-    variant.price_old = row['price_old']
-    variant.available = row['available'] == '1' ? true : false
-  end
-
-  def variant_to_push(variant)
-    data = variant.as_json(only: [:id, :price, :price_old])
-                  .merge({brand: variant.brand_name, name: variant.title})
-                  .symbolize_keys
-    data[:available] = variant.available ? '1' : '0'
-    data[:price]     = format_price data[:price]
-    data[:price_old] = format_price data[:price_old]
-    data
-  end
-
-  def format_price(value)
-    if value
-      number_with_delimiter(value, delimiter: " ", separator: ",")
-    else
-      value
-    end
   end
 
   def clear_worksheet(worksheet)
@@ -95,10 +70,33 @@ module Gdrive::Syncable
     end
   end
 
+  def after_finishing(category)
+  end
+
   module ClassMethods
-    def items_to_sync(&block)
+    def items_to_sync(proc)
       cattr_accessor :items_to_sync
-      self.items = block
+      self.items_to_sync = proc
+    end
+
+    def find_item(proc)
+      cattr_accessor :find_item
+      self.find_item = proc
+    end
+
+    def item_to_push(proc)
+      cattr_accessor :item_to_push
+      self.item_to_push = proc
+    end
+
+    def worksheet_columns_names(columns)
+      cattr_accessor :worksheet_columns_names
+      self.worksheet_columns_names = columns
+    end
+
+    def update_item_from_row(proc)
+      cattr_accessor :update_item_from_row
+      self.update_item_from_row = proc
     end
   end
 end

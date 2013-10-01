@@ -46,8 +46,8 @@ ru:
         call_tomorrow: завтра с 9 до 11 часов
       contacts:
         created: Ваше сообщение успешно дошло к нам
-      sync_prices:
-        updated: "Обновлено вариантов цен: %{count}"
+      gdrive_sync:
+        updated: "Обновлено строк: %{count}"
         enqueued: Задание поставлено в очередь. По его завершению придет уведомление на почту
   errors:
     messages:
@@ -85,9 +85,9 @@ ru:
     system:
         price_loaded:
           subject: Прайс загружен
-  sync_prices:
+  gdrive_sync:
     errors:
-      variant_not_found: Вариант цены не найден по id
+      item_not_found: Элемент не найден по id
 
   number:
     format:

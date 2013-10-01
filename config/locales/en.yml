@@ -42,7 +42,7 @@ en:
         created: Order created
       contacts:
         created: Contact created
-      sync_prices:
+      gdrive_sync:
         updated: "Updated %{count}"
         enqueued: "Enqueued"
   mailers:
@@ -55,9 +55,9 @@ en:
     system:
       price_loaded:
         subject: Prices been loaded
-  sync_prices:
+  gdrive_sync:
     errors:
-      variant_not_found: Variant not found
+      item_not_found: Item not found
   errors:
     messages:
       blank: "%{attribute} can't be blank"
