@@ -5,9 +5,9 @@ module Gdrive::Syncable
 
   attr_reader :items_to_update, :invalid_rows
 
-  def initialize
+  def initialize(spreadsheet_key)
     session = GoogleDrive.login *Settings.gdrive.auth.to_hash.values
-    @spreadsheet = session.spreadsheet_by_key Settings.gdrive.docs.prices
+    @spreadsheet = session.spreadsheet_by_key spreadsheet_key
   end
 
   def diff(category)

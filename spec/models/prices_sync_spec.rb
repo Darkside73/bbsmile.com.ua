@@ -11,9 +11,11 @@ describe PricesSync do
 
   describe "#new" do
     it "login to gdrive and open spreadsheet" do
-      sync = PricesSync.new
+      sync = PricesSync.new('whatever')
     end
   end
+
+  subject { PricesSync.new('whatever') }
 
   describe "#diff" do
     let(:row_changing) { { 'id' => 1, 'price' => 10, 'price_old' => 15, 'available' => 1, 'sku' => '123' } }
