@@ -27,6 +27,7 @@ Bbsmile::Application.routes.draw do
     concern :sortable do
       member { post 'sort' }
     end
+
     %w(category product).each do |type|
       concern "contentable_for_#{type}".to_sym do
         get 'content', on: :member
@@ -45,6 +46,7 @@ Bbsmile::Application.routes.draw do
       end
       resources :price_ranges, except: [:new, :show]
     end
+
     resources :products, concerns: [:sortable, :contentable_for_product], shallow: true do
       resources :images, concerns: :sortable, only: [:index, :new, :create, :destroy]
       resources :variants, concerns: :sortable, except: [:new, :show]
@@ -54,14 +56,14 @@ Bbsmile::Application.routes.draw do
       end
       get 'properties', on: :member
     end
+
     resources :brands
+
     get 'search-products.json' => 'search#autocomplete', format: :json, as: 'search_products'
 
-    scope path: '/prices', as: 'prices', controller: 'gdrive_sync' do
-      get '/',      action: 'index'
-      get 'diff/:category_id',   action: 'variants_to_update', as: 'diff'
-      get 'update/:category_id', action: 'update_variants',    as: 'update'
-      get 'load/:category_id',   action: 'load_to_drive',      as: 'load'
+    scope path: '/sync_:what', as: 'sync', controller: 'gdrive_sync', constraints: { what: /prices|products/ } do
+      get '/', action: 'index'
+      get ':action/:category_id', as: 'action'
     end
   end
 

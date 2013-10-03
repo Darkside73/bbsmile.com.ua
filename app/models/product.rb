@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
   include PgSearch
   include Pageable
   include Contentable
+  include ActionView::Helpers::NumberHelper
 
   FREE_SHIPPING_PRICE = 400
 
@@ -69,11 +70,15 @@ class Product < ActiveRecord::Base
   end
 
   def age
-    if age_from == age_to
-      age_from
-    else
-      "#{age_from}-#{age_to}"
-    end
+    format_age age_from, age_to
+  end
+
+  def age_changed?
+    age_from_changed? || age_to_changed?
+  end
+
+  def age_was
+    format_age age_from_was, age_to_was
   end
 
   def age= age
@@ -105,5 +110,14 @@ class Product < ActiveRecord::Base
   def add_errors_to_age
     errors[:age_from].each { |attribute, error| errors.add :age, error }
     errors[:age_to].each { |attribute, error| errors.add :age, error }
+  end
+
+  def format_age(from, to)
+    format = proc {|number| number_with_precision number, precision: 1, strip_insignificant_zeros: true }
+    if from == to
+      format.call(from)
+    else
+      "#{format.call(from)}-#{format.call(to)}"
+    end
   end
 end

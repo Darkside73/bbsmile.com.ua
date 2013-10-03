@@ -18,8 +18,8 @@ module Admin::ApplicationHelper
     items
   end
 
-  def link_to_prices(name, options={})
-    url = "https://spreadsheets.google.com/ccc?key=#{Settings.gdrive.docs.prices}"
+  def link_to_spreadsheet(sync_type, name, options={})
+    url = "https://spreadsheets.google.com/ccc?key=#{Settings.gdrive.docs[sync_type]}"
     link_to name, url, options
   end
 end

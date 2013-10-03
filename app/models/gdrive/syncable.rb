@@ -39,8 +39,8 @@ module Gdrive::Syncable
     clear_worksheet(worksheet)
 
     items = items_to_sync.call(category)
-    items.each do |variant|
-      worksheet.list.push item_to_push.call(variant)
+    items.each do |item|
+      worksheet.list.push item_to_push.call(item)
     end
     worksheet.save
 

@@ -83,8 +83,11 @@ ru:
       new_contact:
         subject: Сообщение с сайта
     system:
-        price_loaded:
-          subject: Прайс загружен
+      sync_prices_loaded:
+        subject: Прайс загружен
+      sync_products_loaded:
+        subject: Продукты загружены
+
   gdrive_sync:
     errors:
       item_not_found: Элемент не найден по id

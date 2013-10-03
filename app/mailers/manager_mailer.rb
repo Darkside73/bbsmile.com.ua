@@ -12,8 +12,13 @@ class ManagerMailer < ActionMailer::Base
     mail subject: I18n.t('mailers.contacts.new_contact.subject')
   end
 
-  def price_loaded(category)
+  def sync_prices_loaded(category)
     @category = category
-    mail subject: I18n.t('mailers.system.price_loaded.subject')
+    mail subject: I18n.t('mailers.system.sync_prices_loaded.subject')
+  end
+
+  def sync_products_loaded(category)
+    @category = category
+    mail subject: I18n.t('mailers.system.sync_products_loaded.subject')
   end
 end

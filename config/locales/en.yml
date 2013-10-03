@@ -53,8 +53,10 @@ en:
       new_contact:
         subject: New contact message
     system:
-      price_loaded:
-        subject: Prices been loaded
+      sync_prices_loaded:
+        subject: Prices has been loaded
+      sync_products_loaded:
+        subject: Products has been loaded
   gdrive_sync:
     errors:
       item_not_found: Item not found
