@@ -14,20 +14,20 @@
     = link_to :back, class: "btn product-back", title: 'Назад', data: { title: @product.title } do
       i.icon-long-arrow-left
 
-#product-container.container-fluid.container-wide.flashable data-title="#{@product.title}"
+#product-container.container-fluid.container-wide.flashable data-title="#{@product.title}" itemscope="itemscope" itemtype="http://data-vocabulary.org/Product"
   = render 'breadcrumb', category: @product.category
   .row-fluid
     .gallery.span4
       = gallery_for(@product)
     .description.span8
       h1.page-title
-        => @product.title
+        span> itemprop="name" = @product.title
         - if @product.brand.present?
           br
-          small.muted = link_to @product.brand.full_name, brand_path(@product.brand.name)
+          small.muted itemprop="brand" = link_to @product.brand.full_name, brand_path(@product.brand.name)
       .bages.pull-left
         - if @product.available
-          span.label.label-success Есть в наличии
+          span.label.label-success itemprop="availability" content="in_stock" Есть в наличии
         - else
           span.label.label-inverse Нет в наличии
         - if @product.sku?
@@ -39,7 +39,10 @@
         = render partial: 'share_links', locals: product_share_data
       .clearfix
       hr
-      .pull-left
+      .pull-left itemprop="offerDetails" itemscope="itemscope" itemtype="http://data-vocabulary.org/Offer"
+        - if @product.price
+          meta itemprop="price" content="#{@product.price}"
+          meta itemprop="currency" content="UAH"
         = render 'promotions'
         - if @product.price
           p.price.big
@@ -76,7 +79,7 @@
             .page-content
               == @product.properties
         .tab-pane#description class="#{'active' unless @product.properties.present?}"
-          .page-content
+          .page-content itemprop="description"
             == @product.description
         - if @product.variants.count > 1
           .tab-pane#productVariants
