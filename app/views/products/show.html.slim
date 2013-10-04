@@ -38,7 +38,7 @@
       hr
       .pull-left
         = render 'promotions'
-        - if @product.price
+        - if @product.price && @product.available
           p.price.big
             - if @product.price_old
               span.old.muted.big => number_to_currency @product.price_old
