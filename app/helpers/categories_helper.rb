@@ -60,8 +60,21 @@ module CategoriesHelper
     category_page_path(params.merge(prices: ranges))
   end
 
+  def link_to_add_age_range(age_range, &block)
+    ages = (selected_ages + [age_range]).uniq
+    link_text = capture &block
+    content_tag :li, class: (selected_ages.include?(age_range) ? 'active' : '') do
+      link_to link_text, category_page_path(params.merge(ages: ages))
+    end
+  end
+
+  def remove_age_range_path(age_range)
+    ages = selected_ages - [age_range]
+    category_page_path(params.merge(ages: ages))
+  end
+
   def any_filtering?
-    selected_prices.any? || selected_brands.any? || selected_tags.any?
+    selected_prices.any? || selected_brands.any? || selected_tags.any? || selected_ages.any?
   end
 
   def no_filtering?

@@ -47,6 +47,12 @@ class Category < ActiveRecord::Base
     @price_ranges ||= price_ranges.any? ? price_ranges : (is_root? ? [] : parent.find_price_ranges)
   end
 
+  def age_ranges
+    columns = [:age_from, :age_to]
+    @age_ranges ||= products.visible.select(*columns).group(*columns)
+                            .reorder(*columns).reject {|p| p.age.blank? }
+  end
+
   def novelties(limit = :all)
     result = products_relation.novelties
     if limit == :all

@@ -13,6 +13,7 @@ module Models
         grid = grid.where('brands.name IN (:names)', names: options[:brands]) if options[:brands]
         grid = grid.order("#{sort_column} #{sort_direction}")
         grid = apply_price_ranges(grid)
+        grid = apply_age_ranges(grid)
       end
 
       def sort_columns
@@ -36,6 +37,16 @@ module Models
           filtered += grid.select { |product| product.in_range? range  }
         end
         filtered
+      end
+
+      def apply_age_ranges(grid)
+        return grid unless @options[:ages]
+        @options[:ages].each do |range|
+          from, to = Product.age_to_array range
+          grid = grid.where('age_from >= ?', from) if from
+          grid = grid.where('age_to < ?', to) if to
+        end
+        grid
       end
     end
   end

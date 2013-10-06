@@ -32,7 +32,7 @@
         - if @product.age.present?
           tr
             td Возраст
-            td = @product.age
+            td = render 'age_range', range: @product.age
         - if @product.tag_list.present?
           tr
             td Теги

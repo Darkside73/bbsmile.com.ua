@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   helper_method :sort_direction, :selected_tags, :selected_brands,
-                :selected_prices, :selected_ranges
+                :selected_prices, :selected_ranges, :selected_ages
 
   def show
     @category = current_page.pageable
@@ -30,6 +30,10 @@ class CategoriesController < ApplicationController
 
   def selected_prices
     params[:prices] || []
+  end
+
+  def selected_ages
+    params[:ages] || []
   end
 
   def selected_ranges

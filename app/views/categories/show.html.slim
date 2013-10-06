@@ -29,6 +29,10 @@
             - @category.find_price_ranges.each do |range|
               = link_to_add_price_range range do
                 = render range
+          = accordion_group "filterByAge", "Возраст", if: :age_ranges do
+            - @category.age_ranges.each do |range|
+              = link_to_add_age_range range.age do
+                = render 'age_range', range: range.age
           = accordion_group "filterByTags", "Теги", if: :tags do
             - @category.tags.each do |tag_name|
               = link_to_add_tag tag_name

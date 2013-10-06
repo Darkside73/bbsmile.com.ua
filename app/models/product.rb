@@ -82,13 +82,18 @@ class Product < ActiveRecord::Base
   end
 
   def age= age
+    self.age_from, self.age_to = self.class.age_to_array(age)
+  end
+
+  def self.age_to_array(age)
     return if age.blank?
     if age.include? '-'
-      self.age_from, self.age_to = age.split '-'
+      from, to = age.split '-'
+      from = 0 if from.blank?
     else
-      self.age_from = self.age_to = age
+      from = to = age
     end
-    self.age_from = 0 if self.age_from.nil?
+    [from, to].map! {|n| n.to_f unless n.nil? }
   end
 
   private
