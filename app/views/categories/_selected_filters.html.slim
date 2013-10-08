@@ -1,11 +1,11 @@
 .subnav.selected-filters data-spy="affix" data-offset-top="60"
   ul.nav.nav-pills
     - selected_ranges.each do |range|
-      li: a href="#{remove_price_range_path(range)}" title="удалить фильтр"
+      li: a href="#{remove_price_path(range)}" title="удалить фильтр"
         i.icon-remove-sign
         = render range
     - selected_ages.each do |range|
-      li: a href="#{remove_age_range_path(range)}" title="удалить фильтр"
+      li: a href="#{remove_age_path(range)}" title="удалить фильтр"
         i.icon-remove-sign
         = render 'age_range', range: range
     - selected_tags.each do |tag_name|

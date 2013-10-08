@@ -23,9 +23,7 @@ module CategoriesHelper
 
   def link_to_add_tag(name)
     tags = (selected_tags + [name]).uniq
-    content_tag :li, class: (selected_tags.include?(name) ? 'active' : '') do
-      link_to name, category_page_path(params.merge(tags: tags))
-    end
+    link_to_add_or_remove_filter :tag, name, tags
   end
 
   def remove_tag_path(name)
@@ -35,9 +33,7 @@ module CategoriesHelper
 
   def link_to_add_brand(name)
     brands = (selected_brands + [name]).uniq
-    content_tag :li, class: (selected_brands.include?(name) ? 'active' : '') do
-      link_to name, category_page_path(params.merge(brands: brands))
-    end
+    link_to_add_or_remove_filter :brand, name, brands
   end
 
   def remove_brand_path(name)
@@ -49,13 +45,11 @@ module CategoriesHelper
     id = price_range.id.to_s
     ranges = (selected_prices + [id]).uniq
     link_text = capture &block
-    content_tag :li, class: (selected_prices.include?(id) ? 'active' : '') do
-      link_to link_text, category_page_path(params.merge(prices: ranges))
-    end
+    link_to_add_or_remove_filter :price, link_text, ranges, id
   end
 
-  def remove_price_range_path(price_range)
-    id = price_range.id.to_s
+  def remove_price_path(price_range)
+    id = price_range.respond_to?(:id) ? price_range.id.to_s : price_range
     ranges = selected_prices - [id]
     category_page_path(params.merge(prices: ranges))
   end
@@ -63,12 +57,10 @@ module CategoriesHelper
   def link_to_add_age_range(age_range, &block)
     ages = (selected_ages + [age_range]).uniq
     link_text = capture &block
-    content_tag :li, class: (selected_ages.include?(age_range) ? 'active' : '') do
-      link_to link_text, category_page_path(params.merge(ages: ages))
-    end
+    link_to_add_or_remove_filter :age, link_text, ages
   end
 
-  def remove_age_range_path(age_range)
+  def remove_age_path(age_range)
     ages = selected_ages - [age_range]
     category_page_path(params.merge(ages: ages))
   end
@@ -85,5 +77,21 @@ module CategoriesHelper
     title_parts = [@category.title]
     title_parts << selected_brands.first if selected_brands.count == 1
     title_parts.join(' ')
+  end
+
+  private
+
+  def link_to_add_or_remove_filter(entity, link_text, items, link_id = nil)
+    entities = entity.to_s.pluralize.to_sym
+    link_id = link_id ? link_id : link_text
+    if self.send("selected_#{entities}").include?(link_id)
+      content_tag :li, class: 'active' do
+        link_to link_text, self.send("remove_#{entity}_path", link_id), title: 'удалить фильтр'
+      end
+    else
+      content_tag :li do
+        link_to "#{link_text}", category_page_path(params.merge({ entities => items }))
+      end
+    end
   end
 end
