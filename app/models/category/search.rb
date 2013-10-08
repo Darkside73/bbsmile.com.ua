@@ -12,8 +12,8 @@ module Models
         grid = grid.tagged_with options[:tags] if options[:tags]
         grid = grid.where('brands.name IN (:names)', names: options[:brands]) if options[:brands]
         grid = grid.order("#{sort_column} #{sort_direction}")
-        grid = apply_price_ranges(grid)
         grid = apply_age_ranges(grid)
+        grid = apply_price_ranges(grid)
       end
 
       def sort_columns
