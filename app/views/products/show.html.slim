@@ -32,6 +32,9 @@
           span.label.label-inverse Нет в наличии
         - if @product.sku?
           span.label Артикул: #{@product.sku}
+        - if @product.age
+          span.label.label-info = render 'age_range', range: @product.age
+
       .share.pull-right
         = render partial: 'share_links', locals: product_share_data
       .clearfix
