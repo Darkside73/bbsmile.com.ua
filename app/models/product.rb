@@ -36,7 +36,7 @@ class Product < ActiveRecord::Base
 
   validates :age_from, :age_to,
             numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
-  validates :age_to, numericality: { greater_than_or_equal_to: MAX_AGE_TO },
+  validates :age_to, numericality: { less_than_or_equal_to: MAX_AGE_TO },
             allow_nil: true
   validate :age_from_cannot_be_greater_than_age_to
 
