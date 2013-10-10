@@ -17,17 +17,17 @@ module Gdrive::Syncable
     worksheet = find_worksheet_or_create(category.title)
 
     worksheet.list.each_with_index do |row, index|
-      number = index + 1
+      row_num = index + 2
       begin
         item = find_item.call(row['id'])
         update_item_from_row.call item, row
         if item.valid?
           @items_to_update << item if item.changed?
         else
-          @invalid_rows[number] = item.errors.full_messages
+          @invalid_rows[row_num] = item.errors.full_messages
         end
       rescue ActiveRecord::RecordNotFound
-        @invalid_rows[number] = I18n.t 'gdrive_sync.errors.item_not_found'
+        @invalid_rows[row_num] = I18n.t 'gdrive_sync.errors.item_not_found'
       end
     end
 
