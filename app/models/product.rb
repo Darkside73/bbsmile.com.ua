@@ -5,6 +5,7 @@ class Product < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
 
   FREE_SHIPPING_PRICE = 400
+  MAX_AGE_TO = 16
 
   has_many :images, as: :assetable, dependent: :destroy
   has_many :variants, dependent: :destroy
@@ -35,7 +36,9 @@ class Product < ActiveRecord::Base
 
   validates :age_from, :age_to,
             numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
-  validate :age_from_cannot_be_greather_than_age_to
+  validates :age_to, numericality: { greater_than_or_equal_to: MAX_AGE_TO },
+            allow_nil: true
+  validate :age_from_cannot_be_greater_than_age_to
 
   before_create    :make_master_variant
   after_validation :convert_video_link, if: :video?
@@ -90,6 +93,7 @@ class Product < ActiveRecord::Base
     if age.include? '-'
       from, to = age.split '-'
       from = 0 if from.blank?
+      to = MAX_AGE_TO if to.blank?
     else
       from = to = age
     end
@@ -106,7 +110,7 @@ class Product < ActiveRecord::Base
     self.video = video.gsub(/^(http.+\/)watch\?v=([^&]+).*/, '\1embed/\2')
   end
 
-  def age_from_cannot_be_greather_than_age_to
+  def age_from_cannot_be_greater_than_age_to
     if age_from.present? && age_to.present? && age_from > age_to
       errors.add :age, I18n.t('errors.models.product.age_range')
     end

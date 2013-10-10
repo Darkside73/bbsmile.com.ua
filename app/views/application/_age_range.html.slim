@@ -9,7 +9,7 @@
     - else
       => "#{number_to_human from} лет"
 
-  - if to
+  - if to && to != Product::MAX_AGE_TO
     ' до
     - if from == 1
       ' 1 года

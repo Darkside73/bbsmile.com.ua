@@ -34,6 +34,12 @@ describe Product do
           product.age_from.should == 0
         end
       end
+      context "when from given" do
+        it "assigns 16 to to" do
+          product.age = '3-'
+          product.age_to.should == 16
+        end
+      end
       context "when empty string given" do
         it "assigns nil" do
           product.age = ''
