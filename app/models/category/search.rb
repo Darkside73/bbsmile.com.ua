@@ -41,11 +41,11 @@ module Models
 
       def apply_age_ranges(grid)
         return grid unless @options[:ages]
-        @options[:ages].each do |range|
-          from, to = Product.age_to_array range
-          grid = grid.where('age_from >= ?', from) if from
-          grid = grid.where('age_to < ?', to) if to
-        end
+        ages = @options[:ages].map {|range| Product.age_to_array range }
+        from = ages.collect {|v| v.first }
+        to   = ages.collect {|v| v.second }
+        grid = grid.where('age_from IN (?)', from) if from.any?
+        grid = grid.where('age_to IN (?)', to) if to.any?
         grid
       end
     end
