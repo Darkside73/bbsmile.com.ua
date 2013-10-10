@@ -1,14 +1,17 @@
 - from, to = Product.age_to_array range
-- if from > 1
-  ' от
-  - if from == 1
-    ' 1 года
-  - else
-    => "#{number_to_human from} лет"
+- if from && from == to
+  => "#{number_to_human from} #{Russian.p from.to_i, 'год', 'года', 'лет'}"
+- else
+  - if from > 1
+    ' от
+    - if from == 1
+      ' 1 года
+    - else
+      => "#{number_to_human from} лет"
 
-- if to
-  ' до
-  - if from == 1
-    ' 1 года
-  - else
-    => "#{number_to_human to} лет"
+  - if to
+    ' до
+    - if from == 1
+      ' 1 года
+    - else
+      => "#{number_to_human to} лет"
