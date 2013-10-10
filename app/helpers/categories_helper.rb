@@ -57,7 +57,7 @@ module CategoriesHelper
   def link_to_add_age_range(age_range, &block)
     ages = (selected_ages + [age_range]).uniq
     link_text = capture &block
-    link_to_add_or_remove_filter :age, link_text, ages
+    link_to_add_or_remove_filter :age, link_text, ages, age_range
   end
 
   def remove_age_path(age_range)
