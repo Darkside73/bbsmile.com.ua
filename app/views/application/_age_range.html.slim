@@ -2,7 +2,7 @@
 - if from && from == to
   => "#{number_to_human from} #{Russian.p from.to_i, 'год', 'года', 'лет'}"
 - else
-  - if from > 1
+  - if from && from > 1
     ' от
     - if from == 1
       ' 1 года

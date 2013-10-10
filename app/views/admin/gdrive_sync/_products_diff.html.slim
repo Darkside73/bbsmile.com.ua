@@ -21,6 +21,6 @@ table.table.table-striped
             span.text-success = product.hit ? 'да' : 'нет'
         td
           - if product.age_changed?
-            span.text-error> = product.age_was
+            span.text-error> = render 'age_range', range: product.age_was
             i.icon-long-arrow-right>
-            span.text-success> = product.age
+            span.text-success> = render 'age_range', range: product.age
