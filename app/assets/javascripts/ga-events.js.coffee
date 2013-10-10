@@ -11,13 +11,15 @@ $ ->
   $('.contacts .email').click ->
     _gaq.push ['_trackEvent', 'Контакты', 'Написать письмо', 'Открыть']
 
-  $('#filterByCategory ul>li>a').click ->
+  $('#filterByCategory ul>li:not(.active)>a').click ->
     _gaq.push ['_trackEvent', 'Категория', 'Перейти к подкатегории', $(this).text()]
-  $('#filterByPrice ul>li>a').click ->
+  $('#filterByPrice ul>li:not(.active)>a').click ->
     _gaq.push ['_trackEvent', 'Категория', 'Фильтровать по цене', $(this).text()]
-  $('#filterByTags ul>li>a').click ->
+  $('#filterByAge ul>li:not(.active)>a').click ->
+    _gaq.push ['_trackEvent', 'Категория', 'Фильтровать по возрасту', $(this).text()]
+  $('#filterByTags ul>li:not(.active)>a').click ->
     _gaq.push ['_trackEvent', 'Категория', 'Фильтровать по тегу', $(this).text()]
-  $('#filterByBrand ul>li>a').click ->
+  $('#filterByBrand ul>li:not(.active)>a').click ->
     _gaq.push ['_trackEvent', 'Категория', 'Фильтровать по бренду', $(this).text()]
   $('.selected-filters ul.nav>li>a').click ->
     _gaq.push ['_trackEvent', 'Категория', 'Удалить фильтр', $(this).text()]
