@@ -2,7 +2,7 @@
   = stylesheet_link_tag 'main'
 
 - content_for :main_menu do
-  .navbar-inner: .container: ul.nav
+  .navbar-inner: .container: ul.nav itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement"
     = render 'main_menu'
 
 - content_for :footer do
