@@ -73,9 +73,15 @@ module CategoriesHelper
     !any_filtering?
   end
 
-  def category_seo_title
-    title_parts = [@category.title]
-    title_parts << selected_brands.first if selected_brands.count == 1
+  def seo_category_title
+    title_parts = add_brand_to_category_title
+    title_parts << Settings.seo.category_title
+    title_parts.join(' ')
+  end
+
+  def seo_category_description
+    title_parts = add_brand_to_category_title
+    title_parts << Settings.seo.category_description
     title_parts.join(' ')
   end
 
@@ -93,5 +99,11 @@ module CategoriesHelper
         link_to "#{link_text}", category_page_path(params.merge({ entities => items }))
       end
     end
+  end
+
+  def add_brand_to_category_title
+    title_parts = [@category.title]
+    title_parts << selected_brands.first if selected_brands.count == 1
+    title_parts
   end
 end

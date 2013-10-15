@@ -5,8 +5,8 @@
     $ ->
       _gaq.push ['_trackEvent', 'Категория', 'Просмотреть', $('#category-content').data('title'), 0, true ]
 
-- title "#{category_seo_title} #{Settings.seo.products_title}"
-- meta description: "#{category_seo_title}  #{Settings.seo.products_description}", keywords: @category.title.split
+- title seo_category_title
+- meta description: seo_category_description, keywords: @category.title.split
 
 #category-content.products-list.container-fluid.container-wide.flashable data-title="#{@category.title}"
   = render 'breadcrumb'

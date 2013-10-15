@@ -21,4 +21,18 @@ module ProductsHelper
                URI.join(request.url, @product.top_image(:medium)) : ''
     }
   end
+
+  def seo_product_title
+    "#{@product.title} #{sprintf(Settings.seo.product_title, @product.category.title)}"
+  end
+
+  def seo_product_description
+    description = @product.description.present? ? @product.description : @product.properties
+    if description
+      description = strip_tags(description).strip.gsub(/(\r|\n)/, ' ').gsub(/\s+/, ' ')
+      truncate description, length: 160
+    else
+      "#{@product.title} #{@product.category.title} #{Settings.seo.product_description}"
+    end
+  end
 end
