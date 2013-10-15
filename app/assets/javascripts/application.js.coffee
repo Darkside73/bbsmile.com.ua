@@ -1,9 +1,7 @@
 //= require jquery
 //= require jquery_ujs
-//= require jquery.cookie
 //= require underscore
 //= require twitter/bootstrap
-//= require fix-popover-hide
 //= require tabs_memory
 //= require jquery.scrollTo/jquery.scrollTo
 //= require search-box

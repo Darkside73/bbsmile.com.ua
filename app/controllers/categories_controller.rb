@@ -7,13 +7,6 @@ class CategoriesController < ApplicationController
     @products = @category.products_grid(params)
     @order = Order.new
     @order.build_user
-    if params[:promo].present?
-      @promo = true
-      params.except! :promo
-    end
-    if selected_brands.include? Brand.find_by(id: 172).try(:name)
-      @promo = true
-    end
   end
 
   def sort_direction

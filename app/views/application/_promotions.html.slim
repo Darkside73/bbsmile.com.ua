@@ -2,14 +2,8 @@
   ol.carousel-indicators
     li.active data-target="#promotions" data-slide-to="0"
     li data-target="#promotions" data-slide-to="1"
-    li data-target="#promotions" data-slide-to="2"
   .carousel-inner
-    .item.active data-title="Кроватки и дуэты: подарок и скидка"
-      .image_map.veres
-        = link_to '', page_path('detskie-krovatki', utm_campaign: 'mebel_skidka_podarok', utm_content: 'krovatki', utm_medium: 'main_page_promotions', utm_source: 'local', brands: ['Верес', 'Gandylyan']), class: "map-item map-item-left", title: 'Перейти к кроваткам, участвующим в акции'
-        = link_to '', page_path('duetyi-krovat-komod', utm_campaign: 'mebel_skidka_podarok', utm_content: 'duetyi', utm_medium: 'main_page_promotions', utm_source: 'local', brands: ['Верес']), class: "map-item map-item-right", title: 'Перейти к дуэтам (кроватка+комод), участвующим в акции'
-        = image_tag "content/krovatki-duety-podarok-skidka.jpg"
-    .item.bebecar data-title="Bebecar 2013 Новая коллекция": .row
+    .item.active.bebecar data-title="Bebecar 2013 Новая коллекция": .row
       .span8
         = image_tag "content/bebecar-2013-new-collection.jpg"
       .span3

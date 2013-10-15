@@ -43,7 +43,6 @@
         - if @product.price
           meta itemprop="price" content="#{@product.price}"
           meta itemprop="currency" content="UAH"
-        = render 'promotions'
         - if @product.price
           p.price.big
             - if @product.price_old
