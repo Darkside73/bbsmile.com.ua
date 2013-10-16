@@ -18,6 +18,7 @@ set(:unicorn_conf)    { "/etc/unicorn/#{application_dir}.#{login}.rb" }
 set(:unicorn_pid)     { "/var/run/unicorn/#{application_dir}.#{login}.pid" }
 set(:unicorn_start_cmd) { "(cd #{deploy_to}/current; RAILS_ENV=#{rails_env} rvm use #{rvm_ruby_string} do bundle exec unicorn_rails -Dc #{unicorn_conf})" }
 set(:bundle_dir)      { File.join(fetch(:shared_path), 'gems') }
+set :keep_releases,   2
 role :web,            deploy_server
 role :app,            deploy_server
 role :db,             deploy_server, primary: true
