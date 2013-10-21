@@ -262,6 +262,8 @@ GEM
       rspec-mocks (~> 2.14.0)
     russian (0.6.0)
       i18n (>= 0.5.0)
+    rvm-capistrano (1.5.1)
+      capistrano (~> 2.15.4)
     seedbank (0.2.1)
     shoulda (3.5.0)
       shoulda-context (~> 1.0, >= 1.0.1)
@@ -362,6 +364,7 @@ DEPENDENCIES
   redcarpet
   rspec-rails
   russian
+  rvm-capistrano
   seedbank
   shoulda
   simple_form (>= 3.0.0beta1)

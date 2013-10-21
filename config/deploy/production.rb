@@ -1,4 +1,4 @@
-set :application_dir, "bbsmile"
+set :application_id, "bbsmile"
 set :rails_env, "production"
 
 namespace :sitemap do
@@ -13,14 +13,6 @@ namespace :sitemap do
   end
   task :refresh do
     run "cd #{latest_release} && #{rake} sitemap:refresh"
-  end
-end
-
-namespace :backup do
-  desc "Backup the database"
-  task :db, :roles => :db do
-    run "mkdir -p #{deploy_to}/backups"
-    run "cd #{deploy_to}; pg_dump -U darkside_bbsmi52 darkside_bbsmi52 -h postgresql5.locum.ru -f backups/#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.sql"
   end
 end
 

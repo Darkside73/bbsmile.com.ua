@@ -3,33 +3,37 @@ set :default_stage, "production"
 require 'capistrano/ext/multistage'
 
 require 'bundler/capistrano'
+require "rvm/capistrano"
+
 load 'deploy/assets'
 
 ssh_options[:forward_agent] = true
 
 set :application,     'bbsmile'
-set :deploy_server,   "fluorine.locum.ru"
+set :deploy_server,   "myocean"
 set :bundle_without,  [:development, :test]
-set :user,            "hosting_darkside"
+set :user,            "darkside"
 set :login,           "darkside"
 set :use_sudo,        false
-set(:deploy_to)       { "/home/#{user}/projects/#{application_dir}" }
-set(:unicorn_conf)    { "/etc/unicorn/#{application_dir}.#{login}.rb" }
-set(:unicorn_pid)     { "/var/run/unicorn/#{application_dir}.#{login}.pid" }
+set(:deploy_to)       { "/home/#{user}/projects/rails/#{application_id}" }
+set(:unicorn_conf)    { "#{deploy_to}/unicorn/#{application_id}.rb" }
+set(:unicorn_pid)     { "#{deploy_to}/unicorn/#{application_id}.pid" }
 set(:unicorn_start_cmd) { "(cd #{deploy_to}/current; RAILS_ENV=#{rails_env} rvm use #{rvm_ruby_string} do bundle exec unicorn_rails -Dc #{unicorn_conf})" }
-set(:bundle_dir)      { File.join(fetch(:shared_path), 'gems') }
 set :keep_releases,   2
 role :web,            deploy_server
 role :app,            deploy_server
 role :db,             deploy_server, primary: true
 
-set :rvm_ruby_string, "2.0.0"
+set(:rvm_ruby_string) { "2.0.0@#{application_id}" }
+set :rvm_type, :user
+set :bundle_dir, ''
+set :bundle_flags, '--system --quiet'
 set(:rake)            { "RAILS_ENV=#{rails_env} rvm use #{rvm_ruby_string} do rake" }
 set(:bundle_cmd)      { "RAILS_ENV=#{rails_env} rvm use #{rvm_ruby_string} do bundle" }
 
 set :scm,             :git
 set :repository,      "ssh://git@bitbucket.org/darkside73/rails.bbsmile.com.ua.git"
-set :git_enable_submodules, 1
+set :branch, 'move-to-ocean'
 
 set :shared_children, shared_children + %w{public/uploads}
 
