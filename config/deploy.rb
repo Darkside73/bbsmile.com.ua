@@ -47,6 +47,16 @@ task :show_revision, roles: :app do
   run "cat #{current_path}/REVISION"
 end
 
+namespace :unicorn do
+  desc 'Create directory for unicorn inside application'
+  task :create_dir, roles: :app do
+    run "mkdir #{deploy_to}/unicorn"
+  end
+end
+
+before 'deploy:setup', 'rvm:create_gemset'
+after 'deploy:setup', 'unicorn:create_dir'
+
 namespace :deploy do
   desc "Start application"
   task :start, roles: :app do
