@@ -61,8 +61,7 @@ Bbsmile::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'mail.locum.ru', user_name: 'bbsmile-robot@new.bbsmile.com.ua',
-    password: '1qaZ2wsX', authentication: :plain, enable_starttls_auto: false
+    address: 'localhost', authentication: :plain, enable_starttls_auto: false
   }
 
   # Enable threaded mode
