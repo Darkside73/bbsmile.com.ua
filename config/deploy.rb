@@ -16,10 +16,11 @@ set :user,            "darkside"
 set :login,           "darkside"
 set :use_sudo,        false
 set(:deploy_to)       { "/home/#{user}/projects/rails/#{application_id}" }
+set :deploy_via,      :remote_cache
 set(:unicorn_conf)    { "#{deploy_to}/unicorn/#{application_id}.rb" }
 set(:unicorn_pid)     { "#{deploy_to}/unicorn/#{application_id}.pid" }
 set(:unicorn_start_cmd) { "(cd #{deploy_to}/current; RAILS_ENV=#{rails_env} rvm use #{rvm_ruby_string} do bundle exec unicorn_rails -Dc #{unicorn_conf})" }
-set :keep_releases,   2
+set :keep_releases,   5
 role :web,            deploy_server
 role :app,            deploy_server
 role :db,             deploy_server, primary: true
