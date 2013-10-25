@@ -34,7 +34,7 @@ set(:bundle_cmd)      { "RAILS_ENV=#{rails_env} rvm use #{rvm_ruby_string} do bu
 
 set :scm,             :git
 set :repository,      "ssh://git@bitbucket.org/darkside73/rails.bbsmile.com.ua.git"
-set :branch, 'move-to-ocean'
+set :branch, 'master'
 
 set :shared_children, shared_children + %w{public/uploads}
 
