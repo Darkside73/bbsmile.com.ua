@@ -1,4 +1,4 @@
-set :application_id, "beta-bbsmile"
+set :application_id, "bbsmile-beta"
 set :rails_env, "beta"
 set :branch, 'beta'
 
