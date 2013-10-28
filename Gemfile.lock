@@ -188,6 +188,7 @@ GEM
     net-ssh (2.7.0)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    newrelic_rpm (3.6.8.168)
     nilify_blanks (1.0.2)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -354,6 +355,7 @@ DEPENDENCIES
   less-rails-bootstrap (~> 2)
   meta_request (= 0.2.5)
   metamagic
+  newrelic_rpm
   nilify_blanks
   paperclip
   pg
