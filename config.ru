@@ -4,7 +4,7 @@
 require 'unicorn/worker_killer'
 
 # Max memory size (RSS) per worker
-use Unicorn::WorkerKiller::Oom, (192*(1024**2)), (256*(1024**2))
+use Unicorn::WorkerKiller::Oom, (128*(1024**2)), (192*(1024**2)), 16, true
 
 require ::File.expand_path('../config/environment',  __FILE__)
 run Bbsmile::Application
