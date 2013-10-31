@@ -4,13 +4,17 @@ module ProductsHelper
     image = if variant.image.present?
       variant.image
     elsif variant.master?
-      variant.product.images.first
+      @product.images.first
     end
     if image
       image.url(style)
     else
       'no_image.png'
     end
+  end
+
+  def product_variants
+    @product.variants.includes(:image, :product)
   end
 
   def product_share_data

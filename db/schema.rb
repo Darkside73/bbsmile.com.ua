@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130927210537) do
+ActiveRecord::Schema.define(version: 20131029173623) do
 
   create_table "assets", force: true do |t|
     t.datetime "created_at"

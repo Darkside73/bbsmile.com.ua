@@ -84,7 +84,7 @@
           .tab-pane#productVariants
             = render 'gallery_modal', id: 'variants-gallery'
             ul.thubmnails data={toggle: "modal-gallery", target: "#variants-gallery"}
-              - @product.variants.each_slice(4) do |variants|
+              - product_variants.each_slice(4) do |variants|
                 .row-fluid
                   = render variants
         - if @product.video?

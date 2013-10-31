@@ -9,6 +9,7 @@ class Category < ActiveRecord::Base
 
   has_many :products
   has_many :price_ranges
+  has_many :brands, -> { reorder('brands.name').uniq }, through: :products
 
   has_ancestry orphan_strategy: :restrict
 
@@ -35,48 +36,32 @@ class Category < ActiveRecord::Base
   end
 
   def tags
-    @tags ||= products.collect(&:tag_list).flatten.uniq
-  end
-
-  # TODO use AR to reduce number of queries
-  def brands
-    @brands ||= products.visible.select(&:brand).collect(&:brand).uniq.sort {|x, y| x.name <=> y.name }
+    # using this workaround until bug is open:
+    # https://github.com/mbleigh/acts-as-taggable-on/issues/374
+    @tags ||= Product.where(category_id: id).tags_on(:tags).pluck(:name)
   end
 
   def find_price_ranges
-    @price_ranges ||= price_ranges.any? ? price_ranges : (is_root? ? [] : parent.find_price_ranges)
+    @price_ranges ||= price_ranges.any? ? price_ranges
+                                        : (parent.try(:find_price_ranges) || [])
   end
 
   def age_ranges
+    # TODO: same as "brands" only virtual assocciation in product model
     columns = [:age_from, :age_to]
     @age_ranges ||= products.visible.select(*columns).group(*columns)
                             .reorder(*columns).reject {|p| p.age.blank? }
   end
 
-  def novelties(limit = :all)
-    result = products_relation.novelties
-    if limit == :all
-      result
-    else
-      result.limit(limit)
-    end
-  end
-
-  def hits(limit = :all)
-    result = products_relation.hits
-    if limit == :all
-      result
-    else
-      result.limit(limit)
-    end
-  end
-
-  def discounts(limit = :all)
-    result = products_relation.discounts
-    if limit == :all
-      result
-    else
-      result.limit(limit)
+  %w(novelties hits discounts).each do |name|
+    method_name = name.to_sym
+    define_method method_name do |limit = :all|
+      result = products_relation.send(method_name)
+      if limit == :all
+        result
+      else
+        result.limit(limit)
+      end
     end
   end
 

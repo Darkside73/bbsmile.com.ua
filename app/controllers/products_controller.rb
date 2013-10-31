@@ -40,12 +40,12 @@ class ProductsController < ApplicationController
   def special_products_for(scope)
     @special_products_path = "#{scope}_path".to_sym
     @products = Product.send(scope).order(:category_id)
-    @categories = @products.collect { |p| p.category.root }.uniq
+    @categories = @products.map(&:category).uniq.map(&:root)
     if params[:category_slug]
       @selected_category = Category.by_url!(params[:category_slug])
-      if @selected_category.is_a? Category
-        @products = @products.reject { |p| p.category.root != @selected_category }
-      end
+      category_ids = @selected_category.has_children? ? @selected_category.child_ids
+                                                      : @selected_category
+      @products = @products.where(category_id: category_ids)
     end
   end
 end
