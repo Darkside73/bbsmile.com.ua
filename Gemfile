@@ -39,7 +39,7 @@ gem 'google_drive', require: false
 
 group :assets do
   gem 'less-rails-bootstrap', '~> 2'
-  gem 'font-awesome-rails'
+  gem 'font-awesome-rails', '~> 3'
   gem 'coffee-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -53,6 +53,7 @@ group :development do
   gem 'rake', '10.0.4'
   gem 'seedbank'
   gem 'rb-inotify', require: false
+  gem 'guard', '>=2.1.0'
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'guard-zeus-client'
