@@ -54,9 +54,16 @@ namespace :unicorn do
     run "mkdir #{deploy_to}/unicorn"
   end
 end
-
-before 'deploy:setup', 'rvm:create_gemset'
 after 'deploy:setup', 'unicorn:create_dir'
+before 'deploy:setup', 'rvm:create_gemset'
+
+desc 'Copy compiled error pages with digest to public'
+task :copy_error_pages do
+  %w(404 500).each do |code|
+    run %Q{cd #{deploy_to}/shared/assets && cp `find -type f -name #{code}-\\*.html -printf "%C@\\t%P\\n" |sort -r -k1,1| head -1|cut -f 2-` #{current_path}/public/#{code}.html}
+  end
+end
+after 'deploy:create_symlink', 'copy_error_pages'
 
 namespace :deploy do
   desc "Start application"

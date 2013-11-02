@@ -54,12 +54,14 @@ module Bbsmile
         'font-awesome-ie7.min.css', 'fontawesome-webfont.ttf', 'fontawesome-webfont.eot', 'fontawesome-webfont.svg', 'fontawesome-webfont.woff',
         'product.js', 'category.js'
     ]
-    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif 404.html 500.html)
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.assets.paths << "#{Rails.root}/vendor/assets/images"
+    config.assets.paths << Rails.root.join('vendor/assets/images')
+    config.assets.paths << Rails.root.join('app/assets/html')
+    config.assets.register_mime_type('text/html', '.html')
 
     # Rspec generators
     config.generators do |g|
