@@ -25,7 +25,14 @@ SitemapGenerator::Sitemap.create do
   #   end
 
   Page.visible.find_each do |page|
-    add page_path(page.url), lastmod: page.updated_at
+    if page.try(:pageable).respond_to? :images
+      images = page.pageable.images.map do |image|
+        { loc: image.url, title: page.title }
+      end
+      add page_path(page.url), lastmod: page.updated_at, images: images
+    else
+      add page_path(page.url), lastmod: page.updated_at
+    end
   end
   Brand.find_each do |brand|
     add brand_path(brand.name), lastmod: brand.updated_at
