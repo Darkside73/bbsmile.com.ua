@@ -18,4 +18,11 @@ class Brand < ActiveRecord::Base
       name
     end
   end
+
+  def categories(products_list = products.visible.includes(:category))
+    root_ids = products_list.map(&:category).map(&:root_id).uniq
+    categories = Category.includes(:page).find root_ids
+    categories = products_list.map(&:category).uniq if categories.count == 1
+    categories
+  end
 end

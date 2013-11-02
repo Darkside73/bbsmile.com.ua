@@ -7,8 +7,7 @@ class BrandsController < ApplicationController
     @products = @brand.products.visible
                       .includes(:category, :page, :variants, :images, :brand)
                       .order(:category_id)
-    @categories = Category.includes(:page).find @products.map(&:category).map(&:root_id).uniq
-    @categories = @products.map(&:category).uniq if @categories.count == 1
+    @categories = @brand.categories(@products)
     if params[:category_slug]
       @selected_category = Category.by_url!(params[:category_slug])
       @products = @products.reject {
