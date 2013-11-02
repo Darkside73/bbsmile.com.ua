@@ -8,4 +8,10 @@ html
     = stylesheet_link_tag 'application'
 
   body
-    | Похоже, тут ничего нет. Может попробовать начать с <a href="/">главной страницы</a>?
+    .container
+      .span12.hero-unit.text-center
+        p = image_tag 'cats/cat_hungry.png'
+        h1 Cтраница не найдена
+        p.lead Похоже, тут ничего нет
+        p
+          a.btn.btn-info.btn-large href="/" Верните меня домой!
