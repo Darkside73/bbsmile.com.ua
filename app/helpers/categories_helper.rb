@@ -5,7 +5,7 @@ module CategoriesHelper
     else
       @category.siblings
     end
-    items.reject(&:hidden)
+    items.visible.includes(:page)
   end
 
   def accordion_group(id, name, options = {}, &block)
