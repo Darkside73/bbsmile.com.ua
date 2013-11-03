@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131029173623) do
+ActiveRecord::Schema.define(version: 20131103192327) do
 
   create_table "assets", force: true do |t|
     t.datetime "created_at"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20131029173623) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+
+  add_index "categories", ["position"], name: "index_categories_on_position", using: :btree
 
   create_table "contents", force: true do |t|
     t.text     "text"
@@ -115,6 +117,7 @@ ActiveRecord::Schema.define(version: 20131029173623) do
   end
 
   add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree
+  add_index "products", ["position"], name: "index_products_on_position", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
