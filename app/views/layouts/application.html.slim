@@ -18,6 +18,7 @@ html
     = yield :head
 
   body *body_attributes
+    = render 'metrika'
     #main-menu.navbar.navbar-fixed-top
       = yield :main_menu
     = content_for?(:header) ? yield(:header) : render('header')
