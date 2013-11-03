@@ -6,7 +6,7 @@ describe CategoriesHelper do
       let(:category) { create :category, children_count: 3 }
       before { assign(:category, category) }
       it "returns category children " do
-        helper.category_menu_items.should == category.children
+        helper.category_menu_items.should == category.children.visible.includes(:page)
       end
       context "hidden children" do
         let(:category) {
@@ -24,7 +24,7 @@ describe CategoriesHelper do
       let(:category) { create :category, children_count: 3 }
       before { assign(:category, category.children.second) }
       it "returns category siblings" do
-        helper.category_menu_items.should == category.children
+        helper.category_menu_items.should == category.children.visible.includes(:page)
       end
     end
   end
