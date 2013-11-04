@@ -25,9 +25,9 @@ class Product < ActiveRecord::Base
   scope :visible, -> { joins("INNER JOIN pages AS p ON p.pageable_id = products.id AND p.pageable_type = 'Product'").where("p.hidden IS false") }
   # scope :visible, -> { includes(:page).merge(Page.visible).references(:pages) }
   scope :recent, ->(n) { order(created_at: :desc).limit(n) }
-  scope :novelties, -> { visible.includes(:variants, :brand, :images).where(novelty: true) }
-  scope :hits, -> { visible.includes(:variants, :brand, :images).where(hit: true) }
-  scope :discounts, -> { visible.includes(:variants, :category, :brand, :images)
+  scope :novelties, -> { visible.includes(:page, :variants, :brand, :images).where(novelty: true) }
+  scope :hits, -> { visible.includes(:page, :variants, :brand, :images).where(hit: true) }
+  scope :discounts, -> { visible.includes(:page, :variants, :category, :brand, :images)
                                 .references(:variants).merge(Variant.discounts)
                        }
 
