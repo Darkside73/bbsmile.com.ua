@@ -34,8 +34,9 @@ $ ->
     updater: (item) ->
       pathname = $(location).attr('pathname')
       _gaq.push ['_trackPageview', "#{pathname}?autocomplete-q=#{currentQuery}"]
-      _gaq.push ->
+      setTimeout ->
         window.location.href = results[item].url
+        250
       return
 
     matcher: (item) ->
