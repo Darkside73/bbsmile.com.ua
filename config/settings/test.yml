@@ -1,6 +1,9 @@
 managers_emails: test@localhost
 ga:
   tracking_id: 'fake-id'
+metrika:
+  tracking_id: 'fake-id'
+  webvisor_enabled: false
 gdrive:
   auth:
     user: user
