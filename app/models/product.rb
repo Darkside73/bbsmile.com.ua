@@ -30,6 +30,7 @@ class Product < ActiveRecord::Base
   scope :discounts, -> { visible.includes(:page, :variants, :category, :brand, :images)
                                 .references(:variants).merge(Variant.discounts)
                        }
+  scope :random, ->(n = nil) { reorder('RANDOM()').limit(n) }
 
   pg_search_scope :by_title, associated_against: { page: :title }
 
