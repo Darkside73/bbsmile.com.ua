@@ -7,7 +7,7 @@ module SiteSearch
       categories = Category.visible.by_title(query).limit(5)
 
       results = categories.to_a
-      # results[:brands] = brands.as_json(only: [:id, :name])
+      results += brands
       results += products.to_a if categories.count < 3
       if results.empty?
         variant = Variant.visible.find_by(sku: query)

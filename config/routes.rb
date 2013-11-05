@@ -8,7 +8,8 @@ Bbsmile::Application.routes.draw do
   get 'hity-prodazh(/:category_slug)' => 'products#hits',      as: 'hits'
   get 'skidki(/:category_slug)'       => 'products#discounts', as: 'discounts'
 
-  get 'brand/*name(/:category_slug)' => 'brands#show', as: 'brand', format: false, constraints: { name: /[^\/]+/ }
+  get 'brand/*name(/:category_slug)' => 'brands#show', as: 'brand_page',
+    format: false, constraints: { name: /[^\/]+/ }
   get 'produced/*name', to: redirect('/brand/%{name}')
 
   resources :orders, only: :create

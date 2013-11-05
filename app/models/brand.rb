@@ -11,6 +11,9 @@ class Brand < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
 
+  alias_attribute :url, :name
+  alias_attribute :title, :full_name
+
   def full_name
     if country.present?
       "#{name} (#{country})"

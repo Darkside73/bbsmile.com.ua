@@ -35,9 +35,9 @@ SitemapGenerator::Sitemap.create do
     end
   end
   Brand.find_each do |brand|
-    add brand_path(brand.name), lastmod: brand.updated_at
+    add brand_page_path(brand.name), lastmod: brand.updated_at
     brand.categories.each do |category|
-      add brand_path(brand.name, category.url), lastmod: brand.updated_at
+      add brand_page_path(brand.name, category.url), lastmod: brand.updated_at
     end
   end
 end

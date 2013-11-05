@@ -9,7 +9,7 @@ class SearchController < ApplicationController
         id:   item.id,
         type: item.class.name,
         name: item.title,
-        url: "/#{item.url}",
+        url:  self.send("#{item.class.name.underscore}_page_path", item.url),
         html: render_to_string(object: item,
                                partial: "autocomplete/#{item.class.name.underscore}.html")
       }

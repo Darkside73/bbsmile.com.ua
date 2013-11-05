@@ -16,7 +16,7 @@
             - if category.url == params[:category_slug]
               li.active = category.title
             - else
-              li = link_to category.title, brand_path(@brand.name, category.url)
+              li = link_to category.title, brand_page_path(@brand.name, category.url)
     .products-list.span9
       = render 'order/form', order: @order
       - if @products.any?
@@ -26,7 +26,7 @@
               ' Всего товаров:
               strong = @products.count
             - if @selected_category
-              li = link_to 'Показать все', brand_path(@brand.name), class: 'btn'
+              li = link_to 'Показать все', brand_page_path(@brand.name), class: 'btn'
             - if @brand.description.present? && @selected_category.nil?
                 button.more.btn
                   i.icon-info-sign>
