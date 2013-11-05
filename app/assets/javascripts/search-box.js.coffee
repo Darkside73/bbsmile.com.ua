@@ -7,6 +7,11 @@ $ ->
 
   currentQuery = false
 
+  $('.form-search input.search-query').blur (e) ->
+    if currentQuery
+      pathname = $(location).attr('pathname')
+      _gaq.push ['_trackPageview', "#{pathname}?autocomplete-q=#{currentQuery}"]
+
   sourceRequest = _.debounce(
     (query, process) ->
       $.ajax(
@@ -32,8 +37,6 @@ $ ->
       return
 
     updater: (item) ->
-      pathname = $(location).attr('pathname')
-      _gaq.push ['_trackPageview', "#{pathname}?autocomplete-q=#{currentQuery}"]
       setTimeout ->
         window.location.href = results[item].url
         250
