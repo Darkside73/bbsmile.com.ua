@@ -12,6 +12,18 @@ $ ->
       pathname = $(location).attr('pathname')
       _gaq.push ['_trackPageview', "#{pathname}?autocomplete-q=#{currentQuery}"]
 
+  triggerTypeahead = ->
+    $('.form-search input.search-query').trigger jQuery.Event('keyup')
+
+  $('.form-search').submit (e) ->
+    e.preventDefault()
+  $('.form-search i.search').click (e) ->
+    triggerTypeahead()
+  $('.form-search input.search-query').focus (e) ->
+    triggerTypeahead()
+  $('.form-search input.search-query').keypress (e) ->
+    triggerTypeahead() if e.keyCode == 13 && !$('.form-search ul.typeahead').is(':visible')
+
   sourceRequest = _.debounce(
     (query, process) ->
       $.ajax(
@@ -27,7 +39,7 @@ $ ->
         beforeSend: toggleSearchLoader
         complete: toggleSearchLoader
       )
-    500
+    200
   )
 
   $('input.search-query').typeahead(
