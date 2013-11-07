@@ -64,3 +64,7 @@ $ ->
       results[item].html
 
   )
+
+  $('.example a').click (e) ->
+    $('input.search-query').val($(@).text()).focus()
+    e.preventDefault()

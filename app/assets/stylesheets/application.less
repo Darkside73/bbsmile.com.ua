@@ -149,6 +149,18 @@ h1.page-title {
     font-size: 110%;
     cursor: pointer;
   }
+  .example {
+    background: fadeout(@white, 40%);
+    a {
+      border-bottom: 1px dashed;
+      font-size: 1.1em;
+      &:hover, &:active {
+        border-bottom: none;
+        text-decoration: none;
+        outline: none;
+      }
+    }
+  }
   ul.typeahead {
     text-align: left;
     width: 316px;

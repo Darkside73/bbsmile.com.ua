@@ -67,6 +67,10 @@ module ApplicationHelper
     end
   end
 
+  def suggest_search_sample
+    Settings.misc.search_suggestions.split(',').map(&:strip).sample
+  end
+
   private
     def current_layout
       layout = controller.send(:_layout)
