@@ -3,8 +3,8 @@
     button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
     h3.modal-title
       - if local_assigns[:product]
-        => product.master_variant.title
-        span.price = number_to_currency product.price
+        span.name => product.master_variant.title
+        span.price data-price="#{product.price}" = number_to_currency product.price
   .modal-body
     .row-fluid
       = f.simple_fields_for :user do |u|

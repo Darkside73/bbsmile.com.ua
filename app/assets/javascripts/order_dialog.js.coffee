@@ -7,7 +7,13 @@ class @OrderDialog
       if $('.btn-success', @dialog).hasClass 'disabled'
         @toggleSubmitButton()
       _gaq.push ['_trackPageview', '/ordering']
-      yaCounter22781371.reachGoal 'ORDERING'
+      yaCounter22781371.reachGoal(
+        'ORDERING'
+        order_price: $('span.price', @dialog).data('price')
+        goods: [
+          { name: $('span.name', @dialog).text() }
+        ]
+      )
     @dialog.on 'hidden', =>
       _gaq.push ['_trackPageview', '/cancel-ordering'] unless @success
     @bind()
@@ -44,7 +50,7 @@ class @OrderDialog
           currency: "UAH"
           exchange_rate: 1
           goods: [
-            {id: data.variant_id, name: data.variant.title, price: data.price, quantity: 1}
+            { id: data.variant_id, name: data.variant.title, price: data.price, quantity: 1 }
           ]
         )
     ).bind(
