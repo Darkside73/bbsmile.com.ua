@@ -1,6 +1,7 @@
 require 'site_search/autocomplete'
 
 class SearchController < ApplicationController
+  before_action :force_encoding
 
   def autocomplete
     results = []
@@ -17,6 +18,15 @@ class SearchController < ApplicationController
 
     respond_to do |format|
       format.json { render json: results }
+    end
+  end
+
+  private
+
+  def force_encoding
+    unless params[:q].valid_encoding?
+      params[:q] = params[:q].force_encoding('windows-1251')
+                             .encode('utf-8', replace: nil)
     end
   end
 end
