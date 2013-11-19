@@ -3,15 +3,15 @@
 
 - title "#{type_title}#{' - ' + @selected_category.title if @selected_category}"
 
-.products-list.container-fluid.container-wide.flashable
+.products-list.container.container-wide.flashable
   h1.page-title
     - if @selected_category
       => @selected_category.title
       small = type_title
     - else
       = type_title
-  .row-fluid
-    .product-filters.span3
+  .row
+    .product-filters.col-md-3
       #product-filters.accordion
         = accordion_group "filterByCategory", "Категория" do
           - @categories.each do |category|
@@ -19,7 +19,7 @@
               li.active = category.title
             - else
               li = link_to category.title, self.send(@special_products_path, category.url)
-    .products-list.span9
+    .products-list.col-md-9
       = render 'order/form', order: @order
       - if @products.any?
         .show-options

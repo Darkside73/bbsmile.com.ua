@@ -1,6 +1,6 @@
 = render layout: 'product_info_tabs' do
-  .row-fluid
-    .span6
+  .row
+    .col-md-6
       p.bages
         - if @product.available
           span.text-success
@@ -37,7 +37,7 @@
           tr
             td Теги
             td = @product.tag_list
-    .span6
+    .col-md-6
       h4.muted Характеристики
       - if @product.properties.present?
         == @product.properties

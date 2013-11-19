@@ -1,11 +1,11 @@
 #site-header.hero-unit
   .container: .row
-    .naming.span8
+    .naming.col-md-8
       = image_tag "content/logo.png"
       h1
         ' Интернет-магазин
         small детские товары
-    .contacts.span3
+    .contacts.col-md-3
       .actions
         = link_to '#send-message', class: 'email', title: "Написать нам", data: { toggle: "modal" } do
           i.icon-envelope>
@@ -21,4 +21,4 @@
             | 097 777-37-07
             br
             | 066 717-37-07
-    .span1
+    .col-md-1

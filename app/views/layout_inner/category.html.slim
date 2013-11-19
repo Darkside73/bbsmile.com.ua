@@ -5,7 +5,7 @@
   ' Детские коляски
   small подбор товаров
 
-#category-content.container-fluid.container-wide
+#category-content.container.container-wide
   .subnav data-spy="affix" data-offset-top="60"
     ul.nav.nav-pills
       li: a href="#" title="удалить фильтр"
@@ -20,8 +20,8 @@
       li.pull-right: a href="#"
         i.icon-remove-sign
         | удалить все фильтры
-  .row-fluid
-    .product-filters.span3
+  .row
+    .product-filters.col-md-3
       #product-filters.accordion
         .accordion-group
           .accordion-heading
@@ -67,9 +67,9 @@
             li: a href="#" для всех
             li: a href="#" мальчики
             li.active: a href="#" девочки
-    .products-list.span9
-      .row-fluid
-        .span4
+    .products-list.col-md-9
+      .row
+        .col-md-4
             a.thumbnail href="#"
               = image_tag "content/product_thumb.jpg"
             .caption
@@ -81,7 +81,7 @@
               .price.btn-group
                 a.btn.disabled: span.label 1250 грн.
                 button.btn.btn-success Купить
-        .span4
+        .col-md-4
             a.thumbnail href="#"
               = image_tag "content/product2_thumb.jpg"
             .caption
@@ -93,7 +93,7 @@
               .price.btn-group
                 a.btn.disabled: span.label 1100 грн.
                 button.btn.btn-success Купить
-        .span4
+        .col-md-4
             a.thumbnail href="#"
               = image_tag "content/product3_thumb.jpg"
             .caption
@@ -105,8 +105,8 @@
               .price.btn-group
                 a.btn.disabled: span.label 800 грн.
                 button.btn.btn-success Купить
-      .row-fluid
-        .span4
+      .row
+        .col-md-4
             a.thumbnail href="#"
               = image_tag "content/product4_thumb.jpg"
             .caption
@@ -118,7 +118,7 @@
               .price.btn-group
                 a.btn.disabled: span.label 449 грн.
                 button.btn.btn-success Купить
-        .span4
+        .col-md-4
             a.thumbnail href="#"
               = image_tag "content/product5_thumb.jpg"
             .caption

@@ -4,8 +4,8 @@
   = stylesheet_link_tag 'product'
   = javascript_include_tag 'product'
 
-#product-container.container-fluid.container-wide: .row-fluid
-  .gallery.span4
+#product-container.container.container-wide: .row
+  .gallery.col-md-4
     #modal-gallery.modal.modal-gallery.hide.fade tabindex="-1"
       .modal-header
         a.close data-dismiss="modal"
@@ -29,7 +29,7 @@
         - big_image = asset_path "content/product_full_size_#{Random.new.rand(1...3)}.gif"
         a.thumbnail href="#{big_image}" title="Прогулочная коляска GT3 Completo 2012" data-gallery="gallery"
           = image_tag "content/product_gallery_thumb_#{Random.new.rand(1...3)}.gif"
-  .description.span8
+  .description.col-md-8
     .bages.pull-left
       span.label.label-success Есть в наличии
       | &nbsp;

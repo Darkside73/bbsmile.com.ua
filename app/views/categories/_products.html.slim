@@ -1,11 +1,11 @@
 - products = @products.presence || products
 - products.to_enum.each_slice(3).with_index do |products_by_three, index|
-  .row-fluid.line class="#{'hide' if index > 6}"
+  .row.line class="#{'hide' if index > 6}"
     = render products_by_three
 - rest_products = products.count - 21
 - if rest_products > 0
-  .row-fluid
-    button#show-rest-products.span6.offset3.btn.btn-large
+  .row
+    button#show-rest-products.col-md-6.col-md-offset-3.btn.btn-large
       i.icon-arrow-down>
       ' Показать еще
       b

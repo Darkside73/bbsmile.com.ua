@@ -4,12 +4,12 @@
 - content_for :head do
   = stylesheet_link_tag 'category'
 
-#brand-container.products-list.container-fluid.container-wide.flashable
+#brand-container.products-list.container.container-wide.flashable
   h1.page-title
     => @brand.full_name
     small = @selected_category.title if @selected_category
-  .row-fluid
-    .product-filters.span3
+  .row
+    .product-filters.col-md-3
       #product-filters.accordion
         = accordion_group "filterByCategory", "Категория" do
           - @categories.each do |category|
@@ -17,7 +17,7 @@
               li.active = category.title
             - else
               li = link_to category.title, brand_page_path(@brand.name, category.url)
-    .products-list.span9
+    .products-list.col-md-9
       = render 'order/form', order: @order
       - if @products.any?
         .show-options
@@ -33,5 +33,5 @@
                   | Подробнее о бренде
         = render 'categories/products'
   - if @brand.description.present? && @selected_category.nil?
-    .row-fluid: .page-content.span12
+    .row: .page-content.col-md-12
       == @brand.description

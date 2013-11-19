@@ -1,6 +1,6 @@
 = simple_form_for [:admin, @product] do |f|
-  .row-fluid
-    .span6
+  .row
+    .col-md-6
       = f.simple_fields_for :page do |p|
         = p.input :title, label: 'Заголовок', input_html: { class: 'autogrow' }
         = p.input :name, label: 'Название', input_html: { class: 'autogrow' }
@@ -15,7 +15,7 @@
       - if @product.new_record?
         = f.simple_fields_for :images, @product.images.build do |i|
           = i.input :attachment, label: 'Фото'
-    .span6
+    .col-md-6
       = f.simple_fields_for(:variants, @product.master_variant || @product.variants.new) do |v|
         = v.input :price, label: 'Цена'
         = v.input :price_old, label: 'Старая цена'

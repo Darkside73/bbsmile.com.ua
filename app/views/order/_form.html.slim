@@ -6,13 +6,13 @@
         span.name => product.master_variant.title
         span.price data-price="#{product.price}" = number_to_currency product.price
   .modal-body
-    .row-fluid
+    .row
       = f.simple_fields_for :user do |u|
-        .span6
+        .col-md-6
           = u.input :name, label: "Имя"
           = u.input :phone, label: "Телефон"
           = u.input :email, label: "E-mail"
-        .span6
+        .col-md-6
           = f.input :notes, label: "Дополнительная информация", input_html: { rows: 5 }
           = u.input :subscribed, label: false, inline_label: "хочу получать акционные и скидочные предложения"
     = f.hidden_field :variant_id, value: local_assigns[:product] ? product.master_variant.id : nil

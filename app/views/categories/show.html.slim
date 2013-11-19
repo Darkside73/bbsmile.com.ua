@@ -8,14 +8,14 @@
 - title seo_category_title
 - meta description: seo_category_description, keywords: @category.title.split
 
-#category-content.products-list.container-fluid.container-wide.flashable data-title="#{@category.title}"
+#category-content.products-list.container.container-wide.flashable data-title="#{@category.title}"
   = render 'breadcrumb'
   = render 'selected_filters' if any_filtering?
   h1#products.page-title
     => @category.title
     small подбор товаров
-  .row-fluid
-    .product-filters.span3
+  .row
+    .product-filters.col-md-3
       #product-filters.accordion
         = accordion_group "filterByCategory", "Категория" do
           - category_menu_items.each do |subcategory|
@@ -38,7 +38,7 @@
           = accordion_group "filterByBrand", "Бренды", if: :brands do
             - @category.brands.each do |brand|
               li = link_to_add_brand brand.name
-    .products-list.span9
+    .products-list.col-md-9
       = render 'order/form', order: @order
       - if @products.any?
         .show-options
@@ -65,5 +65,5 @@
           == @category.description
 
     - if @category.leaf? && @category.description.present? && no_filtering?
-      .row-fluid: .page-content.span12
+      .row: .page-content.col-md-12
         == @category.description

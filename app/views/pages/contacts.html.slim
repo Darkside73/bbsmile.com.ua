@@ -1,6 +1,6 @@
 = render layout: 'static_page', locals: { title: 'Контакты' } do
-  .contacts.row-fluid
-    .span4.left
+  .contacts.row
+    .col-md-4.left
       .phone
         i.icon-phone.pull-left>
         p 056 788-23-83
@@ -11,7 +11,7 @@
         i.icon-mobile-phone.pull-left>
         p 066 717-37-07
 
-    .span4.center
+    .col-md-4.center
       .vk
         i.icon-vk.pull-left>
         p: a href="http://vk.com/babysmile_ua" Вконтакте
@@ -22,7 +22,7 @@
         i.icon-twitter.pull-left>
         p: a href="http://twitter.com/babysmileua" Twitter
 
-    .span4.right
+    .col-md-4.right
       .mail
         i.icon-envelope-alt.pull-left>
         p = mail_to 'smile@bbsmile.com.ua'

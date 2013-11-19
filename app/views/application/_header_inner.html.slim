@@ -1,10 +1,10 @@
 #site-header
-  .container-fluid.container-wide: .row-fluid
-    .span3
+  .container.container-wide: .row
+    .col-md-3
       = link_to image_tag("content/logo.png"), root_url, title: "На главную"
-    .span6
+    .col-md-6
       = render 'form_search'
-    .contacts.span3
+    .contacts.col-md-3
       .actions
         = link_to '#send-message', class: 'email', title: "Написать нам", data: { toggle: "modal" } do
           i.icon-envelope>
