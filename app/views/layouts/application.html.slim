@@ -19,7 +19,7 @@ html
 
   body *body_attributes
     = render 'metrika'
-    #main-menu.navbar.navbar-fixed-top
+    #main-menu.navbar.navbar-fixed-top.navbar-default role="navigation"
       = yield :main_menu
     = content_for?(:header) ? yield(:header) : render('header')
     = yield
