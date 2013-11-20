@@ -23,7 +23,7 @@ html
       = yield :main_menu
     = content_for?(:header) ? yield(:header) : render('header')
     = yield
-    a.go-top href="#" title="К началу страницы": i.icon-long-arrow-up
+    a.go-top href="#" title="К началу страницы": i.fa.fa-long-arrow-up
     .footer: .container
       = yield :footer
     = javascript_include_tag 'application'

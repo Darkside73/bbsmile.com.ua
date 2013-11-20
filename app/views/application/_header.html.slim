@@ -8,16 +8,21 @@
     .contacts.col-md-3
       .actions
         = link_to '#send-message', class: 'email', title: "Написать нам", data: { toggle: "modal" } do
-          i.icon-envelope>
+          i.fa.fa-envelope>
         a.phone.active href="#" title="Позвонить нам"
-          i.icon-phone>
+          i.fa.fa-phone>
         a.siteheart title="Открыть чат - онлайн поддержка" href="https://siteheart.com/webconsultation/549967?" target="siteheart_sitewindow_549967" onclick="o=window.open;o('https://siteheart.com/webconsultation/549967?', 'siteheart_sitewindow_549967', 'width=550,height=400,top=30,left=30,resizable=yes'); return false;"
-          i.icon-comments-alt
+          i.fa.fa-comments-o
         .popover.bottom.visible
           .arrow
           .popover-content
-            | 056 788-23-83
-            br
-            | 097 777-37-07
-            br
-            | 066 717-37-07
+            ul.fa-ul
+              li
+                i.fa.fa-li.fa-phone
+                | 056 788-23-83
+              li
+                i.fa.fa-li.fa-mobile
+                | 097 777-37-07
+              li
+                i.fa.fa-li.fa-mobile
+                | 066 717-37-07

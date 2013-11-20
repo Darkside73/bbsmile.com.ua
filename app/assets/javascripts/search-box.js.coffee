@@ -3,7 +3,7 @@ $ ->
   results = {}
 
   toggleSearchLoader = ->
-    $('.form-search i.search').toggleClass('icon-search icon-spinner icon-spin')
+    $('.form-search i.search').toggleClass('fa-search fa-spinner fa-spin')
 
   currentQuery = false
 

@@ -1,5 +1,5 @@
 - content_for :box_actions do
-  = link_to '', [:edit, :admin, @category], class: "icon-edit", title: "Редактировать категорию"
+  = link_to '', [:edit, :admin, @category], class: "fa fa-edit", title: "Редактировать категорию"
 
 = render layout: 'boxed', locals: { title: @category.title } do
 

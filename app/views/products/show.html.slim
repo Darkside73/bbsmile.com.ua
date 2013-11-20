@@ -12,7 +12,7 @@
 - content_for :back_button do
   - if request.referer
     = link_to :back, class: "btn product-back", title: 'Назад', data: { title: @product.title } do
-      i.icon-long-arrow-left
+      i.fa.fa-long-arrow-left
 
 #product-container.container.container-wide.flashable data-title="#{@product.title}" itemscope="itemscope" itemtype="http://data-vocabulary.org/Product"
   = render 'breadcrumb', category: @product.category
@@ -54,7 +54,7 @@
                 span.text-success> Доставка бесплатно
               - else
                 span.text-warning> Подробнее о доставке
-              i.icon-info-sign
+              i.fa.fa-info-sign
         - else
           p.muted: strong под заказ
 

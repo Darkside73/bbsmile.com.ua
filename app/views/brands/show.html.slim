@@ -29,7 +29,7 @@
               li = link_to 'Показать все', brand_page_path(@brand.name), class: 'btn'
             - if @brand.description.present? && @selected_category.nil?
                 button.more.btn
-                  i.icon-info-sign>
+                  i.fa.fa-info-sign>
                   | Подробнее о бренде
         = render 'categories/products'
   - if @brand.description.present? && @selected_category.nil?

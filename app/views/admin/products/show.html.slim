@@ -4,11 +4,11 @@
       p.bages
         - if @product.available
           span.text-success
-            i.icon-check>
+            i.fa.fa-check>
             | доступен для заказа
         - else
           span.muted
-            i.icon-minus-sign>
+            i.fa.fa-minus-sign>
             | нет на складе
         - if @product.novelty
           span.label.label-info новинка

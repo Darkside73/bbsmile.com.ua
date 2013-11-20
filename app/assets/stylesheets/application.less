@@ -24,16 +24,13 @@ a.thumbnail:hover {
   border-color: @purple;
 }
 
-a[class*=" icon-"], a[class^="icon-"], a[class^="icon-"]:hover, a[class*=" icon-"]:hover,
-a[class^="icon-"]:active, a[class*=" icon-"]:active, a[class^="icon-"]:focus, a[class*=" icon-"]:focus {
-  text-decoration: none;
-}
-a:hover i { text-decoration: none; }
+a.fa, a.fa:hover, a.fa:active, a.fa:focus { text-decoration: none; }
+a:hover i.fa { text-decoration: none; }
 
-a[class^="icon-"], a[class*=" icon-"], a i[class^="icon-"]:before, a i[class*=" icon-"]:before,
-a[class^="icon-"]:before, a[class*=" icon-"]:before {
-  cursor: pointer;
-}
+// a[class^="icon-"], a[class*=" icon-"], a i[class^="icon-"]:before, a i[class*=" icon-"]:before,
+// a[class^="icon-"]:before, a[class*=" icon-"]:before {
+//   cursor: pointer;
+// }
 
 .nav.nav-pills .btn {
   margin-bottom: 0;
@@ -92,9 +89,10 @@ a[class^="icon-"]:before, a[class*=" icon-"]:before {
 }
 
 #site-header {
-  background: image-url("layout/bg.png") repeat-x;
+  background: image-url("layout/bg.png") repeat;
   .contacts {
     .actions {
+      text-align: center;
       .social-contact-links(@pink, white);
       a.active {
         i { .box-shadow(0 0 4px 5px @pinkLight); }
@@ -105,19 +103,28 @@ a[class^="icon-"]:before, a[class*=" icon-"]:before {
         outline: none;
       }
       .popover {
-        width: 188px;
-        margin: 10px 0 -10px 0px;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 10px;
+        margin-bottom: -10px;
         padding: 0;
         .box-shadow(-5px 7px 10px -3px fadeout(#000, 85%));
         color: @gray;
         text-shadow: 0px 1px 0px @gray-light;
         letter-spacing: normal;
-        font-size: 18px;
         line-height: 30px;
         text-align: center;
         &.visible { display: block; position: relative; }
         .popover-title { display: none; }
-        .popover-content { white-space: nowrap; }
+        .popover-content { white-space: nowrap; padding-bottom: 4px; }
+        .fa-ul {
+          margin-left: 28px;
+          .fa-li {
+            top: 6px;
+            left: -32px;
+            color: @gray;
+          }
+        }
       }
     }
   }

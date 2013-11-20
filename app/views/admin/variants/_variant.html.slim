@@ -10,11 +10,11 @@ tr.item*{id: dom_id(variant)} data={sort_url: sort_admin_variant_path(variant)}
     / # TODO move to partial
     - if variant.available
       span.text-success
-        i.icon-check>
+        i.fa.fa-check>
         | доступен
     - else
       span.muted
-        i.icon-minus-sign>
+        i.fa.fa-minus-sign>
         | нет на складе
   td.thumb
     = image_tag variant.image.url(:thumb) if variant.image.present?

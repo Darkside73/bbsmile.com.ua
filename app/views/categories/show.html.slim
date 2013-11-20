@@ -52,7 +52,7 @@
               = link_to_sortable_price "Сначала дороже",  "desc"
               - if @category.description.present? && no_filtering?
                 button.more.btn
-                  i.icon-info-sign>
+                  i.fa.fa-info-sign>
                   | Подробнее о категории
         = render 'products'
       - elsif @category.leaf?

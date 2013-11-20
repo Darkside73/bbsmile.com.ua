@@ -12,15 +12,15 @@ table.table.table-striped
         td
           - if variant.price_changed?
             span.text-error> = variant.price_was
-            i.icon-long-arrow-right>
+            i.fa.fa-long-arrow-right>
             span.text-success = variant.price
         td
           - if variant.price_old_changed?
             span.text-error> = variant.price_old_was
-            i.icon-long-arrow-right>
+            i.fa.fa-long-arrow-right>
             span.text-success> = variant.price_old
         td
           - if variant.available_changed?
             span.text-error> = variant.available_was ? 'да' : 'нет'
-            i.icon-long-arrow-right>
+            i.fa.fa-long-arrow-right>
             span.text-success = variant.available ? 'да' : 'нет'

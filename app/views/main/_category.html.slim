@@ -3,6 +3,6 @@
   .subitems
     - subcategories.keys.first(3).each do |subcategory|
       h4
-        i.icon-angle-right.icon-small
+        i.fa.fa-angle-right.fa.fa-small
         = link_to subcategory
     = link_to 'Смотреть все', category, class: 'btn btn-small view-all', data: { title: category.title }

@@ -12,15 +12,15 @@ table.table.table-striped
         td
           - if product.novelty_changed?
             span.text-error> = product.novelty_was ? 'да' : 'нет'
-            i.icon-long-arrow-right>
+            i.fa.fa-long-arrow-right>
             span.text-success = product.novelty ? 'да' : 'нет'
         td
           - if product.hit_changed?
             span.text-error> = product.hit_was ? 'да' : 'нет'
-            i.icon-long-arrow-right>
+            i.fa.fa-long-arrow-right>
             span.text-success = product.hit ? 'да' : 'нет'
         td
           - if product.age_changed?
             span.text-error> = render 'age_range', range: product.age_was
-            i.icon-long-arrow-right>
+            i.fa.fa-long-arrow-right>
             span.text-success> = render 'age_range', range: product.age
