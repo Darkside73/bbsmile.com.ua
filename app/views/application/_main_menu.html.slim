@@ -1,20 +1,30 @@
-li.dropdown*unless_catalog_active_attr
-  a.dropdown-toggle href="/catalog" data-toggle="dropdown" itemprop="url"
-    span> itemprop="name" Каталог
-    b.caret
-  = render_cell :catalog_menu, :display
-li*unless_url_active_attr('shipping')
-  a itemprop="url" href="/shipping": span itemprop="name" Доставка и оплата
-li*unless_url_active_attr('warranty')
-  a itemprop="url" href="/warranty": span itemprop="name" Гарантия
-li*unless_url_active_attr('contacts')
-  a itemprop="url" href="/contacts": span itemprop="name" Контакты
-li*unless_url_active_attr('about')
-  a itemprop="url" href="/about": span itemprop="name" О нас
-li.promo
-  a itemprop="url" href="/promotions"
-    i.fa.fa-gift.red>
-    span itemprop="name" Акции
-/ li.cart: a href="#"
-/   | Корзина&nbsp;
-/   span.badge 2
+.container
+  .navbar-header
+    button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-collapse"
+      span.sr-only Показать меню
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    a.navbar-brand.visible-xs href="#" Babysmile
+  .navbar-collapse.collapse
+    ul.nav.navbar-nav itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement"
+      li.dropdown*unless_catalog_active_attr
+        a.dropdown-toggle href="/catalog" data-toggle="dropdown" itemprop="url"
+          span> itemprop="name" Каталог
+          b.caret
+        = render_cell :catalog_menu, :display
+      li*unless_url_active_attr('shipping')
+        a itemprop="url" href="/shipping": span itemprop="name" Доставка и оплата
+      li*unless_url_active_attr('warranty')
+        a itemprop="url" href="/warranty": span itemprop="name" Гарантия
+      li*unless_url_active_attr('contacts')
+        a itemprop="url" href="/contacts": span itemprop="name" Контакты
+      li*unless_url_active_attr('about')
+        a itemprop="url" href="/about": span itemprop="name" О нас
+      li.promo
+        a itemprop="url" href="/promotions"
+          i.fa.fa-gift.red>
+          span itemprop="name" Акции
+      / li.cart: a href="#"
+      /   | Корзина&nbsp;
+      /   span.badge 2

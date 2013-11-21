@@ -14,7 +14,7 @@
     = link_to :back, class: "btn product-back", title: 'Назад', data: { title: @product.title } do
       i.fa.fa-long-arrow-left
 
-#product-container.container.container-wide.flashable data-title="#{@product.title}" itemscope="itemscope" itemtype="http://data-vocabulary.org/Product"
+#product-container.container.flashable data-title="#{@product.title}" itemscope="itemscope" itemtype="http://data-vocabulary.org/Product"
   = render 'breadcrumb', category: @product.category
   .row
     .gallery.col-md-4

@@ -1,6 +1,10 @@
 body {
   #sh_button {
     top: 280px !important;
+    .responsive-visibility();
+    @media (max-width: @screen-xs-max) {
+      .responsive-invisibility();
+    }
   }
   .sh_btn {
     background: @chatScheme;

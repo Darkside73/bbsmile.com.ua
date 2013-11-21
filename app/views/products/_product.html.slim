@@ -8,10 +8,8 @@
         br
         small = product.brand.full_name
   - if product.price
-    - if product.price_old
-      .price
-    .price.btn-group
-      a.btn.disabled
+    .price
+      - if product.price_old
         span.old.medium => number_to_currency product.price_old
-        span.label = number_to_currency product.price
+      span.label => number_to_currency product.price
       button.quick-shop.btn.btn-success href="#new_order" data={toggle: "modal", variant_id: product.master_variant.id, dialog_title: "<span class='name'>#{product.title}</span> <span class='price' data-price='#{product.price}'>#{number_to_currency product.price}</span>"} Купить

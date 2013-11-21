@@ -1,14 +1,14 @@
 #site-header
-  .container.container-wide: .row
-    .col-md-3
+  .container: .row
+    .col-md-3.hidden-xs
       = link_to image_tag("content/logo.png"), root_url, title: "На главную"
-    .col-md-6
+    .col-md-6.col-sm-6.col-xs-12
       = render 'form_search'
-    .contacts.col-md-3
+    .contacts.col-md-3.col-sm-6.col-xs-12
       .actions
         = link_to '#send-message', class: 'email', title: "Написать нам", data: { toggle: "modal" } do
           i.fa.fa-envelope>
-        a.phone href="#" title="Позвонить нам" rel="popover" data-placement="bottom" data-content="056 788-23-83<br>097 777-37-07<br>066 717-37-07" data-html="true" data-animation="fade"
+        a.phone href="#" title="Позвонить нам" rel="popover" data-placement="bottom" data-content="<ul class='fa-ul'><li><i class='fa fa-li fa-phone'/>056 788-23-83</li><li><i class='fa fa-li fa-mobile'/>097 777-37-07</li><li><i class='fa fa-li fa-mobile'/>066 717-37-07</li>" data-html="true" data-animation="fade"
           i.fa.fa-phone> title="Позвонить нам"
         a.siteheart title="Открыть чат - онлайн-поддержка" href="https://siteheart.com/webconsultation/549967?" target="siteheart_sitewindow_549967" onclick="o=window.open;o('https://siteheart.com/webconsultation/549967?', 'siteheart_sitewindow_549967', 'width=550,height=400,top=30,left=30,resizable=yes'); return false;"
           i.fa.fa-comments-o

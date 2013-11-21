@@ -1,12 +1,4 @@
-- content_for :main_menu do
-  .navbar-inner: .container.container-wide: ul.nav itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement"
-    = render 'main_menu'
-
 - content_for :header do
   = render 'header_inner'
 
-- content_for :footer do
-  .container-wide: .row
-    = render 'footer'
-
-= render :file => 'layouts/application'
+= render file: 'layouts/application'

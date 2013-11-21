@@ -12,7 +12,7 @@
 @import "siteheart-skin";
 
 body {
-  min-width: @minWidth;
+  // min-width: @minWidth;
 }
 
 .page-content a, a.ease {
@@ -73,9 +73,9 @@ a:hover i.fa { text-decoration: none; }
 }
 
 #main-menu {
-  // min-width: @minWidth;
-  .navbar-inner {
-    padding: 0 20px;
+  .container { padding-left: 0; }
+  .navbar-brand, .navbar-collapse {
+    padding-left: 30px;
   }
   li.cart {
     background-color: @pinkLight;
@@ -103,7 +103,7 @@ a:hover i.fa { text-decoration: none; }
         outline: none;
       }
       .popover {
-        width: 80%;
+        width: 208px;
         margin: 0 auto;
         margin-top: 10px;
         margin-bottom: -10px;
@@ -129,7 +129,10 @@ a:hover i.fa { text-decoration: none; }
     }
   }
   h1 {
-    small { color: @pink }
+    small {
+      color: @pink;
+      white-space: nowrap;
+    }
   }
   border-bottom: 1px solid @dropdown-divider-bg;
 }
@@ -239,6 +242,7 @@ a.go-top {
 }
 
 .footer {
+  white-space: nowrap;
   .linear-gradient-top(@yellowLight, fadeout(@yellow, 85%), 0%, fadeout(@yellow, 95%), 100%);
   border-top: 1px solid darken(@yellowLight, 10%);
   .box-shadow(0 -1px 10px fadeout(@brown, 80%));
@@ -246,13 +250,16 @@ a.go-top {
   padding: 25px 0;
   margin-top: 50px;
   color: @gray;
-
   a {
     color: @brownDark;
   }
-
-  ul { .nav-stacked-simple }
-
+  .links {
+    padding-left: 0;
+  }
+  ul {
+    .nav-stacked-simple;
+    padding-left: 0;
+  }
   .social {
     .social-contact-links;
   }

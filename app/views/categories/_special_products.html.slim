@@ -3,5 +3,5 @@
     = render 'products', products: @category.novelties
   - tabs.pane "Скидки", id: 'discounts', icon: 'fire', class: 'fade' do
     = render 'products', products: @category.discounts
-  - tabs.pane "Хиты продаж", id: 'hits', icon: 'heart-empty', class: 'fade' do
+  - tabs.pane "Хиты продаж", id: 'hits', icon: 'heart-o', class: 'fade' do
     = render 'products', products: @category.hits
