@@ -1,32 +1,42 @@
-// @media (max-width: 960px) {
-//   #main-menu {
-//     position: relative;
-//     margin-bottom: -40px;
-//   }
-//   #category-content .subnav.affix {
-//     position: static;
-//     top: 0;
-//     margin-bottom: 20px;
-//   }
-//   .landing-nav.subnav.affix {
-//     position: static;
-//     top: 0;
-//     background: transparent !important;
-//     box-shadow: none !important;
-//     .nav {
-//       padding: 0 !important;
-//     }
-//   }
-// }
+@import "twitter/bootstrap/variables";
 
-// @media (max-width: 960px) {
-//   .landing-nav.subnav {
-//     padding-left: 10px;
-//   }
-//   .landing-container {
-//     padding-left: 10px;
-//   }
-//    {
-//     padding-left: 30px;
-//   }
-// }
+@media (max-width: @screen-md-max) {
+  #main-menu {
+    position: relative;
+    margin-bottom: -40px;
+  }
+  #site-header {
+    .naming {
+      text-align: center;
+      .logo {
+        margin: 0 auto;
+      }
+    }
+  }
+  #category-content .subnav.affix {
+    position: static;
+    top: 0;
+    margin-bottom: 20px;
+  }
+  .landing-nav.subnav.affix {
+    position: static;
+    top: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+    .nav {
+      padding: 0 !important;
+    }
+  }
+  .landing-nav.subnav {
+    padding-left: 10px;
+  }
+  .landing-container {
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  .landing-nav .nav-pills > li {
+    float: none;
+  }
+}
