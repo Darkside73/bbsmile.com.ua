@@ -15,8 +15,8 @@
     => @category.title
     small подбор товаров
   .row
-    .product-filters.col-md-3
-      #product-filters.accordion
+    .product-filters.col-md-3.col-sm-3.col-xs-12
+      .panel-group.row
         = accordion_group "filterByCategory", "Категория" do
           - category_menu_items.each do |subcategory|
             - if @category.url == subcategory.url
@@ -38,21 +38,21 @@
           = accordion_group "filterByBrand", "Бренды", if: :brands do
             - @category.brands.each do |brand|
               li = link_to_add_brand brand.name
-    .products-list.col-md-9
+    .products-list.col-md-9.col-sm-9.col-xs-12
       = render 'order/form', order: @order
       - if @products.any?
         .show-options
           ul.nav.nav-pills
             li
-              .btn.disabled
+              button.btn.btn-default.disabled
                 ' Всего товаров:
                 strong = @products.count
             - if @products.count > 1
               = link_to_sortable_price "Сначала дешевле", "asc"
               = link_to_sortable_price "Сначала дороже",  "desc"
               - if @category.description.present? && no_filtering?
-                button.more.btn
-                  i.fa.fa-info-sign>
+                button.more.btn.btn-default
+                  i.fa.fa-info-circle>
                   | Подробнее о категории
         = render 'products'
       - elsif @category.leaf?
@@ -64,6 +64,6 @@
         .page-content
           == @category.description
 
-    - if @category.leaf? && @category.description.present? && no_filtering?
-      .row: .page-content.col-md-12
-        == @category.description
+  - if @category.leaf? && @category.description.present? && no_filtering?
+    .container.page-content
+      == @category.description

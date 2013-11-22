@@ -35,14 +35,14 @@ button.more {
       }
     }
     &.affix {
-      top:40px; left: 0; margin: 0; z-index: 99; //padding-left: 3px;
+      top:50px; left: 0; margin: 0; z-index: 99;
       .nav {
         max-width: 1170px; margin: 0 auto; border: none;
       }
     }
   }
   button.more {
-    margin: 2px 0 0 8px;
+    margin-left: 8px;
   }
   .products-list {
     .line {
@@ -51,31 +51,35 @@ button.more {
     }
     .caption { padding-left: 5px; }
     .show-options {
+      margin-bottom: 15px;
       .nav-pills {
-        .btn.disabled { margin:2px 15px; }
+        li > a {
+          padding-top: 7px;
+          padding-bottom: 7px;
+        }
+        .btn.disabled { margin: 0 15px 0 0; }
       }
     }
   }
 
   .product-filters {
-    .accordion {
-      .box-shadow(1px 1px 3px 0 @dropdown-divider-bg);
-      background: @yellowLight;
-      hr { margin: 0; }
+    .panel-group {
       ul {
         .nav-stacked-simple;
         a { color: @gray; }
+        padding-left: 0;
         .active, .active a {
           color: @pinkDark;
         }
       }
     }
-    .accordion-group { border: none; margin-bottom: 0; }
-    .accordion-heading {
-      a { color: @purple; font-weight: bold; text-transform: uppercase; font-size: 11px; }
+    .panel {
+      margin-bottom: 20px;
     }
-    .accordion-body {
-      background: white;
+    .panel-default > .panel-heading {
+      background: @yellowLight;
+      padding: 7px 15px;
+      a { color: @purple; font-weight: bold; text-transform: uppercase; font-size: 11px; }
     }
   }
 }

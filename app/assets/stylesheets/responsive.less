@@ -35,8 +35,28 @@
   }
 }
 
+@media (max-width: @screen-sm-max) {
+  .products-list {
+    .show-options .nav-pills > li {
+      float: none;
+    }
+    .product {
+      margin-top: 20px;
+    }
+  }
+}
 @media (max-width: @screen-xs-max) {
-  .landing-nav .nav-pills > li {
+  .nav-pills > li {
     float: none;
+  }
+  #main-menu {
+    .navbar-brand, .navbar-collapse {
+      padding-left: 30px;
+    }
+  }
+  .product-filters {
+    .panel {
+      // float:left;
+    }
   }
 }

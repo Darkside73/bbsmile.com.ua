@@ -1,18 +1,16 @@
 - category ||= @category
 - unless category.is_root?
-  ul.breadcrumb
+  ol.breadcrumb
     - if content_for? :back_button
       li = yield :back_button
     - category.ancestors.visible.includes(:page).each do |ancestor|
       li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"
         = link_to "/#{ancestor.url}", itemprop: 'url' do
           span itemprop="title" = ancestor.name
-        span.divider: i.fa.fa-caret-right
     - if @product.present?
       li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"
         = link_to "/#{category.url}", itemprop: 'url' do
           span itemprop="title" = category.name
-        span.divider: i.fa.fa-caret-right
       li.active = @product.title
     - else
       li.active = category.name

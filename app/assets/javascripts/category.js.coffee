@@ -1,6 +1,6 @@
 $ ->
   $('#show-rest-products').click (e) ->
-    $('.products-list .line.hide').fadeIn()
+    $('.products-list .line.hide').removeClass('hide')
     $(@).hide()
 
   $('button.more').click (e) ->
