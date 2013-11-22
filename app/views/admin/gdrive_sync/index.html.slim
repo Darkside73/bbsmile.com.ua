@@ -5,5 +5,5 @@
         tr
           td = category.title
           td
-            => link_to 'Загрузить из прайса', admin_sync_action_path(params[:what], :diff, category), class: 'btn'
-            =  link_to 'Выгрузить в прайс', admin_sync_action_path(params[:what], :load, category), class: 'btn', data: { confirm: 'Cуществующий прайс будет удален. Продолжить?' }
+            => link_to 'Загрузить из прайса', admin_sync_action_path(params[:what], :diff, category), class: 'btn btn-default'
+            =  link_to 'Выгрузить в прайс', admin_sync_action_path(params[:what], :load, category), class: 'btn btn-default', data: { confirm: 'Cуществующий прайс будет удален. Продолжить?' }

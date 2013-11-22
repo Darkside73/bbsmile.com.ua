@@ -22,7 +22,7 @@
       - if @products.any?
         .show-options
           ul.nav.nav-pills
-            li: .btn.disabled
+            li: .btn.btn-default.disabled
               ' Всего товаров:
               strong = @products.count
             - if @selected_category

@@ -1,6 +1,6 @@
 = render layout: 'boxed', locals: {title: "#{@category.title} - cинхронизация #{params[:what] == 'prices' ? 'цен' : 'товаров'}"} do
   p
-    = link_to :back, class: 'btn' do
+    = link_to :back, class: 'btn btn-default' do
       i.fa.fa-arrow-left>
       | Назад
   = tabs do |tabs|
