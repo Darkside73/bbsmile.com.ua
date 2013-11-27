@@ -5,3 +5,6 @@ $ ->
 
   $('button.more').click (e) ->
     $.scrollTo('.page-content', 500, offset: -40)
+
+  $('[data-toggle=offcanvas]').click (e) ->
+    $('.row-offcanvas').toggleClass 'active'
