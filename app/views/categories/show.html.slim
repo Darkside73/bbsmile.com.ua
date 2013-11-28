@@ -44,9 +44,9 @@
         .show-options
           ul.nav.nav-pills
             li
-              button.visible-xs.btn.btn-primary.btn-xs type="button" data-toggle="offcanvas"
-                i.fa.fa-chevron-left
-                | Показать фильтры
+              button.visible-xs.btn.btn-primary data-toggle="offcanvas"
+                i.fa.fa-chevron-left>
+                span Показать фильтры
               button.btn.btn-default.disabled
                 ' Всего товаров:
                 strong = @products.count
