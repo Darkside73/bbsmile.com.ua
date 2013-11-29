@@ -16,8 +16,8 @@
       strong.text-warning> #{promo_days_remain}&nbsp;#{Russian.p promo_days_remain, 'день', 'дня', 'дней'}
       a.small.more href="/promotions" подробнее об условиях
 
-    a.btn.btn-info.btn-large.shopping.promo-forget class="#{'scroll-to' if @promo}" href="/detskie-krovatki?brands[]=Верес&brands[]=Gandylyan#products" Начать покупки
-    a.pull-right.muted.just-close.promo-forget href="#" data-dismiss="alert" Не интересно, просто закрыть
+    a.btn.btn-info.btn-lg.shopping.promo-forget class="#{'scroll-to' if @promo}" href="/detskie-krovatki?brands[]=Верес&brands[]=Gandylyan#products" Начать покупки
+    a.pull-right.text-muted.just-close.promo-forget href="#" data-dismiss="alert" Не интересно, просто закрыть
 
 - if @category.id == 15 && !cookies['promo-2013-discount-viewed']
   #discount-promo.category-offer.alert.alert-info
@@ -33,5 +33,5 @@
       strong.text-warning> #{promo_days_remain}&nbsp;#{Russian.p promo_days_remain, 'день', 'дня', 'дней'}
       a.small.more href="/promotions" подробнее об условиях
 
-    a.btn.btn-info.btn-large.shopping.scroll-to.promo-forget href="/duetyi-krovat-komod?brands[]=Верес" Начать покупки
-    a.pull-right.muted.just-close.promo-forget href="#" data-dismiss="alert" Не интересно, просто закрыть
+    a.btn.btn-info.btn-lg.shopping.scroll-to.promo-forget href="/duetyi-krovat-komod?brands[]=Верес" Начать покупки
+    a.pull-right.text-muted.just-close.promo-forget href="#" data-dismiss="alert" Не интересно, просто закрыть

@@ -13,14 +13,14 @@ tr.item*{id: dom_id(variant)} data={sort_url: sort_admin_variant_path(variant)}
         i.fa.fa-check>
         | доступен
     - else
-      span.muted
+      span.text-muted
         i.fa.fa-minus-sign>
         | нет на складе
   td.thumb
     = image_tag variant.image.url(:thumb) if variant.image.present?
   td
     p: strong.text-info = variant.price
-    p: span.old.muted title="старая цена" = variant.price_old
+    p: span.old.text-muted title="старая цена" = variant.price_old
   td
     => link_to 'Редактировать', [:edit, :admin, variant], class: 'edit btn btn-info'
     =  link_to 'Удалить', admin_variant_path(variant), method: :delete, class: 'btn btn-warning'
