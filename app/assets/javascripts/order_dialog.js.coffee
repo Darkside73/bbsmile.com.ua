@@ -19,7 +19,7 @@ class @OrderDialog
     @bind()
 
   setTitle: (title) ->
-    $('> .modal-header h3', @dialog).html title
+    $('.modal-title', @dialog).html title
     @
 
   setVariantId: (id) ->

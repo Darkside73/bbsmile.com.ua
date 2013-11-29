@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/Darkside73/bootstrap-components-helpers.git
-  revision: 7975e6e15fe450eec137bd415573936bd6dc3941
+  revision: a95305da1709097180f68d33f5365d6b3e861046
   specs:
-    bootstrap-components-helpers (0.0.3)
+    bootstrap-components-helpers (0.0.7)
       actionpack (>= 3.2.0)
 
 GEM
