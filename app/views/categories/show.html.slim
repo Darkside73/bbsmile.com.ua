@@ -16,7 +16,7 @@
     small подбор товаров
   .row.row-offcanvas.row-offcanvas-left
     .product-filters.col-md-3.col-sm-3.col-xs-6.sidebar-offcanvas
-      .panel-group.row
+      .panel-group
         = accordion_group "filterByCategory", "Категория" do
           - category_menu_items.each do |subcategory|
             - if @category.url == subcategory.url
