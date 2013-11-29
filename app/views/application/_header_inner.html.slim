@@ -3,7 +3,7 @@
     .col-md-3.hidden-xs.naming
       = link_to image_tag("content/logo.png", class: 'logo'), root_url, title: "На главную"
     .col-md-6.col-sm-6.col-xs-12
-      = render 'form_search'
+      = render 'form_search', inner: true
     .contacts.col-md-3.col-sm-6.col-xs-12
       .actions
         = link_to '#send-message', class: 'email', title: "Написать нам", data: { toggle: "modal" } do

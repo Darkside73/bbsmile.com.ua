@@ -1,6 +1,7 @@
-form.form-search.text-center
-  input.input-xlarge.search-query type="text" data-provide="typeahead" placeholder="быстрый поиск товара" autocomplete="off" data-page="#{current_page}"
-  i.search.fa.fa-search
-  p.example.text-center
-    ' например:
-    em: a href="" = suggest_search_sample
+form.form-search.text-center.row role="form"
+  div class="col-md-#{inner ? 8 : 5} col-md-offset-#{inner ? 2 : 4} #{'col-sm-8 col-sm-offset-2' unless inner}"
+    input.form-control.search-query type="text" data-provide="typeahead" placeholder="быстрый поиск товара" autocomplete="off" data-page="#{current_page}"
+    i.search.fa.fa-search
+    p.example.text-center
+      ' например:
+      em: a href="" = suggest_search_sample
