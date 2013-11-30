@@ -66,17 +66,17 @@ class @OrderDialog
       attribute = "order_#{attribute.replace('.', '_')}"
       control = $(".#{attribute}", @dialog)
 
-      span = if $('> span.help-inline', control).length
-        $('> span.help-inline', control)
+      span = if $('span.help-inline', control).length
+        $('span.help-inline', control)
       else
-        $('<span class="help-inline"/>').appendTo $('> .controls', control)
+        $('<span class="help-inline text-danger"/>').appendTo $('.controls', control)
 
-      control.addClass 'error'
+      control.addClass 'has-error'
       span.text messages.join(', ')
 
   clearErrors: ->
-    $('.control-group.error', @dialog).each ->
-      $(@).removeClass 'error'
+    $('.form-group.has-error', @dialog).each ->
+      $(@).removeClass 'has-error'
       $('span.help-inline', @).remove()
 
   showFlashMessagesFrom: (data) ->
