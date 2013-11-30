@@ -15,7 +15,7 @@
     => @category.title
     small подбор товаров
   .row.row-offcanvas.row-offcanvas-left
-    .product-filters.col-md-3.col-sm-3.col-xs-6.sidebar-offcanvas
+    .product-filters.col-md-3.col-sm-4.col-xs-8.sidebar-offcanvas
       .panel-group
         = accordion_group "filterByCategory", "Категория" do
           - category_menu_items.each do |subcategory|
@@ -38,7 +38,7 @@
           = accordion_group "filterByBrand", "Бренды", if: :brands do
             - @category.brands.each do |brand|
               li = link_to_add_brand brand.name
-    .products-list.col-md-9.col-sm-9.col-xs-12
+    .products-list.col-md-9.col-sm-8.col-xs-12
       = render 'order/form', order: @order
       - if @products.any?
         .show-options
