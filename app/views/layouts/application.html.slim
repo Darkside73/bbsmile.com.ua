@@ -27,6 +27,7 @@ html
     .footer: .container
       = render 'footer'
     = javascript_include_tag 'application'
+    = yield :modals
     = yield :js_footer
     = render 'contacts/form'
     #chat = render 'siteheart'

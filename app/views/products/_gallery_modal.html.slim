@@ -1,17 +1,25 @@
-.modal.modal-gallery.hide.fade tabindex="-1" id="#{id}"
-  .modal-header
-    a.close data-dismiss="modal"
-      i.fa.fa-remove
-    h3.modal-title
-    strong.price = local_assigns.has_key?(:product) ? number_to_currency(product.price) : ''
-  .modal-body: .modal-image
-  .modal-footer
-    a.btn.btn-success.modal-play.modal-slideshow data-slideshow="3000"
-      | Слайдшоу&nbsp;&nbsp;
-      i.fa.fa-play.fa.fa-white
-    a.btn.btn-info.modal-prev
-      i.fa.fa-arrow-left.fa.fa-white
-      | &nbsp;&nbsp;Назад
-    a.btn.btn-primary.modal-next
-      | Вперед&nbsp;&nbsp;
-      i.fa.fa-arrow-right.fa.fa-white
+#blueimp-gallery.blueimp-gallery.blueimp-gallery-controls
+  .slides
+  h3.title
+  a.prev ‹
+  a.next ›
+  a.close ×
+  a.play-pause
+  ol.indicator
+  .modal.modal-gallery.fade tabindex="-1"
+    .modal-dialog: .modal-content
+      .modal-header
+        a.close data-dismiss="modal" &times;
+        h4.modal-title
+        strong.price = local_assigns.has_key?(:product) ? number_to_currency(product.price) : ''
+      .modal-body.next
+      .modal-footer
+        a.btn.btn-success.modal-play.modal-slideshow data-slideshow="3000"
+          | Слайдшоу&nbsp;&nbsp;
+          i.fa.fa-play.fa.fa-white
+        a.btn.btn-info.modal-prev
+          i.fa.fa-arrow-left.fa.fa-white
+          | &nbsp;&nbsp;Назад
+        a.btn.btn-primary.modal-next
+          | Вперед&nbsp;&nbsp;
+          i.fa.fa-arrow-right.fa.fa-white

@@ -9,6 +9,9 @@
     $ ->
       _gaq.push ['_trackEvent', 'Товар', 'Просмотреть', $('#product-container').data('title'), 0, true]
 
+- content_for :modals do
+  = render 'gallery_modal', product: @product
+
 - content_for :back_button do
   - if request.referer
     = link_to :back, class: "btn product-back", title: 'Назад', data: { title: @product.title } do
@@ -82,7 +85,7 @@
             == @product.description
         - if @product.variants.count > 1
           .tab-pane#productVariants
-            = render 'gallery_modal', id: 'variants-gallery'
+            / = render 'gallery_modal', id: 'variants-gallery'
             ul.thubmnails data={toggle: "modal-gallery", target: "#variants-gallery"}
               - product_variants.each_slice(4) do |variants|
                 .row
