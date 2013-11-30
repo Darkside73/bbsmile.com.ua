@@ -8,7 +8,7 @@
       - if @items.any?
         = render "#{params[:what]}_diff"
       - else
-        .alert.alert-block
+        .alert.alert-warning
           strong> Упс...
           ' Нет изменений. Можно поработать
           => link_to_spreadsheet params[:what], 'с прайсом'

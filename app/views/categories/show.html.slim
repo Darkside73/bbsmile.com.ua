@@ -59,8 +59,8 @@
                   | Подробнее о категории
         = render 'products'
       - elsif @category.leaf?
-        .alert
-          strong> Извините
+        .alert.alert-warning
+          strong> Извините,
           | ничего не нашлось
       - else
         .offers = render 'special_products'
