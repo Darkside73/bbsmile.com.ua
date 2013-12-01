@@ -5,21 +5,32 @@
 $ ->
   dialog = new OrderDialog('.quick-shop-dialog')
 
-  $('.product-gallery a').click (e) ->
-    options = index: @, event: e
-    blueimp.Gallery $('.product-gallery a'), options
+  $('.gallery-links').each ->
+    links = $('a[data-gallery]', @)
+    links.click (e) ->
+      gallery = $(@).data 'gallery'
+      options =
+        index: @
+        event: e
+        container: gallery
+        onslide: (index, slide) ->
+          $('.next, .prev', slide).removeAttr 'disabled'
+          $(gallery).trigger 'slide', [index, slide, links]
+        onslideend: (index, slide) ->
+          $('.next', slide).attr 'disabled', 'disabled' if index == links.length - 1
+          $('.prev', slide).attr 'disabled', 'disabled' if index == 0
+        onopen: =>
+          $(gallery).trigger 'display', [@]
+      blueimp.Gallery links, options
 
   $('.variant-quick-shop').click (e) ->
     dialog.setTitle $(@).data('dialog-title')
     dialog.setVariantId $(@).data('variant-id')
 
-  $('#modal-gallery').on 'display', ->
-    modalData = $(this).data('modal')
-    _gaq.push ['_trackEvent', 'Товар', 'Просмотреть фото', "Номер #{modalData.options.index + 1} из #{modalData.$links.length}"]
+  $('#product-gallery').on 'slide', (e, index, slide, links) ->
+    _gaq.push ['_trackEvent', 'Товар', 'Просмотреть фото', "Номер #{index + 1} из #{links.length}"]
 
-  $('#variants-gallery').on 'display', ->
-    modalData = $(this).data('modal')
-    currentLink = modalData.$links[modalData.options.index]
+  $('#variants-gallery').on 'display', (e, currentLink) ->
     _gaq.push ['_trackEvent', 'Товар', 'Просмотреть вариант', $(currentLink).attr('title')]
     $('#variants-gallery .price').html $(currentLink).data('price')
 

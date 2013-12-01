@@ -1,7 +1,7 @@
-.product-gallery
+.gallery-links
   .first-image
-    = link_to image_tag(first_image.url(:medium), alt: product.title, itemprop: 'image', class: 'img-responsive'), first_image.url, data: { gallery: 'gallery' }, title: product.title
+    = link_to image_tag(first_image.url(:medium), alt: product.title, itemprop: 'image', class: 'img-responsive'), first_image.url, data: { gallery: '#product-gallery' }, title: product.title
   .other-images
     - other_images.each do |image|
-      a.thumbnail href="#{image.url}" title="#{product.title}" data-gallery="gallery"
+      a.thumbnail href="#{image.url}" title="#{product.title}" data-gallery="#product-gallery"
         = image_tag image.url(:thumb), alt: product.title

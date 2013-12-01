@@ -11,10 +11,6 @@
 @import "siteheart-skin";
 @import "responsive";
 
-body {
-  // min-width: @minWidth;
-}
-
 .page-content a, a.ease {
   .ease(@link-color);
 }
@@ -27,10 +23,9 @@ a.thumbnail:hover {
 a.fa, a.fa:hover, a.fa:active, a.fa:focus { text-decoration: none; }
 a:hover i.fa { text-decoration: none; }
 
-// a[class^="icon-"], a[class*=" icon-"], a i[class^="icon-"]:before, a i[class*=" icon-"]:before,
-// a[class^="icon-"]:before, a[class*=" icon-"]:before {
-//   cursor: pointer;
-// }
+.modal {
+  overflow-y: auto;
+}
 
 .nav-tabs {
   margin-bottom: 15px;
@@ -58,7 +53,16 @@ a:hover i.fa { text-decoration: none; }
   }
 }
 
-.row, .row-fluid {
+.blueimp-gallery .modal {
+  button.next, button.prev {
+    .transition(opacity 1s ease-in-out);
+    &[disabled] {
+      opacity: .3;
+    }
+  }
+}
+
+.row {
   .product .price span.old {
     color: @gray;
     font-weight: bold;
@@ -69,11 +73,6 @@ a:hover i.fa { text-decoration: none; }
   .radio input[type="radio"], .checkbox input[type="checkbox"] {
     margin-right: 5px;
   }
-}
-
-.modal-gallery .modal-title {
-  padding-bottom: 5px;
-  max-height: 100%;
 }
 
 #main-menu {
