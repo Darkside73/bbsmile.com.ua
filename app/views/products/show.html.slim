@@ -14,7 +14,7 @@
 
 - content_for :back_button do
   - if request.referer
-    = link_to :back, class: "btn product-back", title: 'Назад', data: { title: @product.title } do
+    = link_to :back, class: "btn btn-default product-back", title: 'Назад', data: { title: @product.title } do
       i.fa.fa-long-arrow-left
 
 #product-container.container.flashable data-title="#{@product.title}" itemscope="itemscope" itemtype="http://data-vocabulary.org/Product"
