@@ -20,9 +20,9 @@
 #product-container.container.flashable data-title="#{@product.title}" itemscope="itemscope" itemtype="http://data-vocabulary.org/Product"
   = render 'breadcrumb', category: @product.category
   .row
-    .gallery.col-md-4
+    .gallery.col-md-4.col-sm-4.col-xs-3
       = gallery_for(@product)
-    .description.col-md-8
+    .description.col-md-8.col-sm-8.col-xs-9
       h1.page-title
         span> itemprop="name" = @product.title
         - if @product.brand.present?
@@ -34,7 +34,7 @@
         - else
           span.label.label-inverse Нет в наличии
         - if @product.sku?
-          span.label Артикул: #{@product.sku}
+          span.label.label-default Артикул: #{@product.sku}
         - if @product.age
           span.label.label-info = render 'age_range', range: @product.age
 
@@ -42,31 +42,31 @@
         = render partial: 'share_links', locals: product_share_data
       .clearfix
       hr
-      .pull-left itemprop="offerDetails" itemscope="itemscope" itemtype="http://data-vocabulary.org/Offer"
-        - if @product.price
-          meta itemprop="price" content="#{@product.price}"
-          meta itemprop="currency" content="UAH"
-        - if @product.price
-          p.price.big
-            - if @product.price_old
-              span.old.text-muted.big => number_to_currency @product.price_old
-            | #{number_to_currency @product.price}
-          p.shipping
-            a href="/shipping#delivery" title="Подробнее о доставке"
-              - if @product.free_shipping
-                span.text-success> Доставка бесплатно
-              - else
-                span.text-warning> Подробнее о доставке
-              i.fa.fa-info-circle
-        - else
-          p.text-muted: strong под заказ
+      .row
+        .col-md-6.col-sm-6 itemprop="offerDetails" itemscope="itemscope" itemtype="http://data-vocabulary.org/Offer"
+          - if @product.price
+            meta itemprop="price" content="#{@product.price}"
+            meta itemprop="currency" content="UAH"
+          - if @product.price
+            p.price.big
+              - if @product.price_old
+                span.old.text-muted.big => number_to_currency @product.price_old
+              | #{number_to_currency @product.price}
+            p.shipping
+              a href="/shipping#delivery" title="Подробнее о доставке"
+                - if @product.free_shipping
+                  span.text-success> Доставка бесплатно
+                - else
+                  span.text-warning> Подробнее о доставке
+                i.fa.fa-info-circle
+          - else
+            p.text-muted: strong под заказ
 
-        = render 'order/form', order: @order, product: @product
-      - if @product.price && @product.available
-        .pull-right.btns
-          p
-            a.quick-shop.btn.btn-lg.btn-success data-toggle="modal" href="##{dom_id @order}" Купить
-      .clearfix
+          = render 'order/form', order: @order, product: @product
+        - if @product.price && @product.available
+          .col-md-6.col-sm-6.btns
+            p
+              a.quick-shop.btn.btn-lg.btn-success data-toggle="modal" href="##{dom_id @order}" Купить
       ul.nav.nav-tabs id="product-info-tabs"
         - if @product.properties.present?
           li.active: a href="#properties" data-toggle="tab" Характеристики
