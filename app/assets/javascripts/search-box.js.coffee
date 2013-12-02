@@ -1,3 +1,5 @@
+//= require bootstrap3-typeahead
+
 $ ->
   labels = []
   results = {}
@@ -21,6 +23,10 @@ $ ->
     triggerTypeahead()
   $('.form-search input.search-query').focus (e) ->
     triggerTypeahead()
+  $('.form-search input.search-query').blur (e) ->
+    $('ul.typeahead').hide()
+  $('.form-search input.search-query').keypress (e) ->
+    $('ul.typeahead').hide() if e.keyCode == 27
   $('.form-search input.search-query').keypress (e) ->
     triggerTypeahead() if e.keyCode == 13 && !$('.form-search ul.typeahead').is(':visible')
 
@@ -45,7 +51,10 @@ $ ->
   $('input.search-query').typeahead(
     minLength: 2
     source: (query, process) ->
-      sourceRequest query, process
+      if currentQuery == query
+        $('ul.typeahead').show()
+      else
+        sourceRequest query, process
       return
 
     updater: (item) ->
