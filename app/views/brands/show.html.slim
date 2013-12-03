@@ -10,7 +10,7 @@
     small = @selected_category.title if @selected_category
   .row
     .product-filters.col-md-3
-      #product-filters.accordion
+      #product-filters.panel-group
         = accordion_group "filterByCategory", "Категория" do
           - @categories.each do |category|
             - if category.url == params[:category_slug]
@@ -26,12 +26,13 @@
               ' Всего товаров:
               strong = @products.count
             - if @selected_category
-              li = link_to 'Показать все', brand_page_path(@brand.name), class: 'btn'
+              li = link_to 'Показать все', brand_page_path(@brand.name), class: 'btn btn-default'
             - if @brand.description.present? && @selected_category.nil?
-                button.more.btn
+                button.more.btn.btn-default
                   i.fa.fa-info-circle>
                   | Подробнее о бренде
         = render 'categories/products'
   - if @brand.description.present? && @selected_category.nil?
-    .row: .page-content.col-md-12
+    .container.page-content
+      h3 = @brand.full_name
       == @brand.description

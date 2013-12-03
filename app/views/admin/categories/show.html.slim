@@ -6,7 +6,7 @@
   = render layout: 'actions_panel' do
     - if @category.leaf
       => link_to "Добавить товар", new_product_admin_category_path(@category), class: 'btn btn-success' if @category.leaf
-      => link_to "Назад", [:admin, @category.is_root? ? :categories : @category.parent ], class: 'btn'
+      => link_to "Назад", [:admin, @category.is_root? ? :categories : @category.parent ], class: 'btn btn-default'
       span.bulk-actions.hide
         => link_to 'Переместить в', bulk_move_admin_products_path, class: "move btn btn-info"
         select.category name="dest_category_id"

@@ -3,7 +3,7 @@
     i> class="fa fa-#{icon}"
     - if local_assigns[:page_path]
       => link_to title, page_path, title: 'Смотреть все'
-      =  link_to '', page_path, title: 'Смотреть все', class: 'fa fa-double-angle-right see-all'
+      =  link_to '', page_path, title: 'Смотреть все', class: 'fa fa-angle-double-right see-all'
     - else
       = title
 

@@ -37,24 +37,32 @@
 
 @media (max-width: @screen-sm-max) {
   .products-list {
-    .show-options .nav {
-      &.nav-pills > li {
-        float: none;
-      }
-      &.nav-pills > li, .btn {
-        display: block;
-        margin-bottom: 10px;
-        width: 203px;
-      }
-    }
     .product {
-      margin-top: 20px;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+    }
+    .show-options {
+      margin-bottom: 0;
+      .nav {
+          &.nav-pills > li {
+            float: none;
+          }
+          &.nav-pills > li, .btn {
+            display: block;
+            margin-bottom: 10px;
+            width: 203px;
+          }
+        }
+        .product {
+          margin-top: 20px;
+        }
     }
   }
   #productVariants .item .caption {
     text-align: center;
   }
 }
+
 @media (max-width: @screen-xs-max) {
   .nav-pills > li {
     float: none;
