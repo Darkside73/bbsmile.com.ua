@@ -23,6 +23,10 @@ Bbsmile::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
+  config.action_dispatch.default_headers = {
+    'X-Frame-Options' => 'ALLOWALL'
+  }
+
   # Do not compress assets
   config.assets.compress = false
 
