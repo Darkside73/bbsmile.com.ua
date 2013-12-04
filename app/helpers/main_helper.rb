@@ -1,7 +1,7 @@
 module MainHelper
   def landing_item_for(items, options, &block)
     options[:items] = items
-    default_block = proc { |items| render items }
+    default_block = proc { |items| render items, three_col: true }
     render({ layout: 'landing_item', locals: options }, &block || default_block)
   end
 
