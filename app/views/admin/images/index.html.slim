@@ -1,10 +1,10 @@
 = render layout: 'product_info_tabs' do
-  .row-fluid
-    .span8
+  .row
+    .col-md-8
       - if @product.images.any?
         table.table.sortable.photos-list.table-striped
           = render partial: 'image', collection: @product.images, as: :image
       - else
         | нет фотографий, попробуйте добавить
-    .span4
+    .col-md-4
       = render 'form'

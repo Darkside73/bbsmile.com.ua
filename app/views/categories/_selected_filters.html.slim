@@ -2,20 +2,20 @@
   ul.nav.nav-pills
     - selected_ranges.each do |range|
       li: a href="#{remove_price_path(range)}" title="удалить фильтр"
-        i.icon-remove-sign
+        i.fa.fa-times-circle
         = render range
     - selected_ages.each do |range|
       li: a href="#{remove_age_path(range)}" title="удалить фильтр"
-        i.icon-remove-sign
+        i.fa.fa-times-circle
         = render 'age_range', range: range
     - selected_tags.each do |tag_name|
       li: a href="#{remove_tag_path(tag_name)}" title="удалить фильтр"
-        i.icon-remove-sign
+        i.fa.fa-times-circle
         = tag_name
     - selected_brands.each do |brand_name|
       li: a href="#{remove_brand_path(brand_name)}" title="удалить фильтр"
-        i.icon-remove-sign
+        i.fa.fa-times-circle
         = brand_name
     li.pull-right: a.remove-all href="#{category_page_path}"
-      i.icon-remove-sign
+      i.fa.fa-times-circle
       | удалить все фильтры

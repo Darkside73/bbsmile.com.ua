@@ -19,14 +19,15 @@ html
 
   body *body_attributes
     = render 'metrika'
-    #main-menu.navbar.navbar-fixed-top
-      = yield :main_menu
+    #main-menu.navbar.navbar-fixed-top.navbar-default role="navigation"
+      = render 'main_menu'
     = content_for?(:header) ? yield(:header) : render('header')
     = yield
-    a.go-top href="#" title="К началу страницы": i.icon-long-arrow-up
-    .footer: .container-fluid
-      = yield :footer
+    a.go-top href="#" title="К началу страницы": i.fa.fa-long-arrow-up
+    .footer: .container
+      = render 'footer'
     = javascript_include_tag 'application'
+    = yield :modals
     = yield :js_footer
     = render 'contacts/form'
-    = render 'siteheart'
+    #chat = render 'siteheart'

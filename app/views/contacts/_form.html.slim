@@ -1,17 +1,18 @@
-= simple_form_for Contact.new, remote: true, html: { id: 'send-message', class: "modal hide fade", data: { type: :json }, tabindex: -1 } do |f|
-  .modal-header
-    button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
-    h3.modal-title Отправить нам сообщение
-  .modal-body
-    p: small.muted
-      ' Также вы можете связаться с нами, написав письмо, на
-      = mail_to 'smile@bbsmile.com.ua'
-    = f.input :name, label: "Имя"
-    = f.input :email, label: "E-mail"
-    = f.input :message, as: :text, label: "Сообщение", input_html: { rows: 5 }
-    label.hide
-      ' Заполните это поле, если вы - робот
-      input type="text" name="text"
-  .modal-footer
-    a.btn data-dismiss="modal" aria-hidden="true" Закрыть
-    = f.button :submit, "Готово", class: 'btn btn-success'
+= simple_form_for Contact.new, remote: true, html: { id: 'send-message', class: "modal fade", data: { type: :json }, tabindex: -1 } do |f|
+  .modal-dialog: .modal-content
+    .modal-header
+      button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+      h4.modal-title Отправить нам сообщение
+    .modal-body
+      p: small.text-muted
+        ' Также вы можете связаться с нами, написав письмо, на
+        = mail_to 'smile@bbsmile.com.ua'
+      = f.input :name, label: "Имя"
+      = f.input :email, label: "E-mail"
+      = f.input :message, as: :text, label: "Сообщение", input_html: { rows: 5 }
+      label.hide
+        ' Заполните это поле, если вы - робот
+        input type="text" name="text"
+    .modal-footer
+      a.btn.btn-default data-dismiss="modal" aria-hidden="true" Закрыть
+      = f.button :submit, "Готово", class: 'btn-success btn-lg'

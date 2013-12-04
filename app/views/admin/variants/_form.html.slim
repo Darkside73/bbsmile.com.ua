@@ -1,12 +1,12 @@
 - variant = path.last
 = simple_form_for path do |f|
-  .row-fluid
-    .span6
+  .row
+    .col-md-6
       = f.input :name, label: 'Название'
       = f.input :sku, label: 'Артикул'
       = f.input :master, label: 'Основной'
       = f.input :available, label: 'Доступность'
-    .span6
+    .col-md-6
       = f.input :price, label: 'Цена', input_html: { value: variant.new_record? ? variant.product.price : variant.price }
       = f.input :price_old, label: 'Старая цена', input_html: { value: variant.new_record? ? variant.product.price_old : variant.price_old }
       = f.simple_fields_for(:image, variant.image || variant.build_image) do |i|

@@ -3,30 +3,30 @@
 
 - title "#{type_title}#{' - ' + @selected_category.title if @selected_category}"
 
-.products-list.container-fluid.container-wide.flashable
+.products-list.container.flashable
   h1.page-title
     - if @selected_category
       => @selected_category.title
       small = type_title
     - else
       = type_title
-  .row-fluid
-    .product-filters.span3
-      #product-filters.accordion
+  .row
+    .product-filters.col-md-3.col-sm-4.col-xs-12
+      #product-filters.panel-group
         = accordion_group "filterByCategory", "Категория" do
           - @categories.each do |category|
             - if category.url == params[:category_slug]
               li.active = category.title
             - else
               li = link_to category.title, self.send(@special_products_path, category.url)
-    .products-list.span9
+    .products-list.col-md-9.col-sm-8.col-xs-12
       = render 'order/form', order: @order
       - if @products.any?
         .show-options
           ul.nav.nav-pills
-            li: .btn.disabled
+            li: .btn.btn-default.disabled
               ' Всего товаров:
               strong = @products.count
             - if @selected_category
-              li = link_to 'Показать все', self.send(@special_products_path), class: 'btn'
+              li = link_to 'Показать все', self.send(@special_products_path), class: 'btn btn-default'
         = render 'categories/products'

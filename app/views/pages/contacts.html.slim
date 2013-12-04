@@ -1,31 +1,34 @@
 = render layout: 'static_page', locals: { title: 'Контакты' } do
-  .contacts.row-fluid
-    .span4.left
-      .phone
-        i.icon-phone.pull-left>
-        p 056 788-23-83
-      .mobile
-        i.icon-mobile-phone.pull-left>
-        p 097 777-37-07
-      .mobile
-        i.icon-mobile-phone.pull-left>
-        p 066 717-37-07
+  .contacts.row
+    .col-md-4
+      ul.fa-ul
+        li.phone
+          i.fa-li.fa.fa-phone.pull-left>
+          | 056 788-23-83
+        li.mobile
+          i.fa-li.fa.fa-mobile-phone.pull-left>
+          | 097 777-37-07
+        li.mobile
+          i.fa-li.fa.fa-mobile-phone.pull-left>
+          | 066 717-37-07
 
-    .span4.center
-      .vk
-        i.icon-vk.pull-left>
-        p: a href="http://vk.com/babysmile_ua" Вконтакте
-      .facebook
-        i.icon-facebook.pull-left>
-        p: a href="http://www.facebook.com/babysmile.ua" Facebook
-      .twitter
-        i.icon-twitter.pull-left>
-        p: a href="http://twitter.com/babysmileua" Twitter
+    .col-md-4
+      ul.fa-ul
+        li.vk
+          i.fa-li.fa.fa-vk.pull-left>
+          a href="http://vk.com/babysmile_ua" Вконтакте
+        li.facebook
+          i.fa-li.fa.fa-facebook.pull-left>
+          a href="http://www.facebook.com/babysmile.ua" Facebook
+        li.twitter
+          i.fa-li.fa.fa-twitter.pull-left>
+          a href="http://twitter.com/babysmileua" Twitter
 
-    .span4.right
-      .mail
-        i.icon-envelope-alt.pull-left>
-        p = mail_to 'smile@bbsmile.com.ua'
-      .skype
-        i.icon-skype.pull-left>
-        p bebiksmile
+    .col-md-4
+      ul.fa-ul
+        li.mail
+          i.fa-li.fa.fa-envelope-o.pull-left>
+          = mail_to 'smile@bbsmile.com.ua'
+        li.skype
+          i.fa-li.fa.fa-skype.pull-left>
+          | bebiksmile

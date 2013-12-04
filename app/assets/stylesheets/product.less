@@ -2,7 +2,8 @@
 
 /*
 * = require "inner"
-* = require "bootstrap-image-gallery/bootstrap-image-gallery"
+* = require "blueimp-gallery/css/blueimp-gallery"
+* = require "bootstrap-image-gallery/css/bootstrap-image-gallery"
 */
 
 @import "lib/variables";
@@ -10,6 +11,9 @@
 @import "lib/prefixer";
 
 #product-container {
+  .product-back {
+    padding: 1px 12px;
+  }
   .description {
     .bages {
       margin: 5px 0; font-size: 117%;
@@ -20,7 +24,7 @@
   .gallery {
     .first-image { text-align: center; }
     .other-images {
-      a.thumbnail { display: inline-block; margin: 10px 10px 0 0; }
+      a.thumbnail { display: inline-block; margin: 8px 8px 0 0; }
     }
   }
   .nav-tabs {
@@ -37,7 +41,7 @@
     a {
       vertical-align: middle;
       color: @purple;
-      font-size: @baseFontSize*1.8;
+      font-size: @font-size-base*1.8;
       margin-left: 10px;
       &:hover { color: lighten(@purple, 20%); }
     }
@@ -65,12 +69,6 @@
         border-color: @purple;
       }
     }
-  }
-}
-
-#modal-gallery {
-  .modal-header {
-    .close { margin-left: 10px; }
   }
 }
 

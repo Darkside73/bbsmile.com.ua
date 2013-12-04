@@ -37,8 +37,8 @@ gem 'dimensions-rails'
 gem 'google_drive', require: false
 
 group :assets do
-  gem 'less-rails-bootstrap', '~> 2'
-  gem 'font-awesome-rails', '~> 3'
+  gem 'less-rails-bootstrap'
+  gem 'font-awesome-rails'
   gem 'coffee-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes

@@ -1,5 +1,5 @@
-.accordion-group
-  .accordion-heading
-    a.accordion-toggle data-toggle="collapse" data-parent="false" href="##{id}" #{name}
-  div id="#{id}" class="accordion-body collapse in"
-    .accordion-inner: ul = yield
+.panel.panel-default
+  .panel-heading
+    .panel-title: a data-toggle="collapse" data-parent="false" href="##{id}" #{name}
+  .panel-collapse.collapse.in id="#{id}"
+    .panel-body: ul.list-unstyled = yield

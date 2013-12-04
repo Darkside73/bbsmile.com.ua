@@ -3,20 +3,20 @@
 /*
 * = require "lib/bootstrap"
 * = require "font-awesome"
-* = require "responsive"
 */
 
 @import "lib/variables";
 @import "lib/mixins";
 @import "lib/prefixer";
 @import "siteheart-skin";
+@import "responsive";
 
 body {
-  min-width: @minWidth;
+  min-width: @screen-xxs-min;
 }
 
 .page-content a, a.ease {
-  .ease(@linkColor);
+  .ease(@link-color);
 }
 
 a.thumbnail:hover {
@@ -24,23 +24,23 @@ a.thumbnail:hover {
   border-color: @purple;
 }
 
-a[class*=" icon-"], a[class^="icon-"], a[class^="icon-"]:hover, a[class*=" icon-"]:hover,
-a[class^="icon-"]:active, a[class*=" icon-"]:active, a[class^="icon-"]:focus, a[class*=" icon-"]:focus {
-  text-decoration: none;
-}
-a:hover i { text-decoration: none; }
+a.fa, a.fa:hover, a.fa:active, a.fa:focus { text-decoration: none; }
+a:hover i.fa { text-decoration: none; }
 
-a[class^="icon-"], a[class*=" icon-"], a i[class^="icon-"]:before, a i[class*=" icon-"]:before,
-a[class^="icon-"]:before, a[class*=" icon-"]:before {
-  cursor: pointer;
+.modal {
+  overflow-y: auto;
+}
+
+.nav-tabs {
+  margin-bottom: 15px;
 }
 
 .nav.nav-pills .btn {
   margin-bottom: 0;
 }
 
-.page-title .muted a {
-  color: @grayLight;
+.page-title .text-muted a {
+  color: @gray-light;
 }
 
 .pink { color: @pink; }
@@ -49,15 +49,23 @@ a[class^="icon-"]:before, a[class*=" icon-"]:before {
 
 .price {
   color: @pinkDark;
-  white-space: nowrap;
-  &.big { font-size: @baseFontSize*2; }
+  &.big { font-size: @font-size-base*2; }
   span.old {
-    &.big { font-size: @baseFontSize*1.5; }
+    &.big { font-size: @font-size-base*1.5; }
     text-decoration: line-through;
   }
 }
 
-.row, .row-fluid {
+.blueimp-gallery .modal {
+  button.next, button.prev {
+    .transition(opacity 1s ease-in-out);
+    &[disabled] {
+      opacity: .3;
+    }
+  }
+}
+
+.row {
   .product .price span.old {
     color: @gray;
     font-weight: bold;
@@ -70,16 +78,8 @@ a[class^="icon-"]:before, a[class*=" icon-"]:before {
   }
 }
 
-.modal-gallery .modal-title {
-  padding-bottom: 5px;
-  max-height: 100%;
-}
-
 #main-menu {
-  min-width: @minWidth;
-  .navbar-inner {
-    padding: 0 20px;
-  }
+  .container { padding-left: 0; }
   li.cart {
     background-color: @pinkLight;
     a { text-shadow: 0 1px 0 @pinkLight; position: relative }
@@ -92,10 +92,11 @@ a[class^="icon-"]:before, a[class*=" icon-"]:before {
 }
 
 #site-header {
-  background: image-url("layout/bg.png") repeat-x;
+  background: image-url("layout/bg.png") repeat;
   .contacts {
     .actions {
-      .social-contact-links(@pink, @white);
+      text-align: center;
+      .social-contact-links(@pink, white);
       a.active {
         i { .box-shadow(0 0 4px 5px @pinkLight); }
         &:hover i { background: @pink; }
@@ -105,29 +106,42 @@ a[class^="icon-"]:before, a[class*=" icon-"]:before {
         outline: none;
       }
       .popover {
-        width: 146px;
-        margin: 10px 0 -10px 0px;
+        width: 208px;
+        margin: 0 auto;
+        margin-top: 10px;
+        margin-bottom: -10px;
         padding: 0;
-        .box-shadow(-5px 7px 10px -3px fadeout(@black, 85%));
+        .box-shadow(-5px 7px 10px -3px fadeout(#000, 85%));
         color: @gray;
-        text-shadow: 0px 1px 0px @grayLight;
+        text-shadow: 0px 1px 0px @gray-light;
         letter-spacing: normal;
-        font-size: 18px;
         line-height: 30px;
         text-align: center;
         &.visible { display: block; position: relative; }
         .popover-title { display: none; }
+        .popover-content { white-space: nowrap; padding-bottom: 4px; }
+        .fa-ul {
+          margin-left: 28px;
+          .fa-li {
+            top: 6px;
+            left: -32px;
+            color: @gray;
+          }
+        }
       }
     }
   }
   h1 {
-    small { color: @pink }
+    small {
+      color: @pink;
+      white-space: nowrap;
+    }
   }
-  border-bottom: 1px solid @dropdownDividerTop;
+  border-bottom: 1px solid @dropdown-divider-bg;
 }
 
 h1.page-title {
-  font-size: @baseFontSize * 2.5;
+  font-size: @font-size-base * 2.5;
   margin-bottom: 20px;
 }
 
@@ -136,21 +150,20 @@ h1.page-title {
   margin-top: 10px;
   margin-bottom: 10px;
   position: relative;
-  width: 310px;
   input.search-query {
     padding-left: 32px;
-    height: 34px;
-    font-size: @baseFontSize * 1.5;
+    height: 41px;
+    font-size: @font-size-base * 1.5;
   }
   i.search {
     position: absolute;
     top: 14px;
-    left: 11px;
+    left: 28px;
     font-size: 110%;
     cursor: pointer;
   }
   .example {
-    background: fadeout(@white, 40%);
+    background: fadeout(white, 40%);
     a {
       border-bottom: 1px dashed;
       font-size: 1.1em;
@@ -163,10 +176,11 @@ h1.page-title {
   }
   ul.typeahead {
     text-align: left;
-    width: 316px;
+    width: 94%;
     h5 {
       margin-top: 5px;
       margin-bottom: 5px;
+      font-weight: 600;
     }
     li {
       &.active {
@@ -174,10 +188,10 @@ h1.page-title {
         .image {
           display: block;
           left: -126px;
-          top: -25px;
+          top: -43px;
         }
         .price {
-          color: @white;
+          color: white;
         }
       }
       a {
@@ -192,8 +206,8 @@ h1.page-title {
 
 .product {
   h3 {
-    font-size: @baseFontSize*1.3;
-    line-height: @baseFontSize*1.4;
+    font-size: @font-size-base*1.3;
+    line-height: @font-size-base*1.4;
     a { color: @purple; }
   }
 
@@ -203,12 +217,12 @@ h1.page-title {
       padding: 0;
       vertical-align: middle;
       background: none;
-      font-size: @baseFontSize*1.7;
+      font-size: @font-size-base*1.7;
       color: @pinkDark;
       text-shadow: none;
       font-weight: normal;
+      margin-right: 5px;
     }
-    .btn.disabled { opacity: 1; background: none; }
   }
 }
 
@@ -218,10 +232,10 @@ a.go-top {
   right: 0px;
   bottom: 28px;
   padding: 16px 14px;
-  background: fadeout(@grayLight, 70%);
+  background: fadeout(@gray-light, 70%);
   font-size: 22px;
   font-weight: bold;
-  color: @grayLight;
+  color: @gray-light;
   opacity: .5;
   outline: none;
   &:hover, &:focus {
@@ -231,6 +245,7 @@ a.go-top {
 }
 
 .footer {
+  white-space: nowrap;
   .linear-gradient-top(@yellowLight, fadeout(@yellow, 85%), 0%, fadeout(@yellow, 95%), 100%);
   border-top: 1px solid darken(@yellowLight, 10%);
   .box-shadow(0 -1px 10px fadeout(@brown, 80%));
@@ -238,21 +253,10 @@ a.go-top {
   padding: 25px 0;
   margin-top: 50px;
   color: @gray;
-
   a {
     color: @brownDark;
   }
-
-  ul { .nav-stacked-simple }
-
   .social {
     .social-contact-links;
-  }
-}
-
-#send-message {
-  width: 450px;
-  textarea {
-    width: 95%;
   }
 }

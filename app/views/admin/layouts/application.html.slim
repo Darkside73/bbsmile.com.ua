@@ -11,11 +11,11 @@ html
 
   body
     = render 'navbar'
-    .container-fluid.wide
-      .row-fluid
-        #sidebar.span3
+    .container.wide
+      .row
+        #sidebar.col-md-3
           = render 'menu'
-        #content.span9
+        #content.col-md-9
           = render 'flashes'
           .navbar: .navbar-inner
             = render 'breadcrumb'

@@ -1,21 +1,23 @@
-.links.span3: ul
-  li: a href="/shipping" Доставка и оплата
-  li: a href="/warranty" Гарантии
-  li: a href="/contacts" Контакты
-  li: a href="/about" О нас
-.address.span3
-  | 056 788-23-83
-  br
-  | 097 777-37-07
-  br
-  | 066 717-37-07
-  br
-  = mail_to 'smile@bbsmile.com.ua'
-.social.span3: .social
-  a href="http://vk.com/babysmile_ua" title="Мы Вконтакте"
-    i.icon-vk>
-  a href="http://www.facebook.com/babysmile.ua" title="Страница в Facebook"
-    i.icon-facebook>
-  a href="http://twitter.com/babysmileua" title="Читать наши твиты"
-    i.icon-twitter
-.copy.span3 &copy; Babysmile 2013
+.row
+  .links.col-md-3.col-sm-6: ul.list-unstyled
+    li: a href="/shipping" Доставка и оплата
+    li: a href="/warranty" Гарантии
+    li: a href="/contacts" Контакты
+    li: a href="/about" О нас
+  .address.col-md-3.col-sm-6
+    | 056 788-23-83
+    br
+    | 097 777-37-07
+    br
+    | 066 717-37-07
+    br
+    = mail_to 'smile@bbsmile.com.ua'
+  .clearfix.visible-sm
+  .social.col-md-3.col-sm-6: .social
+    a href="http://vk.com/babysmile_ua" title="Мы Вконтакте"
+      i.fa.fa-vk>
+    a href="http://www.facebook.com/babysmile.ua" title="Страница в Facebook"
+      i.fa.fa-facebook>
+    a href="http://twitter.com/babysmileua" title="Читать наши твиты"
+      i.fa.fa-twitter
+  .copy.col-md-3.col-sm-6 &copy; Babysmile 2013

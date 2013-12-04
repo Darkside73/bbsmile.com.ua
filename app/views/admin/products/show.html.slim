@@ -1,14 +1,14 @@
 = render layout: 'product_info_tabs' do
-  .row-fluid
-    .span6
+  .row
+    .col-md-6
       p.bages
         - if @product.available
           span.text-success
-            i.icon-check>
+            i.fa.fa-check>
             | доступен для заказа
         - else
-          span.muted
-            i.icon-minus-sign>
+          span.text-muted
+            i.fa.fa-minus-sign>
             | нет на складе
         - if @product.novelty
           span.label.label-info новинка
@@ -37,16 +37,16 @@
           tr
             td Теги
             td = @product.tag_list
-    .span6
-      h4.muted Характеристики
+    .col-md-6
+      h4.text-muted Характеристики
       - if @product.properties.present?
         == @product.properties
-        p = link_to 'Изменить', [:properties, :admin, @product], class: 'btn'
+        p = link_to 'Изменить', [:properties, :admin, @product], class: 'btn btn-default'
       - else
-        p = link_to 'Добавить', [:properties, :admin, @product], class: 'btn'
+        p = link_to 'Добавить', [:properties, :admin, @product], class: 'btn btn-default'
     hr
   => link_to 'Редактировать', [:edit, :admin, @product], class: 'btn btn-info'
-  => link_to "Посмотреть на сайте", product_page_url(@product.url, domain: request.host, subdomain: 'beta'), class: 'btn', target: '_blank'
+  => link_to "Посмотреть на сайте", product_page_url(@product.url, domain: request.host, subdomain: 'beta'), class: 'btn btn-default', target: '_blank'
   - if @product.url_old.present?
-    => link_to "Посмотреть на старом сайте", product_page_url(@product.url_old, domain: request.host, subdomain: 'old'), class: 'btn', target: '_blank'
+    => link_to "Посмотреть на старом сайте", product_page_url(@product.url_old, domain: request.host, subdomain: 'old'), class: 'btn btn-default', target: '_blank'
   =  link_to 'Удалить', [:admin, @product], method: :delete, class: 'btn btn-warning'

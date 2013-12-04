@@ -1,8 +1,5 @@
 @import "twitter/bootstrap/mixins";
 
-.nav-stacked-simple {
-  list-style: none; margin: 0;
-}
 .sup {
   top: -5px; position: relative;
 }
@@ -17,16 +14,15 @@
 // applies to links container
 .social-contact-links(@backgroundColor: @brownLight, @color: @yellowLight) {
   letter-spacing: 0.5em;
-  i {
+  a i.fa {
     background: @backgroundColor;
     .border-radius(20px);
     line-height: 40px;
-    width: 32px;
+    width: 40px;
     text-align: center;
     padding-left: 8px;
     font-size: 22px;
   }
-  a [class^="icon-"], a [class*=" icon-"] { display: inline-block; }
   a {
     color: @color;
     &:hover {

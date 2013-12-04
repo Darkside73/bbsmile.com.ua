@@ -1,6 +1,10 @@
 body {
   #sh_button {
     top: 280px !important;
+    .responsive-visibility();
+    @media (max-width: @screen-xs-max) {
+      .responsive-invisibility();
+    }
   }
   .sh_btn {
     background: @chatScheme;
@@ -15,7 +19,7 @@ body {
     margin-right: -2px;
   }
   .sh_btn .sh_btn_char {
-    font-family: @sansFontFamily;
+    font-family: @font-family-sans-serif;
   }
   .sh_btn:hover {
     background: darken(@chatScheme, 10%);

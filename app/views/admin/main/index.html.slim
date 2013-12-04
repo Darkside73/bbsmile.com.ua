@@ -1,8 +1,8 @@
-.row-fluid
-  .span6.products
+.row
+  .col-md-6.products
     = render layout: 'boxed', locals: {title: 'Товары'} do
-      .text-center = link_to "Новый товар", [:new, :admin, :product], class: ['btn', 'btn-large', 'btn-success']
+      .text-center = link_to "Новый товар", [:new, :admin, :product], class: ['btn', 'btn-lg', 'btn-success']
 
-  .span6.categorie
+  .col-md-6.categories
     = render layout: 'boxed', locals: {title: 'Категории'} do
-      .text-center = link_to "Новая категория", [:new, :admin, :category], class: ['btn', 'btn-large', 'btn-success']
+      .text-center = link_to "Новая категория", [:new, :admin, :category], class: ['btn', 'btn-lg', 'btn-success']

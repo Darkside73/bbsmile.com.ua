@@ -9,29 +9,32 @@
     $ ->
       _gaq.push ['_trackEvent', 'Товар', 'Просмотреть', $('#product-container').data('title'), 0, true]
 
+- content_for :modals do
+  = render 'gallery_modal', product: @product, id: 'product-gallery'
+
 - content_for :back_button do
   - if request.referer
-    = link_to :back, class: "btn product-back", title: 'Назад', data: { title: @product.title } do
-      i.icon-long-arrow-left
+    = link_to :back, class: "btn btn-default product-back", title: 'Назад', data: { title: @product.title } do
+      i.fa.fa-long-arrow-left
 
-#product-container.container-fluid.container-wide.flashable data-title="#{@product.title}" itemscope="itemscope" itemtype="http://data-vocabulary.org/Product"
+#product-container.container.flashable data-title="#{@product.title}" itemscope="itemscope" itemtype="http://data-vocabulary.org/Product"
   = render 'breadcrumb', category: @product.category
-  .row-fluid
-    .gallery.span4
+  .row
+    .gallery.col-md-4.col-sm-4.col-xs-3
       = gallery_for(@product)
-    .description.span8
+    .description.col-md-8.col-sm-8.col-xs-9
       h1.page-title
         span> itemprop="name" = @product.title
         - if @product.brand.present?
           br
-          small.muted itemprop="brand" = link_to @product.brand.full_name, brand_page_path(@product.brand.name)
+          small.text-muted itemprop="brand" = link_to @product.brand.full_name, brand_page_path(@product.brand.name)
       .bages.pull-left
         - if @product.available
           span.label.label-success itemprop="availability" content="in_stock" Есть в наличии
         - else
           span.label.label-inverse Нет в наличии
         - if @product.sku?
-          span.label Артикул: #{@product.sku}
+          span.label.label-default Артикул: #{@product.sku}
         - if @product.age
           span.label.label-info = render 'age_range', range: @product.age
 
@@ -39,31 +42,31 @@
         = render partial: 'share_links', locals: product_share_data
       .clearfix
       hr
-      .pull-left itemprop="offerDetails" itemscope="itemscope" itemtype="http://data-vocabulary.org/Offer"
-        - if @product.price
-          meta itemprop="price" content="#{@product.price}"
-          meta itemprop="currency" content="UAH"
-        - if @product.price
-          p.price.big
-            - if @product.price_old
-              span.old.muted.big => number_to_currency @product.price_old
-            | #{number_to_currency @product.price}
-          p.shipping
-            a href="/shipping#delivery" title="Подробнее о доставке"
-              - if @product.free_shipping
-                span.text-success> Доставка бесплатно
-              - else
-                span.text-warning> Подробнее о доставке
-              i.icon-info-sign
-        - else
-          p.muted: strong под заказ
+      .row
+        .col-md-6.col-sm-6 itemprop="offerDetails" itemscope="itemscope" itemtype="http://data-vocabulary.org/Offer"
+          - if @product.price
+            meta itemprop="price" content="#{@product.price}"
+            meta itemprop="currency" content="UAH"
+          - if @product.price
+            p.price.big
+              - if @product.price_old
+                span.old.text-muted.big => number_to_currency @product.price_old
+              | #{number_to_currency @product.price}
+            p.shipping
+              a href="/shipping#delivery" title="Подробнее о доставке"
+                - if @product.free_shipping
+                  span.text-success> Доставка бесплатно
+                - else
+                  span.text-warning> Подробнее о доставке
+                i.fa.fa-info-circle
+          - else
+            p.text-muted: strong под заказ
 
-        = render 'order/form', order: @order, product: @product
-      - if @product.price && @product.available
-        .pull-right.btns
-          p
-            a.quick-shop.btn.btn-large.btn-success data-toggle="modal" href="##{dom_id @order}" Купить
-      .clearfix
+          = render 'order/form', order: @order, product: @product
+        - if @product.price && @product.available
+          .col-md-6.col-sm-6.btns
+            p
+              a.quick-shop.btn.btn-lg.btn-success data-toggle="modal" href="##{dom_id @order}" Купить
       ul.nav.nav-tabs id="product-info-tabs"
         - if @product.properties.present?
           li.active: a href="#properties" data-toggle="tab" Характеристики
@@ -82,10 +85,11 @@
             == @product.description
         - if @product.variants.count > 1
           .tab-pane#productVariants
-            = render 'gallery_modal', id: 'variants-gallery'
-            ul.thubmnails data={toggle: "modal-gallery", target: "#variants-gallery"}
+            - content_for :modals
+              = render 'gallery_modal', id: 'variants-gallery'
+            .gallery-links
               - product_variants.each_slice(4) do |variants|
-                .row-fluid
+                .row
                   = render variants
         - if @product.video?
           .tab-pane#video = render partial: 'video', object: @product.video

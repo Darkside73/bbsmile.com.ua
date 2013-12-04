@@ -4,8 +4,8 @@
       $ ->
         $('#collapse-form').collapse('show')
 
-  .row-fluid
-    .span8
+  .row
+    .col-md-8
       #new-variant-form.accordion
         .accordion-group
           .accordion-heading
@@ -20,4 +20,4 @@
           = render @product.variants
       - else
         | нет вариантов, попробуйте добавить
-    .span4
+    .col-md-4

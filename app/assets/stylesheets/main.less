@@ -8,10 +8,10 @@
 @import "lib/mixins";
 @import "lib/prefixer";
 
-#site-header.hero-unit {
+#site-header.jumbotron {
   padding: 60px 40px 45px;
   margin-bottom: 14px;
-  h1 { font-size: @baseFontSize * 3.5; }
+  h1 { font-size: @font-size-base * 3.5; }
   .container {
     margin-top: 10px;
     margin-bottom: -10px;
@@ -23,17 +23,18 @@
 
 .landing-nav.subnav {
   width: 100%;
-  font-size: @baseFontSize*1.5;
+  font-size: @font-size-base*1.5;
   .nav-pills > li > a {
     line-height: 18px;
   }
   &.affix {
     background: fadeout(lighten(@pinkLight, 10%), 15%);
-    box-shadow: 0 2px 10px fadeout(@dropdownDividerTop, 5%);
-    top:40px; left: 0; margin: 0; z-index: 99; //padding-left: 3px;
+    box-shadow: 0 2px 10px fadeout(@dropdown-divider-bg, 5%);
+    top:50px; left: 0; margin: 0; z-index: 99;
     .nav {
-      max-width: 940px; margin: 0 auto; border: none;
+      border: none;
       padding: 5px 0;
+      padding-left: 15px;
     }
   }
 }
@@ -44,25 +45,26 @@
     margin-top: 75px;
   }
   img {
-    box-shadow: 2px 0 20px 4px fadeout(@black, 90%);
+    box-shadow: 2px 0 20px 4px fadeout(#000, 90%);
   }
   .carousel {
     line-height: 1.4;
   }
   .carousel-control {
-    top: 45%;
     outline: none;
-    font-size: 36px;
     &:hover {
       opacity: .8;
     }
     i {
-      padding: 1px 0 0 5px;
-      display: block;
+      font-size: 60px;
+      font-weight: bold;
+      position: absolute;
+      top: 40%;
+      z-index: 5;
+      display: inline-block;
     }
-    &.left {
-      i { padding: 1px 4px 0 0; }
-    }
+    &.right i { right: 33%; }
+    &.left i { left: 33%; }
   }
   .carousel-indicators {
     li { cursor: pointer; }
@@ -86,10 +88,10 @@
   }
   .bebecar {
     h4 {
-      font-size: @baseFontSize*2;
+      font-size: @font-size-base*2;
       line-height: 1.2;
       a {
-        text-shadow: 1px 2px 1px @white;
+        text-shadow: 1px 2px 1px white;
       }
     }
   }
@@ -112,7 +114,7 @@
   }
   a.see-all {
     font-size: 80%;
-    color: @linkColor;
+    color: @link-color;
     &:hover {
       text-decoration: none;
     }
@@ -133,7 +135,7 @@
       position: absolute;
       .backgroundTransition(0.5s);
       background: fadeout(@purpleDark, 50%);
-      color: @white;
+      color: white;
       bottom: 5px;
       left: 5px;
       width: 281px;

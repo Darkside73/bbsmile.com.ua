@@ -1,17 +1,16 @@
-.modal.modal-gallery.hide.fade tabindex="-1" id="#{id}"
-  .modal-header
-    a.close data-dismiss="modal"
-      i.icon-remove
-    h3.modal-title
-    strong.price = local_assigns.has_key?(:product) ? number_to_currency(product.price) : ''
-  .modal-body: .modal-image
-  .modal-footer
-    a.btn.btn-success.modal-play.modal-slideshow data-slideshow="3000"
-      | Слайдшоу&nbsp;&nbsp;
-      i.icon-play.icon-white
-    a.btn.btn-info.modal-prev
-      i.icon-arrow-left.icon-white
-      | &nbsp;&nbsp;Назад
-    a.btn.btn-primary.modal-next
-      | Вперед&nbsp;&nbsp;
-      i.icon-arrow-right.icon-white
+.blueimp-gallery id="#{id}"
+  .slides
+  .modal.fade tabindex="-1"
+    .modal-dialog: .modal-content
+      .modal-header
+        a.close data-dismiss="modal" &times;
+        h4.modal-title
+        strong.price = local_assigns.has_key?(:product) ? number_to_currency(product.price) : ''
+      .modal-body.next
+      .modal-footer
+        button.btn.btn-default.prev type="button" disabled="disabled"
+          i.fa.fa-arrow-left.fa.fa-white
+          | &nbsp;&nbsp;Назад
+        button.btn.btn-info.next type="button"
+          | Вперед&nbsp;&nbsp;
+          i.fa.fa-arrow-right.fa.fa-white

@@ -1,15 +1,14 @@
-.container-fluid id="#{id}-items"
-  .container
-    h2 id="#{id}"
-      i> class="icon-#{icon}"
-      - if local_assigns[:page_path]
-        => link_to title, page_path, title: 'Смотреть все'
-        =  link_to '', page_path, title: 'Смотреть все', class: 'icon-double-angle-right see-all'
-      - else
-        = title
+.container id="#{id}-items"
+  h2 id="#{id}"
+    i> class="fa fa-#{icon}"
+    - if local_assigns[:page_path]
+      => link_to title, page_path, title: 'Смотреть все'
+      =  link_to '', page_path, title: 'Смотреть все', class: 'fa fa-angle-double-right see-all'
+    - else
+      = title
 
+  hr
+  - items.each_slice(3) do |items_by_three|
+    .row
+      = yield items_by_three
     hr
-    - items.each_slice(3) do |items_by_three|
-      .row
-        = yield items_by_three
-      hr

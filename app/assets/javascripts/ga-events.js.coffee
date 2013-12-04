@@ -38,9 +38,9 @@ $ ->
     _gaq.push ['_trackEvent', 'Товар', 'Информация о доставке']
   $('#product-info-tabs li>a').click ->
     _gaq.push ['_trackEvent', 'Товар', 'Открыть вкладку', $(this).text()]
-  $('.share .icon-vk').click ->
+  $('.share .fa-vk').click ->
     _gaq.push ['_trackEvent', 'Товар', 'Поделиться в соцсети', 'Вконтакте']
-  $('.share .icon-facebook').click ->
+  $('.share .fa-facebook').click ->
     _gaq.push ['_trackEvent', 'Товар', 'Поделиться в соцсети', 'Фейсбук']
-  $('.share .icon-twitter').click ->
+  $('.share .fa-twitter').click ->
     _gaq.push ['_trackEvent', 'Товар', 'Поделиться в соцсети', 'Твиттер']

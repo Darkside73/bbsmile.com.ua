@@ -2,11 +2,11 @@
 - meta description: 'Интернет-магазине Babysmile - широкий выбор детских колясок, автокресел, детской мебели, игрушек, одежды для мальчиков и девочек, постельного белья. Доставка по Украине'
 
 .container.flashable
-  = render 'form_search'
+  = render 'form_search', inner: false
   .landing-nav.subnav data-spy="affix" data-offset-top="330"
-    ul.nav.nav-pills
+    ul.nav.nav-pills.container
       li: a href="#promotions" data-target="#promotions" data-offset="-130"
-        i.icon-gift>
+        i.fa.fa-gift>
         | Акции
       li: a href="#novelties" data-target="#novelties" data-offset="-130" Новинки
       li: a href="#discounts" data-target="#discounts" Скидки
@@ -22,9 +22,9 @@
     = render 'order/form', order: @order
     = landing_item_for novelties, id: 'novelties', icon: 'certificate', title: 'Новинки', page_path: novelties_path
     = landing_item_for discounts, id: 'discounts', icon: 'fire', title: 'Скидки', page_path: discounts_path
-    = landing_item_for hits, id: 'hits', icon: 'heart-empty', title: 'Хиты продаж', page_path: hits_path
+    = landing_item_for hits, id: 'hits', icon: 'heart-o', title: 'Хиты продаж', page_path: hits_path
 
-  = landing_item_for @categories, id: 'whole-catalog', icon: 'reorder', title: 'Весь каталог' do |categories|
+  = landing_item_for @categories, id: 'whole-catalog', icon: 'bars', title: 'Весь каталог' do |categories|
     - categories.each do |category, subcategories|
       = render 'category', category: category, subcategories: subcategories
 

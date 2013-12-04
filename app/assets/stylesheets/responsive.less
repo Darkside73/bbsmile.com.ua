@@ -1,7 +1,17 @@
-@media (max-width: 960px) {
+@import "twitter/bootstrap/variables";
+
+@media (max-width: @screen-md-max) {
   #main-menu {
     position: relative;
     margin-bottom: -40px;
+  }
+  #site-header {
+    .naming {
+      text-align: center;
+      .logo {
+        margin: 0 auto;
+      }
+    }
   }
   #category-content .subnav.affix {
     position: static;
@@ -17,16 +27,84 @@
       padding: 0 !important;
     }
   }
-}
-
-@media (max-width: 960px) {
   .landing-nav.subnav {
     padding-left: 10px;
   }
   .landing-container {
     padding-left: 10px;
   }
-  .container-wide {
-    padding-left: 30px;
+}
+
+@media (max-width: @screen-sm-max) {
+  .products-list {
+    .product {
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+    }
+    .show-options {
+      margin-bottom: 0;
+      .nav {
+          &.nav-pills > li {
+            float: none;
+          }
+          &.nav-pills > li, .btn {
+            display: block;
+            margin-bottom: 10px;
+            width: 203px;
+          }
+        }
+        .product {
+          margin-top: 20px;
+        }
+    }
+  }
+  #productVariants .item .caption {
+    text-align: center;
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  .nav-pills > li {
+    float: none;
+  }
+  #main-menu {
+    .navbar-brand, .navbar-collapse {
+      padding-left: 30px;
+    }
+  }
+
+  .row-offcanvas {
+    position: relative;
+    .transition(all 0.25s ease-out);
+  }
+
+  .row-offcanvas-left .sidebar-offcanvas {
+    left: -50%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 50%;
+    .sidebar-offcanvas, .products-list {
+      margin-left: @grid-gutter-width;
+    }
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+  }
+
+  #product-container .btns {
+    text-align: left !important;
+  }
+
+  .footer .row > div {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: @screen-xxs-max) {
+  .nav-tabs > li {
+    float:none;
   }
 }

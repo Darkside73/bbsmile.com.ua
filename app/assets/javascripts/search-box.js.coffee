@@ -1,9 +1,11 @@
+//= require bootstrap3-typeahead
+
 $ ->
   labels = []
   results = {}
 
   toggleSearchLoader = ->
-    $('.form-search i.search').toggleClass('icon-search icon-spinner icon-spin')
+    $('.form-search i.search').toggleClass('fa-search fa-spinner fa-spin')
 
   currentQuery = false
 
@@ -11,6 +13,9 @@ $ ->
     if currentQuery
       pathname = $(location).attr('pathname')
       _gaq.push ['_trackPageview', "#{pathname}?autocomplete-q=#{currentQuery}"]
+    setTimeout ->
+      $('ul.typeahead').fadeOut()
+      350
 
   triggerTypeahead = ->
     $('.form-search input.search-query').trigger jQuery.Event('keyup')
@@ -21,7 +26,10 @@ $ ->
     triggerTypeahead()
   $('.form-search input.search-query').focus (e) ->
     triggerTypeahead()
+  $('.form-search input.search-query').click (e) ->
+    triggerTypeahead()
   $('.form-search input.search-query').keypress (e) ->
+    $('ul.typeahead').hide() if e.keyCode == 27
     triggerTypeahead() if e.keyCode == 13 && !$('.form-search ul.typeahead').is(':visible')
 
   sourceRequest = _.debounce(
@@ -45,7 +53,10 @@ $ ->
   $('input.search-query').typeahead(
     minLength: 2
     source: (query, process) ->
-      sourceRequest query, process
+      if currentQuery == query
+        $('ul.typeahead').show()
+      else
+        sourceRequest query, process
       return
 
     updater: (item) ->

@@ -1,14 +1,14 @@
 = render layout: 'boxed', locals: {title: "#{@category.title} - cинхронизация #{params[:what] == 'prices' ? 'цен' : 'товаров'}"} do
   p
-    = link_to :back, class: 'btn' do
-      i.icon-arrow-left>
+    = link_to :back, class: 'btn btn-default' do
+      i.fa.fa-arrow-left>
       | Назад
   = tabs do |tabs|
     - tabs.pane "Изменения" do
       - if @items.any?
         = render "#{params[:what]}_diff"
       - else
-        .alert.alert-block
+        .alert.alert-warning
           strong> Упс...
           ' Нет изменений. Можно поработать
           => link_to_spreadsheet params[:what], 'с прайсом'
@@ -25,7 +25,7 @@
               = error
   - if @items.any?
     => link_to admin_sync_action_path(params[:what], :update, @category), class: 'btn btn-info' do
-      i.icon-refresh>
+      i.fa.fa-refresh>
       | Синхронизировать
     ' или
     = link_to 'Отменить', :back
