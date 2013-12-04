@@ -8,8 +8,7 @@ html
     = stylesheet_link_tag 'application'
 
   body
-    .container
-      .span12.hero-unit.text-center
-        p = image_tag 'cats/cat_tied.png'
-        h1 Упс.. Ошибка сервера
-        p.lead Мы уже получили отчет и в скором времени устраним это недоразумение
+    .container: .jumbotron.text-center
+      p = image_tag 'cats/cat_tied.png'
+      h1 Упс.. Ошибка сервера
+      p.lead Мы уже получили отчет и в скором времени устраним это недоразумение
