@@ -37,6 +37,18 @@ SimpleForm.setup do |config|
     end
   end
 
+  config.wrappers :checkbox, tag: :div, class: "checkbox", error_class: "has-error" do |b|
+    b.use :html5
+    b.wrapper tag: :label do |ba|
+      ba.use :input, class: false
+      ba.use :label_text
+    end
+    b.use :hint,  wrap_with: { tag: :p, class: "help-block" }
+    b.use :error, wrap_with: { tag: :span, class: "help-block text-danger" }
+  end
+
+  config.wrapper_mappings = { boolean: :checkbox }
+
   # Wrappers for forms and inputs using the Twitter Bootstrap toolkit.
   # Check the Bootstrap docs (http://twitter.github.com/bootstrap)
   # to learn about the different styles for forms and inputs,
