@@ -1,3 +1,5 @@
+//= require bootstrap3-typeahead
+
 $ ->
   labels = []
   results = {}

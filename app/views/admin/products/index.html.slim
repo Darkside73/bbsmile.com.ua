@@ -1,6 +1,6 @@
 = render layout: 'boxed', locals: {title: 'Последние добавленные товары'} do
   - if @products.any?
-    table.table.product-list.table-striped
+    table.table.product-list.table-striped.table-hover
       thead
         tr
           th Название
@@ -8,9 +8,9 @@
       tbody
       - @products.each do |product|
         tr.item
-          td width="75%"
+          td
             = link_to product.title, [:admin, product], class: 'name'
-          td width="25%"
+          td
             => link_to 'Редактировать', [:edit, :admin, product], class: 'btn btn-info'
             =  link_to 'Удалить', [:admin, product], method: :delete, class: 'btn btn-warning'
 

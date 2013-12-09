@@ -29,7 +29,7 @@ SimpleForm.setup do |config|
     b.use :placeholder
     b.use :label
     b.wrapper :tag => 'div', :class => 'controls' do |input|
-      input.wrapper :tag => 'div', :class => 'input-append' do |append|
+      input.wrapper :tag => 'div', :class => 'input-group' do |append|
         append.use :input
       end
       input.use :hint,  :wrap_with => { :tag => 'span', :class => 'help-block' }

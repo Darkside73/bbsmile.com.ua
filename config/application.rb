@@ -54,7 +54,7 @@ module Bbsmile
     config.assets.precompile += ['main.css', 'inner.css', 'category.css', 'product.css', 'information_page.css',
         'ie.css',
         'font-awesome-ie7.min.css', 'fontawesome-webfont.ttf', 'fontawesome-webfont.eot', 'fontawesome-webfont.svg', 'fontawesome-webfont.woff',
-        'product.js', 'category.js'
+        'product.js', 'category.js', 'bootstrap3-wysihtml5/lib/css/bootstrap3-wysiwyg5-color.css'
     ]
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif 404.html 500.html)
 

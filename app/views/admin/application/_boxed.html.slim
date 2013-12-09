@@ -1,8 +1,8 @@
-.row: .block
-  .navbar.navbar-inner.block-header
+.panel.panel-default
+  .panel-heading
     .pull-left
       strong.text-muted = yield(:box_title).presence || local_assigns[:title]
     .pull-right.actions
       = yield(:box_actions)
-  .block-content.collapse.in
-    = yield
+    .clearfix
+  .panel-body = yield

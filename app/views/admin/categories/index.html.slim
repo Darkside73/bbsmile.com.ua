@@ -1,6 +1,6 @@
 = render layout: 'boxed', locals: {title: 'Список категорий'} do
   - if @categories.any?
-    table.table.sortable.categories-list.table-striped
+    table.table.sortable.categories-list.table-striped.table-hover
       thead
         tr
           th Название
@@ -8,9 +8,9 @@
       tbody
       - @categories.each do |category|
         tr.item data={sort_url: sort_admin_category_path(category)}
-          td width="75%"
+          td
             = link_to category.title, [:admin, category], class: 'name'
-          td width="25%"
+          td
             => link_to 'Редактировать', [:edit, :admin, category], class: 'btn btn-info'
             =  link_to 'Удалить', [:admin, category], method: :delete, class: 'btn btn-warning'
 

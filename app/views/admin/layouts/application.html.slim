@@ -11,14 +11,12 @@ html
 
   body
     = render 'navbar'
-    .container.wide
+    .container.bs-docs-container
       .row
-        #sidebar.col-md-3
+        #sidebar.col-xs-3
           = render 'menu'
-        #content.col-md-9
-          = render 'flashes'
-          .navbar: .navbar-inner
-            = render 'breadcrumb'
-          = yield
-      hr.clearfix
-      footer: p &copy; bbsmile.com.ua
+        #content.col-xs-9
+          .row = render 'flashes'
+          .row = render 'breadcrumb'
+          .row = yield
+    footer.bs-footer: .container: p &copy; bbsmile.com.ua

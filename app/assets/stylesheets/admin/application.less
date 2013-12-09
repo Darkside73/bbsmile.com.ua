@@ -1,13 +1,18 @@
 /*
 * = require "twitter/bootstrap"
 * = require "font-awesome"
-* = require "admin/theme"
 * = require "select2/select2"
-* = require "bootstrap-wysihtml5"
+* = require "select2-bootstrap3"
+* = require "admin/bs-docs"
+* = require "bootstrap3-wysihtml5/src/bootstrap-wysihtml5"
 */
 
-@import "twitter/bootstrap/variables";
+@import "lib/variables";
 @import "twitter/bootstrap/mixins";
+
+body {
+  min-width: @screen-md-min;
+}
 
 a.fa {
   color: @gray;
@@ -18,47 +23,29 @@ a i.fa {
   text-decoration: none;
 }
 
+.bs-callout {
+  margin-top: 0;
+}
+
+.tab-content {
+  padding-top: 15px;
+}
+
+#content {
+  margin: 30px 0;
+  &> .row {
+    padding-left: 10px;
+  }
+}
+
 .navbar {
   .form-search {
-    margin: 5px 60px 0 0;
+    margin-top: 8px;
   }
-}
-
-.bs-docs-sidenav {
-  max-width: 300px;
-  .dropdown-submenu > a:after {
-    border: 0 none;
-  }
-}
-
-.block .block-content { padding-left: 5px; }
-
-.block-header .text-muted ul.breadcrumb {
-  padding-top: 0;
-}
-
-table.sortable {
-  width: 940px;
-  &.photos-list  {
-    width: 600px;
-  }
-}
-
-.select2-container {
-  width: 220px;
 }
 
 p.bages {
   span { margin-right: 10px; }
-}
-
-.wysihtml5 {
-  width: 80%;
-  height: 350px;
-}
-
-.select2-container.category.category {
-  width: 300px;
 }
 
 .actions-panel {
@@ -72,20 +59,17 @@ p.bages {
     a.top {
       position: absolute;
       left: 10px;
-      display: block;
+      display: block !important;
       color: @gray-light;
       text-decoration: none;
     }
   }
 }
 
-form.simple_form {
-  margin-left: 5px;
-  input.autogrow {
-    .transition(width 0.3s ease);
-    &:focus { width: 90%; }
-  }
-  .input-append {
-    input { width: 180px; }
-  }
+.new-item-panel {
+  margin-bottom: 20px;
+}
+
+textarea.wysihtml5 {
+  height: 300px;
 }

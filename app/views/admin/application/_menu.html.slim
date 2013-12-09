@@ -1,26 +1,16 @@
-ul.nav.nav-list.navbar-collapse.collapse
+.bs-sidebar: ul.nav.bs-sidenav
   li*unless_active_attr('admin/categories')
-    a href="#{admin_categories_path}"
-      | Каталог
-      i.fa.fa-chevron-right
+    a href="#{admin_categories_path}" Каталог
   li*unless_active_attr('admin/products')
-    a href="#{admin_products_path}"
-      | Товары
-      i.fa.fa-chevron-right
+    a href="#{admin_products_path}" Товары
   li*unless_active_attr('admin/brands')
-    a href="#{admin_brands_path}"
-      | Бренды
-      i.fa.fa-chevron-right
-  li.dropdown-submenu*unless_active_attr('admin/gdrive_sync')
-    a href="#"
-      | Синхронизация
-      i.fa.fa-chevron-right
-    ul.dropdown-menu
-      li: a tabindex="-1" href="#{admin_sync_path('prices')}" Прайсы
-      li: a tabindex="-1" href="#{admin_sync_path('products')}" Товары
-  li: a href="#"
-    | Заказы
-    i.fa.fa-chevron-right
-  li: a href="#"
-    | Страницы
-    i.fa.fa-chevron-right
+    a href="#{admin_brands_path}" Бренды
+  li*unless_active_attr('admin/gdrive_sync')
+    a href="#" Синхронизация
+    ul.nav
+      li class="#{'active' if params[:what] && params[:what] == 'prices'}"
+        a href="#{admin_sync_path('prices')}" Прайсы
+      li class="#{'active' if params[:what] && params[:what] == 'products'}"
+        a href="#{admin_sync_path('products')}" Товары
+  li: a href="#" Заказы
+  li: a href="#" Страницы

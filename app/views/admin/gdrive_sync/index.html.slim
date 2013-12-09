@@ -1,5 +1,5 @@
 = render layout: 'boxed', locals: {title: "Синхронизация #{params[:what] == 'prices' ? 'цен' : 'товаров'}"} do
-  table.table.table-striped
+  table.table.table-striped.table-hover
     tbody
       - Category.roots.each do |category|
         tr

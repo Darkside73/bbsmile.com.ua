@@ -1,15 +1,5 @@
-.navbar.navbar-fixed-top: .navbar-inner: .container
-  = link_to 'Админ-панель', admin_root_path, class: 'brand'
-  .pull-right
-    form.form-search.pull-left
-      input.search-query type="text" placeholder="поиск товара" data-provide="typeahead" autocomplete="off" data-url="#{admin_search_products_path}"
-    .nav-collapse.collapse.pull-right
-      ul.nav
-        li.dropdown
-          a.dropdown-toggle data-toggle="dropdown" role="button" href="#"
-            i.fa.fa-user>
-            | admin
-            i.caret
-          ul.dropdown-menu
-            li
-              a href="#" tabindex="-1" Выход
+header.bs-docs-nav.navbar.navbar-fixed-top.navbar-inverse: .container role="navigation"
+  .navbar-header = link_to 'Админ-панель', admin_root_path, class: 'navbar-brand'
+  .navbar-header.navbar-right
+    form.form-search
+      input.form-control.search-query type="text" placeholder="поиск товара" data-provide="typeahead" autocomplete="off" data-url="#{admin_search_products_path}"

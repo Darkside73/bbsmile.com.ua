@@ -16,7 +16,7 @@
       => link_to "Добавить подкатегорию", new_subcategory_admin_category_path(@category), class: 'btn btn-success'
 
   - if @subcategories.any?
-    table.table.sortable.categories-list.table-striped
+    table.table.sortable.categories-list.table-striped.table-hover
       thead
         tr
           th Название
@@ -24,14 +24,13 @@
       tbody
       - @subcategories.each do |subcategory|
         tr.item data={sort_url: sort_admin_category_path(subcategory)}
-          td width="75%"
-            = link_to subcategory.title, [:admin, subcategory], class: 'name'
-          td width="25%"
+          td = link_to subcategory.title, [:admin, subcategory], class: 'name'
+          td
             => link_to 'Редактировать', [:edit, :admin, subcategory], class: 'btn btn-info'
             =  link_to 'Удалить', [:admin, subcategory], method: :delete, class: 'btn btn-warning'
 
   - if @products.present? && @products.any?
-    table.table.sortable.bulkable.product-list.table-striped
+    table.table.sortable.bulkable.product-list.table-striped.table-hover
       thead
         tr
           th.bulk: input type="checkbox"
@@ -41,8 +40,8 @@
       - @products.each do |product|
         tr.item data={sort_url: sort_admin_product_path(product)}
           td.bulk: input type="checkbox" value="#{product.id}"
-          td width="75%"
+          td
             = link_to product.title, [:admin, product], class: 'name'
-          td width="25%"
+          td
             => link_to 'Редактировать', [:edit, :admin, product], class: 'btn btn-info'
             =  link_to 'Удалить', [:admin, product], method: :delete, class: 'btn btn-warning'

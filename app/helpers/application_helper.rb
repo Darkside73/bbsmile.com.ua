@@ -35,6 +35,7 @@ module ApplicationHelper
     case level
     when :notice then "info"
     when :alert then "block"
+    when :error then "danger"
     else level.to_s
     end
   end
