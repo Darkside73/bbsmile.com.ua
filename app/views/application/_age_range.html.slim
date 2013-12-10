@@ -2,16 +2,20 @@
 - if from && from == to
   => "#{number_to_human from} #{Russian.p from.to_i, 'год', 'года', 'лет'}"
 - else
-  - if from && from > 1
+  - if from
     ' от
     - if from == 1
       ' 1 года
-    - else
+    - elsif from > 1
       => "#{number_to_human from} лет"
+    -else
+      => "#{number_to_human from * 12} #{Russian.p (from * 12).to_i, 'месяца', 'месяцев', 'месяцев'}"
 
   - if to && to != Product::MAX_AGE_TO
     ' до
-    - if from == 1
+    - if to == 1
       ' 1 года
-    - else
+    - elsif to > 1
       => "#{number_to_human to} лет"
+    - else
+      => "#{number_to_human to * 12} #{Russian.p (to * 12).to_i, 'месяца', 'месяцев', 'месяцев'}"
