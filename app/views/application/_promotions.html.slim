@@ -6,19 +6,16 @@
   .carousel-inner
     .item.active data-title="Luvion ночничок в подарок"
       .image_map.luvion_night_light
-        - luvion_promo_items(:night_light).each_with_index do |item, index|
-          = link_to '', page_path(item.url, utm_campaign: 'luvion_night_light', utm_medium: 'main_page_promotions', utm_source: 'local'), class: "map-item map-item#{index+1}", title: item.title
-        = image_tag "content/Nochnichok.jpg", class: 'img-responsive'
+        = link_to page_path('promotions', anchor: 'promo3', utm_campaign: 'luvion_night_light', utm_medium: 'main_page_promotions', utm_source: 'local') do
+          = image_tag "content/Nochnichok.jpg", class: 'img-responsive'
     .item data-title="Luvion термометр в подарок"
       .image_map.luvion_thermometr
-        - luvion_promo_items(:night_light).each_with_index do |item, index|
-          = link_to '', page_path(item.url, utm_campaign: 'luvion_thermometer', utm_medium: 'main_page_promotions', utm_source: 'local'), class: "map-item map-item#{index+1}", title: item.title
-        = image_tag "content/luvion_thermometer.jpg", class: 'img-responsive'
-    .item data-title="Автокресло..."
+        = link_to page_path('promotions', anchor: 'promo2', utm_campaign: 'luvion_thermometer', utm_medium: 'main_page_promotions', utm_source: 'local') do
+          = image_tag "content/luvion_thermometer.jpg", class: 'img-responsive'
+    .item data-title="Новогодние скидки на всю продукцию Trunki и Bellelli!"
       .avtokreslo
-        - luvion_promo_items(:night_light).each_with_index do |item, index|
-          = link_to '', page_path(item.url, utm_campaign: 'avtokreslo', utm_medium: 'main_page_promotions', utm_source: 'local'), class: "map-item map-item#{index+1}", title: item.title
-        = image_tag "content/avtokreslo.jpg", class: 'img-responsive'
+        = link_to page_path('promotions', anchor: 'promo1', utm_campaign: 'avtokreslo', utm_medium: 'main_page_promotions', utm_source: 'local') do
+          = image_tag "content/avtokreslo.jpg", class: 'img-responsive'
   a.left.carousel-control href="#promotions" data-slide="prev"
     i.fa.fa-angle-left
   a.right.carousel-control href="#promotions" data-slide="next"

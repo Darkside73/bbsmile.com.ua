@@ -1,10 +1,53 @@
 = render layout: 'static_page', locals: { title: 'Акции и скидки' } do
-  markdown:
-    Суперакционные предложения на детскую мебель!
-    ---------------------
+  .offer.flashable.products-list
+    = render 'order/form', order: new_order
+    h2.promo3
+      ' При покупке видеоняни &mdash; ночник в подарок!
+      sup: small.label.label-danger 9 декабря 2013 — 31 декабря 2013
+    .well
+      markdown:
+        При покупке видеоняни [Luvion Prestige Touch](/videonyanya-luvion-prestige-touch) и [Luvion Grand Elite](/videonyanya-luvion-grand-elite) - многоцветный
+        ночник [Luvion EcoLED](/mnogotsvetnyiy-nochnichok-luvion-ecoled) **в подарок**!
 
-    При покупке кроватки ТМ [Верес](/detskie-krovatki?brands[]=Верес) или ТМ [Gandylyan](/detskie-krovatki?brands[]=Gandylyan) вы гарантировано получаете **в подарок** [набор одежды для новорожденных](/nabor-dlya-novorozhdennyih-12257) от турецкого производителя ТМ *Babexi*.
-    Акция действует до *16 октября 2013 года* или до окончания акционного товара.
+      h3 Товары из этой акции
+      .row
+        = render Product.find 2858
+        = render Product.find 2855
+        = render Product.find 1891
 
-    При покупке мебельного дуэта кроватки и комода ТМ [Верес](/duetyi-krovat-komod?brands[]=Верес), Вы получаете **скидку до 10%** и бесплатную доставку по всей Украине.
-    Акция действует до *16 октября 2013 года*
+    hr
+
+    h2.promo2
+      ' При покупке радионяни Tomy &mdash; термометр в подарок!
+      sup: small.label.label-danger 9 декабря 2013 — 31 декабря 2013
+    .well
+      markdown:
+        При покупке одной из акционных радионянь [Tomy](/brand/Tomy) получаете в подарок - цифровой
+        термометр для воды и воздуха [Luvion Bath and Room](/tsifrovoy-termometr-luvion-bath-and-room) **в подарок**!
+
+      h3 Товары из этой акции
+      .row
+        = render Product.find 3754
+
+    hr
+
+    h2.promo1
+      ' Новогодние скидки на всю продукцию Trunki и Bellelli!
+      sup: small.label.label-danger 1 декабря 2013 — 31 января 2014
+    .well
+      markdown:
+        Новогодние скидки на всю продукцию [Trunki](/brand/Trunki)!
+        Новогодние скидки на все автокресла [Bellelli](/brand/Bellelli)!
+
+    hr
+
+    h2
+      ' Суперакционные предложения на детскую мебель!
+      sup: small.label.label-default Акция закончена
+    .well
+      markdown:
+        При покупке кроватки ТМ [Верес](/detskie-krovatki?brands[]=Верес) или ТМ [Gandylyan](/detskie-krovatki?brands[]=Gandylyan) вы гарантировано получаете **в подарок** [набор одежды для новорожденных](/nabor-dlya-novorozhdennyih-12257) от турецкого производителя ТМ *Babexi*.
+        Акция действует до *16 октября 2013 года* или до окончания акционного товара.
+
+        При покупке мебельного дуэта кроватки и комода ТМ [Верес](/duetyi-krovat-komod?brands[]=Верес), Вы получаете **скидку до 10%** и бесплатную доставку по всей Украине.
+        Акция действует до *16 октября 2013 года*

@@ -72,6 +72,12 @@ module ApplicationHelper
     Settings.misc.search_suggestions.split(',').map(&:strip).sample
   end
 
+  def new_order
+    order = Order.new
+    order.build_user
+    order
+  end
+
   private
     def current_layout
       layout = controller.send(:_layout)

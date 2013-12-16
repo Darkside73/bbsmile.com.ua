@@ -227,6 +227,22 @@ h1.page-title {
   }
 }
 
+.offer {
+  h2.active {
+    .animation(hilite 3s);
+    .hilite-background() {
+      0% {background: transparent;}
+      10% {background: #f8f99a;}
+      100% {background: transparent;}
+    }
+    @keyframes hilite { .hilite-background; }
+    @-webkit-keyframes hilite { .hilite-background; }
+  }
+  .well {
+    margin-bottom: 30px;
+  }
+}
+
 a.go-top {
   position: fixed;
   display: none;
