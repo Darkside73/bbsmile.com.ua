@@ -32,7 +32,7 @@
         - if @product.available
           span.label.label-success itemprop="availability" content="in_stock" Есть в наличии
         - else
-          span.label.label-inverse Нет в наличии
+          span.label.label-default Нет в наличии
         - if @product.sku?
           span.label.label-default Артикул: #{@product.sku}
         - if @product.age
