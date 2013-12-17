@@ -90,6 +90,9 @@
             .gallery-links
               - product_variants.each_slice(4) do |variants|
                 .row
-                  = render variants
+                  - variants.each_with_index do |variant, index|
+                    = render variant
+                    - if index.odd?
+                      .clearfix.visible-sm.visible-xs
         - if @product.video?
           .tab-pane#video = render partial: 'video', object: @product.video
