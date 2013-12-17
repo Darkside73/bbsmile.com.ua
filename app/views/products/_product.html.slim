@@ -3,10 +3,12 @@
     = link_to image_tag(product.top_image(:grid), alt: product.name), product, class: 'thumbnail'
   .caption
     h3
-      = link_to product
-      - if product.brand.present?
+      => link_to product
+      - if product.brand.present? || product.sku.present?
         br
-        small = product.brand.full_name
+        small
+          span title="Бренд" => product.brand.full_name
+          em title="Артикул" = product.sku
   - if product.price
     .price
       - if product.price_old
