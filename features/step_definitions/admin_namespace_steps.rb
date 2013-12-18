@@ -4,5 +4,5 @@ When(/^Enter user "(.*?)" and password "(.*?)"$/) do |user, password|
 end
 
 Then /I should see admin page/ do
-  page.should have_content('admin')
+  page.should have_content('Админ')
 end
