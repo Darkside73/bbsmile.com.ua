@@ -26,6 +26,7 @@ html
     a.go-top href="#" title="К началу страницы": i.fa.fa-long-arrow-up
     .footer: .container
       = render 'footer'
+    = render 'admin_panel' unless Rails.env.production?
     = javascript_include_tag 'application'
     = yield :modals
     = yield :js_footer

@@ -1,0 +1,35 @@
+@admin-panel-width: 220px;
+
+.admin-panel-open {
+    position: fixed;
+    display: block;
+    right: 0;
+    top: 50%;
+    font-size: 24px;
+    color: @gray;
+    background-color: lighten(@gray, 50%);
+    padding: 4px;
+    opacity: .5;
+    &:hover {
+      opacity: 1;
+    }
+    &:hover, &:focus, &:active {
+      color: @gray;
+      outline: none;
+    }
+    &.opened {
+      right: @admin-panel-width;
+    }
+}
+.admin-panel {
+  display: none;
+  position: fixed;
+  width: @admin-panel-width;
+  height: 320px;
+  right: 0;
+  top: 24%;
+  opacity: .85;
+  .close {
+    line-height: .5;
+  }
+}

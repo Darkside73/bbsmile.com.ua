@@ -78,6 +78,26 @@ module ApplicationHelper
     order
   end
 
+  def admin_actions_links
+    links = []
+    if @current_page.respond_to? :pageable
+      pageable = @current_page.pageable
+      links << link_to('Просмотр', [:admin, pageable])
+      links << link_to('Редактировать', [:edit, :admin, pageable])
+      if pageable.is_a?(Category) && pageable.leaf?
+        links << link_to('Добавить товар', new_product_admin_category_path(pageable))
+        links << link_to_add_or_edit_content(pageable)
+      end
+      if pageable.is_a? Product
+        links << link_to_add_or_edit_content(pageable)
+        links << link_to('Характеристики', [:properties, :admin, pageable])
+        links << link_to('Фото', [:admin, pageable, :images])
+        links << link_to('Цены', [:admin, pageable, :variants])
+      end
+    end
+    links
+  end
+
   private
     def current_layout
       layout = controller.send(:_layout)
@@ -85,6 +105,15 @@ module ApplicationHelper
         layout
       else
         File.basename(layout.identifier).split('.').first
+      end
+    end
+
+    def link_to_add_or_edit_content(pageable)
+      if pageable.content.present?
+        path_helper = "edit_admin_#{pageable.class.name.underscore}_content_path"
+        link_to 'Описание', self.send(path_helper, pageable.content)
+      else
+        link_to 'Описание', [:new, :admin, pageable, :content]
       end
     end
 end
