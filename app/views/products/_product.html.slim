@@ -7,7 +7,7 @@
       - if product.brand.present? || product.sku.present?
         br
         small
-          span title="Бренд" => product.brand.full_name
+          span title="Бренд" => product.brand.try(:full_name)
           em title="Артикул" = product.sku
   - if product.price
     .price
