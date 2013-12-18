@@ -47,6 +47,4 @@
     hr
   => link_to 'Редактировать', [:edit, :admin, @product], class: 'btn btn-info'
   => link_to "Посмотреть на сайте", product_page_url(@product.url, domain: request.host, subdomain: 'beta'), class: 'btn btn-default', target: '_blank'
-  - if @product.url_old.present?
-    => link_to "Посмотреть на старом сайте", product_page_url(@product.url_old, domain: request.host, subdomain: 'old'), class: 'btn btn-default', target: '_blank'
   =  link_to 'Удалить', [:admin, @product], method: :delete, class: 'btn btn-warning'
