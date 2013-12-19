@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131103192327) do
+ActiveRecord::Schema.define(version: 20131219142535) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "assets", force: true do |t|
     t.datetime "created_at"
@@ -37,8 +41,8 @@ ActiveRecord::Schema.define(version: 20131103192327) do
     t.string   "ancestry"
     t.integer  "position"
     t.boolean  "leaf",       default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "categories", ["position"], name: "index_categories_on_position", using: :btree
@@ -81,8 +85,8 @@ ActiveRecord::Schema.define(version: 20131103192327) do
   create_table "pages", force: true do |t|
     t.string   "title",                         null: false
     t.string   "url",                           null: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "pageable_id"
     t.string   "pageable_type"
     t.boolean  "hidden",        default: false
@@ -117,6 +121,7 @@ ActiveRecord::Schema.define(version: 20131103192327) do
   end
 
   add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
   add_index "products", ["position"], name: "index_products_on_position", using: :btree
 
   create_table "taggings", force: true do |t|
@@ -158,6 +163,8 @@ ActiveRecord::Schema.define(version: 20131103192327) do
     t.datetime "updated_at"
   end
 
+  add_index "variants", ["position"], name: "index_variants_on_position", using: :btree
+  add_index "variants", ["price"], name: "index_variants_on_price", using: :btree
   add_index "variants", ["product_id"], name: "index_variants_on_product_id", using: :btree
 
 end

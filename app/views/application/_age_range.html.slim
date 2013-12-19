@@ -9,7 +9,7 @@
     - elsif from > 1
       => "#{number_to_human from} лет"
     -else
-      => "#{number_to_human from * 12} #{Russian.p (from * 12).to_i, 'месяца', 'месяцев', 'месяцев'}"
+      => "#{number_to_human (from * 12).round} #{Russian.p (from * 12).round, 'месяца', 'месяцев', 'месяцев'}"
 
   - if to && to != Product::MAX_AGE_TO
     ' до
@@ -18,4 +18,4 @@
     - elsif to > 1
       => "#{number_to_human to} лет"
     - else
-      => "#{number_to_human to * 12} #{Russian.p (to * 12).to_i, 'месяца', 'месяцев', 'месяцев'}"
+      => "#{number_to_human (to * 12).round} #{Russian.p (to * 12).round, 'месяца', 'месяцев', 'месяцев'}"

@@ -125,7 +125,7 @@ class Product < ActiveRecord::Base
   end
 
   def format_age(from, to)
-    format = proc {|number| number_with_precision number, precision: 1, strip_insignificant_zeros: true }
+    format = proc {|number| number_with_precision number, precision: 2, strip_insignificant_zeros: true }
     if from == to
       format.call(from)
     else
