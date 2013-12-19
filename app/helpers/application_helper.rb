@@ -82,17 +82,17 @@ module ApplicationHelper
     links = []
     if @current_page.respond_to? :pageable
       pageable = @current_page.pageable
-      links << link_to('Просмотр', [:admin, pageable])
-      links << link_to('Редактировать', [:edit, :admin, pageable])
+      links << link_to('Просмотр', admin_url_for([:admin, pageable]))
+      links << link_to('Редактировать', admin_url_for([:edit, :admin, pageable]))
       if pageable.is_a?(Category) && pageable.leaf?
-        links << link_to('Добавить товар', new_product_admin_category_path(pageable))
+        links << link_to('Добавить товар', admin_url_for([:new, :product, :admin, pageable]))
         links << link_to_add_or_edit_content(pageable)
       end
       if pageable.is_a? Product
         links << link_to_add_or_edit_content(pageable)
-        links << link_to('Характеристики', [:properties, :admin, pageable])
-        links << link_to('Фото', [:admin, pageable, :images])
-        links << link_to('Цены', [:admin, pageable, :variants])
+        links << link_to('Характеристики', admin_url_for([:properties, :admin, pageable]))
+        links << link_to('Фото', admin_url_for([:admin, pageable, :images]))
+        links << link_to('Цены', admin_url_for([:admin, pageable, :variants]))
       end
     end
     links
@@ -110,10 +110,13 @@ module ApplicationHelper
 
     def link_to_add_or_edit_content(pageable)
       if pageable.content.present?
-        path_helper = "edit_admin_#{pageable.class.name.underscore}_content_path"
-        link_to 'Описание', self.send(path_helper, pageable.content)
+        link_to 'Описание', admin_url_for([:edit, :admin, :product, pageable.content])
       else
-        link_to 'Описание', [:new, :admin, pageable, :content]
+        link_to 'Описание', admin_url_for([:new, :admin, pageable, :content])
       end
+    end
+
+    def admin_url_for item
+      polymorphic_url item, domain: 'bbsmile.com.ua', subdomain: ''
     end
 end
