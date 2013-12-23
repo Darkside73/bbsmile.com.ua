@@ -1,6 +1,21 @@
 .gallery-links
   .first-image
-    = link_to image_tag(first_image.url(:medium), alt: product.title, itemprop: 'image', class: 'img-responsive'), first_image.url, data: { gallery: '#product-gallery' }, title: product.title
+    = link_to first_image.url, data: { gallery: '#product-gallery' }, title: product.title, class: "#{'flagged' if product.flagged?}" do
+      - if product.flagged?
+        .stickers
+          - if product.discount
+            .item.discount
+              p = "-#{product.discount}%"
+              i.fa.fa-certificate
+          - if product.hit?
+            .item.hit
+              p хит продаж
+              i.fa.fa-certificate
+          - if product.novelty?
+            .item.novelty
+              p новинка
+              i.fa.fa-certificate
+      = image_tag first_image.url(:medium), alt: product.title, itemprop: 'image', class: 'img-responsive'
   .other-images
     - other_images.each do |image|
       a.thumbnail href="#{image.url}" title="#{product.title}" data-gallery="#product-gallery"

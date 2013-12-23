@@ -103,6 +103,14 @@ class Product < ActiveRecord::Base
     [from, to].map! {|n| n.to_f unless n.nil? }
   end
 
+  def flagged?
+    hit? || novelty? || discount
+  end
+
+  def discount
+    @discount ||= (((1 - price / price_old) * 100).floor if price_old)
+  end
+
   private
 
   def make_master_variant

@@ -29,4 +29,4 @@
               strong = @products.count
             - if @selected_category
               li = link_to 'Показать все', self.send(@special_products_path), class: 'btn btn-default'
-        = render 'categories/products'
+        = render 'categories/products', hide_novelties: (local_assigns[:hide_novelties] && hide_novelties), hide_hits: (local_assigns[:hide_hits] && hide_hits)

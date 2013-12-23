@@ -1,7 +1,7 @@
 - products = @products.presence || products
 - products.to_enum.each_slice(3).with_index do |products_by_three, index|
   .row.line class="#{'hide' if index > 6}"
-    = render products_by_three
+    = render products_by_three, hide_novelties: (local_assigns[:hide_novelties] && hide_novelties), hide_hits: (local_assigns[:hide_hits] && hide_hits)
 - rest_products = products.count - 21
 - if rest_products > 0
   .row

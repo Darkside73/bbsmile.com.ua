@@ -66,6 +66,53 @@ a:hover i.fa { text-decoration: none; }
   }
 }
 
+.stickers {
+  .item {
+    position: absolute;
+    width: 74px;
+    top: -17px;
+    left: -11px;
+    text-align: center;
+    i {
+      font-size: 86px;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      z-index: 0;
+    }
+    p {
+      line-height: 1em;
+      margin-top: 34px;
+      color: white;
+      font-weight: bold;
+      position: relative;
+      z-index: 1;
+    }
+    &:nth-child(2) {
+      top: 74px;
+    }
+    &:nth-child(3) {
+      top: 162px;
+    }
+    &.novelty {
+      color: fadeout(lighten(@green, 15%), 12%);
+    }
+    &.hit {
+      color: fadeout(lighten(@orange, 15%), 15%);
+      p {
+        margin-top: 28px;
+      }
+    }
+    &.discount {
+      color: fadeout(lighten(@red, 15%), 15%);
+      font-size: @font-size-h3;
+      p {
+        margin-top: 30px;
+      }
+    }
+  }
+}
+
 .row {
   .product .price span.old {
     color: @gray;
@@ -226,6 +273,11 @@ h1.page-title {
       text-shadow: none;
       font-weight: normal;
       margin-right: 5px;
+    }
+  }
+  .stickers {
+    .item {
+      left: 0;
     }
   }
 }
