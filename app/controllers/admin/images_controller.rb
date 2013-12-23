@@ -21,7 +21,7 @@ class Admin::ImagesController < Admin::ApplicationController
 
   def create
     @product = product
-    @image = @product.images.new params.fetch(:product_image, {}).permit(:attachment)
+    @image = @product.images.new images_params
     if @image.save
       flash.now[:notice] = I18n.t 'flash.message.images.created'
       redirect_to [:admin, @product, :images]
@@ -33,7 +33,12 @@ class Admin::ImagesController < Admin::ApplicationController
   end
 
   private
-    def product
-      Product.find params[:product_id]
-    end
+
+  def product
+    Product.find params[:product_id]
+  end
+
+  def images_params
+    params.fetch(:product_image, {}).permit(:attachment, :attachment_url)
+  end
 end
