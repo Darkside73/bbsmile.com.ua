@@ -43,30 +43,32 @@
       .clearfix
       hr
       .row
-        .col-md-6.col-sm-6 itemprop="offerDetails" itemscope="itemscope" itemtype="http://data-vocabulary.org/Offer"
+        .col-md-7.col-sm-6.col-xs-12 itemprop="offerDetails" itemscope="itemscope" itemtype="http://data-vocabulary.org/Offer"
           - if @product.price
             meta itemprop="price" content="#{@product.price}"
             meta itemprop="currency" content="UAH"
-          - if @product.price
-            p.price.big
-              - if @product.price_old
-                span.old.text-muted.big => number_to_currency @product.price_old
-              | #{number_to_currency @product.price}
-            p.shipping
-              a href="/shipping#delivery" title="Подробнее о доставке"
-                - if @product.free_shipping
-                  span.text-success> Доставка бесплатно
-                - else
-                  span.text-warning> Подробнее о доставке
-                i.fa.fa-info-circle
-          - else
-            p.text-muted: strong под заказ
+            .prices.pull-left
+              p.price.big
+                - if @product.price_old
+                  span.old.text-muted.big => number_to_currency @product.price_old
+                | #{number_to_currency @product.price}
+              p.shipping
+                a href="/shipping#delivery" title="Подробнее о доставке"
+                  - if @product.free_shipping
+                    span.text-success> Доставка бесплатно
+                  - else
+                    span.text-warning> Подробнее о доставке
+                  i.fa.fa-info-circle
 
-          = render 'order/form', order: @order, product: @product
-        - if @product.price && @product.available
-          .col-md-6.col-sm-6.btns
-            p
-              a.quick-shop.btn.btn-lg.btn-success data-toggle="modal" href="##{dom_id @order}" Купить
+            - if @product.available
+              = render 'order/form', order: @order, product: @product
+              p: a.quick-shop.btn.btn-lg.btn-success.col-md-4.col-sm-9.col-xs-4 data-toggle="modal" href="##{dom_id @order}" Купить
+            - else
+              p: strong.text-muted под заказ
+
+            .clearfix.visible-xs
+
+        .col-md-5.col-sm-6.col-xs-12 = render 'product_info_accordion'
       ul.nav.nav-tabs id="product-info-tabs"
         - if @product.properties.present?
           li.active: a href="#properties" data-toggle="tab" Характеристики
@@ -80,6 +82,8 @@
           .tab-pane.active#properties
             .page-content
               == @product.properties
+            .text-muted: small
+              | Комплектация и характеристики товара могут изменяться производителем без уведомления. Цвет изделия так же может отличаться от изображения в зависимости от настроек Вашего монитора. Уточняйте всю интересующую вас дополнительную информацию у менеджера во избежание недоразумений
         .tab-pane#description class="#{'active' unless @product.properties.present?}"
           .page-content itemprop="description"
             == @product.description
@@ -97,7 +101,5 @@
         - if @product.video?
           .tab-pane#video = render partial: 'video', object: @product.video
 
-      .text-muted: small
-        | Комплектация и характеристики  товара могут изменяться производителем без уведомления. Цвет изделия так же может отличаться от изображения в зависимости от настроек Вашего монитора. Уточняйте всю интересующую вас дополнительную информацию у менеджера во избежание недоразумений
 
 

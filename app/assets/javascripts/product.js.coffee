@@ -34,3 +34,4 @@ $ ->
     _gaq.push ['_trackEvent', 'Товар', 'Просмотреть вариант', $(currentLink).attr('title')]
     $('#variants-gallery .price').html $(currentLink).data('price')
 
+  $('#shippingInfo').collapse 'hide' if $(window).width() < 768

@@ -1,0 +1,6 @@
+.simple-modal.modal.fade id="#{id}" aria-hidden="true" role="dialog": .modal-dialog: .modal-content
+  .modal-header
+    button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+    h4.modal-title = title
+  .modal-body = yield
+  .modal-footer: button.btn.btn-default type="button" data-dismiss="modal" Закрыть

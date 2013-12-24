@@ -41,12 +41,6 @@
     margin-top: 15px;
     li a { color: @blue; }
   }
-  .btns {
-    text-align: right;
-    .to-cart {
-      margin-right: 30px;
-    }
-  }
   .share {
     a {
       vertical-align: middle;
@@ -55,6 +49,9 @@
       margin-left: 10px;
       &:hover { color: lighten(@purple, 20%); }
     }
+  }
+  .prices {
+    margin-right: 15px;
   }
   .shipping {
     a:hover {
@@ -65,6 +62,38 @@
       .text-warning {
         color: darken(@orange, 15%);
       }
+    }
+  }
+  #product-info-accordion {
+    .panel-title {
+      i {
+        width: 15px;
+      }
+      a {
+        padding-left: 10px;
+        outline: none;
+      }
+    }
+    .panel-body {
+      ul {
+        padding-left: 15px;
+      }
+      a {
+        border-bottom: 1px dashed @link-color;
+        &:hover {
+          border-bottom: none;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .simple-modal {
+    .modal-body {
+      padding-top: 10px;
+    }
+    h5 {
+      font-weight: bold;
+      margin-top: 20px;
     }
   }
   #productVariants {
