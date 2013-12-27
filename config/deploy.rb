@@ -25,7 +25,7 @@ role :web,            deploy_server
 role :app,            deploy_server
 role :db,             deploy_server, primary: true
 
-set(:rvm_ruby_string) { "2.0.0@#{application_id}" }
+set(:rvm_ruby_string) { "2.1.0@#{application_id}" }
 set :rvm_type, :user
 set :bundle_dir, ''
 set :bundle_flags, '--system --quiet'
