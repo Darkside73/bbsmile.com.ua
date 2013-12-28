@@ -6,7 +6,8 @@ module SiteSearch
       products = Product.visible.by_title(query).limit(5)
       categories = Category.visible.by_title(query).limit(5)
 
-      results = categories.to_a
+      categories = categories.to_a
+      results = categories
       results += brands
       results += products.to_a if categories.count < 3
       if results.empty?
