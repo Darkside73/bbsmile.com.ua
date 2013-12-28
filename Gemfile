@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.0.beta1'
 
 gem 'pg'
 gem 'pg_search'
 gem 'ancestry'
 gem 'nilify_blanks'
 gem 'acts_as_list'
-gem 'acts-as-taggable-on'
+gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'newrelic_rpm'
@@ -66,6 +66,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'minitest'
   gem 'cucumber-rails', require: false
   gem 'capybara'
   gem 'shoulda'
