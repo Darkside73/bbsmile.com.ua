@@ -61,7 +61,7 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def tags
     tags = Tag.where(params[:q])
-    tags.map! { |tag| { text: tag.name, id: tag.name } }
+    tags.map { |tag| { text: tag.name, id: tag.name } }
     respond_to do |format|
       format.json { render json: tags }
     end
