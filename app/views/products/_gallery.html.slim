@@ -3,7 +3,7 @@
     = link_to first_image.url, data: { gallery: '#product-gallery' }, title: product.title, class: "#{'flagged' if product.flagged?}" do
       - if product.flagged?
         .stickers
-          - if product.discount
+          - if product.discount >= 5
             .item.discount
               p = "-#{product.discount}%"
               i.fa.fa-certificate

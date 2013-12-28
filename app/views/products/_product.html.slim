@@ -3,7 +3,7 @@
     = link_to "/#{product.url}", class: 'thumbnail' do
       - if product.flagged?
         .stickers
-          - if product.discount
+          - if product.discount >= 5
             .item.discount
               p = "-#{product.discount}%"
               i.fa.fa-certificate

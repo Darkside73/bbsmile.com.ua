@@ -108,7 +108,11 @@ class Product < ActiveRecord::Base
   end
 
   def discount
-    @discount ||= (((1 - price / price_old) * 100).floor if price_old)
+    @discount ||= if price_old
+      ((1 - price / price_old) * 100).floor
+    else
+      0
+    end
   end
 
   private
