@@ -19,15 +19,14 @@
 
 #product-container.container.flashable data-title="#{@product.title}" itemscope="itemscope" itemtype="http://data-vocabulary.org/Product"
   = render 'breadcrumb', category: @product.category
+  h1.page-title
+    span> itemprop="name" = @product.title
+    - if @product.brand.present?
+      small.text-muted itemprop="brand" = link_to @product.brand.full_name, brand_page_path(@product.brand.name)
   .row
     .gallery.col-md-4.col-sm-4.col-xs-3
       = gallery_for(@product)
     .description.col-md-8.col-sm-8.col-xs-9
-      h1.page-title
-        span> itemprop="name" = @product.title
-        - if @product.brand.present?
-          br
-          small.text-muted itemprop="brand" = link_to @product.brand.full_name, brand_page_path(@product.brand.name)
       .bages.pull-left
         - if @product.available
           span.label.label-success itemprop="availability" content="in_stock" Есть в наличии
