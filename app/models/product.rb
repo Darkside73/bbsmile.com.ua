@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
   include Contentable
   include ActionView::Helpers::NumberHelper
 
-  FREE_SHIPPING_PRICE = 400
+  FREE_SHIPPING_PRICE = 250
   MAX_AGE_TO = 16
 
   has_many :images, as: :assetable, dependent: :destroy
