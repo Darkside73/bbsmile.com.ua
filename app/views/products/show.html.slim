@@ -52,12 +52,10 @@
                   span.old.text-muted.big => number_to_currency @product.price_old
                 | #{number_to_currency @product.price}
               p.shipping
-                a href="/shipping#delivery" title="Подробнее о доставке"
-                  - if @product.free_shipping
+                - if @product.free_shipping
+                  a href="#shippingModal" data-toggle="modal" title="Подробнее о доставке"
                     span.text-success> Доставка бесплатно
-                  - else
-                    span.text-warning> Подробнее о доставке
-                  i.fa.fa-info-circle
+                    i.fa.fa-info-circle
 
             - if @product.available
               = render 'order/form', order: @order, product: @product
