@@ -34,7 +34,7 @@ $ ->
 
   $('a.product-back').click ->
     _gaq.push ['_trackEvent', 'Навигация', 'Вернуться назад', $(this).data('title')]
-  $('p.shipping a').click ->
+  $('a[href="#shippingModal"]').click ->
     _gaq.push ['_trackEvent', 'Товар', 'Информация о доставке']
   $('#product-info-tabs li>a').click ->
     _gaq.push ['_trackEvent', 'Товар', 'Открыть вкладку', $(this).text()]
