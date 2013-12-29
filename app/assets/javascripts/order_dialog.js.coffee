@@ -3,7 +3,7 @@ class @OrderDialog
     @dialog = $(selector)
     @success = false
     throw new Error("Could not find #{selector}") unless @dialog.length
-    @dialog.on 'shown', =>
+    @dialog.on 'shown.bs.modal', =>
       if $('.btn-success', @dialog).hasClass 'disabled'
         @toggleSubmitButton()
       _gaq.push ['_trackPageview', '/ordering']
@@ -14,7 +14,7 @@ class @OrderDialog
           { name: $('span.name', @dialog).text() }
         ]
       )
-    @dialog.on 'hidden', =>
+    @dialog.on 'hide.bs.modal', =>
       _gaq.push ['_trackPageview', '/cancel-ordering'] unless @success
     @bind()
 
