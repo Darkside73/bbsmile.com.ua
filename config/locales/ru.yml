@@ -87,6 +87,8 @@ ru:
         subject: Прайс загружен
       sync_products_loaded:
         subject: Продукты загружены
+      new_order:
+        subject: "Новый заказ №%{order_id}"
 
   gdrive_sync:
     errors:

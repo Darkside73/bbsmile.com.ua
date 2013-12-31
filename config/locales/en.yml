@@ -57,6 +57,8 @@ en:
         subject: Prices has been loaded
       sync_products_loaded:
         subject: Products has been loaded
+      new_order:
+        subject: "New order #%{order_id} has been placed"
   gdrive_sync:
     errors:
       item_not_found: Item not found

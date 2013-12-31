@@ -4,7 +4,7 @@ class ManagerMailer < ActionMailer::Base
 
   def new_order(order)
     @order = order
-    mail subject: I18n.t('mailers.order.new_order.subject')
+    mail subject: I18n.t('mailers.system.new_order.subject', order_id: order.id)
   end
 
   def contact_message(contact)
