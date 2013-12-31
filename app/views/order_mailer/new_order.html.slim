@@ -5,7 +5,7 @@ p
   | .
 p
   ' Вы купили
-  strong => @order.variant.title
+  strong => link_to @order.variant.title, product_page_url(@order.variant.product.url, host: 'bbsmile.com.ua')
   ' за
   strong = number_to_currency @order.price
   | .
