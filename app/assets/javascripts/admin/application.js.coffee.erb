@@ -65,6 +65,7 @@ $ ->
 
   $('.transliterate').click (e) ->
     val = transliterate($($(this).data('source')).val())
+    val = val.replace /^\s+|\s+$/g, ''
     val = val.replace /\s+/g, '-'
     val = val.replace /\-+/g, '-'
     val = val.replace /[^A-z0-9\-]/g, ''
