@@ -51,11 +51,9 @@
                 - if @product.price_old
                   span.old.text-muted.big => number_to_currency @product.price_old
                 | #{number_to_currency @product.price}
-              p.shipping
-                - if @product.free_shipping
-                  a href="#shippingModal" data-toggle="modal" title="Подробнее о доставке"
-                    span.text-success> Доставка бесплатно
-                    i.fa.fa-info-circle
+              - if @product.free_shipping
+                p.shipping
+                  span.text-success Доставка бесплатно
 
             - if @product.available
               = render 'order/form', order: @order, product: @product
@@ -64,6 +62,11 @@
               p: strong.text-muted под заказ
 
             .clearfix.visible-xs
+
+            - if @product.drop_price
+              .clearfix
+              p.drop-price
+                strong: span.text-danger Также есть этот товар в повреждённой упаковке со скидкой!
 
         .col-md-5.col-sm-6.col-xs-12 = render 'product_info_accordion'
       ul.nav.nav-tabs id="product-info-tabs"
