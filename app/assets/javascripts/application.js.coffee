@@ -2,7 +2,6 @@
 //= require jquery_ujs
 //= require underscore
 //= require twitter/bootstrap
-//= require tabs_memory
 //= require jquery.scrollTo/jquery.scrollTo
 //= require search-box
 //= require order-from-grid
