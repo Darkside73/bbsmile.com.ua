@@ -82,7 +82,7 @@
           .tab-pane.active#properties
             .page-content
               == @product.properties
-            .text-muted: small
+            p.text-muted: small
               | Комплектация и характеристики товара могут изменяться производителем без уведомления. Цвет изделия так же может отличаться от изображения в зависимости от настроек Вашего монитора. Уточняйте всю интересующую вас дополнительную информацию у менеджера во избежание недоразумений
         .tab-pane#description class="#{'active' unless @product.properties.present?}"
           .page-content itemprop="description"
