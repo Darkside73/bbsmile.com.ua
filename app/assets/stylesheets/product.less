@@ -17,7 +17,10 @@
   .description {
     .bages {
       margin: 5px 0; font-size: 117%;
-      span { margin-right: 10px; }
+      span {
+        margin-right: 10px;
+        white-space: nowrap;
+      }
     }
     hr { margin-top: 5px; }
   }
@@ -63,6 +66,9 @@
         color: darken(@orange, 15%);
       }
     }
+  }
+  .quick-shop.btn {
+    min-width: 100px;
   }
   #product-info-accordion {
     .panel-title {
