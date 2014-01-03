@@ -115,6 +115,14 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def title_with_sku
+    if sku?
+      "#{title} #{sku}"
+    else
+      title
+    end
+  end
+
   private
 
   def make_master_variant
