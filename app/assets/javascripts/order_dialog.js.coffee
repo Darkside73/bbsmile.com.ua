@@ -2,7 +2,7 @@ class @OrderDialog
   constructor: (selector) ->
     @dialog = $(selector)
     @success = false
-    throw new Error("Could not find #{selector}") unless @dialog.length
+    # throw new Error("Could not find #{selector}") unless @dialog.length
     @dialog.on 'shown.bs.modal', =>
       if $('.btn-success', @dialog).hasClass 'disabled'
         @toggleSubmitButton()
