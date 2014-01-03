@@ -66,7 +66,9 @@
             - if @product.drop_price
               .clearfix
               p.drop-price
-                strong: span.text-danger Также есть этот товар в повреждённой упаковке со скидкой!
+                span.text-danger
+                  ' Этот товар можно приобрести в поврежденной упаковке с
+                  strong дополнительной скидкой!
 
         .col-md-5.col-sm-6.col-xs-12 = render 'product_info_accordion'
       ul.nav.nav-tabs id="product-info-tabs"
