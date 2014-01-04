@@ -10,3 +10,5 @@ gdrive:
     password: pass
   docs:
     prices: doc-key
+sms:
+  test_mode: true

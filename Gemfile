@@ -34,6 +34,7 @@ gem 'paperclip'
 gem 'dimensions-rails'
 
 gem 'google_drive', require: false
+gem 'httparty', require: false
 
 group :assets do
   gem 'less-rails-bootstrap'
