@@ -49,6 +49,7 @@ en:
     order:
       new_order:
         subject: New order has been placed
+        sms: "New order #%{order_id} has been placed"
     contacts:
       new_contact:
         subject: New contact message

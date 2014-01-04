@@ -5,8 +5,6 @@ class OrdersController < ApplicationController
     order = Order.new order_params
     respond_to do |format|
       if order.save
-        OrderMailer.new_order(order).deliver if order.user.email.present?
-        ManagerMailer.new_order(order).deliver
         flash.now[:success] =
           I18n.t(
             'flash.message.orders.created',

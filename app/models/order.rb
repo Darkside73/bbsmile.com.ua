@@ -1,4 +1,6 @@
 class Order < ActiveRecord::Base
+  include OrderObserver
+
   belongs_to :variant
   belongs_to :user, autosave: true
 
@@ -27,6 +29,14 @@ class Order < ActiveRecord::Base
     super include: {
       variant: { only: [:sku], methods: [:category_title, :title] }
     }
+  end
+
+  def phone_number
+    number = user_phone.gsub /[^+^\d]+/, ''
+    length = number.length
+    if (9..13) === length
+      '+380'[0..13-length-1] + number
+    end
   end
 
   private

@@ -38,4 +38,15 @@ describe Order do
       order.price.should == variant.price
     end
   end
+  describe '#phone_number' do
+    let(:order) { create :order }
+    it 'return normalized phone number' do
+      order = build :order, user_phone: '451234567'
+      order.phone_number.should == '+380451234567'
+    end
+    it 'return nil if number exeeded allowed length' do
+      order = build :order, user_phone: '1234567'
+      order.phone_number.should be_nil
+    end
+  end
 end
