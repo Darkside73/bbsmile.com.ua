@@ -32,9 +32,14 @@ class Order < ActiveRecord::Base
   def phone_number
     number = user_phone.gsub /[^+^\d]+/, ''
     length = number.length
-    if (9..13) === length
-      '+380'[0..13-length-1] + number
+    if length > 13
+      number = user_phone.chars.each_slice(user_phone.length/2)
+                               .map(&:join)
+                               .first
+                               .gsub(/[^+^\d]+/, '')[0..13]
+      length = number.length
     end
+    '+380'[0..13-length-1] + number if (9..13) === length
   end
 
   private

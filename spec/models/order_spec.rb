@@ -46,9 +46,21 @@ describe Order do
       order = build :order, user_phone: '451234567'
       order.phone_number.should == '+380451234567'
     end
-    it 'return nil if number exeeded allowed length' do
-      order = build :order, user_phone: '1234567'
-      order.phone_number.should be_nil
+    it 'return normalized phone number' do
+      order = build :order, user_phone: '451234567'
+      order.phone_number.should == '+380451234567'
+    end
+    context 'when two phone numbers in one field' do
+      it 'return only first normalized phone number' do
+        order = build :order, user_phone: '(123) 12-12-12 (456) 11-11-11'
+        order.phone_number.should == '+380123121212'
+      end
+    end
+    context 'when a small amount of digits in phone' do
+      it 'return nil' do
+        order = build :order, user_phone: '1234567'
+        order.phone_number.should be_nil
+      end
     end
   end
 end
