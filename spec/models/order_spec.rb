@@ -9,7 +9,9 @@ describe Order do
         user_attributes: { email: 'some@email', phone: '123', name: 'User' }
       )
       expect { order.save }.to change { Order.count }.by(1)
+      order.reload
       order.user.should be_instance_of(User)
+      order.user.should_not be_new_record
     end
     it "fails validation if user not valid" do
       expect(
