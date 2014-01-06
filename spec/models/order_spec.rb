@@ -6,7 +6,7 @@ describe Order do
     it "creates order and user" do
       order = Order.new(
         variant: variant, notes: 'some notes',
-        user_attributes: { email: 'some@email', phone: '123', name: 'User' }
+        user_attributes: { email: 'some@email', phone: '123456', name: 'User' }
       )
       expect { order.save }.to change { Order.count }.by(1)
       order.reload
@@ -26,7 +26,7 @@ describe Order do
     it "prevents user email duplications" do
       order = Order.new(
         variant: variant,
-        user_attributes: { email: user.email, phone: '123' }
+        user_attributes: { email: user.email, phone: '123456' }
       )
       expect { order.save.should be_true }.not_to change { User.count }.by(1)
       expect { user.reload }.not_to change { user.name + user.phone }
