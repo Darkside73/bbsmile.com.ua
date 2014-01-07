@@ -6,10 +6,9 @@ module SiteSearch
       products = Product.visible.by_title(query).limit(5)
       categories = Category.visible.by_title(query).limit(5)
 
-      categories = categories.to_a
       results = categories
       results += brands
-      results += products.to_a if categories.count < 3
+      results += products.to_a if categories.count(:all) < 3
       if results.empty?
         variant = Variant.visible.find_by(sku: query)
         results << variant.product if variant
