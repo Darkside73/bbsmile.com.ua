@@ -7,7 +7,7 @@ gem 'pg_search'
 gem 'ancestry'
 gem 'nilify_blanks'
 gem 'acts_as_list'
-gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
+gem 'acts-as-taggable-on'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'newrelic_rpm'
@@ -48,8 +48,7 @@ group :assets do
 end
 
 group :development do
-  # Freeze rake version due some instability
-  gem 'rake', '10.0.4'
+  gem 'rake'
   gem 'seedbank'
   gem 'rb-inotify', require: false
   gem 'guard', '>=2.1.0'
