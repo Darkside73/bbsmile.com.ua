@@ -54,7 +54,6 @@ group :development do
   gem 'guard', '>=2.1.0'
   gem 'guard-rspec'
   gem 'guard-cucumber'
-  gem 'guard-zeus-client'
   # gem 'meta_request', '0.2.5'
   gem 'better_errors'
 end
