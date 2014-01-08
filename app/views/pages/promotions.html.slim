@@ -14,9 +14,11 @@
         = render Product.find 1583
         = render Product.find 4425
 
+    hr
+
     h2.promo3
       ' При покупке видеоняни &mdash; ночник в подарок!
-      sup: small.label.label-danger 9 декабря 2013 — 31 декабря 2013
+      sup: small.label.label-danger 9 декабря 2013 — 31 января 2014
     .well
       markdown:
         При покупке видеоняни [Luvion Prestige Touch](/videonyanya-luvion-prestige-touch) и [Luvion Grand Elite](/videonyanya-luvion-grand-elite) - многоцветный
@@ -27,22 +29,6 @@
         = render Product.find 2858
         = render Product.find 2855
         = render Product.find 1891
-
-    hr
-
-    h2.promo2
-      ' При покупке радионяни Tomy &mdash; термометр в подарок!
-      sup: small.label.label-danger 9 декабря 2013 — 31 декабря 2013
-    .well
-      markdown:
-        При покупке одной из акционных радионянь [Tomy](/brand/Tomy) получаете в подарок - цифровой
-        термометр для воды и воздуха [Luvion Bath and Room](/tsifrovoy-termometr-luvion-bath-and-room) **в подарок**!
-
-      h3 Товары из этой акции
-      .row
-        = render Product.find 3606
-        = render Product.find 2887
-        = render Product.find 3754
 
     hr
 
@@ -61,6 +47,22 @@
         * Trunki – это отличный подарок и нужная вещь!
 
         В акции «Праздничная Канитель» участвует большой ассортимент, а праздничные скидки порадуют всех родителей!
+
+    hr
+
+    h2.promo2
+      ' При покупке радионяни Tomy &mdash; термометр в подарок!
+      sup: small.label.label-default Акция закончена
+    .well
+      markdown:
+        При покупке одной из акционных радионянь [Tomy](/brand/Tomy) получаете в подарок - цифровой
+        термометр для воды и воздуха [Luvion Bath and Room](/tsifrovoy-termometr-luvion-bath-and-room) **в подарок**!
+
+      h3 Товары из этой акции
+      .row
+        = render Product.find 3606
+        = render Product.find 2887
+        = render Product.find 3754
 
     hr
 
