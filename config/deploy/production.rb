@@ -18,6 +18,7 @@ end
 
 require 'delayed/recipes'
 set :delayed_job_command, "rvm use #{rvm_ruby_string} do bin/delayed_job"
+set :delayed_job_args, "-n 2"
 
 after "deploy", "delayed_job:restart"
 after "deploy:update_code", "sitemap:copy_old"
