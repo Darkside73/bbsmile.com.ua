@@ -43,12 +43,14 @@ describe Order do
   describe '#phone_number' do
     let(:order) { create :order }
     it 'return normalized phone number' do
-      order = build :order, user_phone: '451234567'
-      order.phone_number.should == '+380451234567'
+      order = build :order, user_phone: '0671234567'
+      order.phone_number.should == '+380671234567'
     end
-    it 'return normalized phone number' do
-      order = build :order, user_phone: '451234567'
-      order.phone_number.should == '+380451234567'
+    context 'when country phone code is not allowed' do
+      it 'return nil' do
+        order = build :order, user_phone: '38068995545'
+        order.phone_number.should be_nil
+      end
     end
     context 'when two phone numbers in one field' do
       it 'return only first normalized phone number' do

@@ -31,6 +31,7 @@ class Order < ActiveRecord::Base
 
   def phone_number
     number = user_phone.gsub /[^+^\d]+/, ''
+    country_phone_code = '+380'
     length = number.length
     if length > 13
       number = user_phone.chars.each_slice(user_phone.length/2)
@@ -39,7 +40,10 @@ class Order < ActiveRecord::Base
                                .gsub(/[^+^\d]+/, '')[0..13]
       length = number.length
     end
-    '+380'[0..13-length-1] + number if (9..13) === length
+    if (9..13) === length
+      number = country_phone_code[0..13-length-1] + number
+      return number if number.start_with? country_phone_code
+    end
   end
 
   private
