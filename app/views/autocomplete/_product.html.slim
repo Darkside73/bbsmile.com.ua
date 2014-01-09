@@ -1,7 +1,8 @@
-.hidden-xs: .image.popover.fade.left.in
-  .arrow
-  .popover-content
-    = image_tag(product.top_image(:thumb))
+- if product.top_image?
+  .hidden-xs: .image.popover.fade.left.in
+    .arrow
+    .popover-content
+      = image_tag(product.top_image(:thumb))
 h5
   = product.title
   .price = number_to_currency product.price
