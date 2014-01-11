@@ -11,6 +11,8 @@ module Models
                        .merge(Page.visible).references(:pages, :brands, :variants)
         grid = grid.tagged_with options[:tags] if options[:tags]
         grid = grid.where('brands.name IN (:names)', names: options[:brands]) if options[:brands]
+        grid = grid.for_girls if options[:gender] == 'for_girls'
+        grid = grid.for_boys  if options[:gender] == 'for_boys'
         grid = grid.reorder("#{sort_column} #{sort_direction}")
         grid = apply_age_ranges(grid)
         grid = apply_price_ranges(grid)

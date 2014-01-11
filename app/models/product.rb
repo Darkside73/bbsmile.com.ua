@@ -14,6 +14,9 @@ class Product < ActiveRecord::Base
 
   accepts_nested_attributes_for :images
   accepts_nested_attributes_for :variants
+
+  enum sex: [:for_any_gender, :for_boys, :for_girls]
+
   delegate :price, :price_old, :price_old?, :available, :sku, :sku?,
            to: :master_variant, allow_nil: true
 
@@ -32,9 +35,12 @@ class Product < ActiveRecord::Base
                        }
   scope :random, ->(n = nil) { reorder('RANDOM()').limit(n) }
 
+  scope :for_girls, -> { where.not(sex: SEX[:for_boys]) }
+  scope :for_boys,  -> { where.not(sex: SEX[:for_girls]) }
+
   pg_search_scope :by_title, associated_against: { page: :title }
 
-  validates :category, presence: true
+  validates :category, :sex, presence: true
   validates :novelty, :hit, inclusion: { in: [true, false] }
 
   validates :age_from, :age_to,

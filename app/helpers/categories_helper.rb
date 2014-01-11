@@ -66,7 +66,8 @@ module CategoriesHelper
   end
 
   def any_filtering?
-    selected_prices.any? || selected_brands.any? || selected_tags.any? || selected_ages.any?
+    selected_prices.any? || selected_brands.any? || selected_tags.any? ||
+    selected_ages.any? || selected_gender.present?
   end
 
   def no_filtering?

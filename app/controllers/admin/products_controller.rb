@@ -92,7 +92,7 @@ class Admin::ProductsController < Admin::ApplicationController
   private
     def product_params
       params.require(:product).permit(
-        :category_id, :brand_id, :age,
+        :category_id, :brand_id, :age, :sex,
         :novelty, :hit, :drop_price, :video, :tag_list, :properties,
         page_attributes: [:id, :title, :name, :url, :url_old, :hidden],
         variants_attributes: [[:id, :sku, :price, :price_old, :available]],

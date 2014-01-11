@@ -48,6 +48,18 @@ describe Product do
         end
       end
     end
+
+    describe '#sex' do
+      subject { create :product, sex: :for_girls }
+      it { should respond_to(:for_girls?) }
+      it "show previous value" do
+        subject.sex = :for_boys
+        # using mapping due to "was" returns integer instead symbol
+        # this should be fixed before 4.1 release
+        # see https://github.com/rails/rails/pull/13489 for the progress
+        subject.sex_was.should == Product::SEX[:for_girls]
+      end
+    end
   end
 
   describe 'when save' do
@@ -121,15 +133,31 @@ describe Product do
   end
 
   context "when search" do
-    before do
-      create_list :product, 3
-      @matched = create :product, page_title: 'test'
-    end
-    describe "#by_title" do
+    describe ".by_title" do
+      before do
+        create_list :product, 3
+        @matched = create :product, page_title: 'test'
+      end
       subject { Product.visible.by_title('test') }
       it { should be_an ActiveRecord::Relation }
       it "include matched page" do
         should include(@matched)
+      end
+    end
+
+    context 'by sex' do
+      let!(:product_for_girls) { create :product, sex: :for_girls }
+      let!(:product_for_boys) { create :product, sex: :for_boys }
+      let!(:product_for_any_gender) { create :product, sex: :for_any_gender }
+      describe ".for_girls" do
+        subject { Product.for_girls }
+        it "result include product for girls" do
+          should include(product_for_girls)
+          should include(product_for_any_gender)
+        end
+        it "result not include product for boys" do
+          should_not include(product_for_boys)
+        end
       end
     end
   end

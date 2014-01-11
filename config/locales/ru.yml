@@ -75,6 +75,11 @@ ru:
         price: Цена
         price_old: Старая цена
         sku: Артикул
+      product:
+        sex:
+          for_any_gender: для всех
+          for_boys: для мальчиков
+          for_girls: для девочек
   mailers:
     order:
       new_order:

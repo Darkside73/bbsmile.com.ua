@@ -24,6 +24,7 @@
         = v.input :available, label: 'Доступность'
         = v.input :sku, label: 'Артикул'
       = f.input :age, label: 'Возраст (например 0-3)'
+      = f.input :sex, label: 'Пол', collection: [:for_any_gender, :for_boys, :for_girls], label_method: lambda { |key| t("activerecord.attributes.product.sex.#{key}") }, include_blank: false
       = f.input :novelty, label: 'Новинка'
       = f.input :hit, label: 'Хит продаж'
       = f.input :drop_price, label: 'Сниженная цена'

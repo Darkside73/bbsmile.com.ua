@@ -53,6 +53,11 @@ class Category < ActiveRecord::Base
                             .reorder(*columns).reject {|p| p.age.blank? }
   end
 
+  def divided_by_sex
+    products.visible
+            .where(sex: [Product::SEX[:for_girls], Product::SEX[:for_boys]])
+  end
+
   %w(novelties hits discounts).each do |name|
     method_name = name.to_sym
     define_method method_name do |limit = :all|

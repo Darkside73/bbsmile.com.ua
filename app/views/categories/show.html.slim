@@ -32,12 +32,18 @@
             - @category.age_ranges.each do |range|
               = link_to_add_age_range range.age do
                 = render 'age_range', range: range.age
+          = accordion_group "filterByGender", "Пол", if: :divided_by_sex do
+            - %w(for_boys for_girls).each do |gender|
+              - if params[:gender] == gender
+                li.active = link_to t("activerecord.attributes.product.sex.#{gender}"), category_page_path(params.except(:gender))
+              - else
+                li = link_to t("activerecord.attributes.product.sex.#{gender}"), category_page_path(params.merge(gender: gender))
           = accordion_group "filterByTags", "Теги", if: :tags do
             - @category.tags.each do |tag_name|
               = link_to_add_tag tag_name
           = accordion_group "filterByBrand", "Бренды", if: :brands do
             - @category.brands.each do |brand|
-              li = link_to_add_brand brand.name
+              = link_to_add_brand brand.name
       .promotions = render_cell :promotions, :category, category: @category
     .products-list.col-md-9.col-sm-8.col-xs-12
       = render 'order/form', order: @order

@@ -8,6 +8,10 @@
       li: a href="#{remove_age_path(range)}" title="удалить фильтр"
         i.fa.fa-times-circle
         = render 'age_range', range: range
+    - if selected_gender.present?
+      li: a href="#{category_page_path(params.except(:gender))}" title="удалить фильтр"
+        i.fa.fa-times-circle
+        = t("activerecord.attributes.product.sex.#{selected_gender}")
     - selected_tags.each do |tag_name|
       li: a href="#{remove_tag_path(tag_name)}" title="удалить фильтр"
         i.fa.fa-times-circle
