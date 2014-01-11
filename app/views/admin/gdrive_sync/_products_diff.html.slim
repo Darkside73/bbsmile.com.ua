@@ -5,6 +5,7 @@ table.table.table-striped.table-hover
       th Новинка
       th Хит продаж
       th Возраст
+      th Пол
       th Сниженная цена
   tbody
     - @items.each do |product|
@@ -25,6 +26,11 @@ table.table.table-striped.table-hover
             span.text-danger> = render 'age_range', range: product.age_was
             i.fa.fa-long-arrow-right>
             span.text-success> = render 'age_range', range: product.age
+        td
+          - if product.sex_changed?
+            span.text-danger> = t("activerecord.attributes.product.sex.#{Product::SEX.invert[product.sex_was]}")
+            i.fa.fa-long-arrow-right>
+            span.text-success> = t("activerecord.attributes.product.sex.#{product.sex}")
         td
           - if product.drop_price_changed?
             span.text-danger> = product.drop_price_was ? 'да' : 'нет'

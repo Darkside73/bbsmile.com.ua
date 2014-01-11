@@ -10,7 +10,7 @@ class ProductsSync
   find_item ->(id) { Product.find(id) }
 
   item_to_push ->(product) {
-    data = product.as_json(only: [:id, :novelty, :hit, :drop_price], methods: [:age])
+    data = product.as_json(only: [:id, :novelty, :hit, :drop_price, :sex], methods: [:age])
                   .merge(brand: product.brand.try(:name))
                   .symbolize_keys
     data[:title] = product.title_with_sku
@@ -24,10 +24,13 @@ class ProductsSync
     product.novelty    = row['novelty'] == '1' ? true : false
     product.hit        = row['hit'] == '1' ? true : false
     product.age        = row['age']
+    product.sex        = row['sex'].to_sym if row['sex'].present?
     product.drop_price = row['drop_price'] == '1' ? true : false
   }
 
-  worksheet_columns_names ['id', 'title', 'brand', 'novelty', 'hit', 'age', 'drop_price']
+  worksheet_columns_names [
+    'id', 'title', 'brand', 'novelty', 'hit', 'age', 'sex', 'drop_price'
+  ]
 
   def after_finishing(category)
     ManagerMailer.sync_products_loaded(category).deliver

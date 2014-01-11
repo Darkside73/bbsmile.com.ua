@@ -26,6 +26,8 @@ module Gdrive::Syncable
         else
           @invalid_rows[row_num] = item.errors.full_messages
         end
+      rescue ArgumentError => e
+        @invalid_rows[row_num] = e.message
       rescue ActiveRecord::RecordNotFound
         @invalid_rows[row_num] = I18n.t 'gdrive_sync.errors.item_not_found'
       end

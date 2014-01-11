@@ -59,6 +59,11 @@ describe Product do
         # see https://github.com/rails/rails/pull/13489 for the progress
         subject.sex_was.should == Product::SEX[:for_girls]
       end
+      context 'when not valid' do
+        it "raise error" do
+          expect { build(:product, sex: :ufo) }.to raise_error(ArgumentError)
+        end
+      end
     end
   end
 
