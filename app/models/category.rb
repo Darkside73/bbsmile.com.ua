@@ -38,7 +38,9 @@ class Category < ActiveRecord::Base
   def tags
     # using this workaround until bug is open:
     # https://github.com/mbleigh/acts-as-taggable-on/issues/374
-    @tags ||= Product.where(category_id: id).tags_on(:tags).pluck(:name)
+    @tags ||= Product.where(category_id: id)
+                     .tags_on(:tags).pluck(:name)
+                     .sort_by {|e| e.split(/(\d+)/).map {|a| a =~ /\d+/ ? a.to_i : a }}
   end
 
   def find_price_ranges
