@@ -73,6 +73,8 @@
 "discounts": "skidki"
 "catalog": "#whole-catalog"
 "pay": "shipping"
+"narjadnaja-odezhda-dlya-malchikov": "detskaya-naryadnaya-odezhda-dlya-malyishey?gender=for_boys"
+"narjadnaja-odezhda-dlya-devochek" : "detskaya-naryadnaya-odezhda-dlya-malyishey?gender=for_girls"
 
 # mappings for goods child pages from old db
 "catalog/detskie-krovatki/stulchiki-dlja-kormlenija/stulchik-dlya-kormleniya-geoby-y5800-11025/wkjc": "catalog/detskie-krovatki/stulchiki-dlja-kormlenija/stulchik-dlya-kormleniya-geoby-y5800-11025"
