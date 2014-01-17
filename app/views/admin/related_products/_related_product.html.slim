@@ -1,0 +1,4 @@
+td.col-md-6 = link_to related_product.related.title, [:admin, related_product.related]
+td.col-md-3 = t("activerecord.attributes.related_products.type_of.#{related_product.type_of}")
+td.col-md-3 = link_to admin_related_product_path(related_product, format: :json), method: :delete, title: 'удалить' do
+  i.fa.fa-trash-o.fa-lg.text-warning

@@ -1,0 +1,5 @@
+= simple_form_for [:admin, @product, @product.related_products.new], remote: true, data: { type: :json }, html: { id: :add_related_product } do |f|
+  .col-md-6: input.form-control.search-available-for-relation type="text" placeholder="поиск товара" data-provide="typeahead" autocomplete="off" data-url="#{available_for_relation_admin_product_path(@product)}"
+  input type="hidden" name="related_product[related_id]"
+  .col-md-3 = f.input :type_of, label: false, collection: [:similar, :suggested], label_method: lambda { |key| t("activerecord.attributes.related_products.type_of.#{key}") }, include_blank: false, selected: :similar
+  .col-md-3 = f.button :submit, 'Добавить', class: 'btn btn-info'

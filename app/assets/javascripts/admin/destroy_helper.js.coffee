@@ -1,11 +1,13 @@
 $ ->
-  $('.btn[data-method="delete"]').click (e) ->
+  $('body').on('click', 'a[data-method="delete"]', (e) ->
     if confirm('Точно удалять?')
       $.post(
         @href
         _method: 'delete'
         (data) =>
-          $(@).parents('tr').fadeOut() unless data.error
+          if !data.hasOwnProperty('error') || data.error?
+            $(@).parents('tr').fadeOut()
         'json'
       )
     false
+  )

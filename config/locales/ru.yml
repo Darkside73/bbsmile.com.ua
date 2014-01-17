@@ -80,6 +80,10 @@ ru:
           for_any_gender: для всех
           for_boys: для мальчиков
           for_girls: для девочек
+      related_products:
+        type_of:
+          similar: похожие
+          suggested: сопутствующие
   mailers:
     order:
       new_order:

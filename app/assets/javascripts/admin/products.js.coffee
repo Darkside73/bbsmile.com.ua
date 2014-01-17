@@ -1,3 +1,5 @@
+//= require ./related_products
+
 $ ->
   $('.tags').select2(
     tags: true

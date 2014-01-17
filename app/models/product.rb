@@ -9,6 +9,15 @@ class Product < ActiveRecord::Base
 
   has_many :images, as: :assetable, dependent: :destroy
   has_many :variants, dependent: :destroy
+  has_many :related_products, dependent: :destroy
+  with_options through: :related_products, source: :related do |assoc|
+    assoc.has_many :similar_products,
+      -> { where "related_products.type_of = ?", RelatedProduct::TYPE_OF[:similar] }, {}
+    assoc.has_many :suggested_products,
+      -> { where "related_products.type_of = ?", RelatedProduct::TYPE_OF[:suggested] }, {}
+  end
+
+
   belongs_to :category
   belongs_to :brand
 

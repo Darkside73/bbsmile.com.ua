@@ -1,5 +1,5 @@
 class Admin::ProductsController < Admin::ApplicationController
-
+  respond_to :json, only: :available_for_relation
   before_action :assign_leaf_categories, expect: [:index, :show, :destroy]
 
   def index
@@ -87,6 +87,21 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def properties
     @product = Product.find params[:id]
+  end
+
+  def available_for_relation
+    already_related_ids = RelatedProduct.where(product_id: params[:id])
+                                        .pluck(:related_id)
+    already_related_ids << params[:id]
+    items = Product.by_title(params[:q])
+                   .where.not(id: already_related_ids)
+                   .limit(5)
+
+    results = items.inject([]) do |results, item|
+      results << { id: item.id, name: item.title, url: url_for([:admin, item]) }
+    end
+
+    respond_with(results.to_json)
   end
 
   private
