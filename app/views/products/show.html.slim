@@ -51,9 +51,6 @@
                 - if @product.price_old
                   span.old.text-muted.big => number_to_currency @product.price_old
                 | #{number_to_currency @product.price}
-              - if @product.free_shipping
-                p.shipping
-                  span.text-success Доставка бесплатно
 
             - if @product.available
               = render 'order/form', order: @order, product: @product
