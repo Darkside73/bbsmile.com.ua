@@ -4,6 +4,11 @@ class @Autocomplete
   constructor: (options) ->
     @input = $(options.input)
     @updater = options.updater
+    @matcher = options.matcher
+    @afterRequest = if options.afterRequest?
+      options.afterRequest
+    else
+      false
     @labels = []
     @results = {}
     @
@@ -28,14 +33,14 @@ class @Autocomplete
       minLength: 2
       source: (query, process) =>
         @sourceRequest query, process
+        @afterRequest() if @afterRequest
         return
 
       updater: (item) =>
         @updater item, @results
 
       matcher: (item) =>
-        if @labels.length == 1
-          window.location.href = @results[@labels[0]].url
+        @matcher @results, @labels
         true
 
       sorter: (item) =>
@@ -49,4 +54,6 @@ $ ->
     updater: (item, results) ->
       window.location.href = results[item].url
       return
+    matcher: (results, labels) ->
+      window.location.href = results[labels[0]].url if labels.length == 1
   ).perform()

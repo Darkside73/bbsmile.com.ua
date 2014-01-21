@@ -95,7 +95,7 @@ class Admin::ProductsController < Admin::ApplicationController
     already_related_ids << params[:id]
     items = Product.by_title(params[:q])
                    .where.not(id: already_related_ids)
-                   .limit(5)
+                   .limit(10)
 
     results = items.inject([]) do |results, item|
       results << { id: item.id, name: item.title, url: url_for([:admin, item]) }
