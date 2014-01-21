@@ -1,4 +1,4 @@
-.product.col-md-4.col-xs-12 class="#{local_assigns[:three_col] && three_col ? 'col-sm-4' : 'col-sm-12'}"
+.product.col-xs-12 class="#{local_assigns[:three_col] && three_col ? 'col-sm-4' : 'col-sm-12'}" class="#{local_assigns[:one_col] && one_col ? 'col-md-12' : 'col-md-4'}"
   - if product.top_image?
     = link_to "/#{product.url}", class: 'thumbnail' do
       - if product.flagged?
@@ -29,8 +29,9 @@
       - if product.price_old
         span.old.medium => number_to_currency product.price_old
       span.label => number_to_currency product.price
-      - if product.available
-        button.quick-shop.btn.btn-success href="#new_order" data={toggle: "modal", variant_id: product.master_variant.id, dialog_title: "<span class='name'>#{product.title}</span> <span class='price' data-price='#{product.price}'>#{number_to_currency product.price}</span>"} Купить
-      - else
-        button.btn.btn-default disabled="disabled" нет в наличии
+      - unless local_assigns[:hide_buy_button] && hide_buy_button
+        - if product.available
+          button.quick-shop.btn.btn-success href="#new_order" data={toggle: "modal", variant_id: product.master_variant.id, dialog_title: "<span class='name'>#{product.title}</span> <span class='price' data-price='#{product.price}'>#{number_to_currency product.price}</span>"} Купить
+        - else
+          button.btn.btn-default disabled="disabled" нет в наличии
 
