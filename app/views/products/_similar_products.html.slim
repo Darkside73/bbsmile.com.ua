@@ -1,3 +1,5 @@
-.similar-products
-  h4.text-center Похожие товары
-  .row = render @product.similar_products, one_col: true, hide_buy_button: true
+.similar-products.panel.panel-default
+  .panel-heading: h3.panel-title.text-center
+    i.fa.fa-barcode>
+    | Похожие товары
+  .panel-body.row = render @product.similar_products, hide_buy_button: true

@@ -1,3 +1,5 @@
-.suggested-products
-  h4.text-center Советуем также посмотреть
-  .row = render @product.suggested_products, hide_buy_button: true
+.suggested-products.panel.panel-default
+  .panel-heading: h3.panel-title.text-center
+    i.fa.fa-eye>
+    | Советуем также посмотреть
+  .panel-body.row = render @product.suggested_products, hide_buy_button: true

@@ -78,14 +78,7 @@
           li: a href="#video" data-toggle="tab" Видеообзор
       .tab-content
         .tab-pane.active#description
-          - if @product.similar_products.any?
-            .row
-              .col-md-8: .page-content itemprop="description" == @product.description
-              .col-md-4 = render 'similar_products'
-          - else
-              .page-content itemprop="description" == @product.description
-          - if @product.suggested_products.any?
-             = render 'suggested_products'
+          .page-content itemprop="description" == @product.description
         - if @product.properties.present?
           .tab-pane#properties
             .page-content == @product.properties
@@ -104,6 +97,7 @@
                       .clearfix.visible-sm.visible-xs
         - if @product.video?
           .tab-pane#video = render partial: 'video', object: @product.video
-
-
-
+  - if @product.related_products.any?
+    .row.related-products
+      = render 'similar_products' if @product.similar_products.any?
+      = render 'suggested_products' if @product.suggested_products.any?
