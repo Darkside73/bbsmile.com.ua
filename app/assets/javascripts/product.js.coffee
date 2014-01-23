@@ -1,6 +1,7 @@
 //= require blueimp-gallery/js/blueimp-gallery
 //= require bootstrap-image-gallery/js/bootstrap-image-gallery
 //= require order_dialog
+//= require owl-carousel/owl.carousel
 
 $ ->
   dialog = new OrderDialog('.quick-shop-dialog')
@@ -35,3 +36,17 @@ $ ->
     $('#variants-gallery .price').html $(currentLink).data('price')
 
   $('#shippingInfo').collapse 'hide' if $(window).width() < 768
+
+  $('.owl-carousel').each ->
+    $(this).owlCarousel(
+      paginationSpeed: 400
+      responsiveBaseWidth: '.owl-container'
+      scrollPerPage: true
+    )
+    container = $(this).parents '.owl-container'
+    $('.carousel-control.right', container).click (e) =>
+      $(this).trigger 'owl.next'
+      e.preventDefault()
+    $('.carousel-control.left', container).click (e) =>
+      $(this).trigger 'owl.prev'
+      e.preventDefault()

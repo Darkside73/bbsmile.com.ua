@@ -4,6 +4,8 @@
 * = require "inner"
 * = require "blueimp-gallery/less/blueimp-gallery"
 * = require "bootstrap-image-gallery/less/bootstrap-image-gallery"
+* = require "owl-carousel/owl.carousel"
+* = require "owl-carousel/owl.theme"
 */
 
 @import "lib/variables";
@@ -127,6 +129,43 @@
   }
   .related-products {
     margin-top: 20px;
+    .panel-body {
+      position: relative;
+      .carousel-control {
+        outline: none;
+        opacity: 1;
+        width: 11%;
+        &:hover {
+          opacity: 1;
+        }
+        i {
+          font-size: 90px;
+          position: absolute;
+          top: 30%;
+          z-index: 5;
+          display: inline-block;
+        }
+        &.right {
+          background-image: linear-gradient(to left, fadeout(@panel-inner-border, 70%) 0%, fadeout(@panel-inner-border, 100%) 100%);
+          &:hover {
+            background-image: linear-gradient(to left, fadeout(@panel-inner-border, 50%) 0%, fadeout(@panel-inner-border, 100%) 100%);
+          }
+          i { right: 13%; }
+        }
+        &.left {
+          &:hover {
+            background-image: linear-gradient(to right, fadeout(@panel-inner-border, 50%) 0%, fadeout(@panel-inner-border, 100%) 100%);
+          }
+          background-image: linear-gradient(to right, fadeout(@panel-inner-border, 70%) 0%, fadeout(@panel-inner-border, 100%) 100%);
+          i { left: 13%; }
+        }
+      }
+    }
+    .owl-carousel {
+      .product {
+        padding-right: 15px;
+      }
+    }
   }
 }
 

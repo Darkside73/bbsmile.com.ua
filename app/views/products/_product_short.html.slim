@@ -1,0 +1,15 @@
+.product.short
+  - if product.top_image?
+    = link_to "/#{product.url}", class: 'thumbnail' do
+      = image_tag product.top_image(:grid), alt: product.name
+  .caption
+    h4
+      => link_to product
+      - if product.brand.present?
+        small
+          span title="Бренд" = product.brand.full_name
+  - if product.price
+    .price
+      - if product.price_old
+        span.old.medium => number_to_currency product.price_old
+      span.label => number_to_currency product.price

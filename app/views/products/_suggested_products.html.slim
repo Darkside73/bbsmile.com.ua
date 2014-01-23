@@ -2,4 +2,7 @@
   .panel-heading: h3.panel-title.text-center
     i.fa.fa-eye>
     | Советуем также посмотреть
-  .panel-body.row = render @product.suggested_products, hide_buy_button: true
+  .panel-body.owl-container
+    .owl-carousel = render collection: @product.suggested_products, as: :product, partial: 'product_short'
+    a.left.carousel-control href="#": i.fa.fa-angle-left
+    a.right.carousel-control href="#": i.fa.fa-angle-right
