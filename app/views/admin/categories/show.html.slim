@@ -7,7 +7,7 @@
     - if @category.leaf
       => link_to "Добавить товар", new_product_admin_category_path(@category), class: 'btn btn-success' if @category.leaf
       => link_to "Назад", [:admin, @category.is_root? ? :categories : @category.parent ], class: 'btn btn-default'
-      span.bulk-actions.hide
+      span.bulk-actions.hidden
         => link_to 'Переместить в', bulk_move_admin_products_path, class: "move btn btn-info"
         select.category name="dest_category_id"
           - @dest_categories.each do |category|

@@ -2,15 +2,16 @@ $ ->
   $('th.bulk input:checkbox').click ->
     checkboxes = $('td.bulk input:checkbox')
     checkboxes.prop 'checked', $(@).prop('checked')
+    checkboxes.trigger 'change'
 
   checked_products = []
 
-  $('.bulkable input:checkbox').change ->
+  $('td.bulk input:checkbox').change ->
     checked_products = $('td.bulk input:checked')
     if checked_products.length
-      $('.bulk-actions').show()
+      $('.bulk-actions').removeClass 'hidden'
     else
-      $('.bulk-actions').hide()
+      $('.bulk-actions').addClass 'hidden'
 
   $('.bulk-actions .move').click (e) ->
     ids = []
