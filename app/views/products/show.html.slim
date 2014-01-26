@@ -68,6 +68,16 @@
                   strong дополнительной скидкой!
 
         .col-md-5.col-sm-6.col-xs-12 = render 'product_info_accordion'
+      - if @product.related_products.any?
+        p.links-to-related
+          - if @product.suggested_products.any?
+            a.dashed> href="#suggestedProducts" data-scroll="400"
+              i.fa.fa-eye>
+              | Советуем также посмотреть
+          - if @product.similar_products.any?
+            a.dashed href="#similarProducts" data-scroll="400"
+              i.fa.fa-barcode>
+              | Похожие товары
       ul.nav.nav-tabs id="product-info-tabs"
         li.active: a href="#description" data-toggle="tab" Описание
         - if @product.properties.present?
@@ -99,5 +109,5 @@
           .tab-pane#video = render partial: 'video', object: @product.video
   - if @product.related_products.any?
     .row.related-products
-      = render 'similar_products' if @product.similar_products.any?
       = render 'suggested_products' if @product.suggested_products.any?
+      = render 'similar_products' if @product.similar_products.any?

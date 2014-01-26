@@ -28,6 +28,14 @@ a.thumbnail:hover {
 a.fa, a.fa:hover, a.fa:active, a.fa:focus { text-decoration: none; }
 a:hover i.fa { text-decoration: none; }
 
+a.dashed {
+  border-bottom: 1px dashed @link-color;
+  &:hover {
+    border-bottom: none;
+    text-decoration: none;
+  }
+}
+
 .modal {
   overflow-y: auto;
 }

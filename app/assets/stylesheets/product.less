@@ -86,13 +86,6 @@
       ul {
         padding-left: 15px;
       }
-      a {
-        border-bottom: 1px dashed @link-color;
-        &:hover {
-          border-bottom: none;
-          text-decoration: none;
-        }
-      }
     }
   }
   .simple-modal {
@@ -103,6 +96,10 @@
       font-weight: bold;
       margin-top: 20px;
     }
+  }
+  .links-to-related {
+    i { color: @link-hover-color; }
+    a { margin-right: 10px; }
   }
   #description {
     .page-content {

@@ -22,6 +22,9 @@ $ ->
                          .css('left', "#{left}px")
     e.preventDefault()
 
+  $('a[data-scroll]').click (e) ->
+    $.scrollTo $(@).attr('href'), $(@).data('scroll'), offset: -55
+
   $('.landing-nav .nav a').click (e) ->
     offset = $(@).data('offset')
     offset = -85 unless offset?
