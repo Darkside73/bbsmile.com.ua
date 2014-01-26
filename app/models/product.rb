@@ -12,12 +12,10 @@ class Product < ActiveRecord::Base
   has_many :related_products, dependent: :destroy
   with_options through: :related_products, source: :related do |assoc|
     assoc.has_many :similar_products,
-      -> { where "related_products.type_of = ?", RelatedProduct::TYPE_OF[:similar] }, {}
+      -> { visible.where("related_products.type_of = ?", RelatedProduct::TYPE_OF[:similar]) }, {}
     assoc.has_many :suggested_products,
-      -> { where "related_products.type_of = ?", RelatedProduct::TYPE_OF[:suggested] }, {}
+      -> { visible.where("related_products.type_of = ?", RelatedProduct::TYPE_OF[:suggested]) }, {}
   end
-
-
   belongs_to :category
   belongs_to :brand
 
@@ -77,6 +75,10 @@ class Product < ActiveRecord::Base
   def top_image(style = nil)
     # TODO why default scope is not applied?
     @top_image ||= images.sort {|x, y| x.position <=> y.position}.first.try {|image| image.url(style) }
+  end
+
+  def any_related?
+    @any_related ||= related_products.joins(:related).merge(Product.visible).any?
   end
 
   def in_range? price_range

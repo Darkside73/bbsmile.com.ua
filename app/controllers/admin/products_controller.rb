@@ -94,6 +94,7 @@ class Admin::ProductsController < Admin::ApplicationController
                                         .pluck(:related_id)
     already_related_ids << params[:id]
     items = Product.by_title(params[:q])
+                   .visible
                    .where.not(id: already_related_ids)
                    .limit(10)
 
