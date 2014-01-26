@@ -38,12 +38,21 @@ $ ->
   $('#shippingInfo').collapse 'hide' if $(window).width() < 768
 
   $('.owl-carousel').each ->
+    container = $(this).parents '.owl-container'
+    toggleCarouselControls = ->
+      if $('.owl-pagination:visible', container).length
+        $('.carousel-control', container).show()
+      else
+        $('.carousel-control', container).hide()
     $(this).owlCarousel(
       paginationSpeed: 400
       responsiveBaseWidth: '.owl-container'
       scrollPerPage: true
+      # afterInit: toggleCarouselControls
+      afterAction: toggleCarouselControls
+
     )
-    container = $(this).parents '.owl-container'
+
     $('.carousel-control.right', container).click (e) =>
       $(this).trigger 'owl.next'
       e.preventDefault()
