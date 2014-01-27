@@ -9,6 +9,8 @@
 //= require promotions
 //= require ga-events
 //= require contact_dialog
+//= require blueimp-gallery/js/blueimp-gallery
+//= require bootstrap-image-gallery/js/bootstrap-image-gallery
 
 $ ->
   $('a[rel=popover]').popover()
@@ -46,3 +48,21 @@ $ ->
     _gaq.push ['_trackEvent', 'Навигация', 'К началу страницы', 0, true]
 
   new ContactDialog('#send-message')
+
+  $('.gallery-links').each ->
+    links = $('a[data-gallery]', @)
+    links.click (e) ->
+      gallery = $(@).data 'gallery'
+      options =
+        index: @
+        event: e
+        container: gallery
+        onslide: (index, slide) ->
+          $('.next, .prev', slide).removeAttr 'disabled'
+          $(gallery).trigger 'slide', [index, slide, links]
+        onslideend: (index, slide) ->
+          $('.next', slide).attr 'disabled', 'disabled' if index == links.length - 1
+          $('.prev', slide).attr 'disabled', 'disabled' if index == 0
+        onopen: =>
+          $(gallery).trigger 'display', [@]
+      blueimp.Gallery links, options

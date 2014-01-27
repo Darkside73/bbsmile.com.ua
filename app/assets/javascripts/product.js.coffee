@@ -1,28 +1,8 @@
-//= require blueimp-gallery/js/blueimp-gallery
-//= require bootstrap-image-gallery/js/bootstrap-image-gallery
 //= require order_dialog
 //= require owl-carousel/owl.carousel
 
 $ ->
   dialog = new OrderDialog('.quick-shop-dialog')
-
-  $('.gallery-links').each ->
-    links = $('a[data-gallery]', @)
-    links.click (e) ->
-      gallery = $(@).data 'gallery'
-      options =
-        index: @
-        event: e
-        container: gallery
-        onslide: (index, slide) ->
-          $('.next, .prev', slide).removeAttr 'disabled'
-          $(gallery).trigger 'slide', [index, slide, links]
-        onslideend: (index, slide) ->
-          $('.next', slide).attr 'disabled', 'disabled' if index == links.length - 1
-          $('.prev', slide).attr 'disabled', 'disabled' if index == 0
-        onopen: =>
-          $(gallery).trigger 'display', [@]
-      blueimp.Gallery links, options
 
   $('.variant-quick-shop').click (e) ->
     dialog.setTitle $(@).data('dialog-title')
