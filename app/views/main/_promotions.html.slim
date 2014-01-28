@@ -7,6 +7,10 @@
     .item.active data-title="Развивающие игрушки Keenway"
       = link_to brand_page_path('Keenway', utm_campaign: 'keenway', utm_medium: 'main_page_promotions', utm_source: 'local') do
         = image_tag "promotions/4.jpg", class: 'img-responsive'
+    .item data-title="Luvion термометр в подарок"
+      .image_map.luvion_thermometr
+        = link_to page_path('promotions', anchor: 'promo2', utm_campaign: 'luvion_thermometer', utm_medium: 'main_page_promotions', utm_source: 'local') do
+          = image_tag "content/luvion_thermometer.jpg", class: 'img-responsive'
     .item data-title="Luvion ночничок в подарок"
       .image_map.luvion_night_light
         = link_to page_path('promotions', anchor: 'promo3', utm_campaign: 'luvion_night_light', utm_medium: 'main_page_promotions', utm_source: 'local') do
