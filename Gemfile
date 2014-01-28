@@ -28,7 +28,7 @@ gem 'attribute_normalizer'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'json', '~> 1.7.7'
+gem 'json'
 gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-helpers'
 gem 'paperclip'
 gem 'dimensions-rails'
