@@ -22,12 +22,22 @@ $ ->
       data: (term, page) ->
         q: term
       results: (data, page) ->
-        results: data
+        results = []
+        $.each(data, (index, item) ->
+          results.push(
+            id: item.name,
+            text: item.name
+          )
+        )
+        results: results
   )
 
   # fix: really remove element from input
-  $('.tags').on('change', (e) ->
-    if e.removed
-      fixedValue = $(this).val().replace(new RegExp("#{e.removed.id.toString()}(,|$)"), '')
-      $(this).attr('value', fixedValue)
+  $('.tags').on('select2-removed', (e) ->
+    fixedValue = $(this).attr('value')
+    removedStr = $.trim e.val.toString()
+    for num in [0..1]
+      fixedValue = fixedValue.replace(new RegExp("#{removedStr}(,|$)"), '')
+    $(this).attr 'value', fixedValue
+    $(this).val fixedValue
   )
