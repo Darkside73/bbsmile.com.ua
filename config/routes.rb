@@ -49,6 +49,7 @@ Bbsmile::Application.routes.draw do
       collection do
         get 'tags'
         post 'bulk_move'
+        post 'bulk_assign_tags'
       end
       member do
         get 'properties'

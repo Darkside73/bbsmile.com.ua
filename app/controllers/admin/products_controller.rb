@@ -81,6 +81,18 @@ class Admin::ProductsController < Admin::ApplicationController
     render json: flashes_in_json
   end
 
+  def bulk_assign_tags
+    Product.where(id: params[:ids]).map do |product|
+      product.tag_list = params[:tags]
+      product.save
+    end
+    flash.now[:notice] = I18n.t(
+      'flash.message.products.tags_assigned',
+      tags: params[:tags].join(', ')
+    )
+    render json: flashes_in_json
+  end
+
   def content
     @product = Product.find params[:id]
   end

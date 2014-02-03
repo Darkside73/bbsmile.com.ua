@@ -60,8 +60,8 @@ $ ->
     stylesheets: "<%= asset_path('bootstrap3-wysihtml5/lib/css/bootstrap3-wysiwyg5-color') %>"
 
   $('a.top').click (e) ->
-    $.scrollTo 'body', 500
     e.preventDefault()
+    $('html, body').animate scrollTop: 0, 300
 
   $('.transliterate').click (e) ->
     val = transliterate($($(this).data('source')).val())
@@ -71,3 +71,45 @@ $ ->
     val = val.replace /[^A-z0-9\-]/g, ''
     $($(this).data('target')).val val.toLowerCase()
     e.preventDefault()
+
+  $('.tags').select2(
+    width: -> $(this.element.context).data('width')
+    tags: true
+    tokenSeparators: [",", ", "]
+    initSelection: (element, callback) ->
+      data = [];
+      $(element.val().split(",")).each( ->
+        data.push(id: this, text: this)
+      )
+      callback data
+    createSearchChoice: (term, data) ->
+      if $(data).filter(-> this.text.localeCompare(term) == 0).length == 0
+        id: term
+        text: term
+    multiple: true
+    ajax:
+      url: (element) ->
+        $(this).data('autocomplete-url')
+      dataType: 'json'
+      data: (term, page) ->
+        q: term
+      results: (data, page) ->
+        results = []
+        $.each(data, (index, item) ->
+          results.push(
+            id: item.name,
+            text: item.name
+          )
+        )
+        results: results
+  )
+
+  # fix: really remove element from input
+  $('.tags').on('select2-removed', (e) ->
+    fixedValue = $(this).attr('value')
+    removedStr = $.trim e.val.toString()
+    for num in [0..1]
+      fixedValue = fixedValue.replace(new RegExp("#{removedStr}(,|$)"), '')
+    $(this).attr 'value', fixedValue
+    $(this).val fixedValue
+  )

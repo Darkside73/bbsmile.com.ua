@@ -26,6 +26,7 @@ ru:
         updated: Товар обновлен
         destroyed: Товар удален
         moved: 'Товары перемещены в <a href="%{dest_category_path}">%{dest_category_title}</a>'
+        tags_assigned: "Выбранным товарам назначены теги: <strong>%{tags}</strong>"
       variants:
         created: Вариант цены создан
         updated: Вариант цены обновлен

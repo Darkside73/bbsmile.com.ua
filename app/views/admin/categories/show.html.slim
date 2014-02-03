@@ -7,11 +7,16 @@
     - if @category.leaf
       => link_to "Добавить товар", new_product_admin_category_path(@category), class: 'btn btn-success' if @category.leaf
       => link_to "Назад", [:admin, @category.is_root? ? :categories : @category.parent ], class: 'btn btn-default'
-      span.bulk-actions.hidden
-        => link_to 'Переместить в', bulk_move_admin_products_path, class: "move btn btn-info"
-        select.category name="dest_category_id"
-          - @dest_categories.each do |category|
-            option value="#{category.id}" = category.title
+      .bulk-actions.hidden.row
+        br
+        .col-md-6
+          => link_to 'Переместить в', bulk_move_admin_products_path, class: "move btn btn-info"
+          select.category> name="dest_category_id"
+            - @dest_categories.each do |category|
+              option value="#{category.id}" = category.title
+        .col-md-6: .row
+          => link_to 'Назначить теги', bulk_assign_tags_admin_products_path, class: "col-md-4 assign-tags btn btn-info"
+          input.col-md-8.tags name="tags" data-autocomplete-url="#{tags_admin_products_path}"
     - else
       => link_to "Добавить подкатегорию", new_subcategory_admin_category_path(@category), class: 'btn btn-success'
 

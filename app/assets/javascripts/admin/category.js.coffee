@@ -29,3 +29,18 @@ $ ->
     )
 
     e.preventDefault()
+
+  $('.bulk-actions .assign-tags').click (e) ->
+    e.preventDefault()
+    ids = []
+    checked_products.each ->
+      ids.push $(@).val()
+
+    $.post(
+      @href
+      tags: $('input[name="tags"]').select2('val')
+      ids: ids
+      ->
+        $('a.top').click()
+    )
+

@@ -25,6 +25,7 @@ en:
         updated: Product updated
         destroyed: Product destroyed
         moved: Products moved
+        tags_assigned: Products tags assigned
       variants:
         created: Product variant created
         updated: Product variant updated
