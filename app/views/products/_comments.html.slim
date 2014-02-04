@@ -1,0 +1,16 @@
+#hypercomments_widget
+- content_for :js_footer do
+  javascript:
+    _hcwp = window._hcwp || [];
+    _hcwp.push({widget:"Stream", widget_id: 14785, title: '#{@product.title}', hc_disable: 1, social: 'vk, odnoklassniki, mailru, yandex, google, facebook, twitter'});
+    (function() {
+    if("HC_LOAD_INIT" in window)return;
+    HC_LOAD_INIT = true;
+    //var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage ||  "ru").substr(0, 2).toLowerCase();
+    var lang = 'ru';
+    var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+    hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/8791/"+lang+"/widget.js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hcc, s.nextSibling);
+    })();
+noscript Включите JavaScript в Вашем барузере, чтобы просматривать комментарии
