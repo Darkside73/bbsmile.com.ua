@@ -30,7 +30,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'json'
 gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-helpers'
-gem 'paperclip'
+gem 'paperclip', '~> 3.5'
 gem 'dimensions-rails'
 
 gem 'google_drive', require: false
