@@ -1,6 +1,6 @@
 set :application_id, "bbsmile-beta"
 set :rails_env, "beta"
-set :branch, 'disqus'
+set :branch, 'beta'
 
 after "deploy:update_code", "create_public_symlinks"
 task :create_public_symlinks do
