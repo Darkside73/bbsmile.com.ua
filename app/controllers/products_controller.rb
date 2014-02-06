@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
 
   def special_products_for(scope)
     @special_products_path = "#{scope}_path".to_sym
-    @products = Product.send(scope).order(:category_id)
+    @products = Product.send(scope).last_updated(36)
     root_ids = @products.map(&:category).map(&:root_id).uniq
     @categories = Category.includes(:page).find root_ids
     if params[:category_slug]

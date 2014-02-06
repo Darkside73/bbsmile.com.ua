@@ -7,7 +7,7 @@
   h1.page-title
     - if @selected_category
       => @selected_category.title
-      small = type_title
+      small = type_title.mb_chars.downcase.to_s
     - else
       = type_title
   .row
@@ -23,10 +23,11 @@
       = render 'order/form', order: @order
       - if @products.any?
         .show-options
-          ul.nav.nav-pills
-            li: .btn.btn-default.disabled
-              ' Всего товаров:
-              strong = @products.count
-            - if @selected_category
-              li = link_to 'Показать все', self.send(@special_products_path), class: 'btn btn-default'
+          - if @selected_category
+            => link_to self.send(@special_products_path), class: 'btn btn-info btn-sm' do
+              | Показать все #{type_title.mb_chars.downcase.to_s}
+            ' или
+            = link_to category_page_path(@selected_category.url), class: 'btn btn-info btn-sm' do
+              ' перейти в категорию
+              strong = @selected_category.title
         = render 'categories/products', hide_novelties: (local_assigns[:hide_novelties] && hide_novelties), hide_hits: (local_assigns[:hide_hits] && hide_hits)

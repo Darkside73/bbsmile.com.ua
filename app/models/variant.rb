@@ -13,7 +13,10 @@ class Variant < ActiveRecord::Base
   acts_as_list scope: [:product_id]
 
   default_scope -> { order(:position) }
-  scope :discounts, -> { where self.arel_table[:price_old].not_eq(nil) }
+  scope :discounts, -> {
+    where(self.arel_table[:price_old].not_eq(nil)).
+    where('(price_old-price)/price_old >= 0.05')
+  }
 
   validates :price, :price_old,
             numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
