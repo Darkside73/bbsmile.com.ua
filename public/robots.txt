@@ -4,4 +4,4 @@ Sitemap: http://bbsmile.com.ua/sitemap.xml.gz
 Host: bbsmile.com.ua
 
 User-agent: BLEXBot
-Crawl-delay: 10
+Disallow: /
