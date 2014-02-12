@@ -75,7 +75,7 @@
             a.dashed> href="#suggestedProducts" data-scroll="400"
               i.fa.fa-eye>
               | Советуем также посмотреть
-          - if @product.similar_products.any?
+          - if @product.all_similar_products.any?
             a.dashed href="#similarProducts" data-scroll="400"
               i.fa.fa-barcode>
               | Похожие товары
@@ -113,4 +113,4 @@
   - if @product.any_related?
     .row.related-products
       = render 'suggested_products' if @product.suggested_products.any?
-      = render 'similar_products' if @product.similar_products.any?
+      = render 'similar_products' if @product.all_similar_products.any?

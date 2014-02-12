@@ -10,12 +10,16 @@ class Product < ActiveRecord::Base
   has_many :images, as: :assetable, dependent: :destroy
   has_many :variants, dependent: :destroy
   has_many :related_products, dependent: :destroy
+  has_many :inverse_related_products, class_name: 'RelatedProduct', foreign_key: 'related_id'
   with_options through: :related_products, source: :related do |assoc|
     assoc.has_many :similar_products,
       -> { visible.where("related_products.type_of = ?", RelatedProduct::TYPE_OF[:similar]) }, {}
     assoc.has_many :suggested_products,
       -> { visible.where("related_products.type_of = ?", RelatedProduct::TYPE_OF[:suggested]) }, {}
   end
+  has_many :inverse_similar_products,
+    -> { visible.where("related_products.type_of = ?", RelatedProduct::TYPE_OF[:similar]) },
+    through: :inverse_related_products, source: :product
   belongs_to :category
   belongs_to :brand
 
@@ -79,7 +83,8 @@ class Product < ActiveRecord::Base
   end
 
   def any_related?
-    @any_related ||= related_products.joins(:related).merge(Product.visible).any?
+    related_products.joins(:related).merge(Product.visible).any? ||
+      inverse_related_products.joins(:product).merge(Product.visible).any?
   end
 
   def in_range? price_range
@@ -139,6 +144,10 @@ class Product < ActiveRecord::Base
     else
       title
     end
+  end
+
+  def all_similar_products
+    similar_products + inverse_similar_products
   end
 
   private
