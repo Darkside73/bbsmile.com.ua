@@ -28,10 +28,11 @@
             - @category.find_price_ranges.each do |range|
               = link_to_add_price_range range do
                 = render range
-          = accordion_group "filterByAge", "Возраст", if: :age_ranges do
-            - @category.age_ranges.each do |range|
-              = link_to_add_age_range range.age do
-                = render 'age_range', range: range.age
+          - unless Rails.env.production?
+            = accordion_group "filterByAge", "Возраст", if: :age_ranges do
+              - @category.age_ranges.each do |range|
+                = link_to_add_age_range range.age do
+                  = render 'age_range', range: range.age
           = accordion_group "filterByGender", "Пол", if: :divided_by_sex do
             - %w(for_boys for_girls).each do |gender|
               - if params[:gender] == gender
