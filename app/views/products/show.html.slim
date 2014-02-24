@@ -60,12 +60,13 @@
 
             .clearfix.visible-xs
 
+            .clearfix
             - if @product.drop_price
-              .clearfix
               p.drop-price
                 span.text-danger
                   ' Этот товар можно приобрести в поврежденной упаковке с
                   strong дополнительной скидкой!
+            p.text-warning Уточняйте цену на данный товар
 
         .col-md-5.col-sm-6.col-xs-12 = render 'product_info_accordion'
       - if @product.any_related?
