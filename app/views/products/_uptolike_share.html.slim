@@ -1,0 +1,18 @@
+javascript:
+    /* uptolike share begin */
+    (function(d,c){
+        var up=d.createElement('script'),
+                s=d.getElementsByTagName('script')[0],
+                r=Math.floor(Math.random() * 1000000);
+        var cmp = c + Math.floor(Math.random() * 10000);
+        var url = window.location.href;
+        window["__uptolike_widgets_settings_"+cmp] = {
+
+
+        };
+        d.write("<div id='"+cmp+"' class='__uptlk' data-uptlkwdgtId='"+r+"'></div>");
+        up.type = 'text/javascript'; up.async = true;
+        up.src = "//w.uptolike.com/widgets/v1/widgets.js?b=fb.tw.ok.vk.gp&id=948346&o=1&m=1&sf=1&ss=2&sst=1&c1=ededed&c1a=0.0&c3=ff9300&c5=ffffff&mc=1&c2=000000&c4=ffffff&c4a=1.0&mcs=0&sel=0&fol=0&sel=0&he=1&c=" + cmp + "&url="+encodeURIComponent(url);
+        s.parentNode.insertBefore(up, s);
+    })(document,"__uptlk");
+    /* uptolike share end */
