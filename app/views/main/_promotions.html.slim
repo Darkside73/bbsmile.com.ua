@@ -3,8 +3,12 @@
     li.active data-target="#promotions" data-slide-to="0"
     li data-target="#promotions" data-slide-to="1"
     li data-target="#promotions" data-slide-to="2"
+    li data-target="#promotions" data-slide-to="3"
   .carousel-inner
-    .item.active data-title="Развивающие игрушки Keenway"
+    .item.active data-title="Everflo - новая коллекция 2014 года"
+      = link_to category_page_path('kolyaski-trosti', brands: ['Everflo'], utm_campaign: 'everflo', utm_medium: 'main_page_promotions', utm_source: 'local') do
+        = image_tag "promotions/everflo.jpg", class: 'img-responsive'
+    .item data-title="Развивающие игрушки Keenway"
       = link_to brand_page_path('Keenway', utm_campaign: 'keenway', utm_medium: 'main_page_promotions', utm_source: 'local') do
         = image_tag "promotions/4.jpg", class: 'img-responsive'
     .item data-title="Luvion термометр в подарок"
@@ -15,10 +19,6 @@
       .image_map.luvion_night_light
         = link_to page_path('promotions', anchor: 'promo3', utm_campaign: 'luvion_night_light', utm_medium: 'main_page_promotions', utm_source: 'local') do
           = image_tag "content/Nochnichok.jpg", class: 'img-responsive'
-    .item data-title="Новогодние скидки на всю продукцию Trunki и Bellelli!"
-      .avtokreslo
-        = link_to page_path('promotions', anchor: 'promo1', utm_campaign: 'avtokreslo', utm_medium: 'main_page_promotions', utm_source: 'local') do
-          = image_tag "content/avtokreslo.jpg", class: 'img-responsive'
   a.left.carousel-control href="#promotions" data-slide="prev"
     i.fa.fa-angle-left
   a.right.carousel-control href="#promotions" data-slide="next"
