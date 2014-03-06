@@ -1,24 +1,9 @@
 = render layout: 'static_page', locals: { title: 'Акции и скидки' } do
   .offer.flashable.products-list
     = render 'order/form', order: new_order
-    h2.promo4
-      ' При покупке кроватки &mdash; скидка на матрас!
-      sup: small.label.label-default Акция закончена
-    .well
-      markdown:
-        При покупке любой кроватки Соня от компании [Верес](/detskie-krovatki?brands[]=Верес) вы получаете скидку до **100 грн** на любой матрасик [Сонька](/detskie-matrasyi?brands[]=Верес)
-
-      h3 Товары из этой акции
-      .row
-        = render Product.find 3636
-        = render Product.find 1583
-        = render Product.find 4425
-
-    hr
-
     h2.promo2
       ' При покупке радионяни Tomy &mdash; термометр в подарок!
-      sup: small.label.label-default Акция закончена
+      sup: small.label.label-danger До окончания акционного товара
     .well
       markdown:
         При покупке одной из акционных радионянь [Tomy](/brand/Tomy) получаете в подарок - цифровой
@@ -34,7 +19,7 @@
 
     h2.promo3
       ' При покупке видеоняни &mdash; ночник в подарок!
-      sup: small.label.label-default Акция закончена
+      sup: small.label.label-danger До окончания акционного товара
     .well
       markdown:
         При покупке видеоняни [Luvion Prestige Touch](/videonyanya-luvion-prestige-touch) и [Luvion Grand Elite](/videonyanya-luvion-grand-elite) - многоцветный
@@ -45,6 +30,21 @@
         = render Product.find 2858
         = render Product.find 2855
         = render Product.find 1891
+
+    hr
+
+    h2.promo4
+      ' При покупке кроватки &mdash; скидка на матрас!
+      sup: small.label.label-default Акция закончена
+    .well
+      markdown:
+        При покупке любой кроватки Соня от компании [Верес](/detskie-krovatki?brands[]=Верес) вы получаете скидку до **100 грн** на любой матрасик [Сонька](/detskie-matrasyi?brands[]=Верес)
+
+      h3 Товары из этой акции
+      .row
+        = render Product.find 3636
+        = render Product.find 1583
+        = render Product.find 4425
 
     hr
 
