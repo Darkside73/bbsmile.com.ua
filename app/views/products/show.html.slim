@@ -67,6 +67,15 @@
                   ' Этот товар можно приобрести в поврежденной упаковке с
                   strong дополнительной скидкой!
             p.text-warning Уточняйте цену на данный товар
+            .phones
+              h4 Заказать по телефону:
+              ul.fa-ul
+                li
+                  i.fa.fa-li.fa-mobile
+                  | 097 777-37-07
+                li
+                  i.fa.fa-li.fa-mobile
+                  | 066 717-37-07
 
         .col-md-5.col-sm-6.col-xs-12 = render 'product_info_accordion'
       - if @product.any_related?
