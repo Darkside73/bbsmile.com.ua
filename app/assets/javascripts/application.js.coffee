@@ -12,6 +12,7 @@
 //= require callback_dialog
 //= require blueimp-gallery/js/blueimp-gallery
 //= require bootstrap-image-gallery/js/bootstrap-image-gallery
+//= require jquery.mask
 
 $ ->
   $('a[rel=popover]').popover()
@@ -50,6 +51,8 @@ $ ->
 
   new ContactDialog('#send-message')
   new CallbackDialog('#send-callback')
+
+  $('input[type="tel"]').mask '(000) 000-00-00'
 
   $('.gallery-links').each ->
     links = $('a[data-gallery]', @)
