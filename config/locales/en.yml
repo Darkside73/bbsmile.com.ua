@@ -43,6 +43,8 @@ en:
         created: Order created
       contacts:
         created: Contact created
+      callbacks:
+        created: Callback created
       gdrive_sync:
         updated: "Updated %{count}"
         enqueued: "Enqueued"
@@ -54,6 +56,9 @@ en:
     contacts:
       new_contact:
         subject: New contact message
+    callbacks:
+      new_callback:
+        subject: New callback message
     system:
       sync_prices_loaded:
         subject: Prices has been loaded

@@ -9,6 +9,7 @@
 //= require promotions
 //= require ga-events
 //= require contact_dialog
+//= require callback_dialog
 //= require blueimp-gallery/js/blueimp-gallery
 //= require bootstrap-image-gallery/js/bootstrap-image-gallery
 
@@ -48,6 +49,7 @@ $ ->
     _gaq.push ['_trackEvent', 'Навигация', 'К началу страницы', 0, true]
 
   new ContactDialog('#send-message')
+  new CallbackDialog('#send-callback')
 
   $('.gallery-links').each ->
     links = $('a[data-gallery]', @)

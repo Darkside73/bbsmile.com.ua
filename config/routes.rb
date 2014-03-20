@@ -14,6 +14,7 @@ Bbsmile::Application.routes.draw do
 
   resources :orders, only: :create
   resources :contacts, only: :create
+  resources :callback_forms, only: :create
 
   namespace :admin do
 

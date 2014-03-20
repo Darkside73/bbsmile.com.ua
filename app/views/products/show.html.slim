@@ -79,6 +79,7 @@
                 li
                   i.fa.fa-li.fa-mobile
                   | 093 717 91 91
+              p = link_to "Обратный звонок", '#send-callback', class: 'callback dashed', data: {toggle: 'modal'}
 
         .col-md-5.col-sm-6.col-xs-12 = render 'product_info_accordion'
       - if @product.any_related?

@@ -12,6 +12,11 @@ class ManagerMailer < ActionMailer::Base
     mail subject: I18n.t('mailers.contacts.new_contact.subject')
   end
 
+  def callback_message(callback)
+    @callback = callback
+    mail subject: I18n.t('mailers.callbacks.new_callback.subject')
+  end
+
   def sync_prices_loaded(category)
     @category = category
     mail subject: I18n.t('mailers.system.sync_prices_loaded.subject')

@@ -47,6 +47,8 @@ ru:
         call_tomorrow: завтра с 9 до 11 часов
       contacts:
         created: Ваше сообщение успешно дошло к нам
+      callbacks:
+        created: Спасибо! Мы перезвоним вам в ближайшее время
       gdrive_sync:
         updated: "Обновлено строк: %{count}"
         enqueued: Задание поставлено в очередь. По его завершению придет уведомление на почту
@@ -93,6 +95,9 @@ ru:
     contacts:
       new_contact:
         subject: Сообщение с сайта
+    callbacks:
+      new_callback:
+        subject: Обратный звонок
     system:
       sync_prices_loaded:
         subject: Прайс загружен

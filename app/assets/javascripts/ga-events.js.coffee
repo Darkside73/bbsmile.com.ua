@@ -10,6 +10,8 @@ $ ->
     _gaq.push ['_trackEvent', 'Контакты', 'Позвонить'] unless $(this).hasClass('active')
   $('.contacts .email').click ->
     _gaq.push ['_trackEvent', 'Контакты', 'Написать письмо', 'Открыть']
+  $('.contacts .callback').click ->
+    _gaq.push ['_trackEvent', 'Контакты', 'Обратный звонок', 'Открыть']
 
   $('#filterByCategory ul>li:not(.active)>a').click ->
     _gaq.push ['_trackEvent', 'Категория', 'Перейти к подкатегории', $(this).text()]

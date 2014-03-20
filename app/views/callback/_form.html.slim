@@ -1,0 +1,11 @@
+= simple_form_for CallbackForm.new, remote: true, html: { id: 'send-callback', class: "modal fade", data: { type: :json }, tabindex: -1 } do |f|
+  .modal-dialog: .modal-content
+    .modal-header
+      button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+      h4.modal-title Обратный звонок
+    .modal-body
+      = f.input :name, label: "Ваше имя"
+      = f.input :phone, label: "Телефон"
+    .modal-footer
+      a.btn.btn-default data-dismiss="modal" aria-hidden="true" Закрыть
+      = f.button :submit, "Перезвоните мне", class: 'btn-success btn-lg'
