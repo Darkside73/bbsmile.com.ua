@@ -57,7 +57,7 @@ class Category < ActiveRecord::Base
 
   def divided_by_sex
     products.visible
-            .where(sex: [Product::SEX[:for_girls], Product::SEX[:for_boys]])
+            .where(sex: [Product.sexes[:for_girls], Product.sexes[:for_boys]])
   end
 
   %w(novelties hits discounts).each do |name|

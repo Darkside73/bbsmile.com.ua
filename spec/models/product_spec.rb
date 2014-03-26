@@ -53,11 +53,8 @@ describe Product do
       subject { create :product, sex: :for_girls }
       it { should respond_to(:for_girls?) }
       it "show previous value" do
-        subject.sex = :for_boys
-        # using mapping due to "was" returns integer instead symbol
-        # this should be fixed before 4.1 release
-        # see https://github.com/rails/rails/pull/13489 for the progress
-        subject.sex_was.should == Product::SEX[:for_girls]
+        subject.sex = 'for_boys'
+        subject.sex_was.should == 'for_girls'
       end
       context 'when not valid' do
         it "raise error" do

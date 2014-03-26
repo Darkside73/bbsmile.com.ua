@@ -13,12 +13,12 @@ class Product < ActiveRecord::Base
   has_many :inverse_related_products, class_name: 'RelatedProduct', foreign_key: 'related_id'
   with_options through: :related_products, source: :related do |assoc|
     assoc.has_many :similar_products,
-      -> { visible.where("related_products.type_of = ?", RelatedProduct::TYPE_OF[:similar]) }, {}
+      -> { visible.where("related_products.type_of = ?", RelatedProduct.type_ofs[:similar]) }, {}
     assoc.has_many :suggested_products,
-      -> { visible.where("related_products.type_of = ?", RelatedProduct::TYPE_OF[:suggested]) }, {}
+      -> { visible.where("related_products.type_of = ?", RelatedProduct.type_ofs[:suggested]) }, {}
   end
   has_many :inverse_similar_products,
-    -> { visible.where("related_products.type_of = ?", RelatedProduct::TYPE_OF[:similar]) },
+    -> { visible.where("related_products.type_of = ?", RelatedProduct.type_ofs[:similar]) },
     through: :inverse_related_products, source: :product
   belongs_to :category
   belongs_to :brand
@@ -47,8 +47,8 @@ class Product < ActiveRecord::Base
   scope :last_updated, ->(n) { reorder(updated_at: :desc).limit(n) }
   scope :random, ->(n = nil) { reorder('RANDOM()').limit(n) }
 
-  scope :for_girls, -> { where.not(sex: SEX[:for_boys]) }
-  scope :for_boys,  -> { where.not(sex: SEX[:for_girls]) }
+  scope :for_girls, -> { where.not(sex: sexes[:for_boys]) }
+  scope :for_boys,  -> { where.not(sex: sexes[:for_girls]) }
 
   pg_search_scope :by_title, associated_against: { page: :title }
 

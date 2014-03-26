@@ -24,7 +24,7 @@ class ProductsSync
     product.novelty    = row['novelty'] == '1' ? true : false
     product.hit        = row['hit'] == '1' ? true : false
     product.age        = row['age']
-    product.sex        = row['sex'].to_sym if row['sex'].present?
+    product.sex        = row['sex'] if row['sex'].present?
     product.drop_price = row['drop_price'] == '1' ? true : false
   }
 
