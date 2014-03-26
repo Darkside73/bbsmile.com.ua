@@ -16,7 +16,7 @@ end
 
 Given(/^Following positions$/) do |table|
   table.rows_hash.each do |title, position|
-    Page.find_by_title!(title).pageable.update_attributes(position: position)
+    category = Page.find_by_title!(title).pageable.update(position: position)
   end
 end
 

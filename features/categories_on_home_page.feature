@@ -14,12 +14,12 @@ Scenario: Categories on main page
 
 Scenario: Show categories and subcategories by defined position
   Given Following positions
-    | Детские коляски |     1    |
-    | Прогулочные     |     0    |
-    | Детская комната |     0    |
-    | Кроватки        |     1    |
-    | Комоды          |     0    |
-    | Шкафы           |     2    |
+    | Детские коляски |     2    |
+    | Прогулочные     |     1    |
+    | Детская комната |     1    |
+    | Кроватки        |     2    |
+    | Комоды          |     1    |
+    | Шкафы           |     3    |
 
   When I go to home page
   Then I should see categories in this order
