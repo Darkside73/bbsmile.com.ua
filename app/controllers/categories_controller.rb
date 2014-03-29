@@ -3,6 +3,8 @@ class CategoriesController < ApplicationController
                 :selected_prices, :selected_ranges, :selected_ages,
                 :selected_gender
 
+  before_action :sanitize_params
+
   def show
     @category = current_page.pageable
     @products = @category.products_grid(params)
@@ -36,5 +38,11 @@ class CategoriesController < ApplicationController
 
   def selected_ranges
     @category.selected_price_ranges || []
+  end
+
+  private
+
+  def sanitize_params
+    params.reject! { |k, v| v.blank? || v.try(:reject) { |v| v.blank? }.blank? }
   end
 end
