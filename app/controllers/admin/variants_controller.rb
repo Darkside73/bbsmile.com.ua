@@ -10,6 +10,7 @@ class Admin::VariantsController < Admin::ApplicationController
     @product = product
     @variant = @product.variants.new variant_params
     if @variant.save
+      @variant.move_to_bottom
       redirect_to [:admin, @product, :variants], notice: I18n.t('flash.message.variants.created')
     else
       @product.variants.reload

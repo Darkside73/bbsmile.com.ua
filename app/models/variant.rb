@@ -10,7 +10,7 @@ class Variant < ActiveRecord::Base
   attr_accessor :delete_image
 
   accepts_nested_attributes_for :image, reject_if: :all_blank
-  acts_as_list scope: [:product_id]
+  acts_as_list scope: :product
 
   default_scope -> { order(:position) }
   scope :discounts, -> {

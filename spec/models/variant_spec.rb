@@ -25,6 +25,16 @@ describe Variant do
     its(:title) { variant.title.should include(variant.product.title, variant.name, variant.sku) }
   end
 
+  context "when create new variant" do
+    let(:product) { create :product_with_variants }
+    it "insert to bottom" do
+      pending "seems to be an acts_as_list bug"
+      last_variant = product.variants.last
+      variant = create :variant, name: 'new variant', product: product
+      product.variants.reload
+      variant.position.should > last_variant.position
+    end
+  end
 
   context "when search" do
     before { create_list :variant, 3 }
