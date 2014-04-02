@@ -5,7 +5,7 @@ $ ->
         @href
         _method: 'delete'
         (data) =>
-          if !data.hasOwnProperty('error') || data.error?
+          if !data.hasOwnProperty('error') || !data.error?
             $(@).parents('tr').fadeOut()
         'json'
       )
