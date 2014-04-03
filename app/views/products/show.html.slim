@@ -100,7 +100,9 @@
           li: a href="#productVariants" data-toggle="tab" Варианты цветов
         - if @product.video?
           li: a href="#video" data-toggle="tab" Видеообзор
-        li: a href="#disqus_thread" data-toggle="tab" Отзывы и вопросы
+        li: a href="#disqus_thread" data-toggle="tab"
+          i.fa.fa-comments-o>
+          | Отзывы и вопросы
       .tab-content
         .tab-pane.active#description
           .page-content itemprop="description" == @product.description
