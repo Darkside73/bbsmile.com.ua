@@ -31,7 +31,7 @@
       span.label => number_to_currency product.price
       - unless local_assigns[:hide_buy_button] && hide_buy_button
         - if product.available
-          button.quick-shop.btn.btn-success href="#new_order" data={toggle: "modal", variant_id: product.master_variant.id, dialog_title: "<span class='name'>#{product.title}</span> <span class='price' data-price='#{product.price}'>#{number_to_currency product.price}</span>"} Купить
+          button.quick-shop.btn.btn-success href="#new_order" data={toggle: "modal", variant_id: product.master_variant.id, dialog_title: "<span class='name'>#{product.title}</span> <span class='price' data-price='#{product.price}'>#{number_to_currency product.price}</span>"} Заказать
         - else
           button.btn.btn-default disabled="disabled" нет в наличии
 

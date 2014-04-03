@@ -54,7 +54,7 @@
 
             - if @product.available
               = render 'order/form', order: @order, product: @product
-              p: a.quick-shop.btn.btn-lg.btn-success.col-md-4.col-sm-9.col-xs-4 data-toggle="modal" href="##{dom_id @order}" Купить
+              p: a.quick-shop.btn.btn-lg.btn-success.col-md-4.col-sm-9.col-xs-4 data-toggle="modal" href="##{dom_id @order}" Заказать
             - else
               p: strong.text-muted под заказ
 
