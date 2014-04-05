@@ -17,6 +17,20 @@ ActiveRecord::Schema.define(version: 20140405203357) do
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
 
+  create_table "article_themes", force: true do |t|
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "articles", force: true do |t|
+    t.integer  "article_theme_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "articles", ["article_theme_id"], name: "index_articles_on_article_theme_id", using: :btree
+
   create_table "assets", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
