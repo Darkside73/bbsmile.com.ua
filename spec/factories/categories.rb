@@ -3,14 +3,9 @@ FactoryGirl.define do
     ignore do
       subcategories []
       children_count false
-      page_title false
     end
 
-    page {
-      page_attrs = {}
-      page_attrs[:title] = page_title if page_title
-      build(:page, page_attrs)
-    }
+    pageable
 
     after(:create) do |category, evaluator|
       if evaluator.children_count
