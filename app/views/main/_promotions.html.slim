@@ -4,8 +4,12 @@
     li data-target="#promotions" data-slide-to="1"
     li data-target="#promotions" data-slide-to="2"
     li data-target="#promotions" data-slide-to="3"
+    li data-target="#promotions" data-slide-to="4"
   .carousel-inner
     .item.active data-title="Everflo - новая коллекция 2014 года"
+      = link_to category_page_path('detskie-elektro-i-velomobili', brands: ['Bambi'], utm_campaign: 'bambi', utm_medium: 'main_page_promotions', utm_source: 'local') do
+        = image_tag "promotions/bambi.jpg", class: 'img-responsive'
+    .item data-title="Everflo - новая коллекция 2014 года"
       = link_to category_page_path('kolyaski-trosti', brands: ['Everflo'], utm_campaign: 'everflo', utm_medium: 'main_page_promotions', utm_source: 'local') do
         = image_tag "promotions/everflo.jpg", class: 'img-responsive'
     .item data-title="Развивающие игрушки Keenway"
