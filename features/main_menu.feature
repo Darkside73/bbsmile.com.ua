@@ -10,6 +10,6 @@ Scenario: Catalog item present
 Scenario: Categories submenu
   Given Some catalog categories
     And I am on home page
-  When I click "Каталог"
+  When I click "Каталог" within "#main-menu"
   Then I should see categories submenu
 

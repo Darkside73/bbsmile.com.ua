@@ -18,6 +18,12 @@ When /^I click "([^\"]*)"$/ do |link|
   click_link(link)
 end
 
+When /^I click "([^\"]*)" within "([^\"]*)"$/ do |link, parent|
+  within(parent) do
+    click_link(link)
+  end
+end
+
 When /fill in "([^\"]*)" with "([^\"]*)"$/ do |field, value|
   fill_in(field.gsub(' ', '_'), :with => value)
 end
