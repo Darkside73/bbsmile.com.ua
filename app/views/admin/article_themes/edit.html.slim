@@ -1,0 +1,5 @@
+- content_for :box_title do
+  ' Редактирование темы статей &mdash;
+  strong = link_to @theme.title, [:admin, @theme], title: "Перейти к просмотру"
+= render layout: 'boxed' do
+  = render 'form'

@@ -48,6 +48,12 @@ en:
       gdrive_sync:
         updated: "Updated %{count}"
         enqueued: "Enqueued"
+      article_themes:
+        created: Article theme created
+        updated: Article theme updated
+        destroyed:
+          success: Article theme destroyed
+          forbidden: Forbidden. Article theme has articles
   mailers:
     order:
       new_order:

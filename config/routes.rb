@@ -60,6 +60,10 @@ Bbsmile::Application.routes.draw do
 
     resources :brands
 
+    resources :article_themes, concerns: [:sortable], shallow: true do
+      resources :articles
+    end
+
     get 'search-products.json' => 'search#autocomplete', format: :json, as: 'search_products'
 
     scope path: '/sync_:what', as: 'sync', controller: 'gdrive_sync', constraints: { what: /prices|products/ } do

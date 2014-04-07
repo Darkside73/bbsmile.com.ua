@@ -16,7 +16,7 @@ ru:
         subcategory_created: Подкатегория создана
         destroyed:
           success: Категория удалена
-          forbidden: "Нельзя удалить удалять категорию, содержащую подкатегории"
+          forbidden: "Нельзя удалять категорию, содержащую подкатегории"
       price_ranges:
         created: Диапазон цен создан
         updated: Диапазон цен обновлен
@@ -52,6 +52,12 @@ ru:
       gdrive_sync:
         updated: "Обновлено строк: %{count}"
         enqueued: Задание поставлено в очередь. По его завершению придет уведомление на почту
+      article_themes:
+        created: Тема создана
+        updated: Тема обновлена
+        destroyed:
+          success: Тема удалена
+          forbidden: "Нельзя удалять тему, содержащую статьи"
   errors:
     messages:
       blank: "нужно заполнить"

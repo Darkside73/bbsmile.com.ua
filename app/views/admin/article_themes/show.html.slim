@@ -1,0 +1,22 @@
+- content_for :box_actions do
+  = link_to '', [:edit, :admin, @theme], class: "fa fa-edit", title: "Редактировать тему"
+
+= render layout: 'boxed', locals: { title: @theme.title } do
+
+  = render layout: 'actions_panel' do
+    => link_to "Добавить статью", new_admin_article_theme_article_path(@theme), class: 'btn btn-success'
+    => link_to "Назад", [:admin, :article_themes], class: 'btn btn-default'
+
+  - if @theme.articles.any?
+    table.table.articles-list.table-striped.table-hover
+      thead
+        tr
+          th Название
+          th Действия
+      tbody
+      - @theme.articles.each do |article|
+        tr.item
+          td = link_to article.title, [:admin, article], class: 'name'
+          td
+            => link_to 'Редактировать', [:edit, :admin, article], class: 'btn btn-info'
+            =  link_to 'Удалить', [:admin, article], method: :delete, class: 'btn btn-warning'

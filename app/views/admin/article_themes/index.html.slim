@@ -1,0 +1,17 @@
+= render layout: 'boxed', locals: {title: 'Список тем статей'} do
+  - if @themes.any?
+    table.table.sortable.article-themes-list.table-striped.table-hover
+      thead
+        tr
+          th Название
+          th Действия
+      tbody
+      - @themes.each do |theme|
+        tr.item data={sort_url: sort_admin_article_theme_path(theme)}
+          td
+            = link_to theme.title, [:admin, theme], class: 'name'
+          td
+            => link_to 'Редактировать', [:edit, :admin, theme], class: 'btn btn-info'
+            =  link_to 'Удалить', [:admin, theme], method: :delete, class: 'btn btn-warning'
+
+  = link_to "Новая тема", [:new, :admin, :article_theme], id: 'new-theme', class: 'btn btn-success'
