@@ -5,28 +5,25 @@
   = render 'form_search', inner: false
   .landing-nav.subnav data-spy="affix" data-offset-top="330"
     ul.nav.nav-pills.container
-      li: a href="#promotions" data-target="#promotions" data-offset="-130"
-        i.fa.fa-gift>
-        | Акции
+      li: a href="#whole-catalog" data-target="#whole-catalog" Каталог
       li: a href="#novelties" data-target="#novelties" data-offset="-130" Новинки
       li: a href="#discounts" data-target="#discounts" Скидки
       li: a href="#hits" data-target="#hits" Хиты продаж
-      li: a href="#whole-catalog" data-target="#whole-catalog" Весь каталог
   hr
 
 .landing-container
 
   = render 'promotions'
 
+  = landing_item_for @categories, id: 'whole-catalog', icon: 'bars', title: 'Каталог' do |categories|
+    - categories.each do |category, subcategories|
+      = render 'category', category: category, subcategories: subcategories
+
   .products-list
     = render 'order/form', order: @order
     = landing_item_for novelties, id: 'novelties', icon: 'certificate', title: 'Новинки', page_path: novelties_path
     = landing_item_for discounts, id: 'discounts', icon: 'fire', title: 'Скидки', page_path: discounts_path
     = landing_item_for hits, id: 'hits', icon: 'heart-o', title: 'Хиты продаж', page_path: hits_path
-
-  = landing_item_for @categories, id: 'whole-catalog', icon: 'bars', title: 'Весь каталог' do |categories|
-    - categories.each do |category, subcategories|
-      = render 'category', category: category, subcategories: subcategories
 
 .container
   markdown:
