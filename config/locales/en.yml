@@ -54,6 +54,11 @@ en:
         destroyed:
           success: Article theme destroyed
           forbidden: Forbidden. Article theme has articles
+      articles:
+        created: Article created
+        updated: Article updated
+        destroyed:
+          success: Article destroyed
   mailers:
     order:
       new_order:

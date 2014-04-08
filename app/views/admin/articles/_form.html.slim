@@ -1,0 +1,14 @@
+= simple_form_for url do |f|
+  = f.simple_fields_for :page do |p|
+    = p.input :title, label: 'Заголовок'
+    = p.input :name, label: 'Название'
+    = p.input :url, label: 'URL', wrapper: :append do
+      = p.input_field :url, type: 'text'
+      span.input-group-addon: a.fa.fa-random.transliterate data-source="#article_page_attributes_title" data-target="#article_page_attributes_url" href="#" title="Сгенерировать из заголовка"
+    = p.input :url_old, label: 'Старый URL', input_html: {type: 'text'}
+    = p.input :hidden, label: 'скрытая'
+  = f.simple_fields_for :content do |p|
+    = p.input :text, label: false, input_html: {class: 'wysihtml5'}
+  => f.button :submit, @article.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
+  ' или
+  = link_to 'Отменить', :back

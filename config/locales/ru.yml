@@ -58,6 +58,11 @@ ru:
         destroyed:
           success: Тема удалена
           forbidden: "Нельзя удалять тему, содержащую статьи"
+      articles:
+        created: Статья создана
+        updated: Статья обновлена
+        destroyed:
+          success: Статья удалена
   errors:
     messages:
       blank: "нужно заполнить"

@@ -1,0 +1,5 @@
+- content_for :box_title do
+  ' Добавление статьи в
+  strong = link_to @article.theme.name, [:admin, @article.theme]
+= render layout: 'boxed' do
+  = render 'form', url: [:admin, @article.theme, @article]
