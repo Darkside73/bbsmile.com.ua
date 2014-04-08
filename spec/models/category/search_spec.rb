@@ -8,7 +8,7 @@ describe Category do
         products = category.products_grid(sort: :price, direction: 'desc')
         first_product_price  = products.first.variants.collect(&:price).max
         second_product_price = products.second.variants.collect(&:price).max
-        first_product_price.should be > second_product_price
+        first_product_price.should be >= second_product_price
       end
     end
     context "searching" do
