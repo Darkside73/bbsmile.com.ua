@@ -4,7 +4,7 @@
     = p.input :name, label: 'Название'
     = p.input :url, label: 'URL',  wrapper: :append do
       = p.input_field :url, type: 'text'
-      span.add-on: a.fa.fa-random.transliterate data-source="#category_page_attributes_title" data-target="#category_page_attributes_url" href="#" title="Сгенерировать из заголовка"
+      span.input-group-addon: a.fa.fa-random.transliterate data-source="#category_page_attributes_title" data-target="#category_page_attributes_url" href="#" title="Сгенерировать из заголовка"
     = p.input :url_old, label: 'Старый URL', input_html: {type: 'text'}
     = p.input :hidden, label: 'скрытая'
   - if category.new_record? || category.is_childless?
