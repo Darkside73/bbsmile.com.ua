@@ -43,10 +43,10 @@ class Admin::ArticleThemesController < Admin::ApplicationController
 
   def destroy
     theme = ArticleTheme.find params[:id]
-    if theme.articles.empty?
+    begin
       theme.destroy
       flash.now[:notice] = I18n.t 'flash.message.article_themes.destroyed.success'
-    else
+    rescue
       flash.now[:error] = I18n.t 'flash.message.article_themes.destroyed.forbidden'
     end
     render json: flashes_in_json
