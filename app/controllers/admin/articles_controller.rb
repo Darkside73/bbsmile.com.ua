@@ -13,6 +13,7 @@ class Admin::ArticlesController < Admin::ApplicationController
     if @article.save
       redirect_to [:admin, theme], notice: I18n.t('flash.message.articles.created')
     else
+      @article.build_content unless @article.content
       render :new
     end
   end
@@ -41,6 +42,7 @@ class Admin::ArticlesController < Admin::ApplicationController
 
   def article_params
     params.require(:article).permit(
+      :article_theme_id,
       page_attributes: [:id, :title, :name, :url, :url_old, :hidden],
       content_attributes: [:id, :text]
     )
