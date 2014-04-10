@@ -9,6 +9,17 @@ describe 'Admin categories' do
   end
 end
 
+describe 'Articles' do
+  let(:article) { create :article }
+  it 'route to article controller' do
+    { get: "/articles/#{article.url}" }.should route_to(
+      controller: "articles",
+      action: "show",
+      slug: article.url
+    )
+  end
+end
+
 describe 'Pages and specific items' do
   let(:page) { create :page }
   it 'route to pages controller if page requested' do

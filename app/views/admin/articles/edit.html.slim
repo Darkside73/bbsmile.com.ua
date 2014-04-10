@@ -2,3 +2,5 @@
   | Редактирование статьи &mdash; #{@article.name}
 = render layout: 'boxed' do
   = render 'form', url: [:admin, @article]
+  br
+  => link_to "Посмотреть на сайте", article_url(@article.url, domain: request.host, subdomain: 'beta'), class: 'btn btn-default', target: '_blank'

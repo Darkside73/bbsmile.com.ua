@@ -72,6 +72,8 @@ Bbsmile::Application.routes.draw do
     end
   end
 
+  resources :articles, param: :slug, only: [:index, :show], format: false
+
   get '*slug' => 'products#show', format: false,
     constraints: PageTypeConstraint.new(Product), as: 'product_page'
   get '*slug' => 'categories#show', format: false,
