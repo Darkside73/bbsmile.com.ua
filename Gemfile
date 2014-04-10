@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.0.rc2'
+gem 'rails', '4.1.0'
 
 gem 'pg'
 gem 'pg_search'
@@ -8,6 +8,7 @@ gem 'ancestry'
 gem 'nilify_blanks'
 gem 'acts_as_list'
 gem 'acts-as-taggable-on'
+gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'newrelic_rpm'
@@ -20,10 +21,10 @@ gem 'metamagic'
 gem 'sitemap_generator'
 
 gem 'slim'
-gem 'slim-rails'
+# gem 'slim-rails'
 gem 'redcarpet'
 gem 'cells'
-gem 'simple_form', '>= 3.0.0beta1'
+gem 'simple_form'
 gem 'attribute_normalizer'
 
 gem 'jquery-rails'
@@ -31,7 +32,7 @@ gem 'jquery-ui-rails'
 gem 'json'
 gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-helpers'
 gem 'paperclip'
-gem 'dimensions-rails'
+gem 'dimensions-rails', github: 'Darkside73/dimensions-rails', branch: 'rails-4.1-support'
 
 gem 'google_drive', '0.3.7', require: false
 gem 'httparty', require: false
