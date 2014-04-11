@@ -151,3 +151,6 @@ ru:
         significant: false
         strip_insignificant_zeros: true
         unit: грн
+  time:
+    formats:
+      short: '%B, %e'
