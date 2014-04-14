@@ -33,7 +33,7 @@ gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-hel
 gem 'paperclip'
 gem 'dimensions-rails'
 
-gem 'google_drive', require: false
+gem 'google_drive', '0.3.7', require: false
 gem 'httparty', require: false
 
 group :assets do
