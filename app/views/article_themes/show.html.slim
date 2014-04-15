@@ -4,5 +4,6 @@
   .page-header: h1.page-title = @theme.title
   - @theme.articles.visible.each do |article|
     h4
-      => l article.created_at, format: :short
-      = link_to article.name, article_path(article.url)
+      = link_to article_path(article.url) do
+        => article.name
+        sup.badge => l article.created_at, format: :short
