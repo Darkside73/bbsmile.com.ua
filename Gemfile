@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.1'
 
 gem 'pg'
 gem 'pg_search'
@@ -34,7 +34,7 @@ gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-hel
 gem 'paperclip'
 gem 'dimensions-rails', github: 'Darkside73/dimensions-rails', branch: 'rails-4.1-support'
 
-gem 'google_drive', '0.3.7', require: false
+gem 'google_drive', require: false
 gem 'httparty', require: false
 
 group :assets do
