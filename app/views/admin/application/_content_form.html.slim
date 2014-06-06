@@ -1,5 +1,7 @@
+- content_for :js do
+  = tinymce
 = simple_form_for path do |f|
-  = f.input :text, label: false, input_html: {class: 'wysihtml5'}
+  = f.input :text, label: false, input_html: {class: 'tinymce'}
   => f.button :submit, 'Сохранить', class: 'btn btn-primary'
   ' или
   = link_to 'Отменить', :back

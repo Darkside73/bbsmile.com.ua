@@ -61,7 +61,13 @@ Bbsmile::Application.routes.draw do
     resources :brands
 
     resources :article_themes, concerns: [:sortable], shallow: true do
-      resources :articles, except: [:index, :show]
+      resources :articles, except: [:index, :show], shallow: true do
+        resources :images,
+          on: :member,
+          only: [:create, :index, :destroy],
+          defaults: { format: :json },
+          controller: 'articles/images'
+      end
     end
 
     get 'search-products.json' => 'search#autocomplete', format: :json, as: 'search_products'

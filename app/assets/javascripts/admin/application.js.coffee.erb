@@ -1,14 +1,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.sortable
+//= require jquery.ui.droppable
 //= require jquery.ui.effect.all
 //= require underscore
 //= require twitter/bootstrap
 //= require select2/select2
 //= require select2/select2_locale_ru
-//= require bootstrap3-wysihtml5/lib/js/wysihtml5-0.3.0
-//= require bootstrap3-wysihtml5/src/bootstrap3-wysihtml5
-//= require bootstrap3-wysihtml5/src/locales/bootstrap-wysihtml5.ru-RU
 //= require jquery.scrollTo/jquery.scrollTo
 //= require tabs_memory
 //= require ./search-box
@@ -17,6 +15,7 @@
 //= require ./sort
 //= require ./products
 //= require ./category
+//= require tinymce
 
 $ ->
   $(document).ajaxComplete (event, request) ->
@@ -35,29 +34,6 @@ $ ->
       e.preventDefault()
 
   $('select').select2(allowClear: true)
-
-  $.extend(
-    true
-    $.fn.wysihtml5.defaultOptions
-    parserRules:
-      tags:
-        h1: { 'remove': 1 }
-        p: {}
-  )
-  $.extend(
-    true
-    $.fn.wysihtml5.locale["ru-RU"]
-    font_styles:
-      h4: 'Заголовок 4'
-      h5: 'Заголовок 5'
-      h6: 'Заголовок 6'
-  )
-
-  $('.wysihtml5').wysihtml5
-    locale: 'ru-RU'
-    html: true
-    image: false
-    stylesheets: "<%= asset_path('bootstrap3-wysihtml5/lib/css/bootstrap3-wysiwyg5-color') %>"
 
   $('a.top').click (e) ->
     e.preventDefault()

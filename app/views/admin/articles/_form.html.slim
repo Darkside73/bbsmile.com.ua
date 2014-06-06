@@ -1,3 +1,15 @@
+- content_for :js do
+  coffee:
+    $ ->
+      $(document).bind 'dragstart', (event) ->
+        e = event.originalEvent
+        image = $(e.dataTransfer.getData('text/html'))
+        a = document.createElement 'a'
+        a.href = image.attr('src')
+        image.attr 'src', image.attr('src').replace("#{a.protocol}//#{a.host}", '')
+        e.dataTransfer.setData 'text/html', image.get(0).outerHTML
+  = tinymce uploadimage_form_url: admin_article_images_path(@article)
+
 = simple_form_for url do |f|
   = f.simple_fields_for :page do |p|
     = p.input :title, label: 'Заголовок'
@@ -9,7 +21,7 @@
     = p.input :hidden, label: 'скрытая'
   = f.association :article_theme, collection: ArticleTheme.all, label: "Тема", label_method: :name, input_html: { 'data-placeholder' => 'Тема' } unless @article.new_record?
   = f.simple_fields_for :content do |p|
-    = p.input :text, label: false, input_html: {class: 'wysihtml5'}
+    = p.input :text, label: false, input_html: {class: 'tinymce'}
   => f.button :submit, @article.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
   ' или
   = link_to 'Отменить', :back

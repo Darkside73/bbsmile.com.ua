@@ -33,6 +33,8 @@ gem 'json'
 gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-helpers'
 gem 'paperclip'
 gem 'dimensions-rails', github: 'Darkside73/dimensions-rails', branch: 'rails-4.1-support'
+gem 'tinymce-rails'
+gem 'tinymce-rails-langs'
 
 gem 'google_drive', require: false
 gem 'httparty', require: false

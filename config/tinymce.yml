@@ -1,0 +1,11 @@
+language: ru
+toolbar:
+  - styleselect | bold italic | link image | undo redo | table
+plugins:
+  - table
+  - code
+  - image
+relative_urls: false
+convert_urls: false
+document_base_url: '/'
+remove_script_host: true
