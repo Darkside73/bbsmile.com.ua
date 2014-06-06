@@ -8,7 +8,7 @@
         a.href = image.attr('src')
         image.attr 'src', image.attr('src').replace("#{a.protocol}//#{a.host}", '')
         e.dataTransfer.setData 'text/html', image.get(0).outerHTML
-  = tinymce uploadimage_form_url: admin_article_images_path(@article)
+  = tinymce
 
 = simple_form_for url do |f|
   = f.simple_fields_for :page do |p|
@@ -25,3 +25,8 @@
   => f.button :submit, @article.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
   ' или
   = link_to 'Отменить', :back
+
+ul#filelist
+p
+  a#browse.btn.btn-default href="javascript:;" Выбрать файлы
+  a#start-upload.btn.btn-default href="javascript:;" data-upload-url="#{admin_article_images_path(@article)}" Загрузить
