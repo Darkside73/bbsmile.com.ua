@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.2'
 
 gem 'pg'
 gem 'pg_search'
@@ -61,6 +61,8 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'rspec-its'
+  gem 'rspec-collection_matchers'
   gem 'factory_girl_rails'
   gem 'faker'
 end

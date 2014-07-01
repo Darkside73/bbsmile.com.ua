@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Order do
   context "when save" do
@@ -20,7 +20,7 @@ describe Order do
           user_attributes: { email: 'email' }
         )
       ).to have(1).error_on(:'user.email')
-      expect { order.save }.not_to change { Order.count }.by(1)
+      expect { order.save }.not_to change { Order.count }
     end
     let(:user) { create :user }
     it "prevents user email duplications" do
@@ -28,7 +28,7 @@ describe Order do
         variant: variant,
         user_attributes: { email: user.email, phone: '123456' }
       )
-      expect { order.save.should be_true }.not_to change { User.count }.by(1)
+      expect { order.save.should be_truthy }.not_to change { User.count }
       expect { user.reload }.not_to change { user.name + user.phone }
     end
     let(:order) { order = Order.new variant: variant, user_attributes: attributes_for(:user) }

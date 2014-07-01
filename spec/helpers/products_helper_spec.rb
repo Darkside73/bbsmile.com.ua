@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ProductsHelper do
   describe "#variant_image_url" do

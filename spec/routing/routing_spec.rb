@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'Admin categories' do
   let(:categories) { create_list :category, 3 }

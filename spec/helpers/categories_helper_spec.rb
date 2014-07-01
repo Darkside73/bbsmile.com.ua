@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe CategoriesHelper do
   describe "#category_menu_items" do

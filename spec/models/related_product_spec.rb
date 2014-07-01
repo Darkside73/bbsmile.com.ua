@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe RelatedProduct do
   let(:related_product) { create :related_product }

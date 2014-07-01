@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Category do
   context 'when save' do
@@ -22,13 +22,13 @@ describe Category do
     end
     it 'not create record if invalid data' do
       category = build :category, page_attributes: { title: 'valid', url: '' }
-      expect { category.save.should be_false }.not_to change { Category.count }
+      expect { category.save }.not_to change { Category.count }
     end
     it 'update category title' do
       category = create :category
       old_title = category.page.title
       category.update_attributes page_attributes: attributes_for(:page)
-      category.save.should be_true
+      category.save.should be_truthy
       category.page.title.should_not == old_title
     end
 

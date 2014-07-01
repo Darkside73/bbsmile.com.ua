@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Variant::Image do
   it { should have_attached_file(:attachment) }

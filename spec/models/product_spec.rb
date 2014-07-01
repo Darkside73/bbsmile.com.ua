@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Product do
   context "instance methods" do
@@ -74,7 +74,7 @@ describe Product do
           variants_attributes: [{ price: 20 }]
         )
         product.master_variant.should be
-        product.master_variant.master.should be_true
+        product.master_variant.master.should be_truthy
       }.to change { Product.count }.by(1)
     end
     let(:video) { 'http://youtube.com/watch?v=code&other=params' }
@@ -144,7 +144,7 @@ describe Product do
     let!(:product) { create(:product) }
     subject { product.top_image? }
     it "return false if product without images" do
-      should be_false
+      should be_falsey
     end
   end
 
@@ -152,7 +152,7 @@ describe Product do
     let!(:product) { create(:product_with_variants) }
     it "checks product price for matching price range" do
       price_range = create :price_range, from: product.price - 10
-      product.in_range?(price_range).should be_true
+      product.in_range?(price_range).should be_truthy
     end
   end
 

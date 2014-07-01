@@ -68,7 +68,7 @@ end
 
 Then(/^Subcategories should be hidden$/) do
   @some_category.children.each do |child|
-    child.page.hidden.should be_true
+    child.page.hidden.should be_truthy
   end
 end
 

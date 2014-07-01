@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Admin::RelatedProductsController do
   describe 'POST create' do

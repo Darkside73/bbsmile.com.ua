@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe PriceRange do
   it "nilify from (to) if it blank" do

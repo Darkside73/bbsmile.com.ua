@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Asset do
   it { should have_attached_file(:attachment) }
