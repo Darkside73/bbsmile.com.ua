@@ -4,7 +4,8 @@ class Admin::Articles::ImagesController < ApplicationController
   def create
     image = article.images.new
     image.attachment = params[:file]
-    respond_with image, location: article
+    image.save
+    respond_with image.as_json.merge({delete_url: admin_image_path(image)}), location: article
   end
 
   private

@@ -91,3 +91,13 @@ $ ->
     $(this).attr 'value', fixedValue
     $(this).val fixedValue
   )
+
+  equalHeight = (group) ->
+    tallest = 0
+    group.each ->
+      thisHeight = $(this).height()
+      if thisHeight > tallest
+        tallest = thisHeight
+    group.each -> $(this).height(tallest)
+
+  equalHeight($('#editor-images .list .thumbnail'))

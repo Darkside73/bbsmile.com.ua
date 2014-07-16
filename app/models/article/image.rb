@@ -3,6 +3,8 @@ class Article::Image < Asset
   validates_attachment_content_type :attachment, content_type: /^image\/(png|gif|jpg|jpeg)/,
                                     message: I18n.t('errors.messages.paperclip.content_type_image')
 
+  default_scope -> { reorder :created_at }
+
   def as_json(options = {})
     {
       image: {

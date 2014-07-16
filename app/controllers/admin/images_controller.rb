@@ -7,7 +7,7 @@ class Admin::ImagesController < Admin::ApplicationController
   end
 
   def destroy
-    image = Product::Image.find params[:id]
+    image = Asset.find params[:id]
     image.destroy
     flash.now[:notice] = I18n.t 'flash.message.images.destroyed'
     render json: flashes_in_json

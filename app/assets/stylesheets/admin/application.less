@@ -75,3 +75,16 @@ p.bages {
 textarea.wysihtml5 {
   height: 300px;
 }
+
+#editor-images .list .thumbnail {
+  position: relative;
+  &:hover {
+    a.destroy { display: block; }
+  }
+  a.destroy {
+    position: absolute;
+    right: -16px;
+    top: -4px;
+    display: none;
+  }
+}
