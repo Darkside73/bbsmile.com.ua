@@ -1,5 +1,5 @@
 - content_for :js do
-  = tinymce
+  = tinymce content_css: stylesheet_path('application')
 = simple_form_for path do |f|
   = f.input :text, label: false, input_html: {class: 'tinymce'}
   => f.button :submit, 'Сохранить', class: 'btn btn-primary'

@@ -1,10 +1,14 @@
 language: ru
 toolbar:
-  - styleselect | bold italic | link image | undo redo | table
+  - styleselect | bold italic underline strikethrough | link unlink image pastetext | undo redo | bullist numlist outdent indent | alignleft aligncenter alignright alignjustify | table
+menubar: false
 plugins:
+  - link
   - table
   - code
   - image
+  - paste
+height: 300
 relative_urls: false
 convert_urls: false
 document_base_url: '/'
