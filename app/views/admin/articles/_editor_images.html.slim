@@ -7,7 +7,6 @@
           unless image.get(0).tagName == 'IMG'
             image = image.find 'img'
           e.dataTransfer.setData 'text/html', "<img src=\"#{image.data('src')}\" alt=\"#{image.attr('alt')}\" />"
-        @equalHeight($('#editor-images .list .thumbnail'))
 
 #editor-images
   h4 Изображения
