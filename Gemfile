@@ -25,7 +25,7 @@ gem 'slim'
 gem 'redcarpet'
 gem 'cells'
 gem 'simple_form'
-gem 'attribute_normalizer'
+gem 'attribute_normalizer', '1.1.0'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

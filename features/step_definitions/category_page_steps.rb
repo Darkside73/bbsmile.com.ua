@@ -9,5 +9,7 @@ end
 
 Then(/^I should see products with prices$/) do
   expect(all '.product').to have(3).things
-  page.should have_content(*@products.collect(&:price))
+  @products.collect(&:price).each do |price|
+    page.should have_content(price)
+  end
 end
