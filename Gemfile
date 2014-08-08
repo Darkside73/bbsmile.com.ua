@@ -39,19 +39,18 @@ gem 'tinymce-rails-langs'
 gem 'google_drive', require: false
 gem 'httparty', require: false
 
-group :assets do
-  gem 'less-rails-bootstrap'
-  gem 'font-awesome-rails'
-  gem 'coffee-rails'
+gem 'less-rails-bootstrap'
+gem 'font-awesome-rails'
+gem 'coffee-rails'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'uglifier', '>= 1.0.3'
 
 group :development do
   gem 'rake'
+  gem 'spring'
   gem 'seedbank'
   gem 'rb-inotify', require: false
   gem 'guard', '>=2.1.0'
@@ -62,14 +61,14 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'rspec-its'
-  gem 'rspec-collection_matchers'
   gem 'factory_girl_rails'
   gem 'faker'
 end
 
 group :test do
+  gem 'rspec-rails'
+  gem 'rspec-its'
+  gem 'rspec-collection_matchers'
   gem 'minitest'
   gem 'cucumber-rails', require: false
   gem 'capybara'
