@@ -5,7 +5,7 @@ end
 Then(/^I should see variants$/) do
   @product.variants.each do |v|
     page.should have_content(v.name)
-    page.should have_content(v.price)
+    page.should have_content(number_to_currency v.price)
   end
 end
 

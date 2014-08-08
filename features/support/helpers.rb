@@ -32,4 +32,4 @@ module CapybaraHelpers
   end
 end
 
-World(NavigationHelpers, CapybaraHelpers, FactoryGirl::Syntax::Methods)
+World(NavigationHelpers, CapybaraHelpers, FactoryGirl::Syntax::Methods, ActionView::Helpers::NumberHelper)

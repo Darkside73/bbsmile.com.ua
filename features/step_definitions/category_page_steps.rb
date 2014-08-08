@@ -10,6 +10,6 @@ end
 Then(/^I should see products with prices$/) do
   expect(all '.product').to have(3).things
   @products.collect(&:price).each do |price|
-    page.should have_content(price)
+    page.should have_content(number_to_currency price)
   end
 end
