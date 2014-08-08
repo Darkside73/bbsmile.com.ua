@@ -51,6 +51,8 @@ gem 'uglifier', '>= 1.0.3'
 group :development do
   gem 'rake'
   gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'spring-commands-cucumber'
   gem 'seedbank'
   gem 'rb-inotify', require: false
   gem 'guard', '>=2.1.0'
