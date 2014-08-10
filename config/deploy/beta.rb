@@ -1,10 +1,12 @@
-set :application_id, "bbsmile-beta"
-set :rails_env, "beta"
+set :application, 'bbsmile-beta'
 set :branch, 'beta'
 
-after "deploy:update_code", "create_public_symlinks"
-task :create_public_symlinks do
-  %w(system uploads).each do |folder|
-    run "ln -nfs #{shared_path}/#{folder} #{release_path}/public/#{folder}"
+namespace :deploy do
+  task :create_uploads_symlink do
+    production_shared_path = shared_path.sub fetch(:application), 'bbsmile'
+    on roles(:all) do
+      execute :ln, "-nfs #{production_shared_path}/public/uploads  #{current_path}/public"
+    end
   end
+  after :finished, :create_uploads_symlink
 end

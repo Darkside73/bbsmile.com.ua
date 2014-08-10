@@ -58,8 +58,12 @@ group :development do
   gem 'guard', '>=2.1.0'
   gem 'guard-rspec'
   gem 'guard-cucumber'
-  # gem 'meta_request', '0.2.5'
   gem 'better_errors'
+  gem 'capistrano', '~> 3.0', require: false
+  gem 'capistrano-rails', '~> 1.1', require: false
+  gem 'capistrano-bundler', '~> 1.1', require: false
+  gem 'capistrano-rvm', '~> 0.1', require: false
+  # gem 'capistrano3-unicorn'
 end
 
 group :development, :test do
@@ -90,9 +94,6 @@ end
 gem 'unicorn'
 gem 'unicorn-worker-killer'
 
-# Deploy with Capistrano
-gem 'capistrano'
-gem 'rvm-capistrano'
 
 # To use debugger
 # gem 'debugger'

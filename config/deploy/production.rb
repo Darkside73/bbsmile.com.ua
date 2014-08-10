@@ -1,24 +1,33 @@
-set :application_id, "bbsmile"
-set :rails_env, "production"
+set :application, 'bbsmile'
+
+load 'lib/capistrano/delayed_job.rake'
+
+set :linked_files, %w(public/sitemap.xml.gz)
+linked_dirs = fetch(:linked_dirs) << 'public/uploads'
+set :linked_dirs, linked_dirs
 
 namespace :sitemap do
-  task :copy_old do
-    run <<-EOF
-      if [ -e #{previous_release}/public/sitemap.xml.gz ]; then
-        cp #{previous_release}/public/sitemap* #{current_release}/public/;
-      else
-        echo "No sitemap found. Try to refresh";
-      fi
-    EOF
+  task refresh: 'deploy:set_rails_env' do
+    on roles(:all) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          rake 'sitemap:refresh'
+        end
+      end
+    end
   end
-  task :refresh do
-    run "cd #{latest_release} && #{rake} sitemap:refresh"
+
+  task :ensure_exists do
+    on roles(:all) do
+      unless test("[ -f #{shared_path}/public/sitemap.xml.gz ]")
+        invoke 'sitemap:refresh'
+        execute :mv, "#{current_path}/public/sitemap.xml.gz #{shared_path}/public/sitemap.xml.gz"
+      end
+    end
   end
 end
+before 'deploy:check:linked_files', 'sitemap:ensure_exists'
 
-require 'delayed/recipes'
-set :delayed_job_command, "rvm use #{rvm_ruby_string} do bin/delayed_job"
+set :delayed_job_server_role, [:all]
 set :delayed_job_args, "-n 2"
-
-after "deploy", "delayed_job:restart"
-after "deploy:update_code", "sitemap:copy_old"
+after 'deploy:restart', 'delayed_job:restart'
