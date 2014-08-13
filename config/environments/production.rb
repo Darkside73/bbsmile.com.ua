@@ -78,15 +78,6 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  Bbsmile::Application.config.middleware.use(
-    ExceptionNotification::Rack,
-    email: {
-      email_prefix: "[Bbsmile Error] ",
-      sender_address: %{"Exception Notifier" <no-reply@bbsmile.com.ua>},
-      exception_recipients: %w{andrey.garbuz@gmail.com}
-    }
-  )
-
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
