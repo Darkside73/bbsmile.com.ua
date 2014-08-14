@@ -35,6 +35,8 @@ gem 'paperclip'
 gem 'dimensions-rails', github: 'elia/dimensions-rails'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
+gem 'react-rails', github: 'reactjs/react-rails'
+gem 'sprockets-coffee-react'
 
 gem 'google_drive', require: false
 gem 'httparty', require: false
