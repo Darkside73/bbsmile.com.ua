@@ -4,7 +4,7 @@ class Admin::ArticlesController < Admin::ApplicationController
     theme = ArticleTheme.find params[:article_theme_id]
     @article = theme.articles.new
     @article.build_page
-    @article.build_content
+    build_article @article
   end
 
   def create
@@ -13,13 +13,14 @@ class Admin::ArticlesController < Admin::ApplicationController
     if @article.save
       redirect_to [:admin, theme], notice: I18n.t('flash.message.articles.created')
     else
-      @article.build_content unless @article.content
+      build_article @article
       render :new
     end
   end
 
   def edit
     @article = Article.find params[:id]
+    build_article @article
   end
 
   def update
@@ -27,6 +28,7 @@ class Admin::ArticlesController < Admin::ApplicationController
     if @article.update_attributes article_params
       redirect_to [:admin, @article.theme], notice: I18n.t('flash.message.articles.updated')
     else
+      build_article @article
       render :edit
     end
   end
@@ -44,7 +46,13 @@ class Admin::ArticlesController < Admin::ApplicationController
     params.require(:article).permit(
       :article_theme_id,
       page_attributes: [:id, :title, :name, :url, :url_old, :hidden],
-      content_attributes: [:id, :text]
+      content_attributes: [:id, :text],
+      top_image_attributes: [:id, :attachment]
     )
+  end
+
+  def build_article(article)
+    article.build_content unless article.content
+    article.build_top_image unless article.top_image
   end
 end

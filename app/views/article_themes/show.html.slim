@@ -3,7 +3,12 @@
 #articles-list.container
   .page-header: h1.page-title = @theme.title
   - @theme.articles.visible.each do |article|
+    .pull-left
+      - if article.top_image
+        = link_to article_path(article.url) do
+          = image_tag article.top_image.url(:thumb), class: 'thumbnail'
     h4
       = link_to article_path(article.url) do
         => article.name
         sup.badge => l article.created_at, format: :short
+    .clearfix

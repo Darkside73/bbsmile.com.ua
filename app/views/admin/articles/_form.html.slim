@@ -11,6 +11,13 @@
     = p.input :url_old, label: 'Старый URL', input_html: {type: 'text'}
     = p.input :hidden, label: 'скрытая'
   = f.association :article_theme, collection: ArticleTheme.all, label: "Тема", label_method: :name, input_html: { 'data-placeholder' => 'Тема' } unless @article.new_record?
+  .row
+    .col-xs-4
+      = f.simple_fields_for :top_image do |p|
+        = p.input :attachment, label: 'Топовое изображение'
+    .col-xs-8.text-left
+      - unless @article.top_image.new_record?
+        = image_tag @article.top_image.url(:thumb), class: 'thumbnail'
   = f.simple_fields_for :content do |p|
     = p.input :text, label: false, input_html: {class: 'tinymce'}
   = render 'editor_images' unless @article.new_record?
