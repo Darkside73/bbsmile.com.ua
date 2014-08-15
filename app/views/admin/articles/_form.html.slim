@@ -20,7 +20,8 @@
         = image_tag @article.top_image.url(:thumb), class: 'thumbnail'
   = f.simple_fields_for :content do |p|
     = p.input :text, label: false, input_html: {class: 'tinymce'}
-  = render 'editor_images' unless @article.new_record?
+  - unless @article.new_record?
+    = react_component 'EditorImages', { urls: { index: admin_article_images_path(@article), create: admin_article_images_path(@article) } }, { id: 'editor-images' }
   => f.button :submit, @article.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
   ' или
   = link_to 'Отменить', :back

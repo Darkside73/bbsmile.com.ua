@@ -1,6 +1,10 @@
 class Admin::Articles::ImagesController < ApplicationController
   respond_to :json
 
+  def index
+    respond_with article.images, location: article
+  end
+
   def create
     image = article.images.new
     image.attachment = params[:file]
