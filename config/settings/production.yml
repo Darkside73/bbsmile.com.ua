@@ -1,0 +1,20 @@
+http_auth:
+  name: <%= Rails.application.secrets.http_auth['name'] %>
+  password: <%= Rails.application.secrets.http_auth['password'] %>
+
+managers_emails: <%= Rails.application.secrets.managers_emails %>
+
+ga:
+  tracking_id: UA-42471160-1
+metrika:
+  tracking_id: 22781371
+  webvisor_enabled: true
+gdrive:
+  auth:
+    user: <%= Rails.application.secrets.gdrive['auth']['user'] %>
+    password: <%= Rails.application.secrets.gdrive['auth']['password'] %>
+  docs:
+    prices: 0Aswwzh8AZzVydGhEMDdCS3EwSlBUdGF5WUNaVlNfUnc
+    products: 0Aswwzh8AZzVydGgwbUo4c0pUbVpSemcyZUgtc1BQU1E
+sms:
+  test_mode: false

@@ -2,7 +2,9 @@ set :application, 'bbsmile'
 
 load 'lib/capistrano/delayed_job.rake'
 
-set :linked_files, %w(public/sitemap.xml.gz)
+linked_files = fetch(:linked_files) << 'public/sitemap.xml.gz'
+set :linked_files, linked_files
+
 linked_dirs = fetch(:linked_dirs) << 'public/uploads'
 set :linked_dirs, linked_dirs
 

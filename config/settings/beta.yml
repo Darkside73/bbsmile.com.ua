@@ -1,0 +1,14 @@
+http_auth:
+  name: <%= Rails.application.secrets.http_auth['name'] %>
+  password: <%= Rails.application.secrets.http_auth['password'] %>
+  protect_front: true
+
+managers_emails: <%= Rails.application.secrets.managers_emails %>
+
+ga:
+  tracking_id: UA-42471160-2
+metrika:
+  tracking_id: 22781617
+  webvisor_enabled: true
+sms:
+  test_mode: false

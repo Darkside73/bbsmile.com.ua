@@ -1,0 +1,33 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: bbsmile_development
+  pool: 5
+  timeout: 5000
+  username: user
+  password:
+
+test: &test
+  adapter: postgresql
+  encoding: unicode
+  database: bbsmile_test
+  pool: 5
+  timeout: 5000
+  username: user
+  password:
+
+production: &production
+  adapter: postgresql
+  encoding: unicode
+  database: bbsmile
+  pool: 5
+  timeout: 5000
+  username: bbsmile
+  password:
+  host: localhost
+
+beta:
+  <<: *production
+
+cucumber:
+  <<: *test
