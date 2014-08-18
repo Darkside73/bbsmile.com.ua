@@ -23,13 +23,11 @@ uploader = new plupload.Uploader
     uploader.setOption 'url', @props.urls.create
     uploader.bind(
       'FilesAdded'
-      (up, files) =>
-        @setState files: files, uploaderActive: true, percentsCompleted: 0
+      (up, files) => @setState files: files, uploaderActive: true, percentsCompleted: 0
     )
     uploader.bind(
       'UploadProgress'
-      (up, file) =>
-        @setState percentsCompleted: up.total.percent
+      (up, file) => @setState percentsCompleted: up.total.percent
     )
     uploader.bind(
       'FileUploaded'
@@ -39,6 +37,13 @@ uploader = new plupload.Uploader
         @setState data: data, uploaderActive: false
     )
     uploader.init()
+  initDraggable: ->
+    $(document).bind 'dragstart', (event) ->
+      e = event.originalEvent
+      image = $(e.dataTransfer.getData('text/html'))
+      unless image.get(0).tagName == 'IMG'
+        image = image.find 'img'
+      e.dataTransfer.setData 'text/html', "<img src=\"#{image.data('src')}\" alt=\"#{image.attr('alt')}\" />"
   getInitialState: ->
     data: []
     files: []
@@ -47,6 +52,7 @@ uploader = new plupload.Uploader
   componentDidMount: ->
     @loadFromServer()
     @initUploader()
+    @initDraggable()
   render: ->
     <div>
       <h4>Изображения</h4>
