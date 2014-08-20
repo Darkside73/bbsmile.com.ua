@@ -38,12 +38,15 @@ uploader = new plupload.Uploader
     )
     uploader.init()
   initDraggable: ->
-    $(document).bind 'dragstart', (event) ->
+    $(@getDOMNode()).bind 'dragstart', (event) ->
       e = event.originalEvent
       image = $(e.dataTransfer.getData('text/html'))
       unless image.get(0).tagName == 'IMG'
         image = image.find 'img'
-      e.dataTransfer.setData 'text/html', "<img src=\"#{image.data('src')}\" alt=\"#{image.attr('alt')}\" />"
+      if image
+        src = image.data('src')
+        alt = if image.attr('alt') then image.attr('alt') else ''
+        e.dataTransfer.setData 'text/html', "<img src=\"#{src}\" alt=\"#{alt}\" />"
   getInitialState: ->
     data: []
     files: []
