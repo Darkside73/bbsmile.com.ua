@@ -37,16 +37,6 @@ uploader = new plupload.Uploader
         @setState data: data, uploaderActive: false
     )
     uploader.init()
-  initDraggable: ->
-    $(@getDOMNode()).bind 'dragstart', (event) ->
-      e = event.originalEvent
-      image = $(e.dataTransfer.getData('text/html'))
-      unless image.get(0).tagName == 'IMG'
-        image = image.find 'img'
-      if image
-        src = image.data('src')
-        alt = if image.attr('alt') then image.attr('alt') else ''
-        e.dataTransfer.setData 'text/html', "<img src=\"#{src}\" alt=\"#{alt}\" />"
   getInitialState: ->
     data: []
     files: []
@@ -55,7 +45,6 @@ uploader = new plupload.Uploader
   componentDidMount: ->
     @loadFromServer()
     @initUploader()
-    @initDraggable()
   render: ->
     <div>
       <h4>Изображения</h4>
