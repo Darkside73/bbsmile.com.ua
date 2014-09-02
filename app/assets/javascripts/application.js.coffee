@@ -13,6 +13,7 @@
 //= require blueimp-gallery/js/blueimp-gallery
 //= require bootstrap-image-gallery/js/bootstrap-image-gallery
 //= require jquery.mask
+//= require jquery.cookie
 
 $ ->
   $('a[rel=popover]').popover()
@@ -53,6 +54,13 @@ $ ->
   new CallbackDialog('#send-callback')
 
   $('input[type="tel"]').mask '(000) 000-00-00'
+
+  $('#global-message button').click (e) ->
+    $.cookie 'hide-global-message-02-09', 1
+
+  unless $.cookie('hide-global-message-02-09')
+    $('#global-message').toggleClass 'hide'
+
 
   $('.gallery-links').each ->
     links = $('a[data-gallery]', @)
