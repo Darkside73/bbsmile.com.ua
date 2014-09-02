@@ -23,6 +23,10 @@ html
     #main-menu.navbar.navbar-fixed-top.navbar-default role="navigation"
       = render 'main_menu'
     = content_for?(:header) ? yield(:header) : render('header')
+    #global-message.container.alert.alert-warning.alert-dismissable.hide
+      button type="button" class="close" data-dismiss="alert" aria-hidden="true" &times;
+      strong> Уважаемые посетители!
+      | В период с 4 по 15 июля 2015 года заказы и консультации будут осуществляться только в онлайн-режиме. Приятных покупок!
     = yield
     a.go-top href="#" title="К началу страницы": i.fa.fa-long-arrow-up
     .footer: .container
