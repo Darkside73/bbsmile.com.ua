@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.6'
+gem 'rails', '4.2.0.beta2'
 
 gem 'pg'
 gem 'pg_search'
@@ -25,6 +25,7 @@ gem 'slim'
 gem 'redcarpet'
 gem 'cells'
 gem 'simple_form'
+gem 'responders', '~> 2.0'
 gem 'attribute_normalizer', '1.1.0'
 
 gem 'jquery-rails'
