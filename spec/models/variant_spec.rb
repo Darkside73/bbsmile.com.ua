@@ -28,7 +28,6 @@ describe Variant do
   context "when create new variant" do
     let(:product) { create :product_with_variants }
     it "insert to bottom" do
-      pending "seems to be an acts_as_list bug"
       last_variant = product.variants.last
       variant = create :variant, name: 'new variant', product: product
       product.variants.reload
