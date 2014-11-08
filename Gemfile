@@ -26,7 +26,7 @@ gem 'redcarpet'
 gem 'cells'
 gem 'simple_form'
 gem 'responders', '~> 2.0'
-gem 'attribute_normalizer', '1.1.0'
+gem 'attribute_normalizer'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

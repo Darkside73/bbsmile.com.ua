@@ -415,7 +415,7 @@ DEPENDENCIES
   acts-as-taggable-on
   acts_as_list
   ancestry
-  attribute_normalizer (= 1.1.0)
+  attribute_normalizer
   better_errors
   bootstrap-components-helpers!
   capistrano (~> 3.0)
