@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.0.beta4'
+gem 'rails', '4.2.0.rc1'
 
 gem 'pg'
 gem 'pg_search'
 gem 'ancestry'
 gem 'nilify_blanks'
-gem 'acts_as_list'
+gem 'acts_as_list', github: 'swanandp/acts_as_list'
 gem 'acts-as-taggable-on'
 gem 'delayed_job'
 gem 'delayed_job_active_record'

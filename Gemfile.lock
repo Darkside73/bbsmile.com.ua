@@ -25,39 +25,46 @@ GIT
       rails (>= 3.1)
       react-source (= 0.12)
 
+GIT
+  remote: git://github.com/swanandp/acts_as_list.git
+  revision: e5976d48d8f1fa1834db127eec249e8e6fd17987
+  specs:
+    acts_as_list (0.5.0)
+      activerecord (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (4.2.0.beta4)
-      actionpack (= 4.2.0.beta4)
-      actionview (= 4.2.0.beta4)
-      activejob (= 4.2.0.beta4)
+    actionmailer (4.2.0.rc1)
+      actionpack (= 4.2.0.rc1)
+      actionview (= 4.2.0.rc1)
+      activejob (= 4.2.0.rc1)
       mail (~> 2.5, >= 2.5.4)
-      rails-dom-testing (~> 1.0, >= 1.0.4)
-    actionpack (4.2.0.beta4)
-      actionview (= 4.2.0.beta4)
-      activesupport (= 4.2.0.beta4)
-      rack (~> 1.6.0.beta)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+    actionpack (4.2.0.rc1)
+      actionview (= 4.2.0.rc1)
+      activesupport (= 4.2.0.rc1)
+      rack (~> 1.6.0.beta2)
       rack-test (~> 0.6.2)
-      rails-dom-testing (~> 1.0, >= 1.0.4)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
-    actionview (4.2.0.beta4)
-      activesupport (= 4.2.0.beta4)
+    actionview (4.2.0.rc1)
+      activesupport (= 4.2.0.rc1)
       builder (~> 3.1)
       erubis (~> 2.7.0)
-      rails-dom-testing (~> 1.0, >= 1.0.4)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
-    activejob (4.2.0.beta4)
-      activesupport (= 4.2.0.beta4)
+    activejob (4.2.0.rc1)
+      activesupport (= 4.2.0.rc1)
       globalid (>= 0.3.0)
-    activemodel (4.2.0.beta4)
-      activesupport (= 4.2.0.beta4)
+    activemodel (4.2.0.rc1)
+      activesupport (= 4.2.0.rc1)
       builder (~> 3.1)
-    activerecord (4.2.0.beta4)
-      activemodel (= 4.2.0.beta4)
-      activesupport (= 4.2.0.beta4)
-      arel (>= 6.0.0.beta2, < 6.1)
-    activesupport (4.2.0.beta4)
+    activerecord (4.2.0.rc1)
+      activemodel (= 4.2.0.rc1)
+      activesupport (= 4.2.0.rc1)
+      arel (~> 6.0)
+    activesupport (4.2.0.rc1)
       i18n (>= 0.7.0.beta1, < 0.8)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
@@ -65,12 +72,10 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (3.4.2)
       activerecord (>= 3.2, < 5)
-    acts_as_list (0.5.0)
-      activerecord (>= 3.0)
     addressable (2.3.6)
     ancestry (2.1.0)
       activerecord (>= 3.0.0)
-    arel (6.0.0.beta2)
+    arel (6.0.0)
     attribute_normalizer (1.1.0)
     autoparse (0.3.3)
       addressable (>= 2.3.1)
@@ -245,7 +250,7 @@ GEM
     nilify_blanks (1.1.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
-    nokogiri (1.6.4.1)
+    nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     oauth (0.4.7)
     oauth2 (1.0.0)
@@ -268,23 +273,23 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    rack (1.6.0.beta)
+    rack (1.6.0.beta2)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (4.2.0.beta4)
-      actionmailer (= 4.2.0.beta4)
-      actionpack (= 4.2.0.beta4)
-      actionview (= 4.2.0.beta4)
-      activejob (= 4.2.0.beta4)
-      activemodel (= 4.2.0.beta4)
-      activerecord (= 4.2.0.beta4)
-      activesupport (= 4.2.0.beta4)
+    rails (4.2.0.rc1)
+      actionmailer (= 4.2.0.rc1)
+      actionpack (= 4.2.0.rc1)
+      actionview (= 4.2.0.rc1)
+      activejob (= 4.2.0.rc1)
+      activemodel (= 4.2.0.rc1)
+      activerecord (= 4.2.0.rc1)
+      activesupport (= 4.2.0.rc1)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.2.0.beta4)
-      sprockets-rails (~> 3.0.0.beta1)
+      railties (= 4.2.0.rc1)
+      sprockets-rails
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.4)
+    rails-dom-testing (1.0.5)
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
@@ -292,13 +297,13 @@ GEM
       loofah (~> 2.0)
     rails_config (0.4.2)
       activesupport (>= 3.0)
-    railties (4.2.0.beta4)
-      actionpack (= 4.2.0.beta4)
-      activesupport (= 4.2.0.beta4)
+    railties (4.2.0.rc1)
+      actionpack (= 4.2.0.rc1)
+      activesupport (= 4.2.0.rc1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
-    rake (10.3.2)
+    rake (10.4.1)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -371,10 +376,10 @@ GEM
       coffee-script
       sprockets
       tilt
-    sprockets-rails (3.0.0.beta1)
-      actionpack (>= 4.0)
-      activesupport (>= 4.0)
-      sprockets (~> 2.8)
+    sprockets-rails (2.2.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      sprockets (>= 2.8, < 4.0)
     sshkit (1.5.1)
       colorize
       net-scp (>= 1.1.2)
@@ -413,7 +418,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
-  acts_as_list
+  acts_as_list!
   ancestry
   attribute_normalizer (= 1.1.0)
   better_errors
@@ -452,7 +457,7 @@ DEPENDENCIES
   paperclip
   pg
   pg_search
-  rails (= 4.2.0.beta4)
+  rails (= 4.2.0.rc1)
   rails_config
   rake
   rb-inotify
