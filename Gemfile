@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.0.rc1'
+gem 'rails', '4.2.0.rc3'
 
 gem 'pg'
 gem 'pg_search'
@@ -26,7 +26,7 @@ gem 'redcarpet'
 gem 'cells'
 gem 'simple_form'
 gem 'responders', '~> 2.0'
-gem 'attribute_normalizer', '=1.1.0'
+gem 'attribute_normalizer', '= 1.1.0'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -58,14 +58,14 @@ group :development do
   gem 'spring-commands-cucumber'
   gem 'seedbank'
   gem 'rb-inotify', require: false
-  gem 'guard', '>=2.1.0'
+  gem 'guard', '>= 2.1.0'
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'better_errors'
-  gem 'capistrano', '~> 3.0', require: false
-  gem 'capistrano-rails', '~> 1.1', require: false
-  gem 'capistrano-bundler', '~> 1.1', require: false
-  gem 'capistrano-rvm', '~> 0.1', require: false
+  gem 'capistrano', '>= 3.0', require: false
+  gem 'capistrano-rails', '>= 1.1', require: false
+  gem 'capistrano-bundler', '>= 1.1', require: false
+  gem 'capistrano-rvm', '>= 0.1', require: false
   # gem 'capistrano3-unicorn'
 end
 

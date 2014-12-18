@@ -1,5 +1,3 @@
-lock '3.2.1'
-
 set :stages, %w(production beta)
 set :default_stage, 'beta'
 
