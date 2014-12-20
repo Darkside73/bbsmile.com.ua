@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.0.rc3'
+gem 'rails', '4.2.0'
 
 gem 'pg'
 gem 'pg_search'
@@ -8,8 +8,8 @@ gem 'ancestry'
 gem 'nilify_blanks'
 gem 'acts_as_list', github: 'swanandp/acts_as_list'
 gem 'acts-as-taggable-on'
-gem 'delayed_job'
-gem 'delayed_job_active_record'
+gem 'delayed_job', '>= 4.0.6'
+gem 'delayed_job_active_record', '>= 4.0.3'
 gem 'daemons'
 gem 'newrelic_rpm'
 
@@ -25,7 +25,7 @@ gem 'slim'
 gem 'redcarpet'
 gem 'cells'
 gem 'simple_form'
-gem 'responders', '~> 2.0'
+gem 'responders'
 gem 'attribute_normalizer', '= 1.1.0'
 
 gem 'jquery-rails'
@@ -33,7 +33,7 @@ gem 'jquery-ui-rails'
 gem 'json'
 gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-helpers'
 gem 'paperclip'
-gem 'dimensions-rails', github: 'elia/dimensions-rails'
+gem 'dimensions-rails', github: 'Darkside73/dimensions-rails'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
 gem 'react-rails', github: 'reactjs/react-rails'
@@ -62,6 +62,7 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'better_errors'
+  gem 'web-console', '~> 2.0'
   gem 'capistrano', '>= 3.0', require: false
   gem 'capistrano-rails', '>= 1.1', require: false
   gem 'capistrano-bundler', '>= 1.1', require: false
