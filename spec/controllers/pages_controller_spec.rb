@@ -6,8 +6,8 @@ describe PagesController do
       let(:page) { create :page }
       it 'assings page' do
         get :show, slug: page.url
-        assigns(:page).should be_a(Page)
-        should render_template(:show)
+        expect(assigns :page).to be_a(Page)
+        expect render_template(:show)
       end
     end
 
@@ -22,7 +22,7 @@ describe PagesController do
     context 'when page not found' do
       it 'render template' do
         get :show, slug: 'shipping'
-        should render_template(:shipping)
+        expect render_template(:shipping)
       end
 
       it 'raise error if template not found' do

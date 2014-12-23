@@ -6,8 +6,8 @@ describe CategoriesController do
       let(:category) { create :category }
       it 'assings category' do
         get :show, slug: category.url
-        assigns(:category).should be_a(Category)
-        should render_template(:show)
+        expect(assigns :category).to be_a(Category)
+        expect render_template(:show)
       end
     end
 

@@ -7,7 +7,7 @@ describe ArticleTheme do
       create_list :hidden_article_theme, 1
     end
     it "returns only visible themes" do
-      ArticleTheme.visible.should have(2).items
+      expect(ArticleTheme.visible).to have(2).items
     end
   end
 end

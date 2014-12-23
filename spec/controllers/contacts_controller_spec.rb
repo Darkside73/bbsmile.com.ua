@@ -3,14 +3,14 @@ require 'rails_helper'
 describe ContactsController do
   describe 'POST create' do
     it 'creates contact message' do
-      ManagerMailer.should_receive(:contact_message) { double deliver: true }
+      expect(ManagerMailer).to receive(:contact_message) { double deliver_later: true }
       xhr :post, :create, contact: { name: 'Joe', message: 'Hi!' }, text: ''
-      flash[:success].should have_content(/created/i)
+      expect(flash[:success]).to have_content(/created/i)
     end
     it 'reject to create contact message if honey pot filled' do
-      ManagerMailer.should_not_receive(:contact_message) { double deliver: true }
+      expect(ManagerMailer).to_not receive(:contact_message) { double deliver_later: true }
       xhr :post, :create, contact: { name: 'Joe', message: 'Hi!' }, text: 'Hello from spam bot'
-      response.should be_success
+      expect be_success
     end
   end
 end

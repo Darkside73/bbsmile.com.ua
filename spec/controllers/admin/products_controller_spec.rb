@@ -5,26 +5,26 @@ describe Admin::ProductsController do
     let(:products) { create_list :products, 3 }
     it 'assings products' do
       get :index
-      assigns(:products).should be
+      expect(assigns :products).to be
     end
   end
   describe 'GET show' do
     let(:product) { create :product }
     it 'product' do
       get :show, id: product
-      assigns(:product).should be
+      expect(assigns :product).to be
     end
   end
   describe 'GET new' do
     it 'assigns new product and leaf categories' do
       get :new
-      assigns(:product).should be_a_new(Product)
-      assigns(:leaf_categories).should be_a(Array)
+      expect(assigns :product).to be_a_new(Product)
+      expect(assigns :leaf_categories).to be_a(Array)
     end
   end
   describe 'POST create' do
     let(:category) { create :category}
-    before { Product::Image.any_instance.stub(:save_attached_files) }
+    before { allow_any_instance_of(Product::Image).to receive(:save_attached_files) }
     it 'create product and redirect to category' do
       file = fixture_file_upload(Rails.root.join('spec/fixtures/files/product_image.jpg'), 'image/jpeg')
       post :create, product: {
@@ -33,16 +33,16 @@ describe Admin::ProductsController do
         images_attributes: [{ attachment: file }],
         variants_attributes: [{ price: 20, sku: 'code123', available: true }]
       }
-      flash[:notice].should have_content(/created/i)
-      should redirect_to([:admin, Product.last])
+      expect(flash[:notice]).to have_content(/created/i)
+      expect redirect_to([:admin, Product.last])
     end
   end
   describe 'GET edit' do
     let(:product) { create :product }
     it 'assigns product and category' do
       get :edit, id: product.id
-      assigns(:product).should be_a(Product)
-      assigns(:category).should be_a(Category)
+      expect(assigns :product).to be_a(Product)
+      expect(assigns :category).to be_a(Category)
     end
   end
   describe 'PUT update' do
@@ -54,8 +54,8 @@ describe Admin::ProductsController do
           page_attributes: attributes_for(:page),
           variants_attributes: [{ id: product.master_variant.id, price: 13.99 }]
         }
-      flash[:notice].should have_content(/updated/i)
-      response.should redirect_to([:admin, product])
+      expect(flash[:notice]).to have_content(/updated/i)
+      expect redirect_to([:admin, product])
       expect { product.reload }.to change { product.master_variant.price }
     end
   end
@@ -71,7 +71,7 @@ describe Admin::ProductsController do
   describe 'GET tags' do
     it 'success' do
       xhr :get, :tags, format: :json
-      response.should be_success
+      expect be_success
     end
   end
   describe 'POST bulk_move' do

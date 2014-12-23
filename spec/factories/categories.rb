@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :category do
-    ignore do
+    transient do
       subcategories []
       children_count false
     end

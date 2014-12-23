@@ -5,8 +5,8 @@ describe Admin::ImagesController do
     let(:product) { create :product }
     it "success" do
       get :index, product_id: product.id
-      response.should be_success
-      assigns(:product).should be
+      expect(response).to be_success
+      expect(assigns :product).to be
     end
   end
   describe 'DELETE' do
@@ -20,12 +20,12 @@ describe Admin::ImagesController do
   end
   describe 'POST create' do
     let(:product) { create :product }
-    before { Product::Image.any_instance.stub(:save_attached_files) }
+    before { allow_any_instance_of(Product::Image).to receive(:save_attached_files) }
     it 'create Image' do
       file = fixture_file_upload(Rails.root.join('spec/fixtures/files/product_image.jpg'), 'image/jpeg')
       post :create, product_id: product.id, product_image: { attachment: file }
-      flash[:notice].should have_content(/uploaded/i)
-      should redirect_to([:admin, product, :images])
+      expect(flash[:notice]).to have_content(/uploaded/i)
+      expect redirect_to([:admin, product, :images])
     end
   end
 end

@@ -73,11 +73,11 @@ Then /^I should not see \/([^\/]*)\/$/ do |regexp|
 end
 
 Then /^the "([^\"]*)" field should contain "([^\"]*)"$/ do |field, value|
-  find_field(field).value.should =~ /#{value}/
+  expect(find_field(field).value).to match(/#{value}/)
 end
 
 Then /^the "([^\"]*)" field should not contain "([^\"]*)"$/ do |field, value|
-  find_field(field).value.should_not =~ /#{value}/
+  expect(find_field(field).value).to_not match(/#{value}/)
 end
 
 Then /^the "([^\"]*)" checkbox should be checked$/ do |label|
@@ -89,7 +89,7 @@ Then /^the "([^\"]*)" checkbox should not be checked$/ do |label|
 end
 
 Then /^I should be on (.+)$/ do |page_name|
-  current_path.should == path_to(page_name)
+  expect(current_path).to eq(path_to(page_name))
 end
 
 Then /^page should have (.+) message "([^\"]*)"$/ do |type, text|

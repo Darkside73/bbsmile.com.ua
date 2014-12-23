@@ -5,8 +5,8 @@ describe ArticlesController do
     let(:article) { create :article }
     it 'assings article' do
       get :show, slug: article.url
-      assigns(:article).should == article
-      should render_template(:show)
+      expect(assigns :article).to eq(article)
+      expect render_template(:show)
     end
   end
 end

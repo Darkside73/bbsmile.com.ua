@@ -5,7 +5,7 @@ describe ProductsController do
     context 'product with images' do
       let(:product) { create :product_with_images }
       it 'render gallery' do
-        subject.should_receive(:render_to_body)
+        expect receive(:render_to_body)
         subject.gallery_for(product)
       end
     end
@@ -13,7 +13,7 @@ describe ProductsController do
     context 'product without images' do
       let(:product) { create :product }
       it 'return empty string' do
-        subject.gallery_for(product).should be_blank
+        expect(subject.gallery_for product).to be_blank
       end
     end
   end

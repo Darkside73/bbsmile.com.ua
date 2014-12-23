@@ -9,7 +9,7 @@ describe Admin::RelatedProductsController do
         xhr :post, :create, format: :json,
             product_id: product.id,
             related_product: { related_id: related.id, type_of: :suggested }
-        response.should be_success
+        expect be_success
         product.reload
       }.to change { product.suggested_products.count }.by(1)
     end
@@ -18,8 +18,8 @@ describe Admin::RelatedProductsController do
     let(:related_product) { create :related_product }
     it 'show relation between products' do
       xhr :get, :show, id: related_product.id, format: :html
-      response.should be_success
-      response.should render_template(:show)
+      expect be_success
+      expect render_template(:show)
     end
   end
   describe 'DELETE' do
@@ -28,7 +28,7 @@ describe Admin::RelatedProductsController do
       related = product.related_products.sample
       expect {
         xhr :delete, :destroy, id: related.id
-        response.should be_success
+        expect be_success
         related.reload
       }.to raise_error(ActiveRecord::RecordNotFound)
     end

@@ -4,25 +4,25 @@ describe Variant do
   describe "images relation" do
     let(:variant) { create :variant_with_image }
     it 'has attached image' do
-      variant.image.should be_a_kind_of(Variant::Image)
-      variant.image.url.should be
+      expect(variant.image).to be_a_kind_of(Variant::Image)
+      expect(variant.image.url).to be
     end
     it 'delete image if delete_image is on' do
       variant.delete_image = true
       variant.save
-      variant.image.should be_nil
+      expect(variant.image).to be_nil
     end
     it 'not delete image if delete_image is off' do
       variant.delete_image = false
       variant.save
-      variant.image.should be
+      expect(variant.image).to be
     end
   end
 
   describe "instance methods" do
     let(:variant) { create :variant }
     subject { variant }
-    its(:title) { variant.title.should include(variant.product.title, variant.name, variant.sku) }
+    its(:title) { expect(variant.title).to include(variant.product.title, variant.name, variant.sku) }
   end
 
   context "when create new variant" do
@@ -31,7 +31,7 @@ describe Variant do
       last_variant = product.variants.last
       variant = create :variant, name: 'new variant', product: product
       product.variants.reload
-      variant.position.should > last_variant.position
+      expect(variant.position).to be > last_variant.position
     end
   end
 

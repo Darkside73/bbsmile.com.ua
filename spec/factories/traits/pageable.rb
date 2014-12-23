@@ -1,6 +1,6 @@
 FactoryGirl.define do
   trait :pageable do
-    ignore do
+    transient do
       page_title false
       page_url { generate :url }
       page_url_old { generate :url }

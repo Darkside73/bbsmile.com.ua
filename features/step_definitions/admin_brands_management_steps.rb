@@ -3,7 +3,8 @@ Given(/^Some brands$/) do
 end
 
 Then(/^I should see brands list$/) do
-  all('.brands-list a.name').collect(&:text).should =~ @brands.collect(&:name)
+  actual_brands = all('.brands-list a.name').collect(&:text)
+  expect(actual_brands).to match_array(@brands.collect &:name)
 end
 
 When(/^I click on brand link$/) do

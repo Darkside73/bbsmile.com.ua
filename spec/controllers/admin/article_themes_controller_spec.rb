@@ -5,20 +5,20 @@ describe Admin::ArticleThemesController do
     let(:themes) { create_list :article_theme, 3 }
     it 'assings themes' do
       get :index
-      assigns(:themes).should be
+      expect(assigns :themes).to be
     end
   end
   describe 'GET show' do
     let(:theme) { create :article_theme }
     it 'assign theme' do
       get :show, id: theme.id
-      assigns(:theme).should be
+      expect(assigns :theme).to be
     end
   end
   describe 'GET new' do
     it 'assigns new theme' do
       get :new
-      assigns(:theme).should be_a_new(ArticleTheme)
+      expect(assigns :theme).to be_a_new(ArticleTheme)
     end
   end
   describe 'POST create' do
@@ -26,15 +26,15 @@ describe Admin::ArticleThemesController do
       post :create, article_theme: {
         page_attributes: attributes_for(:page)
       }
-      flash[:notice].should have_content(/created/i)
+      expect(flash[:notice]).to have_content(/created/i)
     end
   end
   describe 'PUT update' do
     let(:theme) { create :article_theme }
     it 'update theme' do
       put :update, id: theme.id, article_theme: { page_attributes: attributes_for(:page) }
-      flash[:notice].should have_content(/updated/i)
-      response.should redirect_to([:admin, theme])
+      expect(flash[:notice]).to have_content(/updated/i)
+      expect(response).to redirect_to([:admin, theme])
       expect { theme.reload }.to change { theme.page.title }
     end
   end
@@ -50,7 +50,7 @@ describe Admin::ArticleThemesController do
           second.reload
         }.to change { second.position }.from(2).to(1)
       }.to change { first.position }.from(1).to(2)
-      response.should be_success
+      expect(response).to be_success
     end
   end
   describe 'DELETE' do
@@ -64,7 +64,7 @@ describe Admin::ArticleThemesController do
     it 'flash error if theme has articles' do
       theme = create :article_theme_with_articles
       xhr :delete, :destroy, id: theme.id
-      flash[:error].should have_content(/forbidden/i)
+      expect(flash[:error]).to have_content(/forbidden/i)
     end
   end
 end

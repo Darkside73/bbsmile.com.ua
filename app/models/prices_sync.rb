@@ -37,6 +37,6 @@ class PricesSync
   end
 
   def after_finishing(category)
-    ManagerMailer.sync_prices_loaded(category).deliver
+    ManagerMailer.sync_prices_loaded(category).deliver_later
   end
 end

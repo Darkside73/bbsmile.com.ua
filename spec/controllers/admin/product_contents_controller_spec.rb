@@ -8,8 +8,8 @@ describe Admin::ProductContentsController do
         post :create, product_id: product.id, content: { text: 'new content' }
         product.reload
       }.to change { product.content }
-      flash[:notice].should have_content(/saved/i)
-      should redirect_to([:content, :admin, product])
+      expect(flash[:notice]).to have_content(/saved/i)
+      expect redirect_to([:content, :admin, product])
     end
   end
   describe 'PUT update' do
@@ -19,8 +19,8 @@ describe Admin::ProductContentsController do
         post :update, id: product.content.id, content: { text: 'new content' }
         product.reload
       }.to change { product.content.text }
-      flash[:notice].should have_content(/saved/i)
-      should redirect_to([:content, :admin, product])
+      expect(flash[:notice]).to have_content(/saved/i)
+      expect redirect_to([:content, :admin, product])
     end
   end
 end

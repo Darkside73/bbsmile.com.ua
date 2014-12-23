@@ -8,8 +8,8 @@ Given(/^I am visit category page$/) do
 end
 
 Then(/^I should see subcategories list$/) do
-  all('#filterByCategory ul li').collect(&:text).should ==
-    @category.children.collect(&:title)
+  actual = all('#filterByCategory ul li').collect(&:text)
+  expect(actual).to eq(@category.children.collect &:title)
 end
 
 When(/^I visit subcategory without own categories page$/) do
@@ -17,13 +17,13 @@ When(/^I visit subcategory without own categories page$/) do
 end
 
 Then(/^I should see it siblings$/) do
-  all('#filterByCategory ul li').collect(&:text).should ==
-    @category.children.second.siblings.collect(&:title)
+  actual = all('#filterByCategory ul li').collect(&:text)
+  expect(actual).to eq(@category.children.second.siblings.collect &:title)
 end
 
 Then(/^I should see active current category$/) do
-  find('#filterByCategory li.active a').text.should ==
-    @category.children.second.title
+  actual = find('#filterByCategory li.active a').text
+  expect(actual).to eq(@category.children.second.title)
 end
 
 When(/^I visit subcategory with own categories page$/) do

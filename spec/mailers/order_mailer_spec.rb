@@ -1,11 +1,11 @@
-require "spec_helper"
+require "rails_helper"
 
 describe OrderMailer do
   let(:order) { create :order }
   describe ".new_order" do
     let(:mail) { OrderMailer.new_order(order) }
     it "renders the receiver email" do
-      mail.to.should == [order.user.email]
+      expect(mail.to).to eq([order.user.email])
     end
 
     context "body" do

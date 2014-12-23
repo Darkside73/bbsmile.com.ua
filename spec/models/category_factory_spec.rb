@@ -3,9 +3,8 @@ require 'rails_helper'
 describe 'Category factory' do
   it 'create category' do
     category = create :category, page_title: 'test'
-    category.page.should be_an(Page)
-    category.page.should_not be_a_new(Page)
-    category.page.title.should == 'test'
+    expect(category.page).to be_an(Page)
+    expect(category.page.title).to eq('test')
   end
 
   it 'create categories list' do
@@ -14,6 +13,6 @@ describe 'Category factory' do
 
   it 'create subcategories with page title' do
     category = create :category, subcategories: %w(test1 test2)
-    category.children.first.page.title.should == 'test1'
+    expect(category.children.first.page.title).to eq('test1')
   end
 end

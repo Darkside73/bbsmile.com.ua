@@ -14,7 +14,7 @@ end
 
 Then(/^This product "(.*?)" should belongs to current category$/) do |product_title|
   product = Page.find_by!(title: product_title).pageable
-  product.category.should == @category
+  expect(product.category).to eq(@category)
 end
 
 Given(/^Some products in category$/) do
@@ -22,7 +22,8 @@ Given(/^Some products in category$/) do
 end
 
 Then(/^I should see this products$/) do
-  all('.product-list a.name').collect(&:text).should =~ @products.collect(&:title)
+  actual_products = all('.product-list a.name').collect(&:text)
+  expect(actual_products).to match_array(@products.collect &:title)
 end
 
 Given(/^Some product$/) do

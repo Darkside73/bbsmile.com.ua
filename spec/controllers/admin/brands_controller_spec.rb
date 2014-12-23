@@ -5,13 +5,13 @@ describe Admin::BrandsController do
     let(:brands) { create_list :brand, 3 }
     it 'assings brands' do
       get :index
-      assigns(:brands).should be
+      expect(assigns :brands).to be
     end
   end
   describe 'GET new' do
     it 'assigns new brand' do
       get :new
-      assigns(:brand).should be_a_new(Brand)
+      expect(assigns :brand).to be_a_new(Brand)
     end
   end
   describe 'POST create' do
@@ -20,22 +20,22 @@ describe Admin::BrandsController do
         name: 'some brand',
         content_attributes: attributes_for(:content)
       }
-      flash[:notice].should have_content(/created/i)
+      expect(flash[:notice]).to have_content(/created/i)
     end
   end
   describe 'GET edit' do
     let(:brand) { create :brand }
     it 'assigns not new brand' do
       get :edit, id: brand.id
-      assigns(:brand).should_not be_a_new(Brand)
+      expect(assigns :brand).to_not be_a_new(Brand)
     end
   end
   describe 'PUT update' do
     let(:brand) { create :brand }
     it 'update brand and redirect to brands' do
       put :update, id: brand.id, brand: { name: 'brand name' }
-      flash[:notice].should have_content(/updated/i)
-      response.should redirect_to([:admin, :brands])
+      expect(flash[:notice]).to have_content(/updated/i)
+      expect redirect_to([:admin, :brands])
       expect { brand.reload }.to change { brand.name }
     end
   end

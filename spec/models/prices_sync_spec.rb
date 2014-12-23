@@ -5,8 +5,8 @@ describe PricesSync do
     @session = double 'GoogleDrive::Session'
     @spreadsheet = double 'GoogleDrive::Spreadsheet'
     @worksheets = [{ws1: {a: 1}, ws2: {a: 2}}]
-    GoogleDrive.should_receive(:login) { @session }
-    @session.should_receive(:spreadsheet_by_key) { @spreadsheet }
+    expect(GoogleDrive).to receive(:login) { @session }
+    expect(@session).to receive(:spreadsheet_by_key) { @spreadsheet }
   end
 
   describe "#new" do
@@ -25,10 +25,10 @@ describe PricesSync do
     let!(:variant2) { create :variant, id: 2, price: 100, available: false, sku: '124' }
     it "search category variants changed in worksheet" do
       worksheet = @worksheets.first
-      @spreadsheet.should_receive(:worksheet_by_title).with(category.title).and_return worksheet
-      worksheet.should_receive(:list).and_return [row_changing, row_not_changing]
-      subject.diff(category).items_to_update.should == [variant1]
-      variant2.should_not be_changed
+      expect(@spreadsheet).to receive(:worksheet_by_title).with(category.title).and_return worksheet
+      expect(worksheet).to receive(:list).and_return [row_changing, row_not_changing]
+      expect(subject.diff(category).items_to_update).to eq([variant1])
+      expect(variant2).to_not be_changed
     end
   end
 
@@ -37,10 +37,10 @@ describe PricesSync do
     let(:variants) { create_list :variant, 3 }
     it "load category variants to worksheet" do
       worksheet = @worksheets.first
-      @spreadsheet.should_receive(:worksheet_by_title).with(category.title).and_return worksheet
-      worksheet.stub(num_rows: 0)
-      worksheet.stub(num_cols: 0)
-      worksheet.stub(:save)
+      expect(@spreadsheet).to receive(:worksheet_by_title).with(category.title).and_return worksheet
+      allow(worksheet).to receive(:num_rows).and_return(0)
+      allow(worksheet).to receive(:num_cols).and_return(0)
+      allow(worksheet).to receive(:save)
       subject.load category
     end
   end

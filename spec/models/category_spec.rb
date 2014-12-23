@@ -17,7 +17,7 @@ describe Category do
         page = category.page
         page.update updated_at: 1.day.ago
         category.update leaf: !category.leaf
-        page.updated_at.to_s.should == category.updated_at.to_s
+        expect(page.updated_at.to_s).to eq(category.updated_at.to_s)
       end
     end
     it 'not create record if invalid data' do
@@ -28,15 +28,15 @@ describe Category do
       category = create :category
       old_title = category.page.title
       category.update_attributes page_attributes: attributes_for(:page)
-      category.save.should be_truthy
-      category.page.title.should_not == old_title
+      expect(category.save).to be_truthy
+      expect(category.page.title).to_not eq(old_title)
     end
 
     let(:leaf_category) { create :leaf_category }
     it "disallow set leaf parent" do
       category = build :category
       category.parent = leaf_category
-      category.should have(1).error_on(:parent)
+      expect(category).to have(1).error_on(:parent)
     end
   end
 
@@ -58,8 +58,8 @@ describe Category do
     context 'when create new record' do
       it 'sorted to the end of the list' do
         subcategory = create :category, parent: category
-        subcategory.position.should == 3
-        subcategory.lower_items.should be_empty
+        expect(subcategory.position).to eq(3)
+        expect(subcategory.lower_items).to be_empty
       end
       # add another category as noise for testing sorting scope
       let(:another_category) { create :category, children_count: 2 }
@@ -68,8 +68,8 @@ describe Category do
           second_subcategory = category.children.second
           subcategory = create :category, parent: category
           subcategory.insert_at(2)
-          subcategory.should_not be_a_new(Category)
-          subcategory.position.should == 2
+          expect(subcategory).to_not be_a_new(Category)
+          expect(subcategory.position).to eq(2)
           expect { second_subcategory.reload }.to change {
             second_subcategory.position
           }.to(3)
@@ -98,7 +98,7 @@ describe Category do
   describe "content relation" do
     let(:category) { create :category_with_content }
     it 'has content' do
-      category.content.text.should be
+      expect(category.content.text).to be
     end
   end
 

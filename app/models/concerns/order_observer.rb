@@ -8,8 +8,8 @@ module OrderObserver
   private
 
   def send_messages
-    OrderMailer.new_order(self).deliver if self.user.email.present?
-    ManagerMailer.new_order(self).deliver
+    OrderMailer.new_order(self).deliver_later if self.user.email.present?
+    ManagerMailer.new_order(self).deliver_later
     if self.phone_number
       require "#{Rails.root}/app/jobs/sms_send_job"
       Delayed::Job.enqueue SmsSendJob.new(

@@ -6,7 +6,7 @@ describe CategoriesHelper do
       let(:category) { create :category, children_count: 3 }
       before { assign(:category, category) }
       it "returns category children " do
-        helper.category_menu_items.should == category.children.visible.includes(:page)
+        expect(helper.category_menu_items).to eq(category.children.visible.includes(:page))
       end
       context "hidden children" do
         let(:category) {
@@ -15,7 +15,7 @@ describe CategoriesHelper do
           category
         }
         it "it not include hidden categories " do
-          helper.category_menu_items.should be_empty
+          expect(helper.category_menu_items).to be_empty
         end
       end
     end
@@ -24,7 +24,7 @@ describe CategoriesHelper do
       let(:category) { create :category, children_count: 3 }
       before { assign(:category, category.children.second) }
       it "returns category siblings" do
-        helper.category_menu_items.should == category.children.visible.includes(:page)
+        expect(helper.category_menu_items).to eq(category.children.visible.includes(:page))
       end
     end
   end

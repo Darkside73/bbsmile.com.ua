@@ -3,8 +3,8 @@ require 'rails_helper'
 describe RelatedProduct do
   let(:related_product) { create :related_product }
   it "has relations" do
-    related_product.product.should be_a(Product)
-    related_product.related.should be_a(Product)
+    expect(related_product.product).to be_a(Product)
+    expect(related_product.related).to be_a(Product)
   end
 
   let(:product) { create :product }

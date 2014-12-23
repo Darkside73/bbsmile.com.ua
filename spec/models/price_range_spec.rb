@@ -5,7 +5,7 @@ describe PriceRange do
     price_range = build :price_range
     price_range.from = ''
     price_range.save
-    price_range.from.should be_nil
+    expect(price_range.from).to be_nil
   end
   it "fails validation if range from is greather than range to" do
     expect(PriceRange.new(from: 10, to: 5)).to have(1).error_on(:from)

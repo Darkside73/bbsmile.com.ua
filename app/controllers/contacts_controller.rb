@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
     contact = Contact.new contacts_params
     respond_to do |format|
       if contact.valid?
-        ManagerMailer.contact_message(contact).deliver
+        ManagerMailer.contact_message(contact).deliver_later
         flash.now[:success] = I18n.t('flash.message.contacts.created')
         format.json { render json: flashes_in_json, status: :created }
       else

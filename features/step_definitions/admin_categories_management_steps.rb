@@ -6,7 +6,8 @@ Given(/^Some categories and subcategories$/) do
 end
 
 Then(/^I should see root categories list$/) do
-  all('.categories-list a.name').collect(&:text).should =~ @categories.collect(&:title)
+  actual_categories = all('.categories-list a.name').collect(&:text)
+  expect(actual_categories).to match_array(@categories.collect &:title)
 end
 
 When(/^I click on category link$/) do
@@ -15,7 +16,8 @@ When(/^I click on category link$/) do
 end
 
 Then(/^I should see it subcategories list$/) do
-  all('.categories-list a.name').collect(&:text).should =~ @category.children.collect(&:title)
+  actual_categories = all('.categories-list a.name').collect(&:text)
+  expect(actual_categories).to match_array(@category.children.collect &:title)
 end
 
 When(/^I click on new category link$/) do
@@ -68,7 +70,7 @@ end
 
 Then(/^Subcategories should be hidden$/) do
   @some_category.children.each do |child|
-    child.page.hidden.should be_truthy
+    expect(child.page.hidden).to be_truthy
   end
 end
 

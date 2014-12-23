@@ -8,7 +8,7 @@ describe OrdersController do
         variant_id: product.variants.sample.id,
         user_attributes: attributes_for(:user)
       }
-      flash[:success].should have_content(/created/i)
+      expect(flash[:success]).to have_content(/created/i)
     end
   end
 end

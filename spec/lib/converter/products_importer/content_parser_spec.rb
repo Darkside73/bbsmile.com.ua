@@ -1,4 +1,4 @@
-require 'spec_helper.rb'
+require 'rails_helper'
 
 require 'converter/products_importer/content_parser'
 describe Converter::ProductsImporter::ContentParser do
@@ -6,8 +6,8 @@ describe Converter::ProductsImporter::ContentParser do
   context 'when content file exists' do
     let(:content_file) { "#{Rails.root}/spec/fixtures/files/converter/content/5533.html" }
     it 'create content model' do
-      subject.content.should be_a(Content)
-      subject.content.should be_new_record
+      expect(subject.content).to be_a(Content)
+      expect(subject.content).to be_new_record
     end
     its(:content) { should be_an_instance_of(Content) }
   end

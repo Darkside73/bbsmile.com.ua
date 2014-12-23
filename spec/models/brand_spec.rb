@@ -12,7 +12,7 @@ describe Brand do
   describe "content relation" do
     let(:brand) { create :brand_with_content }
     it 'has content' do
-      brand.description.should be
+      expect(brand.description).to be
     end
   end
 end

@@ -1,4 +1,4 @@
-require 'spec_helper.rb'
+require 'rails_helper'
 
 require 'converter/products_importer'
 describe Converter::ProductsImporter do
@@ -20,24 +20,24 @@ describe Converter::ProductsImporter do
   it 'create products' do
     expect { subject.import }.to change { Product.count }
     product = Page.find_by(url: 'url/old/sample').try(:pageable)
-    product.should be
-    product.category.title.should == 'cat 1'
-    product.brand.name.should == 'Brand 1'
-    product.old_id.should == 5533
-    product.video.should == 'video from youtube'
+    expect(product).to be
+    expect(product.category.title).to eq('cat 1')
+    expect(product.brand.name).to eq('Brand 1')
+    expect(product.old_id).to eq(5533)
+    expect(product.video).to eq('video from youtube')
   end
 
-  before { Product::Image.any_instance.stub(:save_attached_files) }
+  before { allow_any_instance_of(Product::Image).to receive(:save_attached_files) }
   it 'create product images' do
     subject.data_base_path = data_base_path
     subject.import
     product = Page.find_by(url: 'url/old/sample').pageable
-    product.images.should have(1).item
+    expect(product.images).to have(1).item
   end
 
   it "create content" do
-    Converter::ProductsImporter::ContentParser.
-      any_instance.stub(:content).and_return(double(:content).as_null_object)
+    allow_any_instance_of(Converter::ProductsImporter::ContentParser).
+      to receive(:content).and_return(double(:content).as_null_object)
     subject.data_base_path = data_base_path
     subject.import
   end

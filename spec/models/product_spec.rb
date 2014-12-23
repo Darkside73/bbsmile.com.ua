@@ -5,11 +5,11 @@ describe Product do
     describe "#description" do
       it "return text from content" do
         product = create :product_with_content
-        product.description.should == product.content.text
+        expect(product.description).to eq(product.content.text)
       end
       it "return nil if no content" do
         product = create :product
-        product.description.should be_nil
+        expect(product.description).to be_nil
       end
     end
     describe "#age=" do
@@ -17,34 +17,34 @@ describe Product do
       context "when from and to are present" do
         it "assigns both values" do
           product.age = '0.5-2'
-          product.age_from.should == 0.5
-          product.age_to.should == 2
+          expect(product.age_from).to eq(0.5)
+          expect(product.age_to).to eq(2)
         end
       end
       context "when one value given" do
         it "assigns value" do
           product.age = '1'
-          product.age_from.should == 1
-          product.age_to.should == 1
+          expect(product.age_from).to eq(1)
+          expect(product.age_to).to eq(1)
         end
       end
       context "when to given" do
         it "assigns 0 to from" do
           product.age = '-1'
-          product.age_from.should == 0
+          expect(product.age_from).to eq(0)
         end
       end
       context "when from given" do
         it "assigns 16 to to" do
           product.age = '3-'
-          product.age_to.should == 16
+          expect(product.age_to).to eq(16)
         end
       end
       context "when empty string given" do
         it "assigns nil" do
           product.age = ''
-          product.age_from.should be_nil
-          product.age_to.should be_nil
+          expect(product.age_from).to be_nil
+          expect(product.age_to).to be_nil
         end
       end
     end
@@ -54,7 +54,7 @@ describe Product do
       it { should respond_to(:for_girls?) }
       it "show previous value" do
         subject.sex = 'for_boys'
-        subject.sex_was.should == 'for_girls'
+        expect(subject.sex_was).to eq('for_girls')
       end
       context 'when not valid' do
         it "raise error" do
@@ -73,15 +73,15 @@ describe Product do
           page_attributes: { title: 'Some product', url: 'some/url' },
           variants_attributes: [{ price: 20 }]
         )
-        product.master_variant.should be
-        product.master_variant.master.should be_truthy
+        expect(product.master_variant).to be
+        expect(product.master_variant.master).to be_truthy
       }.to change { Product.count }.by(1)
     end
     let(:video) { 'http://youtube.com/watch?v=code&other=params' }
     it "convert youtube watch link to embed link" do
       product = build :product, video: video
       product.save
-      product.video.should == 'http://youtube.com/embed/code'
+      expect(product.video).to eq('http://youtube.com/embed/code')
     end
   end
 
@@ -89,16 +89,16 @@ describe Product do
     let(:product) { create :product_with_variants }
     let(:master_variant) { product.master_variant }
     it "delegate variant related methods to master variant" do
-      product.price.should == master_variant.price
-      product.available.should == master_variant.available
-      product.sku.should == master_variant.sku
+      expect(product.price).to eq(master_variant.price)
+      expect(product.available).to eq(master_variant.available)
+      expect(product.sku).to eq(master_variant.sku)
     end
   end
 
   describe "content relation" do
     let(:product) { create :product_with_content }
     it 'has content' do
-      product.content.text.should be
+      expect(product.content.text).to be
     end
   end
 
@@ -106,8 +106,8 @@ describe Product do
     let(:product) { create :product_with_images }
     it 'has attached image' do
       image = product.images.first
-      image.should be_a_kind_of(Product::Image)
-      image.url.should be
+      expect(image).to be_a_kind_of(Product::Image)
+      expect(image.url).to be
     end
   end
 
@@ -118,7 +118,7 @@ describe Product do
       it "has related products" do
         should have_at_least(1).items
         subject.each do |related|
-          related.should be_a(RelatedProduct)
+          expect(related).to be_a(RelatedProduct)
         end
       end
     end
@@ -127,7 +127,7 @@ describe Product do
       it "has similar products" do
         should have_at_least(1).items
         subject.each do |related|
-          related.should be_a(Product)
+          expect(related).to be_a(Product)
         end
       end
     end
@@ -152,7 +152,7 @@ describe Product do
     let!(:product) { create(:product_with_variants) }
     it "checks product price for matching price range" do
       price_range = create :price_range, from: product.price - 10
-      product.in_range?(price_range).should be_truthy
+      expect(product.in_range? price_range).to be_truthy
     end
   end
 

@@ -23,12 +23,12 @@ end
 Then(/^I should see categories in this order$/) do |table|
   expected_order = table.raw.flatten
   actual_order = all('.item h3').collect(&:text)
-  actual_order.should == expected_order
+  expect(actual_order).to eq(expected_order)
 end
 
 Then(/^I should see subcategories from "(.*?)" in this order$/) do |title, table|
   expected_order = table.raw.flatten
   category_url = Page.find_by_title!(title).url
   actual_order = find("h3 a[href$=#{category_url}]").first(:xpath, '..').first(:xpath, '..').all('h4').collect(&:text)
-  actual_order.should == expected_order
+  expect(actual_order).to eq(expected_order)
 end

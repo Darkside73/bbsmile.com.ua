@@ -39,6 +39,12 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
+  config.include FactoryGirl::Syntax::Methods
+
+  config.include Paperclip::Shoulda::Matchers
+
+  config.raise_errors_for_deprecations!
+
   # use simple dictionary in specs
   module PgSearch
     class Configuration
