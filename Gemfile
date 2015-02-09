@@ -54,7 +54,7 @@ gem 'uglifier', '>= 1.0.3'
 
 group :development do
   gem 'rake'
-  gem 'spring'
+  gem 'spring', '=1.2.0'
   gem 'spring-commands-rspec'
   gem 'spring-commands-cucumber'
   gem 'seedbank'

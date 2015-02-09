@@ -383,7 +383,7 @@ GEM
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
     slop (3.6.0)
-    spring (1.3.0)
+    spring (1.2.0)
     spring-commands-cucumber (1.0.1)
       spring (>= 0.9.1)
     spring-commands-rspec (1.0.4)
@@ -500,7 +500,7 @@ DEPENDENCIES
   simple_form
   sitemap_generator
   slim
-  spring
+  spring (= 1.2.0)
   spring-commands-cucumber
   spring-commands-rspec
   sprockets-coffee-react
