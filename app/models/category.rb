@@ -1,11 +1,8 @@
-# TODO deal with rails autoload mechanism
-require 'category/search'
-
 class Category < ActiveRecord::Base
   include Pageable
   include Contentable
   include PgSearch
-  include Models::Category::Search
+  include Category::Search
 
   has_many :products
   has_many :price_ranges
