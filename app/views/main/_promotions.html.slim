@@ -6,15 +6,15 @@
     li data-target="#promotions" data-slide-to="3"
     li data-target="#promotions" data-slide-to="4"
   .carousel-inner
-    .item.active data-title="Everflo - новая коллекция 2014 года"
-      = link_to category_page_path('detskie-elektro-i-velomobili', brands: ['Bambi'], utm_campaign: 'bambi', utm_medium: 'main_page_promotions', utm_source: 'local') do
-        = image_tag "promotions/bambi.jpg", class: 'img-responsive'
-    .item data-title="Everflo - новая коллекция 2014 года"
-      = link_to category_page_path('kolyaski-trosti', brands: ['Everflo'], utm_campaign: 'everflo', utm_medium: 'main_page_promotions', utm_source: 'local') do
-        = image_tag "promotions/everflo.jpg", class: 'img-responsive'
-    .item data-title="Развивающие игрушки Keenway"
-      = link_to brand_page_path('Keenway', utm_campaign: 'keenway', utm_medium: 'main_page_promotions', utm_source: 'local') do
-        = image_tag "promotions/4.jpg", class: 'img-responsive'
+    .item.active data-title="Верес"
+      = link_to category_page_path('detskie-krovatki', brands: ['Верес'], utm_campaign: 'veres', utm_medium: 'main_page_promotions', utm_source: 'local') do
+        = image_tag "promotions/veres2015.jpg", class: 'img-responsive'
+    .item data-title="Krasnal"
+      = link_to category_page_path('detskaya-naryadnaya-odezhda-dlya-malyishey', utm_campaign: 'kransnal', utm_medium: 'main_page_promotions', utm_source: 'local') do
+        = image_tag "promotions/krasnal2015.jpg", class: 'img-responsive'
+    .item data-title="Meccano"
+      = link_to category_page_path('konstruktoryi-dlya-detey', brands: ['Meccano'], utm_campaign: 'meccano', utm_medium: 'main_page_promotions', utm_source: 'local') do
+        = image_tag "promotions/meccano2015.jpg", class: 'img-responsive'
     .item data-title="Luvion термометр в подарок"
       .image_map.luvion_thermometr
         = link_to page_path('promotions', anchor: 'promo2', utm_campaign: 'luvion_thermometer', utm_medium: 'main_page_promotions', utm_source: 'local') do
