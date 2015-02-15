@@ -25,7 +25,7 @@ class Admin::ArticlesController < Admin::ApplicationController
 
   def update
     @article = Article.find params[:id]
-    if @article.update_attributes article_params
+    if @article.update article_params
       redirect_to [:admin, @article.theme], notice: I18n.t('flash.message.articles.updated')
     else
       build_article @article

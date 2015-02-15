@@ -19,8 +19,13 @@ body {
   min-width: @screen-xxs-min;
 }
 
-.page-content a, a.ease {
-  .ease(@link-color);
+.page-content {
+  a, a.ease {
+    .ease(@link-color);
+  }
+  p:empty {
+    clear: both;
+  }
 }
 
 a.thumbnail:hover {
