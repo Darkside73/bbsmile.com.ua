@@ -66,7 +66,11 @@ class Product < ActiveRecord::Base
   after_validation :add_errors_to_age
 
   def master_variant
-    variants.detect { |v| v.master } || variants.first
+    variant = variants.detect { |v| v.master }
+    unless variant.try(:available?)
+      variant = variants.available.first || variants.first
+    end
+    variant
   end
 
   def free_shipping
