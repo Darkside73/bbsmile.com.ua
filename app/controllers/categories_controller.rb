@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
                 :selected_prices, :selected_ranges, :selected_ages,
                 :selected_gender
 
-  before_action :remove_default_params
+  before_action :sanitize_params
 
   def show
     @category = current_page.pageable
@@ -42,8 +42,12 @@ class CategoriesController < ApplicationController
 
   private
 
-  def remove_default_params
+  def sanitize_params
     path_params = request.path_parameters
     params.extract!(*path_params.keys)
+    params.reject! do |k, v|
+      v.reject!(&:blank?) if v.respond_to? :reject!
+      v.blank?
+    end
   end
 end
