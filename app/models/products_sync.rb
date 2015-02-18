@@ -33,6 +33,6 @@ class ProductsSync
   ]
 
   def after_finishing(category)
-    ManagerMailer.sync_products_loaded(category).deliver_later
+    ManagerMailer.sync_products_loaded(category).deliver_now
   end
 end
