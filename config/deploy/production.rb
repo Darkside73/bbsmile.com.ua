@@ -29,7 +29,7 @@ end
 before 'deploy:check:linked_files', 'sitemap:ensure_exists'
 
 set :delayed_job_roles, :all
-set :delayed_job_workers, 2
+# set :delayed_job_workers, 2
 after 'deploy:publishing', 'restart' do
     invoke 'delayed_job:restart'
 end
