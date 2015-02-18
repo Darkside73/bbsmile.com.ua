@@ -1,7 +1,5 @@
 set :application, 'bbsmile'
 
-load 'lib/capistrano/delayed_job.rake'
-
 linked_files = fetch(:linked_files) << 'public/sitemap.xml.gz'
 set :linked_files, linked_files
 
@@ -30,6 +28,8 @@ namespace :sitemap do
 end
 before 'deploy:check:linked_files', 'sitemap:ensure_exists'
 
-set :delayed_job_server_role, [:all]
-set :delayed_job_args, "-n 2"
-after 'deploy:restart', 'delayed_job:restart'
+set :delayed_job_roles, :all
+set :delayed_job_workers, 2
+after 'deploy:publishing', 'restart' do
+    invoke 'delayed_job:restart'
+end
