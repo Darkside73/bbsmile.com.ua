@@ -1,4 +1,4 @@
-require 'google_drive'
+require 'google_drive_v0'
 
 module Gdrive::Syncable
   extend ActiveSupport::Concern
@@ -6,7 +6,7 @@ module Gdrive::Syncable
   attr_reader :items_to_update, :invalid_rows
 
   def initialize(spreadsheet_key)
-    session = GoogleDrive.login *Settings.gdrive.auth.to_hash.values
+    session = GoogleDriveV0.login *Settings.gdrive.auth.to_hash.values
     @spreadsheet = session.spreadsheet_by_key spreadsheet_key
   end
 

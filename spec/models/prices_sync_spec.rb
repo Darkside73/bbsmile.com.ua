@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe PricesSync do
   before :each do
-    @session = double 'GoogleDrive::Session'
-    @spreadsheet = double 'GoogleDrive::Spreadsheet'
+    @session = double 'GoogleDriveV0::Session'
+    @spreadsheet = double 'GoogleDriveV0::Spreadsheet'
     @worksheets = [{ws1: {a: 1}, ws2: {a: 2}}]
-    expect(GoogleDrive).to receive(:login) { @session }
+    expect(GoogleDriveV0).to receive(:login) { @session }
     expect(@session).to receive(:spreadsheet_by_key) { @spreadsheet }
   end
 
