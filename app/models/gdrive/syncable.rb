@@ -1,13 +1,37 @@
 require 'google_drive_v0'
 
 module Gdrive::Syncable
-  extend ActiveSupport::Concern
 
   attr_reader :items_to_update, :invalid_rows
 
-  def initialize(spreadsheet_key)
+  def items_to_sync(&block)
+      @items_to_sync = block
+  end
+
+  def find_item(&block)
+    @find_item = block
+  end
+
+  def item_to_push(&block)
+    @item_to_push = block
+  end
+
+  def worksheet_columns_names(columns)
+    @worksheet_columns_names = columns
+  end
+
+  def update_item_from_row(&block)
+    @update_item_from_row = block
+  end
+
+  def spreadsheet_key(key)
+    @spreadsheet_key = key
+  end
+
+  def spreadsheet
+    return @spreadsheet if @spreadsheet
     session = GoogleDriveV0.login *Settings.gdrive.auth.to_hash.values
-    @spreadsheet = session.spreadsheet_by_key spreadsheet_key
+    @spreadsheet = session.spreadsheet_by_key @spreadsheet_key
   end
 
   def diff(category)
@@ -19,8 +43,8 @@ module Gdrive::Syncable
     worksheet.list.each_with_index do |row, index|
       row_num = index + 2
       begin
-        item = find_item.call(row['id'])
-        update_item_from_row.call item, row
+        item = @find_item.call(row['id'])
+        @update_item_from_row.call item, row
         if item.valid?
           @items_to_update << item if item.changed?
         else
@@ -40,9 +64,9 @@ module Gdrive::Syncable
     worksheet = find_worksheet_or_create(category.title)
     clear_worksheet(worksheet)
 
-    items = items_to_sync.call(category)
+    items = @items_to_sync.call(category)
     items.each do |item|
-      worksheet.list.push item_to_push.call(item)
+      worksheet.list.push @item_to_push.call(item)
     end
     worksheet.save
 
@@ -55,10 +79,10 @@ module Gdrive::Syncable
   end
 
   def find_worksheet_or_create(title)
-    worksheet = @spreadsheet.worksheet_by_title(title)
+    worksheet = spreadsheet.worksheet_by_title(title)
     unless worksheet
-      worksheet = @spreadsheet.add_worksheet(title)
-      worksheet.list.keys = worksheet_columns_names
+      worksheet = spreadsheet.add_worksheet(title)
+      worksheet.list.keys = @worksheet_columns_names
       worksheet.save
     end
     worksheet
@@ -73,32 +97,5 @@ module Gdrive::Syncable
   end
 
   def after_finishing(category)
-  end
-
-  module ClassMethods
-    def items_to_sync(proc)
-      cattr_accessor :items_to_sync
-      self.items_to_sync = proc
-    end
-
-    def find_item(proc)
-      cattr_accessor :find_item
-      self.find_item = proc
-    end
-
-    def item_to_push(proc)
-      cattr_accessor :item_to_push
-      self.item_to_push = proc
-    end
-
-    def worksheet_columns_names(columns)
-      cattr_accessor :worksheet_columns_names
-      self.worksheet_columns_names = columns
-    end
-
-    def update_item_from_row(proc)
-      cattr_accessor :update_item_from_row
-      self.update_item_from_row = proc
-    end
   end
 end
