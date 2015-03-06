@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140722115628) do
+ActiveRecord::Schema.define(version: 20150306104229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
-  create_table "article_themes", force: true do |t|
+  create_table "article_themes", force: :cascade do |t|
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "articles", force: true do |t|
+  create_table "articles", force: :cascade do |t|
     t.integer  "article_theme_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -30,7 +31,7 @@ ActiveRecord::Schema.define(version: 20140722115628) do
 
   add_index "articles", ["article_theme_id"], name: "index_articles_on_article_theme_id", using: :btree
 
-  create_table "assets", force: true do |t|
+  create_table "assets", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "assetable_id"
@@ -43,14 +44,14 @@ ActiveRecord::Schema.define(version: 20140722115628) do
     t.datetime "attachment_updated_at"
   end
 
-  create_table "brands", force: true do |t|
+  create_table "brands", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "country",    limit: 255
   end
 
-  create_table "categories", force: true do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "ancestry",   limit: 255
     t.integer  "position"
     t.boolean  "leaf",                   default: false
@@ -60,7 +61,7 @@ ActiveRecord::Schema.define(version: 20140722115628) do
 
   add_index "categories", ["position"], name: "index_categories_on_position", using: :btree
 
-  create_table "contents", force: true do |t|
+  create_table "contents", force: :cascade do |t|
     t.text     "text"
     t.integer  "contentable_id"
     t.string   "contentable_type", limit: 255
@@ -68,23 +69,7 @@ ActiveRecord::Schema.define(version: 20140722115628) do
     t.datetime "updated_at"
   end
 
-  create_table "delayed_jobs", force: true do |t|
-    t.integer  "priority",               default: 0, null: false
-    t.integer  "attempts",               default: 0, null: false
-    t.text     "handler",                            null: false
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by",  limit: 255
-    t.string   "queue",      limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
-
-  create_table "orders", force: true do |t|
+  create_table "orders", force: :cascade do |t|
     t.string   "user_name",  limit: 255
     t.string   "user_phone", limit: 255
     t.integer  "user_id"
@@ -95,7 +80,7 @@ ActiveRecord::Schema.define(version: 20140722115628) do
     t.datetime "updated_at"
   end
 
-  create_table "pages", force: true do |t|
+  create_table "pages", force: :cascade do |t|
     t.string   "title",         limit: 255,                 null: false
     t.string   "url",           limit: 255,                 null: false
     t.datetime "created_at"
@@ -110,7 +95,7 @@ ActiveRecord::Schema.define(version: 20140722115628) do
   add_index "pages", ["url"], name: "index_pages_on_url", unique: true, using: :btree
   add_index "pages", ["url_old"], name: "index_pages_on_url_old", unique: true, using: :btree
 
-  create_table "price_ranges", force: true do |t|
+  create_table "price_ranges", force: :cascade do |t|
     t.integer "from"
     t.integer "to"
     t.integer "category_id"
@@ -118,7 +103,7 @@ ActiveRecord::Schema.define(version: 20140722115628) do
 
   add_index "price_ranges", ["category_id"], name: "index_price_ranges_on_category_id", using: :btree
 
-  create_table "products", force: true do |t|
+  create_table "products", force: :cascade do |t|
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -139,7 +124,7 @@ ActiveRecord::Schema.define(version: 20140722115628) do
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
   add_index "products", ["position"], name: "index_products_on_position", using: :btree
 
-  create_table "related_products", force: true do |t|
+  create_table "related_products", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "related_id"
     t.integer  "type_of"
@@ -149,7 +134,7 @@ ActiveRecord::Schema.define(version: 20140722115628) do
 
   add_index "related_products", ["product_id"], name: "index_related_products_on_product_id", using: :btree
 
-  create_table "taggings", force: true do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
     t.string   "taggable_type", limit: 255
@@ -162,14 +147,14 @@ ActiveRecord::Schema.define(version: 20140722115628) do
   add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
-  create_table "tags", force: true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string  "name",           limit: 255
     t.integer "taggings_count",             default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "email",      limit: 255
     t.string   "phone",      limit: 255
@@ -178,7 +163,7 @@ ActiveRecord::Schema.define(version: 20140722115628) do
     t.datetime "updated_at"
   end
 
-  create_table "variants", force: true do |t|
+  create_table "variants", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.boolean  "master",                 default: false
     t.float    "price"

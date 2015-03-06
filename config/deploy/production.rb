@@ -28,8 +28,20 @@ namespace :sitemap do
 end
 before 'deploy:check:linked_files', 'sitemap:ensure_exists'
 
-set :delayed_job_roles, :all
-# set :delayed_job_workers, 2
-after 'deploy:publishing', 'restart' do
-    invoke 'delayed_job:restart'
+namespace :sidekiq do
+  task :quiet do
+    on roles(:all) do
+      # Horrible hack to get PID without having to use terrible PID files
+      puts capture("kill -USR1 $(sudo status sidekiq | grep /running | awk '{print $NF}') || :")
+    end
+  end
+  task :restart do
+    on roles(:all) do
+      execute :sudo, :restart, :sidekiq
+    end
+  end
 end
+
+after 'deploy:starting', 'sidekiq:quiet'
+after 'deploy:reverted', 'sidekiq:restart'
+after 'deploy:published', 'sidekiq:restart'

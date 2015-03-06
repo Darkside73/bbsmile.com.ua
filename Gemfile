@@ -8,7 +8,7 @@ gem 'ancestry'
 gem 'nilify_blanks'
 gem 'acts_as_list', github: 'swanandp/acts_as_list'
 gem 'acts-as-taggable-on'
-gem 'delayed_job_active_record', '>= 4.0.3'
+gem 'sidekiq'
 gem 'daemons'
 gem 'newrelic_rpm'
 
