@@ -32,8 +32,4 @@ module ProductsSync
     product.sex        = row['sex'] if row['sex'].present?
     product.drop_price = row['drop_price'] == '1' ? true : false
   end
-
-  def after_finishing(category)
-    ManagerMailer.sync_products_loaded(category).deliver_now
-  end
 end

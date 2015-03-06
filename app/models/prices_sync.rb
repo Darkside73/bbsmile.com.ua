@@ -36,8 +36,4 @@ module PricesSync
       value
     end
   end
-
-  def after_finishing(category)
-    ManagerMailer.sync_prices_loaded(category).deliver_now
-  end
 end

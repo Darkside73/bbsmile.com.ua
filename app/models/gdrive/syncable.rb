@@ -70,7 +70,6 @@ module Gdrive::Syncable
     end
     worksheet.save
 
-    after_finishing category
     items
   end
 
@@ -94,8 +93,5 @@ module Gdrive::Syncable
         worksheet[row, col] = ''
       end
     end
-  end
-
-  def after_finishing(category)
   end
 end
