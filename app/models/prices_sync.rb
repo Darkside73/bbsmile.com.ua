@@ -13,6 +13,14 @@ module PricesSync
 
   find_item { |id| Variant.find(id) }
 
+  def self.format_price(value)
+    if value
+      number_with_delimiter(value, delimiter: " ", separator: ",")
+    else
+      value
+    end
+  end
+
   item_to_push do |variant|
     data = variant.as_json(only: [:id, :price, :price_old])
                   .merge({brand: variant.brand_name, name: variant.title})
@@ -27,13 +35,5 @@ module PricesSync
     variant.price     = row['price']
     variant.price_old = row['price_old']
     variant.available = row['available'] == '1' ? true : false
-  end
-
-  def format_price(value)
-    if value
-      number_with_delimiter(value, delimiter: " ", separator: ",")
-    else
-      value
-    end
   end
 end
