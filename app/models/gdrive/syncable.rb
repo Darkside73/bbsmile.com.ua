@@ -1,4 +1,4 @@
-require 'google_drive_v0'
+require 'google_drive'
 
 module Gdrive::Syncable
 
@@ -29,9 +29,11 @@ module Gdrive::Syncable
   end
 
   def spreadsheet
-    return @spreadsheet if @spreadsheet
-    session = GoogleDriveV0.login *Settings.gdrive.auth.to_hash.values
-    @spreadsheet = session.spreadsheet_by_key @spreadsheet_key
+    @spreadsheet ||= begin
+      access_token = Service::GoogleApiClient.access_token
+      session = GoogleDrive.login_with_oauth(access_token)
+      session.spreadsheet_by_key @spreadsheet_key
+    end
   end
 
   def diff(category)

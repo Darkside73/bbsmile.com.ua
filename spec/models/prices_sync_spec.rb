@@ -1,12 +1,13 @@
 require 'rails_helper'
 
 describe PricesSync do
-  before :example do
-    @session = double 'GoogleDriveV0::Session'
-    @spreadsheet = double 'GoogleDriveV0::Spreadsheet'
+  before :each do
+    @session = double 'GoogleDrive::Session'
+    @spreadsheet = GoogleDrive::Spreadsheet
     @worksheets = [{ws1: {a: 1}, ws2: {a: 2}}]
-    expect(GoogleDriveV0).to receive(:login) { @session }
-    expect(@session).to receive(:spreadsheet_by_key) { @spreadsheet }
+    expect(Service::GoogleApiClient).to receive(:access_token).at_most(:once)
+    expect(GoogleDrive).to receive(:login_with_oauth).at_most(:once) { @session }
+    expect(@session).to receive(:spreadsheet_by_key).at_most(:once) { @spreadsheet }
   end
 
   describe "#diff" do
@@ -28,7 +29,6 @@ describe PricesSync do
     let(:category) { create :category }
     let(:variants) { create_list :variant, 3 }
     it "load category variants to worksheet" do
-      pending %Q{Double "GoogleDriveV0::Spreadsheet" was originally created in one example but has leaked into another example and can no longer be used. rspec-mocks' doubles are designed to only last for one example, and you need to create a new one in each example you wish to use it for.}
       worksheet = @worksheets.first
       expect(@spreadsheet).to receive(:worksheet_by_title).with(category.title).and_return worksheet
       allow(worksheet).to receive(:num_rows).and_return(0)

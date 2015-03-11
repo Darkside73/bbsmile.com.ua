@@ -15,7 +15,7 @@ set :bundle_binstubs, nil
 set :log_level, :warn
 
 linked_dirs = Set.new(fetch(:linked_dirs, [])) # https://github.com/capistrano/rails/issues/52
-linked_dirs.merge(%w{log tmp/pids tmp/cache tmp/sockets public/system})
+linked_dirs.merge(%w{log tmp/pids tmp/cache tmp/sockets public/system data})
 set :linked_dirs, linked_dirs.to_a
 set :linked_files, %w(config/database.yml config/secrets.yml)
 
