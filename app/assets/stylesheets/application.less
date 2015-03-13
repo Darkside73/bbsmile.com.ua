@@ -156,7 +156,7 @@ a.dashed {
 }
 
 #site-header {
-  background: #b7d5d9 image-url("layout/bg.png") bottom center no-repeat;
+  background: @yellowLight image-url("layout/bg.png") repeat;
   .contacts {
     .actions {
       text-align: center;
@@ -203,9 +203,9 @@ a.dashed {
     }
   }
   h1 {
-    #gradient > .directional(fadeout(white, 70%), fadeout(white, 100%), 90deg);
-    .border-radius(3px);
-    color: darken(#b7d5d9, 35%);
+    // #gradient > .directional(fadeout(white, 70%), fadeout(white, 100%), 90deg);
+    // .border-radius(3px);
+    color: @gray;
     small {
       color: @pink;
       white-space: nowrap;
