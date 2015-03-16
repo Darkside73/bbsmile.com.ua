@@ -12,7 +12,12 @@ module Service
 
       asserter = Google::APIClient::JWTAsserter.new(
           '473486660521-drfbb8osfpcg1karjh9om6vrc9ure6cb@developer.gserviceaccount.com',
-          ['https://www.googleapis.com/auth/drive'],
+          [
+            'https://www.googleapis.com/auth/drive',
+            'https://spreadsheets.google.com/feeds/',
+            'https://docs.google.com/feeds/',
+            'https://docs.googleusercontent.com/'
+          ],
           key
       )
       client.authorization = asserter.authorize
