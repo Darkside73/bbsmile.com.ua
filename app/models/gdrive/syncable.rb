@@ -29,11 +29,14 @@ module Gdrive::Syncable
   end
 
   def spreadsheet
-    @spreadsheet ||= begin
-      access_token = Service::GoogleApiClient.access_token
-      session = GoogleDrive.login_with_oauth(access_token)
-      session.spreadsheet_by_key @spreadsheet_key
-    end
+    raise "There is no session. Try to connect first" unless @session
+    @spreadsheet = @session.spreadsheet_by_key @spreadsheet_key
+  end
+
+  def connect
+    access_token = Service::GoogleApiClient.access_token
+    @session = GoogleDrive.login_with_oauth(access_token)
+    self
   end
 
   def diff(category)

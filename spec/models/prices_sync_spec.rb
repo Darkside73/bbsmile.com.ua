@@ -20,7 +20,7 @@ describe PricesSync do
       worksheet = @worksheets.first
       expect(@spreadsheet).to receive(:worksheet_by_title).with(category.title).and_return worksheet
       expect(worksheet).to receive(:list).and_return [row_changing, row_not_changing]
-      expect(PricesSync.diff(category).items_to_update).to eq([variant1])
+      expect(PricesSync.connect.diff(category).items_to_update).to eq([variant1])
       expect(variant2).to_not be_changed
     end
   end
@@ -34,7 +34,7 @@ describe PricesSync do
       allow(worksheet).to receive(:num_rows).and_return(0)
       allow(worksheet).to receive(:num_cols).and_return(0)
       allow(worksheet).to receive(:save)
-      PricesSync.load category
+      PricesSync.connect.load category
     end
   end
 end

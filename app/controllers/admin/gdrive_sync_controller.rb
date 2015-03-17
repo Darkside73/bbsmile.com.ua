@@ -33,10 +33,10 @@ class Admin::GdriveSyncController < Admin::ApplicationController
     case params[:what]
     when 'prices'
       @sync_job = SyncPricesJob
-      @synchronizer = PricesSync
+      @synchronizer = PricesSync.connect
     when 'products'
       @sync_job = SyncProductsJob
-      @synchronizer = ProductsSync
+      @synchronizer = ProductsSync.connect
     else
       raise ActionController::BadRequest, "Unknown sync type: #{params[:what]}"
     end

@@ -5,7 +5,7 @@ class SyncPricesJob < ActiveJob::Base
 
   def perform(category)
     @category = category
-    PricesSync.load @category
+    PricesSync.connect.load @category
   end
 
   def notify_manager
