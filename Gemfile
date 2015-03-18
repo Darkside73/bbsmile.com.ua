@@ -20,7 +20,6 @@ gem 'metamagic'
 gem 'sitemap_generator'
 
 gem 'slim'
-# gem 'slim-rails'
 gem 'redcarpet'
 gem 'cells'
 gem 'simple_form'
@@ -61,13 +60,11 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'better_errors'
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
   gem 'capistrano', '>= 3.0', require: false
   gem 'capistrano-rails', '>= 1.1', require: false
   gem 'capistrano-bundler', '>= 1.1', require: false
   gem 'capistrano-rvm', '>= 0.1', require: false
-  gem 'capistrano3-delayed-job', '~> 1.0'
-  # gem 'capistrano3-unicorn'
 end
 
 group :development, :test do
