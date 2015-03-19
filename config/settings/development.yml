@@ -5,9 +5,6 @@ metrika:
   tracking_id: 22781617
   webvisor_enabled: false
 gdrive:
-  auth:
-    user: <%= Rails.application.secrets.gdrive['auth']['user'] %>
-    password: <%= Rails.application.secrets.gdrive['auth']['password'] %>
   docs:
     prices: 0Aswwzh8AZzVydEl6QkVyeFYzRWFLODhiYlV1T2w3SHc
     products: 0Aswwzh8AZzVydFdLOENUNzk5Q1ZCVV9ibXlublpQZXc
