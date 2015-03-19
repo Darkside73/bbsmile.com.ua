@@ -1,12 +1,9 @@
 class PagesController < ApplicationController
 
-  rescue_from ActionView::MissingTemplate do
-    raise ActionController::RoutingError.new('Not found')
-  end
-
   def show
-    @page = current_page
-    unless @page
+    begin
+      render "pages/#{params[:slug]}"
+    rescue ActionView::MissingTemplate
       page = Page.visible.find_by url_old: params[:slug]
       url = if page
         page.url
@@ -14,8 +11,11 @@ class PagesController < ApplicationController
         urls_map = YAML.load(File.read('old_content/urls_map.yml'))
         urls_map[params[:slug]]
       end
-      redirect_to "/#{url}", status: :moved_permanently and return if url
-      render "pages/#{params[:slug]}"
+      if url
+        redirect_to "/#{url}", status: :moved_permanently
+      else
+        raise ActionController::RoutingError.new('Not found')
+      end
     end
   end
 end

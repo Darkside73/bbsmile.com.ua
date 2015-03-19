@@ -2,12 +2,10 @@ require 'rails_helper'
 
 describe PagesController do
   describe 'GET show' do
-    context 'when page found' do
-      let(:page) { create :page }
-      it 'assings page' do
-        get :show, slug: page.url
-        expect(assigns :page).to be_a(Page)
-        expect render_template(:show)
+    context "when template found" do
+      it 'render template' do
+        get :show, slug: 'shipping'
+        expect render_template(:shipping)
       end
     end
 
@@ -20,13 +18,8 @@ describe PagesController do
     end
 
     context 'when page not found' do
-      it 'render template' do
-        get :show, slug: 'shipping'
-        expect render_template(:shipping)
-      end
-
-      it 'raise error if template not found' do
-        expect { get :show, slug: "oh no! I'm not exist" }.to raise_error
+      it 'raise RoutingError' do
+        expect { get :show, slug: "oh no! I'm not exist" }.to raise_error(ActionController::RoutingError)
       end
     end
   end
