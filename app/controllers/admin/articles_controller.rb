@@ -44,7 +44,7 @@ class Admin::ArticlesController < Admin::ApplicationController
 
   def article_params
     params.require(:article).permit(
-      :article_theme_id,
+      :article_theme_id, :top,
       page_attributes: [:id, :title, :name, :url, :url_old, :hidden],
       content_attributes: [:id, :text],
       top_image_attributes: [:id, :attachment]
