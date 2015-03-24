@@ -1,0 +1,4 @@
+ul.nav.nav-pills.nav-stacked
+  - @themes.each do |theme|
+    li class="#{theme == @current_theme ? "active" : ""}"
+      = link_to theme.name, article_theme_path(theme.url)

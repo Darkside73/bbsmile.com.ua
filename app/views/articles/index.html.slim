@@ -2,5 +2,6 @@
 
 #articles-themes-list.container
   .page-header: h1.page-title Статьи
-  - ArticleTheme.visible.each do |theme|
-    h4 = link_to theme.name, article_theme_path(theme.url)
+  .row
+    .col-md-4 = render_cell :article_themes, :display
+    .col-md-8
