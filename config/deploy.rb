@@ -12,7 +12,7 @@ set :bundle_flags, '--system --quiet'
 set :bundle_path, nil
 set :bundle_binstubs, nil
 
-set :log_level, :warn
+set :log_level, :info
 
 linked_dirs = Set.new(fetch(:linked_dirs, [])) # https://github.com/capistrano/rails/issues/52
 linked_dirs.merge(%w{log tmp/pids tmp/cache tmp/sockets public/system data})
