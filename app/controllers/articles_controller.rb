@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
-
+    @top_articles = Article.top
+    @other_articles = Article.other.limit(5)
   end
 end

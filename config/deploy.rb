@@ -78,4 +78,16 @@ namespace :deploy do
     end
   end
   after :finishing, :copy_error_pages
+
+  desc "Build missing paperclip styles"
+  task build_missing_paperclip_styles: 'deploy:set_rails_env' do
+    on roles(:all) do
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          rake "paperclip:refresh:missing_styles"
+        end
+      end
+    end
+  end
+  after :compile_assets, :build_missing_paperclip_styles
 end

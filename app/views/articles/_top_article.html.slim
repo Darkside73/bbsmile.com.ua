@@ -1,0 +1,10 @@
+.media
+  - if top_article.top_image
+    .media-left
+      = link_to article_path(top_article.url) do
+        = image_tag top_article.top_image.url(:medium)
+  .media-body
+    h3.media-heading = link_to top_article.name, article_path(top_article.url)
+    p = article_short_description_for top_article
+    = link_to "Читать дальше", article_path(top_article.url)
+hr

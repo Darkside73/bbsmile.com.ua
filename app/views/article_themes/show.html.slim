@@ -8,13 +8,5 @@
   .row
     .col-md-4 = render_cell :article_themes, :display, @theme
     .col-md-8
-      - @theme.articles.visible.each do |article|
-        .pull-left
-          - if article.top_image
-            = link_to article_path(article.url) do
-              = image_tag article.top_image.url(:thumb), class: 'thumbnail'
-        h4
-          = link_to article_path(article.url) do
-            => article.name
-            sup.badge => l article.created_at, format: :short
-        .clearfix
+      = render collection: @top_articles, partial: 'articles/top_article'
+      = render collection: @other_articles, partial: 'articles/other_article'

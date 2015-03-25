@@ -1,0 +1,12 @@
+.media
+  - if other_article.top_image
+    .media-left
+      = link_to article_path(other_article.url) do
+        = image_tag other_article.top_image.url(:thumb)
+  .media-body
+    h4.media-heading
+      = link_to other_article.name, article_path(other_article.url)
+    p
+      = article_short_description_for other_article
+      br
+      = link_to "Читать дальше", article_path(other_article.url)

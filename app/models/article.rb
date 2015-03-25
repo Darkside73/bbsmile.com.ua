@@ -15,4 +15,7 @@ class Article < ActiveRecord::Base
   scope :visible, -> {
     includes(:page, :top_image).merge(Page.visible).references(:pages)
   }
+
+  scope :top,   -> (n = 2) { visible.where(top: true).limit(n) }
+  scope :other, -> { visible.where(top: false) }
 end
