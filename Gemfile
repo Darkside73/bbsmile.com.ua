@@ -49,6 +49,8 @@ gem 'therubyracer', :platforms => :ruby
 
 gem 'uglifier', '>= 1.0.3'
 
+gem 'lograge'
+
 group :development do
   gem 'rake'
   gem 'spring', '=1.2.0'

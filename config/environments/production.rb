@@ -50,6 +50,9 @@ Rails.application.configure do
 
   # Set to :debug to see everything in the log.
   config.log_level = :info
+  config.log_tags = [:remote_ip]
+
+  config.lograge.enabled = true
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
