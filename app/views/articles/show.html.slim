@@ -9,4 +9,5 @@
     li = link_to @article.theme.name, article_theme_path(@article.theme.url)
     li.active = @article.name
   .page-content == @article.description
+  #comments = render 'comments', item: @article
 
