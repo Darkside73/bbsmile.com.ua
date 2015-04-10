@@ -1,9 +1,11 @@
 - title @article.title
 
 #article-content.container
-  .page-header: h1.page-title
-    => @article.title
-    sup.badge => l @article.created_at, format: :short
+  .page-header.row
+    h1.page-title.col-md-9
+      => @article.title
+      sup.badge => l @article.created_at, format: :short
+    .share.col-md-3 = render 'uptolike_share'
   ol.breadcrumb
     li = link_to "Статьи", articles_path
     li = link_to @article.theme.name, article_theme_path(@article.theme.url)
