@@ -1,6 +1,6 @@
 language: ru
 toolbar:
-  - styleselect | bold italic underline strikethrough | link unlink image pastetext | undo redo | bullist numlist outdent indent | alignleft aligncenter alignright alignjustify | table
+  - styleselect | bold italic | link unlink image pastetext | undo redo | bullist numlist outdent indent | alignleft aligncenter alignright alignjustify | table youtube
 menubar: false
 plugins:
   - link
@@ -8,6 +8,7 @@ plugins:
   - code
   - image
   - paste
+  - youtube
 height: 300
 relative_urls: false
 convert_urls: false

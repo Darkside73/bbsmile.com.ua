@@ -8,7 +8,8 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += [
   'main.css', 'inner.css', 'category.css', 'product.css', 'information_page.css', 'ie.css',
   'font-awesome-ie7.min.css', 'fontawesome-webfont.ttf', 'fontawesome-webfont.eot', 'fontawesome-webfont.svg', 'fontawesome-webfont.woff',
-  'product.js', 'category.js', 'admin-panel.js', 'blueimp-gallery/*.svg'
+  'product.js', 'category.js', 'admin-panel.js', 'blueimp-gallery/*.svg',
+  'tinymce/plugins/youtube/*.js', 'tinymce/plugins/youtube/*.css', 'tinymce/plugins/youtube/*.html'
 ]
 Rails.application.config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif 404.html 500.html)
 
