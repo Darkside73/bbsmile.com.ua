@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324151734) do
+ActiveRecord::Schema.define(version: 20150504155322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_trgm"
 
   create_table "article_themes", force: :cascade do |t|
     t.integer  "position"
@@ -125,15 +124,15 @@ ActiveRecord::Schema.define(version: 20150324151734) do
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
   add_index "products", ["position"], name: "index_products_on_position", using: :btree
 
-  create_table "related_products", force: :cascade do |t|
-    t.integer  "product_id"
+  create_table "related_pages", force: :cascade do |t|
+    t.integer  "page_id"
     t.integer  "related_id"
     t.integer  "type_of"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "related_products", ["product_id"], name: "index_related_products_on_product_id", using: :btree
+  add_index "related_pages", ["page_id"], name: "index_related_pages_on_page_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"

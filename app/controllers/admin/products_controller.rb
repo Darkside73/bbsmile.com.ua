@@ -94,45 +94,51 @@ class Admin::ProductsController < Admin::ApplicationController
   end
 
   def content
-    @product = Product.find params[:id]
+    @product = product
   end
 
   def properties
-    @product = Product.find params[:id]
+    @product = product
   end
 
   def available_for_relation
-    already_related_ids = RelatedProduct.where(product_id: params[:id])
-                                        .pluck(:related_id)
-    already_related_ids << params[:id]
+    page = product.page
+    already_related_ids = RelatedPage.where(page_id: page.id)
+                                     .pluck(:related_id)
+    already_related_ids << page.id
     items = Product.by_title(params[:q])
                    .visible
-                   .where.not(id: already_related_ids)
+                   .where.not("page.id": already_related_ids)
                    .limit(10)
 
     results = items.inject([]) do |results, item|
-      results << { id: item.id, name: item.title, url: url_for([:admin, item]) }
+      results << { id: item.page.id, name: item.title, url: url_for([:admin, item]) }
     end
 
     respond_with(results.to_json)
   end
 
   private
-    def product_params
-      params.require(:product).permit(
-        :category_id, :brand_id, :age, :sex,
-        :novelty, :hit, :drop_price, :video, :tag_list, :properties,
-        page_attributes: [:id, :title, :name, :url, :url_old, :hidden],
-        variants_attributes: [[:id, :sku, :price, :price_old, :available]],
-        images_attributes: [[:attachment]]
-      )
-    end
 
-    def assign_leaf_categories
-      @leaf_categories = Category.leaves.to_a
-    end
+  def product
+    Product.find params[:id]
+  end
 
-    def category_for_new_product(category_id)
-      Category.leaves.find category_id
-    end
+  def product_params
+    params.require(:product).permit(
+      :category_id, :brand_id, :age, :sex,
+      :novelty, :hit, :drop_price, :video, :tag_list, :properties,
+      page_attributes: [:id, :title, :name, :url, :url_old, :hidden],
+      variants_attributes: [[:id, :sku, :price, :price_old, :available]],
+      images_attributes: [[:attachment]]
+    )
+  end
+
+  def assign_leaf_categories
+    @leaf_categories = Category.leaves.to_a
+  end
+
+  def category_for_new_product(category_id)
+    Category.leaves.find category_id
+  end
 end

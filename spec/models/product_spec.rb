@@ -111,28 +111,6 @@ describe Product do
     end
   end
 
-  describe 'related products' do
-    let(:product) { create :product_with_related_products }
-    context 'association to RelatedProduct' do
-      subject { product.related_products }
-      it "has related products" do
-        should have_at_least(1).items
-        subject.each do |related|
-          expect(related).to be_a(RelatedProduct)
-        end
-      end
-    end
-    context 'association to products through related products' do
-      subject { product.similar_products }
-      it "has similar products" do
-        should have_at_least(1).items
-        subject.each do |related|
-          expect(related).to be_a(Product)
-        end
-      end
-    end
-  end
-
   describe "#top_image" do
     let!(:product) { create(:product_with_images) }
     subject { product.top_image :grid }

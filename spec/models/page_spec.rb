@@ -38,4 +38,26 @@ describe Page do
       expect(page.url_old).to be_nil
     end
   end
+
+  describe 'related pages' do
+    let(:page) { create :page_with_related_pages }
+    context 'association to RelatedPages' do
+      subject { page.related_pages }
+      it "has related pages" do
+        should have_at_least(1).items
+        subject.each do |related|
+          expect(related).to be_a(RelatedPage)
+        end
+      end
+    end
+    context 'association to pages through related pages' do
+      subject { page.similar_pages }
+      it "has similar pages" do
+        should have_at_least(1).items
+        subject.each do |related|
+          expect(related).to be_a(Page)
+        end
+      end
+    end
+  end
 end

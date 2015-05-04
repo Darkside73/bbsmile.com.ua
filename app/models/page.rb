@@ -1,5 +1,6 @@
 class Page < ActiveRecord::Base
   include PgSearch
+  include Related
 
   belongs_to :pageable, polymorphic: true
 

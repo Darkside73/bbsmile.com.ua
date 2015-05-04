@@ -9,17 +9,6 @@ class Product < ActiveRecord::Base
 
   has_many :images, as: :assetable, dependent: :destroy
   has_many :variants, dependent: :destroy
-  has_many :related_products, dependent: :destroy
-  has_many :inverse_related_products, class_name: 'RelatedProduct', foreign_key: 'related_id'
-  with_options through: :related_products, source: :related do |assoc|
-    assoc.has_many :similar_products,
-      -> { visible.where("related_products.type_of = ?", RelatedProduct.type_ofs[:similar]) }, {}
-    assoc.has_many :suggested_products,
-      -> { visible.where("related_products.type_of = ?", RelatedProduct.type_ofs[:suggested]) }, {}
-  end
-  has_many :inverse_similar_products,
-    -> { visible.where("related_products.type_of = ?", RelatedProduct.type_ofs[:similar]) },
-    through: :inverse_related_products, source: :product
   belongs_to :category
   belongs_to :brand
 
@@ -84,11 +73,6 @@ class Product < ActiveRecord::Base
   def top_image(style = nil)
     # TODO why default scope is not applied?
     @top_image ||= images.sort {|x, y| x.position <=> y.position}.first.try {|image| image.url(style) }
-  end
-
-  def any_related?
-    related_products.joins(:related).merge(Product.visible).any? ||
-      inverse_related_products.joins(:product).merge(Product.visible).any?
   end
 
   def in_range? price_range

@@ -1,5 +1,5 @@
 = render layout: 'product_info_tabs' do
   table.table.related-list.table-striped.table-hover
-    - @product.related_products.each do |related_product|
-      tr = render related_product
+    - @product.page.related_pages.each do |related|
+      tr = render related
   = render 'form'
