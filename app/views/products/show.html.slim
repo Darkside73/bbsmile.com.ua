@@ -82,13 +82,13 @@
               p = link_to "обратный звонок", '#send-callback', class: 'callback dashed', data: {toggle: 'modal'}
 
         .col-md-5.col-sm-6.col-xs-12 = render 'product_info_accordion'
-      - if @product.any_related?
+      - if @product.page.any_related?
         p.links-to-related
-          - if @product.suggested_products.any?
+          - if @product.page.suggested_pages.any?
             a.dashed> href="#suggestedProducts" data-scroll="400"
               i.fa.fa-eye>
               | Советуем также посмотреть
-          - if @product.all_similar_products.any?
+          - if @product.all_similar_pages.any?
             a.dashed href="#similarProducts" data-scroll="400"
               i.fa.fa-barcode>
               | Похожие товары
@@ -125,7 +125,7 @@
         - if @product.video?
           .tab-pane#video = render partial: 'video', object: @product.video
         .tab-pane#comments = render 'comments', item: @product
-  - if @product.any_related?
+  - if @product.page.any_related?
     .row.related-products
-      = render 'suggested_products' if @product.suggested_products.any?
-      = render 'similar_products' if @product.all_similar_products.any?
+      = render 'suggested_products' if @product.page.suggested_products.any?
+      = render 'similar_products' if @product.page.all_similar_products.any?

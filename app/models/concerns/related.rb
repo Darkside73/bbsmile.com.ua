@@ -16,13 +16,17 @@ module Related
   end
 
   def any_related?
-    related_pages.joins(:related).merge(Page.visible).any? ||
-      inverse_related_pages.merge(Product.visible).any?
+    related_pages.joins(:page).merge(Page.visible).any? ||
+      inverse_related_pages.joins(:page).merge(Page.visible).any?
   end
 
   def available_for_relation
     already_related_ids = RelatedPage.where(page_id: id) .pluck(:related_id)
     already_related_ids << id
     Page.where.not("id": already_related_ids).visible
+  end
+
+  def all_similar_pages
+    similar_pages + inverse_similar_pages
   end
 end

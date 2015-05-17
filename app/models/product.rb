@@ -134,10 +134,6 @@ class Product < ActiveRecord::Base
     end
   end
 
-  def all_similar_products
-    similar_products + inverse_similar_products
-  end
-
   private
 
   def make_master_variant
