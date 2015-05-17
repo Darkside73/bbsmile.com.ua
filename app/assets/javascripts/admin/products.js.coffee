@@ -1,2 +1,2 @@
-//= require ./related_products
+//= require ./related_pages
 

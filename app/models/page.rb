@@ -5,6 +5,7 @@ class Page < ActiveRecord::Base
   belongs_to :pageable, polymorphic: true
 
   scope :visible, -> { where hidden: false }
+  pg_search_scope :by_title, against: :title
 
   validates :title, :url, presence: true
   validates :url, uniqueness: true
@@ -15,7 +16,8 @@ class Page < ActiveRecord::Base
   nilify_blanks only: :url_old
 
   private
-    def set_name_as_title
-      self.name = title
-    end
+
+  def set_name_as_title
+    self.name = title
+  end
 end

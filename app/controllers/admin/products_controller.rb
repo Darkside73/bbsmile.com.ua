@@ -101,21 +101,8 @@ class Admin::ProductsController < Admin::ApplicationController
     @product = product
   end
 
-  def available_for_relation
-    page = product.page
-    already_related_ids = RelatedPage.where(page_id: page.id)
-                                     .pluck(:related_id)
-    already_related_ids << page.id
-    items = Product.by_title(params[:q])
-                   .visible
-                   .where.not("page.id": already_related_ids)
-                   .limit(10)
-
-    results = items.inject([]) do |results, item|
-      results << { id: item.page.id, name: item.title, url: url_for([:admin, item]) }
-    end
-
-    respond_with(results.to_json)
+  def related
+    @product = product
   end
 
   private

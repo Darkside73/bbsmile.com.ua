@@ -1,7 +1,7 @@
 $ ->
-  form = $('form#add_related_product')
+  form = $('form#add_related_page')
   input = $('input.search-available-for-relation')
-  related_id_input = $('input[name="related_product[related_id]"]', form)
+  related_id_input = $('input[name="related_page[related_id]"]', form)
   new Autocomplete(
     input: input
     afterRequest: ->

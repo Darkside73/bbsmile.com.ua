@@ -1,0 +1,5 @@
+= simple_form_for [:admin, pageable.page, RelatedPage.new], remote: true, data: { type: :json }, html: { id: :add_related_page } do |f|
+    .col-md-6: input.form-control.search-available-for-relation type="text" placeholder="поиск товара" data-provide="typeahead" autocomplete="off" data-url="#{admin_related_page_available_path(pageable.page, type: type)}"
+    input type="hidden" name="related_page[related_id]"
+    .col-md-3 = f.input :type_of, label: false, collection: [:similar, :suggested], label_method: lambda { |key| t("activerecord.attributes.related_pages.type_of.#{key}") }, include_blank: false, selected: :similar
+    .col-md-3 = f.button :submit, 'Добавить', class: 'btn btn-info'

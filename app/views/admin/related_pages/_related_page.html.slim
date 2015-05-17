@@ -1,0 +1,4 @@
+td.col-md-6 = link_to related_page.related.title, [:admin, related_page.related.pageable]
+td.col-md-3 = t("activerecord.attributes.related_pages.type_of.#{related_page.type_of}")
+td.col-md-3 = link_to admin_related_page_path(related_page, format: :json), method: :delete, title: 'удалить' do
+  i.fa.fa-trash-o.fa-lg.text-warning

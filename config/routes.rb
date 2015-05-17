@@ -32,6 +32,12 @@ Bbsmile::Application.routes.draw do
       end
     end
 
+    concern :related do
+      member do
+        get 'related'
+      end
+    end
+
     resources :categories, concerns: [:sortable, :contentable_for_category], shallow: true do
       member do
         get 'new_subcategory'
@@ -43,10 +49,9 @@ Bbsmile::Application.routes.draw do
       resources :price_ranges, except: [:new, :show]
     end
 
-    resources :products, concerns: [:sortable, :contentable_for_product], shallow: true do
+    resources :products, concerns: [:sortable, :contentable_for_product, :related], shallow: true do
       resources :images, concerns: :sortable, only: [:index, :new, :create, :destroy]
       resources :variants, concerns: :sortable, except: [:new, :show]
-      resources :related_products, only: [:index, :show, :create, :destroy]
       collection do
         get 'tags'
         post 'bulk_move'
@@ -54,8 +59,14 @@ Bbsmile::Application.routes.draw do
       end
       member do
         get 'properties'
-        get 'available_for_relation', format: :json
       end
+    end
+
+    resources :related_pages, only: [:show, :destroy] do
+      get 'available/:type', action: 'available_for_relation', as: 'available', format: :json
+    end
+    resources :page, only: [] do
+      resources :related_pages, only: :create
     end
 
     resources :brands
