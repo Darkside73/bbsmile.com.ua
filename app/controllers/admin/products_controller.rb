@@ -1,5 +1,4 @@
 class Admin::ProductsController < Admin::ApplicationController
-  respond_to :json, only: :available_for_relation
   before_action :assign_leaf_categories, expect: [:index, :show, :destroy]
 
   def index

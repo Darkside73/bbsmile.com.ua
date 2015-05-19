@@ -40,6 +40,10 @@ class Admin::ArticlesController < Admin::ApplicationController
     render json: flashes_in_json
   end
 
+  def related
+    @article = Article.find params[:id]
+  end
+
   private
 
   def article_params

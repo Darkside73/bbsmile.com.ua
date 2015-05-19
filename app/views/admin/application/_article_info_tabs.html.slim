@@ -1,0 +1,7 @@
+= render layout: 'boxed' do
+  ul.nav.nav-tabs
+    li*unless_active_attr('admin/articles', 'edit') = link_to "Основное", [:edit, :admin, @article]
+    li*unless_active_attr('admin/articles', 'related') = link_to "Связанные статьи", [:related, :admin, @article]
+
+  .tab-content
+    = yield

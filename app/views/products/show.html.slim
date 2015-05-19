@@ -127,5 +127,5 @@
         .tab-pane#comments = render 'comments', item: @product
   - if @product.page.any_related?
     .row.related-products
-      = render 'suggested_products' if @product.page.suggested_products.any?
-      = render 'similar_products' if @product.page.all_similar_products.any?
+      = render 'suggested_products' if @product.page.suggested_pages.any?
+      = render 'similar_products' if @product.page.all_similar_pages.any?

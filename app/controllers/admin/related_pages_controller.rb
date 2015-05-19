@@ -23,14 +23,15 @@ class Admin::RelatedPagesController < Admin::ApplicationController
   end
 
   def available_for_relation
-    pageable = params[:type].to_s.capitalize.constantize
-    items = Page.find(params[:related_page_id]).available_for_relation
-                                               .by_title(params[:q]).limit(10)
+    pageable_class = params[:type].to_s.capitalize.constantize
+    page = Page.find(params[:related_page_id])
+    items = page.available_for_relation.by_title(params[:q]).limit(10)
 
-    results = items.inject([]) do |results, item|
-      results << {
-        id: item.id, name: item.title, url: url_for([:admin, item.pageable])
-      } if item.respond_to?(:pageable) && item.pageable.is_a?(pageable)
+    results = items.reduce([]) do |results, item|
+      if item.respond_to?(:pageable) && item.pageable.is_a?(pageable_class)
+        results << { id: item.id, name: item.title, url: url_for([:admin, item.pageable]) }
+      end
+      results
     end
     respond_with(results.to_json)
   end

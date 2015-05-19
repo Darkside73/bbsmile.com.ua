@@ -1,0 +1,8 @@
+- content_for :box_title do
+  | Редактирование статьи &mdash; #{@article.name}
+= render layout: 'article_info_tabs' do
+  table.table.related-list.table-striped.table-hover
+    - @article.page.related_pages.each do |related|
+      tr = render related
+
+  = render 'related_pages_form', pageable: @article, type: :article
