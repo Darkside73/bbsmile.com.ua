@@ -3,6 +3,8 @@
     i.fa.fa-barcode>
     | Похожие товары
   .panel-body.owl-container
-    .owl-carousel = render collection: @product.page.all_similar_pages, as: :product, partial: 'product_short'
+    .owl-carousel
+      - @product.page.all_similar_pages.each do |page|
+        = render object: page.pageable, as: :product, partial: 'product_short'
     a.left.carousel-control href="#": i.fa.fa-angle-left
     a.right.carousel-control href="#": i.fa.fa-angle-right

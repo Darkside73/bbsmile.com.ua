@@ -88,7 +88,7 @@
             a.dashed> href="#suggestedProducts" data-scroll="400"
               i.fa.fa-eye>
               | Советуем также посмотреть
-          - if @product.all_similar_pages.any?
+          - if @product.page.all_similar_pages.any?
             a.dashed href="#similarProducts" data-scroll="400"
               i.fa.fa-barcode>
               | Похожие товары
