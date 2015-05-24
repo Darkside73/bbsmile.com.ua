@@ -15,7 +15,8 @@
             = u.input :email, label: "E-mail"
           .col-md-6
             = f.input :notes, label: "Дополнительная информация", input_html: { rows: 5 }
-            = u.input :subscribed, label: "хочу получать акционные и скидочные предложения"
+            =' u.check_box :subscribed
+            label.inline for="order_user_attributes_subscribed" хочу получать акционные и скидочные предложения
       = f.hidden_field :variant_id, value: local_assigns[:product] ? product.master_variant.id : nil
       label.hide
         ' Заполните это поле, если вы - робот

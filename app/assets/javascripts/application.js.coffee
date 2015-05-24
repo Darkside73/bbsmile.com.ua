@@ -16,8 +16,8 @@
 //= require jquery.cookie
 
 $ ->
-  $('a[rel=popover]').popover()
-  $('a[rel=popover]').click (e) ->
+  $('a[data-toggle=popover]').popover()
+  $('a[data-toggle=popover]').click (e) ->
     e.preventDefault()
   $('.contacts .actions a[rel=popover]').click (e) ->
     $(@).toggleClass 'active'
