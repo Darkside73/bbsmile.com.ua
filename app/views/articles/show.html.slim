@@ -14,14 +14,19 @@
   .related-articles
     h3 Рекомендуем почитать
     - if @article.page.similar_pages.any?
-      - @article.page.similar_pages.each_slice(3) do |pages|
-        .row
-          - pages.each do |page|
-            .col-md-3
-              h4 = link_to page.pageable.name, article_path(page.pageable.url)
-              - if page.pageable.top_image
+        - @article.page.similar_pages.each do |page|
+          .row
+            - if page.pageable.top_image
+              .col-md-3
                 = link_to article_path(page.pageable.url), class: "thumbnail" do
                   = image_tag page.pageable.top_image.url(:medium)
+              .col-md-9
+                h4 = link_to page.pageable.name, article_path(page.pageable.url)
+                = article_short_description_for page.pageable
+            - else
+              .col-md-12
+                h4 = link_to page.pageable.name, article_path(page.pageable.url)
+                = article_short_description_for page.pageable
 
   #comments = render 'comments', item: @article
 
