@@ -20,6 +20,8 @@ gem 'metamagic'
 gem 'sitemap_generator'
 
 gem 'slim'
+gem 'sprockets', '~> 2'
+gem 'tilt', '~> 1'
 gem 'redcarpet'
 gem 'cells', '~> 3'
 gem 'simple_form'
