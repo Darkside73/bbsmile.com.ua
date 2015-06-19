@@ -20,8 +20,6 @@ gem 'metamagic'
 gem 'sitemap_generator'
 
 gem 'slim'
-gem 'sprockets', '~> 2'
-gem 'tilt', '~> 1'
 gem 'redcarpet'
 gem 'cells', '~> 3'
 gem 'simple_form'
@@ -34,7 +32,7 @@ gem 'json'
 gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-helpers'
 gem 'paperclip'
 gem 'dimensions-rails', github: 'Darkside73/dimensions-rails'
-gem 'tinymce-rails'
+gem 'tinymce-rails', github: 'Darkside73/tinymce-rails'
 gem 'tinymce-rails-langs'
 gem 'react-rails', github: 'reactjs/react-rails'
 gem 'sprockets-coffee-react'
@@ -74,6 +72,7 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'byebug'
 end
 
 group :test do
