@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.2'
 
 gem 'pg'
 gem 'pg_search'
@@ -21,7 +21,7 @@ gem 'sitemap_generator'
 
 gem 'slim'
 gem 'redcarpet'
-gem 'cells'
+gem 'cells', '~> 3'
 gem 'simple_form'
 gem 'responders'
 gem 'attribute_normalizer', '= 1.1.0'
