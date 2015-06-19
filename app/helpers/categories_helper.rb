@@ -10,7 +10,7 @@ module CategoriesHelper
 
   def accordion_group(id, name, options = {}, &block)
     return nil if options[:if] && @category.send(options[:if]).empty?
-    render layout: 'accordion_group', locals: { id: id, name: name } do
+    render layout: 'accordion_group', locals: { id: id, name: name, attrs: options.fetch(:attrs, {}) } do
       capture &block
     end
   end

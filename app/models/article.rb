@@ -16,8 +16,9 @@ class Article < ActiveRecord::Base
     includes(:page, :top_image).merge(Page.visible).references(:pages)
   }
 
-  scope :top,   -> (n = 2) { visible.where(top: true).limit(n) }
-  scope :other, -> { visible.where(top: false) }
+  scope :top,    -> (n = 2) { visible.where(top: true).limit(n) }
+  scope :other,  -> { visible.where(top: false) }
+  scope :random, -> (n = nil) { reorder('RANDOM()').limit(n) }
 
   def fresh?
     created_at > 2.days.ago
