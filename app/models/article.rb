@@ -18,4 +18,8 @@ class Article < ActiveRecord::Base
 
   scope :top,   -> (n = 2) { visible.where(top: true).limit(n) }
   scope :other, -> { visible.where(top: false) }
+
+  def fresh?
+    created_at > 2.days.ago
+  end
 end
