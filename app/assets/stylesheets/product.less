@@ -80,6 +80,11 @@
       font-size: @font-size-h4;
     }
   }
+
+  #productVariants {
+    margin-top: 30px;
+  }
+
   #product-info-accordion {
     .panel-title {
       i {
@@ -105,73 +110,59 @@
       margin-top: 20px;
     }
   }
-  .links-to-related {
+  .page-nav-links {
     i { color: @link-hover-color; }
     a { margin-right: 10px; }
   }
   #description {
-    .page-content {
-      text-align: justify;
-    }
+    text-align: justify;
   }
   #properties {
     &>p.text-muted {
       margin-top: 10px;
     }
   }
-  #productVariants {
-    ul.thubmnails {
-      margin: 0;
-      .row-fluid { margin-bottom: 15px; }
-    }
-    a.thumbnail {
-      border-color: transparent;
-      .box-shadow(none);
+  .panel-body.owl-container {
+    position: relative;
+    .carousel-control {
+      outline: none;
+      opacity: 1;
+      width: 5%;
       &:hover {
-        border-color: @purple;
+        opacity: 1;
       }
+      i {
+        font-size: 36px;
+        position: absolute;
+        top: 40%;
+        z-index: 5;
+        display: inline-block;
+      }
+      &.right {
+        background-image: linear-gradient(to left, fadeout(@panel-inner-border, 70%) 0%, fadeout(@panel-inner-border, 100%) 100%);
+        &:hover {
+          background-image: linear-gradient(to left, fadeout(@panel-inner-border, 50%) 0%, fadeout(@panel-inner-border, 100%) 100%);
+        }
+        i { right: 13%; }
+      }
+      &.left {
+        &:hover {
+          background-image: linear-gradient(to right, fadeout(@panel-inner-border, 50%) 0%, fadeout(@panel-inner-border, 100%) 100%);
+        }
+        background-image: linear-gradient(to right, fadeout(@panel-inner-border, 70%) 0%, fadeout(@panel-inner-border, 100%) 100%);
+        i { left: 13%; }
+      }
+    }
+  }
+  .owl-carousel {
+    .product {
+      padding-right: 15px;
     }
   }
   .related-products {
     margin-top: 20px;
-    .panel-body {
-      position: relative;
-      .carousel-control {
-        outline: none;
-        opacity: 1;
-        width: 11%;
-        &:hover {
-          opacity: 1;
-        }
-        i {
-          font-size: 90px;
-          position: absolute;
-          top: 30%;
-          z-index: 5;
-          display: inline-block;
-        }
-        &.right {
-          background-image: linear-gradient(to left, fadeout(@panel-inner-border, 70%) 0%, fadeout(@panel-inner-border, 100%) 100%);
-          &:hover {
-            background-image: linear-gradient(to left, fadeout(@panel-inner-border, 50%) 0%, fadeout(@panel-inner-border, 100%) 100%);
-          }
-          i { right: 13%; }
-        }
-        &.left {
-          &:hover {
-            background-image: linear-gradient(to right, fadeout(@panel-inner-border, 50%) 0%, fadeout(@panel-inner-border, 100%) 100%);
-          }
-          background-image: linear-gradient(to right, fadeout(@panel-inner-border, 70%) 0%, fadeout(@panel-inner-border, 100%) 100%);
-          i { left: 13%; }
-        }
-      }
-    }
-    .owl-carousel {
-      .product {
-        padding-right: 15px;
-      }
-    }
   }
+
 }
 
 #quickShopDialog {

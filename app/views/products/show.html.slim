@@ -81,51 +81,46 @@
                   | 093 717-91-91
               p = link_to "обратный звонок", '#send-callback', class: 'callback dashed', data: {toggle: 'modal'}
 
+              p.page-nav-links
+                a.dashed> href="#description" data-scroll="400"
+                  i.fa.fa-file-text-o>
+                  | Описание, характеристики
+                - if @product.video?
+                  a.dashed> href="#video" data-scroll="400"
+                    i.fa.fa-youtube-play>
+                    | Видео
+                - if @product.page.suggested_pages.any?
+                  a.dashed> href="#suggestedProducts" data-scroll="400"
+                    i.fa.fa-eye>
+                    | Советуем также посмотреть
+                - if @product.page.all_similar_pages.any?
+                  a.dashed href="#similarProducts" data-scroll="400"
+                    i.fa.fa-barcode>
+                    | Похожие товары
+
         .col-md-5.col-sm-6.col-xs-12 = render 'product_info_accordion'
-      - if @product.page.any_related?
-        p.links-to-related
-          - if @product.page.suggested_pages.any?
-            a.dashed> href="#suggestedProducts" data-scroll="400"
-              i.fa.fa-eye>
-              | Советуем также посмотреть
-          - if @product.page.all_similar_pages.any?
-            a.dashed href="#similarProducts" data-scroll="400"
-              i.fa.fa-barcode>
-              | Похожие товары
-      ul.nav.nav-tabs id="product-info-tabs"
-        li.active: a href="#description" data-toggle="tab" Описание
+
+  .row: .col-md-12
+    = render "product_variants" if @product.variants.count > 1
+
+    .row
+      .col-md-8.page-content
+        #description
+          h2 Описание
+          == @product.description
         - if @product.properties.present?
-          li: a href="#properties" data-toggle="tab" Характеристики
-        - if @product.variants.count > 1
-          li: a href="#productVariants" data-toggle="tab" Варианты цветов
-        - if @product.video?
-          li: a href="#video" data-toggle="tab" Видеообзор
-        li: a href="#comments" data-toggle="tab"
-          i.fa.fa-comments-o>
-          | Отзывы и вопросы
-      .tab-content
-        .tab-pane.active#description
-          .page-content itemprop="description" == @product.description
-        - if @product.properties.present?
-          .tab-pane#properties
-            .page-content == @product.properties
+          #properties
+            h2 Характеристики
+            == @product.properties
             p.text-muted: small
               | Комплектация и характеристики товара могут изменяться производителем без уведомления. Цвет изделия так же может отличаться от изображения в зависимости от настроек Вашего монитора. Уточняйте всю интересующую вас дополнительную информацию у менеджера во избежание недоразумений
-        - if @product.variants.count > 1
-          .tab-pane#productVariants
-            - content_for :modals
-              = render 'gallery_modal', id: 'variants-gallery'
-            .gallery-links
-              - product_variants.each_slice(4) do |variants|
-                .row
-                  - variants.each_with_index do |variant, index|
-                    = render variant
-                    - if index.odd?
-                      .clearfix.visible-sm.visible-xs
         - if @product.video?
-          .tab-pane#video = render partial: 'video', object: @product.video
-        .tab-pane#comments = render 'comments', item: @product
+          #video
+            h2 Видео
+            = render partial: 'video', object: @product.video
+      .col-md-4 = render 'comments', item: @product
+
   - if @product.page.any_related?
-    .row.related-products
+    .related-products
       = render 'suggested_products' if @product.page.suggested_pages.any?
       = render 'similar_products' if @product.page.all_similar_pages.any?

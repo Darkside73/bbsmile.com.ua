@@ -28,9 +28,7 @@ $ ->
       paginationSpeed: 400
       responsiveBaseWidth: '.owl-container'
       scrollPerPage: true
-      # afterInit: toggleCarouselControls
       afterAction: toggleCarouselControls
-
     )
 
     $('.carousel-control.right', container).click (e) =>
@@ -39,3 +37,5 @@ $ ->
     $('.carousel-control.left', container).click (e) =>
       $(this).trigger 'owl.prev'
       e.preventDefault()
+
+  $('#product-container .other_images').owlCarousel()

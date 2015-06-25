@@ -28,11 +28,11 @@ $ ->
     e.preventDefault()
 
   $('a[data-scroll]').click (e) ->
-    $.scrollTo $(@).attr('href'), $(@).data('scroll'), offset: -55
+    offset = $(@).data('offset') ? -55
+    $.scrollTo $(@).attr('href'), $(@).data('scroll'), offset: offset
 
   $('.landing-nav .nav a').click (e) ->
-    offset = $(@).data('offset')
-    offset = -85 unless offset?
+    offset = $(@).data('offset') ? -85
     $.scrollTo $(@).data('target'), 800, offset: offset
     _gaq.push ['_trackEvent', 'Навигация', $(this).text()]
     e.preventDefault()

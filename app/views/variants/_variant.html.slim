@@ -1,15 +1,15 @@
-.item.col-md-3.col-sm-6.col-xs-6
-  .thumbnail
-    a.thumbnail href="#{variant_image_url(variant)}" title="#{variant.title}" data-gallery="#variants-gallery" data-price="#{number_to_currency variant.price}"
-      = image_tag variant_image_url(variant, :thumb), alt: variant.title
-    .caption
-      h5 = variant.name
-      p = variant.sku
-      p.price
-        - if variant.price_old?
-          span.old.text-muted => number_to_currency variant.price_old
-        strong = "#{number_to_currency variant.price}"
-      - if variant.available?
-        a.variant-quick-shop.btn.btn-success data-toggle="modal" href="##{dom_id @order}" data-variant-id="#{variant.id}" data-dialog-title="<span class='name'>#{variant.title}</span> <span class='price' data-price='#{variant.price}'>#{number_to_currency variant.price}</span>" Заказать
-      - else
-        a.btn.disabled нет в наличии
+.product.short
+  = link_to variant_image_url(variant), class: 'thumbnail', title: variant.title, data: { gallery: '#variants-gallery', price: number_to_currency(variant.price) } do
+    = image_tag variant_image_url(variant, :thumb), alt: variant.title
+  .caption
+    h5 = variant.name
+    p = variant.sku
+    p.price
+      - if variant.price_old?
+        span.old.text-muted => number_to_currency variant.price_old
+      strong = "#{number_to_currency variant.price}"
+    - if variant.available?
+      a.variant-quick-shop.btn.btn-success data-toggle="modal" href="##{dom_id @order}" data-variant-id="#{variant.id}" data-dialog-title="<span class='name'>#{variant.title}</span> <span class='price' data-price='#{variant.price}'>#{number_to_currency variant.price}</span>" Заказать
+    - else
+      a.btn.disabled нет в наличии
+
