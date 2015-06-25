@@ -22,4 +22,16 @@
       i.fa.fa-facebook>
     a href="http://twitter.com/babysmileua" title="Читать наши твиты"
       i.fa.fa-twitter
-  .copy.col-md-3.col-sm-6 &copy; Babysmile #{Time.now.year}
+  .copy.col-md-3.col-sm-6
+    | &copy; Babysmile #{Time.now.year}
+    - if Rails.env.production?
+      br
+      javascript:
+        document.write("<a href='//www.liveinternet.ru/click' "+
+        "target=_blank><img src='//counter.yadro.ru/hit?t44.2;r"+
+        escape(document.referrer)+((typeof(screen)=="undefined")?"":
+        ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+        screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+        ";"+Math.random()+
+        "' alt='' title='LiveInternet' "+
+        "border='0' width='31' height='31'><\/a>")
