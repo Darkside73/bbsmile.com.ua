@@ -1,6 +1,6 @@
 .product.short
   = link_to variant_image_url(variant), class: 'thumbnail', title: variant.title, data: { gallery: '#variants-gallery', price: number_to_currency(variant.price) } do
-    = image_tag variant_image_url(variant, :thumb), alt: variant.title
+    = image_tag variant_image_url(variant, :grid), alt: variant.title
   .caption
     h5 = variant.name
     p = variant.sku

@@ -1,6 +1,6 @@
 class Variant::Image < Asset
   has_attached_file :attachment,
-                    styles: { thumb: '256x168' },
+                    styles: { grid: '256x168' },
                     convert_options: { thumb: '-background white -gravity Center -extent 256x168' },
                     url: DEFAULT_URL, path: DEFAULT_PATH
   validates_attachment_content_type :attachment, content_type: /^image\/(png|gif|jpg|jpeg)/,
