@@ -5,7 +5,7 @@
         = image_tag top_article.top_image.url(:medium)
   .media-body
     h3.media-heading
-      =' link_to top_article.name, article_path(top_article.url)
+      => link_to top_article.name, article_path(top_article.url)
       - if top_article.fresh?
         span.label.label-danger новая
     p = article_short_description_for top_article

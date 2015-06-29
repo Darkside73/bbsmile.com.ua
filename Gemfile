@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.2'
+gem 'rails', '4.2.3'
 
 gem 'pg'
 gem 'pg_search'
@@ -32,7 +32,7 @@ gem 'json'
 gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-helpers'
 gem 'paperclip'
 gem 'dimensions-rails', github: 'Darkside73/dimensions-rails'
-gem 'tinymce-rails', github: 'Darkside73/tinymce-rails'
+gem 'tinymce-rails', github: 'Darkside73/tinymce-rails', branch: 'sprockets-3'
 gem 'tinymce-rails-langs'
 gem 'react-rails', github: 'reactjs/react-rails'
 gem 'sprockets-coffee-react'

@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   before_action :sanitize_params
 
   def show
-    @category = current_page.pageable
+    @category = current_page!.pageable
     @products = @category.products_grid(params)
     @order = Order.new
     @order.build_user

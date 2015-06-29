@@ -13,7 +13,7 @@ describe CategoriesController do
 
     context 'when category not found' do
       it 'raise error' do
-        expect { get :show, slug: "oh no! I'm not exist" }.to raise_error
+        expect { get :show, slug: "oh no! I'm not exist" }.to raise_error ActiveRecord::RecordNotFound
       end
     end
   end

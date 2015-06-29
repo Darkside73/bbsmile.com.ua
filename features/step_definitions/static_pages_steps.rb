@@ -22,5 +22,5 @@ Given(/^Hidden page$/) do
 end
 
 Then(/^Hidden page should be inaccessible$/) do
-  expect { visit "/#{@hidden_page.url}" }.to raise_error
+  expect { visit "/#{@hidden_page.url}" }.to raise_error ActionController::RoutingError
 end

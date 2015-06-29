@@ -25,7 +25,7 @@ describe ApplicationHelper do
       expect(link_to page, class: css_class).to include(css_class)
     end
     it 'raise exception if Page object misplaced' do
-      expect { link_to('title', 'url', page) }.to raise_error
+      expect { link_to('title', 'url', page) }.to raise_error ArgumentError
     end
   end
 end

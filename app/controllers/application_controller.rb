@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     { error: flash[:error], flash: render_to_string(partial: 'flashes.html') }
   end
 
+  def current_page!
+    current_page or raise ActiveRecord::RecordNotFound
+  end
+
   private
 
   def current_page_from_slug
