@@ -17,10 +17,11 @@ GIT
 
 GIT
   remote: git://github.com/Darkside73/tinymce-rails.git
-  revision: ed3a4d877fad392f1b82b4b16804b45143729cf7
+  revision: 9edbaf5a45b4ebfa87fbef76c972f05c176e9056
+  branch: sprockets-3
   specs:
     tinymce-rails (4.1.6)
-      railties (>= 3.1.1)
+      railties (>= 4)
 
 GIT
   remote: git://github.com/reactjs/react-rails.git
@@ -253,7 +254,7 @@ GEM
       tilt
     less-rails-bootstrap (3.3.5.0)
       less-rails (>= 2.6, <= 2.8)
-    libv8 (3.16.14.9)
+    libv8 (3.16.14.11)
     listen (3.0.0)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -504,6 +505,7 @@ DEPENDENCIES
   json
   launchy
   less-rails-bootstrap
+  libv8 (>= 3.16.14.10)
   lograge
   metamagic
   minitest
