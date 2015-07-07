@@ -5,9 +5,9 @@ p
   strong = @order.id
   | :
 p
-  strong => link_to @order.variant.title, product_page_url(@order.variant.product.url, host: 'beta.bbsmile.com.ua')
+  / strong => link_to @order.variant.title, product_page_url(@order.variant.product.url, host: 'beta.bbsmile.com.ua')
   ' за
-  strong = number_to_currency @order.price
+  / strong = number_to_currency @order.price
   | .
 - if @order.notes.present?
   p: strong Дополнительная информация:

@@ -1,17 +1,17 @@
 class Order < ActiveRecord::Base
   include OrderObserver
 
-  belongs_to :variant
   belongs_to :user
+  has_many :suborders, dependent: :destroy
 
   accepts_nested_attributes_for :user
+  accepts_nested_attributes_for :suborders
 
   before_validation :disable_user_email_uniqueness_validation, on: :create
   before_create :populate_order_user_attributes
-  before_create :memorize_variant_price
   before_create :save_user
 
-  validates :variant, presence: true
+  validates :suborders, presence: true
 
   def autosave_associated_records_for_user
     if user.email.present?
@@ -21,12 +21,6 @@ class Order < ActiveRecord::Base
 
   def number
     id.to_s
-  end
-
-  def as_json(options={})
-    super include: {
-      variant: { only: [:sku], methods: [:category_title, :title] }
-    }
   end
 
   def phone_number
@@ -54,10 +48,6 @@ class Order < ActiveRecord::Base
 
   def populate_order_user_attributes
     self.user_name, self.user_phone = user.name, user.phone
-  end
-
-  def memorize_variant_price
-    self.price = variant.price
   end
 
   def save_user

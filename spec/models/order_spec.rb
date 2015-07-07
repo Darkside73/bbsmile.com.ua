@@ -2,42 +2,40 @@ require 'rails_helper'
 
 describe Order do
   context "when save" do
-    let(:variant) { create :variant }
-    it "creates order and user" do
+    let(:variants) { create_list :variant, 2}
+    it "creates order, suborders and user" do
       order = Order.new(
-        variant: variant, notes: 'some notes',
-        user_attributes: { email: 'some@email', phone: '123456', name: 'User' }
+        notes: 'some notes',
+        user_attributes: { email: 'some@email', phone: '123456', name: 'User' },
+        suborders_attributes: [
+          { variant: variants.first },
+          { variant: variants.second }
+        ]
       )
       expect { order.save }.to change { Order.count }.by(1)
       order.reload
+      expect(order.suborders).to have(2).things
       expect(order.user).to be_instance_of(User)
       expect(order.user).to_not be_new_record
     end
     it "fails validation if user not valid" do
       expect(
-        order = Order.new(
-          variant: variant,
-          user_attributes: { email: 'email' }
-        )
+        order = Order.new(user_attributes: { email: 'email' })
       ).to have(1).error_on(:'user.email')
       expect { order.save }.not_to change { Order.count }
     end
     let(:user) { create :user }
     it "prevents user email duplications" do
       order = Order.new(
-        variant: variant,
         user_attributes: { email: user.email, phone: '123456' }
       )
       expect { order.save }.not_to change { User.count }
       expect { user.reload }.not_to change { user.name + user.phone }
     end
-    let(:order) { order = Order.new variant: variant, user_attributes: attributes_for(:user) }
     it "saves current values of user name and phone in order" do
+      order = Order.new user_attributes: attributes_for(:user, phone: '456789')
+      order.suborders = create_list :suborder, 2
       expect { order.save }.to change { order.user_phone and order.user_name }
-    end
-    it "saves current variant price in order" do
-      order.save
-      expect(order.price).to eq(variant.price)
     end
   end
   describe '#phone_number' do

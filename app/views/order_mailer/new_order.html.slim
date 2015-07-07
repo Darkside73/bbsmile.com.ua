@@ -5,9 +5,9 @@ p
   | .
 p
   ' Вы купили
-  strong => link_to @order.variant.title, product_page_url(@order.variant.product.url, host: 'bbsmile.com.ua')
+  / strong => link_to @order.variant.title, product_page_url(@order.variant.product.url, host: 'bbsmile.com.ua')
   ' за
-  strong = number_to_currency @order.price
+  / strong = number_to_currency @order.price
   | .
 
 p Наш менеджер свяжется с вами в ближайшее время
