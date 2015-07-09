@@ -40,6 +40,11 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def suborders=(suborders)
+    super suborders
+    self.total = suborders.inject(0) { |total, suborder| total + suborder.total }
+  end
+
   private
 
   def disable_user_email_uniqueness_validation

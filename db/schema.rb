@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706170941) do
+ActiveRecord::Schema.define(version: 20150709161519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "article_themes", force: :cascade do |t|
     t.integer  "position"
@@ -35,60 +36,60 @@ ActiveRecord::Schema.define(version: 20150706170941) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "assetable_id"
-    t.string   "assetable_type"
-    t.integer  "position",                default: 0
-    t.string   "type"
-    t.string   "attachment_file_name"
-    t.string   "attachment_content_type"
+    t.string   "assetable_type",          limit: 255
+    t.integer  "position",                            default: 0
+    t.string   "type",                    limit: 255
+    t.string   "attachment_file_name",    limit: 255
+    t.string   "attachment_content_type", limit: 255
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
   end
 
   create_table "brands", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "country"
+    t.string   "country",    limit: 255
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "ancestry"
+    t.string   "ancestry",   limit: 255
     t.integer  "position"
-    t.boolean  "leaf",       default: false
+    t.boolean  "leaf",                   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "categories", ["ancestry"], name: "index_categories_on_ancestry", using: :btree
   add_index "categories", ["position"], name: "index_categories_on_position", using: :btree
 
   create_table "contents", force: :cascade do |t|
     t.text     "text"
     t.integer  "contentable_id"
-    t.string   "contentable_type"
+    t.string   "contentable_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string   "user_name"
-    t.string   "user_phone"
+    t.string   "user_name",  limit: 255
+    t.string   "user_phone", limit: 255
     t.integer  "user_id"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "total"
   end
 
   create_table "pages", force: :cascade do |t|
-    t.string   "title",                         null: false
-    t.string   "url",                           null: false
+    t.string   "title",         limit: 255,                 null: false
+    t.string   "url",           limit: 255,                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "pageable_id"
-    t.string   "pageable_type"
-    t.boolean  "hidden",        default: false
-    t.string   "url_old"
-    t.string   "name"
+    t.string   "pageable_type", limit: 255
+    t.boolean  "hidden",                    default: false
+    t.string   "url_old",       limit: 255
+    t.string   "name",          limit: 255
   end
 
   add_index "pages", ["url"], name: "index_pages_on_url", unique: true, using: :btree
@@ -106,17 +107,17 @@ ActiveRecord::Schema.define(version: 20150706170941) do
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "position",    default: 0
-    t.boolean  "novelty",     default: false
-    t.boolean  "hit",         default: false
+    t.integer  "position",                default: 0
+    t.boolean  "novelty",                 default: false
+    t.boolean  "hit",                     default: false
     t.integer  "brand_id"
-    t.string   "video"
+    t.string   "video",       limit: 255
     t.integer  "old_id"
     t.text     "properties"
     t.float    "age_from"
     t.float    "age_to"
-    t.boolean  "drop_price",  default: false
-    t.integer  "sex",         default: 0
+    t.boolean  "drop_price",              default: false
+    t.integer  "sex",                     default: 0
   end
 
   add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree
@@ -132,13 +133,12 @@ ActiveRecord::Schema.define(version: 20150706170941) do
   end
 
   add_index "related_pages", ["page_id"], name: "index_related_pages_on_page_id", using: :btree
-  add_index "related_pages", ["related_id"], name: "index_related_pages_on_related_id", using: :btree
 
   create_table "suborders", force: :cascade do |t|
     t.integer "order_id"
     t.integer "variant_id"
     t.float   "price"
-    t.integer "count"
+    t.integer "count",      default: 1
   end
 
   add_index "suborders", ["order_id"], name: "index_suborders_on_order_id", using: :btree
@@ -147,9 +147,9 @@ ActiveRecord::Schema.define(version: 20150706170941) do
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
-    t.string   "taggable_type"
+    t.string   "taggable_type", limit: 255
     t.integer  "tagger_id"
-    t.string   "tagger_type"
+    t.string   "tagger_type",   limit: 255
     t.string   "context",       limit: 128
     t.datetime "created_at"
   end
@@ -158,29 +158,29 @@ ActiveRecord::Schema.define(version: 20150706170941) do
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string  "name"
-    t.integer "taggings_count", default: 0
+    t.string  "name",           limit: 255
+    t.integer "taggings_count",             default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "phone"
-    t.boolean  "subscribed", default: true
+    t.string   "name",       limit: 255
+    t.string   "email",      limit: 255
+    t.string   "phone",      limit: 255
+    t.boolean  "subscribed",             default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "variants", force: :cascade do |t|
-    t.string   "name"
-    t.boolean  "master",     default: false
+    t.string   "name",       limit: 255
+    t.boolean  "master",                 default: false
     t.float    "price"
     t.float    "price_old"
-    t.string   "sku"
-    t.boolean  "available",  default: true
-    t.integer  "position",   default: 0
+    t.string   "sku",        limit: 255
+    t.boolean  "available",              default: true
+    t.integer  "position",               default: 0
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"

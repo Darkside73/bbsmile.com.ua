@@ -18,12 +18,14 @@ describe Order do
       expect(order.user).to be_instance_of(User)
       expect(order.user).to_not be_new_record
     end
+
     it "fails validation if user not valid" do
       expect(
         order = Order.new(user_attributes: { email: 'email' })
       ).to have(1).error_on(:'user.email')
       expect { order.save }.not_to change { Order.count }
     end
+
     let(:user) { create :user }
     it "prevents user email duplications" do
       order = Order.new(
@@ -32,10 +34,18 @@ describe Order do
       expect { order.save }.not_to change { User.count }
       expect { user.reload }.not_to change { user.name + user.phone }
     end
+
     it "saves current values of user name and phone in order" do
       order = Order.new user_attributes: attributes_for(:user, phone: '456789')
       order.suborders = create_list :suborder, 2
       expect { order.save }.to change { order.user_phone and order.user_name }
+    end
+
+    it "calculate total" do
+      suborder1 = build :suborder, price: 20, count: 2
+      suborder2 = build :suborder, price: 30, count: 3
+      order = create :order, suborders: [suborder1, suborder2]
+      expect(order.total).to eq(suborder1.total + suborder2.total)
     end
   end
   describe '#phone_number' do
