@@ -7,7 +7,7 @@ describe ManagerMailer do
     context "body" do
       subject { mail.body.encoded }
       it { should include(order.number) }
-      it { should include(order.variant.title) }
+      it { should include(order.suborders.sample.variant.title) }
     end
   end
   describe ".price_loaded" do

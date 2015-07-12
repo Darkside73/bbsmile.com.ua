@@ -1,6 +1,7 @@
 class Suborder < ActiveRecord::Base
 
   belongs_to :variant
+  after_validation :memorize_price
   validates :variant, presence: true
 
   def as_json options={}
@@ -13,8 +14,9 @@ class Suborder < ActiveRecord::Base
     price * count
   end
 
-  def variant=(variant)
-    super variant
-    self.price = variant.price
+  private
+
+  def memorize_price
+    self[:price] = variant.price
   end
 end

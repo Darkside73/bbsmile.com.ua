@@ -8,8 +8,9 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :suborders
 
   before_validation :disable_user_email_uniqueness_validation, on: :create
-  before_create :populate_order_user_attributes
-  before_create :save_user
+  after_validation  :calculate_total
+  before_create     :populate_order_user_attributes
+  before_create     :save_user
 
   validates :suborders, presence: true
 
@@ -40,11 +41,6 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def suborders=(suborders)
-    super suborders
-    self.total = suborders.inject(0) { |total, suborder| total + suborder.total }
-  end
-
   private
 
   def disable_user_email_uniqueness_validation
@@ -59,5 +55,9 @@ class Order < ActiveRecord::Base
     self.user.save
     # its very strange... why rails does not do this automaticaly?
     self.user_id = user.id
+  end
+
+  def calculate_total
+    self[:total] = suborders.inject(0) { |total, suborder| total + suborder.total }
   end
 end
