@@ -17,7 +17,7 @@ tr.item*{id: dom_id(variant)} data={sort_url: sort_admin_variant_path(variant)}
         i.fa.fa-minus-sign>
         | нет на складе
   td.thumb
-    = image_tag variant.image.url(:thumb) if variant.image.present?
+    = image_tag variant.image.url(:grid) if variant.image.present?
   td
     p: strong.text-info = variant.price
     p: span.old.text-muted title="старая цена" = variant.price_old
