@@ -56,9 +56,9 @@ $ ->
   $('input[type="tel"]').mask '(000) 000-00-00'
 
   $('#global-message button').click (e) ->
-    $.cookie 'hide-global-message-04-07', 1
+    $.cookie 'hide-global-message-02-09', 1
 
-  unless $.cookie('hide-global-message-04-07')
+  unless $.cookie('hide-global-message-02-09')
     $('#global-message').toggleClass 'hide'
 
 
