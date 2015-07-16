@@ -42,8 +42,8 @@ describe Order do
     end
 
     it "calculate total" do
-      suborder1 = build :suborder, price: 20, count: 2
-      suborder2 = build :suborder, price: 30, count: 3
+      suborder1 = build :suborder, price: 20, quantity: 2
+      suborder2 = build :suborder, price: 30, quantity: 3
       order = create :order, suborders: [suborder1, suborder2]
       expect(order.total).to eq(suborder1.total + suborder2.total)
     end
