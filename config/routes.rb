@@ -13,6 +13,10 @@ Bbsmile::Application.routes.draw do
   get 'produced/*name', to: redirect('/brand/%{name}')
 
   resources :orders, only: :create
+  scope :cart, controller: :cart, as: :cart do
+    post action: 'add_item', as: 'add_item'
+    delete action: 'delete_item', as: 'delete_item'
+  end
   resources :contacts, only: :create
   resources :callback_forms, only: :create
 

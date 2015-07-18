@@ -42,10 +42,21 @@ describe Order do
     end
 
     it "calculate total" do
-      suborder1 = build :suborder, price: 20, quantity: 2
-      suborder2 = build :suborder, price: 30, quantity: 3
+      suborder1 = build :suborder, quantity: 2
+      suborder2 = build :suborder, quantity: 3
       order = create :order, suborders: [suborder1, suborder2]
       expect(order.total).to eq(suborder1.total + suborder2.total)
+    end
+
+    context "when suborder invalid" do
+      it "do not take it into account" do
+        invalid_suborder = build :suborder, price: 'foo', quantity: 'bar'
+        valid_suborder = build :suborder, quantity: 2
+        order = Order.new suborders: [valid_suborder, invalid_suborder]
+        expect(order.valid?).to be_falsy
+        expect(order.size).to eq(1)
+        expect(order.total).to eq(valid_suborder.price * 2)
+      end
     end
   end
   describe '#phone_number' do

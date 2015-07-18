@@ -2,15 +2,16 @@ class Order < ActiveRecord::Base
   include OrderObserver
 
   belongs_to :user
-  has_many :suborders, dependent: :destroy
+  has_many   :suborders, dependent: :destroy
 
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :suborders
 
-  before_validation :disable_user_email_uniqueness_validation, on: :create
-  after_validation  :calculate_total
-  before_create     :populate_order_user_attributes
-  before_create     :save_user
+  before_validation    :disable_user_email_uniqueness_validation, on: :create
+  validates_associated :suborders
+  after_validation     :calculate_total
+  before_create        :populate_order_user_attributes
+  before_create        :save_user
 
   validates :suborders, presence: true
 
@@ -22,6 +23,14 @@ class Order < ActiveRecord::Base
 
   def number
     id.to_s
+  end
+
+  def size
+    valid_suborders.size
+  end
+
+  def remove_suborder(index)
+    self.suborders = suborders.to_a.tap { |s| s.delete_at(index) }
   end
 
   def phone_number
@@ -41,6 +50,10 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def as_json options={}
+    super only: :total, methods: :size
+  end
+
   private
 
   def disable_user_email_uniqueness_validation
@@ -58,6 +71,10 @@ class Order < ActiveRecord::Base
   end
 
   def calculate_total
-    self[:total] = suborders.inject(0) { |total, suborder| total + suborder.total }
+    self[:total] = valid_suborders.inject(0) { |total, suborder| total + suborder.total }
+  end
+
+  def valid_suborders
+    suborders.select(&:valid?)
   end
 end
