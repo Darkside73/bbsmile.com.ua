@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
+//= require vue.min
 //= require twitter/bootstrap
 //= require jquery.scrollTo/jquery.scrollTo
 //= require search-box
