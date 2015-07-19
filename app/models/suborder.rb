@@ -10,6 +10,10 @@ class Suborder < ActiveRecord::Base
     price * quantity
   end
 
+  def title
+    variant.title
+  end
+
   private
 
   def memorize_price

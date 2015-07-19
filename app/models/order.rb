@@ -51,7 +51,11 @@ class Order < ActiveRecord::Base
   end
 
   def as_json options={}
-    super only: :total, methods: :size
+    super only: :total,
+          methods: :size,
+          include: {
+            suborders: { only: :quantity, methods: [:title, :total] }
+          }
   end
 
   private
