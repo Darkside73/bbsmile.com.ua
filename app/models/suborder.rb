@@ -14,6 +14,10 @@ class Suborder < ActiveRecord::Base
     variant.title
   end
 
+  def merge_with suborder
+    self[:quantity] += suborder.quantity if variant == suborder.variant
+  end
+
   private
 
   def memorize_price

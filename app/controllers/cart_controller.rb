@@ -13,6 +13,10 @@ class CartController < ApplicationController
     respond_with cart
   end
 
+  def index
+    respond_with cart
+  end
+
   private
 
   def suborder_params

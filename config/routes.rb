@@ -14,8 +14,10 @@ Bbsmile::Application.routes.draw do
 
   resources :orders, only: :create
   scope :cart, controller: :cart, as: :cart do
+    # TODO: RESTful?
     post action: 'add_item', as: 'add_item'
     delete action: 'delete_item', as: 'delete_item'
+    get action: 'index', as: 'index'
   end
   resources :contacts, only: :create
   resources :callback_forms, only: :create

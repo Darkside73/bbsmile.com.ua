@@ -7,30 +7,57 @@ Vue.component(
 )
 Vue.component(
   'cart-button'
-  props: ['onClick']
+  props: ['addToCart', 'url', 'variantId']
   template: '#cart-button'
+  methods:
+    onClick: (e) -> @addToCart(@url, @variantId)
+)
+Vue.component(
+  'cart-label'
+  # props: ['cart']
+  template: '#cart-label'
+  computed:
+    cart: -> @$parent.$.cart
+    total: -> @cart.total
+  methods:
+    onClick: (e) ->
+      e.preventDefault()
+      @cart.open()
 )
 Vue.component(
   'cart-component'
   template: '#cart-component'
-  props: ['url']
+  props: ['total', 'size', 'urlIndex']
   data: ->
-    suborders: [
-      { title: 'Foo', quantity: 2 }
-      { title: 'Bar', quantity: 1 }
-    ]
+    suborders: []
+    cartModalId: "cartModal"
+  created: ->
+    $.get(
+      @urlIndex
+      {}
+      (data) =>
+        @populateProps(data)
+      'json'
+    )
   methods:
-    addToCart: (e) ->
+    add: (url, variantId) ->
       $.post(
-        @url
-        variant_id: '', quantity: 1
+        url
+        variant_id: variantId, quantity: 1
         (data) =>
-          @suborders = data
-          $("##{@$.cartModal.id}").modal('show')
+          @populateProps(data)
+          @open()
         'json'
       )
+    open: -> $("##{@cartModalId}").modal('show')
+    populateProps: (data) ->
+      @suborders = data.suborders
+      @total = data.total
+      @size = data.size
 )
 
-new Vue(
+@app = new Vue(
   el: 'body'
+  computed:
+    cart: -> @$.cart
 )

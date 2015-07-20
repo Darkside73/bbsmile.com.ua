@@ -42,9 +42,10 @@ describe Order do
     end
 
     it "calculate total" do
-      suborder1 = build :suborder, quantity: 2
-      suborder2 = build :suborder, quantity: 3
-      order = create :order, suborders: [suborder1, suborder2]
+      suborder1 = create :suborder, quantity: 2
+      suborder2 = create :suborder, quantity: 3
+      order = Order.new suborders: [suborder1, suborder2]
+      order.validate
       expect(order.total).to eq(suborder1.total + suborder2.total)
     end
 
@@ -59,6 +60,28 @@ describe Order do
       end
     end
   end
+
+  context "when assign suborder" do
+    let(:suborders) { create_list :suborder, 2, variant: create(:variant) }
+    let(:suborder) { create :suborder }
+    it "merge suborders with same product variant" do
+      order = Order.new
+      order.suborders = suborders
+      order.suborders << suborder
+      expect(order.size).to eq(2)
+    end
+  end
+
+  describe "#remove_suborder" do
+    let(:suborders) { create_list :suborder, 3 }
+    it "remove suborder by index" do
+      order = Order.new
+      order.suborders = suborders
+      order.remove_suborder 1
+      expect(order.size).to eq(2)
+    end
+  end
+
   describe '#phone_number' do
     let(:order) { create :order }
     it 'return normalized phone number' do

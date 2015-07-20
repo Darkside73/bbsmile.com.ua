@@ -2,7 +2,18 @@ class Order < ActiveRecord::Base
   include OrderObserver
 
   belongs_to :user
-  has_many   :suborders, dependent: :destroy
+  has_many   :suborders, dependent: :destroy do
+    def <<(suborder)
+      suborder_with_same_variant = proxy_association.owner.suborders.find do |s|
+        s.variant == suborder.variant
+      end
+      if suborder_with_same_variant
+        suborder_with_same_variant.merge_with suborder
+      else
+        super
+      end
+    end
+  end
 
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :suborders
@@ -14,6 +25,21 @@ class Order < ActiveRecord::Base
   before_create        :save_user
 
   validates :suborders, presence: true
+
+  def suborders= suborders
+    suborders_to_write = []
+    suborders.each do |suborder|
+      suborder_with_same_variant = suborders_to_write.find do |s|
+        s.variant == suborder.variant
+      end
+      if suborder_with_same_variant
+        suborder_with_same_variant.merge_with suborder
+      else
+        suborders_to_write << suborder
+      end
+    end
+    association(:suborders).writer suborders_to_write
+  end
 
   def autosave_associated_records_for_user
     if user.email.present?

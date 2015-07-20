@@ -18,6 +18,11 @@ describe CartController do
       }.to_not change { session[:cart].size }
       expect(response).to_not be_success
     end
+    it "merge items with same product variant" do
+      xhr :post, :add_item, variant_id: variant.id, quantity: 2
+      xhr :post, :add_item, variant_id: variant.id, quantity: 1
+      expect(session[:cart].size).to eq(1)
+    end
   end
   describe 'DELETE delete_item' do
     before do
@@ -27,6 +32,12 @@ describe CartController do
       expect {
         xhr :delete, :delete_item, index: 0
       }.to change { session[:cart].size }.by(-1)
+    end
+  end
+  describe "GET items" do
+    it "return cart items" do
+      xhr :get, :index
+      expect(response).to be_success
     end
   end
 end
