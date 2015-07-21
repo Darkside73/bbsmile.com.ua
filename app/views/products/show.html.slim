@@ -54,7 +54,7 @@
 
             - if @product.available
               = render 'cart'
-              cart-component v-ref="cart" url-index="#{cart_index_path}"
+              cart-component v-ref="cart" url-index="#{cart_index_path}" cart-state="{{cartState}}"
             - else
               p: strong.text-muted нет в наличии
 

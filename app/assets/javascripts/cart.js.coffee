@@ -14,29 +14,25 @@ Vue.component(
 )
 Vue.component(
   'cart-label'
-  # props: ['cart']
+  props: ['cartState']
   template: '#cart-label'
-  computed:
-    cart: -> @$parent.$.cart
-    total: -> @cart.total
   methods:
     onClick: (e) ->
       e.preventDefault()
-      @cart.open()
+      @$parent.$.cart.open()
 )
 Vue.component(
   'cart-component'
   template: '#cart-component'
-  props: ['total', 'size', 'urlIndex']
+  props: ['cartState', 'urlIndex']
   data: ->
-    suborders: []
     cartModalId: "cartModal"
   created: ->
     $.get(
       @urlIndex
       {}
       (data) =>
-        @populateProps(data)
+        @populateCartState(data)
       'json'
     )
   methods:
@@ -45,19 +41,23 @@ Vue.component(
         url
         variant_id: variantId, quantity: 1
         (data) =>
-          @populateProps(data)
+          @populateCartState(data)
           @open()
         'json'
       )
     open: -> $("##{@cartModalId}").modal('show')
-    populateProps: (data) ->
-      @suborders = data.suborders
-      @total = data.total
-      @size = data.size
+    populateCartState: (data) ->
+      @cartState.total = data.total
+      @cartState.size = data.size
+      @cartState.suborders = data.suborders
 )
+
 
 @app = new Vue(
   el: 'body'
-  computed:
-    cart: -> @$.cart
+  data:
+    cartState:
+      total: 0
+      size: 0
+      suborders: []
 )
