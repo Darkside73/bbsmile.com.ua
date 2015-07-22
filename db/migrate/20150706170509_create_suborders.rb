@@ -9,7 +9,8 @@ class CreateSuborders < ActiveRecord::Migration
     reversible do
       execute %{
         insert into suborders (order_id, variant_id, price, count)
-        select id, variant_id, price, 1 from orders
+        select o.id, variant_id, o.price, 1 from orders o
+        join variants v on v.id = o.variant_id
       }
     end
   end
