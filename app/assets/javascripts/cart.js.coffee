@@ -7,10 +7,10 @@ Vue.component(
 )
 Vue.component(
   'cart-button'
-  props: ['addToCart', 'url', 'variantId']
+  props: ['addToCart', 'openCart', 'alreadyInCart']
   template: '#cart-button'
   methods:
-    onClick: (e) -> @addToCart(@url, @variantId)
+    onClick: (e) -> @addToCart()
 )
 Vue.component(
   'cart-label'
@@ -24,9 +24,14 @@ Vue.component(
 Vue.component(
   'cart-component'
   template: '#cart-component'
-  props: ['cartState', 'urlIndex']
+  props: ['cartState', 'variantId', 'urlIndex', 'urlAdd']
   data: ->
     cartModalId: "cartModal"
+  computed:
+    alreadyInCart: ->
+      return true for suborder in @cartState.suborders \
+        when suborder.variant_id is @variantId
+      false
   created: ->
     $.get(
       @urlIndex
@@ -36,10 +41,10 @@ Vue.component(
       'json'
     )
   methods:
-    add: (url, variantId) ->
+    add: ->
       $.post(
-        url
-        variant_id: variantId, quantity: 1
+        @urlAdd
+        variant_id: @variantId, quantity: 1
         (data) =>
           @populateCartState(data)
           @open()

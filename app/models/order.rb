@@ -80,7 +80,7 @@ class Order < ActiveRecord::Base
     super only: :total,
           methods: :size,
           include: {
-            suborders: { only: :quantity, methods: [:title, :total] }
+            suborders: { only: [:variant_id, :quantity], methods: [:title, :total] }
           }
   end
 
