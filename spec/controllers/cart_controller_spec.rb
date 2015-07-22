@@ -26,12 +26,15 @@ describe CartController do
   end
   describe 'DELETE delete_item' do
     before do
-      session[:cart] = create :order
+      session[:cart] = build :order, suborders: [build(:suborder), build(:suborder)]
     end
     it 'delete product variant from cart' do
       expect {
         xhr :delete, :delete_item, index: 0
       }.to change { session[:cart].size }.by(-1)
+      expect {
+        xhr :delete, :delete_item, index: 0
+      }.to change { session[:cart].total }
     end
   end
   describe "GET items" do

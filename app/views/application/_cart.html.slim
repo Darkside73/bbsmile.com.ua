@@ -1,7 +1,7 @@
 script type="text/x-template" id="cart-component"
   div
-    cart-button add-to-cart="{{add}}" open-cart="{{open}}" already-in-cart="{{alreadyInCart}}"
-    cart-modal v-ref="cartModal" id="{{cartModalId}}" suborders="{{cartState.suborders}}"
+    cart-button add-to-cart="{{addItem}}" open-cart="{{open}}" already-in-cart="{{alreadyInCart}}"
+    cart-modal v-ref="cartModal" id="{{cartModalId}}" suborders="{{cartState.suborders}}" delete-item="{{deleteItem}}"
 
 script type="text/x-template" id="cart-modal"
   .modal.fade id="{{id}}"
@@ -11,9 +11,15 @@ script type="text/x-template" id="cart-modal"
         h4.modal-title Корзина
       .modal-body
         ul
-          li v-repeat="suborders" {{title}} {{quantity}}
+          li v-repeat="suborder: suborders"
+            cart-item suborder="{{suborder}}" index="{{$index}}" delete-item="{{deleteItem}}"
       .modal-footer
         a.btn.btn-default data-dismiss="modal" aria-hidden="true" Закрыть
+
+script type="text/x-template" id="cart-item"
+  span
+    | {{suborder.title}} {{suborder.quantity}}
+    a.fa.fa-remove href="#" v-on="click: onClick"
 
 script type="text/x-template" id="cart-button"
   a.btn.btn-lg.btn-info.col-md-4.col-sm-9.col-xs-4 v-show="alreadyInCart" v-on="click: openCart" Уже в корзине

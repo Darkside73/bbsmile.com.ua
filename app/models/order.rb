@@ -12,6 +12,7 @@ class Order < ActiveRecord::Base
       else
         super
       end
+      proxy_association.owner.validate
     end
   end
 
@@ -23,8 +24,7 @@ class Order < ActiveRecord::Base
   after_validation     :calculate_total
   before_create        :populate_order_user_attributes
   before_create        :save_user
-
-  validates :suborders, presence: true
+  before_save          :check_for_suborders
 
   def suborders= suborders
     suborders_to_write = []
@@ -39,10 +39,11 @@ class Order < ActiveRecord::Base
       end
     end
     association(:suborders).writer suborders_to_write
+    validate
   end
 
   def autosave_associated_records_for_user
-    if user.email.present?
+    if user && user.email.present?
       User.find_by(email: user.email).try(:tap) { |u| self.user = u }
     end
   end
@@ -98,6 +99,10 @@ class Order < ActiveRecord::Base
     self.user.save
     # its very strange... why rails does not do this automaticaly?
     self.user_id = user.id
+  end
+
+  def check_for_suborders
+    false unless suborders.any?
   end
 
   def calculate_total

@@ -1,7 +1,16 @@
 Vue.component(
+  'cart-item'
+  template: '#cart-item'
+  props: ['suborder', 'index', 'deleteItem']
+  methods:
+    onClick: (e) ->
+      e.preventDefault()
+      @deleteItem(@index)
+)
+Vue.component(
   'cart-modal'
   template: '#cart-modal'
-  props: ['id', 'suborders']
+  props: ['id', 'suborders', 'deleteItem']
   created: ->
     $("##{@id}").modal()
 )
@@ -24,7 +33,7 @@ Vue.component(
 Vue.component(
   'cart-component'
   template: '#cart-component'
-  props: ['cartState', 'variantId', 'urlIndex', 'urlAdd']
+  props: ['cartState', 'variantId', 'urlIndex', 'urlAdd', 'urlDelete']
   data: ->
     cartModalId: "cartModal"
   computed:
@@ -41,13 +50,21 @@ Vue.component(
       'json'
     )
   methods:
-    add: ->
+    addItem: ->
       $.post(
         @urlAdd
         variant_id: @variantId, quantity: 1
         (data) =>
           @populateCartState(data)
           @open()
+        'json'
+      )
+    deleteItem: (index) ->
+      $.post(
+        @urlDelete
+        index: index, _method: 'delete'
+        (data) =>
+          @populateCartState(data)
         'json'
       )
     open: -> $("##{@cartModalId}").modal('show')

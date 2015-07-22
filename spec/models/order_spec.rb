@@ -19,6 +19,12 @@ describe Order do
       expect(order.user).to_not be_new_record
     end
 
+    it "does not save order without suborders" do
+      order = Order.new
+      expect(order).to be_valid
+      expect(order.save).to be_falsy
+    end
+
     it "fails validation if user not valid" do
       expect(
         order = Order.new(user_attributes: { email: 'email' })
