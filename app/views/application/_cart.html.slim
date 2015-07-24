@@ -10,11 +10,14 @@ script type="text/x-template" id="cart-modal"
         button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
         h4.modal-title Корзина
       .modal-body
-        ul
+        ol
           li v-repeat="suborder: suborders"
             cart-item suborder="{{suborder}}" index="{{$index}}" delete-item="{{deleteItem}}"
+        .alert.alert-info role="alert" v-if="empty"
+          strong Корзина пуста
       .modal-footer
-        a.btn.btn-default data-dismiss="modal" aria-hidden="true" Закрыть
+        a.btn.btn-info data-dismiss="modal" aria-hidden="true" Продолжить покупки
+        a.btn.btn-success.btn-lg data-dismiss="modal" aria-hidden="true" v-show="!empty" Оформить заказ
 
 script type="text/x-template" id="cart-item"
   span

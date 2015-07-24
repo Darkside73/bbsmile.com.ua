@@ -1,4 +1,13 @@
 Vue.component(
+  'cart-modal'
+  template: '#cart-modal'
+  props: ['id', 'suborders', 'deleteItem']
+  computed:
+    empty: -> !@suborders.length
+  created: ->
+    $("##{@id}").modal()
+)
+Vue.component(
   'cart-item'
   template: '#cart-item'
   props: ['suborder', 'index', 'deleteItem']
@@ -6,13 +15,6 @@ Vue.component(
     onClick: (e) ->
       e.preventDefault()
       @deleteItem(@index)
-)
-Vue.component(
-  'cart-modal'
-  template: '#cart-modal'
-  props: ['id', 'suborders', 'deleteItem']
-  created: ->
-    $("##{@id}").modal()
 )
 Vue.component(
   'cart-button'
@@ -41,6 +43,8 @@ Vue.component(
       return true for suborder in @cartState.suborders \
         when suborder.variant_id is @variantId
       false
+  watch:
+    'cartState.size': (size) -> @close() unless size
   created: ->
     @populateCartState(window.cartState)
   methods:
@@ -59,9 +63,11 @@ Vue.component(
         index: index, _method: 'delete'
         (data) =>
           @populateCartState(data)
+          @close unless @cartState.size
         'json'
       )
     open: -> $("##{@cartModalId}").modal('show')
+    close: -> $("##{@cartModalId}").modal('hide')
     populateCartState: (data) ->
       @cartState.total = data.total_with_currency
       @cartState.size = data.size
