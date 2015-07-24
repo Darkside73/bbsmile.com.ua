@@ -1,4 +1,5 @@
 class Suborder < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
 
   belongs_to :variant
   after_validation :memorize_price, unless: -> { errors.any? }
@@ -8,6 +9,10 @@ class Suborder < ActiveRecord::Base
 
   def total
     price * quantity
+  end
+
+  def total_with_currency
+    number_to_currency total
   end
 
   def title

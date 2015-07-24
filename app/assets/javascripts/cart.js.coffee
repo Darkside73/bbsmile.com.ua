@@ -63,7 +63,7 @@ Vue.component(
       )
     open: -> $("##{@cartModalId}").modal('show')
     populateCartState: (data) ->
-      @cartState.total = data.total
+      @cartState.total = data.total_with_currency
       @cartState.size = data.size
       @cartState.suborders = data.suborders
 )

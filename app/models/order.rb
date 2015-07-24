@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   include OrderObserver
+  include ActionView::Helpers::NumberHelper
 
   belongs_to :user
   has_many   :suborders, dependent: :destroy do
@@ -79,10 +80,17 @@ class Order < ActiveRecord::Base
 
   def as_json options={}
     super only: :total,
-          methods: :size,
+          methods: [:size, :total_with_currency],
           include: {
-            suborders: { only: [:variant_id, :quantity], methods: [:title, :total] }
+            suborders: {
+              only: [:variant_id, :quantity],
+              methods: [:title, :total, :total_with_currency]
+            }
           }
+  end
+
+  def total_with_currency
+    number_to_currency total
   end
 
   private
