@@ -23,8 +23,4 @@ class CartController < ApplicationController
   def suborder_params
     params.permit(:variant_id, :quantity)
   end
-
-  def cart
-    session[:cart] ||= Order.new
-  end
 end

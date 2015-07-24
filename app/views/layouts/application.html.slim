@@ -20,6 +20,7 @@ html
 
   body *body_attributes
     = render 'metrika'
+    = render partial: 'cart_state', formats: :js
     #main-menu.navbar.navbar-fixed-top.navbar-default role="navigation"
       = render 'main_menu'
     = content_for?(:header) ? yield(:header) : render('header')

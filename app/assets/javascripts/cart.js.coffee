@@ -42,13 +42,7 @@ Vue.component(
         when suborder.variant_id is @variantId
       false
   created: ->
-    $.get(
-      @urlIndex
-      {}
-      (data) =>
-        @populateCartState(data)
-      'json'
-    )
+    @populateCartState(window.cartState)
   methods:
     addItem: ->
       $.post(
