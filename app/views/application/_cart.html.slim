@@ -10,9 +10,8 @@ script type="text/x-template" id="cart-modal"
         button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
         h4.modal-title Корзина
       .modal-body
-        ol
-          li v-repeat="suborder: suborders"
-            cart-item suborder="{{suborder}}" index="{{$index}}" delete-item="{{deleteItem}}"
+        .row v-repeat="suborder: suborders"
+          cart-item suborder="{{suborder}}" index="{{$index}}" delete-item="{{deleteItem}}"
         .alert.alert-info role="alert" v-if="empty"
           strong Корзина пуста
       .modal-footer
@@ -20,9 +19,15 @@ script type="text/x-template" id="cart-modal"
         a.btn.btn-success.btn-lg data-dismiss="modal" aria-hidden="true" v-show="!empty" Оформить заказ
 
 script type="text/x-template" id="cart-item"
-  span
-    | {{suborder.title}} {{suborder.quantity}}
-    a.fa.fa-remove href="#" v-on="click: onClick"
+  .col-md-3.image
+    img.img-responsive v-attr="src: suborder.variant.image_url"
+  .col-md-9.title
+    h4: a href="/{{suborder.variant.product.url}}" {{suborder.title}} {{suborder.quantity}}
+    .price.big {{suborder.total_with_currency}}
+    a.btn.btn-danger.btn-xs href="#" v-on="click: onClick"
+      i.fa.fa-trash>
+      | Удалить
+  .col-md-2.price
 
 script type="text/x-template" id="cart-button"
   a.btn.btn-lg.btn-info.col-md-4.col-sm-9.col-xs-4 v-show="alreadyInCart" v-on="click: openCart" Уже в корзине
@@ -32,5 +37,5 @@ script type="text/x-template" id="cart-button"
 script type="text/x-template" id="cart-label"
   a href="#" v-on="click: onClick"
     | Корзина&nbsp;
-    span.badge v-text="cartState.total"
+    span.badge {{cartState.total}}
 

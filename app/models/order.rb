@@ -78,13 +78,23 @@ class Order < ActiveRecord::Base
     end
   end
 
+  # TODO move to template
   def as_json options={}
     super only: :total,
           methods: [:size, :total_with_currency],
           include: {
             suborders: {
               only: [:variant_id, :quantity],
-              methods: [:title, :total, :total_with_currency]
+              methods: [:title, :total, :total_with_currency],
+              include: {
+                variant: {
+                  methods: :image_url,
+                  only: [],
+                  include: {
+                    product: { methods: :url, only: [] }
+                  }
+                }
+              }
             }
           }
   end

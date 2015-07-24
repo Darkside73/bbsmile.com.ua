@@ -38,6 +38,14 @@ class Variant < ActiveRecord::Base
     product.brand.try(:name)
   end
 
+  def image_url
+    if image
+      image.url(:grid)
+    else
+      product.top_image(:medium)
+    end
+  end
+
   private
 
   def destroy_image
