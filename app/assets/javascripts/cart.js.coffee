@@ -7,6 +7,7 @@ Vue.component(
   created: ->
     $("##{@id}").modal()
 )
+
 Vue.component(
   'cart-item'
   template: '#cart-item'
@@ -16,13 +17,20 @@ Vue.component(
       e.preventDefault()
       @deleteItem(@index)
 )
+
 Vue.component(
   'cart-button'
-  props: ['addToCart', 'openCart', 'alreadyInCart']
+  props: ['variantId', 'cartState', 'addToCart', 'openCart']
   template: '#cart-button'
+  computed:
+    alreadyInCart: ->
+      return true for suborder in @cartState.suborders \
+        when suborder.variant_id is @variantId
+      false
   methods:
-    onClick: (e) -> @addToCart()
+    onClick: (e) -> @addToCart(@variantId)
 )
+
 Vue.component(
   'cart-label'
   props: ['cartState']
@@ -32,26 +40,22 @@ Vue.component(
       e.preventDefault()
       @$parent.$.cart.open()
 )
+
 Vue.component(
   'cart-component'
   template: '#cart-component'
-  props: ['cartState', 'variantId', 'urlIndex', 'urlAdd', 'urlDelete']
+  props: ['cartState', 'urlIndex', 'urlAdd', 'urlDelete']
   data: ->
     cartModalId: "cartModal"
-  computed:
-    alreadyInCart: ->
-      return true for suborder in @cartState.suborders \
-        when suborder.variant_id is @variantId
-      false
   watch:
     'cartState.size': (size) -> @close() unless size
   created: ->
     @populateCartState(window.cartState)
   methods:
-    addItem: ->
+    addItem: (variantId) ->
       $.post(
         @urlAdd
-        variant_id: @variantId, quantity: 1
+        variant_id: variantId, quantity: 1
         (data) =>
           @populateCartState(data)
           @open()

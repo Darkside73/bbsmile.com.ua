@@ -1,6 +1,6 @@
 script type="text/x-template" id="cart-component"
   div
-    cart-button add-to-cart="{{addItem}}" open-cart="{{open}}" already-in-cart="{{alreadyInCart}}"
+    cart-button add-to-cart="{{addItem}}" open-cart="{{open}}" cart-state="{{cartState}}" variant-id="#{variant.id}"
     cart-modal v-ref="cartModal" id="{{cartModalId}}" suborders="{{cartState.suborders}}" delete-item="{{deleteItem}}"
 
 script type="text/x-template" id="cart-modal"
