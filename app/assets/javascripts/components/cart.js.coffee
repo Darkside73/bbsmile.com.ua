@@ -1,9 +1,9 @@
 Vue.component(
   'cart-modal'
   template: '#cart-modal'
-  props: ['id', 'suborders']
+  props: ['id', 'cartState']
   computed:
-    empty: -> !@suborders.length
+    empty: -> !@cartState.size
   created: ->
     $("##{@id}").modal()
   methods:
@@ -15,7 +15,7 @@ Vue.component(
         index: index, _method: 'delete'
         (data) =>
           @$parent.populateCartState(data)
-          @close() unless @cartState.size
+          @close() if @empty
         'json'
       )
 )
@@ -28,6 +28,12 @@ Vue.component(
     onClick: (e) ->
       e.preventDefault()
       @deleteItem(@index)
+)
+
+Vue.component(
+  'cart-total'
+  template: '#cart-total'
+  props: ['total']
 )
 
 Vue.component(

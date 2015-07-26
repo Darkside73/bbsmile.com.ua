@@ -5,8 +5,9 @@ script type="text/x-template" id="cart-modal"
         button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
         h4.modal-title Корзина
       .modal-body
-        .row v-repeat="suborder: suborders"
+        .row v-repeat="suborder in cartState.suborders"
           cart-item suborder="{{suborder}}" index="{{$index}}" delete-item="{{deleteItem}}"
+        cart-total total="{{cartState.total}}"
         .alert.alert-info role="alert" v-if="empty"
           strong Корзина пуста
       .modal-footer
@@ -18,8 +19,13 @@ script type="text/x-template" id="cart-item"
     img.img-responsive v-attr="src: suborder.variant.image_url"
   .col-md-9.title
     h4: a href="/{{suborder.variant.product.url}}" {{suborder.title}} {{suborder.quantity}}
-    .price.big {{suborder.total_with_currency}}
+    .price.medium {{suborder.total_with_currency}}
     a.btn.btn-danger.btn-xs href="#" v-on="click: onClick"
       i.fa.fa-trash>
       | Удалить
   .col-md-2.price
+
+script type="text/x-template" id="cart-total"
+  p.lead.text-right
+    ' Всего:
+    span.price.big {{total}}
