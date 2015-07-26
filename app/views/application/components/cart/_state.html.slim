@@ -1,0 +1,7 @@
+script type="text/x-template" id="cart-label"
+  a href="#" v-on="click: onClick"
+    | Корзина&nbsp;
+    span.badge {{cartState.total}}
+
+javascript:
+  var cartState = #{{raw cart.to_json}}

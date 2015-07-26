@@ -20,7 +20,7 @@ html
 
   body *body_attributes
     = render 'metrika'
-    = render partial: 'cart_state', formats: :js
+    = render_component 'cart/state'
     #main-menu.navbar.navbar-fixed-top.navbar-default role="navigation"
       = render 'main_menu'
     = content_for?(:header) ? yield(:header) : render('header')
@@ -29,6 +29,8 @@ html
     .footer: .container
       = render 'footer'
     = render 'admin_panel' unless Rails.env.production?
+    = render_component 'cart/modal'
+    cart-modal v-ref="cartModal" id="{{cartModalId}}" suborders="{{cartState.suborders}}"
     = javascript_include_tag 'application'
     = yield :modals
     = yield :js_footer
