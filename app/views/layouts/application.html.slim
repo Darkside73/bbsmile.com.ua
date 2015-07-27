@@ -30,7 +30,7 @@ html
       = render 'footer'
     = render 'admin_panel' unless Rails.env.production?
     = render_component 'cart/modal'
-    cart-modal v-ref="cartModal" id="{{cartModalId}}" cart-state="{{cartState}}"
+    cart-modal v-ref="cartModal" id="{{cartModalId}}" cart-state="{{cartState}}" delete-item="{{deleteCartItem}}"
     = javascript_include_tag 'application'
     = yield :modals
     = yield :js_footer

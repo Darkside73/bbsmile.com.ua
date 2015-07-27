@@ -15,6 +15,23 @@
   methods:
     openCart: -> @$.cartModal.open()
     closeCart: -> @$.cartModal.close()
+    addCartItem: (variantId) ->
+      $.post(
+        '/cart'
+        variant_id: variantId, quantity: 1
+        (data) =>
+          @populateCartState(data)
+          @openCart()
+        'json'
+      )
+    deleteCartItem: (index) ->
+      $.post(
+        '/cart'
+        index: index, _method: 'delete'
+        (data) =>
+          @populateCartState(data)
+        'json'
+      )
     populateCartState: (data) ->
       @cartState.total = data.total_with_currency
       @cartState.size = data.size

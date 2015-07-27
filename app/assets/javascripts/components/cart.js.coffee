@@ -1,7 +1,7 @@
 Vue.component(
   'cart-modal'
   template: '#cart-modal'
-  props: ['id', 'cartState']
+  props: ['id', 'cartState', 'deleteItem']
   computed:
     empty: -> !@cartState.size
   created: ->
@@ -9,15 +9,6 @@ Vue.component(
   methods:
     open: -> $("##{@id}").modal('show')
     close: -> $("##{@id}").modal('hide')
-    deleteItem: (index) ->
-      $.post(
-        '/cart'
-        index: index, _method: 'delete'
-        (data) =>
-          @$parent.populateCartState(data)
-          @close() if @empty
-        'json'
-      )
 )
 
 Vue.component(
@@ -38,7 +29,7 @@ Vue.component(
 
 Vue.component(
   'cart-button'
-  props: ['variantId', 'cartState', 'openCart']
+  props: ['variantId', 'addItem', 'openCart', 'cartState']
   template: '#cart-button'
   computed:
     alreadyInCart: ->
@@ -46,15 +37,7 @@ Vue.component(
         when suborder.variant_id is @variantId
       false
   methods:
-    addItem: (e) ->
-      $.post(
-        '/cart'
-        variant_id: @variantId, quantity: 1
-        (data) =>
-          @$parent.populateCartState(data)
-          @openCart()
-        'json'
-      )
+    onClick: (e) -> @addItem(@variantId)
 )
 
 Vue.component(
