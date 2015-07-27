@@ -7,12 +7,12 @@ script type="text/x-template" id="cart-modal"
       .modal-body
         .row v-repeat="suborder in cartState.suborders"
           cart-item suborder="{{suborder}}" index="{{$index}}" delete-item="{{deleteItem}}"
-        cart-total total="{{cartState.total}}"
+        cart-total total="{{cartState.total}}" v-if="!empty"
         .alert.alert-info role="alert" v-if="empty"
           strong Корзина пуста
       .modal-footer
         a.btn.btn-info data-dismiss="modal" aria-hidden="true" Продолжить покупки
-        a.btn.btn-success.btn-lg data-dismiss="modal" aria-hidden="true" v-show="!empty" Оформить заказ
+        a.btn.btn-success.btn-lg href="#{cart_checkout_path}" aria-hidden="true" v-show="!empty" Оформить заказ
 
 script type="text/x-template" id="cart-item"
   .col-md-3.image

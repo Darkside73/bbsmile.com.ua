@@ -23,6 +23,10 @@ class ApplicationController < ActionController::Base
     session[:cart] ||= Order.new
   end
 
+  def reset_cart
+    session[:cart] = nil
+  end
+
   private
 
   def current_page_from_slug

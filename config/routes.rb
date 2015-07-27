@@ -18,6 +18,7 @@ Bbsmile::Application.routes.draw do
     post action: 'add_item', as: 'add_item'
     delete action: 'delete_item', as: 'delete_item'
     get action: 'index', as: 'index'
+    get 'checkout'
   end
   resources :contacts, only: :create
   resources :callback_forms, only: :create

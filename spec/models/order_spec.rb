@@ -78,13 +78,15 @@ describe Order do
     end
   end
 
-  describe "#remove_suborder" do
+  context "when operate with suborders" do
     let(:suborders) { create_list :suborder, 3 }
-    it "remove suborder by index" do
-      order = Order.new
-      order.suborders = suborders
-      order.remove_suborder 1
-      expect(order.size).to eq(2)
+    let(:order) { Order.new }
+    describe "#remove_suborder" do
+      it "remove suborder by index" do
+        order.suborders = suborders
+        order.remove_suborder 1
+        expect(order.size).to eq(2)
+      end
     end
   end
 
