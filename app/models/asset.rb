@@ -1,5 +1,5 @@
 class Asset < ActiveRecord::Base
-  belongs_to :assetable, polymorphic: true
+  belongs_to :assetable, polymorphic: true, touch: true
   delegate :url, to: :attachment
 
   attr_reader :attachment_url

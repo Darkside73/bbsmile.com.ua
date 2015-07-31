@@ -86,6 +86,14 @@ module CategoriesHelper
     title_parts.join(' ')
   end
 
+  def special_products_cache_key
+    updated_at = []
+    [:novelties, :discounts, :hits].each do |type|
+      updated_at << @category.send(type).last_updated(36).maximum(:updated_at)
+    end
+    updated_at.reject(&:nil?).max
+  end
+
   private
 
   def link_to_add_or_remove_filter(entity, link_text, items, link_id = nil)

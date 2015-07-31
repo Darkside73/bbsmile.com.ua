@@ -2,7 +2,7 @@ class Page < ActiveRecord::Base
   include PgSearch
   include Related
 
-  belongs_to :pageable, polymorphic: true
+  belongs_to :pageable, polymorphic: true, touch: true
 
   scope :visible, -> { where hidden: false }
   pg_search_scope :by_title, against: :title

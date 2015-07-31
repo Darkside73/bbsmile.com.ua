@@ -1,7 +1,8 @@
-= tabs do |tabs|
-  - tabs.pane "Новинки", id: 'novelties', icon: 'fa fa-certificate', class: 'fade' do
-    = render 'products', products: @category.novelties.last_updated(36), hide_novelties: true
-  - tabs.pane "Скидки", id: 'discounts', icon: 'fa fa-fire', class: 'fade' do
-    = render 'products', products: @category.discounts.last_updated(36)
-  - tabs.pane "Хиты продаж", id: 'hits', icon: 'fa fa-heart-o', class: 'fade' do
-    = render 'products', products: @category.hits.last_updated(36), hide_hits: true
+- cache special_products_cache_key do
+  = tabs do |tabs|
+    - tabs.pane "Новинки", id: 'novelties', icon: 'fa fa-certificate', class: 'fade' do
+      = render 'products', products: @category.novelties.last_updated(36), hide_novelties: true
+    - tabs.pane "Скидки", id: 'discounts', icon: 'fa fa-fire', class: 'fade' do
+      = render 'products', products: @category.discounts.last_updated(36)
+    - tabs.pane "Хиты продаж", id: 'hits', icon: 'fa fa-heart-o', class: 'fade' do
+      = render 'products', products: @category.hits.last_updated(36), hide_hits: true

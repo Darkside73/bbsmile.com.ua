@@ -69,7 +69,8 @@
                 button.more.btn.btn-default
                   i.fa.fa-info-circle>
                   | Подробнее о категории
-        = render 'products'
+        - cache [@products, @products.map(&:brand)] do
+          = render 'products'
       - elsif @category.leaf?
         .alert.alert-warning
           strong> Извините,

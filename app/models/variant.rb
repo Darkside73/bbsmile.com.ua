@@ -1,7 +1,7 @@
 class Variant < ActiveRecord::Base
   include PgSearch
 
-  belongs_to :product
+  belongs_to :product, touch: true
   has_one :image, as: :assetable, dependent: :destroy
 
   scope :visible, -> { joins(product: [:page]).where("pages.hidden" => false) }
