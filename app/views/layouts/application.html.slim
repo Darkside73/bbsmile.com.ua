@@ -30,6 +30,7 @@ html
     = render 'admin_panel' unless Rails.env.production?
     = render_component 'cart/state'
     = render_component 'cart/modal'
+    = render_component 'cart/button'
     cart-modal v-ref="cartModal" id="{{cartModalId}}" cart-state="{{cartState}}" delete-item="{{deleteCartItem}}" update-item="{{updateCartItem}}"
     = javascript_include_tag 'application'
     = yield :modals

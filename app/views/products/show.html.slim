@@ -53,7 +53,6 @@
                 | #{number_to_currency @product.price}
 
             - if @product.available
-              = render_component 'cart/button'
               cart-button add-item="{{addCartItem}}" open-cart="{{openCart}}" cart-state="{{cartState}}" variant-id="#{@product.master_variant.id}"
             - else
               p: strong.text-muted нет в наличии
