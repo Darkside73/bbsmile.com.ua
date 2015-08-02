@@ -12,6 +12,13 @@ ol
       ' за
       strong = number_to_currency suborder.price
 
+p
+  strong> Способ оплаты:
+  - if @order.payment_method
+    = t("activerecord.attributes.order.payment_method.#{@order.payment_method}")
+  - else
+    | не указан
+
 - if @order.notes.present?
   p: strong Дополнительная информация:
   p = @order.notes

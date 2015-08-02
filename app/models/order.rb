@@ -17,6 +17,8 @@ class Order < ActiveRecord::Base
     end
   end
 
+  enum payment_method: [:prepay, :cash_on_delivery]
+
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :suborders
 

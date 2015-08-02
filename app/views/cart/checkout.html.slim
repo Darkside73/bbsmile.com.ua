@@ -10,10 +10,15 @@
     .col-md-6 v-show="cartState.size"
       = simple_form_for cart do |f|
         = f.simple_fields_for :user do |u|
-          = u.input :name, label: "Имя"
-          = u.input :phone, label: "Телефон"
-          = u.input :email, label: "E-mail"
+          .row
+            .col-md-6
+              = u.input :first_name, label: "Имя"
+              = u.input :phone, label: "Телефон"
+            .col-md-6
+              = u.input :last_name, label: "Фамилия"
+              = u.input :email, label: "E-mail"
           .form-group
+            = f.input :payment_method, label: 'Способ оплаты', collection: Order.payment_methods.keys, label_method: lambda { |key| t("activerecord.attributes.order.payment_method.#{key}") }, as: :radio_buttons
             = f.input :notes, label: "Дополнительная информация", input_html: { rows: 5 }
             => u.check_box :subscribed
             label.inline for="order_user_attributes_subscribed" хочу получать акционные и скидочные предложения

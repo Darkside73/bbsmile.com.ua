@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(
       :variant_id, :notes,
-      user_attributes: [:name, :email, :phone, :subscribed]
+      user_attributes: [:first_name, :last_name, :email, :phone, :subscribed]
     )
   end
 

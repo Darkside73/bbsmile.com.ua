@@ -6,7 +6,10 @@ describe Order do
     it "creates order, suborders and user" do
       order = Order.new(
         notes: 'some notes',
-        user_attributes: { email: 'some@email', phone: '123456', name: 'User' },
+        user_attributes: {
+          first_name: 'John', last_name: 'Doe',
+          email: 'some@email', phone: '123456'
+        },
         suborders_attributes: [
           { variant: variants.first },
           { variant: variants.second }

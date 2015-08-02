@@ -98,6 +98,10 @@ ru:
         type_of:
           similar: похожие
           suggested: сопутствующие
+      order:
+        payment_method:
+          prepay: предоплата
+          cash_on_delivery: наложенный платеж
   mailers:
     order:
       new_order:
