@@ -88,6 +88,17 @@ describe Order do
         expect(order.size).to eq(2)
       end
     end
+
+    let(:variant) { create :variant, price: 10 }
+    let(:suborder) { create :suborder, variant: variant }
+    describe "#update_suborder" do
+      it "change suborder quantity by index" do
+        order.suborders << suborder
+        expect {
+          order.update_suborder(0, 2)
+        }.to change { order.total }.by(variant.price)
+      end
+    end
   end
 
   describe '#phone_number' do

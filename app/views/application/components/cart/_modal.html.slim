@@ -6,7 +6,7 @@ script type="text/x-template" id="cart-modal"
         h4.modal-title Корзина
       .modal-body
         .row v-repeat="suborder in cartState.suborders"
-          cart-item suborder="{{suborder}}" index="{{$index}}" delete-item="{{deleteItem}}"
+          cart-item suborder="{{suborder}}" index="{{$index}}" delete-item="{{deleteItem}}" update-item="{{updateItem}}"
         cart-total total="{{cartState.total}}" v-if="!empty"
         .alert.alert-info role="alert" v-if="empty"
           strong Корзина пуста
@@ -15,15 +15,21 @@ script type="text/x-template" id="cart-modal"
         a.btn.btn-success.btn-lg href="#{cart_checkout_path}" aria-hidden="true" v-show="!empty" Оформить заказ
 
 script type="text/x-template" id="cart-item"
-  .col-md-3.image
-    img.img-responsive v-attr="src: suborder.variant.image_url"
-  .col-md-9.title
-    h4: a href="/{{suborder.variant.product.url}}" {{suborder.title}} {{suborder.quantity}}
-    .price.medium {{suborder.total_with_currency}}
-    a.btn.btn-danger.btn-xs href="#" v-on="click: onClick"
-      i.fa.fa-trash>
-      | Удалить
-  .col-md-2.price
+  .cart-item
+    .col-md-3
+      img.img-responsive v-attr="src: suborder.variant.image_url"
+    .col-md-9
+      h4: a href="/{{suborder.variant.product.url}}" {{suborder.title}}
+      .row
+        .col-md-4
+          .price.medium {{suborder.total_with_currency}}
+          a.btn.btn-danger.btn-xs href="#" v-on="click: onClick"
+            i.fa.fa-trash>
+            | Удалить
+        .col-md-8.quantity
+          a.fa.fa-minus href="#" v-on="click: onChangeQuantity(-1, $event)"
+          strong {{suborder.quantity}}
+          a.fa.fa-plus href="#" v-on="click: onChangeQuantity(1, $event)"
 
 script type="text/x-template" id="cart-total"
   p.lead.text-right

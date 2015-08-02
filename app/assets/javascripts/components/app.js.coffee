@@ -32,6 +32,13 @@
           @populateCartState(data)
         'json'
       )
+    updateCartItem: (index, quantity) ->
+      $.post(
+        '/cart/update'
+        index: index, quantity: quantity
+        (data) => @populateCartState(data)
+        'json'
+      )
     populateCartState: (data) ->
       @cartState.total = data.total_with_currency
       @cartState.size = data.size

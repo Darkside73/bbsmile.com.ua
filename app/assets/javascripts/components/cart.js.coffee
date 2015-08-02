@@ -1,7 +1,7 @@
 Vue.component(
   'cart-modal'
   template: '#cart-modal'
-  props: ['id', 'cartState', 'deleteItem']
+  props: ['id', 'cartState', 'deleteItem', 'updateItem']
   computed:
     empty: -> !@cartState.size
   created: ->
@@ -14,11 +14,15 @@ Vue.component(
 Vue.component(
   'cart-item'
   template: '#cart-item'
-  props: ['suborder', 'index', 'deleteItem']
+  props: ['suborder', 'index', 'deleteItem', 'updateItem']
   methods:
     onClick: (e) ->
       e.preventDefault()
       @deleteItem(@index)
+    onChangeQuantity: (step, e) ->
+      e.preventDefault()
+      quantity = @suborder.quantity + step
+      @updateItem(@index, quantity) if 0 < quantity < 100
 )
 
 Vue.component(

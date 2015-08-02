@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 describe CartController do
+  before :each do
+    session[:cart] = Order.new
+  end
   describe 'POST add_item' do
-    before :each do
-      session[:cart] = Order.new
-    end
     let(:variant) { create(:variant) }
     it 'add product variant to cart' do
       expect {
@@ -26,7 +26,7 @@ describe CartController do
   end
   describe 'DELETE delete_item' do
     before do
-      session[:cart] = build :order, suborders: [build(:suborder), build(:suborder)]
+      session[:cart].suborders = [build(:suborder), build(:suborder)]
     end
     it 'delete product variant from cart' do
       expect {
@@ -41,6 +41,15 @@ describe CartController do
     it "return cart items" do
       xhr :get, :index
       expect(response).to be_success
+    end
+  end
+  describe "GET change quantity" do
+    before do
+      session[:cart].suborders = [build(:suborder), build(:suborder)]
+    end
+    it "change item quantity" do
+      xhr :get, :update, index: 0, quantity: 3
+      expect(session[:cart].suborders.first.quantity).to eq(3)
     end
   end
 end

@@ -15,6 +15,11 @@ class CartController < ApplicationController
     end
   end
 
+  def update
+    cart.update_suborder(params[:index].to_i, params[:quantity].to_i)
+    respond_with cart
+  end
+
   def index
     render json: cart
   end

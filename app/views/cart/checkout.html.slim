@@ -20,5 +20,5 @@
         .form-group = f.button :submit, "Оформить заказ", class: 'btn-success btn-lg'
     .col-md-6
       .row v-repeat="suborder in cartState.suborders"
-        cart-item suborder="{{suborder}}" index="{{$index}}" delete-item="{{deleteCartItem}}"
+        cart-item suborder="{{suborder}}" index="{{$index}}" delete-item="{{deleteCartItem}}" update-item="{{updateCartItem}}"
       cart-total total="{{cartState.total}}" v-show="cartState.size"

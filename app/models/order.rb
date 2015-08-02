@@ -61,6 +61,11 @@ class Order < ActiveRecord::Base
     self.suborders = suborders.to_a.tap { |s| s.delete_at(index) }
   end
 
+  def update_suborder(index, quantity)
+    suborders[index].try { |s| s.quantity = quantity }
+    calculate_total
+  end
+
   def phone_number
     number = user_phone.gsub /[^+^\d]+/, ''
     country_phone_code = '+380'
