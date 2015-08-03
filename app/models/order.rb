@@ -56,7 +56,7 @@ class Order < ActiveRecord::Base
   end
 
   def size
-    valid_suborders.size
+    valid_suborders.inject(0) { |size, suborder| size + suborder.quantity }
   end
 
   def remove_suborder(index)

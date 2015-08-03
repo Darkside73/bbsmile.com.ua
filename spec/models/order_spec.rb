@@ -61,11 +61,11 @@ describe Order do
     context "when suborder invalid" do
       it "do not take it into account" do
         invalid_suborder = build :suborder, price: 'foo', quantity: 'bar'
-        valid_suborder = build :suborder, quantity: 2
+        valid_suborder = build :suborder, quantity: 1
         order = Order.new suborders: [valid_suborder, invalid_suborder]
         expect(order.valid?).to be_falsy
         expect(order.size).to eq(1)
-        expect(order.total).to eq(valid_suborder.price * 2)
+        expect(order.total).to eq(valid_suborder.price)
       end
     end
   end
@@ -77,7 +77,7 @@ describe Order do
       order = Order.new
       order.suborders = suborders
       order.suborders << suborder
-      expect(order.size).to eq(2)
+      expect(order.suborders.size).to eq(2)
     end
   end
 

@@ -9,7 +9,7 @@ describe CartController do
     it 'add product variant to cart' do
       expect {
         xhr :post, :add_item, variant_id: variant.id, quantity: 2
-      }.to change { session[:cart].size }.by(1)
+      }.to change { session[:cart].size }.by(2)
       expect(response).to be_success
     end
     it 'not add invalid item to cart' do
@@ -21,7 +21,7 @@ describe CartController do
     it "merge items with same product variant" do
       xhr :post, :add_item, variant_id: variant.id, quantity: 2
       xhr :post, :add_item, variant_id: variant.id, quantity: 1
-      expect(session[:cart].size).to eq(1)
+      expect(session[:cart].suborders.size).to eq(1)
     end
   end
   describe 'DELETE delete_item' do
