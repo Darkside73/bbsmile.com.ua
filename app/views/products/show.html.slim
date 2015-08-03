@@ -53,7 +53,7 @@
                 | #{number_to_currency @product.price}
 
             - if @product.available
-              cart-button add-item="{{addCartItem}}" open-cart="{{openCart}}" cart-state="{{cartState}}" variant-id="#{@product.master_variant.id}"
+              cart-button add-item="{{addCartItem}}" open-cart="{{openCart}}" cart-state="{{cartState}}" variant-id="#{@product.master_variant.id}" style="btn-lg"
             - else
               p: strong.text-muted нет в наличии
 

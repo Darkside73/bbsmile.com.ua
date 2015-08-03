@@ -1,4 +1,7 @@
 script type="text/x-template" id="cart-button"
-  a.btn.btn-lg.btn-info.col-md-4.col-sm-9.col-xs-4 v-show="alreadyInCart" v-on="click: openCart" Уже в корзине
-  a.btn.btn-lg.btn-success.col-md-4.col-sm-9.col-xs-4 v-show="!alreadyInCart" v-on="click: onClick" В корзину
-  template v-if="!alreadyInCart"
+  a.btn.btn-success v-show="!alreadyInCart" v-on="click: onClick" v-class="style"
+    i.fa.fa-shopping-cart>
+    | В корзину
+  a.btn.btn-link v-show="alreadyInCart" v-on="click: openCart" v-class="style"
+    i.fa.fa-shopping-cart>
+    | Уже в корзине

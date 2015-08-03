@@ -33,7 +33,7 @@ Vue.component(
 
 Vue.component(
   'cart-button'
-  props: ['variantId', 'addItem', 'openCart', 'cartState']
+  props: ['variantId', 'addItem', 'openCart', 'cartState', 'style']
   template: '#cart-button'
   computed:
     alreadyInCart: ->

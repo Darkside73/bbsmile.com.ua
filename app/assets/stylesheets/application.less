@@ -159,9 +159,18 @@ label.inline {
 #main-menu {
   .container { padding-left: 0; }
   li.cart {
-    background-color: @pinkLight;
-    a { text-shadow: 0 1px 0 @pinkLight; position: relative }
-    span.badge { .sup; background: darken(@pinkLight, 25%); }
+    padding: 0;
+    a {
+      position: relative;
+      padding: 9px;
+    }
+    span.badge {
+      position: relative;
+      top: -15px;
+      left: -10px;
+      font-size: 110%;
+      background: darken(@pinkLight, 25%);
+    }
   }
   li.promo {
     background-color: lighten(@red, 50%);
