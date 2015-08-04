@@ -113,6 +113,8 @@ ru:
     callbacks:
       new_callback:
         subject: Обратный звонок
+      quick_order:
+        subject: Быстрый заказ
     system:
       sync_prices_loaded:
         subject: Прайс загружен

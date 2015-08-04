@@ -17,6 +17,11 @@ class ManagerMailer < ActionMailer::Base
     mail subject: I18n.t('mailers.callbacks.new_callback.subject')
   end
 
+  def quick_order_message(quick_order)
+    @quick_order = quick_order
+    mail subject: I18n.t('mailers.callbacks.quick_order.subject')
+  end
+
   def sync_prices_loaded(category)
     @category = category
     mail subject: I18n.t('mailers.system.sync_prices_loaded.subject')
