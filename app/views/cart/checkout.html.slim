@@ -19,7 +19,7 @@
               = u.input :email, label: "E-mail"
           .form-group
             = f.input :payment_method, label: 'Способ оплаты', collection: Order.payment_methods.keys, label_method: lambda { |key| t("activerecord.attributes.order.payment_method.#{key}") }, as: :radio_buttons
-            = f.input :notes, label: "Дополнительная информация", input_html: { rows: 5 }
+            = f.input :notes, label: "Дополнительная информация", hint: "Укажите ваш город, способ доставки, отделение \"Новой почты\"...", input_html: { rows: 5 }
             => u.check_box :subscribed
             label.inline for="order_user_attributes_subscribed" хочу получать акционные и скидочные предложения
         .form-group = f.button :submit, "Оформить заказ", class: 'btn-success btn-lg'
