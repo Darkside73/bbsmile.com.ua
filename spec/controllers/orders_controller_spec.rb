@@ -20,6 +20,7 @@ describe OrdersController do
     context "when format html" do
       it 'creates order and do redirect' do
         post :create, order: {
+          payment_method: :prepay,
           user_attributes: attributes_for(:user)
         }
         expect(flash[:success]).to have_content(/created/i)
