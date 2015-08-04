@@ -6,9 +6,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if cart.save
         flash_message = I18n.t(
-          'flash.message.orders.created',
-          order_id: cart.id,
-          when_callback: I18n.t("flash.message.orders.call_#{when_callback}")
+          'flash.message.orders.created', order_id: cart.id
         )
         format.json do
           flash.now[:success] = flash_message
@@ -34,17 +32,6 @@ class OrdersController < ApplicationController
       :notes, :payment_method,
       user_attributes: [:first_name, :last_name, :email, :phone, :subscribed]
     )
-  end
-
-  def when_callback
-    case Time.current.hour
-    when 9..19
-      'now'
-    when 19..23
-      'tomorrow'
-    else
-      'morning'
-    end
   end
 
   def reject_spam

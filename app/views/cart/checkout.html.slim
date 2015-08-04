@@ -13,7 +13,7 @@
           .row
             .col-md-6
               = u.input :first_name, label: "Имя"
-              = u.input :phone, label: "Телефон"
+              = u.input :phone, label: "Телефон", input_html: { type: 'tel' }
             .col-md-6
               = u.input :last_name, label: "Фамилия"
               = u.input :email, label: "E-mail"

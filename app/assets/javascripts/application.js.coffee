@@ -54,7 +54,7 @@ $ ->
 
   new ContactDialog('#send-message')
   new CallbackDialog('#send-callback')
-  new CallbackDialog('#send-quick-order')
+  new CallbackDialog('#send-quick-order') if $("#send-quick-order").length
 
   $('input[type="tel"]').mask '(000) 000-00-00'
 
