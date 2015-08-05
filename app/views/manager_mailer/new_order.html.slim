@@ -4,11 +4,21 @@ p
   ' оформил заказ №
   strong = @order.id
   | :
+
+ol
+  - @order.suborders.each do |suborder|
+    li
+      => link_to suborder.variant.title, product_page_url(suborder.variant.product.url, host: 'beta.bbsmile.com.ua')
+      ' за
+      strong = number_to_currency suborder.price
+
 p
-  strong => link_to @order.variant.title, product_page_url(@order.variant.product.url, host: 'beta.bbsmile.com.ua')
-  ' за
-  strong = number_to_currency @order.price
-  | .
+  strong> Способ оплаты:
+  - if @order.payment_method
+    = t("activerecord.attributes.order.payment_method.#{@order.payment_method}")
+  - else
+    | не указан
+
 - if @order.notes.present?
   p: strong Дополнительная информация:
   p = @order.notes

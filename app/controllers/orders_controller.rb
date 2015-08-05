@@ -2,18 +2,25 @@ class OrdersController < ApplicationController
   before_action :reject_spam
 
   def create
-    order = Order.new order_params
+    cart.attributes = order_params
     respond_to do |format|
-      if order.save
-        flash.now[:success] =
-          I18n.t(
-            'flash.message.orders.created',
-            order_id: order.id,
-            when_callback: I18n.t("flash.message.orders.call_#{when_callback}")
-          )
-        format.json { render json: order.as_json.merge(flashes_in_json), status: :created }
+      if cart.save
+        flash_message = I18n.t(
+          'flash.message.orders.created', order_id: cart.id
+        )
+        format.json do
+          flash.now[:success] = flash_message
+          render json: cart.as_json.merge(flashes_in_json), status: :created
+          reset_cart
+        end
+        format.html do
+          flash[:success] = flash_message
+          redirect_to cart_checkout_path
+          reset_cart
+        end
       else
-        format.json { render json: order.errors, status: :unprocessable_entity }
+        format.json { render json: cart.errors, status: :unprocessable_entity }
+        format.html { render 'cart/checkout' }
       end
     end
   end
@@ -22,20 +29,9 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(
-      :variant_id, :notes,
-      user_attributes: [:name, :email, :phone, :subscribed]
+      :notes, :payment_method,
+      user_attributes: [:first_name, :last_name, :email, :phone, :subscribed]
     )
-  end
-
-  def when_callback
-    case Time.current.hour
-    when 9..19
-      'now'
-    when 19..23
-      'tomorrow'
-    else
-      'morning'
-    end
   end
 
   def reject_spam

@@ -3,11 +3,13 @@ p
   ' Номер вашего заказа
   strong = @order.id
   | .
-p
-  ' Вы купили
-  strong => link_to @order.variant.title, product_page_url(@order.variant.product.url, host: 'bbsmile.com.ua')
-  ' за
-  strong = number_to_currency @order.price
-  | .
+
+h4 Вы заказали:
+ol
+  - @order.suborders.each do |suborder|
+    li
+      strong => link_to suborder.variant.title, product_page_url(suborder.variant.product.url, host: 'bbsmile.com.ua')
+      ' за
+      strong = number_to_currency suborder.price
 
 p Наш менеджер свяжется с вами в ближайшее время

@@ -2,44 +2,108 @@ require 'rails_helper'
 
 describe Order do
   context "when save" do
-    let(:variant) { create :variant }
-    it "creates order and user" do
+    let(:variants) { create_list :variant, 2}
+    it "creates order, suborders and user" do
       order = Order.new(
-        variant: variant, notes: 'some notes',
-        user_attributes: { email: 'some@email', phone: '123456', name: 'User' }
+        notes: 'some notes',
+        user_attributes: {
+          first_name: 'John', last_name: 'Doe',
+          email: 'some@email', phone: '123456'
+        },
+        suborders_attributes: [
+          { variant: variants.first },
+          { variant: variants.second }
+        ]
       )
       expect { order.save }.to change { Order.count }.by(1)
       order.reload
+      expect(order.suborders).to have(2).things
       expect(order.user).to be_instance_of(User)
       expect(order.user).to_not be_new_record
     end
+
+    it "does not save order without suborders" do
+      order = Order.new
+      expect(order).to be_valid
+      expect(order.save).to be_falsy
+    end
+
     it "fails validation if user not valid" do
       expect(
-        order = Order.new(
-          variant: variant,
-          user_attributes: { email: 'email' }
-        )
+        order = Order.new(user_attributes: { email: 'email' })
       ).to have(1).error_on(:'user.email')
       expect { order.save }.not_to change { Order.count }
     end
+
     let(:user) { create :user }
     it "prevents user email duplications" do
       order = Order.new(
-        variant: variant,
         user_attributes: { email: user.email, phone: '123456' }
       )
       expect { order.save }.not_to change { User.count }
       expect { user.reload }.not_to change { user.name + user.phone }
     end
-    let(:order) { order = Order.new variant: variant, user_attributes: attributes_for(:user) }
+
     it "saves current values of user name and phone in order" do
+      order = Order.new user_attributes: attributes_for(:user, phone: '456789')
+      order.suborders = create_list :suborder, 2
       expect { order.save }.to change { order.user_phone and order.user_name }
     end
-    it "saves current variant price in order" do
-      order.save
-      expect(order.price).to eq(variant.price)
+
+    it "calculate total" do
+      suborder1 = create :suborder, quantity: 2
+      suborder2 = create :suborder, quantity: 3
+      order = Order.new suborders: [suborder1, suborder2]
+      order.validate
+      expect(order.total).to eq(suborder1.total + suborder2.total)
+    end
+
+    context "when suborder invalid" do
+      it "do not take it into account" do
+        invalid_suborder = build :suborder, price: 'foo', quantity: 'bar'
+        valid_suborder = build :suborder, quantity: 1
+        order = Order.new suborders: [valid_suborder, invalid_suborder]
+        expect(order.valid?).to be_falsy
+        expect(order.size).to eq(1)
+        expect(order.total).to eq(valid_suborder.price)
+      end
     end
   end
+
+  context "when assign suborder" do
+    let(:suborders) { create_list :suborder, 2, variant: create(:variant) }
+    let(:suborder) { create :suborder }
+    it "merge suborders with same product variant" do
+      order = Order.new
+      order.suborders = suborders
+      order.suborders << suborder
+      expect(order.suborders.size).to eq(2)
+    end
+  end
+
+  context "when operate with suborders" do
+    let(:suborders) { create_list :suborder, 3 }
+    let(:order) { Order.new }
+    describe "#remove_suborder" do
+      it "remove suborder by index" do
+        order.suborders = suborders
+        order.remove_suborder 1
+        expect(order.size).to eq(2)
+      end
+    end
+
+    let(:variant) { create :variant, price: 10 }
+    let(:suborder) { create :suborder, variant: variant }
+    describe "#update_suborder" do
+      it "change suborder quantity by index" do
+        order.suborders << suborder
+        expect {
+          order.update_suborder(0, 2)
+        }.to change { order.total }.by(variant.price)
+      end
+    end
+  end
+
   describe '#phone_number' do
     let(:order) { create :order }
     it 'return normalized phone number' do

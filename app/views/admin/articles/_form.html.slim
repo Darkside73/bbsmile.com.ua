@@ -5,8 +5,8 @@
   = f.simple_fields_for :page do |p|
     = p.input :title, label: 'Заголовок'
     = p.input :name, label: 'Название'
-    = p.input :url, label: 'URL', wrapper: :append do
-      = p.input_field :url, type: 'text'
+    = p.input :url, label: 'URL', wrapper: :vertical_input_group do
+      = p.input_field :url, type: 'text', class: 'form-control'
       span.input-group-addon: a.fa.fa-random.transliterate data-source="#article_page_attributes_title" data-target="#article_page_attributes_url" href="#" title="Сгенерировать из заголовка"
     = p.input :url_old, label: 'Старый URL', input_html: {type: 'text'}
     = p.input :hidden, label: 'скрытая'

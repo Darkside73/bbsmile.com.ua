@@ -1,9 +1,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
+//= require vue.min
 //= require twitter/bootstrap
 //= require jquery.scrollTo/jquery.scrollTo
 //= require search-box
+//= require components/app
 //= require order-from-grid
 //= require category
 //= require promotions
@@ -52,6 +54,7 @@ $ ->
 
   new ContactDialog('#send-message')
   new CallbackDialog('#send-callback')
+  new CallbackDialog('#send-quick-order') if $("#send-quick-order").length
 
   $('input[type="tel"]').mask '(000) 000-00-00'
 

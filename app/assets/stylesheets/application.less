@@ -38,7 +38,7 @@ a:hover i.fa { text-decoration: none; }
 
 a.dashed {
   border-bottom: 1px dashed @link-color;
-  &:hover {
+  &:hover, &:active, &:focus {
     border-bottom: none;
     text-decoration: none;
   }
@@ -66,6 +66,7 @@ a.dashed {
 
 .price {
   color: @pinkDark;
+  &.medium { font-size: @font-size-base*1.2; }
   &.big { font-size: @font-size-base*2; }
   span.old {
     &.big { font-size: @font-size-base*1.5; }
@@ -78,6 +79,15 @@ a.dashed {
     .transition(opacity 1s ease-in-out);
     &[disabled] {
       opacity: .3;
+    }
+  }
+}
+
+.cart-item {
+  .quantity {
+    font-size: 150%;
+    &>* {
+      padding-right: 10px;
     }
   }
 }
@@ -144,14 +154,30 @@ label.inline {
   .radio input[type="radio"], .checkbox input[type="checkbox"] {
     margin-right: 5px;
   }
+  mark.hint {
+    display: block;
+    margin-top: 2px;
+    font-style: italic;
+    font-size: 90%;
+  }
 }
 
 #main-menu {
   .container { padding-left: 0; }
   li.cart {
-    background-color: @pinkLight;
-    a { text-shadow: 0 1px 0 @pinkLight; position: relative }
-    span.badge { .sup; background: darken(@pinkLight, 25%); }
+    padding: 0;
+    a {
+      position: relative;
+      padding: 9px;
+    }
+    span.badge {
+      position: relative;
+      top: -15px;
+      left: -10px;
+      font-size: 110%;
+      background: darken(@pinkLight, 25%);
+      border-radius: 50%;
+    }
   }
   li.promo {
     background-color: lighten(@red, 50%);
@@ -307,6 +333,10 @@ h1.page-title {
       left: 0;
     }
   }
+}
+
+.modal-body .row:not(:last-child) {
+  // border-bottom: 1px dashed @gray;
 }
 
 #article-content {

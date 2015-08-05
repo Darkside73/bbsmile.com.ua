@@ -53,8 +53,7 @@
                 | #{number_to_currency @product.price}
 
             - if @product.available
-              = render 'order/form', order: @order, product: @product
-              p: a.quick-shop.btn.btn-lg.btn-success.col-md-4.col-sm-9.col-xs-4 data-toggle="modal" href="##{dom_id @order}" Заказать
+              cart-button add-item="{{addCartItem}}" open-cart="{{openCart}}" cart-state="{{cartState}}" variant-id="#{@product.master_variant.id}" style="btn-lg"
             - else
               p: strong.text-muted нет в наличии
 
@@ -66,6 +65,8 @@
                 span.text-danger
                   ' Этот товар можно приобрести в поврежденной упаковке с
                   strong дополнительной скидкой!
+            = render 'callback/quick_order_form'
+            p.lead: a.dashed href="#send-quick-order" data-toggle="modal" Заказать в один клик!
             p.red Уточняйте цену на данный товар
             .phones
               h4 Заказать по телефону:

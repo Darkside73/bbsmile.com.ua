@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504155322) do
+ActiveRecord::Schema.define(version: 20150802194809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "article_themes", force: :cascade do |t|
     t.integer  "position"
@@ -70,14 +71,14 @@ ActiveRecord::Schema.define(version: 20150504155322) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string   "user_name",  limit: 255
-    t.string   "user_phone", limit: 255
+    t.string   "user_name",      limit: 255
+    t.string   "user_phone",     limit: 255
     t.integer  "user_id"
-    t.float    "price"
-    t.integer  "variant_id"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "total"
+    t.integer  "payment_method"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -134,6 +135,26 @@ ActiveRecord::Schema.define(version: 20150504155322) do
 
   add_index "related_pages", ["page_id"], name: "index_related_pages_on_page_id", using: :btree
 
+  create_table "sessions", force: :cascade do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+
+  create_table "suborders", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "variant_id"
+    t.float   "price"
+    t.integer "quantity",   default: 1
+  end
+
+  add_index "suborders", ["order_id"], name: "index_suborders_on_order_id", using: :btree
+  add_index "suborders", ["variant_id"], name: "index_suborders_on_variant_id", using: :btree
+
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -180,4 +201,6 @@ ActiveRecord::Schema.define(version: 20150504155322) do
   add_index "variants", ["price"], name: "index_variants_on_price", using: :btree
   add_index "variants", ["product_id"], name: "index_variants_on_product_id", using: :btree
 
+  add_foreign_key "suborders", "orders"
+  add_foreign_key "suborders", "variants"
 end

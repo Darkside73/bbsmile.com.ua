@@ -27,7 +27,7 @@ class Variant < ActiveRecord::Base
   before_save :destroy_image, if: "delete_image"
 
   def title
-    [product.title, name, sku].reject(&:blank?).join(' ')
+    [product.name, name, sku].reject(&:blank?).join(' ')
   end
 
   def category_title
@@ -36,6 +36,14 @@ class Variant < ActiveRecord::Base
 
   def brand_name
     product.brand.try(:name)
+  end
+
+  def image_url
+    if image
+      image.url(:grid)
+    else
+      product.top_image(:medium)
+    end
   end
 
   private

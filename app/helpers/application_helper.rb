@@ -98,6 +98,10 @@ module ApplicationHelper
     links
   end
 
+  def render_component(component)
+    render "application/components/#{component}"
+  end
+
   private
     def current_layout
       layout = controller.send(:_layout)

@@ -1,4 +1,4 @@
-set :stages, %w(production beta)
+set :stages, %w(production beta staging)
 set :default_stage, 'beta'
 
 set :user, 'darkside'

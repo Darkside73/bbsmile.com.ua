@@ -88,6 +88,8 @@ en:
     callbacks:
       new_callback:
         subject: New callback message
+      quick_order:
+        subject: New quick order message
     system:
       sync_prices_loaded:
         subject: Prices has been loaded

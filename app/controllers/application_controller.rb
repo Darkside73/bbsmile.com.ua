@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_action :current_page_from_slug
   attr_reader :current_page
-  helper_method :current_page
+  helper_method :current_page, :cart
 
   protected
 
@@ -17,6 +17,14 @@ class ApplicationController < ActionController::Base
 
   def current_page!
     current_page or raise ActiveRecord::RecordNotFound
+  end
+
+  def cart
+    session[:cart] ||= Order.new
+  end
+
+  def reset_cart
+    session[:cart] = nil
   end
 
   private
