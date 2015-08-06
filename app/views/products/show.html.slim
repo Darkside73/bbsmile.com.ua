@@ -68,6 +68,22 @@
             = render 'callback/quick_order_form'
             p.lead: a.dashed href="#send-quick-order" data-toggle="modal" Заказать в один клик!
             p.red Уточняйте цену на данный товар
+            ul.fa-ul.page-nav-links
+              li
+                i.fa.fa-li.fa-file-text-o
+                a.dashed href="#description" data-scroll="400" Описание, характеристики
+              - if @product.video?
+                li
+                  i.fa.fa-li.fa-youtube-play
+                  a.dashed href="#video" data-scroll="400" Видео
+              - if @product.page.suggested_pages.any?
+                li
+                  i.fa.fa-li.fa-eye
+                  a.dashed href="#suggestedProducts" data-scroll="400" Советуем также посмотреть
+              - if @product.page.all_similar_pages.any?
+                li
+                  i.fa.fa-li.fa-barcode
+                  a.dashed href="#similarProducts" data-scroll="400" Похожие товары
             .phones
               h4 Заказать по телефону:
               ul.fa-ul
@@ -81,23 +97,6 @@
                   i.fa.fa-li.fa-mobile
                   | 093 717-91-91
               p = link_to "обратный звонок", '#send-callback', class: 'callback dashed', data: {toggle: 'modal'}
-
-              p.page-nav-links
-                a.dashed> href="#description" data-scroll="400"
-                  i.fa.fa-file-text-o>
-                  | Описание, характеристики
-                - if @product.video?
-                  a.dashed> href="#video" data-scroll="400"
-                    i.fa.fa-youtube-play>
-                    | Видео
-                - if @product.page.suggested_pages.any?
-                  a.dashed> href="#suggestedProducts" data-scroll="400"
-                    i.fa.fa-eye>
-                    | Советуем также посмотреть
-                - if @product.page.all_similar_pages.any?
-                  a.dashed href="#similarProducts" data-scroll="400"
-                    i.fa.fa-barcode>
-                    | Похожие товары
 
         .col-md-5.col-sm-6.col-xs-12 = render 'product_info_accordion'
 

@@ -1,16 +1,11 @@
 javascript:
-    /* uptolike share begin */
-    (function(d,c){
-        var up=d.createElement('script'),
-                s=d.getElementsByTagName('script')[0],
-                r=Math.floor(Math.random() * 1000000);
-        var cmp = c + Math.floor(Math.random() * 10000);
-        var url = window.location.href;
-        window["__uptolike_widgets_settings_"+cmp] = {
-        };
-        d.write("<div id='"+cmp+"' class='__uptlk' data-uptlkwdgtId='"+r+"'></div>");
-        up.type = 'text/javascript'; up.async = true;
-        up.src = "//w.uptolike.com/widgets/v1/widgets.js?b=fb.tw.ok.vk.gp&id=948346&o=1&m=1&sf=1&ss=2&sst=1&c1=ededed&c1a=0.0&c3=ff9300&c5=ffffff&mc=1&c2=000000&c4=ffffff&c4a=1.0&mcs=0&sel=0&fol=0&sel=0&he=1&c=" + cmp + "&url="+encodeURIComponent(url);
-        s.parentNode.insertBefore(up, s);
-    })(document,"__uptlk");
-    /* uptolike share end */
+    (function(w,doc) {
+    if (!w.__utlWdgt ) {
+        w.__utlWdgt = true;
+        var d = doc, s = d.createElement('script'), g = 'getElementsByTagName';
+        s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+        s.src = ('https:' == w.location.protocol ? 'https' : 'http')  + '://w.uptolike.com/widgets/v1/uptolike.js';
+        var h=d[g]('body')[0];
+        h.appendChild(s);
+    }})(window,document);
+div data-background-alpha="0.0" data-buttons-color="#ffffff" data-counter-background-color="#ffffff" data-share-counter-size="12" data-top-button="false" data-share-counter-type="disable" data-share-style="12" data-mode="share" data-like-text-enable="false" data-hover-effect="rotate-cw" data-mobile-view="false" data-icon-color="#ffffff" data-orientation="horizontal" data-text-color="#000000" data-share-shape="round-rectangle" data-sn-ids="vk.fb.gp.tw.ok.em." data-share-size="30" data-background-color="#ededed" data-preview-mobile="false" data-mobile-sn-ids="fb.vk.tw.wh.ok.gp." data-pid="948346" data-counter-background-alpha="1.0" data-following-enable="false" data-exclude-show-more="false" data-selection-enable="false" class="uptolike-buttons"
