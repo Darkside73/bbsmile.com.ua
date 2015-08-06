@@ -4,12 +4,13 @@
   .caption
     h5 = variant.name
     p = variant.sku
-    p.price
-      - if variant.price_old?
-        span.old.text-muted => number_to_currency variant.price_old
-      strong = "#{number_to_currency variant.price}"
-    - if variant.available?
-      cart-button add-item="{{addCartItem}}" open-cart="{{openCart}}" cart-state="{{cartState}}" variant-id="#{variant.id}"
-    - else
-      a.btn.disabled нет в наличии
+    - if variant.price
+      p.price
+        - if variant.price_old?
+          span.old.text-muted => number_to_currency variant.price_old
+        strong = "#{number_to_currency variant.price}"
+      - if variant.available?
+        cart-button add-item="{{addCartItem}}" open-cart="{{openCart}}" cart-state="{{cartState}}" variant-id="#{variant.id}"
+      - else
+        a.btn.disabled нет в наличии
 
