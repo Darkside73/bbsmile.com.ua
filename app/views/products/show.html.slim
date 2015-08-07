@@ -66,7 +66,8 @@
                   ' Этот товар можно приобрести в поврежденной упаковке с
                   strong дополнительной скидкой!
             = render 'callback/quick_order_form'
-            p.lead: a.dashed href="#send-quick-order" data-toggle="modal" Заказать в один клик!
+            - if @product.available
+              p.lead: a.dashed href="#send-quick-order" data-toggle="modal" Заказать в один клик!
             p.red Уточняйте цену на данный товар
             ul.fa-ul.page-nav-links
               li
