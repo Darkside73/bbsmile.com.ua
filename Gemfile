@@ -13,7 +13,7 @@ gem 'sidekiq'
 gem 'daemons'
 gem 'newrelic_rpm'
 
-gem 'rails_config'
+gem 'config'#, github: 'railsconfig/config'
 gem 'russian'
 gem 'exception_notification'
 
