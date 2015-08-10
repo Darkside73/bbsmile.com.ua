@@ -24,7 +24,9 @@ class Variant < ActiveRecord::Base
   validates :available, :master, inclusion: { in: [true, false] }
   validate :price_old_cannot_be_less_than_price
 
-  before_save :destroy_image, if: "delete_image"
+  normalize_attribute :delete_image, with: :booleanize
+
+  before_save :destroy_image, if: :delete_image
 
   def title
     [product.name, name, sku].reject(&:blank?).join(' ')
