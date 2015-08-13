@@ -98,10 +98,8 @@ end
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
-# Use unicorn as the app server
-gem 'unicorn'
-gem 'unicorn-worker-killer'
-
+# Use thin as the app server
+gem 'thin'
 
 # To use debugger
 # gem 'debugger'
