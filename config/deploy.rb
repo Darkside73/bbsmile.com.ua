@@ -25,14 +25,41 @@ set :unicorn_pid, proc { "#{fetch(:deploy_to)}/unicorn/#{fetch(:application)}.pi
 set :unicorn_config_path, proc { "#{fetch(:deploy_to)}/unicorn/#{fetch(:application)}.rb" }
 
 namespace :deploy do
-  %w(start stop restart).each do |command|
-    task command.to_sym => ['rvm:hook', 'deploy:set_rails_env'] do
-      on roles(:all), in: :sequence, wait: 5 do
-        within current_path do
-          execute :bundle, "exec thin #{command} -C #{shared_path}/config/thin/#{fetch(:application)}.yml"
+  desc 'Stop Unicorn'
+  task stop: 'deploy:set_rails_env' do
+    on roles(:all) do
+      if test("[ -f #{fetch(:unicorn_pid)} ]")
+        execute :kill, capture(:cat, fetch(:unicorn_pid))
+      end
+    end
+  end
+
+  desc 'Start Unicorn'
+  task start: 'deploy:set_rails_env' do
+    on roles(:all) do
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :bundle, "exec unicorn -c #{fetch(:unicorn_config_path)} -D"
         end
       end
     end
+  end
+
+  desc 'Reload Unicorn without killing master process'
+  task reload: 'deploy:set_rails_env' do
+    on roles(:all) do
+      if test("[ -f #{fetch(:unicorn_pid)} ]")
+        execute :kill, '-s USR2', capture(:cat, fetch(:unicorn_pid))
+      else
+        error 'Unicorn process not running'
+      end
+    end
+  end
+
+  desc 'Restart Unicorn'
+  task restart: 'deploy:set_rails_env' do
+    invoke 'deploy:stop'
+    invoke 'deploy:start'
   end
   after :publishing, :restart
 
