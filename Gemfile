@@ -65,6 +65,7 @@ group :development do
   gem 'guard-cucumber'
   gem 'better_errors'
   gem 'web-console'
+  gem 'bullet'
   gem 'quiet_assets'
   gem 'rails-erd'
   gem 'capistrano', '>= 3.0', require: false

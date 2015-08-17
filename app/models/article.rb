@@ -18,7 +18,7 @@ class Article < ActiveRecord::Base
 
   scope :top,    -> (n = 2) { visible.where(top: true).limit(n) }
   scope :other,  -> { visible.where(top: false) }
-  scope :random, -> (n = nil) { reorder('RANDOM()').limit(n) }
+  scope :random, -> (n = nil) { visible.reorder('RANDOM()').limit(n) }
 
   def fresh?
     created_at > 2.days.ago
