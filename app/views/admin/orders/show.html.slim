@@ -1,0 +1,28 @@
+= render layout: 'boxed', locals: {title: "Заказ № #{@order.number}"} do
+
+  .well
+    - if @order.payment_method
+      span.label.label-info => t("activerecord.attributes.order.payment_method.#{@order.payment_method}")
+    span.label.label-info = t("activerecord.attributes.order.status.#{@order.status}")
+    br
+    | #{@order.user_name} #{@order.user_phone} #{@order.user.email}
+    br
+    | #{@order.notes}
+
+  table.table.orders-list.table-striped.table-hover
+    thead
+      tr
+        th Наименование
+        th Количество
+        th Цена
+    tbody
+      - @order.suborders.each do |suborder|
+        tr
+          td = link_to suborder.variant.product
+          td = suborder.quantity
+          td = number_to_currency suborder.price
+  .text-right
+    strong = "Всего: #{number_to_currency @order.total}"
+
+  - if @order.liqpay?
+    a.btn.btn-info Отправить ссылку для оплаты

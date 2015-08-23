@@ -17,7 +17,8 @@ class Order < ActiveRecord::Base
     end
   end
 
-  enum payment_method: [:prepay, :cash_on_delivery]
+  enum payment_method:  [:prepay, :cash_on_delivery, :liqpay]
+  enum status:          [:placed, :pending, :paid, :refunded]
 
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :suborders
@@ -28,6 +29,8 @@ class Order < ActiveRecord::Base
   before_create        :populate_order_user_attributes
   before_create        :save_user
   before_save          :check_for_suborders
+
+  default_scope -> { order(created_at: :desc) }
 
   def suborders= suborders
     suborders_to_write = []

@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     draw :admin_sync
 
     resources :brands
+    resources :orders, only: [:index, :show]
+
     get 'search-products.json' => 'search#autocomplete', format: :json, as: 'search_products'
   end
 

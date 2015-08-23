@@ -1,0 +1,27 @@
+class Admin::OrdersController < Admin::ApplicationController
+  helper_method :filter_params
+
+  def index
+    params[:status] ||= "placed"
+    @orders = Order.where(orders_where_condition).page(params[:page])
+  end
+
+  def show
+    @order = Order.includes(suborders: [variant: :product]).find params[:id]
+  end
+
+  private
+
+  def filter_params(filter)
+    params.except(:action, :controller).merge(filter)
+  end
+
+  def orders_where_condition
+    condition = {}
+    %w(payment_method status).each do |name|
+      # TODO: replace by "payment_method: params[:payment_method]"
+      condition[name] = Order.send(name.pluralize)[params[name]] if params[name]
+    end
+    condition
+  end
+end

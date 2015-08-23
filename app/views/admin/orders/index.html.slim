@@ -1,0 +1,30 @@
+= render layout: 'boxed', locals: {title: 'Заказы'} do
+  .orders-filters
+    = link_to "все", admin_orders_path, class: "btn btn-default#{' active' unless params[:payment_method] || params[:status]}"
+    .btn-group
+      - Order.payment_methods.keys.each do |payment_method|
+        = link_to t("activerecord.attributes.order.payment_method.#{payment_method}"), admin_orders_path(filter_params(payment_method: payment_method)), class: "btn btn-default#{' active' if params[:payment_method] == payment_method}"
+    .btn-group
+      - Order.statuses.keys.each do |status|
+        = link_to t("activerecord.attributes.order.status.#{status}"), admin_orders_path(filter_params(status: status)), class: "btn btn-default#{' active' if params[:status] == status}"
+
+  - if @orders.any?
+    table.table.orders-list.table-striped.table-hover
+      thead
+        tr
+          th Номер
+          th Способ оплаты
+          th Статус
+      tbody
+      - @orders.each do |order|
+        tr.item
+          td
+            = link_to order.number, [:admin, order]
+          td = t("activerecord.attributes.order.payment_method.#{order.payment_method}") if order.payment_method
+          td = t("activerecord.attributes.order.status.#{order.status}")
+  - else
+    br
+    br
+    .alert.alert-warning нет заказов
+
+  = paginate @orders, window: 2

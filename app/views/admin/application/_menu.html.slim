@@ -14,5 +14,6 @@
         a href="#{admin_sync_path('products')}" Товары
   li*unless_active_attr('admin/article_themes')
     a href="#{admin_article_themes_path}" Статьи
-  / li: a href="#" Заказы
+  li*unless_active_attr('admin/orders')
+    a href="#{admin_orders_path}" Заказы
   / li: a href="#" Страницы

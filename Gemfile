@@ -26,6 +26,7 @@ gem 'cells', '~> 3'
 gem 'simple_form'
 gem 'responders'
 gem 'attribute_normalizer', '= 1.1.0'
+gem 'kaminari'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
