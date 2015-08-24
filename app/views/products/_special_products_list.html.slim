@@ -20,7 +20,6 @@
             - else
               li = link_to category.title, self.send(@special_products_path, category.url)
     .products-list.col-md-9.col-sm-8.col-xs-12
-      = render 'order/form', order: @order
       - if @products.any?
         .show-options
           - if @selected_category

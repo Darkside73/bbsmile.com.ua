@@ -51,7 +51,6 @@
               li = link_to article.name, article_path(article.url)
       .promotions = render_cell :promotions, :category, category: @category
     .products-list.col-md-9.col-sm-8.col-xs-12
-      = render 'order/form', order: @order
       - if @products.any?
         .show-options
           ul.nav.nav-pills

@@ -18,7 +18,6 @@
             - else
               li = link_to category.title, brand_page_path(@brand.name, category.url)
     .products-list.col-md-9
-      = render 'order/form', order: @order
       - if @products.any?
         .show-options
           ul.nav.nav-pills

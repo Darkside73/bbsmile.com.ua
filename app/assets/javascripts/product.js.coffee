@@ -1,4 +1,3 @@
-//= require order_dialog
 //= require owl-carousel/owl.carousel
 
 $ ->

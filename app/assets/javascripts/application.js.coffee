@@ -6,7 +6,6 @@
 //= require jquery.scrollTo/jquery.scrollTo
 //= require search-box
 //= require components/app
-//= require order-from-grid
 //= require category
 //= require promotions
 //= require ga-events

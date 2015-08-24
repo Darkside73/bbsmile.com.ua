@@ -20,7 +20,6 @@
       = render 'category', category: category, subcategories: subcategories
 
   .products-list
-    = render 'order/form', order: @order
     - cache [novelties, discounts, hits] do
       = landing_item_for novelties, id: 'novelties', icon: 'certificate', title: 'Новинки', page_path: novelties_path
       = landing_item_for discounts, id: 'discounts', icon: 'fire', title: 'Скидки', page_path: discounts_path
