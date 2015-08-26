@@ -1,0 +1,20 @@
+version: 3
+public_key: public_key
+amount: 7.34
+currency: UAH
+description: description
+order_id: 0
+type: buy
+transaction_id: abcd123
+sender_phone: +380671234567
+status: success
+# failure - неуспешный платеж
+# wait_secure - платеж на проверке
+# wait_accept - Деньги с клиента списаны, но магазин еще не прошел проверку
+# wait_lc - Аккредитив. Деньги с клиента списаны, ожидается подтверждение доставки товара
+# processing - Платеж обрабатывается
+# sandbox - тестовый платеж
+# subscribed - Подписка успешно оформлена
+# unsubscribed - Подписка успешно деактивирована
+# reversed - Возврат клиенту после списания
+# cash_wait - Ожидание оплаты счета клиентом в терминале

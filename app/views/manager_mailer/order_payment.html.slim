@@ -1,0 +1,6 @@
+p Неуспешный платеж по заказу №#{@order.number}
+pre
+  | Сумма: #{@payment.amount}
+    Статус: #{@payment.status}
+    Телефон: #{@payment.account}
+    Транзакция: #{@payment.transaction_uid}

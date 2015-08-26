@@ -14,6 +14,7 @@ ol
       ' за
       strong = number_to_currency suborder.total
 
-' Всего:
-p: strong = number_to_currency @order.total
+p
+  ' Всего:
+  strong = number_to_currency @order.total
 p = link_to "Перейти к оплате", order_pay_url(slug: @order.slug, host: 'bbsmile.com.ua')

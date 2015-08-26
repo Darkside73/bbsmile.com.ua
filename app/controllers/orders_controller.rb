@@ -26,8 +26,7 @@ class OrdersController < ApplicationController
   end
 
   def pay
-    @order = Order.pending.find_by slug: params[:slug]
-    liqpay = Liqpay.new(Rails.application.secrets.liqpay.to_hash.symbolize_keys)
+    @order = Order.pending.find_by! slug: params[:slug]
     @pay_button = liqpay.cnb_form(
       version: "3",
       amount: @order.total,
@@ -40,8 +39,27 @@ class OrdersController < ApplicationController
   end
 
   def api_callback
-    params[:data]
-    params[:signature]
+    request = Service::Liqpay::Request.new liqpay, params[:data]
+    if request.valid?(params[:signature])
+      data = request.data
+      order = Order.pending.find data['order_id']
+      # TODO: move to model callback
+      order.payments.create(
+        amount: data['amount'],
+        transaction_uid: data['transaction_id'],
+        account: data['sender_phone'],
+        status: data['status']
+      )
+      if request.success?
+        order.update! status: :paid
+        OrderMailer.paid(order).deliver_later
+        ManagerMailer.paid_order(order).deliver_later
+      else
+        ManagerMailer.order_payment(order, data['transaction_id']).deliver_later
+      end
+      render nothing: true and return
+    end
+    render nothing: true, status: 400
   end
 
   private
@@ -55,5 +73,11 @@ class OrdersController < ApplicationController
 
   def reject_spam
     render nothing: true, status: 403 if params[:text].present?
+  end
+
+  def liqpay
+    @liqpay ||= Liqpay.new(
+      Rails.application.secrets.liqpay.to_hash.symbolize_keys
+    )
   end
 end

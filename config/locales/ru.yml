@@ -117,6 +117,8 @@ ru:
         sms: "Ваш заказ №%{order_id} в обработке. Мы свяжемся с вами в ближайшее время"
         approved:
           subject: "Заказ №%{order_id} подтвержден"
+        paid:
+          subject: "Заказ №%{order_id} оплачен"
     contacts:
       new_contact:
         subject: Сообщение с сайта
@@ -132,6 +134,10 @@ ru:
         subject: Продукты загружены
       new_order:
         subject: "Новый заказ №%{order_id}"
+      paid_order:
+        subject: "Заказ №%{order_id} оплачен"
+      order_payment:
+        subject: "Неуспешный платеж по заказу №%{order_id}"
 
   gdrive_sync:
     errors:

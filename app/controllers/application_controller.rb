@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   layout "layout_inner"
 
-  http_basic_authenticate_with(Settings.http_auth.to_hash) if Settings.http_auth && Settings.http_auth.protect_front
+  SKIP_AUTHENTICATION = %w(orders#api_callback)
+
+  http_basic_authenticate_with Settings.http_auth.to_hash.merge(if: :need_authenticate?) if Settings.http_auth
 
   protect_from_forgery
 
@@ -31,5 +33,10 @@ class ApplicationController < ActionController::Base
 
   def current_page_from_slug
     @current_page ||= Page.visible.find_by(url: params[:slug]) if params[:slug]
+  end
+
+  def need_authenticate?
+    Settings.http_auth.protect_front &&
+      !SKIP_AUTHENTICATION.include?("#{controller_name}##{action_name}")
   end
 end

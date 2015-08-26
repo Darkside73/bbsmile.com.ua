@@ -7,6 +7,17 @@ class ManagerMailer < ActionMailer::Base
     mail subject: I18n.t('mailers.system.new_order.subject', order_id: order.id)
   end
 
+  def paid_order(order)
+    @order = order
+    mail subject: I18n.t('mailers.system.paid_order.subject', order_id: order.id)
+  end
+
+  def order_payment(order, transaction_uid)
+    @order = order
+    @payment = Payment.find_by transaction_uid: transaction_uid
+    mail subject: I18n.t('mailers.system.order_payment.subject', order_id: order.id)
+  end
+
   def contact_message(contact)
     @contact = contact
     mail subject: I18n.t('mailers.contacts.new_contact.subject')

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824192118) do
+ActiveRecord::Schema.define(version: 20150826205556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,17 @@ ActiveRecord::Schema.define(version: 20150824192118) do
     t.datetime "updated_at"
   end
 
+  create_table "order_transactions", force: :cascade do |t|
+    t.integer  "order_id"
+    t.float    "amount"
+    t.string   "sid"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "order_transactions", ["order_id"], name: "index_order_transactions_on_order_id", using: :btree
+
   create_table "orders", force: :cascade do |t|
     t.string   "user_name",      limit: 255
     t.string   "user_phone",     limit: 255
@@ -97,6 +108,18 @@ ActiveRecord::Schema.define(version: 20150824192118) do
 
   add_index "pages", ["url"], name: "index_pages_on_url", unique: true, using: :btree
   add_index "pages", ["url_old"], name: "index_pages_on_url_old", unique: true, using: :btree
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "order_id"
+    t.float    "amount"
+    t.string   "transaction_uid"
+    t.string   "account"
+    t.string   "status"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "payments", ["order_id"], name: "index_payments_on_order_id", using: :btree
 
   create_table "price_ranges", force: :cascade do |t|
     t.integer "from"
@@ -203,6 +226,8 @@ ActiveRecord::Schema.define(version: 20150824192118) do
   add_index "variants", ["price"], name: "index_variants_on_price", using: :btree
   add_index "variants", ["product_id"], name: "index_variants_on_product_id", using: :btree
 
+  add_foreign_key "order_transactions", "orders"
+  add_foreign_key "payments", "orders"
   add_foreign_key "suborders", "orders"
   add_foreign_key "suborders", "variants"
 end

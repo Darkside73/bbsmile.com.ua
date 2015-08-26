@@ -16,6 +16,7 @@ class Order < ActiveRecord::Base
       proxy_association.owner.validate
     end
   end
+  has_many :payments
 
   enum payment_method:  [:prepay, :cash_on_delivery, :liqpay]
   enum status:          [:placed, :pending, :paid, :refunded]

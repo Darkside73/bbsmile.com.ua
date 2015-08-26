@@ -1,0 +1,16 @@
+p
+  ' Пользователь
+  strong> #{@order.user_name} #{@order.user_phone} #{@order.user.email}
+  ' оплатил заказ №
+  strong = @order.number
+  | :
+
+ol
+  - @order.suborders.each do |suborder|
+    li
+      => link_to suborder.variant.title, product_page_url(suborder.variant.product.url, host: 'beta.bbsmile.com.ua')
+      ' за
+      strong = number_to_currency suborder.price
+p
+  ' Всего:
+  strong = number_to_currency @order.total

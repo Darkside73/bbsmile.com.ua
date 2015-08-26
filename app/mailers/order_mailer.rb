@@ -13,4 +13,12 @@ class OrderMailer < ActionMailer::Base
       subject: I18n.t('mailers.order.approved.subject', order_id: order.number)
     )
   end
+
+  def paid(order)
+    @order = order
+    mail(
+      to: order.user.email,
+      subject: I18n.t('mailers.order.paid.subject', order_id: order.number)
+    )
+  end
 end

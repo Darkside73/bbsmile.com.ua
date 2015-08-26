@@ -1,0 +1,14 @@
+h3 Заказ №#{@order.number} оплачен
+
+h4 Вы купили:
+ol
+  - @order.suborders.each do |suborder|
+    li
+      strong => link_to suborder.variant.title, product_page_url(suborder.variant.product.url, host: 'bbsmile.com.ua')
+      ' (#{suborder.quantity} шт.)
+      ' за
+      strong = number_to_currency suborder.total
+
+p
+  ' Всего:
+  strong = number_to_currency @order.total
