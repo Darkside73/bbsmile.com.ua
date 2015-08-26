@@ -10,6 +10,13 @@ class Admin::OrdersController < Admin::ApplicationController
     @order = Order.includes(suborders: [variant: :product]).find params[:id]
   end
 
+  def update
+    order = Order.find params[:id]
+    order.update! order_params
+    OrderMailer.approved(order).deliver_later
+    redirect_to [:admin, order], notice: I18n.t('flash.message.orders.approved')
+  end
+
   private
 
   def filter_params(filter)
@@ -23,5 +30,9 @@ class Admin::OrdersController < Admin::ApplicationController
       condition[name] = Order.send(name.pluralize)[params[name]] if params[name]
     end
     condition
+  end
+
+  def order_params
+    params.require(:order).permit(:status)
   end
 end

@@ -1,4 +1,8 @@
 resources :orders, only: :create
+scope :order, controller: :orders, as: :order do
+  get 'pay/:slug', action: 'pay', as: 'pay'
+  post 'api-callback', action: 'api_callback', as: 'api_callback'
+end
 scope :cart, controller: :cart, as: :cart do
   # TODO: RESTful?
   post action: 'add_item', as: 'add_item'

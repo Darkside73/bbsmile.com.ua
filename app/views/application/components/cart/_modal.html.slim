@@ -23,10 +23,10 @@ script type="text/x-template" id="cart-item"
       .row
         .col-md-4
           .price.medium {{suborder.total_with_currency}}
-          a.btn.btn-danger.btn-xs href="#" v-on="click: onClick"
+          a.btn.btn-danger.btn-xs href="#" v-on="click: onClick" v-show="deleteItem"
             i.fa.fa-trash>
             | Удалить
-        .col-md-8.quantity
+        .col-md-8.quantity v-show="updateItem"
           a.fa.fa-minus href="#" v-on="click: onChangeQuantity(-1, $event)"
           strong {{suborder.quantity}}
           a.fa.fa-plus href="#" v-on="click: onChangeQuantity(1, $event)"

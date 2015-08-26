@@ -25,6 +25,25 @@ class OrdersController < ApplicationController
     end
   end
 
+  def pay
+    @order = Order.pending.find_by slug: params[:slug]
+    liqpay = Liqpay.new(Rails.application.secrets.liqpay.to_hash.symbolize_keys)
+    @pay_button = liqpay.cnb_form(
+      version: "3",
+      amount: @order.total,
+      currency: "UAH",
+      description: @order.description,
+      order_id: @order.number,
+      server_url: order_api_callback_url,
+      sandbox: Settings.liqpay.try(:sandbox) || 1
+    )
+  end
+
+  def api_callback
+    params[:data]
+    params[:signature]
+  end
+
   private
 
   def order_params

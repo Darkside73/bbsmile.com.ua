@@ -1,0 +1,19 @@
+h3 Вы можете оплатить заказ через #{t "activerecord.attributes.order.payment_method.#{@order.payment_method}"}
+p = link_to "Перейти к оплате", order_pay_url(slug: @order.slug, host: 'bbsmile.com.ua')
+p
+  ' Номер вашего заказа
+  strong = @order.id
+  | .
+
+h4 Вы заказали:
+ol
+  - @order.suborders.each do |suborder|
+    li
+      strong => link_to suborder.variant.title, product_page_url(suborder.variant.product.url, host: 'bbsmile.com.ua')
+      ' (#{suborder.quantity} шт.)
+      ' за
+      strong = number_to_currency suborder.total
+
+' Всего:
+p: strong = number_to_currency @order.total
+p = link_to "Перейти к оплате", order_pay_url(slug: @order.slug, host: 'bbsmile.com.ua')

@@ -41,6 +41,7 @@ gem 'sprockets-coffee-react'
 
 gem 'google_drive', require: false
 gem 'httparty', require: false
+gem 'liqpay', github: 'liqpay/sdk-ruby'
 
 gem 'less-rails-bootstrap'
 gem 'font-awesome-rails'

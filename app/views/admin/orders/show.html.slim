@@ -24,5 +24,7 @@
   .text-right
     strong = "Всего: #{number_to_currency @order.total}"
 
-  - if @order.liqpay?
-    a.btn.btn-info Отправить ссылку для оплаты
+  - if @order.liqpay? && @order.placed?
+    = simple_form_for [:admin, @order] do |f|
+      = f.hidden_field :status, value: :pending
+      = f.button :submit, class: "btn btn-info", value: "Отправить ссылку для оплаты"

@@ -16,3 +16,6 @@ gdrive:
   docs:
     prices: 0Aswwzh8AZzVydEl6QkVyeFYzRWFLODhiYlV1T2w3SHc
     products: 0Aswwzh8AZzVydFdLOENUNzk5Q1ZCVV9ibXlublpQZXc
+liqpay:
+  public_key: <%= Rails.application.secrets.liqpay.public_key %>
+  private_key: <%= Rails.application.secrets.liqpay.private_key %>

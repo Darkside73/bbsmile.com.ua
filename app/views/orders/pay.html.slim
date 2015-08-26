@@ -1,0 +1,21 @@
+- title "Оплата заказа №#{@order.number}"
+
+- content_for :js_footer do
+
+  javascript:
+    window.app.currentOrder = #{{raw @order.to_json}}
+
+#order-pay.container
+  .page-header: h1.page-title Оплата заказа №#{@order.number}
+
+  .alert.alert-info
+    | После нажатия на кнопку <strong>Оплатить</strong> вы будете перенаправлены на сайт
+      платежной системы
+
+  .row
+    .col-md-8.col-md-offset-2
+      .row v-repeat="suborder in currentOrder.suborders"
+        cart-item suborder="{{suborder}}"
+      cart-total total="{{currentOrder.total_with_currency}}"
+
+      == @pay_button

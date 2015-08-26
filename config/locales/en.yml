@@ -82,6 +82,8 @@ en:
       new_order:
         subject: New order has been placed
         sms: "New order #%{order_id} has been placed"
+      approved:
+        subject: "Order approved %{order_id}"
     contacts:
       new_contact:
         subject: New contact message

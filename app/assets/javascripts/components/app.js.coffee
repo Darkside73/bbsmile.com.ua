@@ -8,6 +8,7 @@
       size: 0
       suborders: []
     cartModalId: "cartModal"
+    currentOrder: {}
   created: ->
     @populateCartState(window.cartState)
   watch:

@@ -10,3 +10,5 @@ gdrive:
     products: 0Aswwzh8AZzVydFdLOENUNzk5Q1ZCVV9ibXlublpQZXc
 sms:
   test_mode: true
+liqpay:
+  sandbox: 1

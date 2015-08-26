@@ -113,6 +113,10 @@ class Order < ActiveRecord::Base
     number_to_currency total
   end
 
+  def description
+    suborders.map(&:title).join(", ")
+  end
+
   private
 
   def disable_user_email_uniqueness_validation

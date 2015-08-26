@@ -63,6 +63,8 @@ ru:
         updated: Статья обновлена
         destroyed:
           success: Статья удалена
+      orders:
+        approved: Ссылка отправлена покупателю
   errors:
     messages:
       blank: "нужно заполнить"
@@ -113,6 +115,8 @@ ru:
       new_order:
         subject: Новый заказ на bbsmile.com.ua
         sms: "Ваш заказ №%{order_id} в обработке. Мы свяжемся с вами в ближайшее время"
+        approved:
+          subject: "Заказ №%{order_id} подтвержден"
     contacts:
       new_contact:
         subject: Сообщение с сайта

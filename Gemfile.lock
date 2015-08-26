@@ -24,6 +24,12 @@ GIT
       railties (>= 4)
 
 GIT
+  remote: git://github.com/liqpay/sdk-ruby.git
+  revision: 3cbb88e3dfcdd4d7c0bbd0c7e0284f4df13dcfd2
+  specs:
+    liqpay (0.0.1)
+
+GIT
   remote: git://github.com/reactjs/react-rails.git
   revision: d433c0ddb1036b4d1ee4b843eb268c377806c68f
   specs:
@@ -532,6 +538,7 @@ DEPENDENCIES
   launchy
   less-rails-bootstrap
   libv8 (>= 3.16.14.10)
+  liqpay!
   lograge
   metamagic
   minitest
