@@ -42,6 +42,7 @@ ru:
         saved: Описание сохранено
       orders:
         created: "Спасибо за покупку! Номер вашего заказа <b>%{order_id}</b>. Мы перезвоним вам в ближайшее время."
+        approved: Ссылка отправлена покупателю
         call_now: в течение часа
         call_morning: утром с 9 до 11 часов
         call_tomorrow: завтра с 9 до 11 часов
@@ -63,8 +64,6 @@ ru:
         updated: Статья обновлена
         destroyed:
           success: Статья удалена
-      orders:
-        approved: Ссылка отправлена покупателю
   errors:
     messages:
       blank: "нужно заполнить"
@@ -115,10 +114,11 @@ ru:
       new_order:
         subject: Новый заказ на bbsmile.com.ua
         sms: "Ваш заказ №%{order_id} в обработке. Мы свяжемся с вами в ближайшее время"
-        approved:
-          subject: "Заказ №%{order_id} подтвержден"
-        paid:
-          subject: "Заказ №%{order_id} оплачен"
+      approved:
+        subject: "Заказ №%{order_id} подтвержден"
+        sms: "Заказ №%{order_id} подтвержден. Ожидайте письмо с инструкциями по оплате"
+      paid:
+        subject: "Заказ №%{order_id} оплачен"
     contacts:
       new_contact:
         subject: Сообщение с сайта
