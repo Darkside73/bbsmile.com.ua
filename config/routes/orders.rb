@@ -1,6 +1,6 @@
 resources :orders, only: :create
 scope :order, controller: :orders, as: :order do
-  get 'pay/:slug', action: 'pay', as: 'pay'
+  get 'pay/:uuid', action: 'pay', as: 'pay'
   post 'api-callback', action: 'api_callback', as: 'api_callback'
 end
 scope :cart, controller: :cart, as: :cart do

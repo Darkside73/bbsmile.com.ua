@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Order do
   context "when save" do
     let(:variants) { create_list :variant, 2}
-    it "creates order, suborders and user" do
+    it "creates order, suborders and user, generates uuid" do
       order = Order.new(
         notes: 'some notes',
         user_attributes: {
@@ -20,6 +20,7 @@ describe Order do
       expect(order.suborders).to have(2).things
       expect(order.user).to be_instance_of(User)
       expect(order.user).to_not be_new_record
+      expect(order.uuid).to_not be_empty
     end
 
     it "does not save order without suborders" do

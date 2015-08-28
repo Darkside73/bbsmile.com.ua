@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
   end
 
   def pay
-    @order = Order.pending.find_by! slug: params[:slug]
+    @order = Order.pending.find_by! uuid: params[:uuid]
     @pay_button = liqpay.cnb_form(
       version: "3",
       amount: @order.total,
