@@ -55,9 +55,6 @@ class OrdersController < ApplicationController
         # TODO: move to observer
         OrderMailer.paid(order).deliver_later
         ManagerMailer.paid_order(order).deliver_later
-        SmsSendJob.perform_later(
-          order.phone_number, I18n.t('mailers.order.paid.sms', order_id: order.number)
-        )
       else
         ManagerMailer.order_payment(order, data['transaction_id']).deliver_later
       end
