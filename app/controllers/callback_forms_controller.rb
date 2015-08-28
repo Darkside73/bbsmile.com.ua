@@ -5,9 +5,9 @@ class CallbackFormsController < ApplicationController
     respond_to do |format|
       if form.valid?
         if form.quick_order?
-          ManagerMailer.quick_order_message(form).deliver_now
+          ManagerMailer.quick_order_message(form).deliver_later
         else
-          ManagerMailer.callback_message(form).deliver_now
+          ManagerMailer.callback_message(form).deliver_later
         end
         flash.now[:success] = I18n.t('flash.message.callbacks.created')
         format.json { render json: flashes_in_json, status: :created }
