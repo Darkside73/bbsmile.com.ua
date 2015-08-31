@@ -176,6 +176,7 @@ ru:
   time:
     formats:
       short: '%B, %e'
+      long: '%d.%m.%Y %H:%M'
   views:
     pagination:
       first: "&laquo;"

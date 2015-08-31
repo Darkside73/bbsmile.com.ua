@@ -2,7 +2,6 @@ class Admin::OrdersController < Admin::ApplicationController
   helper_method :filter_params
 
   def index
-    params[:status] ||= "placed"
     @orders = Order.where(orders_where_condition).page(params[:page])
   end
 

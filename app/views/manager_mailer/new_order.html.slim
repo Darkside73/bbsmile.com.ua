@@ -2,7 +2,7 @@ p
   ' Пользователь
   strong> #{@order.user_name} #{@order.user_phone} #{@order.user.email}
   ' оформил заказ №
-  strong = @order.id
+  = link_to @order.number, admin_order_url(@order, host: 'bbsmile.com.ua')
   | :
 
 ol

@@ -1,4 +1,5 @@
 = render layout: 'boxed', locals: {title: 'Заказы'} do
+
   .orders-filters
     = link_to "все", admin_orders_path, class: "btn btn-default#{' active' unless params[:payment_method] || params[:status]}"
     .btn-group
@@ -13,15 +14,21 @@
       thead
         tr
           th Номер
-          th Способ оплаты
+          th Дата создания
           th Статус
+          th Покупатель
+          th Сумма
+          th Способ оплаты
       tbody
       - @orders.each do |order|
         tr.item
           td
             = link_to order.number, [:admin, order]
-          td = t("activerecord.attributes.order.payment_method.#{order.payment_method}") if order.payment_method
-          td = t("activerecord.attributes.order.status.#{order.status}")
+          td = l order.created_at, format: :long
+          td = order_status order
+          td = order.user_name
+          td = number_to_currency order.total
+          td = order_payment_method order
   - else
     br
     br

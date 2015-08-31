@@ -1,13 +1,14 @@
 = render layout: 'boxed', locals: {title: "Заказ № #{@order.number}"} do
 
   .well
-    - if @order.payment_method
-      span.label.label-info => t("activerecord.attributes.order.payment_method.#{@order.payment_method}")
-    span.label.label-info = t("activerecord.attributes.order.status.#{@order.status}")
-    br
-    | #{@order.user_name} #{@order.user_phone} #{@order.user.email}
-    br
-    | #{@order.notes}
+    p
+      i.fa.fa-calendar>
+      = l @order.created_at, format: :long
+    p
+      = order_payment_method @order
+      = order_status @order
+    p = "#{@order.user_name} #{@order.user_phone} #{@order.user.email}"
+    p = @order.notes
 
   table.table.orders-list.table-striped.table-hover
     thead
@@ -23,7 +24,9 @@
           td = number_to_currency suborder.price
 
   .row: .col-md-6.col-md-offset-6
-    p.text-left: strong = "Всего: #{number_to_currency @order.total}"
+    .text-right
+      p => "Коррекция суммы: #{number_to_currency @order.total_correction}" if @order.total_correction != 0
+      p: strong = "Всего: #{number_to_currency @order.total}"
     - if @order.liqpay? && @order.placed?
       = simple_form_for [:admin, @order] do |f|
         = f.hidden_field :status, value: :pending
