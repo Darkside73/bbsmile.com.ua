@@ -51,12 +51,24 @@ describe Order do
       expect { order.save }.to change { order.user_phone and order.user_name }
     end
 
-    it "calculate total" do
-      suborder1 = create :suborder, quantity: 2
-      suborder2 = create :suborder, quantity: 3
-      order = Order.new suborders: [suborder1, suborder2]
-      order.validate
-      expect(order.total).to eq(suborder1.total + suborder2.total)
+    context "calculate total" do
+      let(:suborder1) { create :suborder, quantity: 2 }
+      let(:suborder2) { create :suborder, quantity: 3 }
+      subject { Order.new(suborders: [suborder1, suborder2]) }
+      it "summarize suborders total" do
+        subject.validate
+        expect(subject.total).to be_within(0.01).of(
+          suborder1.total + suborder2.total
+        )
+      end
+
+      it "takes into account total correction" do
+        subject.validate
+        subject.total_correction = -20.50
+        expect { subject.validate }.to change { subject.total }.by(-20.50)
+        expect(subject.original_total).to eq(subject.total - 20.50)
+      end
+
     end
 
     context "when suborder invalid" do

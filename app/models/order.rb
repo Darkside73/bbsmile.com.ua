@@ -24,6 +24,8 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :suborders
 
+  validates_numericality_of :total_correction
+
   before_validation    :disable_user_email_uniqueness_validation, on: :create
   validates_associated :suborders
   after_validation     :calculate_total
@@ -61,6 +63,10 @@ class Order < ActiveRecord::Base
 
   def size
     valid_suborders.inject(0) { |size, suborder| size + suborder.quantity }
+  end
+
+  def original_total
+    total + total_correction
   end
 
   def remove_suborder(index)
@@ -139,7 +145,10 @@ class Order < ActiveRecord::Base
   end
 
   def calculate_total
-    self[:total] = valid_suborders.inject(0) { |total, suborder| total + suborder.total }
+    original_total = valid_suborders.inject(0) do |total, suborder|
+      total + suborder.total
+    end
+    self[:total] = original_total + total_correction
   end
 
   def valid_suborders

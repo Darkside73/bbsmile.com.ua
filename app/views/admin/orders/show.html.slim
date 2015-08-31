@@ -21,10 +21,12 @@
           td = link_to suborder.variant.product
           td = suborder.quantity
           td = number_to_currency suborder.price
-  .text-right
-    strong = "Всего: #{number_to_currency @order.total}"
 
-  - if @order.liqpay? && @order.placed?
-    = simple_form_for [:admin, @order] do |f|
-      = f.hidden_field :status, value: :pending
-      = f.button :submit, class: "btn btn-info", value: "Отправить ссылку для оплаты"
+  .row: .col-md-6.col-md-offset-6
+    p.text-left: strong = "Всего: #{number_to_currency @order.total}"
+    - if @order.liqpay? && @order.placed?
+      = simple_form_for [:admin, @order] do |f|
+        = f.hidden_field :status, value: :pending
+        = f.input :total_correction, label: "Коррекция суммы"
+        = f.button :submit, class: "btn btn-info", value: "Отправить ссылку для оплаты"
+

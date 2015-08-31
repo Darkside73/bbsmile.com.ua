@@ -37,6 +37,6 @@ class Admin::OrdersController < Admin::ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:status)
+    params.require(:order).permit(:status, :total_correction)
   end
 end
