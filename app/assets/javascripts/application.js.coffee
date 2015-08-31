@@ -55,7 +55,15 @@ $ ->
   new CallbackDialog('#send-callback')
   new CallbackDialog('#send-quick-order') if $("#send-quick-order").length
 
-  $('input[type="tel"]').mask '(000) 000-00-00'
+  $('input[type="tel"]').mask '+38 (r00) 000-00-00',
+    translation:
+      r:
+        pattern: /0/
+        fallback: '0'
+
+  $('input[name="order[payment_method]"').click ->
+    $('.payment-help').hide()
+    $(".payment-help.#{$(this).val()}").fadeIn()
 
   $('#global-message button').click (e) ->
     $.cookie 'hide-global-message-02-09', 1
