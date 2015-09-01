@@ -26,7 +26,7 @@ class Order < ActiveRecord::Base
 
   validates_numericality_of :total_correction
 
-  before_validation    :disable_user_email_uniqueness_validation, on: :create
+  before_validation    :setup_user_validation, on: :create
   validates_associated :suborders
   after_validation     :calculate_total
   before_create        :populate_order_user_attributes
@@ -126,8 +126,11 @@ class Order < ActiveRecord::Base
 
   private
 
-  def disable_user_email_uniqueness_validation
-    user.creation_with_order = true if user
+  def setup_user_validation
+    if user
+      user.disable_email_uniqueness = true
+      user.required_email = true if liqpay?
+    end
   end
 
   def populate_order_user_attributes

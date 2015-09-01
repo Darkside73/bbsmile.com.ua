@@ -36,6 +36,13 @@ describe Order do
       expect { order.save }.not_to change { Order.count }
     end
 
+    it "requires user email if Liqpay selected as payment method" do
+      expect(
+        order = Order.new(payment_method: :liqpay, user_attributes: { email: '' })
+      ).to have(1).error_on(:'user.email')
+      expect { order.save }.not_to change { Order.count }
+    end
+
     let(:user) { create :user }
     it "prevents user email duplications" do
       order = Order.new(
