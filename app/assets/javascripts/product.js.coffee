@@ -1,12 +1,6 @@
 //= require owl-carousel/owl.carousel
 
 $ ->
-  dialog = new OrderDialog('.quick-shop-dialog')
-
-  $('.variant-quick-shop').click (e) ->
-    dialog.setTitle $(@).data('dialog-title')
-    dialog.setVariantId $(@).data('variant-id')
-
   $('#product-gallery').on 'slide', (e, index, slide, links) ->
     _gaq.push ['_trackEvent', 'Товар', 'Просмотреть фото', "Номер #{index + 1} из #{links.length}"]
 
