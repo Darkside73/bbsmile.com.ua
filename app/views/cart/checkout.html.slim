@@ -20,10 +20,10 @@
           .form-group
             .row
               .col-md-6
-                = f.input :payment_method, label: 'Способ оплаты', collection: [:liqpay, :cash_on_delivery], label_method: lambda { |key| { liqpay: "оплата картой (Liqpay)", cash_on_delivery: "наличными при получении" }.fetch(key) }, as: :radio_buttons
+                = f.input :payment_method, label: 'Способ оплаты', collection: [:liqpay, :cash_on_delivery, :cash_to_courier], label_method: lambda { |key| { liqpay: "карта Visa / Master Card", cash_on_delivery: "наложенный платеж", cash_to_courier: "наличными при получении" }.fetch(key) }, as: :radio_buttons
               .col-md-6
-                .payment-help.liqpay Информация...
-                .payment-help.cash_on_delivery Информация....
+                .payment-help.liqpay
+                .payment-help.cash_on_delivery
             = f.input :notes, label: "Дополнительная информация", hint: "Укажите ваш город, способ доставки, отделение \"Новой почты\"...", input_html: { rows: 5 }
             => u.check_box :subscribed
             label.inline for="order_user_attributes_subscribed" хочу получать акционные и скидочные предложения

@@ -18,7 +18,7 @@ class Order < ActiveRecord::Base
   end
   has_many :payments
 
-  enum payment_method:  [:prepay, :cash_on_delivery, :liqpay]
+  enum payment_method:  [:cash_to_courier, :cash_on_delivery, :liqpay]
   enum status:          [:placed, :pending, :paid, :refunded]
 
   accepts_nested_attributes_for :user

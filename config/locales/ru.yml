@@ -101,7 +101,7 @@ ru:
           suggested: сопутствующие
       order:
         payment_method:
-          prepay: предоплата
+          cash_to_courier: наличными при получении
           cash_on_delivery: наложенный платеж
           liqpay: Liqpay
         status:
