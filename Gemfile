@@ -10,6 +10,7 @@ gem 'acts_as_list', github: 'swanandp/acts_as_list'
 gem 'acts-as-taggable-on'
 gem 'activerecord-session_store'
 gem 'sidekiq'
+gem 'sidekiq-status'
 gem 'daemons'
 gem 'newrelic_rpm'
 

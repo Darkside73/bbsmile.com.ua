@@ -431,6 +431,8 @@ GEM
       json (~> 1.0)
       redis (~> 3.2, >= 3.2.1)
       redis-namespace (~> 1.5, >= 1.5.2)
+    sidekiq-status (0.5.4)
+      sidekiq (>= 2.7)
     signet (0.6.1)
       addressable (~> 2.3)
       extlib (~> 0.9)
@@ -565,6 +567,7 @@ DEPENDENCIES
   seedbank
   shoulda
   sidekiq
+  sidekiq-status
   simple_form
   sitemap_generator
   slim
