@@ -120,7 +120,7 @@
             h2 Видео
             = render partial: 'video', object: @product.video
       .col-md-4
-        = link_to "http://www.otzyvua.net/internet-magazin-babysmile" do
+        = link_to "http://www.otzyvua.net/internet-magazin-babysmile", target: "_blank" do
           = image_tag "content/otzyvua.jpg"
         = render 'comments', item: @product
 
