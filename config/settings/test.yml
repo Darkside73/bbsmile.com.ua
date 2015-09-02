@@ -12,4 +12,5 @@ gdrive:
     prices: doc-key
 sms:
   test_mode: true
-
+liqpay:
+  sandbox: true

@@ -16,3 +16,5 @@ gdrive:
   docs:
     prices: 0Aswwzh8AZzVydEl6QkVyeFYzRWFLODhiYlV1T2w3SHc
     products: 0Aswwzh8AZzVydFdLOENUNzk5Q1ZCVV9ibXlublpQZXc
+liqpay:
+  sandbox: true

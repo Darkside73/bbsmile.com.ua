@@ -27,15 +27,16 @@ class OrdersController < ApplicationController
 
   def pay
     @order = Order.pending.find_by! uuid: params[:uuid]
-    @pay_button = liqpay.cnb_form(
+    options = {
       version: "3",
       amount: @order.total,
       currency: "UAH",
       description: @order.description,
       order_id: @order.number,
-      server_url: order_api_callback_url,
-      sandbox: Settings.liqpay.try(:sandbox) || 1
-    )
+      server_url: order_api_callback_url
+    }
+    options[:sandbox] = 1 if Settings.liqpay.sandbox
+    @pay_button = liqpay.cnb_form options
   end
 
   def api_callback
