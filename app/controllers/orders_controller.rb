@@ -44,24 +44,23 @@ class OrdersController < ApplicationController
     if request.valid?(params[:signature])
       data = request.data
       order = Order.pending.find data['order_id']
-      # TODO: move to model callback
-      order.payments.create(
-        amount: data['amount'],
+
+      order.payments_attributes = [{
+        amount:          data['amount'],
         transaction_uid: data['transaction_id'],
-        account: data['sender_phone'],
-        status: data['status']
-      )
-      if request.success?
-        order.update! status: :paid
-        # TODO: move to observer
-        OrderMailer.paid(order).deliver_later
-        ManagerMailer.paid_order(order).deliver_later
-      else
-        ManagerMailer.order_payment(order, data['transaction_id']).deliver_later
-      end
-      render nothing: true and return
+        account:         data['sender_phone'],
+        status:          data['status']
+      }]
+      order.status = :paid if request.success?
+      order.save!
+
+      ManagerMailer.order_payment(order, data['transaction_id'])
+                   .deliver_later unless request.success?
+
+      render nothing: true
+    else
+      render nothing: true, status: 400
     end
-    render nothing: true, status: 400
   end
 
   private

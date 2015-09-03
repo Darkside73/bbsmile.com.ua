@@ -23,13 +23,20 @@
           td = suborder.quantity
           td = number_to_currency suborder.price
 
-  .row: .col-md-6.col-md-offset-6
-    .text-right
-      p => "Коррекция суммы: #{number_to_currency @order.total_correction}" if @order.total_correction != 0
-      p: strong = "Всего: #{number_to_currency @order.total}"
-    - if @order.liqpay? && @order.placed?
-      = simple_form_for [:admin, @order] do |f|
-        = f.hidden_field :status, value: :pending
-        = f.input :total_correction, label: "Коррекция суммы"
-        = f.button :submit, class: "btn btn-info", value: "Отправить ссылку для оплаты"
+  .text-right
+    p => "Коррекция суммы: #{number_to_currency @order.total_correction}" if @order.total_correction != 0
+    p: strong = "Всего: #{number_to_currency @order.total}"
 
+  .row
+    - if @order.pending?
+      .col-md-6
+        = simple_form_for [:admin, @order] do |f|
+          = f.hidden_field :status, value: :refunded
+          = f.button :submit, class: "btn btn-info", value: "Отменить заказ"
+
+    - if @order.liqpay? && @order.placed?
+      .col-md-6
+        = simple_form_for [:admin, @order] do |f|
+          = f.hidden_field :status, value: :pending
+          = f.input :total_correction, label: "Коррекция суммы"
+          = f.button :submit, class: "btn btn-info", value: "Отправить ссылку для оплаты"

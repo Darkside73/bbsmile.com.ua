@@ -23,6 +23,7 @@ class Order < ActiveRecord::Base
 
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :suborders
+  accepts_nested_attributes_for :payments
 
   validates_numericality_of :total_correction
 

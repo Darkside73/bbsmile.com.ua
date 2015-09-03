@@ -12,12 +12,7 @@ class Admin::OrdersController < Admin::ApplicationController
   def update
     order = Order.find params[:id]
     order.update! order_params
-    OrderMailer.approved(order).deliver_later
-    SmsSendJob.perform_later(
-      order.phone_number,
-      I18n.t('mailers.order.approved.sms', order_id: order.number)
-    )
-    redirect_to [:admin, order], notice: I18n.t('flash.message.orders.approved')
+    redirect_to [:admin, order]
   end
 
   private
