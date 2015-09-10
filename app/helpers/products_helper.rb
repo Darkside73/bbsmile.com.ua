@@ -29,21 +29,4 @@ module ProductsHelper
   def seo_product_title
     "#{@product.title} #{sprintf(Settings.seo.product_title, @product.category.title)}"
   end
-
-  def seo_product_description
-    description = @product.description.present? ? @product.description : @product.properties
-    if description
-      sanitize_for_meta_desciption description
-    else
-      "#{@product.title} #{@product.category.title} #{Settings.seo.product_description}"
-    end
-  end
-
-  private
-
-  def sanitize_for_meta_desciption(text)
-    text.gsub! /(<\/\w+>)(<\w+)/, '\1 \2'
-    text = strip_tags(text).strip.gsub(/(\r|\n)/, ' ').gsub(/\s+/, ' ')
-    truncate text, length: 160
-  end
 end

@@ -102,6 +102,10 @@ module ApplicationHelper
     render "application/components/#{component}"
   end
 
+  def seo_meta_tags
+    Seo::MetaTags.new(current_page).to_hash
+  end
+
   private
     def current_layout
       layout = controller.send(:_layout)

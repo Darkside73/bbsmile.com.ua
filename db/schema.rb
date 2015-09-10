@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831124913) do
+ActiveRecord::Schema.define(version: 20150903165651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,15 +86,17 @@ ActiveRecord::Schema.define(version: 20150831124913) do
   end
 
   create_table "pages", force: :cascade do |t|
-    t.string   "title",         limit: 255,                 null: false
-    t.string   "url",           limit: 255,                 null: false
+    t.string   "title",            limit: 255,                 null: false
+    t.string   "url",              limit: 255,                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "pageable_id"
-    t.string   "pageable_type", limit: 255
-    t.boolean  "hidden",                    default: false
-    t.string   "url_old",       limit: 255
-    t.string   "name",          limit: 255
+    t.string   "pageable_type",    limit: 255
+    t.boolean  "hidden",                       default: false
+    t.string   "url_old",          limit: 255
+    t.string   "name",             limit: 255
+    t.string   "meta_keywords"
+    t.string   "meta_description"
   end
 
   add_index "pages", ["url"], name: "index_pages_on_url", unique: true, using: :btree

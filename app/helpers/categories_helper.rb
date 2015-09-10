@@ -80,7 +80,7 @@ module CategoriesHelper
     title_parts.join(' ')
   end
 
-  def seo_category_description
+  def meta_fallback_category_description
     title_parts = add_brand_to_category_title
     title_parts << Settings.seo.category_description
     title_parts.join(' ')

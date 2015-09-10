@@ -56,7 +56,10 @@ class Admin::ArticleThemesController < Admin::ApplicationController
 
   def theme_params
     params.require(:article_theme).permit(
-      page_attributes: [:id, :title, :name, :url, :url_old, :hidden]
+      page_attributes: [
+        :id, :title, :name, :url, :url_old, :hidden,
+        :meta_keywords, :meta_description
+      ]
     )
   end
 end

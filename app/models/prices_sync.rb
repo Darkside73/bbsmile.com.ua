@@ -31,6 +31,10 @@ module PricesSync
     data
   end
 
+  item_changed do |item|
+    item.changed?
+  end
+
   update_item_from_row do |variant, row|
     variant.price     = row['price']
     variant.price_old = row['price_old']

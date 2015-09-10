@@ -24,6 +24,10 @@ module Gdrive::Syncable
     @update_item_from_row = block
   end
 
+  def item_changed(&block)
+    @item_changed = block
+  end
+
   def spreadsheet_key(key)
     @spreadsheet_key = key
   end
@@ -51,7 +55,7 @@ module Gdrive::Syncable
         item = @find_item.call(row['id'])
         @update_item_from_row.call item, row
         if item.valid?
-          @items_to_update << item if item.changed?
+          @items_to_update << item if @item_changed.call(item)
         else
           @invalid_rows[row_num] = item.errors.full_messages
         end

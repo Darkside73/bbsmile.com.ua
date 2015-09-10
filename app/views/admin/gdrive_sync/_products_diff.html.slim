@@ -7,6 +7,7 @@ table.table.table-striped.table-hover
       th Возраст
       th Пол
       th Сниженная цена
+      th Meta tags
   tbody
     - @items.each do |product|
       tr
@@ -36,3 +37,6 @@ table.table.table-striped.table-hover
             span.text-danger> = product.drop_price_was ? 'да' : 'нет'
             i.fa.fa-long-arrow-right>
             span.text-success = product.drop_price ? 'да' : 'нет'
+        td
+          - if product.page.meta_keywords_changed? || product.page.meta_description_changed?
+            span.text-danger изменены
