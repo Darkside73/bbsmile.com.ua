@@ -2,7 +2,7 @@ set :stages, %w(production beta staging)
 set :default_stage, 'beta'
 
 set :user, 'darkside'
-server 'myocean', user: fetch(:user), roles: :all
+server 'bbsmile.com.ua', user: fetch(:user), roles: :all
 
 set :repo_url, 'ssh://git@bitbucket.org/darkside73/rails.bbsmile.com.ua.git'
 set :deploy_to, proc { "/home/#{fetch(:user)}/projects/rails/#{fetch(:application)}" }
