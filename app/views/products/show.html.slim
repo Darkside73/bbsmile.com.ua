@@ -16,7 +16,7 @@
     = link_to :back, class: "btn btn-default product-back", title: 'Назад', data: { title: @product.title } do
       i.fa.fa-long-arrow-left
 
-#product-container.container.flashable data-title="#{@product.title}" itemscope="itemscope" itemtype="http://data-vocabulary.org/Product"
+#product-container.container.flashable data-title="#{@product.title}" itemscope="itemscope" itemtype="http://schema.org/Product"
   = render 'breadcrumb', category: @product.category
   h1.page-title
     span> itemprop="name" = @product.title
@@ -28,7 +28,7 @@
     .description.col-md-8.col-sm-8.col-xs-9
       .bages.pull-left
         - if @product.available
-          span.label.label-success itemprop="availability" content="in_stock" Есть в наличии
+          span.label.label-success Есть в наличии
         - else
           span.label.label-default Нет в наличии
         - if @product.sku?
@@ -41,10 +41,10 @@
       .clearfix
       hr
       .row
-        .col-md-7.col-sm-6.col-xs-12 itemprop="offerDetails" itemscope="itemscope" itemtype="http://data-vocabulary.org/Offer"
+        .col-md-7.col-sm-6.col-xs-12 itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"
           - if @product.price
             meta itemprop="price" content="#{@product.price}"
-            meta itemprop="currency" content="UAH"
+            meta itemprop="priceCurrency" content="UAH"
             .prices.pull-left
               p.price.big
                 - if @product.price_old
@@ -52,6 +52,7 @@
                 | #{number_to_currency @product.price}
 
             - if @product.available
+              link itemprop="availability" href="http://schema.org/InStock"
               cart-button add-item="{{addCartItem}}" open-cart="{{openCart}}" cart-state="{{cartState}}" variant-id="#{@product.master_variant.id}" style="btn-lg"
             - else
               p: strong.text-muted нет в наличии
@@ -107,7 +108,7 @@
       .col-md-8.page-content
         #description
           h2 Описание
-          == @product.description
+          div itemprop="description" == @product.description
         - if @product.properties.present?
           #properties
             h2 Характеристики
