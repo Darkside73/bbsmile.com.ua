@@ -29,11 +29,10 @@ class Seo::MetaTags
     end
   end
 
-  def fallback_description_for_article
-    article = @page.pageable
-    description = article.description
-    if description.present?
-      sanitize_description description
+  def fallback_description
+    pageable = @page.pageable
+    if pageable.respond_to?(:description) && pageable.description.present?
+      sanitize_description pageable.description
     else
       default_meta "description"
     end
