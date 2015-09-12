@@ -49,7 +49,7 @@ class Seo::MetaTags
   private
 
   def meta_tag_for(type)
-    return default_meta(type) unless @page
+    return default_meta(type) unless @page.respond_to?(:pageable)
 
     meta = ''
     {

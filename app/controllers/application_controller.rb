@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_action :current_page_from_slug
-  attr_reader :current_page
-  helper_method :current_page, :cart
+  attr_reader :current_page, :seo_page
+  helper_method :current_page, :seo_page, :cart
 
   protected
 
@@ -33,6 +33,8 @@ class ApplicationController < ActionController::Base
 
   def current_page_from_slug
     @current_page ||= Page.visible.find_by(url: params[:slug]) if params[:slug]
+    @seo_page ||= Seo::Page.new @current_page
+    @seo_page.request = request
   end
 
   def need_authenticate?

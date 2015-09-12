@@ -1,5 +1,7 @@
 module ApplicationHelper
+
   def title(page_title)
+    seo_page.title = page_title
     content_for(:title) { page_title }
   end
 
@@ -103,7 +105,7 @@ module ApplicationHelper
   end
 
   def seo_meta_tags
-    Seo::MetaTags.new(current_page).to_hash
+    seo_page.meta_tags
   end
 
   private
