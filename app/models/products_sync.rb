@@ -4,7 +4,7 @@ module ProductsSync
   spreadsheet_key Settings.gdrive.docs.products
   worksheet_columns_names [
     'id', 'title', 'brand', 'novelty', 'hit', 'age', 'sex', 'drop_price',
-    'meta_keywords', 'meta_description'
+    'title', 'meta_keywords', 'meta_description'
   ]
 
   items_to_sync do |category|
@@ -36,6 +36,7 @@ module ProductsSync
     product.age                   = row['age']
     product.sex                   = row['sex'] if row['sex'].present?
     product.drop_price            = row['drop_price'] == '1' ? true : false
+    product.page.title            = row['title'] if row['title'].present?
     product.page.meta_keywords    = row['meta_keywords'] if row['meta_keywords'].present?
     product.page.meta_description = row['meta_description'] if row['meta_description'].present?
   end
