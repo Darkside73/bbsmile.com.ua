@@ -25,8 +25,4 @@ module ProductsHelper
                URI.join(request.url, @product.top_image(:medium)) : ''
     }
   end
-
-  def seo_product_title
-    "#{@product.title} #{sprintf(Settings.seo.product_title, @product.category.title)}"
-  end
 end

@@ -74,24 +74,16 @@ module CategoriesHelper
     !any_filtering?
   end
 
-  def seo_category_title
-    title_parts = add_brand_to_category_title
-    title_parts << Settings.seo.category_title
-    title_parts.join(' ')
-  end
-
-  def meta_fallback_category_description
-    title_parts = add_brand_to_category_title
-    title_parts << Settings.seo.category_description
-    title_parts.join(' ')
-  end
-
   def special_products_cache_key
     updated_at = []
     [:novelties, :discounts, :hits].each do |type|
       updated_at << @category.send(type).last_updated(36).maximum(:updated_at)
     end
     updated_at.reject(&:nil?).max
+  end
+
+  def category_title
+    title_parts = "#{@category.title} #{selected_brands.join ', '}"
   end
 
   private
@@ -108,11 +100,5 @@ module CategoriesHelper
         link_to "#{link_text}", category_page_path(params.merge({ entities => items }))
       end
     end
-  end
-
-  def add_brand_to_category_title
-    title_parts = [@category.title]
-    title_parts << selected_brands.first if selected_brands.count == 1
-    title_parts
   end
 end
