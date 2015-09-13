@@ -3,7 +3,8 @@ module ProductsSync
 
   spreadsheet_key Settings.gdrive.docs.products
   worksheet_columns_names [
-    'id', 'title', 'brand', 'novelty', 'hit', 'age', 'sex', 'drop_price',
+    'id', 'title', 'brand', 'novelty', 'hit',
+    'age_from', 'age_to', 'sex', 'drop_price',
     'title', 'meta_keywords', 'meta_description'
   ]
 
@@ -16,7 +17,7 @@ module ProductsSync
   find_item { |id| Product.find id }
 
   item_to_push do |product|
-    data = product.as_json(only: [:id, :novelty, :hit, :drop_price, :sex], methods: [:age])
+    data = product.as_json(only: [:id, :novelty, :hit, :drop_price, :sex, :age_from, :age_to])
                   .merge(brand: product.brand.try(:name))
                   .symbolize_keys
     data[:title]            = product.title
@@ -35,7 +36,8 @@ module ProductsSync
   update_item_from_row do |product, row|
     product.novelty               = row['novelty'] == '1' ? true : false
     product.hit                   = row['hit'] == '1' ? true : false
-    product.age                   = row['age']
+    product.age_from              = row['age_from']
+    product.age_to                = row['age_to']
     product.sex                   = row['sex'] if row['sex'].present?
     product.drop_price            = row['drop_price'] == '1' ? true : false
     product.page.title            = row['title'] if row['title'].present?
