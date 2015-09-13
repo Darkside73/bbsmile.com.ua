@@ -19,10 +19,12 @@ module ProductsSync
     data = product.as_json(only: [:id, :novelty, :hit, :drop_price, :sex], methods: [:age])
                   .merge(brand: product.brand.try(:name))
                   .symbolize_keys
-    data[:title]      = product.title_with_sku
-    data[:novelty]    = product.novelty ? '1' : '0'
-    data[:hit]        = product.hit ? '1' : '0'
-    data[:drop_price] = product.drop_price ? '1' : '0'
+    data[:title]            = product.title
+    data[:novelty]          = product.novelty ? '1' : '0'
+    data[:hit]              = product.hit ? '1' : '0'
+    data[:drop_price]       = product.drop_price ? '1' : '0'
+    data[:meta_keywords]    = product.page.meta_keywords
+    data[:meta_description] = product.page.meta_description
     data
   end
 
