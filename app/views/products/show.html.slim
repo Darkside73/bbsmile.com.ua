@@ -36,8 +36,9 @@
         - if @product.age
           span.label.label-info = render 'age_range', range: @product.age
 
-      .share.pull-right
-        = render 'uptolike_share'
+      - if Rails.env.production?
+        .share.pull-right
+          = render 'uptolike_share'
       .clearfix
       hr
       .row
@@ -68,7 +69,6 @@
             = render 'callback/quick_order_form'
             - if @product.available
               p.lead: a.dashed href="#send-quick-order" data-toggle="modal" Заказать в один клик!
-            p.red Уточняйте цену на данный товар
             ul.fa-ul.page-nav-links
               li
                 i.fa.fa-li.fa-file-text-o
@@ -121,7 +121,7 @@
             = render partial: 'video', object: @product.video
       .col-md-4
         = link_to "http://www.otzyvua.net/internet-magazin-babysmile", target: "_blank" do
-          = image_tag "content/otzyvua.jpg"
+          = image_tag "content/otzyvua.jpg", class: "img-responsive"
         = render 'comments', item: @product
 
   - if @product.page.any_related?
