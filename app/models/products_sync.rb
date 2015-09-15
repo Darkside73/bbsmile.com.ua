@@ -24,6 +24,8 @@ module ProductsSync
     data[:novelty]          = product.novelty ? '1' : '0'
     data[:hit]              = product.hit ? '1' : '0'
     data[:drop_price]       = product.drop_price ? '1' : '0'
+    data[:age_from]         = data[:age_from].to_s.gsub('.', ',')
+    data[:age_to]           = data[:age_to].to_s.gsub('.', ',')
     data[:meta_keywords]    = product.page.meta_keywords
     data[:meta_description] = product.page.meta_description
     data
@@ -36,8 +38,8 @@ module ProductsSync
   update_item_from_row do |product, row|
     product.novelty               = row['novelty'] == '1' ? true : false
     product.hit                   = row['hit'] == '1' ? true : false
-    product.age_from              = row['age_from']
-    product.age_to                = row['age_to']
+    product.age_from              = row['age_from'].gsub(',', '.')
+    product.age_to                = row['age_to'].gsub(',', '.')
     product.sex                   = row['sex'] if row['sex'].present?
     product.drop_price            = row['drop_price'] == '1' ? true : false
     product.page.title            = row['title'] if row['title'].present?
