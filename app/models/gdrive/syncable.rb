@@ -47,7 +47,7 @@ module Gdrive::Syncable
     @items_to_update = []
     @invalid_rows = {}
 
-    worksheet = find_worksheet_or_create(category.title)
+    worksheet = find_worksheet_or_create(category.name)
 
     worksheet.list.each_with_index do |row, index|
       row_num = index + 2
@@ -70,7 +70,7 @@ module Gdrive::Syncable
   end
 
   def load(category)
-    worksheet = find_worksheet_or_create(category.title)
+    worksheet = find_worksheet_or_create(category.name)
     clear_worksheet(worksheet)
 
     items = @items_to_sync.call(category)
