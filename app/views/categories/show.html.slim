@@ -79,6 +79,4 @@
           == @category.description
 
   - if @category.leaf? && @category.description.present? && no_filtering?
-    .container.page-content
-      h3 = @category.title
-      == @category.description
+    .container.page-content == @category.description
