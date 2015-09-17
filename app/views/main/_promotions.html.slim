@@ -5,8 +5,12 @@
     li data-target="#promotions" data-slide-to="2"
     li data-target="#promotions" data-slide-to="3"
     li data-target="#promotions" data-slide-to="4"
+    li data-target="#promotions" data-slide-to="5"
   .carousel-inner
-    .item.active data-title="Верес"
+    .item.active data-title="Модный карапуз"
+      = link_to category_page_path('detskaya-odezhda', utm_campaign: 'karapuz', utm_medium: 'main_page_promotions', utm_source: 'local') do
+        = image_tag "promotions/0.jpg", class: 'img-responsive'
+    .item data-title="Верес"
       = link_to category_page_path('detskie-krovatki', brands: ['Верес'], utm_campaign: 'veres', utm_medium: 'main_page_promotions', utm_source: 'local') do
         = image_tag "promotions/veres2015.jpg", class: 'img-responsive'
     .item data-title="Krasnal"
