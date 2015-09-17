@@ -75,8 +75,6 @@
           | ничего не нашлось
       - else
         .offers = render 'special_products'
-        .page-content
-          == @category.description
 
-  - if @category.leaf? && @category.description.present? && no_filtering?
+  - if @category.description.present? && no_filtering?
     .container.page-content == @category.description
