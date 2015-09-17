@@ -1,5 +1,13 @@
 User-agent: *
-Allow: /
+Disallow:
+Disallow: /*?ages*
+Disallow: /*?brands*
+Disallow: /*&brands*
+Disallow: /*?prices*
+Disallow: /*sort=price*
+Disallow: /*&tags*
+Disallow: /*?tags*
+Disallow: /*gender=*
 Sitemap: http://bbsmile.com.ua/sitemap.xml.gz
 Host: bbsmile.com.ua
 
