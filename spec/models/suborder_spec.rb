@@ -1,10 +1,18 @@
 require 'rails_helper'
 
 describe Suborder do
+
+  let(:variant) { create :variant }
+
+  it "calculate total" do
+    suborder = Suborder.new variant: variant, discount: 10
+    suborder.validate
+    expect(suborder.total).to eq(variant.price - 10)
+  end
+
   context "when save" do
-    let(:variant) { create :variant }
     it "memorize current variant price" do
-      suborder = build :suborder, variant: variant
+      suborder = Suborder.new variant: variant
       suborder.save
       expect(suborder.price).to eq(variant.price)
     end

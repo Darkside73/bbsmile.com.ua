@@ -5,12 +5,14 @@ class Product < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
 
   FREE_SHIPPING_PRICE = 250
-  MAX_AGE_TO = 16
+  MAX_AGE_TO          = 16
+
+  belongs_to :category
+  belongs_to :brand
 
   has_many :images, as: :assetable, dependent: :destroy
   has_many :variants, dependent: :destroy
-  belongs_to :category
-  belongs_to :brand
+  has_many :offers, dependent: :destroy
 
   accepts_nested_attributes_for :images
   accepts_nested_attributes_for :variants

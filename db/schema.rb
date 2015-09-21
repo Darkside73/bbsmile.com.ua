@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903165651) do
+ActiveRecord::Schema.define(version: 20150921211736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,16 @@ ActiveRecord::Schema.define(version: 20150903165651) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "offers", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "offer_id"
+    t.float   "offer_price"
+    t.integer "position"
+  end
+
+  add_index "offers", ["offer_id"], name: "index_offers_on_offer_id", using: :btree
+  add_index "offers", ["product_id"], name: "index_offers_on_product_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.string   "user_name",        limit: 255
@@ -168,6 +178,7 @@ ActiveRecord::Schema.define(version: 20150903165651) do
     t.integer "variant_id"
     t.float   "price"
     t.integer "quantity",   default: 1
+    t.float   "discount",   default: 0.0
   end
 
   add_index "suborders", ["order_id"], name: "index_suborders_on_order_id", using: :btree
@@ -219,6 +230,7 @@ ActiveRecord::Schema.define(version: 20150903165651) do
   add_index "variants", ["price"], name: "index_variants_on_price", using: :btree
   add_index "variants", ["product_id"], name: "index_variants_on_product_id", using: :btree
 
+  add_foreign_key "offers", "products", column: "offer_id"
   add_foreign_key "payments", "orders"
   add_foreign_key "suborders", "orders"
   add_foreign_key "suborders", "variants"

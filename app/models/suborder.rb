@@ -6,9 +6,10 @@ class Suborder < ActiveRecord::Base
   validates :variant, presence: true
   validates :quantity, presence: true,
                        numericality: { only_integer: true, greater_than: 0 }
+  validates :discount, numericality: { greater_than_or_equal_to: 0 }
 
   def total
-    price * quantity
+    price * quantity - discount
   end
 
   def total_with_currency
