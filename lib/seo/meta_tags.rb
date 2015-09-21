@@ -29,6 +29,10 @@ class Seo::MetaTags
     end
   end
 
+  def fallback_description_for_brand
+    @page.description
+  end
+
   def fallback_description
     pageable = @page.pageable
     if pageable.respond_to?(:description) && pageable.description.present?
@@ -49,12 +53,19 @@ class Seo::MetaTags
   private
 
   def meta_tag_for(type)
-    return default_meta(type) unless @page.respond_to?(:pageable)
+    case @page
+    when -> (o) { o.respond_to?(:pageable) }
+      page_type = @page.pageable.class.name.downcase
+    when -> (o) { o.is_a? Brand }
+      page_type = "brand"
+    else
+      return default_meta(type)
+    end
 
     meta = ''
     {
       "meta_#{type}" => @page,
-      "fallback_#{type}_for_#{@page.pageable.class.name}".downcase => self,
+      "fallback_#{type}_for_#{page_type}" => self,
       "fallback_#{type}" => self
     }.each do |method, object|
       if object.respond_to? method

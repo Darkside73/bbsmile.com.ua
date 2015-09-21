@@ -17,4 +17,12 @@ describe Seo::MetaTags do
       expect(subject.description).to include(page.pageable.description[0..20])
     end
   end
+
+  context "when page is brand" do
+    let(:brand) { create(:brand_with_content) }
+    subject { Seo::MetaTags.new brand }
+    it "use brand's specific description" do
+      expect(subject.description).to include(brand.description[0..20])
+    end
+  end
 end
