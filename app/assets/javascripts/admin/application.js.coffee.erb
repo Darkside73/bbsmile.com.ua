@@ -5,8 +5,8 @@
 //= require jquery-ui/effect.all
 //= require underscore
 //= require twitter/bootstrap
-//= require select2/select2
-//= require select2/select2_locale_ru
+//= require select2/select2.full.min
+//= require select2/i18n/ru
 //= require jquery.scrollTo/jquery.scrollTo
 //= require tabs_memory
 //= require ./search-box
@@ -16,9 +16,7 @@
 //= require ./products
 //= require ./category
 //= require ./plupload
-//= require react
-//= require react_ujs
-//= require ./components
+//= require_tree ./vue-components
 //= require tinymce
 //= require tinymce/plugins/youtube/plugin
 
@@ -38,7 +36,7 @@ $ ->
       $(this).next('ul.nav').slideToggle()
       e.preventDefault()
 
-  $('select').select2(allowClear: true)
+  # $('select').select2(allowClear: true)
 
   $('a.top').click (e) ->
     e.preventDefault()

@@ -1,0 +1,23 @@
+= render layout: 'product_info_tabs' do
+
+  #product-offers-list
+    product-offers index-url="#{admin_product_offers_path(@product, format: :json)}"
+
+  script type="text/x-template" id="product-offers"
+    offer-add-form products-url="#{available_products_admin_product_offers_path(@product, format: :json)}" loading="false"
+    table.table.related-list.table-striped.table-hover
+      tr v-repeat="offer in offers"
+        td.col-md-6 {{offer.title}}
+        td.col-md-4 {{offer.price}}
+        td.col-md-2
+          offer-delete-button offer-id="{{offer.id}}"
+
+    script type="text/x-template" id="offer-delete-button"
+      a href="#" v-on="click: onClick": i.fa.fa-trash-o.fa-lg.text-warning
+
+    script type="text/x-template" id="offer-add-form"
+      = simple_form_for [:admin, @product, Offer.new], html: {"v-on" => "submit: onSubmit", class: "form-inline"} do |f|
+        = f.input :product_offer_id, as: :select, collection: [], input_html: { "v-select2" => "selectedProduct", options: "", url: "productsUrl" }, label: "Акционный товар"
+        input type="hidden" name="offer[product_offer_id]" value="{{selectedProduct.id}}"
+        = f.input :price, input_html: { min: 0, value: "{{selectedProduct.price - 1}}" }, label: "Акционная цена"
+        = f.button :submit, "Добавить", class: 'btn btn-info', "v-attr" => "disabled: loading"

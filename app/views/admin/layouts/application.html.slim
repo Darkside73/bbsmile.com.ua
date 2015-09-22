@@ -6,7 +6,6 @@ html
     meta charset="UTF-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     = stylesheet_link_tag 'admin/application'
-    = javascript_include_tag 'admin/application'
     = yield :head
 
   body
@@ -20,4 +19,5 @@ html
           .row = render 'breadcrumb'
           .row = yield
     footer.bs-footer: .container: p &copy; bbsmile.com.ua
+    = javascript_include_tag 'admin/application'
     = yield :js
