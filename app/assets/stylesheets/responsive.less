@@ -16,6 +16,9 @@
     //   #gradient > .directional(fadeout(white, 70%), fadeout(white, 100%), 180deg) !important;
     // }
   }
+  #site-header:not(.jumbotron) .contacts .actions .popover.visible {
+    left: 18px !important;
+  }
   #category-content .subnav.affix {
     position: static;
     top: 0;
@@ -39,6 +42,9 @@
 }
 
 @media (max-width: @screen-sm-max) {
+  #site-header:not(.jumbotron) .contacts .actions .popover.visible {
+    left: 84px !important;
+  }
   .products-list {
     .product {
       margin-bottom: 15px;
@@ -64,6 +70,11 @@
 }
 
 @media (max-width: @screen-xs-max) {
+  #site-header:not(.jumbotron) .contacts .actions .popover.bottom.visible {
+    .arrow { display: none; }
+    display: none;
+    left: 32% !important;
+  }
   .nav-pills > li {
     float: none;
   }
@@ -125,6 +136,9 @@
 }
 
 @media (max-width: @screen-xxs-max) {
+  #site-header:not(.jumbotron) .contacts .actions .popover.bottom.visible {
+    left: 22% !important;
+  }
   .nav-tabs > li {
     float:none;
   }

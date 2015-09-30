@@ -28,6 +28,11 @@ $ ->
                          .css('left', "#{left}px")
     e.preventDefault()
 
+  $('#site-header .contacts .actions a.phone').click (e) ->
+    if !$('#site-header').hasClass('jumbotron')
+      $('.contacts .actions .popover').toggle()
+    e.preventDefault()
+
   $('a[data-scroll]').click (e) ->
     offset = $(@).data('offset') ? -55
     $.scrollTo $(@).attr('href'), $(@).data('scroll'), offset: offset
