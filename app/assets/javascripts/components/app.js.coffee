@@ -9,6 +9,8 @@
       suborders: []
     cartModalId: "cartModal"
     currentOrder: {}
+    pageTitle: ''
+    flashMessage: ''
   created: ->
     @populateCartState(window.cartState)
   watch:
@@ -44,4 +46,8 @@
       @cartState.total = data.total_with_currency
       @cartState.size = data.size
       @cartState.suborders = data.suborders
+    emptyCart: ->
+      @cartState.total = ''
+      @cartState.size = 0
+      @cartState.suborders = []
 )

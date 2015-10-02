@@ -16,6 +16,7 @@ class CartController < ApplicationController
   end
 
   def update
+    cart.errors.clear
     cart.update_suborder(params[:index].to_i, params[:quantity].to_i)
     respond_with cart
   end
@@ -25,6 +26,7 @@ class CartController < ApplicationController
   end
 
   def checkout
+    cart.errors.clear
     cart.build_user
   end
 

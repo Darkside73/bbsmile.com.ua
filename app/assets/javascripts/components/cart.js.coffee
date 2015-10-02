@@ -53,3 +53,57 @@ Vue.component(
       e.preventDefault()
       @$parent.openCart()
 )
+
+Vue.component(
+  'cart-checkout-form'
+  props: ['cartState', 'loading']
+  template: '#cart-checkout-form'
+  methods:
+    onSubmit: (e) ->
+      e.preventDefault()
+      @loading = true
+      $('.form-group.has-error', e.target).each ->
+        $(this).removeClass 'has-error'
+        $('span.help-block', this).remove()
+      $.post(
+        e.target.action
+        $(e.target).serialize()
+        (data) =>
+          @$parent.flashMessage = data.flash
+          @$parent.emptyCart()
+        'json'
+      ).fail(
+        (data) =>
+          errors = data.responseJSON
+          for attribute, messages of errors
+            attribute = "order_#{attribute.replace('.', '_')}"
+            control = $(".#{attribute}", e.target)
+
+            span = if $('span.help-block', control).length
+              $('span.help-block', control)
+            else
+              $('<span class="help-block"/>').appendTo control
+
+            control.addClass 'has-error'
+            span.text messages.join(', ')
+      ).always( => @loading = false)
+    trackOrderCheckout: ->
+      ga('require', 'ecommerce');
+      _gaq.push ['_trackPageview', '/checkout']
+      _gaq.push ['_addTrans', data.id, data.variant.title, data.price]
+      _gaq.push [
+        '_addItem', data.id, data.variant.sku || data.variant_id,
+        data.variant.title, data.variant.category_title, data.price, '1'
+      ]
+      _gaq.push ['_trackTrans']
+      yaCounter22781371.reachGoal(
+        'CHECKOUT'
+        order_id: data.id
+        order_price: data.price
+        currency: "UAH"
+        exchange_rate: 1
+        goods: [
+          { id: data.variant_id, name: data.variant.title, price: data.price, quantity: 1 }
+        ]
+      )
+)
