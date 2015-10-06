@@ -3,7 +3,7 @@
 - content_for :js_footer do
   coffee:
     $ ->
-      _gaq.push ['_trackEvent', 'Категория', 'Просмотреть', $('#category-content').data('title'), 0, true ]
+      ga 'send', 'Категория', 'Просмотреть', $('#category-content').data('title')
 
 - title category_title
 

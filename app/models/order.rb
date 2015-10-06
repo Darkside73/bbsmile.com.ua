@@ -99,7 +99,7 @@ class Order < ActiveRecord::Base
   # TODO move to template
   def as_json options={}
     super only: :total,
-          methods: [:size, :total_with_currency],
+          methods: [:number, :size, :total_with_currency],
           include: {
             suborders: {
               only: [:variant_id, :quantity],

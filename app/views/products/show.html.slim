@@ -6,7 +6,7 @@
   = javascript_include_tag 'product'
   coffee:
     $ ->
-      _gaq.push ['_trackEvent', 'Товар', 'Просмотреть', $('#product-container').data('title'), 0, true]
+      ga 'send', 'Товар', 'Просмотреть', $('#product-container').data('title')
 
 - content_for :modals do
   = render 'gallery_modal', product: @product, id: 'product-gallery'

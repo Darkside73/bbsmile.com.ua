@@ -12,7 +12,7 @@ $ ->
   $('.form-search input.search-query').blur (e) ->
     if currentQuery
       pathname = $(location).attr('pathname')
-      _gaq.push ['_trackPageview', "#{pathname}?autocomplete-q=#{currentQuery}"]
+      ga 'send', 'pageview', "#{pathname}?autocomplete-q=#{currentQuery}"
     setTimeout ->
       $('ul.typeahead').fadeOut()
       350

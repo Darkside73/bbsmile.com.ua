@@ -41,7 +41,9 @@ Vue.component(
         when suborder.variant_id is @variantId
       false
   methods:
-    onClick: (e) -> @addItem(@variantId)
+    onClick: (e) ->
+      @addItem(@variantId)
+      ga 'send', 'pageview', '/add-to-cart'
 )
 
 Vue.component(
@@ -71,6 +73,7 @@ Vue.component(
         (data) =>
           @$parent.flashMessage = data.flash
           @$parent.emptyCart()
+          @trackOrderCheckout(data)
         'json'
       ).fail(
         (data) =>
@@ -87,23 +90,28 @@ Vue.component(
             control.addClass 'has-error'
             span.text messages.join(', ')
       ).always( => @loading = false)
-    trackOrderCheckout: ->
-      ga('require', 'ecommerce');
-      _gaq.push ['_trackPageview', '/checkout']
-      _gaq.push ['_addTrans', data.id, data.variant.title, data.price]
-      _gaq.push [
-        '_addItem', data.id, data.variant.sku || data.variant_id,
-        data.variant.title, data.variant.category_title, data.price, '1'
-      ]
-      _gaq.push ['_trackTrans']
+    trackOrderCheckout: (data) ->
+      ga 'send', 'pageview', '/checkout'
+      ga 'require', 'ecommerce'
+      ga 'ecommerce:addTransaction', id: data.number, revenue: data.total
+      items = []
+
+      for suborder in data.suborders
+        item = {
+          id: suborder.variant_id, name: suborder.title,
+          price: suborder.total, quantity: suborder.quantity
+        }
+        items.push item
+        ga 'ecommerce::addItem', item
+
+      ga 'ecommerce:send'
+
       yaCounter22781371.reachGoal(
         'CHECKOUT'
         order_id: data.id
         order_price: data.price
         currency: "UAH"
         exchange_rate: 1
-        goods: [
-          { id: data.variant_id, name: data.variant.title, price: data.price, quantity: 1 }
-        ]
+        goods: items
       )
 )

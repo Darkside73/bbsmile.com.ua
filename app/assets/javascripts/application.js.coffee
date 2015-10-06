@@ -40,7 +40,7 @@ $ ->
   $('.landing-nav .nav a').click (e) ->
     offset = $(@).data('offset') ? -85
     $.scrollTo $(@).data('target'), 800, offset: offset
-    _gaq.push ['_trackEvent', 'Навигация', $(this).text()]
+    ga 'send', 'Навигация', $(this).text()
     e.preventDefault()
 
   toggleGoTop = ->
@@ -54,7 +54,7 @@ $ ->
   $('a.go-top').click (e) ->
     e.preventDefault()
     $('html, body').animate scrollTop: 0, 300
-    _gaq.push ['_trackEvent', 'Навигация', 'К началу страницы', 0, true]
+    ga 'send', 'Навигация', 'К началу страницы'
 
   new ContactDialog('#send-message')
   new CallbackDialog('#send-callback')

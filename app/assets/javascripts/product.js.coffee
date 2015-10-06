@@ -2,10 +2,10 @@
 
 $ ->
   $('#product-gallery').on 'slide', (e, index, slide, links) ->
-    _gaq.push ['_trackEvent', 'Товар', 'Просмотреть фото', "Номер #{index + 1} из #{links.length}"]
+    ga 'send', 'Товар', 'Просмотреть фото', "Номер #{index + 1} из #{links.length}"
 
   $('#variants-gallery').on 'display', (e, currentLink) ->
-    _gaq.push ['_trackEvent', 'Товар', 'Просмотреть вариант', $(currentLink).attr('title')]
+    ga 'send', 'Товар', 'Просмотреть вариант', $(currentLink).attr('title')
     $('#variants-gallery .price').html $(currentLink).data('price')
 
   $('#shippingInfo').collapse 'hide' if $(window).width() < 768

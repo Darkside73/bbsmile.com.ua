@@ -8,7 +8,7 @@ class @CallbackDialog
       if $('.btn-success', @dialog).hasClass 'disabled'
         @toggleSubmitButton()
     @dialog.on 'hidden', =>
-      _gaq.push ['_trackEvent', 'Контакты', 'Обратный звонок', 'Закрыть'] unless @success
+      ga('send', 'Контакты', 'Обратный звонок', 'Закрыть') unless @success
     @bind()
 
   bind: ->
@@ -21,7 +21,7 @@ class @CallbackDialog
         @showFlashMessagesFrom data
         @dialog.modal 'hide'
         @success = true
-        _gaq.push ['_trackEvent', 'Контакты', 'Обратный звонок', 'Отправить']
+        ga 'send', 'Контакты', 'Обратный звонок', 'Отправить'
     ).bind(
       'ajax:error'
       (event, xhr, status, error) =>
@@ -31,7 +31,7 @@ class @CallbackDialog
         @showErrors errors
         eventData = "Ошибка"
         eventData += ": #{JSON.stringify(errors)}" if (typeof JSON.stringify == 'function')
-        _gaq.push ['_trackEvent', 'Контакты', 'Обратный звонок', eventData]
+        ga 'send', 'Контакты', 'Обратный звонок', eventData
     )
 
   showErrors: (errors) ->
