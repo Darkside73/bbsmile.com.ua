@@ -16,14 +16,6 @@ GIT
       railties (>= 3.0, <= 4.3)
 
 GIT
-  remote: git://github.com/Darkside73/tinymce-rails.git
-  revision: 9edbaf5a45b4ebfa87fbef76c972f05c176e9056
-  branch: sprockets-3
-  specs:
-    tinymce-rails (4.1.6)
-      railties (>= 4)
-
-GIT
   remote: git://github.com/liqpay/sdk-ruby.git
   revision: 3cbb88e3dfcdd4d7c0bbd0c7e0284f4df13dcfd2
   specs:
@@ -339,7 +331,7 @@ GEM
     mime-types (2.6.1)
     mimemagic (0.3.0)
     mini_portile (0.6.2)
-    minitest (5.8.0)
+    minitest (5.8.1)
     multi_json (1.11.2)
     multi_test (0.1.2)
     multi_xml (0.5.5)
@@ -516,6 +508,8 @@ GEM
     tilt (2.0.1)
     timers (4.1.1)
       hitimes
+    tinymce-rails (4.2.5)
+      railties (>= 3.1.1)
     tinymce-rails-langs (4.20140129)
       tinymce-rails (~> 4.0)
     tzinfo (1.2.2)
@@ -615,7 +609,7 @@ DEPENDENCIES
   spring-commands-rspec
   sprockets-coffee-react
   therubyracer
-  tinymce-rails!
+  tinymce-rails
   tinymce-rails-langs
   uglifier (>= 1.0.3)
   unicorn
