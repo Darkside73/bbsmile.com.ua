@@ -73,13 +73,13 @@ ActiveRecord::Schema.define(version: 20150921211736) do
 
   create_table "offers", force: :cascade do |t|
     t.integer "product_id"
-    t.integer "offer_id"
-    t.float   "offer_price"
+    t.integer "product_offer_id"
+    t.float   "price"
     t.integer "position"
   end
 
-  add_index "offers", ["offer_id"], name: "index_offers_on_offer_id", using: :btree
   add_index "offers", ["product_id"], name: "index_offers_on_product_id", using: :btree
+  add_index "offers", ["product_offer_id"], name: "index_offers_on_product_offer_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.string   "user_name",        limit: 255
@@ -230,7 +230,7 @@ ActiveRecord::Schema.define(version: 20150921211736) do
   add_index "variants", ["price"], name: "index_variants_on_price", using: :btree
   add_index "variants", ["product_id"], name: "index_variants_on_product_id", using: :btree
 
-  add_foreign_key "offers", "products", column: "offer_id"
+  add_foreign_key "offers", "products", column: "product_offer_id"
   add_foreign_key "payments", "orders"
   add_foreign_key "suborders", "orders"
   add_foreign_key "suborders", "variants"
