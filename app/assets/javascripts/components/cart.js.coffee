@@ -102,7 +102,7 @@ Vue.component(
           price: suborder.total, quantity: suborder.quantity
         }
         items.push item
-        ga 'ecommerce::addItem', item
+        ga 'ecommerce:addItem', item
 
       ga 'ecommerce:send'
 
