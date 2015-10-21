@@ -44,6 +44,7 @@ Vue.component(
     onClick: (e) ->
       @addItem(@variantId)
       ga 'send', 'pageview', '/add-to-cart'
+      yaCounter22781371.reachGoal 'ADD-TO-CART'
 )
 
 Vue.component(
