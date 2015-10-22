@@ -17,7 +17,7 @@
 
     script type="text/x-template" id="offer-add-form"
       = simple_form_for [:admin, @product, Offer.new], html: {"v-on" => "submit: onSubmit", class: "form-inline"} do |f|
-        = f.input :product_offer_id, as: :select, collection: [], input_html: { "v-select2" => "selectedProduct", options: "", url: "productsUrl" }, label: "Акционный товар"
+        = f.input :product_offer_id, as: :select, collection: [], input_html: { "v-select2" => "selectedProduct", options: "", url: "productsUrl", class: "skip-select2" }, label: "Акционный товар"
         input type="hidden" name="offer[product_offer_id]" value="{{selectedProduct.id}}"
         = f.input :price, input_html: { min: 0, value: "{{selectedProduct.price - 1}}" }, label: "Акционная цена"
         = f.button :submit, "Добавить", class: 'btn btn-info', "v-attr" => "disabled: loading"

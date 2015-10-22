@@ -26,7 +26,6 @@
       = f.input :novelty, label: 'Новинка'
       = f.input :hit, label: 'Хит продаж'
       = f.input :drop_price, label: 'Сниженная цена'
-      = f.input :tag_list, label: 'Теги', input_html: { class: 'tags', 'data-autocomplete-url' => tags_admin_products_path }
   => f.button :submit, @product.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
   ' или
   = link_to 'Отменить', :back
