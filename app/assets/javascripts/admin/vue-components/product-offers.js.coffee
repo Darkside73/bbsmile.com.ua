@@ -74,7 +74,7 @@ Vue.directive(
             item.text
         options
       )
-    options = $.extend width: 250, options
+    options = $.extend width: 250, language: 'ru', options
 
     # self = @
     $(@el).select2(options).on 'change', => @set(selectedProduct)
