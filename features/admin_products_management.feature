@@ -28,7 +28,6 @@ Scenario: Add new product in category
   When I click "Добавить товар"
     And fill in "product[page_attributes][title]" with "Кроватка"
     And fill in "product[page_attributes][url]" with "krovatka"
-    And fill in "product[tag_list]" with "мебель, кроватки"
     And press button "Создать"
   Then This product "Кроватка" should belongs to current category
 
