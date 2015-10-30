@@ -1,5 +1,5 @@
 .offer-item.row
-  .product.short.col-md-4
+  .product.short.col-md-3
     - if offer.product.top_image?
       = link_to "/#{offer.product.url}", class: 'thumbnail' do
         = image_tag offer.product.top_image(:grid), alt: offer.product.name
@@ -9,9 +9,9 @@
     - if offer.product.price
       .price: span.label => number_to_currency offer.product.price
 
-  .plus.col-md-1: i.fa.fa-plus
+  .plus.col-md-1: strong +
 
-  .product.short.col-md-4
+  .product.short.col-md-3
     - if offer.product_offer.top_image?
       = link_to "/#{offer.product_offer.url}", class: 'thumbnail' do
         = image_tag offer.product_offer.top_image(:grid), alt: offer.product_offer.name
@@ -19,17 +19,22 @@
       h4
         = link_to offer.product_offer
         - if offer.product_offer.brand.present?
+          br
           small: span title="Бренд" = offer.product_offer.brand.full_name
     - if offer.product_offer.price
       .price
         span.old.medium => number_to_currency offer.product_offer.price
         span.label => number_to_currency offer.price
 
-  .equal.col-md-3
+  .col-md-2.equal
     strong> = "="
-    = number_to_currency offer.amount
-    cart-button[ add-item="{{addCartItem}}"
+  .col-md-2
+    span.price.old> = number_to_currency offer.original_amount
+    br
+    span.price.big = number_to_currency offer.amount
+    cart-button [add-item="{{addCartItem}}"
       open-cart="{{openCart}}"
       cart-state="{{cartState}}"
       variants="[{variant_id: #{offer.product.master_variant.id}}, {variant_id: #{offer.product_offer.master_variant.id}, offer_id: #{offer.id}}]"
       style="btn-lg"]
+  .col-md-1

@@ -15,4 +15,8 @@ class Offer < ActiveRecord::Base
   def discount
     product_offer.price - price
   end
+
+  def original_amount
+    product.price + product_offer.price
+  end
 end
