@@ -12,7 +12,7 @@ class Product < ActiveRecord::Base
 
   has_many :images, as: :assetable, dependent: :destroy
   has_many :variants, dependent: :destroy
-  has_many :offers, dependent: :destroy
+  has_many :offers, -> { with_prices }, dependent: :destroy
 
   accepts_nested_attributes_for :images
   accepts_nested_attributes_for :variants

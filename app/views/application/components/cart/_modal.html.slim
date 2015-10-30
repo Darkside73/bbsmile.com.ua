@@ -19,10 +19,12 @@ script type="text/x-template" id="cart-item"
     .col-md-3
       img.img-responsive v-attr="src: suborder.variant.image_url"
     .col-md-9
-      h4: a href="/{{suborder.variant.product.url}}" {{suborder.title}}
+      h4: a href="{{suborder.variant.product.url}}" {{suborder.title}}
       .row
         .col-md-4
-          .price.medium {{suborder.total_with_currency}}
+          .price
+            span.old.small v-show="suborder.discount" {{suborder.subtotal_with_currency}}&nbsp;
+            span.medium {{suborder.total_with_currency}}
           a.btn.btn-danger.btn-xs href="#" v-on="click: onClick" v-show="deleteItem"
             i.fa.fa-trash>
             | Удалить

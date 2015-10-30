@@ -8,11 +8,7 @@ class Order < ActiveRecord::Base
       suborder_with_same_variant = proxy_association.owner.suborders.find do |s|
         s.variant == suborder.variant
       end
-      if suborder_with_same_variant
-        suborder_with_same_variant.merge_with suborder
-      else
-        super
-      end
+      super unless suborder_with_same_variant
       proxy_association.owner.validate
     end
   end
@@ -42,11 +38,7 @@ class Order < ActiveRecord::Base
       suborder_with_same_variant = suborders_to_write.find do |s|
         s.variant == suborder.variant
       end
-      if suborder_with_same_variant
-        suborder_with_same_variant.merge_with suborder
-      else
-        suborders_to_write << suborder
-      end
+      suborders_to_write << suborder unless suborder_with_same_variant
     end
     association(:suborders).writer suborders_to_write
     validate
@@ -94,27 +86,6 @@ class Order < ActiveRecord::Base
       number = country_phone_code[0..13-length-1] + number
       return number if number.start_with? country_phone_code
     end
-  end
-
-  # TODO move to template
-  def as_json options={}
-    super only: :total,
-          methods: [:number, :size, :total_with_currency],
-          include: {
-            suborders: {
-              only: [:variant_id, :quantity],
-              methods: [:title, :total, :total_with_currency],
-              include: {
-                variant: {
-                  methods: :image_url,
-                  only: [],
-                  include: {
-                    product: { methods: :url, only: [] }
-                  }
-                }
-              }
-            }
-          }
   end
 
   def total_with_currency

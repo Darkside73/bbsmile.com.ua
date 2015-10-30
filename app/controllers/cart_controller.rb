@@ -1,28 +1,24 @@
 class CartController < ApplicationController
-  respond_to :json, except: :delete_item # responder render empty response for DELETE requests; so turn it off
 
   def add_item
     cart.user = nil
-    respond_with(cart, location: cart_add_item_url) do
-      cart.suborders << Suborder.new(suborder_params)
-    end
+    cart.suborders << Suborder.new(suborder_params)
+    render cart
   end
 
   def delete_item
     cart.remove_suborder(params[:index].to_i)
-    respond_with(cart) do |format|
-      format.js { render json: cart }
-    end
+    render cart
   end
 
   def update
     cart.errors.clear
     cart.update_suborder(params[:index].to_i, params[:quantity].to_i)
-    respond_with cart
+    render cart
   end
 
   def index
-    render json: cart
+    render cart
   end
 
   def checkout
@@ -33,6 +29,6 @@ class CartController < ApplicationController
   private
 
   def suborder_params
-    params.permit(:variant_id, :quantity)
+    params.permit(:variant_id, :quantity, :offer_id)
   end
 end

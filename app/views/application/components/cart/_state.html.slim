@@ -5,4 +5,4 @@ script type="text/x-template" id="cart-label"
     span.badge v-show="!cartState.size"
 
 javascript:
-  var cartState = #{{raw cart.to_json}}
+  var cartState = #{{render template: "orders/_order.json"}}

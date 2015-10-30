@@ -69,8 +69,10 @@ a.dashed {
   &.medium { font-size: @font-size-base*1.2; }
   &.big { font-size: @font-size-base*2; }
   span.old {
-    &.big { font-size: @font-size-base*1.5; }
     text-decoration: line-through;
+    color: @gray;
+    font-weight: bold;
+    &.big { font-size: @font-size-base*1.5; }
   }
 }
 
@@ -136,13 +138,6 @@ a.dashed {
         margin-top: 30px;
       }
     }
-  }
-}
-
-.row {
-  .product .price span.old {
-    color: @gray;
-    font-weight: bold;
   }
 }
 

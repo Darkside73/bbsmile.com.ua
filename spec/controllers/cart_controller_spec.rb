@@ -23,6 +23,18 @@ describe CartController do
       xhr :post, :add_item, variant_id: variant.id, quantity: 1
       expect(session[:cart].suborders.size).to eq(1)
     end
+    context 'when offer used' do
+      let(:offer) { create :offer }
+      it 'add discount to subborder' do
+        xhr :post, :add_item,
+          variant_id: offer.product.master_variant.id, quantity: 1
+        xhr :post, :add_item,
+          variant_id: offer.product_offer.master_variant.id,
+          quantity: 1,
+          offer_id: offer.id
+        expect(session[:cart].suborders.second.discount).to_not eq(0)
+      end
+    end
   end
   describe 'DELETE delete_item' do
     before do

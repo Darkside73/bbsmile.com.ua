@@ -91,13 +91,26 @@ describe Order do
   end
 
   context "when assign suborder" do
+    subject { Order.new }
+
     let(:suborders) { create_list :suborder, 2, variant: create(:variant) }
     let(:suborder) { create :suborder }
-    it "merge suborders with same product variant" do
-      order = Order.new
-      order.suborders = suborders
-      order.suborders << suborder
-      expect(order.suborders.size).to eq(2)
+
+    it "do not add suborder with same product variant" do
+      subject.suborders = suborders
+      subject.suborders << suborder
+      expect(subject.suborders.size).to eq(2)
+    end
+
+    let(:offer) { create :offer }
+    context 'when suborder with product offer' do
+      it 'calculate discount' do
+        suborder1 = create :suborder, variant: offer.product.master_variant
+        suborder2 = create :suborder,
+          variant: offer.product_offer.master_variant, offer_id: offer.id
+        subject.suborders = [suborder1, suborder2]
+        expect(suborder2.discount).to eq(offer.discount)
+      end
     end
   end
 
