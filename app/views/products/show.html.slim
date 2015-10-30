@@ -124,6 +124,9 @@
           = image_tag "content/otzyvua.jpg", class: "img-responsive"
         = render 'comments', item: @product
 
+  - if @product.offers.any?
+    = render 'offers'
+
   - if @product.page.any_related?
     .related-products
       = render 'suggested_products' if @product.page.suggested_pages.any?

@@ -33,16 +33,19 @@ Vue.component(
 
 Vue.component(
   'cart-button'
-  props: ['variantId', 'addItem', 'openCart', 'cartState', 'style']
+  props: ['variantId', 'variants', 'addItem', 'openCart', 'cartState', 'style']
   template: '#cart-button'
   computed:
     alreadyInCart: ->
-      return true for suborder in @cartState.suborders \
-        when suborder.variant_id is @variantId
-      false
+      added = @cartState.suborders.map (suborder) -> suborder.variant_id
+      current = @items.map (item) -> item.variant_id
+      _.difference(current, added).length == 0
+    items: ->
+      return [variant_id: @variantId] if @variantId
+      return @$eval @variants if @variants
   methods:
     onClick: (e) ->
-      @addItem(@variantId)
+      @addItem(item) for item in @items
       ga 'send', 'pageview', '/add-to-cart'
       yaCounter22781371.reachGoal 'ADD-TO-CART'
 )

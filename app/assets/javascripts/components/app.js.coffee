@@ -18,10 +18,11 @@
   methods:
     openCart: -> @$.cartModal.open()
     closeCart: -> @$.cartModal.close()
-    addCartItem: (variantId) ->
+    addCartItem: (item) ->
+      item.quantity = 1
       $.post(
         '/cart'
-        variant_id: variantId, quantity: 1
+        item
         (data) =>
           @populateCartState(data)
           @openCart()

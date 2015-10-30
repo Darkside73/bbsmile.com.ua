@@ -1,0 +1,9 @@
+#productOffers.panel.panel-default
+  .panel-heading: h3.panel-title.text-center
+    i.fa.fa-eye>
+    | Вместе дешевле
+  .panel-body.owl-container
+    .owl-carousel data={ owl_single_item: "true" }
+      = render @product.offers
+    a.left.carousel-control href="#": i.fa.fa-angle-left
+    a.right.carousel-control href="#": i.fa.fa-angle-right

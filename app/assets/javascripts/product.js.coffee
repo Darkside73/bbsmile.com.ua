@@ -22,6 +22,7 @@ $ ->
       responsiveBaseWidth: '.owl-container'
       scrollPerPage: true
       afterAction: toggleCarouselControls
+      singleItem: $(this).data('owl-single-item') ? false
     )
 
     $('.carousel-control.right', container).click (e) =>
