@@ -16,7 +16,6 @@ describe CartController do
       expect {
         xhr :post, :add_item, variant_id: 'foo', quantity: 'bar'
       }.to_not change { session[:cart].size }
-      expect(response).to_not be_success
     end
     it "merge items with same product variant" do
       xhr :post, :add_item, variant_id: variant.id, quantity: 2
