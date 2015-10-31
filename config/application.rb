@@ -28,6 +28,7 @@ module Bbsmile
     config.active_support.escape_html_entities_in_json = true
 
     config.action_controller.action_on_unpermitted_parameters = :raise
+    config.action_controller.always_permitted_parameters = %w(controller action format)
 
     config.react.addons = true
 
