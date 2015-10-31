@@ -127,28 +127,23 @@
       outline: none;
       opacity: 1;
       width: 5%;
+      height: 50px;
+      top: 28%;
+      background: none;
       &:hover {
         opacity: 1;
       }
       i {
-        font-size: 36px;
-        position: absolute;
-        top: 40%;
+        font-size: 76px;
         z-index: 5;
         display: inline-block;
       }
       &.right {
-        background-image: linear-gradient(to left, fadeout(@panel-inner-border, 70%) 0%, fadeout(@panel-inner-border, 100%) 100%);
-        &:hover {
-          background-image: linear-gradient(to left, fadeout(@panel-inner-border, 50%) 0%, fadeout(@panel-inner-border, 100%) 100%);
-        }
+        right: -36px;
         i { right: 13%; }
       }
       &.left {
-        &:hover {
-          background-image: linear-gradient(to right, fadeout(@panel-inner-border, 50%) 0%, fadeout(@panel-inner-border, 100%) 100%);
-        }
-        background-image: linear-gradient(to right, fadeout(@panel-inner-border, 70%) 0%, fadeout(@panel-inner-border, 100%) 100%);
+        left: -36px;
         i { left: 13%; }
       }
     }
