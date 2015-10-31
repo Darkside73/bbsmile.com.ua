@@ -102,6 +102,8 @@
         .col-md-5.col-sm-6.col-xs-12 = render 'product_info_accordion'
 
   .row: .col-md-12
+    - if @product.offers.any?
+      = render 'offers'
     = render "product_variants" if @product.variants.count > 1
 
     .row
@@ -123,9 +125,6 @@
         = link_to "http://www.otzyvua.net/internet-magazin-babysmile", target: "_blank" do
           = image_tag "content/otzyvua.jpg", class: "img-responsive"
         = render 'comments', item: @product
-
-  - if @product.offers.any?
-    = render 'offers'
 
   - if @product.page.any_related?
     .related-products
