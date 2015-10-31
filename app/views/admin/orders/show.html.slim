@@ -15,13 +15,15 @@
       tr
         th Наименование
         th Количество
-        th Цена
+        th Сумма
     tbody
       - @order.suborders.each do |suborder|
         tr
           td = link_to suborder.variant.product
           td = suborder.quantity
-          td = number_to_currency suborder.price
+          td
+            s =' number_to_currency(suborder.subtotal) if suborder.discount > 0
+            = number_to_currency suborder.total
 
   .text-right
     p => "Коррекция суммы: #{number_to_currency @order.total_correction}" if @order.total_correction != 0
