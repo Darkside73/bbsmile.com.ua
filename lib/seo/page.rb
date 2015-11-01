@@ -22,7 +22,7 @@ module Seo
       if @page.respond_to? :pageable
         case @page.pageable
         when Product then request.base_url + @page.pageable.top_image.to_s
-        when Article then request.base_url + @page.pageable.top_image.url
+        when Article then request.base_url + @page.pageable.top_image.try(:url).to_s
         end
       end
     end
