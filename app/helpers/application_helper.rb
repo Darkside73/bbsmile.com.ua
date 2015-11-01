@@ -95,6 +95,7 @@ module ApplicationHelper
         links << link_to('Характеристики', admin_url_for([:properties, :admin, pageable]))
         links << link_to('Фото', admin_url_for([:admin, pageable, :images]))
         links << link_to('Цены', admin_url_for([:admin, pageable, :variants]))
+        links << link_to('Акции', admin_url_for([:admin, pageable, :offers]))
       end
     end
     links
