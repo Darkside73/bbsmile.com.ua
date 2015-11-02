@@ -5,8 +5,8 @@
 
   script type="text/x-template" id="product-offers"
     offer-add-form products-url="#{available_products_admin_product_offers_path(@product, format: :json)}" loading="false"
-    table.table.related-list.table-striped.table-hover
-      tr v-repeat="offer in offers"
+    table.table.related-list.sortable.table-striped.table-hover
+      tr.item data-sort-url="{{offer.sort_url}}" v-repeat="offer in offers"
         td.col-md-6 {{offer.title}}
         td.col-md-4 {{offer.price}}
         td.col-md-2

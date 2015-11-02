@@ -6,6 +6,9 @@ class Offer < ActiveRecord::Base
   validates :product_offer, :price, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
 
+  acts_as_list scope: :product
+
+  default_scope -> { order :position }
   scope :with_prices, -> { includes(product_offer: [:page, :variants]) }
 
   def amount

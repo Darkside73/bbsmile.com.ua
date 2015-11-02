@@ -19,6 +19,12 @@ class Admin::OffersController < Admin::ApplicationController
     ).includes(:page, :variants).limit(10)
   end
 
+  def sort
+    offer = Offer.find params[:id]
+    offer.insert_at params[:position].to_i
+    render nothing: true
+  end
+
   def destroy
     offer = Offer.find params[:id]
     offer.destroy

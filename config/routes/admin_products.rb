@@ -1,7 +1,7 @@
 resources :products, concerns: [:sortable, :contentable_for_product, :related], shallow: true do
   resources :images, concerns: :sortable, only: [:index, :new, :create, :destroy]
   resources :variants, concerns: :sortable, except: [:new, :show]
-  resources :offers, only: [:create, :index, :destroy], shallow: true do
+  resources :offers, concerns: :sortable, only: [:create, :index, :destroy], shallow: true do
     collection do
       get 'available_products'
     end
