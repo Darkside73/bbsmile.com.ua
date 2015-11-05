@@ -71,23 +71,6 @@ class Order < ActiveRecord::Base
     calculate_total
   end
 
-  def phone_number
-    number = user_phone.gsub /[^+^\d]+/, ''
-    country_phone_code = '+380'
-    length = number.length
-    if length > 13
-      number = user_phone.chars.each_slice(user_phone.length/2)
-                               .map(&:join)
-                               .first
-                               .gsub(/[^+^\d]+/, '')[0..13]
-      length = number.length
-    end
-    if (9..13) === length
-      number = country_phone_code[0..13-length-1] + number
-      return number if number.start_with? country_phone_code
-    end
-  end
-
   def total_with_currency
     number_to_currency total
   end

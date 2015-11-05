@@ -136,30 +136,4 @@ describe Order do
       end
     end
   end
-
-  describe '#phone_number' do
-    let(:order) { create :order }
-    it 'return normalized phone number' do
-      order = build :order, user_phone: '0671234567'
-      expect(order.phone_number).to eq('+380671234567')
-    end
-    context 'when country phone code is not allowed' do
-      it 'return nil' do
-        order = build :order, user_phone: '38068995545'
-        expect(order.phone_number).to be_nil
-      end
-    end
-    context 'when two phone numbers in one field' do
-      it 'return only first normalized phone number' do
-        order = build :order, user_phone: '(123) 12-12-12 (456) 11-11-11'
-        expect(order.phone_number).to eq('+380123121212')
-      end
-    end
-    context 'when a small amount of digits in phone' do
-      it 'return nil' do
-        order = build :order, user_phone: '1234567'
-        expect(order.phone_number).to be_nil
-      end
-    end
-  end
 end

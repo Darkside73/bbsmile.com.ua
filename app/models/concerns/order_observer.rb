@@ -11,9 +11,9 @@ module OrderObserver
   def send_messages
     OrderMailer.new_order(self).deliver_later if user.email.present?
     ManagerMailer.new_order(self).deliver_later
-    if phone_number
+    if user_phone
       SmsSendJob.perform_later(
-        phone_number, I18n.t('mailers.order.new_order.sms', order_id: number)
+        user_phone, I18n.t('mailers.order.new_order.sms', order_id: number)
       )
     end
   end
@@ -26,7 +26,7 @@ module OrderObserver
     when ["placed", "pending"]
       OrderMailer.approved(self).deliver_later
       SmsSendJob.perform_later(
-        phone_number,
+        user_phone,
         I18n.t('mailers.order.approved.sms', order_id: number)
       )
     end
