@@ -1,5 +1,7 @@
 class Offer < ActiveRecord::Base
 
+  TOP_LIST_LIMIT = 50
+
   belongs_to :product
   belongs_to :product_offer, class_name: "Product"
 
@@ -10,6 +12,14 @@ class Offer < ActiveRecord::Base
 
   default_scope -> { order :position }
   scope :with_prices, -> { includes(product_offer: [:page, :variants]) }
+  scope :top, -> {
+    reorder(created_at: :desc).where(position: 0).limit(TOP_LIST_LIMIT)
+  }
+  scope :by_category, ->(category) {
+    includes(:product)
+      .with_prices
+      .where("products.category_id" => category.descendant_ids)
+  }
 
   def amount
     product.price + price

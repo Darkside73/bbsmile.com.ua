@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   draw :feedback
   draw :articles
 
+  resources :category, only: [], param: :slug do
+    resources :offers, only: :index
+  end
+  resources :offers, only: :index
+
   namespace :admin do
     root to: 'main#index'
 

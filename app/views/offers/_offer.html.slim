@@ -5,8 +5,15 @@
         = link_to "/#{offer.product.url}", class: 'thumbnail' do
           = image_tag offer.product.top_image(:grid), alt: offer.product.name
       .caption
-        h4 Ваш товар:
-        span = offer.product.name
+        - if @product
+          h4 Ваш товар:
+          span = offer.product.name
+        - else
+          h4
+            = link_to offer.product
+            - if offer.product_offer.brand.present?
+              br
+              small: span title="Бренд" = offer.product.brand.full_name
       - if offer.product.price
         .price: span.label => number_to_currency offer.product.price
 

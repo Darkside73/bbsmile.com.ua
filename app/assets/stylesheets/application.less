@@ -334,6 +334,34 @@ h1.page-title {
   }
 }
 
+.offer-item {
+  display: flex;
+  align-items: center;
+  .offer-price {
+    text-align: center;
+  }
+  .equal, .plus {
+    text-align: center;
+    strong {
+      font-size: @font-size-base*2.5;
+      color: @gray;
+    }
+  }
+}
+
+#offers-list {
+  .offer-item {
+    margin-bottom: 30px;
+    .price.big {
+      font-size: 24px;
+    }
+  }
+  .offer-number {
+    font-size: 2.2em;
+    color: lighten(@gray, 30%);
+  }
+}
+
 .modal-body .row:not(:last-child) {
   // border-bottom: 1px dashed @gray;
 }

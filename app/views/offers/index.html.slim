@@ -1,0 +1,17 @@
+- title 'Вместе дешевле'
+
+#offers-list.container
+  .page-header: h1.page-title Вместе дешевле
+  .row
+    .col-md-3
+      ul.nav.nav-pills.nav-stacked
+        li class="#{"active" unless @category}"
+          = link_to "Все предложения", offers_path
+        - Category.roots.visible.includes(:page).each do |category|
+          li class="#{category == @category ? "active" : ""}"
+            = link_to category.name, category_offers_path(category.url)
+
+    .col-md-9
+      - @offers.each_with_index do |offer, index|
+        .offer-number.pull-left = "#{index + 1}."
+        = render offer
