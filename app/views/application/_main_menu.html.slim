@@ -24,7 +24,7 @@
       li*unless_url_active_attr('articles')
         a itemprop="url" href="/articles": span itemprop="name" Статьи
       li.promo
-        a itemprop="url" href="/promotions"
+        a itemprop="url" href="#{offers_path}"
           i.fa.fa-gift.red>
           span itemprop="name" Акции
       li.cart: cart-label cart-state="{{cartState}}"
