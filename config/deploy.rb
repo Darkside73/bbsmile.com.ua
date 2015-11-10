@@ -19,6 +19,7 @@ linked_dirs.merge(%w{log tmp/pids tmp/cache tmp/sockets public/system data})
 set :linked_dirs, linked_dirs.to_a
 set :linked_files, %w(config/database.yml config/secrets.yml)
 
+set :migration_role, [:all]
 set :assets_roles, [:all]
 
 set :unicorn_pid, proc { "#{fetch(:deploy_to)}/unicorn/#{fetch(:application)}.pid" }
