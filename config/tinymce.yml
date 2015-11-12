@@ -14,3 +14,9 @@ relative_urls: false
 convert_urls: false
 document_base_url: '/'
 remove_script_host: true
+table_default_attributes:
+  class: "table table-responsive"
+table_class_list:
+  - { title: "полосатая", value: "table table-responsive table-striped" }
+  - { title: "с границами", value: "table table-responsive table-bordered" }
+  - { title: "полосатая с границами", value: "table table-responsive table-striped table-bordered" }
