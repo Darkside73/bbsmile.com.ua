@@ -11,14 +11,17 @@ class Offer < ActiveRecord::Base
   acts_as_list scope: :product
 
   default_scope -> { order :position }
-  scope :with_prices, -> { includes(product_offer: [:page, :variants]) }
+  scope :with_prices, -> {
+    includes(product_offer: [:page, :images, :brand, :variants])
+  }
   scope :top, -> {
-    reorder(created_at: :desc).where(position: 0).limit(TOP_LIST_LIMIT)
+    reorder(created_at: :desc)
+      .includes(product: [:page, :images, :brand, :variants])
+      .with_prices
+      .where(position: 1).limit(TOP_LIST_LIMIT)
   }
   scope :by_category, ->(category) {
-    includes(:product)
-      .with_prices
-      .where("products.category_id" => category.descendant_ids)
+    includes(:product).where("products.category_id" => category.descendant_ids)
   }
 
   def amount

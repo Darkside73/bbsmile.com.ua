@@ -28,7 +28,14 @@ class Category < ActiveRecord::Base
   class << self
     alias_method :ancestry_arrange, :arrange
     def arrange
-      self.includes(:page).merge(Page.visible).references(:pages).ancestry_arrange(order: :position)
+      includes(:page).merge(Page.visible).references(:pages).ancestry_arrange(order: :position)
+    end
+
+    def roots_contained_offers
+      visible.includes(:page)
+             .joins(products: :offers)
+             .distinct
+             .map(&:root).uniq
     end
   end
 

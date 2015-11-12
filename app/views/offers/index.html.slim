@@ -7,7 +7,7 @@
       ul.nav.nav-pills.nav-stacked
         li class="#{"active" unless @category}"
           = link_to "Все предложения", offers_path
-        - Category.roots.visible.includes(:page).each do |category|
+        - Category.roots_contained_offers.each do |category|
           li class="#{category == @category ? "active" : ""}"
             = link_to category.name, category_offers_path(category.url)
 
