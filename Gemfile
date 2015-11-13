@@ -37,7 +37,7 @@ gem 'paperclip'
 gem 'dimensions-rails', github: 'Darkside73/dimensions-rails'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
-gem 'react-rails', github: 'reactjs/react-rails'
+gem 'react-rails', github: 'reactjs/react-rails', ref: 'ff564e82f6df668d3979b6ba7747a199f6f01a45'
 gem 'sprockets-coffee-react'
 
 gem 'google_drive', require: false
