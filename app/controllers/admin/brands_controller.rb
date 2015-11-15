@@ -45,7 +45,8 @@ class Admin::BrandsController < Admin::ApplicationController
 
   def brands_params
     params.require(:brand).permit(
-      :name, :country, content_attributes: [:id, :text]
+      :name, :country, :meta_keywords, :meta_description,
+      content_attributes: [:id, :text]
     )
   end
 

@@ -15,4 +15,14 @@ class BrandsController < ApplicationController
       }
     end
   end
+
+  protected
+
+  def seo_page
+    @seo_page ||= begin
+      seo_page = Seo::Page.new @brand
+      seo_page.request = request
+      seo_page
+    end
+  end
 end

@@ -57,7 +57,7 @@ class Seo::MetaTags
     when -> (o) { o.respond_to?(:pageable) }
       page_type = @page.pageable.class.name.downcase
     when -> (o) { o.is_a? Brand }
-      page_type = "brand"
+      page_type = "page"
     else
       return default_meta(type)
     end

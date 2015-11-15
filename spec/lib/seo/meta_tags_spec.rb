@@ -19,10 +19,11 @@ describe Seo::MetaTags do
   end
 
   context "when page is brand" do
-    let(:brand) { create(:brand_with_content) }
+    let(:brand) { create(:brand) }
     subject { Seo::MetaTags.new brand }
-    it "use brand's specific description" do
-      expect(subject.description).to include(brand.description[0..20])
+    it "use brand's attributes" do
+      expect(subject.description).to eq(brand.meta_description)
+      expect(subject.keywords).to eq(brand.meta_keywords)
     end
   end
 end
