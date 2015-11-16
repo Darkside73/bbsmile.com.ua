@@ -1,6 +1,6 @@
 - if offer.discount > 0
   .offer-item.row
-    .product.short.col-md-3
+    .product.short.col-md-3.col-xs-5
       - if offer.product.top_image?
         = link_to "/#{offer.product.url}", class: 'thumbnail' do
           = image_tag offer.product.top_image(:grid), alt: offer.product.name
@@ -17,9 +17,9 @@
       - if offer.product.price
         .price: span.label => number_to_currency offer.product.price
 
-    .plus.col-md-1: strong +
+    .plus.col-md-1.col-xs-2: strong +
 
-    .product.short.col-md-3
+    .product.short.col-md-3.col-xs-5
       - if offer.product_offer.top_image?
         = link_to "/#{offer.product_offer.url}", class: 'thumbnail' do
           = image_tag offer.product_offer.top_image(:grid), alt: offer.product_offer.name
@@ -33,7 +33,7 @@
         .price
           span.old.medium => number_to_currency offer.product_offer.price
           span.label => number_to_currency offer.price
-
+    .clearfix.visible-xs-block
     .col-md-2.equal
       strong> = "="
     .col-md-3.offer-price
