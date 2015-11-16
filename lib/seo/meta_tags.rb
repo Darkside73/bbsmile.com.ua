@@ -89,6 +89,7 @@ class Seo::MetaTags
   end
 
   def sanitize_description(text)
+    return '' unless text
     text.gsub! /(<\/\w+>)(<\w+)/, '\1 \2'
     text = strip_tags(text).strip.gsub(/(\r|\n)/, ' ').gsub(/\s+/, ' ')
     truncate text, length: 160
