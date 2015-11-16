@@ -16,6 +16,4 @@ script type="text/x-template" id="cart-checkout-form"
             .payment-help.liqpay
             .payment-help.cash_on_delivery
         = f.input :notes, label: "Дополнительная информация", hint: "Укажите ваш город, способ доставки, отделение \"Новой почты\"...", input_html: { rows: 5 }
-        => u.check_box :subscribed
-        label.inline for="order_user_attributes_subscribed" хочу получать акционные и скидочные предложения
     .form-group = f.button :submit, "Оформить заказ", class: 'btn-success btn-lg', "v-attr" => "disabled: loading"
