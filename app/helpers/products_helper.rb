@@ -25,4 +25,14 @@ module ProductsHelper
                URI.join(request.url, @product.top_image(:medium)) : ''
     }
   end
+
+  def sizes_button
+    if [135, 205, 202, 148].include?(@product.category.root_id)
+      extend ActiveSupport::Inflector
+      brand_slug = transliterate(@product.brand.name).downcase
+      content_tag :p do
+        link_to "Таблица размеров", article_path("tablitsa-razmerov-#{brand_slug}"), class: "btn btn-info"
+      end
+    end
+  end
 end

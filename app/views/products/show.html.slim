@@ -85,20 +85,7 @@
                 li
                   i.fa.fa-li.fa-barcode
                   a.dashed href="#similarProducts" data-scroll="400" Похожие товары
-            .phones
-              h4 Заказать по телефону:
-              ul.fa-ul
-                li
-                  i.fa.fa-li.fa-mobile
-                  | 096 717-22-55
-                li
-                  i.fa.fa-li.fa-mobile
-                  | 066 717-37-07
-                li
-                  i.fa.fa-li.fa-mobile
-                  | 093 717-91-91
-              p = link_to "обратный звонок", '#send-callback', class: 'callback dashed', data: {toggle: 'modal'}
-
+            = sizes_button
         .col-md-5.col-sm-6.col-xs-12 = render 'product_info_accordion'
 
   .row: .col-md-12
