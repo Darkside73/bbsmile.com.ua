@@ -29,17 +29,19 @@ class Seo::MetaTags
     end
   end
 
-  def fallback_description_for_brand
-    @page.description
-  end
-
   def fallback_description
-    pageable = @page.pageable
-    if pageable.respond_to?(:description) && pageable.description.present?
-      sanitize_description pageable.description
-    else
-      default_meta "description"
+    if @page.respond_to?(:description)
+      return sanitize_description @page.description
     end
+
+    if @page.respond_to?(:pageable)
+      pageable = @page.pageable
+      if pageable.respond_to?(:description) && pageable.description.present?
+        return sanitize_description pageable.description
+      end
+    end
+
+    default_meta "description"
   end
 
   def fallback_keywords
