@@ -24,7 +24,12 @@ html
       = render 'main_menu'
     = content_for?(:header) ? yield(:header) : render('header')
     = yield
-    a.go-top href="#" title="К началу страницы": i.fa.fa-long-arrow-up
+    a.floating-icon.go-top href="#" title="К началу страницы"
+      i.fa.fa-long-arrow-up
+    a.floating-icon.phone-call.visible-xs-block href="tel:+380967172255" title="Позвонить"
+      span.fa-stack.fa-2x
+        i.fa.fa-circle.fa-stack-2x
+        i.fa.fa-phone.fa-stack-1x.text-success
     .footer: .container
       = render 'footer'
     = render 'admin_panel' unless Rails.env.production?

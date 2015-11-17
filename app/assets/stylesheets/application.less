@@ -402,18 +402,33 @@ h1.page-title {
   }
 }
 
-a.go-top {
+a.floating-icon {
   position: fixed;
-  display: none;
-  right: 0px;
-  bottom: 28px;
-  padding: 16px 14px;
-  background: fadeout(@gray-light, 70%);
-  font-size: 22px;
   font-weight: bold;
-  color: @gray-light;
   opacity: .5;
   outline: none;
+  &.go-top {
+    display: none;
+    right: 0px;
+    bottom: 28px;
+    font-size: 22px;
+    padding: 16px 14px;
+    background: fadeout(@gray-light, 70%);
+    color: @gray-light;
+  }
+  &.phone-call {
+    opacity: .85;
+    left:50%;
+    transform: translateX(-50%);
+    bottom: -8px;
+    transition: .2s;
+    i.fa-circle {
+      color: fadeout(@btn-success-bg, 50%);
+    }
+    &:hover, &:focus {
+      bottom: 0;
+    }
+  }
   &:hover, &:focus {
     text-decoration: none;
     opacity: 1;
