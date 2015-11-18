@@ -1,11 +1,11 @@
-h3 Вы можете оплатить заказ через на карту Приватбанка
+h3 Вы можете оплатить заказ на карту Приватбанка
 p
-  | Номер карты 5168-7420-6150-5198 Грабовский А.А.
+  | Номер карты: 5168-7420-6150-5198 Грабовский А.А.
   br
-  ' Сумма к оплате
+  ' Сумма к оплате:
   strong = @order.total_with_currency
 p
-  ' Номер вашего заказа
+  ' Номер вашего заказа:
   strong = @order.id
   | .
 
@@ -18,7 +18,4 @@ ol
       ' за
       strong = number_to_currency suborder.total
 
-p
-  ' Всего:
-  strong = number_to_currency @order.total
-p = link_to "Перейти к оплате", order_pay_url(uuid: @order.uuid, host: 'bbsmile.com.ua')
+p = link_to "Перейти к оплате", "https://www.privat24.ua/"
