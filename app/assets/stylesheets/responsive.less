@@ -140,7 +140,10 @@
   }
 }
 
-@media (max-width: @screen-xs-min) {
+@media screen and (orientation: landscape), screen and (max-height: 400px) {
+  .phone-call {
+    display: none !important;
+  }
 }
 
 @media (max-width: @screen-xxs-max) {
