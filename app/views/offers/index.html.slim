@@ -13,6 +13,6 @@
 
     .col-md-9
       - @offers.each_with_index do |offer, index|
-        - if offer.discount > 0
+        - if offer.discount?
           .offer-number.pull-left = "#{index + 1}."
           = render offer

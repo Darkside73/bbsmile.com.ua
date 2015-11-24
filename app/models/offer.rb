@@ -25,14 +25,18 @@ class Offer < ActiveRecord::Base
   }
 
   def amount
-    product.price + price
+    product.price + price if product.price
   end
 
   def discount
-    product_offer.price - price
+    product_offer.price - price if product_offer.price
   end
 
   def original_amount
-    product.price + product_offer.price
+    product.price + product_offer.price if product.price && product_offer.price
+  end
+
+  def discount?
+    discount && discount > 0
   end
 end
