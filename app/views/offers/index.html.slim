@@ -12,7 +12,8 @@
             = link_to category.name, category_offers_path(category.url)
 
     .col-md-9
-      - @offers.each_with_index do |offer, index|
-        - if offer.discount?
-          .offer-number.pull-left = "#{index + 1}."
-          = render offer
+      - cache 'offers', expires_in: 1.hour do
+        - @offers.each_with_index do |offer, index|
+          - if offer.discount?
+            .offer-number.pull-left = "#{index + 1}."
+            = render offer

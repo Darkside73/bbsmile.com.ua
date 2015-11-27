@@ -5,7 +5,7 @@ class OffersController < ApplicationController
       @category = Category.by_url! params[:category_slug]
       Offer.top.by_category @category
     else
-      Offer.top
+      Offer.top.random
     end
   end
 end

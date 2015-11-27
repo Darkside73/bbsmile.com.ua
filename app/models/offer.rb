@@ -23,6 +23,7 @@ class Offer < ActiveRecord::Base
   scope :by_category, ->(category) {
     includes(:product).where("products.category_id" => category.descendant_ids)
   }
+  scope :random, -> { reorder('RANDOM()') }
 
   def amount
     product.price + price if product.price
