@@ -26,7 +26,6 @@ class Order < ActiveRecord::Base
   before_validation    :setup_user_validation, on: :create
   validates_associated :suborders
   after_validation     :calculate_total
-  before_create        :populate_order_user_attributes
   before_create        :save_user
   before_save          :check_for_suborders
 
@@ -46,6 +45,8 @@ class Order < ActiveRecord::Base
 
   def autosave_associated_records_for_user
     if user && user.email.present?
+      self[:user_phone] = user.phone
+      self[:user_name]  = user.name
       User.find_by(email: user.email).try(:tap) { |u| self.user = u }
     end
   end
@@ -88,12 +89,8 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def populate_order_user_attributes
-    self.user_name, self.user_phone = user.name, user.phone
-  end
-
   def save_user
-    self.user.save
+    user.save
     # its very strange... why rails does not do this automaticaly?
     self.user_id = user.id
   end

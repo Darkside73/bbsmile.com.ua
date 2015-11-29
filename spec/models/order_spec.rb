@@ -52,10 +52,26 @@ describe Order do
       expect { user.reload }.not_to change { user.name + user.phone }
     end
 
-    it "saves current values of user name and phone in order" do
-      order = Order.new user_attributes: attributes_for(:user, phone: '456789')
-      order.suborders = create_list :suborder, 2
-      expect { order.save }.to change { order.user_phone and order.user_name }
+    context 'when existen user' do
+      let(:user) { create :user }
+      subject do
+        Order.new user_attributes: {
+          first_name: 'Joe', last_name: 'Doe',
+          email: user.email, phone: '123456'
+        }
+      end
+      before { subject.suborders = create_list :suborder, 2 }
+      it "saves order new phone and name" do
+        expect(subject.save).to be_truthy
+        expect(subject.user_phone).to eq('123456')
+        expect(subject.user_name).to eq('Joe Doe')
+      end
+
+      it 'do not save new phone and name to user' do
+        expect { subject.save; user.reload }.to_not change {
+          user.name and user.phone
+        }
+      end
     end
 
     context "calculate total" do

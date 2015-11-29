@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates_with PhoneValidator, if: :phone
   validates :email, uniqueness: true, unless: :disable_email_uniqueness
 
-  before_validation :write_name
+  before_validation :write_name, on: :create
 
   nilify_blanks only: :email
 
