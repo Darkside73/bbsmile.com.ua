@@ -3,7 +3,7 @@ module Related
 
   included do
     has_many :related_pages, dependent: :destroy
-    has_many :inverse_related_pages, class_name: 'RelatedPage', foreign_key: 'related_id'
+    has_many :inverse_related_pages, class_name: 'RelatedPage', foreign_key: 'related_id', dependent: :destroy
     with_options through: :related_pages, source: :related do |assoc|
       assoc.has_many :similar_pages,
         -> { visible.where("related_pages.type_of = ?", RelatedPage.type_ofs[:similar]) }, {}
