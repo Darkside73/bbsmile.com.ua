@@ -11,6 +11,7 @@ gem 'acts-as-taggable-on'
 gem 'activerecord-session_store'
 gem 'sidekiq'
 gem 'sidekiq-status'
+gem 'redis-namespace'
 gem 'daemons'
 gem 'newrelic_rpm'
 
@@ -94,7 +95,6 @@ group :test do
   gem 'shoulda'
   gem 'launchy'
   gem 'database_cleaner'
-  gem 'redis-namespace'
 end
 
 
