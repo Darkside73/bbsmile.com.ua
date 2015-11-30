@@ -76,8 +76,8 @@ Vue.component(
         $(e.target).serialize()
         (data) =>
           @$parent.flashMessage = data.flash
-          @$parent.emptyCart()
           @trackOrderCheckout(data)
+          @$parent.emptyCart()
         'json'
       ).fail(
         (data) =>
@@ -97,10 +97,10 @@ Vue.component(
     trackOrderCheckout: (data) ->
       ga 'send', 'pageview', '/checkout'
       ga 'require', 'ecommerce'
-      ga 'ecommerce:addTransaction', id: data.number, revenue: data.total
+      ga 'ecommerce:addTransaction', id: data.id, revenue: data.total
       items = []
 
-      for suborder in data.suborders
+      for suborder in @cartState.suborders
         item = {
           id: suborder.variant_id, name: suborder.title,
           price: suborder.total, quantity: suborder.quantity
@@ -113,7 +113,7 @@ Vue.component(
       yaCounter22781371.reachGoal(
         'CHECKOUT'
         order_id: data.id
-        order_price: data.price
+        order_price: data.total
         currency: "UAH"
         exchange_rate: 1
         goods: items
