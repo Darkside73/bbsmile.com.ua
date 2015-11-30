@@ -94,6 +94,7 @@ group :test do
   gem 'shoulda'
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'redis-namespace'
 end
 
 

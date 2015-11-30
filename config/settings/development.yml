@@ -9,6 +9,6 @@ gdrive:
     prices: 0Aswwzh8AZzVydEl6QkVyeFYzRWFLODhiYlV1T2w3SHc
     products: 0Aswwzh8AZzVydFdLOENUNzk5Q1ZCVV9ibXlublpQZXc
 sms:
-  test_mode: false
+  test_mode: true
 liqpay:
   sandbox: true
