@@ -12,7 +12,7 @@ class Variant < ActiveRecord::Base
   accepts_nested_attributes_for :image, reject_if: :all_blank
   acts_as_list scope: :product
 
-  default_scope -> { order(:position).order(available: :desc) }
+  default_scope -> { order(available: :desc).order(:position) }
   scope :available, -> { where(available: 1) }
   scope :discounts, -> {
     where(self.arel_table[:price_old].not_eq(nil)).
