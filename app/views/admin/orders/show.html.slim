@@ -30,15 +30,25 @@
     p: strong = "Всего: #{number_to_currency @order.total}"
 
   .row
-    - if @order.pending?
-      .col-md-6
-        = simple_form_for [:admin, @order] do |f|
-          = f.hidden_field :status, value: :refunded
-          = f.button :submit, class: "btn btn-info", value: "Отменить заказ"
+    .col-md-4
+      / Refactoring..
+      - if @order.placed? || @order.pending?
+        h5 Изменить статус заказа
+        - if @order.placed?
+          = simple_form_for [:admin, @order], html: { class: "form-inline" } do |f|
+            = f.hidden_field :status, value: :pending
+            = f.button :submit, class: "btn btn-info", value: "Заказ в обработке"
+        - if @order.pending?
+          = simple_form_for [:admin, @order], html: { class: "form-inline" } do |f|
+            = f.hidden_field :status, value: :refunded
+            = f.button :submit, class: "btn btn-warning", value: "Отменить заказ"
+          = simple_form_for [:admin, @order], html: { class: "form-inline" } do |f|
+            = f.hidden_field :status, value: :paid
+            = f.button :submit, class: "btn btn-success", value: "Заказ оплачен"
 
-    - if @order.liqpay? && @order.placed?
-      .col-md-6
-        = simple_form_for [:admin, @order] do |f|
+    .col-md-8.text-right
+      - if @order.placed? || @order.pending?
+        = simple_form_for [:admin, @order], html: { class: "form-inline" } do |f|
           = f.hidden_field :status, value: :pending
-          = f.input :total_correction, label: "Коррекция суммы"
-          = f.button :submit, class: "btn btn-info", value: "Отправить ссылку для оплаты"
+          = f.input :total_correction, label: "Коррекция суммы", input_html: { style: "width: 100px" }
+          = f.button :submit, class: "btn btn-info", value: @order.liqpay? ? "Отправить ссылку для оплаты" : "Сохранить"

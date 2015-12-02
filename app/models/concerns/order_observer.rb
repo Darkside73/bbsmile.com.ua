@@ -22,14 +22,16 @@ module OrderObserver
       OrderMailer.paid(self).deliver_later
       ManagerMailer.paid_order(self).deliver_later
     when ["placed", "pending"]
-      OrderMailer.approved(self).deliver_later
-      SmsSendJob.perform_later(
-        user_phone,
-        I18n.t(
-          'mailers.order.approved.sms',
-          order_id: number, total: total_with_currency
+      if liqpay?
+        OrderMailer.approved(self).deliver_later
+        SmsSendJob.perform_later(
+          user_phone,
+          I18n.t(
+            'mailers.order.approved.sms',
+            order_id: number, total: total_with_currency
+          )
         )
-      )
+      end
     end
   end
 end
