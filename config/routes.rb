@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'main#index'
 
   get 'search-anything' => 'search#autocomplete'
+  get 'promotions', to: redirect('offers')
 
   draw :orders
   draw :brands
