@@ -44,10 +44,12 @@ class Order < ActiveRecord::Base
   end
 
   def autosave_associated_records_for_user
-    if user && user.email.present?
+    if user
       self[:user_phone] = user.phone
       self[:user_name]  = user.name
-      User.find_by(email: user.email).try(:tap) { |u| self.user = u }
+      if user.email.present?
+        User.find_by(email: user.email).try(:tap) { |u| self.user = u }
+      end
     end
   end
 

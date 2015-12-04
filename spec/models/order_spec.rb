@@ -21,6 +21,21 @@ describe Order do
       expect(order.user).to be_instance_of(User)
       expect(order.user).to_not be_new_record
       expect(order.uuid).to_not be_empty
+      expect(order.user_phone).to eq(order.user.phone)
+      expect(order.user_name).to eq(order.user.name)
+    end
+
+    it "save user attributes in order if no email" do
+      order = Order.new(
+        user_attributes: {
+          first_name: 'John', last_name: 'Doe', phone: '123456'
+        }
+      )
+      order.suborders = create_list :suborder, 2
+      expect(order.save).to be_truthy
+      order.reload
+      expect(order.user_phone).to eq(order.user.phone)
+      expect(order.user_name).to eq(order.user.name)
     end
 
     it "does not save order without suborders" do
