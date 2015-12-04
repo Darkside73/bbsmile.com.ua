@@ -191,7 +191,7 @@ label.inline {
 }
 
 #site-header {
-  background: @yellowLight image-url("layout/bg.png") repeat;
+  background: #b7d5d9 image-url("layout/bg.png") bottom center no-repeat;
   .contacts {
     .actions {
       text-align: center;
@@ -238,9 +238,9 @@ label.inline {
     }
   }
   h1 {
-    // #gradient > .directional(fadeout(white, 70%), fadeout(white, 100%), 90deg);
-    // .border-radius(3px);
-    color: @gray;
+    #gradient > .directional(fadeout(white, 70%), fadeout(white, 100%), 90deg);
+    .border-radius(3px);
+    color: darken(#b7d5d9, 35%);
     small {
       color: @pink;
       white-space: nowrap;
