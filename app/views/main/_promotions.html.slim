@@ -5,7 +5,6 @@
     li data-target="#promotions" data-slide-to="2"
     li data-target="#promotions" data-slide-to="3"
     li data-target="#promotions" data-slide-to="4"
-    li data-target="#promotions" data-slide-to="5"
   .carousel-inner
     .item.active data-title="Модный карапуз"
       = link_to category_page_path('detskaya-odezhda', utm_campaign: 'karapuz', utm_medium: 'main_page_promotions', utm_source: 'local') do
@@ -16,9 +15,6 @@
     .item data-title="Krasnal"
       = link_to category_page_path('detskaya-naryadnaya-odezhda-dlya-malyishey', utm_campaign: 'kransnal', utm_medium: 'main_page_promotions', utm_source: 'local') do
         = image_tag "promotions/krasnal2015.jpg", class: 'img-responsive'
-    .item data-title="Meccano"
-      = link_to category_page_path('konstruktoryi-dlya-detey', brands: ['Meccano'], utm_campaign: 'meccano', utm_medium: 'main_page_promotions', utm_source: 'local') do
-        = image_tag "promotions/meccano2015.jpg", class: 'img-responsive'
     .item data-title="Luvion термометр в подарок"
       .image_map.luvion_thermometr
         = link_to page_path('promotions', anchor: 'promo2', utm_campaign: 'luvion_thermometer', utm_medium: 'main_page_promotions', utm_source: 'local') do
