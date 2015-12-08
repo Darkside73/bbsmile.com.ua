@@ -49,7 +49,7 @@ class Seo::MetaTags
   end
 
   def to_hash
-    { description: description, keywords: keywords }
+    { description: description }
   end
 
   private

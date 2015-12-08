@@ -6,7 +6,6 @@ describe Seo::MetaTags do
     subject { Seo::MetaTags.new page }
     it "use page attribute" do
       expect(subject.description).to eq(page.meta_description)
-      expect(subject.keywords).to eq(page.meta_keywords)
     end
   end
 
@@ -23,7 +22,6 @@ describe Seo::MetaTags do
     subject { Seo::MetaTags.new brand }
     it "use brand's attributes" do
       expect(subject.description).to eq(brand.meta_description)
-      expect(subject.keywords).to eq(brand.meta_keywords)
     end
   end
 end
