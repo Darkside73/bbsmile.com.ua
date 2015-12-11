@@ -5,11 +5,11 @@ class OrdersController < ApplicationController
     cart.attributes = order_params
     respond_to do |format|
       if cart.save
-        flash.now[:success] = I18n.t(
-          'flash.message.orders.created', order_id: cart.id
+        message = render_to_string(
+          partial: 'success.html', locals: { order: cart }
         )
         format.json do
-          render json: cart.as_json.merge(flashes_in_json), status: :created
+          render json: cart.as_json.merge(flash: message), status: :created
           reset_cart
         end
       else

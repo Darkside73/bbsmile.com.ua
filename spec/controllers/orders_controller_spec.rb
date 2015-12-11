@@ -13,7 +13,6 @@ describe OrdersController do
         payment_method: :cash_to_courier,
         user_attributes: attributes_for(:user)
       }
-      expect(flash[:success]).to have_content(/created/i)
       expect(session[:cart]).to be_nil
     end
   end
