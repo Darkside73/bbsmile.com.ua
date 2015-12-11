@@ -78,6 +78,7 @@ Vue.component(
           @$parent.flashMessage = data.flash
           @trackOrderCheckout(data)
           @$parent.emptyCart()
+          $('html, body').animate scrollTop: 0, 300
         'json'
       ).fail(
         (data) =>
