@@ -35,7 +35,11 @@ class Product < ActiveRecord::Base
   scope :discounts, -> { visible.includes(:page, :variants, :category, :brand, :images)
                                 .references(:variants).merge(Variant.discounts)
                        }
-  scope :last_updated, ->(n) { reorder(updated_at: :desc).limit(n) }
+  scope :last_updated, ->(n) {
+    reorder(updated_at: :desc).includes(:variants).references(:variants)
+                              .merge(Variant.available)
+                              .limit(n)
+  }
   scope :random, ->(n = nil) { reorder('RANDOM()').limit(n) }
 
   scope :for_girls, -> { where.not(sex: sexes[:for_boys]) }
