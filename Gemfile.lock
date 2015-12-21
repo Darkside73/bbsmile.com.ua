@@ -6,16 +6,6 @@ GIT
       actionpack (>= 3.2.0)
 
 GIT
-  remote: git://github.com/Darkside73/dimensions-rails.git
-  revision: e6b26145c0602062bd740ee5356c808ee04b385f
-  specs:
-    dimensions-rails (1.1.1)
-      actionpack (>= 3.0, <= 4.3)
-      activesupport (>= 3.0, <= 4.3)
-      dimensions
-      railties (>= 3.0, <= 4.3)
-
-GIT
   remote: git://github.com/liqpay/sdk-ruby.git
   revision: 3cbb88e3dfcdd4d7c0bbd0c7e0284f4df13dcfd2
   specs:
@@ -168,7 +158,6 @@ GEM
     debug_inspector (0.0.2)
     deep_merge (1.0.1)
     diff-lcs (1.2.5)
-    dimensions (1.3.0)
     erubis (2.7.0)
     eventmachine (1.0.8)
     exception_notification (4.1.2)
@@ -507,7 +496,6 @@ DEPENDENCIES
   cucumber-rails
   daemons
   database_cleaner
-  dimensions-rails!
   exception_notification
   factory_girl_rails
   faker
@@ -567,4 +555,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
