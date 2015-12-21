@@ -14,4 +14,6 @@ Rails.application.config.assets.precompile += [
 Rails.application.config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif *.ttf *.eot *.svg *.woff 404.html 500.html)
 
 Rails.application.config.assets.paths << Rails.root.join('app/assets/html')
-Rails.application.config.assets.register_mime_type('text/html', '.html')
+# Allow Slim assets in the asset pipeline
+Rails.application.config.assets.register_mime_type 'text/slim', extensions: ['.slim']
+Rails.application.config.assets.register_transformer 'text/slim', 'text/html', Slim::Template
