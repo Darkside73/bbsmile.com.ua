@@ -1,6 +1,6 @@
 @UploadButton = React.createClass
   componentDidMount: ->
-    @props.uploader.setOption 'browse_button', @refs.browse.getDOMNode()
+    @props.uploader.setOption 'browse_button', @refs.browse
   handleUpload: (e) ->
     @props.uploader.start()
     e.preventDefault()

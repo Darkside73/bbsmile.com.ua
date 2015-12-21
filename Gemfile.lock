@@ -22,23 +22,22 @@ GIT
     liqpay (0.0.1)
 
 GIT
-  remote: git://github.com/reactjs/react-rails.git
-  revision: ff564e82f6df668d3979b6ba7747a199f6f01a45
-  ref: ff564e82f6df668d3979b6ba7747a199f6f01a45
-  specs:
-    react-rails (1.0.0)
-      coffee-script-source (~> 1.8)
-      connection_pool
-      execjs
-      rails (>= 3.1)
-      react-source (~> 0.13)
-
-GIT
   remote: git://github.com/swanandp/acts_as_list.git
-  revision: 04d7bc6b4b6443a299fa015b8e096d129fdf3e12
+  revision: 0a4ad6b22bc601443f98bd7b9a9445d4fe26b749
   specs:
     acts_as_list (0.7.2)
       activerecord (>= 3.0)
+
+GIT
+  remote: https://github.com/suzan2go/less-rails.git
+  revision: b4058a080f7fe58f43a14232c5ee7c282eaa8473
+  branch: fix-nomethoderror-for-sprockets3
+  specs:
+    less-rails (2.7.0)
+      actionpack (>= 4.0)
+      less (~> 2.6.0)
+      sprockets (> 2, < 4)
+      tilt
 
 GEM
   remote: https://rubygems.org/
@@ -84,7 +83,7 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (3.5.0)
       activerecord (>= 3.2, < 5)
-    addressable (2.3.8)
+    addressable (2.4.0)
     ancestry (2.1.0)
       activerecord (>= 3.0.0)
     arel (6.0.3)
@@ -93,12 +92,14 @@ GEM
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
+    babel-source (5.8.34)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
-    binding_of_caller (0.7.2)
-      debug_inspector (>= 0.0.1)
     builder (3.2.2)
     bullet (4.14.10)
       activesupport (>= 3.0.0)
@@ -135,16 +136,15 @@ GEM
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
-    coffee-rails (4.1.0)
+    coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.0)
-    coffee-react (3.0.1)
+      railties (>= 4.0.0, < 5.1.x)
+    coffee-react (3.4.0)
       execjs
     coffee-script (2.4.1)
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
-    colorize (0.7.7)
     commonjs (0.2.7)
     concurrent-ruby (1.0.0)
     config (1.0.0)
@@ -171,9 +171,9 @@ GEM
     dimensions (1.3.0)
     erubis (2.7.0)
     eventmachine (1.0.8)
-    exception_notification (4.1.1)
-      actionmailer (>= 3.0.4)
-      activesupport (>= 3.0.4)
+    exception_notification (4.1.2)
+      actionmailer (~> 4.0)
+      activesupport (~> 4.0)
     execjs (2.6.0)
     extlib (0.9.16)
     factory_girl (4.5.0)
@@ -204,18 +204,18 @@ GEM
       multi_json (~> 1.10)
       retriable (~> 1.4)
       signet (~> 0.6)
-    google_drive (1.0.4)
+    google_drive (1.0.5)
       google-api-client (>= 0.7.0, < 0.9)
       nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
       oauth (>= 0.3.6)
       oauth2 (>= 0.5.0)
-    googleauth (0.4.2)
+    googleauth (0.5.0)
       faraday (~> 0.9)
       jwt (~> 1.4)
       logging (~> 2.0)
       memoist (~> 0.12)
       multi_json (~> 1.11)
-      signet (~> 0.6)
+      signet (~> 0.7)
     guard (2.13.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
@@ -256,11 +256,6 @@ GEM
       addressable (~> 2.3)
     less (2.6.0)
       commonjs (~> 0.2.7)
-    less-rails (2.7.0)
-      actionpack (>= 4.0)
-      less (~> 2.6.0)
-      sprockets (> 2, < 4)
-      tilt
     less-rails-bootstrap (3.3.5.0)
       less-rails (>= 2.6, <= 2.8)
     libv8 (3.16.14.13)
@@ -280,7 +275,7 @@ GEM
     lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    memoist (0.13.0)
+    memoist (0.14.0)
     metamagic (3.1.7)
       rails (>= 3.0.0)
     method_source (0.8.2)
@@ -296,11 +291,11 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.1)
-    newrelic_rpm (3.14.0.305)
+    newrelic_rpm (3.14.1.311)
     nilify_blanks (1.2.1)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
-    nokogiri (1.6.7)
+    nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     notiffany (0.0.8)
       nenv (~> 0.1)
@@ -365,14 +360,20 @@ GEM
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
-    react-source (0.13.3)
+    react-rails (1.5.0)
+      babel-transpiler (>= 0.7.0)
+      coffee-script-source (~> 1.8)
+      connection_pool
+      execjs
+      rails (>= 3.2)
+      tilt
     redcarpet (3.3.3)
     redis (3.2.2)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
     ref (2.0.0)
-    responders (2.1.0)
-      railties (>= 4.2.0, < 5)
+    responders (2.1.1)
+      railties (>= 4.2.0, < 5.1)
     retriable (1.4.1)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
@@ -418,15 +419,14 @@ GEM
       redis (~> 3.2, >= 3.2.1)
     sidekiq-status (0.5.4)
       sidekiq (>= 2.7)
-    signet (0.6.1)
+    signet (0.7.2)
       addressable (~> 2.3)
-      extlib (~> 0.9)
       faraday (~> 0.9)
       jwt (~> 1.5)
       multi_json (~> 1.10)
-    simple_form (3.2.0)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
+    simple_form (3.2.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     sitemap_generator (5.1.0)
       builder
     slim (3.0.6)
@@ -438,19 +438,19 @@ GEM
       spring (>= 0.9.1)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
-    sprockets (3.4.1)
+    sprockets (3.5.2)
+      concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-coffee-react (3.0.1)
-      coffee-react (>= 3.0.1)
+    sprockets-coffee-react (3.4.1)
+      coffee-react (>= 3.4.0)
       coffee-script
       sprockets
       tilt
-    sprockets-rails (2.3.3)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      sprockets (>= 2.8, < 4.0)
-    sshkit (1.7.1)
-      colorize (>= 0.7.0)
+    sprockets-rails (3.0.0)
+      actionpack (>= 4.0)
+      activesupport (>= 4.0)
+      sprockets (>= 3.0.0)
+    sshkit (1.8.1)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     temple (0.7.6)
@@ -464,7 +464,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
-    tinymce-rails (4.3.0)
+    tinymce-rails (4.3.2)
       railties (>= 3.1.1)
     tinymce-rails-langs (4.20140129)
       tinymce-rails (~> 4.0)
@@ -475,11 +475,10 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     uniform_notifier (1.9.0)
-    web-console (2.2.1)
-      activemodel (>= 4.0)
-      binding_of_caller (>= 0.7.2)
-      railties (>= 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
+    web-console (3.0.0)
+      activemodel (>= 4.2)
+      debug_inspector
+      railties (>= 4.2)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -524,6 +523,7 @@ DEPENDENCIES
   json
   kaminari
   launchy
+  less-rails!
   less-rails-bootstrap
   libv8 (>= 3.16.14.10)
   liqpay!
@@ -540,7 +540,7 @@ DEPENDENCIES
   rails-erd
   rake
   rb-inotify
-  react-rails!
+  react-rails
   redcarpet
   redis-namespace
   responders
@@ -567,4 +567,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.10.5
+   1.10.6

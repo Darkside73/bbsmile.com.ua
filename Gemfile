@@ -38,7 +38,7 @@ gem 'paperclip'
 gem 'dimensions-rails', github: 'Darkside73/dimensions-rails'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
-gem 'react-rails', github: 'reactjs/react-rails', ref: 'ff564e82f6df668d3979b6ba7747a199f6f01a45'
+gem 'react-rails'
 gem 'sprockets-coffee-react'
 
 gem 'google_drive', require: false
@@ -46,6 +46,7 @@ gem 'httparty', require: false
 gem 'liqpay', github: 'liqpay/sdk-ruby'
 
 gem 'less-rails-bootstrap'
+gem "less-rails", git: 'https://github.com/suzan2go/less-rails.git', branch: 'fix-nomethoderror-for-sprockets3'
 gem 'font-awesome-rails'
 gem 'coffee-rails'
 

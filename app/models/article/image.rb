@@ -7,9 +7,7 @@ class Article::Image < Asset
 
   def as_json(options = {})
     {
-      image: {
-        url: self.url
-      }
+      image: { id: id, url: url }
     }
   end
 end
