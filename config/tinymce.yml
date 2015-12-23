@@ -1,22 +1,33 @@
 language: ru
 toolbar:
-  - styleselect | bold italic | link unlink image pastetext | undo redo | bullist numlist outdent indent | alignleft aligncenter alignright alignjustify | table youtube
-menubar: false
+  - styleselect | bold italic | removeformat | link unlink image pastetext | undo redo | bullist numlist outdent indent | alignleft aligncenter alignright alignjustify | table youtube example
+menubar: edit insert view format table tools
 plugins:
   - link
   - table
   - code
   - image
   - paste
+  - contextmenu
   - youtube
+  - product_template
 height: 300
 relative_urls: false
 convert_urls: false
 document_base_url: '/'
 remove_script_host: true
+# contextmenu: "link image inserttable | cell row column deletetable | example"
+extended_valid_elements: "i[class],div[class]"
 table_default_attributes:
   class: "table table-responsive"
 table_class_list:
   - { title: "полосатая", value: "table table-responsive table-striped" }
   - { title: "с границами", value: "table table-responsive table-bordered" }
   - { title: "полосатая с границами", value: "table table-responsive table-striped table-bordered" }
+style_formats:
+  -
+    title: "Дополнительно"
+    items:
+      - { title: 'Red text', inline: 'span', styles: { color: '#ff0000' } }
+      - { title: 'Bicycle', inline: 'i', classes: "fa fa-bicycle" }
+style_formats_merge: true
