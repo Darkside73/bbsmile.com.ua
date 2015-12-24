@@ -11,7 +11,7 @@ script type="text/x-template" id="cart-modal"
         .alert.alert-info role="alert" v-if="empty"
           strong Корзина пуста
       .modal-footer
-        a.btn.btn-info data-dismiss="modal" aria-hidden="true" Продолжить покупки
+        a.btn.btn-link data-dismiss="modal" aria-hidden="true" Продолжить покупки
         a.btn.btn-success.btn-lg href="#{cart_checkout_path}" aria-hidden="true" v-show="!empty" Оформить заказ
 
 script type="text/x-template" id="cart-item"
