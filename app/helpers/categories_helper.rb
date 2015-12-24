@@ -86,6 +86,12 @@ module CategoriesHelper
     title_parts = "#{@category.title} #{selected_brands.join ', '}"
   end
 
+  def offers_path_for_category
+    if Category.roots_contained_offers.select { |root| root == @category.root }
+      category_offers_path(@category.root.url)
+    end
+  end
+
   private
 
   def link_to_add_or_remove_filter(entity, link_text, items, link_id = nil)

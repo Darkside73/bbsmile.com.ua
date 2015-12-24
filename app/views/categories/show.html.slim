@@ -63,10 +63,11 @@
             - if @products.count > 1
               = link_to_sortable_price "Сначала дешевле", "asc"
               = link_to_sortable_price "Сначала дороже",  "desc"
-              - if @category.description.present? && no_filtering?
-                button.more.btn.btn-default
-                  i.fa.fa-info-circle>
-                  | Подробнее о категории
+              - if offers_path_for_category
+                = link_to offers_path_for_category do
+                  button.more.btn.btn-default
+                    i.fa.fa-gift>
+                    | Акции и скидки
         - cache [@products, @products.map(&:brand)] do
           = render 'products'
       - elsif @category.leaf?
