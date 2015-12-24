@@ -11,6 +11,9 @@
       li itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList"
         = link_to "/#{category.url}", itemprop: 'url' do
           span itemprop="name" = category.name
-      li.active = @product.title
+      - if @product.brand.present?
+        li.active
+          ' другие товары
+          = link_to @product.brand.name, brand_page_path(@product.brand.name)
     - else
       li.active = category.name
