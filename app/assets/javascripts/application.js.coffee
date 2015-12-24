@@ -66,7 +66,7 @@ $ ->
         pattern: /0/
         fallback: '0'
 
-  $('input[name="order[payment_method]"').click ->
+  $('input[name="order[payment_method]"]').click ->
     $('.payment-help').hide()
     $(".payment-help.#{$(this).val()}").fadeIn()
 
