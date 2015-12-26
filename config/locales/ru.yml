@@ -124,6 +124,8 @@ ru:
     callbacks:
       new_callback:
         subject: Обратный звонок
+      new_callback_from_cart:
+        subject: Обратный звонок (из корзины)
       quick_order:
         subject: Быстрый заказ
     system:

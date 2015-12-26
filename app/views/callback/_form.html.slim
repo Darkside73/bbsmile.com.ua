@@ -1,11 +1,14 @@
-= simple_form_for CallbackForm.new, remote: true, html: { id: 'send-callback', class: "modal fade", data: { type: :json }, tabindex: -1 } do |f|
+= simple_form_for CallbackForm.new, remote: true, html: { id: local_assigns[:id] || 'send-callback', class: "modal fade", data: { type: :json }, tabindex: -1 } do |f|
   .modal-dialog: .modal-content
     .modal-header
       button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
-      h4.modal-title Обратный звонок
+      h4.modal-title = local_assigns[:title] || "Обратный звонок"
     .modal-body
+      - if local_assigns[:body]
+        p = body
       = f.input :name, label: "Ваше имя"
       = f.input :phone, label: "Телефон"
+      = f.hidden_field :from_cart, value: 1 if local_assigns[:id] == 'checkout-exit'
     .modal-footer
       a.btn.btn-default data-dismiss="modal" aria-hidden="true" Закрыть
       = f.button :submit, "Перезвоните мне", class: 'btn-success btn-lg'

@@ -5,16 +5,17 @@
 //= require twitter/bootstrap
 //= require jquery.scrollTo/jquery.scrollTo
 //= require search-box
-//= require components/app
-//= require category
-//= require promotions
-//= require ga-events
+//= require ouibounce
 //= require contact_dialog
 //= require callback_dialog
 //= require blueimp-gallery/js/blueimp-gallery
 //= require bootstrap-image-gallery/js/bootstrap-image-gallery
+//= require ga-events
 //= require jquery.mask
 //= require jquery.cookie
+//= require components/app
+//= require category
+//= require promotions
 
 $ ->
   $('a[data-toggle=popover]').popover()

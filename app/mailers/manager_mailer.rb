@@ -25,7 +25,9 @@ class ManagerMailer < ActionMailer::Base
 
   def callback_message(callback)
     @callback = callback
-    mail subject: I18n.t('mailers.callbacks.new_callback.subject')
+    subject = "mailers.callbacks." +
+              "new_callback#{callback.from_cart ? '_from_cart' : ''}.subject"
+    mail subject: I18n.t(subject)
   end
 
   def quick_order_message(quick_order)

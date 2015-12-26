@@ -20,6 +20,7 @@ class CallbackFormsController < ApplicationController
   private
 
   def form_params
-    params.require(:callback_form).permit(:name, :phone, :product_title)
+    params.require(:callback_form)
+          .permit(:name, :phone, :product_title, :from_cart)
   end
 end

@@ -1,10 +1,14 @@
 - title 'Оформление заказа'
 
+- content_for :modals do
+  = render "callback/form", title: "Не разобрались c оформлением заказа?", body: "Можно не заполнять никаких форм, а просто оставить номер своего телефона, и наш консультант решит все вопросы по оформлению заказа", id: "checkout-exit"
+
 #cart-checkout.container
   .page-header
     h1.page-title
       template v-if="pageTitle" {{pageTitle}}
       template v-if="!pageTitle" Оформление заказа
+  .flashable
   div {{{flashMessage}}}
   - if cart.size == 0
     .alert.alert-info role="alert" v-show="!cartState.size && !flashMessage"

@@ -92,6 +92,8 @@ en:
     callbacks:
       new_callback:
         subject: New callback message
+      new_callback_from_cart:
+        subject: New callback message
       quick_order:
         subject: New quick order message
     system:

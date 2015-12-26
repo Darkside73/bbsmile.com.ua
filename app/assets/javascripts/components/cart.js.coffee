@@ -64,6 +64,14 @@ Vue.component(
   'cart-checkout-form'
   props: ['cartState', 'loading']
   template: '#cart-checkout-form'
+  created: ->
+    @ouibounce = ouibounce(
+      false
+      aggressive: true, timer: 3000
+      callback: ->
+        $('#checkout-exit').modal('show')
+        new CallbackDialog('#checkout-exit')
+    )
   methods:
     onSubmit: (e) ->
       e.preventDefault()
@@ -79,6 +87,7 @@ Vue.component(
           @trackOrderCheckout(data)
           @$parent.emptyCart()
           $('html, body').animate scrollTop: 0, 300
+          @ouibounce.disable()
         'json'
       ).fail(
         (data) =>
