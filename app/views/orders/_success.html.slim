@@ -1,17 +1,22 @@
-.panel.panel-success
-  .panel-heading
-    h2.panel-title Спасибо!
-  .panel-body
-      p
-        big> Номер вашего заказа
-        strong: mark = order.number
-      markdown:
-        Нам очень важно чтобы Вы остались довольны покупкой!
+.thankyou-message
+  h2 Спасибо!
+  p.lead
+    ' Номер вашего заказа
+    strong = order.number
 
-        Ваш заказ уже в обработке. В рабочее время (*с 9:00 до 21:00*) мы свяжемся
-        с Вами в течение **30 минут**.
-  .panel-footer
-    markdown:
-      Если прошло уже много времени, а мы все еще не позвонили &mdash; возможно
-      произошла техническая накладка.
-      Просто позвоните нам и мы примем заказ по телефону.
+  markdown:
+    Нам очень важно чтобы Вы остались довольны покупкой!
+
+    Ваш заказ уже в обработке.<br>
+    В рабочее время (*с 9:00 до 21:00*) мы свяжемся
+    с Вами в течение **30 минут**.
+
+    Присоединяйтесь к нам в социальных сетях!<br>
+    У нас море позитивного контента :)<br>
+    Розыгрыши призов!<br>
+    Заходите и убедитесь сами!
+
+  - { vk: "http://vk.com/babyua_vk", facebook: "http://www.facebook.com/babysmile.ua", twitter: "http://twitter.com/babysmileua" }.each do |icon, url|
+    a href="#{url}": span.fa-stack.fa-lg
+      i.fa.fa-circle.fa-stack-2x
+      i.fa.fa-stack-1x.fa-inverse class="fa-#{icon}"

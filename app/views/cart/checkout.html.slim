@@ -21,36 +21,3 @@
       .row v-repeat="suborder in cartState.suborders"
         cart-item suborder="{{suborder}}" index="{{$index}}" delete-item="{{deleteCartItem}}" update-item="{{updateCartItem}}"
       cart-total total="{{cartState.total}}" v-show="cartState.size"
-
-  .on-success v-show="!cartState.size && flashMessage"
-    hr
-    .panel.panel-info
-      .panel-heading
-        h2.panel-title Присоединяйтесь к нам в социальных сетях
-      .panel-body
-        p: big У нас море позитивного контента и розыгрыши призов.
-        p: big Заходите и убедитесь сами!
-      .panel-footer
-        .row
-          .col-md-6
-            script type="text/javascript" src="//vk.com/js/api/openapi.js?121"
-            #vk_groups
-            - content_for :js_footer
-              javascript:
-                VK.Widgets.Group("vk_groups", {mode: 2, width: "400", height: "300"}, -210416966);
-
-          .col-md-6
-            #fb-root
-            javascript:
-              (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.5";
-                fjs.parentNode.insertBefore(js, fjs);
-              }(document, 'script', 'facebook-jssdk'));
-
-            .fb-page data-href="https://www.facebook.com/babysmile.ua" data-tabs="timeline,messages" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"
-              .fb-xfbml-parse-ignore: blockquote cite="https://www.facebook.com/babysmile.ua"
-                a href="https://www.facebook.com/babysmile.ua"
-                  | Интернет-магазин Babysmile
