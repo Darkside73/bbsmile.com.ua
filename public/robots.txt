@@ -13,3 +13,6 @@ Host: bbsmile.com.ua
 
 User-agent: BLEXBot
 Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
