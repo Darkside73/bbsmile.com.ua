@@ -72,6 +72,7 @@ group :development do
   gem 'bullet'
   gem 'quiet_assets'
   gem 'rails-erd'
+  gem 'foreman'
   gem 'capistrano', '>= 3.0', require: false
   gem 'capistrano-rails', '>= 1.1', require: false
   gem 'capistrano-bundler', '>= 1.1', require: false

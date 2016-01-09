@@ -11,6 +11,7 @@ html
     = csrf_meta_tag
     = favicon_link_tag
     = stylesheet_link_tag default_stylesheet unless content_for?(:head)
+    = webpack_bundle_css_tag 'application'
     /[if IE 7]
       = stylesheet_link_tag 'font-awesome-ie7.min'
     /[if lt IE 9]
@@ -38,6 +39,7 @@ html
     = render_component 'cart/button'
     cart-modal v-ref="cartModal" id="{{cartModalId}}" cart-state="{{cartState}}" delete-item="{{deleteCartItem}}" update-item="{{updateCartItem}}"
     = javascript_include_tag 'application'
+    = webpack_bundle_js_tag 'application'
     = yield :modals
     = yield :js_footer
     = render 'contacts/form'

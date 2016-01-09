@@ -1,5 +1,21 @@
 module ApplicationHelper
 
+  def webpack_bundle_js_tag(entry)
+    manifest = Rails.configuration.webpack[:assets_manifest]
+    if manifest[entry][:js]
+      file_name = manifest[entry][:js]
+      javascript_include_tag file_name if file_name
+    end
+  end
+
+  def webpack_bundle_css_tag(entry)
+    manifest = Rails.configuration.webpack[:assets_manifest]
+    if manifest[entry][:css]
+      file_name = manifest[entry][:css]
+      stylesheet_link_tag file_name if file_name
+    end
+  end
+
   def title(page_title)
     seo_page.title = page_title
     content_for(:title) { page_title }
