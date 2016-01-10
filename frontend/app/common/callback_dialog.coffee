@@ -1,4 +1,4 @@
-class @CallbackDialog
+class CallbackDialog
   constructor: (selector) ->
     @dialog = $(selector)
     @success = false
@@ -65,3 +65,5 @@ class @CallbackDialog
       button.attr 'disabled', 'disabled'
     else
       button.removeAttr 'disabled'
+
+module.exports = CallbackDialog

@@ -1,4 +1,4 @@
-class @ContactDialog
+class ContactDialog
   constructor: (selector) ->
     @dialog = $(selector)
     @success = false
@@ -65,3 +65,5 @@ class @ContactDialog
       button.attr 'disabled', 'disabled'
     else
       button.removeAttr 'disabled'
+
+module.exports = ContactDialog

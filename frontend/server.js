@@ -4,10 +4,13 @@ const config = require('./webpack.config');
 const hotRailsPort = process.env.HOT_RAILS_PORT || 3500;
 
 config.output.publicPath = `http://localhost:${hotRailsPort}/assets/`;
-config.entry.application.push(
-  'webpack-dev-server/client?http://localhost:' + hotRailsPort,
-  'webpack/hot/only-dev-server'
-);
+['application'].forEach(entryName => {
+  config.entry[entryName].push(
+    'webpack-dev-server/client?http://localhost:' + hotRailsPort,
+    'webpack/hot/only-dev-server'
+  );
+});
+
 config.plugins.push(
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.HotModuleReplacementPlugin(),
@@ -35,5 +38,3 @@ new WebpackDevServer(webpack(config), {
     '=> 🔥  Webpack development server is running on port ' + hotRailsPort
   );
 })
-
-

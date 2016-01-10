@@ -38,7 +38,6 @@ html
     = render_component 'cart/modal'
     = render_component 'cart/button'
     cart-modal v-ref="cartModal" id="{{cartModalId}}" cart-state="{{cartState}}" delete-item="{{deleteCartItem}}" update-item="{{updateCartItem}}"
-    = javascript_include_tag 'application'
     = webpack_bundle_js_tag 'application'
     = yield :modals
     = yield :js_footer
