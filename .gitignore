@@ -31,4 +31,5 @@
 /config/database.yml
 /public/system/
 /node_modules
+/public/assets
 webpack-assets.json

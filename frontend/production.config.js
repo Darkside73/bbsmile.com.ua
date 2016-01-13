@@ -13,10 +13,17 @@ module.exports = {
     loaders: [
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader?minimize")
+        loader: ExtractTextPlugin.extract("style-loader", "css?minimize")
+      },
+      {
+        test: /\.less$/,
+        loader: ExtractTextPlugin.extract("style-loader", "css?minimize!less")
       },
       { test: /\.(png|jpg|gif)$/, loader: 'url?limit=8192' },
-      { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader: 'file' }
+      {
+        test: /\.(ttf|eot|svg|woff(2)?)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file'
+      }
     ]
   },
   plugins: [

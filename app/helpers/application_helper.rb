@@ -21,12 +21,14 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
 
-  def default_stylesheet
+  def webpack_bundle_name
     case current_layout
     when 'layout_main'
-      'main'
+      'main_page'
     when 'layout_inner'
-      'inner'
+      'inner_page'
+    else
+      'application'
     end
   end
 

@@ -9,13 +9,15 @@ module.exports = {
     filename: 'bundle-[name].js'
   },
   entry: {
-    application: ['./app/entry'], // workaround for require allowing (fixed in webpack 2)
+    application: ['./app/base-entry'], // workaround for require allowing (fixed in webpack 2)
+    main_page: ['./app/pages/main'],
   },
   resolve: {
     extensions: ['', '.js', '.coffee'],
     modulesDirectories: [ 'node_modules' ],
     alias: {
-      libs: path.join(__dirname, 'app', 'libs'),
+      libs: path.join(__dirname, 'libs'),
+      common: path.join(__dirname, 'app', 'common'),
     }
   },
   module: {

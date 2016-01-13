@@ -1,19 +1,21 @@
 // Common stylesheet
 
 /*
-* = require "lib/bootstrap"
-* = require "font-awesome"
-* = require "blueimp-gallery/less/blueimp-gallery"
-* = require "bootstrap-image-gallery/less/bootstrap-image-gallery"
-* = require "content"
+* = require "bootstrap-image-gallery/less/bootstrap-image-gallery" ?????
 */
 
-@import "lib/variables";
-@import "lib/mixins";
-@import "lib/prefixer";
+@import "~bootstrap/less/bootstrap";
+@import "~font-awesome/less/font-awesome";
+@import "~blueimp-gallery/css/blueimp-gallery.css";
+
+@import "~libs/styles/variables";
+@import "~libs/styles/mixins";
+@import "~libs/styles/prefixer";
+
 @import "siteheart-skin";
 @import "admin-panel";
 @import "responsive";
+@import "content";
 
 body {
   min-width: @screen-xxs-min;
@@ -194,7 +196,7 @@ label.inline {
 }
 
 #site-header {
-  background: #b7d5d9 image-url("layout/bg.png") bottom center no-repeat;
+  background: #b7d5d9 url("layout/bg.png") bottom center no-repeat;
   .contacts {
     .actions {
       text-align: center;
@@ -243,7 +245,7 @@ label.inline {
   h1 {
     #gradient > .directional(fadeout(white, 70%), fadeout(white, 100%), 90deg);
     .border-radius(3px);
-    color: darken(#b7d5d9, 35%);
+    color: darken(red, 35%);
     small {
       color: @pink;
       white-space: nowrap;
