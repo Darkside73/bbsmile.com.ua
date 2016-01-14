@@ -1,0 +1,34 @@
+.sup {
+  top: -5px; position: relative;
+}
+
+@mixin ease($color)
+{
+  @include transition(color 0.2s ease-in-out 0s);
+  &:hover {
+    text-shadow: 0 0 10px fade-out($color, 0.75);
+  }
+}
+
+// applies to links container
+@mixin social-contact-links($backgroundColor: $brownLight, $color: $yellowLight)
+{
+  letter-spacing: 0.5em;
+  a i.fa {
+    background: $backgroundColor;
+    border-radius: 20px;
+    line-height: 40px;
+    width: 40px;
+    text-align: center;
+    padding-left: 8px;
+    font-size: 22px;
+  }
+  a {
+    color: $color;
+    &:hover {
+      text-decoration: none;
+      i { background-color: lighten($backgroundColor, 7%); }
+    }
+  }
+}
+

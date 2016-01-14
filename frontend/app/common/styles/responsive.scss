@@ -1,4 +1,4 @@
-@media (max-width: @screen-md-max) {
+@media (max-width: $screen-md-max) {
   #main-menu {
     position: relative;
     margin-bottom: -40px;
@@ -11,7 +11,9 @@
       }
     }
     h1 {
-      #gradient > .directional(fadeout(white, 70%), fadeout(white, 100%), 180deg) !important;
+      #gradient {
+        @include gradient-directional(fade-out(white, 0.7), fade-out(white, 1), 180deg);
+      }
     }
   }
   #site-header:not(.jumbotron) .contacts .actions .popover.visible {
@@ -39,7 +41,7 @@
   }
 }
 
-@media (max-width: @screen-sm-max) {
+@media (max-width: $screen-sm-max) {
   #site-header:not(.jumbotron) .contacts .actions .popover.visible {
     left: 84px !important;
   }
@@ -67,7 +69,7 @@
   }
 }
 
-@media (max-width: @screen-xs-max) {
+@media (max-width: $screen-xs-max) {
   #site-header:not(.jumbotron) .contacts .actions .popover.bottom.visible {
     .arrow { display: none; }
     display: none;
@@ -88,7 +90,7 @@
 
   .row-offcanvas {
     position: relative;
-    .transition(all 0.25s ease-out);
+    @include transition(all 0.25s ease-out);
   }
 
   .row-offcanvas-left .sidebar-offcanvas {
@@ -98,7 +100,7 @@
   .row-offcanvas-left.active {
     left: 50%;
     .sidebar-offcanvas, .products-list {
-      margin-left: @grid-gutter-width;
+      margin-left: $grid-gutter-width;
     }
   }
 
@@ -144,7 +146,7 @@
   }
 }
 
-@media (max-width: @screen-xxs-max) {
+@media (max-width: $screen-xxs-max) {
   #site-header:not(.jumbotron) .contacts .actions .popover.bottom.visible {
     left: 22% !important;
   }

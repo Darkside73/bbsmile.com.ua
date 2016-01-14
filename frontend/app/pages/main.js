@@ -1,3 +1,3 @@
 require('../base-entry');
 
-require('./main/styles.less');
+require('./main/styles.scss');

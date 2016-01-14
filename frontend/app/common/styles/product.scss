@@ -46,15 +46,15 @@
   }
   .nav-tabs {
     margin-top: 15px;
-    li a { color: @blue; }
+    li a { color: $blue; }
   }
   .share {
     a {
       vertical-align: middle;
-      color: @purple;
-      font-size: @font-size-base*1.8;
+      color: $purple;
+      font-size: $font-size-base*1.8;
       margin-left: 10px;
-      &:hover { color: lighten(@purple, 20%); }
+      &:hover { color: lighten($purple, 20%); }
     }
   }
   .prices {
@@ -64,10 +64,10 @@
     a:hover {
       text-decoration: none;
       .text-success {
-        color: darken(@green, 15%);
+        color: darken($green, 15%);
       }
       .text-warning {
-        color: darken(@orange, 15%);
+        color: darken($orange, 15%);
       }
     }
   }
@@ -76,7 +76,7 @@
   }
   .phones {
     ul {
-      font-size: @font-size-h4;
+      font-size: $font-size-h4;
     }
   }
 
@@ -110,7 +110,7 @@
     }
   }
   .page-nav-links {
-    i { color: @link-hover-color; }
+    i { color: $link-hover-color; }
     margin-left: 22px;
   }
   #description {

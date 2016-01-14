@@ -6,4 +6,4 @@ if (__RAILS_ENV__ != 'production')
 
 require('common/main');
 
-require('common/styles/application.less');
+require('common/styles/application.scss');

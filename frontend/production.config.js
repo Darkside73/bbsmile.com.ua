@@ -16,8 +16,10 @@ module.exports = {
         loader: ExtractTextPlugin.extract("style-loader", "css?minimize")
       },
       {
-        test: /\.less$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css?minimize!less")
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract(
+          "style-loader", "css?minimize!resolve-url!sass"
+        )
       },
       { test: /\.(png|jpg|gif)$/, loader: 'url?limit=8192' },
       {

@@ -8,12 +8,12 @@
 
 .static-page {
   .contacts {
-    font-size: @font-size-base * 1.5;
+    font-size: $font-size-base * 1.5;
     p {
       margin-bottom: 20px;
     }
     i {
-      color: @gray-light;
+      color: $gray-light;
       width: 17px;
     }
     .center i, .right i {

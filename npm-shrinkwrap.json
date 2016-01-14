@@ -416,6 +416,11 @@
       "from": "bootstrap@>=3.3.6 <4.0.0",
       "resolved": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.6.tgz"
     },
+    "bootstrap-sass": {
+      "version": "3.3.6",
+      "from": "bootstrap-sass@latest",
+      "resolved": "https://registry.npmjs.org/bootstrap-sass/-/bootstrap-sass-3.3.6.tgz"
+    },
     "brace-expansion": {
       "version": "1.1.2",
       "from": "brace-expansion@>=1.0.0 <2.0.0",

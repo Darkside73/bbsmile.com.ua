@@ -1,13 +1,13 @@
 body {
   #sh_button {
     top: 280px !important;
-    .responsive-visibility();
-    @media (max-width: @screen-sm-max) {
-      .responsive-invisibility();
-    }
+  }
+  @include responsive-visibility(#sh_button);
+  @media (max-width: $screen-sm-max) {
+    @include responsive-invisibility(#sh_button);
   }
   .sh_btn {
-    background: @chatScheme;
+    background: $chatScheme;
     margin-left: -5px;
     width: 30px;
     opacity: 0.9;
@@ -19,13 +19,13 @@ body {
     margin-right: -2px;
   }
   .sh_btn .sh_btn_char {
-    font-family: @font-family-sans-serif;
+    font-family: $font-family-sans-serif;
   }
   .sh_btn:hover {
-    background: darken(@chatScheme, 10%);
+    background: darken($chatScheme, 10%);
     margin-left: 0px;
     width: 35px;
-    .transition(width .2s linear);
+    @include transition(width .2s linear);
     .shc.sh_logo {
       margin-left: 0px;
     }
@@ -34,22 +34,22 @@ body {
     }
   }
   .sh_chat,.sh_btn_left .sh_title_text, .sh_btn_right .sh_title_text, .sh_btn_left .sh_title_text, .sh_btn_right .sh_title_text, .sh_btn_top .sh_title_text, .sh_btn_bottom .sh_title_text {
-    border-color: darken(@chatScheme, 7%);
+    border-color: darken($chatScheme, 7%);
   }
   .sh_header, .sh_button {
-    background: @chatScheme;
-    border-color: darken(@chatScheme, 7%);
+    background: $chatScheme;
+    border-color: darken($chatScheme, 7%);
   }
   .sh_button:hover {
-    background: darken(@chatScheme, 5%);
+    background: darken($chatScheme, 5%);
   }
   .sh_form_step_act {
-    color: @chatScheme;
+    color: $chatScheme;
   }
   .sh_btn {
-    background: @chatScheme;
+    background: $chatScheme;
   }
   .sh_btn:hover {
-    background: darken(@chatScheme, 5%);
+    background: darken($chatScheme, 5%);
   }
 }
