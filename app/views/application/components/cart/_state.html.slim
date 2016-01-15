@@ -1,8 +1,0 @@
-script type="text/x-template" id="cart-label"
-  a href="#" v-on="click: onClick" title="Корзина"
-    i.fa.fa-shopping-cart.fa-2x>
-    span.badge v-show="cartState.size" {{cartState.size}}
-    span.badge v-show="!cartState.size"
-
-javascript:
-  var cartState = #{{render template: "orders/_order.json"}}

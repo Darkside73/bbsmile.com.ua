@@ -27,7 +27,8 @@ module.exports = {
         include: [ path.resolve(__dirname + 'frontend/app') ],
         loader: 'babel?presets[]=es2015'
       },
-      { test: /\.coffee$/, loader: 'coffee-loader' }
+      { test: /\.coffee$/, loader: 'coffee-loader' },
+      { test: /\.vue$/, loader: 'vue' }
     ],
   },
   plugins: [
