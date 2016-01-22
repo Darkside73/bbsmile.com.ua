@@ -1,17 +1,11 @@
 // Inner page stylesheets (fluid layout, small page header)
 
-/*
-* = require "application"
-*/
-
-@import "lib/variables";
-@import "lib/mixins";
-@import "lib/prefixer";
+@import "~common/styles/application";
 
 #site-header {
   margin-bottom: 20px;
   padding: 66px 0 10px;
-  background-image: image-url("layout/bg_small.png");
+  background-image: url("bg_small.png");
   h1 { font-size: $font-size-base * 2; }
   h1 small { font-size: $font-size-base * 1.5; }
   .contacts .actions {
@@ -45,5 +39,32 @@
   }
   img {
     margin-right: 20px;
+  }
+}
+
+.google-map-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+  iframe{
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+}
+
+.thankyou-message {
+  background: url("thankyou-bg.png") no-repeat center;
+  width: 80%;
+  margin: 0 auto;
+  padding: 60px;
+  font-size: 130%;
+  text-align: center;
+  h2 {
+    color: $pink;
+    font-size: 200%;
   }
 }

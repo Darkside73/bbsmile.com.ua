@@ -447,33 +447,6 @@ a.floating-icon {
   }
 }
 
-.google-map-responsive {
-  overflow: hidden;
-  padding-bottom: 56.25%;
-  position: relative;
-  height: 0;
-  iframe{
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-  }
-}
-
-.thankyou-message {
-  background: asset-url("thankyou-bg.png") no-repeat center;
-  width: 80%;
-  margin: 0 auto;
-  padding: 60px;
-  font-size: 130%;
-  text-align: center;
-  h2 {
-    color: $pink;
-    font-size: 200%;
-  }
-}
-
 .footer {
   white-space: nowrap;
   @include background(linear-gradient($yellowLight, fade-out($yellow, 0.85)) left repeat);

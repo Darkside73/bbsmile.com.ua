@@ -11,6 +11,7 @@ module.exports = {
   entry: {
     application: ['./app/base-entry'], // workaround for require allowing (fixed in webpack 2)
     main_page: ['./app/pages/main'],
+    inner_page: ['./app/pages/inner'],
   },
   resolve: {
     extensions: ['', '.js', '.coffee'],
