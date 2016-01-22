@@ -2,9 +2,12 @@
   Vue = require('vue')
   Vue.config.debug = __RAILS_ENV__ != 'production'
 
-  cartModal = require('./cart/Modal.vue')
-  cartLabel = require('./cart/Label.vue')
-  cartButton = require('./cart/Button.vue')
+  cartModal        = require('./cart/Modal.vue')
+  cartLabel        = require('./cart/Label.vue')
+  cartButton       = require('./cart/Button.vue')
+  cartTotal        = require('./cart/Total.vue')
+  cartItem         = require('./cart/Item.vue')
+  cartCheckoutForm = require('./cart/CheckoutForm.coffee')
 
   new Vue(
     el: 'body'
@@ -17,7 +20,9 @@
       currentOrder: {}
       pageTitle: ''
       flashMessage: ''
-    components: { cartLabel, cartButton, cartModal }
+    components: {
+      cartLabel, cartButton, cartModal, cartTotal, cartItem, cartCheckoutForm
+    }
     created: ->
       @populateCartState(window.cartState)
     watch:

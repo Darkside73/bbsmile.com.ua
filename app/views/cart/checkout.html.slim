@@ -5,9 +5,7 @@
 
 #cart-checkout.container
   .page-header
-    h1.page-title
-      template v-if="pageTitle" {{pageTitle}}
-      template v-if="!pageTitle" Оформление заказа
+    h1.page-title Оформление заказа
   .flashable
   div {{{flashMessage}}}
   - if cart.size == 0
@@ -15,9 +13,27 @@
       strong Корзина пуста
   .row v-show="cartState.size"
     .col-md-6
-      = render_component "cart/checkout_form"
-      cart-checkout-form cart-state="{{cartState}}"
+      script type="text/x-template" id="cart-checkout-form"
+        = simple_form_for cart, html: {"@submit" => "onSubmit"} do |f|
+          = f.simple_fields_for :user do |u|
+            .row
+              .col-md-6
+                = u.input :first_name, label: "Имя"
+                = u.input :phone, label: "Телефон", input_html: { type: 'tel' }
+              .col-md-6
+                = u.input :last_name, label: "Фамилия"
+                = u.input :email, label: "E-mail"
+            .form-group
+              .row
+                .col-md-6
+                  = f.input :payment_method, label: 'Способ оплаты', collection: [:liqpay, :cash_on_delivery, :cash_to_courier], label_method: lambda { |key| { liqpay: "Приват 24 / Карты Visa, Master Card", cash_on_delivery: "наложенный платеж", cash_to_courier: "наличными при получении" }.fetch(key) }, as: :radio_buttons
+                .col-md-6
+                  .payment-help.liqpay
+                  .payment-help.cash_on_delivery
+              = f.input :notes, label: "Дополнительная информация", hint: "Укажите ваш город, способ доставки, отделение \"Новой почты\"...", input_html: { rows: 5 }
+          .form-group = f.button :submit, "Оформить заказ", class: 'btn-success btn-lg', ":disabled" => "loading"
+      cart-checkout-form :cart-state="cartState"
     .col-md-6
-      .row v-repeat="suborder in cartState.suborders"
-        cart-item suborder="{{suborder}}" index="{{$index}}" delete-item="{{deleteCartItem}}" update-item="{{updateCartItem}}"
-      cart-total total="{{cartState.total}}" v-show="cartState.size"
+      .row v-for="suborder in cartState.suborders"
+        cart-item :suborder="suborder" :index="$index" :delete-item="deleteCartItem" :update-item="updateCartItem"
+      cart-total :total="cartState.total" v-show="cartState.size"
