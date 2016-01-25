@@ -1,14 +1,4 @@
-// Product page stylesheets
-
-/*
-* = require "inner"
-* = require "owl-carousel/owl.carousel"
-* = require "owl-carousel/owl.theme"
-*/
-
-@import "lib/variables";
-@import "lib/mixins";
-@import "lib/prefixer";
+@import "~common/styles/application";
 
 #product-container {
   .product-back {

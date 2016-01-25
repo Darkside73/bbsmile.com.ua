@@ -1,8 +1,8 @@
 <template>
-  <a class="btn btn-success" v-show="!alreadyInCart" @click="onClick" class="{{style}}">
+  <a class="btn btn-success" v-show="!alreadyInCart" @click="onClick" :class="style">
     <i class="fa fa-shopping-cart"></i> В корзину
   </a>
-  <a class="btn btn-link" v-show="alreadyInCart" @click="openCart" class="{{style}}">
+  <a class="btn btn-link" v-show="alreadyInCart" @click="openCart" :class="style">
     <i class="fa fa-shopping-cart"></i> Уже в корзине
   </a>
 </template>

@@ -39,8 +39,8 @@
     .col-md-3.offer-price
       span.price.old> = number_to_currency offer.original_amount
       span.price.big = number_to_currency offer.amount
-      cart-button [add-item="{{addCartItem}}"
-        open-cart="{{openCart}}"
-        cart-state="{{cartState}}"
+      cart-button [:add-item="addCartItem"
+        :open-cart="openCart"
+        :cart-state="cartState"
         variants="[{variant_id: #{offer.product.master_variant.id}}, {variant_id: #{offer.product_offer.master_variant.id}, offer_id: #{offer.id}}]"
         style="btn-lg"]

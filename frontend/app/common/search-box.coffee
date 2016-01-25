@@ -1,6 +1,6 @@
-//= require bootstrap3-typeahead
-
 $ ->
+  require('bootstrap-3-typeahead')
+
   labels = []
   results = {}
 

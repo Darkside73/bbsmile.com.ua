@@ -1,6 +1,8 @@
-//= require owl-carousel/owl.carousel
+require('owlcarousel/owl-carousel/owl.carousel');
 
 $ ->
+  ga 'send', 'Товар', 'Просмотреть', $('#product-container').data('title')
+
   $('#product-gallery').on 'slide', (e, index, slide, links) ->
     ga 'send', 'Товар', 'Просмотреть фото', "Номер #{index + 1} из #{links.length}"
 

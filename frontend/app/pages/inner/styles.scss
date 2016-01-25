@@ -1,5 +1,3 @@
-// Inner page stylesheets (fluid layout, small page header)
-
 @import "~common/styles/application";
 
 #site-header {
@@ -39,6 +37,22 @@
   }
   img {
     margin-right: 20px;
+  }
+}
+
+.static-page {
+  .contacts {
+    font-size: $font-size-base * 1.5;
+    p {
+      margin-bottom: 20px;
+    }
+    i {
+      color: $gray-light;
+      width: 17px;
+    }
+    .center i, .right i {
+      padding-right: 3px;
+    }
   }
 }
 
