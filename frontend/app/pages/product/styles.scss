@@ -1,4 +1,7 @@
-@import "~common/styles/application";
+@import "../inner/styles";
+
+@import "~owlcarousel/owl-carousel/owl.carousel.css";
+@import "~owlcarousel/owl-carousel/owl.theme.css";
 
 #product-container {
   .product-back {

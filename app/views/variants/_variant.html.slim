@@ -1,6 +1,9 @@
 .product.short
-  = link_to variant_image_url(variant), class: 'thumbnail', title: variant.title, data: { gallery: '#variants-gallery', price: number_to_currency(variant.price) } do
+  = link_to variant_image_url(variant), class: 'thumbnail', title: variant.title, data: { gallery: '#variants-gallery', sub_html: ".variant-caption-#{variant.id}" } do
     = image_tag variant_image_url(variant, :grid), alt: variant.title
+    span.hide class="variant-caption-#{variant.id}"
+      =' variant.title
+      strong.price = number_to_currency(variant.price)
   .caption
     h5 = variant.name
     p = variant.sku
@@ -10,7 +13,6 @@
           span.old.text-muted => number_to_currency variant.price_old
         strong = "#{number_to_currency variant.price}"
       - if variant.available?
-        cart-button :add-item="addCartItem" :open-cart="openCart" :cart-state="cartState" variant-id="#{variant.id}"
+        cart-button :add-item="addCartItem" :open-cart="openCart" :cart-state="cartState" :variant-id="#{variant.id}"
       - else
         a.btn.disabled нет в наличии
-

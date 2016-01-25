@@ -84,23 +84,6 @@
       a href="#{image_url image_src}" title="#{image_alt}" data-gallery="#certificates-gallery"
         = image_tag image_src, alt: image_alt, width: 150
 
-  - content_for :modals do
-    #certificates-gallery.blueimp-gallery
-      .slides
-      .modal.fade tabindex="-1"
-        .modal-dialog: .modal-content
-          .modal-header
-            a.close data-dismiss="modal" &times;
-            h4.modal-title
-          .modal-body.next
-          .modal-footer
-            button.btn.btn-default.prev type="button" disabled="disabled"
-              i.fa.fa-arrow-left.fa.fa-white
-              | &nbsp;&nbsp;Назад
-            button.btn.btn-info.next type="button"
-              | Вперед&nbsp;&nbsp;
-              i.fa.fa-arrow-right.fa.fa-white
-
   markdown:
     Система работы магазина Babysmile
     ---------------

@@ -11,10 +11,6 @@ html
     = csrf_meta_tag
     = favicon_link_tag
     = webpack_bundle_css_tag webpack_bundle_name
-    /[if IE 7]
-      = stylesheet_link_tag 'font-awesome-ie7.min'
-    /[if lt IE 9]
-      = stylesheet_link_tag 'ie'
     = render 'analytics'
     = yield :head
 

@@ -1,8 +1,5 @@
 - title @product.title
 
-- content_for :modals do
-  = render 'gallery_modal', product: @product, id: 'product-gallery'
-
 - content_for :back_button do
   - if request.referer
     = link_to :back, class: "btn btn-default product-back", title: 'Назад', data: { title: @product.title } do
@@ -46,7 +43,7 @@
 
             - if @product.available
               link itemprop="availability" href="http://schema.org/InStock"
-              cart-button :add-item="addCartItem" :open-cart="openCart" :cart-state="cartState" variant-id="#{@product.master_variant.id}" style="btn-lg"
+              cart-button :add-item="addCartItem" :open-cart="openCart" :cart-state="cartState" :variant-id="#{@product.master_variant.id}" style="btn-lg"
             - else
               p: strong.text-muted нет в наличии
 

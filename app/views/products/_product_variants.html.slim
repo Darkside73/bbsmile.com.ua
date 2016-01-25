@@ -1,7 +1,4 @@
-- if @product.variants.count > 1
-  - content_for :modals
-    = render 'gallery_modal', id: 'variants-gallery'
-#productVariants.panel.panel-default.gallery-links
+#productVariants.panel.panel-default.gallery-links.lightgallery data-gallery-id="variants-gallery"
   .panel-heading: h3.panel-title.text-center Варианты цветов
   .panel-body.owl-container
     .owl-carousel

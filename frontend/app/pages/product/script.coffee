@@ -1,4 +1,4 @@
-require('owlcarousel/owl-carousel/owl.carousel');
+require('owlcarousel/owl-carousel/owl.carousel')
 
 $ ->
   ga 'send', 'Товар', 'Просмотреть', $('#product-container').data('title')

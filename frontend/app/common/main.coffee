@@ -1,8 +1,11 @@
 CallbackDialog = require('./callback_dialog')
 ContactDialog  = require('./contact_dialog')
+require('./ga-events.coffee')
+
 scrollTo = require('jquery-scrollto')
 require('jquery-mask-plugin')
 require('jquery.cookie')
+require('lightgallery')
 
 $ ->
   $('a[data-toggle=popover]').popover()
@@ -48,6 +51,22 @@ $ ->
   new CallbackDialog('#send-callback')
   new CallbackDialog('#send-quick-order') if $("#send-quick-order").length
 
+  $('.show-rest-products').click (e) ->
+    $(@).parents('.products-list').find('.line.hide').removeClass('hide')
+    $(@).hide()
+
+  $('button.more').click (e) ->
+    $.scrollTo('.page-content', 500, offset: -40)
+
+  $('[data-toggle=offcanvas]').click (e) ->
+    $('.row-offcanvas').toggleClass 'active'
+    $('i.fa', this).toggleClass 'fa-chevron-left fa-chevron-right'
+    if $('.row-offcanvas').hasClass 'active'
+      $('span', this).text 'Скрыть фильтры'
+    else
+      $('span', this).text 'Показать фильтры'
+
+
   $('input[type="tel"]').mask '+38 (r00) 000-00-00',
     translation:
       r:
@@ -64,23 +83,11 @@ $ ->
   unless $.cookie('hide-global-message-02-09')
     $('#global-message').toggleClass 'hide'
 
-
-  $('.gallery-links').each ->
-    links = $('a[data-gallery]', @)
-    links.click (e) ->
-      gallery = $(@).data 'gallery'
-      options =
-        index: @
-        event: e
-        container: gallery
-        onslide: (index, slide) ->
-          $('.next, .prev', slide).removeAttr 'disabled'
-          $(gallery).trigger 'slide', [index, slide, links]
-        onslideend: (index, slide) ->
-          $('.next', slide).attr 'disabled', 'disabled' if index == links.length - 1
-          $('.prev', slide).attr 'disabled', 'disabled' if index == 0
-        onopen: =>
-          $(gallery).trigger 'display', [@]
-      blueimp.Gallery links, options
+  $('.lightgallery[data-gallery-id]').each ->
+    $(this).lightGallery(
+      selector: "a[data-gallery='##{$(this).data('gallery-id')}']"
+      download: false
+      html: true
+    )
 
   $('.footer .social').html '<a href="http://vk.com/babysmile_ua" rel="nofollow" title="Мы Вконтакте"><i class="fa fa-vk"></i> </a><a href="https://plus.google.com/100829466932529435979?rel=author" rel="nofollow" title="Google+"><i class="fa fa-google-plus"></i> </a><a href="http://www.facebook.com/babysmile.ua" rel="nofollow" title="Страница в Facebook"><i class="fa fa-facebook"></i> </a><a href="http://twitter.com/babysmileua" rel="nofollow" title="Читать наши твиты"><i class="fa fa-twitter"></i></a>'

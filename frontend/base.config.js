@@ -30,7 +30,8 @@ module.exports = {
         loader: 'babel?presets[]=es2015'
       },
       { test: /\.coffee$/, loader: 'coffee-loader' },
-      { test: /\.vue$/, loader: 'vue' }
+      { test: /\.vue$/, loader: 'vue' },
+      { test: require.resolve('jquery'), loader: 'expose?$!expose?jQuery' }
     ],
   },
   plugins: [

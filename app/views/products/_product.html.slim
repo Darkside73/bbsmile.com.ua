@@ -32,7 +32,7 @@
         span.label => number_to_currency product.price
         - unless local_assigns[:hide_buy_button] && hide_buy_button
           - if product.available
-            cart-button :add-item="addCartItem" :open-cart="openCart" :cart-state="cartState" variant-id="#{product.master_variant.id}"
+            cart-button :add-item="addCartItem" :open-cart="openCart" :cart-state="cartState" :variant-id="#{product.master_variant.id}"
           - else
             button.btn.btn-default disabled="disabled" нет в наличии
 
