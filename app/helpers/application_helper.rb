@@ -22,13 +22,17 @@ module ApplicationHelper
   end
 
   def webpack_bundle_name
-    case current_layout
-    when 'layout_main'
-      'main_page'
-    when 'layout_inner'
-      'inner_page'
+    if webpack_entry_name
+      webpack_entry_name
     else
-      'application'
+      case current_layout
+      when 'layout_main'
+        'main_page'
+      when 'layout_inner'
+        'inner_page'
+      else
+        'application'
+      end
     end
   end
 

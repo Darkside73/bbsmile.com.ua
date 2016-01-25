@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :create_order
+  webpack_entry_name 'product_page'
   helper_method :gallery_for
 
   def show
