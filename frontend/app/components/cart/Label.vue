@@ -15,3 +15,27 @@
         @$parent.openCart()
   }
 </script>
+
+<style lang="sass">
+  @import '~libs/styles/bootstrap-variables';
+  @import '~bootstrap-sass/assets/stylesheets/_bootstrap';
+  @import '~libs/styles/sass-variables';
+
+  #main-menu {
+    li.cart {
+      padding: 0;
+      a {
+        position: relative;
+        padding: 9px;
+      }
+      span.badge {
+        position: relative;
+        top: -15px;
+        left: -10px;
+        font-size: 110%;
+        background: darken($pinkLight, 25%);
+        border-radius: 50%;
+      }
+    }
+  }
+</style>

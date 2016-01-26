@@ -166,21 +166,6 @@ label.inline {
 
 #main-menu {
   .container { padding-left: 0; }
-  li.cart {
-    padding: 0;
-    a {
-      position: relative;
-      padding: 9px;
-    }
-    span.badge {
-      position: relative;
-      top: -15px;
-      left: -10px;
-      font-size: 110%;
-      background: darken($pinkLight, 25%);
-      border-radius: 50%;
-    }
-  }
   li.promo {
     background-color: lighten($red, 50%);
     a { text-shadow: none; }
