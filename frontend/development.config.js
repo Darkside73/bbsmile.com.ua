@@ -6,8 +6,15 @@ module.exports = {
   outputPathinfo: true,
   devtool: 'eval-source-map',
   output: {
-    devtoolModuleFilenameTemplate: '[resourcePath]',
-    devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]'
+    devtoolModuleFilenameTemplate: info => {
+      if (info.resource.match(/\.vue$/)) {
+        $filename = info.allLoaders.match(/type=script/)
+                  ? info.resourcePath : 'generated';
+      } else {
+        $filename = info.resourcePath;
+      }
+      return $filename;
+    },
   },
   module: {
     loaders: [
