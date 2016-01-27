@@ -1,6 +1,6 @@
-//= require bootstrap3-typeahead
+require('bootstrap-3-typeahead')
 
-class @Autocomplete
+class Autocomplete
   constructor: (options) ->
     @input = $(options.input)
     @updater = options.updater
@@ -47,13 +47,4 @@ class @Autocomplete
         @labels
     )
 
-
-$ ->
-  new Autocomplete(
-    input: 'input.search-query'
-    updater: (item, results) ->
-      window.location.href = results[item].url
-      return
-    matcher: (results, labels) ->
-      window.location.href = results[labels[0]].url if labels.length == 1
-  ).perform()
+module.exports = Autocomplete

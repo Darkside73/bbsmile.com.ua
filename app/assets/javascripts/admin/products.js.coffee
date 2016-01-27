@@ -1,2 +1,0 @@
-//= require ./related_pages
-

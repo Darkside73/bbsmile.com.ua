@@ -59,6 +59,7 @@
     "jquery": "^2.2.0",
     "jquery-mask-plugin": "^1.13.4",
     "jquery-scrollto": "^1.4.4",
+    "jquery-ui": "^1.10.5",
     "jquery-ujs": "^1.1.0-1",
     "jquery.cookie": "^1.4.1",
     "lightgallery": "^1.2.14",

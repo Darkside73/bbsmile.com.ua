@@ -1,3 +1,5 @@
+Autocomplete = require('./autocomplete.coffee')
+
 $ ->
   form = $('form#add_related_page')
   input = $('input.search-available-for-relation')

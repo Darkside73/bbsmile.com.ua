@@ -458,7 +458,7 @@
     },
     "bourbon": {
       "version": "4.2.6",
-      "from": "bourbon@>=4.2.6 <5.0.0",
+      "from": "bourbon@latest",
       "resolved": "https://registry.npmjs.org/bourbon/-/bourbon-4.2.6.tgz"
     },
     "brace-expansion": {
@@ -562,7 +562,8 @@
       "dependencies": {
         "wordwrap": {
           "version": "0.0.2",
-          "from": "wordwrap@0.0.2"
+          "from": "wordwrap@0.0.2",
+          "resolved": "https://registry.npmjs.org/wordwrap/-/wordwrap-0.0.2.tgz"
         }
       }
     },
@@ -663,7 +664,8 @@
     },
     "constants-browserify": {
       "version": "0.0.1",
-      "from": "constants-browserify@0.0.1"
+      "from": "constants-browserify@0.0.1",
+      "resolved": "https://registry.npmjs.org/constants-browserify/-/constants-browserify-0.0.1.tgz"
     },
     "content-disposition": {
       "version": "0.5.0",
@@ -1117,14 +1119,17 @@
     "globule": {
       "version": "0.1.0",
       "from": "globule@>=0.1.0 <0.2.0",
+      "resolved": "https://registry.npmjs.org/globule/-/globule-0.1.0.tgz",
       "dependencies": {
         "glob": {
           "version": "3.1.21",
-          "from": "glob@>=3.1.21 <3.2.0"
+          "from": "glob@>=3.1.21 <3.2.0",
+          "resolved": "https://registry.npmjs.org/glob/-/glob-3.1.21.tgz"
         },
         "graceful-fs": {
           "version": "1.2.3",
-          "from": "graceful-fs@>=1.2.0 <1.3.0"
+          "from": "graceful-fs@>=1.2.0 <1.3.0",
+          "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-1.2.3.tgz"
         },
         "inherits": {
           "version": "1.0.2",
@@ -1225,7 +1230,8 @@
     },
     "https-browserify": {
       "version": "0.0.0",
-      "from": "https-browserify@0.0.0"
+      "from": "https-browserify@0.0.0",
+      "resolved": "https://registry.npmjs.org/https-browserify/-/https-browserify-0.0.0.tgz"
     },
     "icss-replace-symbols": {
       "version": "1.0.2",
@@ -1281,7 +1287,8 @@
     },
     "inherits": {
       "version": "2.0.1",
-      "from": "inherits@>=2.0.0 <3.0.0"
+      "from": "inherits@2.0.1",
+      "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
     },
     "ini": {
       "version": "1.3.4",
@@ -1422,7 +1429,8 @@
     },
     "isarray": {
       "version": "0.0.1",
-      "from": "isarray@0.0.1"
+      "from": "isarray@0.0.1",
+      "resolved": "https://registry.npmjs.org/isarray/-/isarray-0.0.1.tgz"
     },
     "isobject": {
       "version": "2.0.0",
@@ -1459,6 +1467,11 @@
       "from": "jquery-scrollto@>=1.4.4 <2.0.0",
       "resolved": "https://registry.npmjs.org/jquery-scrollto/-/jquery-scrollto-1.4.4.tgz"
     },
+    "jquery-ui": {
+      "version": "1.10.5",
+      "from": "jquery-ui@latest",
+      "resolved": "https://registry.npmjs.org/jquery-ui/-/jquery-ui-1.10.5.tgz"
+    },
     "jquery-ujs": {
       "version": "1.1.0-1",
       "from": "jquery-ujs@>=1.1.0-1 <2.0.0",
@@ -1486,7 +1499,8 @@
       "dependencies": {
         "esprima": {
           "version": "2.7.1",
-          "from": "esprima@>=2.6.0 <3.0.0"
+          "from": "esprima@2.7.1",
+          "resolved": "https://registry.npmjs.org/esprima/-/esprima-2.7.1.tgz"
         }
       }
     },
@@ -1574,7 +1588,7 @@
     },
     "lightgallery": {
       "version": "1.2.14",
-      "from": "https://registry.npmjs.org/lightgallery/-/lightgallery-1.2.14.tgz",
+      "from": "lightgallery@latest",
       "resolved": "https://registry.npmjs.org/lightgallery/-/lightgallery-1.2.14.tgz"
     },
     "line-numbers": {
@@ -1853,7 +1867,8 @@
     },
     "mime": {
       "version": "1.2.11",
-      "from": "mime@>=1.2.0 <1.3.0"
+      "from": "mime@1.2.11",
+      "resolved": "https://registry.npmjs.org/mime/-/mime-1.2.11.tgz"
     },
     "mime-db": {
       "version": "1.21.0",
@@ -2107,7 +2122,8 @@
     },
     "path-browserify": {
       "version": "0.0.0",
-      "from": "path-browserify@0.0.0"
+      "from": "path-browserify@0.0.0",
+      "resolved": "https://registry.npmjs.org/path-browserify/-/path-browserify-0.0.0.tgz"
     },
     "path-exists": {
       "version": "1.0.0",
@@ -2555,7 +2571,7 @@
     },
     "resolve-url-loader": {
       "version": "1.4.3",
-      "from": "resolve-url-loader@>=1.4.3 <2.0.0",
+      "from": "resolve-url-loader@latest",
       "resolved": "https://registry.npmjs.org/resolve-url-loader/-/resolve-url-loader-1.4.3.tgz",
       "dependencies": {
         "source-map": {
@@ -2625,7 +2641,7 @@
     },
     "semver": {
       "version": "5.1.0",
-      "from": "semver@>=2.0.0 <3.0.0||>=3.0.0 <4.0.0||>=4.0.0 <5.0.0||>=5.0.0 <6.0.0",
+      "from": "semver@>=5.0.3 <6.0.0",
       "resolved": "https://registry.npmjs.org/semver/-/semver-5.1.0.tgz"
     },
     "send": {
@@ -2902,7 +2918,8 @@
     },
     "tty-browserify": {
       "version": "0.0.0",
-      "from": "tty-browserify@0.0.0"
+      "from": "tty-browserify@0.0.0",
+      "resolved": "https://registry.npmjs.org/tty-browserify/-/tty-browserify-0.0.0.tgz"
     },
     "tunnel-agent": {
       "version": "0.4.2",
@@ -3047,7 +3064,8 @@
     },
     "vm-browserify": {
       "version": "0.0.4",
-      "from": "vm-browserify@0.0.4"
+      "from": "vm-browserify@0.0.4",
+      "resolved": "https://registry.npmjs.org/vm-browserify/-/vm-browserify-0.0.4.tgz"
     },
     "vue": {
       "version": "1.0.14",
@@ -3265,7 +3283,8 @@
       "dependencies": {
         "esprima": {
           "version": "2.7.1",
-          "from": "esprima@>=2.5.0 <3.0.0"
+          "from": "esprima@2.7.1",
+          "resolved": "https://registry.npmjs.org/esprima/-/esprima-2.7.1.tgz"
         },
         "supports-color": {
           "version": "3.1.2",

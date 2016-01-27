@@ -5,7 +5,7 @@ const hotRailsPort = process.env.HOT_RAILS_PORT || 3500;
 
 config.output.publicPath = `http://localhost:${hotRailsPort}/assets/`;
 ['application', 'main_page',
-  'inner_page', 'product_page'].forEach(entryName => {
+  'inner_page', 'product_page', 'admin_panel'].forEach(entryName => {
   config.entry[entryName].push(
     'webpack-dev-server/client?http://localhost:' + hotRailsPort,
     'webpack/hot/only-dev-server'

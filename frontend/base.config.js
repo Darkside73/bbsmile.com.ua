@@ -13,6 +13,7 @@ module.exports = {
     main_page: ['./app/pages/main'],
     inner_page: ['./app/pages/inner'],
     product_page: ['./app/pages/product'],
+    admin_panel: ['./app/pages/admin_panel'],
   },
   resolve: {
     extensions: ['', '.js', '.coffee'],

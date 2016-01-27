@@ -1,28 +1,15 @@
-//= require jquery
-//= require jquery_ujs
-//= require jquery-ui/sortable
-//= require jquery-ui/droppable
-//= require jquery-ui/effect.all
-//= require underscore
-//= require twitter/bootstrap
-//= require select2/select2.full.min
-//= require select2/i18n/ru
-//= require jquery.scrollTo/jquery.scrollTo
-//= require tabs_memory
-//= require ./search-box
-//= require ./transliterate
-//= require ./destroy_helper
-//= require ./sort
-//= require ./products
-//= require ./category
-//= require ./plupload
-//= require react
-//= require react_ujs
-//= require ./components
-//= require_tree ./vue-components
-//= require tinymce
-//= require ./tinymce/custom_plugins
-//= require tinymce/plugins/youtube/plugin
+# require tinymce
+# require ./tinymce/custom_plugins
+# require tinymce/plugins/youtube/plugin
+
+require('./destroy_helper.coffee')
+require('./sort.coffee')
+require('./related_pages.coffee')
+require('./category.coffee')
+
+scrollTo = require('jquery-scrollto')
+Autocomplete = require('./autocomplete.coffee')
+transliterate = require('./transliterate.coffee')
 
 $ ->
   $(document).ajaxComplete (event, request) ->
@@ -54,3 +41,12 @@ $ ->
     val = val.replace /[^A-z0-9\-]/g, ''
     $($(this).data('target')).val val.toLowerCase()
     e.preventDefault()
+
+  new Autocomplete(
+      input: 'input.search-query'
+      updater: (item, results) ->
+        window.location.href = results[item].url
+        return
+      matcher: (results, labels) ->
+        window.location.href = results[labels[0]].url if labels.length == 1
+    ).perform()

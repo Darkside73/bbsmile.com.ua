@@ -1,21 +1,19 @@
-/*
-* = require "twitter/bootstrap"
-* = require "font-awesome"
-* = require "select2/css/select2.min"
-* = require "admin/bs-docs"
-* = require "content"
-*/
+@import '~libs/styles/bootstrap-variables';
+@import '~bootstrap-sass/assets/stylesheets/_bootstrap';
 
-@import "lib/variables";
-@import "twitter/bootstrap/mixins";
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+
+@import 'bs-docs';
+@import "~common/styles/content";
 
 body {
-  min-width: @screen-md-min;
+  min-width: $screen-md-min;
 }
 
 a.fa {
-  color: @gray;
-  &:hover { text-decoration: none; color: @link-color }
+  color: $gray;
+  &:hover { text-decoration: none; color: $link-color }
 }
 
 a i.fa {
@@ -61,7 +59,7 @@ p.bages {
       position: absolute;
       left: 10px;
       display: block !important;
-      color: @gray-light;
+      color: $gray-light;
       text-decoration: none;
     }
   }

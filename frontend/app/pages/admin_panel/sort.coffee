@@ -1,3 +1,7 @@
+require('jquery-ui/effect-highlight')
+require('jquery-ui/sortable')
+require('jquery-ui/droppable')
+
 # based on http://benw.me/posts/sortable-bootstrap-tables/
 jQuery ->
 
