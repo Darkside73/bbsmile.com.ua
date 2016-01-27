@@ -1,18 +1,22 @@
 module ApplicationHelper
 
   def webpack_bundle_js_tag(entry)
-    manifest = Rails.configuration.webpack[:assets_manifest]
-    if manifest[entry][:js]
-      file_name = manifest[entry][:js]
-      javascript_include_tag file_name if file_name
+    if Rails.configuration.use_webpack
+      manifest = Rails.configuration.webpack[:assets_manifest]
+      if manifest[entry][:js]
+        file_name = manifest[entry][:js]
+        javascript_include_tag file_name if file_name
+      end
     end
   end
 
   def webpack_bundle_css_tag(entry)
-    manifest = Rails.configuration.webpack[:assets_manifest]
-    if manifest[entry][:css]
-      file_name = manifest[entry][:css]
-      stylesheet_link_tag file_name if file_name
+    if Rails.configuration.use_webpack
+      manifest = Rails.configuration.webpack[:assets_manifest]
+      if manifest[entry][:css]
+        file_name = manifest[entry][:css]
+        stylesheet_link_tag file_name if file_name
+      end
     end
   end
 
