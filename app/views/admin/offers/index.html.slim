@@ -1,23 +1,13 @@
 = render layout: 'product_info_tabs' do
 
+  routes v-ref:routes="" :items="{ indexUrl: '#{admin_product_offers_path(@product, format: :json)}', productsUrl: '#{available_products_admin_product_offers_path(@product, format: :json)}' }"
+
   #product-offers-list
-    product-offers index-url="#{admin_product_offers_path(@product, format: :json)}"
+    product-offers
 
-  script type="text/x-template" id="product-offers"
-    offer-add-form products-url="#{available_products_admin_product_offers_path(@product, format: :json)}" loading="false"
-    table.table.related-list.sortable.table-striped.table-hover
-      tr.item data-sort-url="{{offer.sort_url}}" v-repeat="offer in offers"
-        td.col-md-6 {{offer.title}}
-        td.col-md-4 {{offer.price}}
-        td.col-md-2
-          offer-delete-button offer-id="{{offer.id}}"
-
-    script type="text/x-template" id="offer-delete-button"
-      a href="#" v-on="click: onClick": i.fa.fa-trash-o.fa-lg.text-warning
-
-    script type="text/x-template" id="offer-add-form"
-      = simple_form_for [:admin, @product, Offer.new], html: {"v-on" => "submit: onSubmit", class: "form-inline"} do |f|
-        = f.input :product_offer_id, as: :select, collection: [], input_html: { "v-select2" => "selectedProduct", options: "", url: "productsUrl", class: "skip-select2" }, label: "Акционный товар"
-        input type="hidden" name="offer[product_offer_id]" value="{{selectedProduct.id}}"
-        = f.input :price, input_html: { min: 0, value: "{{selectedProduct.price - 1}}" }, label: "Акционная цена"
-        = f.button :submit, "Добавить", class: 'btn btn-info', "v-attr" => "disabled: loading"
+  script type="text/x-template" id="offer-add-form"
+    = simple_form_for [:admin, @product, Offer.new], html: {"@submit" => "onSubmit", class: "form-inline"} do |f|
+      = f.input :product_offer_id, as: :select, collection: [], input_html: { "v-select2" => "selectedProduct", ":url" => "$root.$refs.routes.items.productsUrl", class: "skip-select2" }, label: "Акционный товар"
+      input type="hidden" name="offer[product_offer_id]" :value="selectedProduct.id"
+      = f.input :price, input_html: { min: 0, value: "{{selectedProduct.price - 1}}" }, label: "Акционная цена"
+      = f.button :submit, "Добавить", class: 'btn btn-info', ":disabled" => "loading"

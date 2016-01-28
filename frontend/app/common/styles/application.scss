@@ -18,18 +18,6 @@ body {
   min-width: $screen-xxs-min;
 }
 
-.page-content {
-  a, a.ease {
-    @include ease($link-color);
-  }
-  p:empty {
-    clear: both;
-  }
-  .fa-4x {
-    font-size: 4vmax;
-  }
-}
-
 a.thumbnail:hover {
   box-shadow: 0 1px 4px fade-out($purple, 0.75);
   border-color: $purple;

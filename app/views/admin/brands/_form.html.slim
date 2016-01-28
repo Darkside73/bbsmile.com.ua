@@ -1,6 +1,3 @@
-- content_for :js do
-  = tinymce content_css: stylesheet_path('application')
-
 = simple_form_for [:admin, @brand] do |f|
   = f.input :name, label: 'Название'
   = f.input :country, label: 'Страна', as: :string
@@ -11,3 +8,5 @@
   => f.button :submit, @brand.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
   ' или
   = link_to 'Отменить', :back
+
+= tinymce_assets

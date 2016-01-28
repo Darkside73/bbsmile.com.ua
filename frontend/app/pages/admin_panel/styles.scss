@@ -2,6 +2,7 @@
 @import '~bootstrap-sass/assets/stylesheets/_bootstrap';
 
 @import "~libs/styles/font-awesome";
+@import "~select2/dist/css/select2";
 
 @import 'bs-docs';
 @import "~common/styles/content";
@@ -100,4 +101,9 @@ p.bages {
   .form-group {
     margin-right: 10px;
   }
+}
+
+form:not(.form-inline) .form-group .select2-container {
+  width: 100% !important;
+  display: block;
 }

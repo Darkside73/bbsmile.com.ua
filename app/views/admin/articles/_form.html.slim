@@ -1,6 +1,3 @@
-- content_for :js do
-  = tinymce content_css: stylesheet_path('application')
-
 = simple_form_for url do |f|
   = f.simple_fields_for :page do |p|
     = p.input :title, label: 'Заголовок'
@@ -29,3 +26,4 @@
   ' или
   = link_to 'Отменить', :back
 
+= tinymce_assets

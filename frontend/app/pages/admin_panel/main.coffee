@@ -1,7 +1,3 @@
-# require tinymce
-# require ./tinymce/custom_plugins
-# require tinymce/plugins/youtube/plugin
-
 require('./destroy_helper.coffee')
 require('./sort.coffee')
 require('./related_pages.coffee')
@@ -27,7 +23,10 @@ $ ->
       $(this).next('ul.nav').slideToggle()
       e.preventDefault()
 
-  $('select:not(.skip-select2)').select2(allowClear: true)
+  $('select:not(.skip-select2)').select2(
+    language: require('select2/src/js/select2/i18n/ru')
+    allowClear: true
+  )
 
   $('a.top').click (e) ->
     e.preventDefault()

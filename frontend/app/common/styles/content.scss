@@ -1,3 +1,5 @@
+@import "~libs/styles/mixins";
+
 .mce-content-body {
   margin: 5px;
 }
@@ -8,4 +10,16 @@
 
 .mce-content-body img[style*="float: right"], .page-content img[style*="float: right"] {
   margin: 10px 0 10px 10px;
+}
+
+.page-content {
+  a, a.ease {
+    @include ease($link-color);
+  }
+  p:empty {
+    clear: both;
+  }
+  .fa-4x {
+    font-size: 4vmax;
+  }
 }
