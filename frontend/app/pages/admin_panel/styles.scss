@@ -1,8 +1,7 @@
 @import '~libs/styles/bootstrap-variables';
 @import '~bootstrap-sass/assets/stylesheets/_bootstrap';
 
-$fa-font-path: "~font-awesome/fonts";
-@import "~font-awesome/scss/font-awesome";
+@import "~libs/styles/font-awesome";
 
 @import 'bs-docs';
 @import "~common/styles/content";

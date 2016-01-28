@@ -17,9 +17,7 @@
 </script>
 
 <style lang="sass">
-  @import '~libs/styles/bootstrap-variables';
-  @import '~bootstrap-sass/assets/stylesheets/_bootstrap';
-  @import '~libs/styles/sass-variables';
+  @import '~libs/styles/bootstrap';
 
   #main-menu {
     li.cart {

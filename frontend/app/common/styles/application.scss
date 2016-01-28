@@ -1,11 +1,7 @@
 // Common stylesheet
 
-@import '~libs/styles/bootstrap-variables';
-@import '~bootstrap-sass/assets/stylesheets/_bootstrap';
-@import '~libs/styles/sass-variables';
-
-$fa-font-path: "~font-awesome/fonts";
-@import "~font-awesome/scss/font-awesome";
+@import '~libs/styles/bootstrap';
+@import "~libs/styles/font-awesome";
 
 @import "~libs/styles/mixins";
 @import "~bourbon/app/assets/stylesheets/_bourbon";
