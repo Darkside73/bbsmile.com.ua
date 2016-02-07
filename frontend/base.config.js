@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   context: __dirname,
@@ -34,16 +33,11 @@ module.exports = {
       },
       { test: /\.coffee$/, loader: 'coffee-loader' },
       { test: /\.vue$/, loader: 'vue' },
-      { test: require.resolve('jquery'), loader: 'expose?$!expose?jQuery' },
-      {
-        test: /tinymce_content_styles\.scss/,
-        loader: ExtractTextPlugin.extract("style-loader", "css!resolve-url!sass")
-      }
+      { test: require.resolve('jquery'), loader: 'expose?$!expose?jQuery' }
     ],
   },
   plugins: [
-    new AssetsPlugin({prettyPrint: true}),
-    new ExtractTextPlugin("[name].css", {allChunks: true }),
+    new AssetsPlugin({ prettyPrint: true }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',

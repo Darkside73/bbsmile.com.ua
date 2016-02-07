@@ -1,6 +1,6 @@
 <template>
   <p class="lead text-right">
-    Всего: <span class"price big">{{total}}</span>
+    Всего: <span class="price big">{{total}}</span>
   </p>
 </template>
 
