@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 var extractCss = new ExtractTextPlugin("bundle-[name]-[chunkhash].css", {
   allChunks: true
@@ -55,6 +56,7 @@ module.exports = {
         warnings: false
       }
     }),
+    new CompressionPlugin({ test: /\.js$|\.css$/ }),
     new CleanPlugin(
       path.join('public', 'assets'),
       { root: path.join(process.cwd()) }
