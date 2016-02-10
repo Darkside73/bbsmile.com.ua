@@ -1,4 +1,10 @@
 class BrandsController < ApplicationController
+  NAMES_TO_REDIRECT = ['Идея', 'ТМ Кузя', 'Bratz']
+  before_action do
+    if NAMES_TO_REDIRECT.include?(params[:name])
+      redirect_to root_url, status: :moved_permanently
+    end
+  end
 
   def show
     @brand = Brand.by_slug params[:name]
