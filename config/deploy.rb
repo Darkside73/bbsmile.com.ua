@@ -14,16 +14,14 @@ set :bundle_binstubs, nil
 
 set :log_level, :info
 
-linked_dirs = Set.new(fetch(:linked_dirs, [])) # https://github.com/capistrano/rails/issues/52
-linked_dirs.merge(%w{log tmp/pids tmp/cache tmp/sockets public/system data})
-set :linked_dirs, linked_dirs.to_a
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system data}
 set :linked_files, %w(config/database.yml config/secrets.yml)
 
 set :migration_role, [:all]
 set :assets_roles, [:all]
-
-set :unicorn_pid, proc { "#{fetch(:deploy_to)}/unicorn/#{fetch(:application)}.pid" }
-set :unicorn_config_path, proc { "#{fetch(:deploy_to)}/unicorn/#{fetch(:application)}.rb" }
+set :webpack_dependencies, %w(frontend npm_shrinkwrap.json)
+set :local_assets_dir, proc { File.expand_path("../../public/#{fetch(:assets_prefix)}", __FILE__) }
+set :local_webpack_manifest, proc { File.expand_path("../../webpack-assets.json", __FILE__) }
 
 namespace :deploy do
   %w(start stop restart).each do |command|
