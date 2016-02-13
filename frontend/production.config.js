@@ -3,13 +3,7 @@ const webpack = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
-
-var extractCss = new ExtractTextPlugin("bundle-[name]-[chunkhash].css", {
-  allChunks: true
-});
-var extractTinymceContentStyles = new ExtractTextPlugin("[name].css", {
-  allChunks: true
-});
+const RenameFilesPlugin = require("./webpack/plugins/rename-files");
 
 module.exports = {
   output: {
@@ -21,17 +15,11 @@ module.exports = {
     loaders: [
       {
         test: /\.css$/,
-        loader: extractCss.extract("style-loader", "css?minimize")
-      },
-      {
-        test: /tinymce_content_styles\.scss/,
-        loader: extractTinymceContentStyles.extract(
-          "style-loader", "css!resolve-url!sass"
-        )
+        loader: ExtractTextPlugin.extract("style-loader", "css?minimize")
       },
       {
         test: /\.scss$/,
-        loader: extractCss.extract(
+        loader: ExtractTextPlugin.extract(
           "style-loader", "css?minimize!resolve-url!sass?sourceMap"
         )
       },
@@ -46,8 +34,9 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin(
       'common', 'bundle-[name]-[hash].js'
     ),
-    extractCss,
-    extractTinymceContentStyles,
+    new ExtractTextPlugin("bundle-[name]-[chunkhash].css", {
+      allChunks: true
+    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -60,6 +49,12 @@ module.exports = {
     new CleanPlugin(
       path.join('public', 'assets'),
       { root: path.join(process.cwd()) }
-    )
+    ),
+    new RenameFilesPlugin(path.join(process.cwd(), 'public', 'assets'), [
+      {
+        test: /^bundle-tinymce_content_styles-.+\.css$/,
+        destination: 'tinymce_content_styles.css'
+      }
+    ])
   ]
 };
