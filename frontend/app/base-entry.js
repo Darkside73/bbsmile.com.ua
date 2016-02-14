@@ -7,5 +7,3 @@ if (__RAILS_ENV__ != 'production')
 require('common/main');
 require('common/search-box');
 require('./components/App.vue');
-
-require('common/styles/application.scss');
