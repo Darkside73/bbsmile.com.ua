@@ -34,7 +34,7 @@ namespace :deploy do
         end
       end
     end
-    after 'deploy:compile_assets', 'deploy:webpack:build'
+    before 'deploy:compile_assets', 'deploy:webpack:build'
 
     task :build_force do
       run_locally do

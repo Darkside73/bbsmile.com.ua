@@ -8,4 +8,13 @@ if File.exist?(assets_manifest)
     end
   end
   Rails.configuration.webpack[:assets_manifest] = manifest
+
+  Rails.application.config.assets.configure do |env|
+    env.context_class.class_eval do
+      include Webpack::Helpers
+    end
+  end
+else
+  raise "File #{assets_manifest} not found" if Rails.configuration.use_webpack
 end
+
