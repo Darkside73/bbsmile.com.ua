@@ -38,10 +38,9 @@ namespace :deploy do
 
     task :build_force do
       run_locally do
-        with rails_env: fetch(:rails_env) do
-          %x(npm run build:production)
-          invoke 'deploy:webpack:sync'
-        end
+        info 'Create webpack local build'
+        %x(RAILS_ENV=#{fetch(:rails_env)} npm run build:production)
+        invoke 'deploy:webpack:sync'
       end
     end
 
