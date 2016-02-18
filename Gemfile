@@ -34,8 +34,6 @@ gem 'json'
 gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-helpers'
 gem 'paperclip'
 gem 'dimensions-rails', github: 'Darkside73/dimensions-rails'
-gem 'react-rails', github: 'reactjs/react-rails', ref: 'ff564e82f6df668d3979b6ba7747a199f6f01a45'
-gem 'sprockets-coffee-react'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
 

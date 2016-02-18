@@ -9,6 +9,4 @@ Rails.application.config.assets.precompile += [
   'tinymce/*.js', 'tinymce/*.css', 'tinymce/plugins/youtube/*.html'
 ]
 Rails.application.config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif *.ttf *.eot *.svg *.woff 404.html 500.html)
-
 Rails.application.config.assets.paths << Rails.root.join('app/assets/html')
-Rails.application.config.assets.register_mime_type('text/html', '.html')
