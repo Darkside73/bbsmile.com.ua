@@ -4,7 +4,11 @@ if File.exist?(assets_manifest)
   manifest = JSON.parse(File.read assets_manifest).with_indifferent_access
   manifest.each do |entry, assets|
     assets.each do |kind, asset_path|
-      manifest[entry][kind] = Pathname.new(asset_path).cleanpath.to_s
+      if asset_path =~ /(http[s]?):\/\//i
+        manifest[entry][kind] = asset_path
+      else
+        manifest[entry][kind] = Pathname.new(asset_path).cleanpath.to_s
+      end
     end
   end
   Rails.configuration.webpack[:assets_manifest] = manifest
