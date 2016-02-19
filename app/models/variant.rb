@@ -1,4 +1,4 @@
-class Variant < ActiveRecord::Base
+class Variant < ApplicationRecord
   include PgSearch
 
   belongs_to :product, touch: true

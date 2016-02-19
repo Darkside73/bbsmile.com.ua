@@ -33,7 +33,7 @@
       addCartItem: (item) ->
         item.quantity = 1
         $.post(
-          '/cart'
+          '/cart/add_item'
           item
           (data) =>
             @populateCartState(data)
@@ -42,7 +42,7 @@
         )
       deleteCartItem: (index) ->
         $.post(
-          '/cart'
+          '/cart/delete_item'
           index: index, _method: 'delete'
           (data) => @populateCartState(data)
           'json'

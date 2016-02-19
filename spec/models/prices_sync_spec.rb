@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'service/google_api_client'
 
 describe PricesSync do
   before :each do

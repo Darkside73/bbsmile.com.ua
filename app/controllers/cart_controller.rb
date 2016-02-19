@@ -3,17 +3,20 @@ class CartController < ApplicationController
   def add_item
     cart.user = nil
     cart.suborders << Suborder.new(suborder_params)
+    update_cart_in_session
     render cart
   end
 
   def delete_item
     cart.remove_suborder(params[:index].to_i)
+    update_cart_in_session
     render cart
   end
 
   def update
     cart.errors.clear
     cart.update_suborder(params[:index].to_i, params[:quantity].to_i)
+    update_cart_in_session
     render cart
   end
 

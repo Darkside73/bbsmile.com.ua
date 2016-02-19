@@ -27,7 +27,11 @@ class ApplicationController < ActionController::Base
   end
 
   def cart
-    session[:cart] ||= Order.new
+    @cart ||= if session[:cart]
+      Order.new suborders_attributes: session[:cart]
+    else
+      Order.new
+    end
   end
 
   def reset_cart
@@ -39,6 +43,14 @@ class ApplicationController < ActionController::Base
       seo_page = Seo::Page.new current_page
       seo_page.request = request
       seo_page
+    end
+  end
+
+  protected
+
+  def update_cart_in_session
+    session[:cart] = cart.valid_suborders.map do |s|
+      s.as_json(only: [:variant_id, :quantity], methods: :offer_id)
     end
   end
 

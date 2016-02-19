@@ -1,4 +1,4 @@
-class RelatedPage < ActiveRecord::Base
+class RelatedPage < ApplicationRecord
   belongs_to :page
   belongs_to :related, class_name: 'Page'
 

@@ -10,14 +10,7 @@ module ApplicationHelper
     if webpack_entry_name
       webpack_entry_name
     else
-      case current_layout
-      when 'layout_main'
-        'main_page'
-      when 'layout_inner'
-        'inner_page'
-      else
-        'application'
-      end
+      'inner_page'
     end
   end
 
@@ -31,7 +24,7 @@ module ApplicationHelper
       elsif index_where_page == 1
         title = args.first
       else
-        raise ActionView::TemplateError,
+        raise ArgumentError,
           "Page object given as #{index_where_page + 1} argument but expecting as 1 or 2"
       end
       super title, url, *args.drop(index_where_page + 1)
@@ -117,24 +110,16 @@ module ApplicationHelper
   end
 
   private
-    def current_layout
-      layout = controller.send(:_layout)
-      if layout.instance_of? String
-        layout
-      else
-        File.basename(layout.identifier).split('.').first
-      end
-    end
 
-    def link_to_add_or_edit_content(pageable)
-      if pageable.content.present?
-        link_to 'Описание', admin_url_for([:edit, :admin, :product, pageable.content])
-      else
-        link_to 'Описание', admin_url_for([:new, :admin, pageable, :content])
-      end
+  def link_to_add_or_edit_content(pageable)
+    if pageable.content.present?
+      link_to 'Описание', admin_url_for([:edit, :admin, :product, pageable.content])
+    else
+      link_to 'Описание', admin_url_for([:new, :admin, pageable, :content])
     end
+  end
 
-    def admin_url_for item
-      polymorphic_url item, domain: 'bbsmile.com.ua', subdomain: ''
-    end
+  def admin_url_for item
+    polymorphic_url item, domain: 'bbsmile.com.ua', subdomain: ''
+  end
 end

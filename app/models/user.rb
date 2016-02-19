@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   has_many :orders
 
   attr_accessor :first_name, :last_name, :disable_email_uniqueness, :required_email

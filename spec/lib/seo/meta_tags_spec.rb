@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'seo/meta_tags'
 
 describe Seo::MetaTags do
   context "when page has meta description" do

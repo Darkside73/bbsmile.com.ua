@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/Darkside73/acts-as-taggable-on.git
+  revision: 20efda69b2f9561f7a514a656825833852ba164f
+  specs:
+    acts-as-taggable-on (3.5.0)
+      activerecord (>= 3.2, < 5)
+
+GIT
   remote: git://github.com/Darkside73/bootstrap-components-helpers.git
   revision: a95305da1709097180f68d33f5365d6b3e861046
   specs:
@@ -6,20 +13,82 @@ GIT
       actionpack (>= 3.2.0)
 
 GIT
-  remote: git://github.com/Darkside73/dimensions-rails.git
-  revision: e6b26145c0602062bd740ee5356c808ee04b385f
+  remote: git://github.com/amatsuda/kaminari.git
+  revision: 1002b14aee62d4360c383ae1f14f5b5b72e76e2a
+  branch: 0-17-stable
   specs:
-    dimensions-rails (1.1.1)
-      actionpack (>= 3.0, <= 4.3)
-      activesupport (>= 3.0, <= 4.3)
-      dimensions
-      railties (>= 3.0, <= 4.3)
+    kaminari (0.17.0.alpha)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
+GIT
+  remote: git://github.com/cucumber/cucumber-rails.git
+  revision: fb8aa3100d97aff89265ce65262440d2cb2c1a8e
+  branch: rails-5
+  specs:
+    cucumber-rails (1.4.2)
+      capybara (>= 1.1.2, < 3)
+      cucumber (>= 1.3.8, < 3)
+      mime-types (>= 1.16, < 4)
+      nokogiri (~> 1.5)
+      railties (>= 3, < 5)
 
 GIT
   remote: git://github.com/liqpay/sdk-ruby.git
   revision: 2970cc6a376835e84bfb812e3d9f5c7a108f5f71
   specs:
     liqpay (0.0.1)
+
+GIT
+  remote: git://github.com/rspec/rspec-core.git
+  revision: f54edeed49799042b8fffddb278466fb7185314e
+  specs:
+    rspec-core (3.5.0.pre)
+      rspec-support (= 3.5.0.pre)
+
+GIT
+  remote: git://github.com/rspec/rspec-expectations.git
+  revision: ba6fe09ef90ef8ca84ba5044e9668c09acdc3d60
+  specs:
+    rspec-expectations (3.5.0.pre)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (= 3.5.0.pre)
+
+GIT
+  remote: git://github.com/rspec/rspec-mocks.git
+  revision: 86e69908f3ed61c0c2c7a8ff934882310f2d9785
+  specs:
+    rspec-mocks (3.5.0.pre)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (= 3.5.0.pre)
+
+GIT
+  remote: git://github.com/rspec/rspec-rails.git
+  revision: 41628f82e70a7d66c70b554e42544a65790da19c
+  specs:
+    rspec-rails (3.5.0.pre)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (= 3.5.0.pre)
+      rspec-expectations (= 3.5.0.pre)
+      rspec-mocks (= 3.5.0.pre)
+      rspec-support (= 3.5.0.pre)
+
+GIT
+  remote: git://github.com/rspec/rspec-support.git
+  revision: 3c86358e132970c96d31e9f6c3aea508b9b4e094
+  specs:
+    rspec-support (3.5.0.pre)
+
+GIT
+  remote: git://github.com/smartinez87/exception_notification.git
+  revision: c3000b76c17dcaa7b0c70fe9fca902a9ffd381d8
+  branch: rails5
+  specs:
+    exception_notification (5.0.0)
+      actionmailer (~> 5.0.0.beta)
+      activesupport (~> 5.0.0.beta)
 
 GIT
   remote: git://github.com/swanandp/acts_as_list.git
@@ -31,51 +100,49 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (4.2.4)
-      actionpack (= 4.2.4)
-      actionview (= 4.2.4)
-      activejob (= 4.2.4)
+    actioncable (5.0.0.beta2)
+      actionpack (= 5.0.0.beta2)
+      nio4r (~> 1.2)
+      websocket-driver (~> 0.6.1)
+    actionmailer (5.0.0.beta2)
+      actionpack (= 5.0.0.beta2)
+      actionview (= 5.0.0.beta2)
+      activejob (= 5.0.0.beta2)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 1.0, >= 1.0.5)
-    actionpack (4.2.4)
-      actionview (= 4.2.4)
-      activesupport (= 4.2.4)
-      rack (~> 1.6)
-      rack-test (~> 0.6.2)
+    actionpack (5.0.0.beta2)
+      actionview (= 5.0.0.beta2)
+      activesupport (= 5.0.0.beta2)
+      rack (~> 2.x)
+      rack-test (~> 0.6.3)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (4.2.4)
-      activesupport (= 4.2.4)
+    actionview (5.0.0.beta2)
+      activesupport (= 5.0.0.beta2)
       builder (~> 3.1)
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    activejob (4.2.4)
-      activesupport (= 4.2.4)
-      globalid (>= 0.3.0)
-    activemodel (4.2.4)
-      activesupport (= 4.2.4)
-      builder (~> 3.1)
-    activerecord (4.2.4)
-      activemodel (= 4.2.4)
-      activesupport (= 4.2.4)
-      arel (~> 6.0)
-    activerecord-session_store (0.1.2)
-      actionpack (>= 4.0.0, < 5)
-      activerecord (>= 4.0.0, < 5)
-      railties (>= 4.0.0, < 5)
-    activesupport (4.2.4)
+    activejob (5.0.0.beta2)
+      activesupport (= 5.0.0.beta2)
+      globalid (>= 0.3.6)
+    activemodel (5.0.0.beta2)
+      activesupport (= 5.0.0.beta2)
+    activerecord (5.0.0.beta2)
+      activemodel (= 5.0.0.beta2)
+      activesupport (= 5.0.0.beta2)
+      arel (~> 7.0)
+    activesupport (5.0.0.beta2)
+      concurrent-ruby (~> 1.0)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
+      method_source
       minitest (~> 5.1)
-      thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    acts-as-taggable-on (3.5.0)
-      activerecord (>= 3.2, < 5)
     addressable (2.4.0)
     ancestry (2.1.0)
       activerecord (>= 3.0.0)
-    arel (6.0.3)
+    arel (7.0.0)
     auto_strip_attributes (2.0.6)
       activerecord (>= 3.0)
     autoparse (0.3.3)
@@ -86,10 +153,9 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.2.2)
-    bullet (5.0.0)
-      activesupport (>= 3.0.0)
-      uniform_notifier (~> 1.9.0)
     byebug (8.2.2)
     capistrano (3.4.0)
       i18n
@@ -142,24 +208,14 @@ GEM
       multi_test (>= 0.1.2)
     cucumber-core (1.4.0)
       gherkin (~> 3.2.0)
-    cucumber-rails (1.4.3)
-      capybara (>= 1.1.2, < 3)
-      cucumber (>= 1.3.8, < 3)
-      mime-types (>= 1.16, < 4)
-      nokogiri (~> 1.5)
-      railties (>= 3, < 5)
     cucumber-wire (0.0.1)
     daemons (1.2.3)
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
     deep_merge (1.0.1)
     diff-lcs (1.2.5)
-    dimensions (1.3.0)
     erubis (2.7.0)
     eventmachine (1.0.9.1)
-    exception_notification (4.1.4)
-      actionmailer (~> 4.0)
-      activesupport (~> 4.0)
     execjs (2.6.0)
     extlib (0.9.16)
     factory_girl (4.5.0)
@@ -174,7 +230,6 @@ GEM
     ffi (1.9.10)
     foreman (0.78.0)
       thor (~> 0.19.1)
-    formatador (0.2.5)
     gherkin (3.2.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -202,24 +257,6 @@ GEM
       multi_json (~> 1.11)
       os (~> 0.9)
       signet (~> 0.7)
-    guard (2.13.0)
-      formatador (>= 0.2.4)
-      listen (>= 2.7, <= 4.0)
-      lumberjack (~> 1.0)
-      nenv (~> 0.1)
-      notiffany (~> 0.0)
-      pry (>= 0.9.12)
-      shellany (~> 0.0)
-      thor (>= 0.18.1)
-    guard-compat (1.2.1)
-    guard-cucumber (2.0.0)
-      cucumber (~> 2.0)
-      guard-compat (~> 1.0)
-      nenv (~> 0.1)
-    guard-rspec (4.6.4)
-      guard (~> 2.1)
-      guard-compat (~> 1.1)
-      rspec (>= 2.99.0, < 4.0)
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -229,15 +266,9 @@ GEM
       multi_json (~> 1.2)
     json (1.8.3)
     jwt (1.5.1)
-    kaminari (0.16.3)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     libv8 (3.16.14.13)
-    listen (3.0.6)
-      rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9.7)
     little-plugger (1.1.4)
     logging (2.0.0)
       little-plugger (~> 1.1)
@@ -248,7 +279,6 @@ GEM
       railties (>= 3)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
-    lumberjack (1.0.10)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     memoist (0.14.0)
@@ -263,16 +293,13 @@ GEM
     multi_test (0.1.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    nenv (0.3.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.2)
     newrelic_rpm (3.15.0.314)
+    nio4r (1.2.1)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
-    notiffany (0.0.8)
-      nenv (~> 0.1)
-      shellany (~> 0.0)
     oauth (0.4.7)
     oauth2 (1.1.0)
       faraday (>= 0.8, < 0.10)
@@ -292,26 +319,26 @@ GEM
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel
-    pry (0.10.3)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
-    quiet_assets (1.1.0)
-      railties (>= 3.1, < 5.0)
-    rack (1.6.4)
+    rack (2.0.0.alpha)
+      json
     rack-test (0.6.3)
       rack (>= 1.0)
-    rails (4.2.4)
-      actionmailer (= 4.2.4)
-      actionpack (= 4.2.4)
-      actionview (= 4.2.4)
-      activejob (= 4.2.4)
-      activemodel (= 4.2.4)
-      activerecord (= 4.2.4)
-      activesupport (= 4.2.4)
+    rails (5.0.0.beta2)
+      actioncable (= 5.0.0.beta2)
+      actionmailer (= 5.0.0.beta2)
+      actionpack (= 5.0.0.beta2)
+      actionview (= 5.0.0.beta2)
+      activejob (= 5.0.0.beta2)
+      activemodel (= 5.0.0.beta2)
+      activerecord (= 5.0.0.beta2)
+      activesupport (= 5.0.0.beta2)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.2.4)
-      sprockets-rails
+      railties (= 5.0.0.beta2)
+      sprockets-rails (>= 2.0.0)
+    rails-controller-testing (0.1.0)
+      actionpack (~> 5.x)
+      actionview (~> 5.x)
+      activesupport (~> 5.x)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -325,54 +352,35 @@ GEM
       ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    railties (4.2.4)
-      actionpack (= 4.2.4)
-      activesupport (= 4.2.4)
+    railties (5.0.0.beta2)
+      actionpack (= 5.0.0.beta2)
+      activesupport (= 5.0.0.beta2)
+      method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.5.0)
-    rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
     redcarpet (3.3.4)
     redis (3.2.2)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
+    redis-session-store (0.8.1)
+      actionpack (>= 3, < 5.1)
+      redis
     ref (2.0.0)
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
     retriable (1.4.1)
-    rspec (3.4.0)
-      rspec-core (~> 3.4.0)
-      rspec-expectations (~> 3.4.0)
-      rspec-mocks (~> 3.4.0)
     rspec-collection_matchers (1.1.2)
       rspec-expectations (>= 2.99.0.beta1)
-    rspec-core (3.4.3)
-      rspec-support (~> 3.4.0)
-    rspec-expectations (3.4.0)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.4.0)
     rspec-its (1.2.0)
       rspec-core (>= 3.0.0)
       rspec-expectations (>= 3.0.0)
-    rspec-mocks (3.4.1)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.4.0)
-    rspec-rails (3.4.2)
-      actionpack (>= 3.0, < 4.3)
-      activesupport (>= 3.0, < 4.3)
-      railties (>= 3.0, < 4.3)
-      rspec-core (~> 3.4.0)
-      rspec-expectations (~> 3.4.0)
-      rspec-mocks (~> 3.4.0)
-      rspec-support (~> 3.4.0)
-    rspec-support (3.4.1)
     ruby-graphviz (1.2.2)
     russian (0.6.0)
       i18n (>= 0.5.0)
     seedbank (0.3.0)
-    shellany (0.0.1)
     shoulda (3.5.0)
       shoulda-context (~> 1.0, >= 1.0.1)
       shoulda-matchers (>= 1.4.1, < 3.0)
@@ -398,12 +406,6 @@ GEM
     slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
-    slop (3.6.0)
-    spring (1.2.0)
-    spring-commands-cucumber (1.0.1)
-      spring (>= 0.9.1)
-    spring-commands-rspec (1.0.4)
-      spring (>= 0.9.1)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -418,10 +420,10 @@ GEM
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
-    thin (1.6.4)
-      daemons (~> 1.0, >= 1.0.9)
-      eventmachine (~> 1.0, >= 1.0.4)
-      rack (~> 1.0)
+    thin (1.6.2)
+      daemons (>= 1.0.9)
+      eventmachine (>= 1.0.0)
+      rack (>= 1.0.0)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.2)
@@ -432,14 +434,13 @@ GEM
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uber (0.0.15)
-    uglifier (2.7.2)
-      execjs (>= 0.3.0)
-      json (>= 1.8.0)
-    uniform_notifier (1.9.0)
     web-console (3.1.1)
       activemodel (>= 4.2)
       debug_inspector
       railties (>= 4.2)
+    websocket-driver (0.6.3)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.2)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -447,14 +448,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-session_store
-  acts-as-taggable-on
+  acts-as-taggable-on!
   acts_as_list!
   ancestry
   auto_strip_attributes
   better_errors
+  binding_of_caller
   bootstrap-components-helpers!
-  bullet
   byebug
   capistrano (>= 3.0)
   capistrano-bundler (>= 1.1)
@@ -465,24 +465,19 @@ DEPENDENCIES
   cells (~> 3)
   coffee-script
   config
-  cucumber-rails
+  cucumber-rails!
   daemons
   database_cleaner
-  dimensions-rails!
-  exception_notification
+  exception_notification!
   factory_girl_rails
   faker
   foreman
   google_drive
-  guard (>= 2.1.0)
-  guard-cucumber
-  guard-rspec
   httparty
   jbuilder
   json
-  kaminari
+  kaminari!
   launchy
-  libv8 (>= 3.16.14.10)
   liqpay!
   lograge
   metamagic
@@ -491,17 +486,22 @@ DEPENDENCIES
   paperclip
   pg
   pg_search
-  quiet_assets
-  rails (= 4.2.4)
+  rails (= 5.0.0.beta2)
+  rails-controller-testing
   rails-erd
   rake
   rb-inotify
   redcarpet
   redis-namespace
+  redis-session-store
   responders
   rspec-collection_matchers
+  rspec-core!
+  rspec-expectations!
   rspec-its
-  rspec-rails
+  rspec-mocks!
+  rspec-rails!
+  rspec-support!
   russian
   seedbank
   shoulda
@@ -510,14 +510,10 @@ DEPENDENCIES
   simple_form
   sitemap_generator
   slim
-  spring (= 1.2.0)
-  spring-commands-cucumber
-  spring-commands-rspec
   therubyracer
   thin
   tinymce-rails
   tinymce-rails-langs
-  uglifier (>= 1.0.3)
   web-console
 
 BUNDLED WITH

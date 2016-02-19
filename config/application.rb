@@ -32,6 +32,8 @@ module Bbsmile
     config.action_controller.action_on_unpermitted_parameters = :raise
     config.action_controller.always_permitted_parameters = %w(controller action format)
 
+    ActiveSupport.halt_callback_chains_on_return_false = false
+
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: true, # specifies to generate a fixture for each model (using a Factory Girl factory, instead of an actual fixture

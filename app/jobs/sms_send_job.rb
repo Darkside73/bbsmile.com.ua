@@ -1,4 +1,4 @@
-class SmsSendJob < ActiveJob::Base
+class SmsSendJob < ApplicationJob
   queue_as :default
 
   def perform(phone, message)
