@@ -12,8 +12,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true, unless: :disable_email_uniqueness
 
   before_validation :write_name, on: :create
-
-  nilify_blanks only: :email
+  auto_strip_attributes :email
 
   private
 
