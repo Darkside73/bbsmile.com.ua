@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :offers, only: :index
 
   namespace :admin do
-    root to: 'main#index'
+    root 'main#index', as: 'root' # see https://github.com/rails/rails/pull/23235
 
     draw :admin_concerns
     draw :admin_categories

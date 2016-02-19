@@ -1,4 +1,4 @@
-class SyncPricesJob < ActiveJob::Base
+class SyncPricesJob < ApplicationJob
   queue_as :default
 
   after_perform :notify_manager

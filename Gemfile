@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.4'
+gem 'rails', '5.0.0.beta2'
 
 gem 'pg'
 gem 'pg_search'
 gem 'ancestry'
 gem 'acts_as_list', github: 'swanandp/acts_as_list'
-gem 'acts-as-taggable-on'
-gem 'activerecord-session_store'
+gem 'acts-as-taggable-on', github: 'Darkside73/acts-as-taggable-on'
+gem 'redis-session-store'
 gem 'sidekiq'
 gem 'sidekiq-status'
 gem 'redis-namespace'
@@ -16,7 +16,7 @@ gem 'newrelic_rpm'
 
 gem 'config'#, github: 'railsconfig/config'
 gem 'russian'
-gem 'exception_notification'
+gem 'exception_notification', github: 'smartinez87/exception_notification', branch: 'rails5'
 
 gem 'metamagic'
 gem 'sitemap_generator'
@@ -27,12 +27,12 @@ gem 'cells', '~> 3'
 gem 'simple_form'
 gem 'responders'
 gem 'auto_strip_attributes'
-gem 'kaminari'
+gem 'kaminari', github: 'amatsuda/kaminari', branch: '0-17-stable'
 
 gem 'json'
 gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-helpers'
 gem 'paperclip'
-gem 'dimensions-rails', github: 'Darkside73/dimensions-rails'
+# gem 'dimensions-rails', github: 'Darkside73/dimensions-rails'
 gem 'coffee-script'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
@@ -43,26 +43,22 @@ gem 'liqpay', github: 'liqpay/sdk-ruby'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', :platforms => :ruby
-gem 'libv8', '>= 3.16.14.10'
-
-gem 'uglifier', '>= 1.0.3'
 
 gem 'lograge'
 
 group :development do
   gem 'rake'
-  gem 'spring', '=1.2.0'
-  gem 'spring-commands-rspec'
-  gem 'spring-commands-cucumber'
+  # gem 'spring'
+  # gem 'spring-commands-rspec'
+  # gem 'spring-commands-cucumber'
   gem 'seedbank'
   gem 'rb-inotify', require: false
-  gem 'guard', '>= 2.1.0'
-  gem 'guard-rspec'
-  gem 'guard-cucumber'
+  # gem 'guard', '>= 2.1.0'
+  # gem 'guard-rspec'
+  # gem 'guard-cucumber'
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'web-console'
-  gem 'bullet'
-  gem 'quiet_assets'
   gem 'rails-erd'
   gem 'foreman'
   gem 'capistrano', '>= 3.0', require: false
@@ -79,11 +75,17 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', github: 'rspec/rspec-rails'
+  gem 'rspec-core', github: 'rspec/rspec-core'
+  gem 'rspec-support', github: 'rspec/rspec-support'
+  gem 'rspec-expectations', github: 'rspec/rspec-expectations'
+  gem 'rspec-mocks', github: 'rspec/rspec-mocks'
+  gem 'rails-controller-testing'
+
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'minitest'
-  gem 'cucumber-rails', require: false
+  gem 'cucumber-rails', require: false, github: 'cucumber/cucumber-rails', branch: 'rails-5'
   gem 'capybara'
   gem 'shoulda'
   gem 'launchy'

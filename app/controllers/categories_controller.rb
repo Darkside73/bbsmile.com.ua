@@ -45,9 +45,9 @@ class CategoriesController < ApplicationController
   def sanitize_params
     path_params = request.path_parameters
     params.extract!(*path_params.keys)
-    params.reject! do |k, v|
-      v.reject!(&:blank?) if v.respond_to? :reject!
-      v.blank?
-    end
+    # params.reject! do |k, v|
+    #   v.reject!(&:blank?) if v.respond_to? :reject!
+    #   v.blank?
+    # end
   end
 end

@@ -1,3 +1,6 @@
+require 'seo/meta_tags'
+require 'seo/page'
+
 module NavigationHelpers
   def path_to(page_name)
     case page_name

@@ -18,7 +18,7 @@ class Admin::OrdersController < Admin::ApplicationController
   private
 
   def filter_params(filter)
-    params.except(:action, :controller).merge(filter)
+    params.except(:action, :controller).permit!.merge(filter)
   end
 
   def orders_where_condition

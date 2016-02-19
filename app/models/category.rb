@@ -1,4 +1,4 @@
-class Category < ActiveRecord::Base
+class Category < ApplicationRecord
   include Pageable
   include Contentable
   include PgSearch
@@ -6,7 +6,7 @@ class Category < ActiveRecord::Base
 
   has_many :products
   has_many :price_ranges
-  has_many :brands, -> { reorder('brands.name').uniq }, through: :products
+  has_many :brands, -> { reorder('brands.name').distinct }, through: :products
 
   has_ancestry orphan_strategy: :restrict
 
@@ -20,7 +20,7 @@ class Category < ActiveRecord::Base
   pg_search_scope :by_title, associated_against: { page: :title }
 
   before_create :ensure_leaf_has_no_child,
-    if: Proc.new { |category| begin category.parent; rescue ActiveRecord::RecordNotFound; false; end }
+    if: Proc.new { |category| begin category.parent; rescue ActiveRecord::RecordNotFound; throw(:abort); end }
   after_save :toggle_children_hidden
 
   validate :parent_could_not_be_leaf

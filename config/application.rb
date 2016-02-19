@@ -12,7 +12,7 @@ module Bbsmile
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    config.autoload_paths += %W(#{config.root}/lib)
+    config.eager_load_paths << Rails.root.join('lib') # autoload_paths takes no effect in Rails 5
 
     config.active_job.queue_adapter = :sidekiq
 
@@ -31,6 +31,8 @@ module Bbsmile
 
     config.action_controller.action_on_unpermitted_parameters = :raise
     config.action_controller.always_permitted_parameters = %w(controller action format)
+
+    ActiveSupport.halt_callback_chains_on_return_false = false
 
     config.generators do |g|
       g.test_framework :rspec,

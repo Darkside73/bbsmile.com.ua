@@ -1,4 +1,4 @@
-class Asset < ActiveRecord::Base
+class Asset < ApplicationRecord
   belongs_to :assetable, polymorphic: true, touch: true
   delegate :url, to: :attachment
 

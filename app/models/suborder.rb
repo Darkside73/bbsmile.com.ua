@@ -1,4 +1,4 @@
-class Suborder < ActiveRecord::Base
+class Suborder < ApplicationRecord
 
   belongs_to :variant
 

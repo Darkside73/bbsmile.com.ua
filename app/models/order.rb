@@ -1,4 +1,4 @@
-class Order < ActiveRecord::Base
+class Order < ApplicationRecord
   include OrderObserver
   include ActionView::Helpers::NumberHelper
 
@@ -82,6 +82,10 @@ class Order < ActiveRecord::Base
     suborders.map(&:title).join(", ")
   end
 
+  def valid_suborders
+    suborders.select(&:valid?)
+  end
+
   private
 
   def setup_user_validation
@@ -98,7 +102,7 @@ class Order < ActiveRecord::Base
   end
 
   def check_for_suborders
-    false unless suborders.any?
+    throw(:abort) unless suborders.any?
   end
 
   def calculate_total
@@ -106,9 +110,5 @@ class Order < ActiveRecord::Base
       total + suborder.total
     end
     self[:total] = original_total + total_correction
-  end
-
-  def valid_suborders
-    suborders.select(&:valid?)
   end
 end

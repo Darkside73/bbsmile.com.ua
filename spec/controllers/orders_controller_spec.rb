@@ -1,11 +1,12 @@
 require 'rails_helper'
+require 'service/liqpay/request'
 
 describe OrdersController do
   describe 'POST create' do
     before :each do
-      session[:cart] = Order.new
-      session[:cart].suborders << build(:suborder)
-      session[:cart].suborders << build(:suborder)
+      session[:cart] = []
+      session[:cart] << { variant_id: create(:variant).id, quantity: 1 }
+      session[:cart] << { variant_id: create(:variant).id, quantity: 2 }
     end
     it 'creates order' do
       request.env["HTTP_ACCEPT"] = 'application/json'

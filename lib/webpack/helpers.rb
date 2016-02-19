@@ -23,7 +23,7 @@ module Webpack
     def asset_tag(kind, entry)
       if Rails.configuration.use_webpack
         manifest = Rails.configuration.webpack[:assets_manifest]
-        if manifest.dig(entry, kind)
+        if manifest.dig(entry, kind.to_s)
           file_name = manifest[entry][kind]
           case kind
           when :js

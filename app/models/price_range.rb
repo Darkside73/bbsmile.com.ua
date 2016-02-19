@@ -1,4 +1,4 @@
-class PriceRange < ActiveRecord::Base
+class PriceRange < ApplicationRecord
   belongs_to :category
 
   default_scope -> { order(:to) }

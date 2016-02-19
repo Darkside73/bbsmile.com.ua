@@ -1,4 +1,4 @@
-class Offer < ActiveRecord::Base
+class Offer < ApplicationRecord
 
   TOP_LIST_LIMIT = 50
 
