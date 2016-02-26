@@ -36,9 +36,6 @@
                 li.active = link_to t("activerecord.attributes.product.sex.#{gender}"), category_page_path(params.except(:gender))
               - else
                 li = link_to t("activerecord.attributes.product.sex.#{gender}"), category_page_path(params.merge(gender: gender))
-          = accordion_group "filterByTags", "Параметры", if: :tags do
-            - @category.tags.each do |tag_name|
-              = link_to_add_tag tag_name
           = accordion_group "filterByBrand", "Бренды", if: :brands do
             - @category.brands.each do |brand|
               = link_to_add_brand brand.name
