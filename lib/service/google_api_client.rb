@@ -7,7 +7,7 @@ module Service
         application_name: 'bbsmileua', application_version: '0.0.1'
       )
       key = Google::APIClient::KeyUtils.load_from_pkcs12(
-        Rails.root.join('data/bbsmileua-1d8fc82bd181.p12'), 'notasecret'
+        Rails.root.join('data/bbsmileua-1d8fc82bd181.p12').to_s, 'notasecret'
       )
 
       asserter = Google::APIClient::JWTAsserter.new(
