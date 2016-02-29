@@ -75,11 +75,14 @@ module CategoriesHelper
   end
 
   def special_products_cache_key
-    updated_at = []
-    [:novelties, :discounts, :hits].each do |type|
-      updated_at << @category.send(type).last_updated(36).maximum(:updated_at)
+    special_products_kind = [:novelties, :discounts, :hits]
+    key_parts = []
+    special_products_kind.each do |kind|
+      max_updated_at = @category.send(kind).last_updated(36)
+                                .maximum(:updated_at)
+      key_parts << max_updated_at.to_time.to_i if max_updated_at
     end
-    updated_at.reject(&:nil?).max
+    (special_products_kind + key_parts).join('-')
   end
 
   def category_title
