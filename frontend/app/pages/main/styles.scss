@@ -3,9 +3,6 @@
 @import "~common/styles/application";
 
 #site-header.jumbotron {
-  background-image: url("bg.png");
-  background-position: bottom center;
-  background-repeat: no-repeat;
   padding: 60px 40px 45px;
   margin-bottom: 14px;
   h1 { font-size: $font-size-base * 3.5; }

@@ -159,7 +159,7 @@ label.inline {
 }
 
 #site-header {
-  background: #b7d5d9;
+  background: $yellowLight url("bg.png") repeat;
   .contacts {
     .actions {
       text-align: center;
@@ -210,7 +210,7 @@ label.inline {
       @include gradient-directional(fade-out(white, 0.70), fade-out(white, 1), 90deg);
     }
     border-radius: 3px;
-    color: darken(#b7d5d9, 35%);
+    color: $gray;
     small {
       color: $pink;
       white-space: nowrap;
