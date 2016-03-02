@@ -1,5 +1,8 @@
 class BrandsController < ApplicationController
-  NAMES_TO_REDIRECT = ['Идея', 'ТМ Кузя', 'Bratz']
+  NAMES_TO_REDIRECT = [
+    'Идея', 'ТМ Кузя', 'Bratz', 'Halsall', 'EZ-TEC', 'Ice Age 4', 'Moxie',
+    'Tutis', 'V-Create', 'Zeplin', 'Властелин Небес', 'Bebus', 'Coneco', 'Edison'
+  ]
   before_action do
     if NAMES_TO_REDIRECT.include?(params[:name])
       redirect_to root_url, status: :moved_permanently
