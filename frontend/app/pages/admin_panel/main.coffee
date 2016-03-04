@@ -3,7 +3,7 @@ require('./sort.coffee')
 require('./related_pages.coffee')
 require('./category.coffee')
 
-scrollTo = require('jquery-scrollto')
+require('jquery.scrollto')
 Autocomplete = require('./autocomplete.coffee')
 transliterate = require('./transliterate.coffee')
 

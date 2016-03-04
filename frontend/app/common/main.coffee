@@ -2,7 +2,7 @@ CallbackDialog = require('./callback_dialog')
 ContactDialog  = require('./contact_dialog')
 require('./ga-events.coffee')
 
-scrollTo = require('jquery-scrollto')
+require('jquery.scrollto')
 require('jquery-mask-plugin')
 require('jquery.cookie')
 require('lightgallery')
@@ -26,11 +26,11 @@ $ ->
 
   $('a[data-scroll]').click (e) ->
     offset = $(@).data('offset') ? -55
-    scrollTo $(@).attr('href'), $(@).data('scroll'), offset: offset
+    $.scrollTo $(@).attr('href'), $(@).data('scroll'), offset: offset
 
   $('.landing-nav .nav a').click (e) ->
     offset = $(@).data('offset') ? -85
-    scrollTo $(@).data('target'), 800, offset: offset
+    $.scrollTo $(@).data('target'), 800, offset: offset
     ga 'send', 'Навигация', $(this).text()
     e.preventDefault()
 

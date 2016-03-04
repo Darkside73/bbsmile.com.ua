@@ -1946,11 +1946,6 @@
       "from": "jquery-mousewheel@>=3.1.13 <3.2.0",
       "resolved": "https://registry.npmjs.org/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz"
     },
-    "jquery-scrollto": {
-      "version": "1.4.4",
-      "from": "jquery-scrollto@>=1.4.4 <2.0.0",
-      "resolved": "https://registry.npmjs.org/jquery-scrollto/-/jquery-scrollto-1.4.4.tgz"
-    },
     "jquery-ui": {
       "version": "1.10.5",
       "from": "jquery-ui@latest",
@@ -1965,6 +1960,11 @@
       "version": "1.4.1",
       "from": "jquery.cookie@>=1.4.1 <2.0.0",
       "resolved": "https://registry.npmjs.org/jquery.cookie/-/jquery.cookie-1.4.1.tgz"
+    },
+    "jquery.scrollto": {
+      "version": "2.1.2",
+      "from": "jquery.scrollto@latest",
+      "resolved": "https://registry.npmjs.org/jquery.scrollto/-/jquery.scrollto-2.1.2.tgz"
     },
     "js-base64": {
       "version": "2.1.9",
