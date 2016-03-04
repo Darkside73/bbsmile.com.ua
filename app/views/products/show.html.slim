@@ -50,11 +50,12 @@
             .clearfix.visible-xs
 
             .clearfix
-            - if @product.drop_price
-              p.drop-price
+            - if @product.drop_price && @product.available
+              p.drop-price.lead
                 span.text-danger
-                  ' Этот товар можно приобрести в поврежденной упаковке с
-                  strong дополнительной скидкой!
+                  ' Скидка
+                  strong> 3%
+                  ' при заказе через сайт!
             = render 'callback/quick_order_form'
             - if @product.available
               p.lead: a.dashed href="#send-quick-order" data-toggle="modal" Заказать в один клик!

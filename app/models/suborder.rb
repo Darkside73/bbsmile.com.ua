@@ -38,8 +38,17 @@ class Suborder < ApplicationRecord
   end
 
   def offer
-    if @offer_id
-      @offer ||= Offer.find @offer_id
+    @offer ||= if @offer_id
+      ::Offer.find @offer_id
+    elsif variant.product.drop_price
+      Offer.new drop_price_discount
     end
+  end
+
+  def drop_price_discount
+    (variant.price * 0.03).round
+  end
+
+  class Offer < Struct.new(:discount)
   end
 end

@@ -25,5 +25,8 @@ FactoryGirl.define do
     factory :hidden_product do
       page { create :hidden_page }
     end
+    factory :drop_price_product, parent: :product_with_variants do
+      drop_price true
+    end
   end
 end

@@ -10,6 +10,13 @@ describe Suborder do
     expect(suborder.total).to eq(variant.price - 10)
   end
 
+  let(:product) { create :drop_price_product }
+  it "calculate discount for dropped price products" do
+    suborder = Suborder.new variant: product.master_variant, quantity: 2
+    suborder.validate
+    expect(suborder.discount).to_not eq(0)
+  end
+
   context "when save" do
     it "memorize current variant price" do
       suborder = Suborder.new variant: variant
