@@ -13,3 +13,6 @@ html
       h1 Cтраница не найдена
       p.lead Похоже, тут ничего нет
       p: a.btn.btn-info.btn-lg href="/" Верните меня домой!
+      ul.list-unstyled
+        - Category.roots.visible.each do |category|
+          li = link_to category.name, "/#{category.url}"

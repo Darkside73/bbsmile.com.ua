@@ -31,6 +31,12 @@ Rails.application.configure do
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
 
+  config.assets.configure do |env|
+    env.register_transformer 'text/slim', 'text/html', Slim::Template
+    env.register_mime_type 'text/slim', extensions: ['.html']
+    env.register_engine '.slim', Slim::Template
+  end
+
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
