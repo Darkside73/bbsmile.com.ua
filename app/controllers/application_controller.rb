@@ -28,7 +28,9 @@ class ApplicationController < ActionController::Base
 
   def cart
     @cart ||= if session[:cart]
-      Order.new suborders_attributes: session[:cart]
+      order = Order.new(suborders_attributes: session[:cart])
+      order.validate
+      order
     else
       Order.new
     end
