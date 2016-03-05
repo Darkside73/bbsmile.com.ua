@@ -8,6 +8,10 @@
               .item.discount
                 p = "-#{product.discount}%"
                 i.fa.fa-certificate
+            - elsif product.drop_price
+              .item.discount
+                p -3%
+                i.fa.fa-certificate
             - elsif product.novelty? && !(local_assigns[:hide_novelties] && hide_novelties)
               .item.novelty
                 p новинка
