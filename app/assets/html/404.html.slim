@@ -9,10 +9,14 @@ html
 
   body
     .container: .jumbotron.text-center
-      p = image_tag 'cats/cat_hungry.png'
+      p = image_tag "content/logo.png"
       h1 Cтраница не найдена
-      p.lead Похоже, тут ничего нет
-      p: a.btn.btn-info.btn-lg href="/" Верните меня домой!
-      ul.list-unstyled
-        - Category.roots.visible.each do |category|
-          li = link_to category.name, "/#{category.url}"
+      .row
+        .col-md-6
+          ul.list-unstyled.lead
+            - Category.roots.visible.each do |category|
+              li = link_to category.name, "/#{category.url}"
+        .col-md-6
+          p = image_tag 'cats/cat_hungry.png'
+          p.lead Похоже, тут ничего нет
+          p: a.btn.btn-info.btn-lg href="/" Верните меня домой!
