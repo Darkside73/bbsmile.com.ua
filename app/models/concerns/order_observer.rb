@@ -20,7 +20,6 @@ module OrderObserver
     case changes[:status]
     when ["pending", "paid"]
       OrderMailer.paid(self).deliver_later
-      ManagerMailer.paid_order(self).deliver_later
     when ["placed", "pending"]
       OrderMailer.approved(self).deliver_later
       SmsSendJob.perform_later(
