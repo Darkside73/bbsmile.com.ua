@@ -10,7 +10,9 @@ ol
     li
       => link_to suborder.variant.title, product_page_url(suborder.variant.product.url, host: 'beta.bbsmile.com.ua')
       ' за
-      strong = number_to_currency suborder.price
+      strong> = number_to_currency suborder.price
+      - if suborder.discount
+        | (скидка #{number_to_currency suborder.discount})
 
 p
   strong> Способ оплаты:
