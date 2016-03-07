@@ -33,9 +33,9 @@
           = accordion_group "filterByGender", "Пол", if: :divided_by_sex do
             - %w(for_boys for_girls).each do |gender|
               - if params[:gender] == gender
-                li.active = link_to t("activerecord.attributes.product.sex.#{gender}"), category_page_path(params.except(:gender))
+                li.active = link_to t("activerecord.attributes.product.sex.#{gender}"), category_page_path(params.permit!.except(:gender))
               - else
-                li = link_to t("activerecord.attributes.product.sex.#{gender}"), category_page_path(params.merge(gender: gender))
+                li = link_to t("activerecord.attributes.product.sex.#{gender}"), category_page_path(params.permit!.merge(gender: gender))
           = accordion_group "filterByBrand", "Бренды", if: :brands do
             - @category.brands.each do |brand|
               = link_to_add_brand brand.name
