@@ -13,7 +13,7 @@ describe Variant do
       expect(variant.image).to be_nil
     end
     it 'not delete image if delete_image is off' do
-      variant.delete_image = false
+      variant.delete_image = '0'
       variant.save
       expect(variant.image).to be
     end

@@ -14,7 +14,7 @@
         = i.input :attachment_url, label: 'или указать ссылку'
       - if variant.image.valid?
         .variant-image = image_tag variant.image.url(:grid)
-        = f.input :delete_image, as: :boolean, label: 'удалить фото', unchecked_value: false
+        = f.input :delete_image, as: :boolean, label: 'удалить фото'
   => f.button :submit, variant.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
   - unless variant.new_record?
     ' или

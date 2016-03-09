@@ -19,6 +19,7 @@ class Variant < ApplicationRecord
     where('(price_old-price)/price_old >= 0.05')
   }
 
+  before_validation { self.delete_image = false if delete_image == '0' }
   validates :price, :price_old,
             numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
   validates :available, :master, inclusion: { in: [true, false] }
