@@ -11,7 +11,7 @@
         - else
           h4
             = link_to offer.product
-            - if offer.product_offer.brand.present?
+            - if offer.product.brand.present?
               br
               small: span title="Бренд" = offer.product.brand.full_name
       - if offer.product.price
