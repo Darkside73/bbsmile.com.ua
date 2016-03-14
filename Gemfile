@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '5.0.0.beta3'
 
+# fix https://github.com/rack/rack/pull/1009
+gem 'rack', github: 'rack/rack', branch: 'master'
+
 gem 'pg'
 gem 'pg_search'
 gem 'ancestry'

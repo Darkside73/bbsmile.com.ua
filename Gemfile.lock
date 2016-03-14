@@ -40,6 +40,14 @@ GIT
     liqpay (0.0.1)
 
 GIT
+  remote: git://github.com/rack/rack.git
+  revision: 95172a60fe5c2a3850163fc75e0981fe440c064e
+  branch: master
+  specs:
+    rack (2.0.0.alpha)
+      json
+
+GIT
   remote: git://github.com/rspec/rspec-core.git
   revision: f54edeed49799042b8fffddb278466fb7185314e
   specs:
@@ -317,8 +325,6 @@ GEM
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel
-    rack (2.0.0.alpha)
-      json
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.0.beta3)
@@ -484,6 +490,7 @@ DEPENDENCIES
   paperclip
   pg
   pg_search
+  rack!
   rails (= 5.0.0.beta3)
   rails-controller-testing
   rails-erd
