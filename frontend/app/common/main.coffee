@@ -59,13 +59,11 @@ $ ->
     $.scrollTo('.page-content', 500, offset: -40)
 
   $('[data-toggle=offcanvas]').click (e) ->
-    $('.row-offcanvas').toggleClass 'active'
-    $('i.fa', this).toggleClass 'fa-chevron-left fa-chevron-right'
-    if $('.row-offcanvas').hasClass 'active'
-      $('span', this).text 'Скрыть фильтры'
-    else
-      $('span', this).text 'Показать фильтры'
-
+    $('.product-filters').toggle(
+      => $('span', this).text 'Показать фильтры'
+      => $('span', this).text 'Скрыть фильтры'
+    )
+    $('i.fa', this).toggleClass 'fa-chevron-down fa-chevron-up'
 
   $('input[type="tel"]').mask '+38 (r00) 000-00-00',
     translation:

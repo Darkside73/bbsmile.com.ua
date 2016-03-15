@@ -11,8 +11,11 @@
   h1#products.page-title
     => @category.title
     small подбор товаров
-  .row class="#{@category.leaf? ? 'row-offcanvas row-offcanvas-left' : ''}"
-    .product-filters.col-md-3.col-sm-4 class="#{@category.leaf? ? 'sidebar-offcanvas col-xs-6' : 'col-xs-12'}"
+  p.visible-xs: button.btn.btn-primary.show-filters data-toggle="offcanvas"
+    i.fa.fa-chevron-down>
+    span Показать фильтры
+  .row
+    .product-filters.col-md-3.col-sm-4.col-xs-12
       .panel-group
         = accordion_group "filterByCategory", "Категория" do
           - category_menu_items.each do |subcategory|
@@ -49,9 +52,6 @@
         .show-options
           ul.nav.nav-pills
             li
-              button.visible-xs.btn.btn-primary.show-filters data-toggle="offcanvas"
-                i.fa.fa-chevron-left>
-                span Показать фильтры
               button.btn.btn-default.disabled
                 ' Всего товаров:
                 strong = @products.count
