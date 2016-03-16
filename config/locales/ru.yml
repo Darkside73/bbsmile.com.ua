@@ -108,6 +108,10 @@ ru:
           pending: в обработке
           paid: оплачен
           refunded: отменен
+    errors:
+      models:
+        availability_subscriber:
+          taken: "вы уже подписаны на это уведомление"
   mailers:
     order:
       new_order:
@@ -118,6 +122,10 @@ ru:
         sms: "Заказ №%{order_id} подтвержден. Приватбанк 5168-7420-6150-5198 Грабовский А.А. Сумма %{total}"
       paid:
         subject: "Заказ №%{order_id} оплачен"
+    variant:
+      available:
+        sms: "%{title} досупен для заказа"
+        subject: "Ваш товар появился в наличии"
     contacts:
       new_contact:
         subject: Сообщение с сайта

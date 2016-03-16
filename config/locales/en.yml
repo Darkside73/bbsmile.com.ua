@@ -86,6 +86,10 @@ en:
         subject: "Order approved %{order_id}"
       paid:
         subject: "Order paid %{order_id}"
+    variant:
+      available:
+        sms: "Variant %{title} is available"
+        subject: "Product is available"
     contacts:
       new_contact:
         subject: New contact message
@@ -123,6 +127,11 @@ en:
         range: "can't be greather than to"
       product:
         age_range: "can't be greather than to"
+  activerecord:
+    errors:
+      models:
+        availability_subscriber:
+          taken: "already subscribed"
   views:
     pagination:
       first: "&laquo; First"

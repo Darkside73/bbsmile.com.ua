@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151115162340) do
+ActiveRecord::Schema.define(version: 20160316102935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 20151115162340) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
   end
+
+  create_table "availability_subscribers", force: :cascade do |t|
+    t.integer "variant_id"
+    t.string  "email"
+    t.string  "phone"
+  end
+
+  add_index "availability_subscribers", ["variant_id", "email"], name: "index_availability_subscribers_on_variant_id_and_email", unique: true, using: :btree
+  add_index "availability_subscribers", ["variant_id", "phone"], name: "index_availability_subscribers_on_variant_id_and_phone", unique: true, using: :btree
+  add_index "availability_subscribers", ["variant_id"], name: "index_availability_subscribers_on_variant_id", using: :btree
 
   create_table "brands", force: :cascade do |t|
     t.string   "name",             limit: 255
@@ -95,8 +105,8 @@ ActiveRecord::Schema.define(version: 20151115162340) do
     t.float    "total"
     t.integer  "payment_method"
     t.integer  "status",                                               default: 0
-    t.uuid     "uuid",                                                 default: "uuid_generate_v4()"
-    t.decimal  "total_correction",             precision: 8, scale: 2, default: 0.0
+    t.uuid     "uuid",                                                 default: -> { "uuid_generate_v4()" }
+    t.decimal  "total_correction",             precision: 8, scale: 2, default: "0.0"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -234,6 +244,7 @@ ActiveRecord::Schema.define(version: 20151115162340) do
   add_index "variants", ["price"], name: "index_variants_on_price", using: :btree
   add_index "variants", ["product_id"], name: "index_variants_on_product_id", using: :btree
 
+  add_foreign_key "availability_subscribers", "variants"
   add_foreign_key "offers", "products", column: "product_offer_id"
   add_foreign_key "payments", "orders"
   add_foreign_key "suborders", "orders"
