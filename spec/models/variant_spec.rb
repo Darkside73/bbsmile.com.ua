@@ -49,4 +49,20 @@ describe Variant do
       end
     end
   end
+
+  context 'when variant became available' do
+    require 'sidekiq/testing'
+    let(:variant) { create :variant, available: false }
+    it 'create sms and mailer jobs' do
+      create :availability_subscriber,
+             variant: variant, phone: '123456', email: 'a@b'
+      variant.available = true
+      expect {
+        expect { variant.save }.to(
+          change(Sidekiq::Queues["default"], :size).by(1)
+        )
+      }.to change(Sidekiq::Queues["mailers"], :size).by(1)
+      expect(variant.availability_subscribers).to be_empty
+    end
+  end
 end

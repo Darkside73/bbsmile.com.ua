@@ -1,8 +1,10 @@
 class Variant < ApplicationRecord
   include PgSearch
+  include VariantObserver
 
   belongs_to :product, touch: true
   has_one :image, as: :assetable, dependent: :destroy
+  has_many :availability_subscribers, dependent: :destroy
 
   scope :visible, -> { joins(product: [:page]).where("pages.hidden" => false) }
   pg_search_scope :by_sku, against: :sku
