@@ -32,6 +32,7 @@
       hr
       .row
         .col-md-7.col-sm-6.col-xs-12 itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"
+          = render 'availability_subscriber/form'
           - if @product.price
             meta itemprop="price" content="#{@product.price}"
             meta itemprop="priceCurrency" content="UAH"
@@ -46,6 +47,8 @@
               cart-button :add-item="addCartItem" :open-cart="openCart" :cart-state="cartState" :variant-id="#{@product.master_variant.id}" style="btn-lg"
             - else
               p: strong.text-muted нет в наличии
+              .clearfix
+              availability-subscriber-button variant-id="#{@product.master_variant.id}"
               p = link_to "Посмотреть другие товары", @product.category, class: "btn btn-info"
 
             .clearfix.visible-xs

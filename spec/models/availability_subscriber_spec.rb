@@ -17,11 +17,17 @@ describe AvailabilitySubscriber do
     expect(
       AvailabilitySubscriber.new(variant: variant, phone: '123').error_on(:phone)
     ).to include("already subscribed")
+    subscriber = AvailabilitySubscriber.new(
+      variant: variant, email: 'b@c', phone: ''
+    )
+    expect(subscriber.errors).to_not have_key(:phone)
   end
 
   it 'validates presence of email or phone' do
-    expect(
-      AvailabilitySubscriber.new(variant: variant, email: '', phone: '')
-    ).to have(1).error_on(:email)
+    subscriber = AvailabilitySubscriber.new(
+      variant: variant, email: '', phone: ''
+    )
+    expect(subscriber).to have(1).error_on(:email)
+    expect(subscriber.errors).to_not have_key(:phone)
   end
 end

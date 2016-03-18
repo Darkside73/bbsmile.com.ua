@@ -1,0 +1,14 @@
+script type="text/x-template" id="availability-subscriber-form"
+  = simple_form_for AvailabilitySubscriber.new, html: {"@submit" => "onSubmit", class: "modal fade"} do |f|
+    .modal-dialog: .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+        h4.modal-title Уведомить о наличии
+      .modal-body
+        = f.input :email, label: "E-mail"
+        p.lead.text-center.text-muted &mdash; или &mdash;
+        = f.input :phone, label: "Телефон", input_html: { type: "tel" }
+        = f.input :variant_id, as: :hidden, input_html: { ":value" => "variantId" }
+      .modal-footer
+        a.btn.btn-default data-dismiss="modal" aria-hidden="true" Закрыть
+        = f.button :submit, "Уведомить", class: 'btn-success btn-lg', ":disabled" => "loading"

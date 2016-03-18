@@ -9,6 +9,8 @@
   cartItem         = require('./cart/Item.vue')
   cartCheckoutForm = require('./cart/CheckoutForm.coffee')
 
+  availabilitySubscriberButton = require('./availability_subscriber/Button.vue')
+
   new Vue(
     el: 'body'
     data:
@@ -21,7 +23,8 @@
       pageTitle: ''
       flashMessage: ''
     components: {
-      cartLabel, cartButton, cartModal, cartTotal, cartItem, cartCheckoutForm
+      cartLabel, cartButton, cartModal, cartTotal, cartItem, cartCheckoutForm,
+      availabilitySubscriberButton
     }
     created: ->
       @populateCartState(window.cartState)
