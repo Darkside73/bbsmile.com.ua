@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :offers, only: :index
   end
   resources :offers, only: :index
+  resources :availability_subscribers, only: :create
 
   namespace :admin do
     root 'main#index', as: 'root' # see https://github.com/rails/rails/pull/23235
