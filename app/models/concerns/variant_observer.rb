@@ -13,7 +13,10 @@ module VariantObserver
       if subscriber.phone
         SmsSendJob.perform_later(
           subscriber.phone,
-          I18n.t('mailers.variant.available.sms', title: title)
+          I18n.t(
+            'mailers.variant.available.sms',
+            title: title, url: "/#{product.url}"
+          )
         )
       end
       if subscriber.email

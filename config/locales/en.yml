@@ -88,7 +88,7 @@ en:
         subject: "Order paid %{order_id}"
     variant:
       available:
-        sms: "Variant %{title} is available"
+        sms: "Variant %{title} is available. %{url}"
         subject: "Product is available"
     contacts:
       new_contact:
