@@ -88,4 +88,4 @@ $ ->
       html: true
     )
 
-  $('.footer .social').html '<a href="http://vk.com/babysmile_ua" rel="nofollow" title="Мы Вконтакте"><i class="fa fa-vk"></i> </a><a href="https://plus.google.com/100829466932529435979?rel=author" rel="nofollow" title="Google+"><i class="fa fa-google-plus"></i> </a><a href="http://www.facebook.com/babysmile.ua" rel="nofollow" title="Страница в Facebook"><i class="fa fa-facebook"></i> </a><a href="http://twitter.com/babysmileua" rel="nofollow" title="Читать наши твиты"><i class="fa fa-twitter"></i></a>'
+  $('.footer .social').html '<a href="http://vk.com/babysmile_ua" rel="nofollow" title="Мы Вконтакте"><i class="fa fa-vk"></i> </a><a href="https://www.instagram.com/detskaja_odezhda_babysmile/" rel="nofollow" title="Instagram"><i class="fa fa-instagram"></i> </a><a href="http://www.facebook.com/babysmile.ua" rel="nofollow" title="Страница в Facebook"><i class="fa fa-facebook"></i> </a><a href="http://twitter.com/babysmileua" rel="nofollow" title="Читать наши твиты"><i class="fa fa-twitter"></i></a>'
