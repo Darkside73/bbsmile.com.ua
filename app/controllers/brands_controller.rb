@@ -1,7 +1,8 @@
 class BrandsController < ApplicationController
   NAMES_TO_REDIRECT = [
     'Идея', 'ТМ Кузя', 'Bratz', 'Halsall', 'EZ-TEC', 'Ice Age 4', 'Moxie',
-    'Tutis', 'V-Create', 'Zeplin', 'Властелин Небес', 'Bebus', 'Coneco', 'Edison'
+    'Tutis', 'V-Create', 'Zeplin', 'Властелин Небес', 'Bebus', 'Coneco',
+    'Edison', 'Jolly Ride', 'X-Rider', 'Oxford'
   ]
   before_action do
     if NAMES_TO_REDIRECT.include?(params[:name])
