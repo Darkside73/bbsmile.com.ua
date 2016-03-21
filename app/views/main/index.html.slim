@@ -14,7 +14,7 @@
 
   = render 'promotions'
 
-  = landing_item_for @categories, id: 'whole-catalog', icon: 'bars', title: 'Каталог' do |categories|
+  = landing_item_for @categories, id: 'whole-catalog', icon: 'cubes', title: 'Каталог' do |categories|
     - categories.each do |category, subcategories|
       = render 'category', category: category, subcategories: subcategories
 
