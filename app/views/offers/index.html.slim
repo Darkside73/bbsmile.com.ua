@@ -15,6 +15,6 @@
     .col-md-9
       - cache offers_cache_key, expires_in: 1.hour do
         - @offers.each_with_index do |offer, index|
-          - if offer.discount?
+          - if offer.actual?
             .offer-number.pull-left = "#{index + 1}."
             = render offer

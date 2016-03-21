@@ -37,7 +37,7 @@ class Offer < ApplicationRecord
     product.price + product_offer.price if product.price && product_offer.price
   end
 
-  def discount?
-    discount && discount > 0
+  def actual?
+    discount && discount > 0 && product.available && product_offer.available
   end
 end

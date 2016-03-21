@@ -12,6 +12,9 @@ FactoryGirl.define do
     factory :product_with_variants do
       variants { create_list :variant_with_image, 3 }
     end
+    factory :unavailable_product do
+      variants { create_list :variant, 2, available: false }
+    end
     factory :product_with_content do
       association :content
     end
