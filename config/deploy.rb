@@ -21,7 +21,7 @@ set :migration_role, [:all]
 set :assets_roles, [:all]
 set :webpack_dependencies, %w(frontend npm-shrinkwrap.json)
 set :local_assets_dir, proc { File.expand_path("../../public/#{fetch(:assets_prefix)}", __FILE__) }
-set :local_webpack_manifest, proc { File.expand_path("../../webpack-assets.json", __FILE__) }
+set :local_webpack_manifest, proc { File.expand_path("../../webpack-assets-deploy.json", __FILE__) }
 
 namespace :deploy do
   %w(start stop restart).each do |command|

@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const AssetsPlugin = require('assets-webpack-plugin');
 
 module.exports = {
   context: __dirname,
@@ -37,7 +36,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new AssetsPlugin({ prettyPrint: true }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',

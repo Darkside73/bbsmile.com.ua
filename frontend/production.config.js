@@ -4,6 +4,7 @@ const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const RenameFilesPlugin = require("./webpack/plugins/rename-files");
+const AssetsPlugin = require('assets-webpack-plugin');
 
 module.exports = {
   output: {
@@ -31,6 +32,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new AssetsPlugin({
+      prettyPrint: true, filename: 'webpack-assets-deploy.json'
+    }),
     new webpack.optimize.CommonsChunkPlugin(
       'common', 'bundle-[name]-[hash].js'
     ),

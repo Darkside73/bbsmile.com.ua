@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const AssetsPlugin = require('assets-webpack-plugin');
 
 module.exports = {
   debug: true,
@@ -39,6 +40,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new AssetsPlugin({ prettyPrint: true }),
     new ExtractTextPlugin("[name].css", {allChunks: true }),
   ]
 };
