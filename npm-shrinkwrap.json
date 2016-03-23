@@ -900,6 +900,18 @@
       "from": "caseless@>=0.11.0 <0.12.0",
       "resolved": "https://registry.npmjs.org/caseless/-/caseless-0.11.0.tgz"
     },
+    "cd-plupload": {
+      "version": "0.0.2",
+      "from": "cd-plupload@latest",
+      "resolved": "https://registry.npmjs.org/cd-plupload/-/cd-plupload-0.0.2.tgz",
+      "dependencies": {
+        "jquery": {
+          "version": "1.11.3",
+          "from": "jquery@>=1.11.3 <1.12.0",
+          "resolved": "https://registry.npmjs.org/jquery/-/jquery-1.11.3.tgz"
+        }
+      }
+    },
     "center-align": {
       "version": "0.1.2",
       "from": "center-align@>=0.1.1 <0.2.0",
