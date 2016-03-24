@@ -13,6 +13,13 @@ class Offer < ApplicationRecord
   default_scope -> { order :position }
   scope :with_prices, -> {
     includes(product_offer: [:page, :images, :brand, :variants])
+    .references(:variants)
+    .merge(Variant.available)
+  }
+  scope :available, -> {
+    includes(product_offer: :variants)
+    .references(:variants)
+    .merge(Variant.available)
   }
   scope :top, -> {
     reorder(created_at: :desc)
@@ -24,6 +31,12 @@ class Offer < ApplicationRecord
     includes(:product).where("products.category_id" => category.descendant_ids)
   }
   scope :random, -> { reorder('RANDOM()') }
+
+  def self.root_categories
+    available.includes(product: { category: :page }).map do |offer|
+      offer.product.category.root
+    end.uniq
+  end
 
   def amount
     product.price + price if product.price

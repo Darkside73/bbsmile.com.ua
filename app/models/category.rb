@@ -30,13 +30,6 @@ class Category < ApplicationRecord
     def arrange
       includes(:page).merge(Page.visible).references(:pages).ancestry_arrange(order: :position)
     end
-
-    def roots_contained_offers
-      visible.includes(:page)
-             .joins(products: :offers)
-             .distinct
-             .map(&:root).uniq
-    end
   end
 
   def tags

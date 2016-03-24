@@ -90,7 +90,7 @@ module CategoriesHelper
   end
 
   def offers_path_for_category
-    if Category.roots_contained_offers.select { |root| root == @category.root }
+    if Offer.root_categories.select { |root| root == @category.root }
       category_offers_path(@category.root.url)
     end
   end

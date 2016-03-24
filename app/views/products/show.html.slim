@@ -83,7 +83,7 @@
         .col-md-5.col-sm-6.col-xs-12 = render 'product_info_accordion'
 
   .row: .col-md-12
-    - if @product.offers.any?
+    - if @product.available && @product.offers.available.any?
       = render 'offers'
     = render "product_variants" if @product.variants.count > 1
 
