@@ -12,4 +12,5 @@ scope :cart, controller: :cart, as: :cart do
     get 'index'
   end
   get 'checkout'
+  get 'cities'
 end

@@ -1,4 +1,5 @@
 class CartController < ApplicationController
+  respond_to :json, only: :cities
 
   def add_item
     cart.user = nil
@@ -27,6 +28,10 @@ class CartController < ApplicationController
   def checkout
     cart.errors.clear
     cart.build_user
+  end
+
+  def cities
+    respond_with Service::Novaposhta.new.cities
   end
 
   private
