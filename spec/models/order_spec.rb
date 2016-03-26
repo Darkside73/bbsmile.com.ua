@@ -6,6 +6,7 @@ describe Order do
     it "creates order, suborders and user, generates uuid" do
       order = Order.new(
         notes: 'some notes',
+        delivery_info: 'delivery info',
         user_attributes: {
           first_name: 'John', last_name: 'Doe',
           email: 'some@email', phone: '123456'
@@ -23,6 +24,7 @@ describe Order do
       expect(order.uuid).to_not be_empty
       expect(order.user_phone).to eq(order.user.phone)
       expect(order.user_name).to eq(order.user.name)
+      expect(order.notes).to match(/delivery info/)
     end
 
     it "save user attributes in order if no email" do

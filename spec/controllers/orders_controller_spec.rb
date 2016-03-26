@@ -12,7 +12,8 @@ describe OrdersController do
       request.env["HTTP_ACCEPT"] = 'application/json'
       xhr :post, :create, order: {
         payment_method: :cash_to_courier,
-        user_attributes: attributes_for(:user)
+        user_attributes: attributes_for(:user),
+        delivery_info: '...'
       }
       expect(session[:cart]).to be_nil
     end

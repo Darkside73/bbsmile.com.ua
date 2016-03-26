@@ -21,6 +21,7 @@ module.exports = {
     alias: {
       libs: path.join(__dirname, 'libs'),
       common: path.join(__dirname, 'app', 'common'),
+      directives: path.join(__dirname, 'app', 'components', 'directives'),
     }
   },
   module: {

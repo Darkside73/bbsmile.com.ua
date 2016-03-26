@@ -21,13 +21,15 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :suborders
   accepts_nested_attributes_for :payments
 
+  attr_accessor :delivery_info
+
   validates_numericality_of :total_correction
 
   before_validation    :setup_user_validation, on: :create
   validates_associated :suborders
   after_validation     :calculate_total
   before_create        :save_user
-  before_save          :check_for_suborders
+  before_save          :check_for_suborders, :save_delivery_info
 
   default_scope -> { order(created_at: :desc) }
 
@@ -103,6 +105,13 @@ class Order < ApplicationRecord
 
   def check_for_suborders
     throw(:abort) unless suborders.any?
+  end
+
+  def save_delivery_info
+    unless delivery_info.blank?
+      self[:notes] ||= ''
+      self[:notes] << "\nДоставка: #{delivery_info}"
+    end
   end
 
   def calculate_total

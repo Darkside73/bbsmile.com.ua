@@ -5,7 +5,7 @@
   routes        = require('./Routes.coffee')
   productOffers = require('./ProductOffers.vue')
   editorImages  = require('./EditorImages.vue')
-  select2       = require('./directives/select2.coffee')
+  select2       = require('directives/select2.coffee')
 
   Vue.directive('select2', select2)
 

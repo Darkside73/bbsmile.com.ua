@@ -1,6 +1,11 @@
+Vue = require('vue')
+
 cartItem = require('./Item.vue')
 cartTotal = require('./Total.vue')
 ouibounce = require('ouibounce')
+CallbackDialog = require('common/callback_dialog')
+
+Vue.directive('select2', require('directives/select2'))
 
 module.exports = {
   template: '#cart-checkout-form'
@@ -8,6 +13,11 @@ module.exports = {
     cartItem, cartTotal
   }
   props: ['cartState', 'loading']
+  data: ->
+    cities: []
+    paymentMethod: 0
+    selectedCity: ''
+    selectedWarehouse: ''
   created: ->
     @ouibounce = ouibounce(
       false
@@ -16,7 +26,22 @@ module.exports = {
         $('#checkout-exit').modal('show')
         new CallbackDialog('#checkout-exit')
     )
+    $.get(
+      '/cart/cities.json'
+      (data) => @cities = data
+      'json'
+    )
+  computed:
+    cityWarehouses: ->
+      city = @cities.filter((value) => value.text == @selectedCity).pop()
+      city?.warehouses || []
   methods:
+    selectCityMatcher: (term, text) ->
+      if not term.term? or text.text.toUpperCase().indexOf(term.term.toUpperCase()) == 0
+        text
+      else
+        false
+    clearWarehouses: -> $('#select-warehouse').select2('val', '')
     onSubmit: (e) ->
       e.preventDefault()
       @loading = true

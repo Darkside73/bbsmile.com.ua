@@ -12,4 +12,8 @@ ol
       ' за
       strong = number_to_currency suborder.price
 
+- if @order.notes.present?
+  p: strong Дополнительная информация:
+  = simple_format @order.notes
+
 p Наш менеджер свяжется с вами в ближайшее время

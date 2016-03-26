@@ -1,7 +1,6 @@
 require('jquery-ujs');
 
 require('bootstrap-sass/assets/javascripts/bootstrap');
-require('select2');
 
 require('./admin_panel/main.coffee');
 require('./admin_panel/components/App.vue');

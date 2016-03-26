@@ -16,13 +16,14 @@ module Service
         warehouses = invoke @options.build('Address', 'getWarehouses')
         cities[:data].map do |city|
           {
-            name: city["DescriptionRu"],
-            ref: city["Ref"],
+            id: city["Ref"],
+            text: city["DescriptionRu"],
             warehouses: warehouses[:data].select do |warehouse|
-              warehouse["CityRef"] == city["Ref"]
-            end.map { |w| { name: w["DescriptionRu"], ref: w["Ref"] } }
+              warehouse["DescriptionRu"].present? &&
+                warehouse["CityRef"] == city["Ref"]
+            end.map { |w| { id: w["Ref"], text: w["DescriptionRu"] } }
           }
-        end
+        end.reject { |city| city[:warehouses].empty? }
       end
     end
 
