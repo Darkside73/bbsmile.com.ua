@@ -39,6 +39,11 @@
   .landing-container {
     padding-left: 10px;
   }
+  .thankyou-message {
+    padding: 0 !important;
+    width: auto !important;
+    background: none !important;
+  }
 }
 
 @media (max-width: $screen-sm-max) {
