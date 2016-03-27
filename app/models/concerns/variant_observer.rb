@@ -15,7 +15,7 @@ module VariantObserver
           subscriber.phone,
           I18n.t(
             'mailers.variant.available.sms',
-            title: title, url: "http://bbsmile.com.ua/#{product.url}"
+            name: product.name, url: "http://bbsmile.com.ua/#{product.url}"
           )
         )
       end

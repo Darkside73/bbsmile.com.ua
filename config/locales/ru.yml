@@ -124,7 +124,7 @@ ru:
         subject: "Заказ №%{order_id} оплачен"
     variant:
       available:
-        sms: "%{title} досупен для заказа. %{url}"
+        sms: "%{name} досупен для заказа. %{url}"
         subject: "Ваш товар появился в наличии"
     contacts:
       new_contact:
