@@ -108,6 +108,9 @@ ru:
           pending: в обработке
           paid: оплачен
           refunded: отменен
+        delivery_method:
+          address: адресная
+          novaposhta: Новая почта
     errors:
       models:
         availability_subscriber:

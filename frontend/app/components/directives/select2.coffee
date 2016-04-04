@@ -2,7 +2,7 @@ require('select2')
 
 module.exports = {
   twoWay: true
-  params: ['url', 'data', 'matcher', 'onChange']
+  params: ['url', 'data', 'matcher', 'change']
   bind: ->
     selected = undefined
     options = {
@@ -46,7 +46,7 @@ module.exports = {
     $(@el).select2(options).on(
       'change',
       ->
-        self.params.onChange() if self.params.onChange
+        self.params.change() if self.params.change
         self.set(if selected then selected else @value)
     )
 

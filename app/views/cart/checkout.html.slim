@@ -19,30 +19,29 @@
             .row
               .col-md-6
                 = u.input :first_name, label: "Имя"
-                = u.input :phone, label: "Телефон", input_html: { type: 'tel' }
-              .col-md-6
                 = u.input :last_name, label: "Фамилия"
+              .col-md-6
+                = u.input :phone, label: "Телефон", input_html: { type: 'tel' }
                 = u.input :email, label: "E-mail"
             .form-group
               .row
                 .col-md-6
-                  = f.input :payment_method, label: 'Способ оплаты', collection: [:liqpay, :cash_on_delivery, :cash_to_courier], label_method: lambda { |key| { liqpay: "Приват 24 / Карты Visa, Master Card", cash_on_delivery: "наложенный платеж", cash_to_courier: "наличными при получении" }.fetch(key) }, as: :radio_buttons, input_html: { "v-model" => "paymentMethod" }
+                  = f.input :delivery_method, label: 'Доставка', collection: [:address, :novaposhta], label_method: lambda { |key| t("activerecord.attributes.order.delivery_method.#{key}") }, as: :radio_buttons, input_html: { "v-model" => "deliveryMethod" }
+                  .form-group v-if="cities.length"
+                    label for="select-city" Город
+                    br
+                    select#select-city.skip-select2 v-select2="selectedCity" :matcher="selectCityMatcher" :change="clearWarehouses"
+                      option v-for="city in cities" id="{{city.id}}" {{city.text}}
+                  = f.input :address, label: "Адрес", wrapper_html: { "v-if" => "deliveryMethod == 'address'" }
+                  .form-group v-if="selectedCity && deliveryMethod == 'novaposhta'"
+                    label for="select-warehouse" Склад
+                    br
+                    select#select-warehouse.skip-select2 v-select2="selectedWarehouse"
+                      option v-for="warehouse in cityWarehouses" id="{{warehouse.id}}" {{warehouse.text}}
+                  input type="hidden" name="order[delivery_info]" value="{{selectedCity}} {{selectedWarehouse}}"
                 .col-md-6
-                  .payment-help.liqpay
-                  .payment-help.cash_on_delivery
-              .row
-                .col-md-6.form-group v-if="cities.length"
-                  label for="select-city" Город
-                  br
-                  select#select-city.skip-select2 v-select2="selectedCity" :matcher="selectCityMatcher" :on-change="clearWarehouses"
-                    option v-for="city in cities" id="{{city.id}}" {{city.text}}
-                .col-md-6.form-group v-if="selectedCity"
-                  label for="select-warehouse" Склад
-                  br
-                  select#select-warehouse.skip-select2 v-select2="selectedWarehouse"
-                    option v-for="warehouse in cityWarehouses" id="{{warehouse.id}}" {{warehouse.text}}
-              input type="hidden" name="order[delivery_info]" value="{{selectedCity}} {{selectedWarehouse}}"
-              = f.input :notes, label: "Дополнительная информация", input_html: { rows: 5 }
+                  = f.input :payment_method, label: 'Способ оплаты', collection: [:liqpay, :cash_on_delivery, :cash_to_courier], label_method: lambda { |key| { liqpay: "Приват 24 / Карты Visa, Master Card", cash_on_delivery: "наложенный платеж", cash_to_courier: "наличными при получении" }.fetch(key) }, as: :radio_buttons, input_html: { "v-model" => "paymentMethod" }
+                  = f.input :notes, label: "Дополнительная информация", input_html: { rows: 5 }
           .form-group = f.button :submit, "Оформить заказ", class: 'btn-success btn-lg', ":disabled" => "loading"
       cart-checkout-form :cart-state="cartState"
     .col-md-6

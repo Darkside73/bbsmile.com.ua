@@ -16,6 +16,7 @@ module.exports = {
   data: ->
     cities: []
     paymentMethod: 0
+    deliveryMethod: 0
     selectedCity: ''
     selectedWarehouse: ''
   created: ->
@@ -41,7 +42,8 @@ module.exports = {
         text
       else
         false
-    clearWarehouses: -> $('#select-warehouse').select2('val', '')
+    clearWarehouses: ->
+      $('#select-warehouse').select2().val(null).trigger("change")
     onSubmit: (e) ->
       e.preventDefault()
       @loading = true

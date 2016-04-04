@@ -14,14 +14,15 @@ class Order < ApplicationRecord
   end
   has_many :payments
 
+  attr_accessor :delivery_method, :delivery_info, :address
+
   enum payment_method:  [:cash_to_courier, :cash_on_delivery, :liqpay]
   enum status:          [:placed, :pending, :paid, :refunded]
+  enum delivery_method: [:address, :novaposhta]
 
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :suborders
   accepts_nested_attributes_for :payments
-
-  attr_accessor :delivery_info
 
   validates_numericality_of :total_correction
 
@@ -108,10 +109,17 @@ class Order < ApplicationRecord
   end
 
   def save_delivery_info
-    unless delivery_info.blank?
-      self[:notes] ||= ''
-      self[:notes] << "\nДоставка: #{delivery_info}"
+    self[:notes] ||= ''
+    self[:notes] << "\nДоставка: "
+    if delivery_method.present?
+      self[:notes] << I18n.t(
+        "activerecord.attributes.order.delivery_method.#{delivery_method}"
+      )
+    else
+      self[:notes] << "не указано"
     end
+    self[:notes] << " #{delivery_info}"
+    self[:notes] << " #{address}"
   end
 
   def calculate_total
