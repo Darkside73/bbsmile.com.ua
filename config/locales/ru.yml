@@ -109,8 +109,8 @@ ru:
           paid: оплачен
           refunded: отменен
         delivery_method:
-          address: адресная
-          novaposhta: Новая почта
+          address: адресная доставка на дом
+          novaposhta: доставка на отделение Новой Почты
     errors:
       models:
         availability_subscriber:
