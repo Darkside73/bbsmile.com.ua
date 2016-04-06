@@ -90,6 +90,13 @@
     }
   }
 
+  #whole-catalog {
+    display: none;
+    ~ hr {
+      display: none;
+    }
+  }
+
   .product-filters {
     display: none;
     &.active {
