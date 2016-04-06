@@ -32,7 +32,7 @@
                     br
                     select#select-city.skip-select2 v-select2="selectedCity" :matcher="selectCityMatcher" :change="clearWarehouses"
                       option v-for="city in cities" id="{{city.id}}" {{city.text}}
-                  = f.input :address, label: "Адрес", wrapper_html: { "v-if" => "deliveryMethod == 'address'" }
+                  = f.input :address, label: "Адрес", wrapper_html: { "v-if" => "deliveryMethod == 'address'" }, input_html: { placeholder: 'например: ул. Тенистая, 45, кв. 10' }
                   .form-group v-if="selectedCity && deliveryMethod == 'novaposhta'"
                     label for="select-warehouse" Склад
                     br
