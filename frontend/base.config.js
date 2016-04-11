@@ -45,7 +45,7 @@ module.exports = {
     new webpack.DefinePlugin({
       __RAILS_ENV__: JSON.stringify(process.env.RAILS_ENV || 'development'),
       __TINYMCE_CONTENT_STYLES__: JSON.stringify(
-        (process.env.NODE_ENV != 'production' ? 'http://localhost:3500' : '') + '/assets/tinymce_content_styles.css'
+        (process.env.NODE_ENV != 'production' ? 'http://localhost:3550' : '') + '/assets/tinymce_content_styles.css'
       ),
     })
   ]

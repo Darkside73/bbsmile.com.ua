@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const config = require('./webpack.config');
-const hotRailsPort = process.env.HOT_RAILS_PORT || 3500;
+const hotRailsPort = process.env.HOT_RAILS_PORT || 3550;
 
 config.output.publicPath = `http://localhost:${hotRailsPort}/assets/`;
 ['application', 'main_page',
