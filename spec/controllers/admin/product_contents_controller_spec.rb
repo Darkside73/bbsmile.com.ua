@@ -5,7 +5,7 @@ describe Admin::ProductContentsController do
     let(:product) { create :product }
     it 'create Content' do
       expect {
-        post :create, product_id: product.id, content: { text: 'new content' }
+        post :create, params: { product_id: product.id, content: { text: 'new content' } }
         product.reload
       }.to change { product.content }
       expect(flash[:notice]).to have_content(/saved/i)
@@ -16,7 +16,7 @@ describe Admin::ProductContentsController do
     let(:product) { create :product_with_content}
     it 'update Content' do
       expect {
-        post :update, id: product.content.id, content: { text: 'new content' }
+        post :update, params: { id: product.content.id, content: { text: 'new content' } }
         product.reload
       }.to change { product.content.text }
       expect(flash[:notice]).to have_content(/saved/i)

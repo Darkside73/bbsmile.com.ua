@@ -50,9 +50,9 @@ class OrdersController < ApplicationController
       ManagerMailer.order_payment(order, data['transaction_id'])
                    .deliver_later unless request.success?
 
-      render nothing: true
+      head :ok
     else
-      render nothing: true, status: 400
+      head :bad_request
     end
   end
 
@@ -66,7 +66,7 @@ class OrdersController < ApplicationController
   end
 
   def reject_spam
-    render nothing: true, status: 403 if params[:text].present?
+    head :ok, status: 403 if params[:text].present?
   end
 
   def liqpay

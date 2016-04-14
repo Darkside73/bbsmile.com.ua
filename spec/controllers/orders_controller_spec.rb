@@ -10,11 +10,14 @@ describe OrdersController do
     end
     it 'creates order' do
       request.env["HTTP_ACCEPT"] = 'application/json'
-      xhr :post, :create, order: {
-        payment_method: :cash_to_courier,
-        user_attributes: attributes_for(:user),
-        delivery_info: '...'
-      }
+      post :create, xhr: true,
+        params: {
+          order: {
+            payment_method: :cash_to_courier,
+            user_attributes: attributes_for(:user),
+            delivery_info: '...'
+          }
+        }
       expect(session[:cart]).to be_nil
     end
   end
@@ -28,7 +31,7 @@ describe OrdersController do
 
     describe "GET pay" do
       let(:order) { create(:pending_order).reload }
-      subject { get :pay, uuid: order.uuid }
+      subject { get :pay, params: { uuid: order.uuid } }
       it "renders the pay template" do
         expect(subject).to render_template(:pay)
       end
@@ -56,7 +59,7 @@ describe OrdersController do
         it "change order status to paid" do
           data = data(order_id: order.number, amount: order.total)
           expect {
-            post :api_callback, data: data, signature: signature(data)
+            post :api_callback, params: { data: data, signature: signature(data) }
             order.reload
           }.to change { order.status }.from('pending').to('paid')
           expect(order.payments).to_not be_empty
@@ -67,7 +70,7 @@ describe OrdersController do
         it "response not success" do
           data = data(order_id: order.number, amount: order.total)
           expect {
-            post :api_callback, data: data, signature: 'some BAD signature'
+            post :api_callback, params: { data: data, signature: 'some BAD signature' }
             order.reload
           }.to_not change { order.status }
           expect(response).to_not be_success
@@ -79,7 +82,7 @@ describe OrdersController do
         it "not change order status" do
           data = data(order_id: order.number, amount: order.total, status: 'failure')
           expect {
-            post :api_callback, data: data, signature: signature(data)
+            post :api_callback, params: { data: data, signature: signature(data) }
             order.reload
           }.to_not change { order.status }
           expect(order.payments).to_not be_empty

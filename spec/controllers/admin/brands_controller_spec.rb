@@ -16,24 +16,27 @@ describe Admin::BrandsController do
   end
   describe 'POST create' do
     it 'create brand and redirect to index' do
-      post :create, brand: {
-        name: 'some brand',
-        content_attributes: attributes_for(:content)
-      }
+      post :create,
+        params: {
+          brand: {
+            name: 'some brand',
+            content_attributes: attributes_for(:content)
+          }
+        }
       expect(flash[:notice]).to have_content(/created/i)
     end
   end
   describe 'GET edit' do
     let(:brand) { create :brand }
     it 'assigns not new brand' do
-      get :edit, id: brand.id
+      get :edit, params: { id: brand.id }
       expect(assigns :brand).to_not be_a_new(Brand)
     end
   end
   describe 'PUT update' do
     let(:brand) { create :brand }
     it 'update brand and redirect to brands' do
-      put :update, id: brand.id, brand: { name: 'brand name' }
+      put :update, params: { id: brand.id, brand: { name: 'brand name' } }
       expect(flash[:notice]).to have_content(/updated/i)
       expect redirect_to([:admin, :brands])
       expect { brand.reload }.to change { brand.name }
@@ -44,7 +47,7 @@ describe Admin::BrandsController do
     it 'destroy Brand' do
       brand = create :brand
       expect {
-        xhr :delete, :destroy, id: brand.id
+        delete :destroy, xhr: true, params: { id: brand.id }
         brand.reload
       }.to raise_error(ActiveRecord::RecordNotFound)
     end

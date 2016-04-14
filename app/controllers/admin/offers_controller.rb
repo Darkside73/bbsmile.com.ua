@@ -22,7 +22,7 @@ class Admin::OffersController < Admin::ApplicationController
   def sort
     offer = Offer.find params[:id]
     offer.insert_at params[:position].to_i
-    render nothing: true
+    head :ok
   end
 
   def destroy

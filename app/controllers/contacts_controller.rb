@@ -21,7 +21,7 @@ class ContactsController < ApplicationController
   end
 
   def reject_spam
-    render nothing: true if params[:text].present? || message_with_alien_link?
+    head :ok if params[:text].present? || message_with_alien_link?
   end
 
   def message_with_alien_link?

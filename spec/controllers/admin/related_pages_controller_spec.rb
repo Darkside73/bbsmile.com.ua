@@ -6,9 +6,11 @@ describe Admin::RelatedPagesController do
     let(:related) { create :page }
     it 'create relation between pages' do
       expect {
-        xhr :post, :create, format: :json,
+        post :create, xhr: true, format: :json,
+          params: {
             page_id: page.id,
             related_page: { related_id: related.id, type_of: :suggested }
+          }
         expect be_success
         page.reload
       }.to change { page.suggested_pages.count }.by(1)
@@ -17,7 +19,7 @@ describe Admin::RelatedPagesController do
   describe 'GET show' do
     let(:related_page) { create :related_page }
     it 'show relation between pages' do
-      xhr :get, :show, id: related_page.id, format: :html
+      get :show, xhr: true, format: :html, params: { id: related_page.id }
       expect be_success
       expect render_template(:show)
     end
@@ -27,7 +29,7 @@ describe Admin::RelatedPagesController do
     it 'destroy relation between pages' do
       related = page.related_pages.sample
       expect {
-        xhr :delete, :destroy, id: related.id
+        delete :destroy, xhr: true, params: { id: related.id }
         expect be_success
         related.reload
       }.to raise_error(ActiveRecord::RecordNotFound)

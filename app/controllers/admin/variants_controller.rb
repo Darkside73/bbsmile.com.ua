@@ -35,7 +35,7 @@ class Admin::VariantsController < Admin::ApplicationController
 
   def sort
     variant.insert_at params[:position].to_i
-    render nothing: true
+    head :ok
   end
 
   def destroy

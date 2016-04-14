@@ -48,7 +48,7 @@ class Admin::ProductsController < Admin::ApplicationController
   def sort
     product = Product.find params[:id]
     product.insert_at params[:position].to_i
-    render nothing: true
+    head :ok
   end
 
   def destroy

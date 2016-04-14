@@ -11,7 +11,7 @@ describe Admin::ProductsController do
   describe 'GET show' do
     let(:product) { create :product }
     it 'product' do
-      get :show, id: product
+      get :show, params: { id: product }
       expect(assigns :product).to be
     end
   end
@@ -27,12 +27,15 @@ describe Admin::ProductsController do
     before { allow_any_instance_of(Product::Image).to receive(:save_attached_files) }
     it 'create product and redirect to category' do
       file = fixture_file_upload(Rails.root.join('spec/fixtures/files/product_image.jpg'), 'image/jpeg')
-      post :create, product: {
-        category_id: category.id,
-        page_attributes: attributes_for(:page),
-        images_attributes: [{ attachment: file }],
-        variants_attributes: [{ price: 20, sku: 'code123', available: true }]
-      }
+      post :create,
+        params: {
+          product: {
+            category_id: category.id,
+            page_attributes: attributes_for(:page),
+            images_attributes: [{ attachment: file }],
+            variants_attributes: [{ price: 20, sku: 'code123', available: true }]
+          }
+        }
       expect(flash[:notice]).to have_content(/created/i)
       expect redirect_to([:admin, Product.last])
     end
@@ -40,7 +43,7 @@ describe Admin::ProductsController do
   describe 'GET edit' do
     let(:product) { create :product }
     it 'assigns product and category' do
-      get :edit, id: product.id
+      get :edit, params: { id: product.id }
       expect(assigns :product).to be_a(Product)
       expect(assigns :category).to be_a(Category)
     end
@@ -49,10 +52,12 @@ describe Admin::ProductsController do
     let(:product) { create :product_with_single_variant }
     it 'update product and redirect to show' do
       put :update,
-        id: product.id,
-        product: {
-          page_attributes: attributes_for(:page),
-          variants_attributes: [{ id: product.master_variant.id, price: 13.99 }]
+        params: {
+          id: product.id,
+          product: {
+            page_attributes: attributes_for(:page),
+            variants_attributes: [{ id: product.master_variant.id, price: 13.99 }]
+          }
         }
       expect(flash[:notice]).to have_content(/updated/i)
       expect redirect_to([:admin, product])
@@ -63,14 +68,14 @@ describe Admin::ProductsController do
     it 'destroy Product' do
       product = create :product
       expect {
-        xhr :delete, :destroy, id: product.id
+        delete :destroy, xhr: true, params: { id: product.id }
         product.reload
       }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
   describe 'GET tags' do
     it 'success' do
-      xhr :get, :tags, format: :json
+      get :tags, xhr: true, format: :json
       expect be_success
     end
   end
@@ -80,9 +85,11 @@ describe Admin::ProductsController do
     it "move several products to specified category" do
       product1 = products.first
       product2 = products.second
-      xhr :post, :bulk_move,
-          dest_category_id: category.id,
-          ids: [product1.id, product2.id]
+      post :bulk_move, xhr: true,
+          params: {
+            dest_category_id: category.id,
+            ids: [product1.id, product2.id]
+          }
       expect { product1.reload }. to change { product1.category }
     end
   end

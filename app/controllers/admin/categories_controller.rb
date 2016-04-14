@@ -64,7 +64,7 @@ class Admin::CategoriesController < Admin::ApplicationController
   def sort
     category = Category.find params[:id]
     category.insert_at params[:position].to_i
-    render nothing: true
+    head :ok
   end
 
   def destroy

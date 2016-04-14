@@ -38,7 +38,7 @@ class Admin::ArticleThemesController < Admin::ApplicationController
   def sort
     theme = ArticleTheme.find params[:id]
     theme.insert_at params[:position].to_i
-    render nothing: true
+    head :ok
   end
 
   def destroy

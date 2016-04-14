@@ -16,7 +16,7 @@ class Admin::ImagesController < Admin::ApplicationController
   def sort
     image = Product::Image.find params[:id]
     image.insert_at params[:position].to_i
-    render nothing: true
+    head :ok
   end
 
   def create
