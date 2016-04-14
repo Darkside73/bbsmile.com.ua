@@ -22,7 +22,7 @@
           td = link_to suborder.variant.product
           td = suborder.quantity
           td
-            s =' number_to_currency(suborder.subtotal) if suborder.discount > 0
+            s => number_to_currency(suborder.subtotal) if suborder.discount > 0
             = number_to_currency suborder.total
 
   .text-right

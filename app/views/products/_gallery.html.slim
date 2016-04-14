@@ -17,7 +17,7 @@
               i.fa.fa-certificate
       = image_tag first_image.url(:medium), alt: product.title, itemprop: 'image', class: 'img-responsive'
       span.hide class="lightgallery-caption"
-        =' product.title
+        => product.title
         strong.price = number_to_currency(product.price)
 
   .other-images.owl-carousel

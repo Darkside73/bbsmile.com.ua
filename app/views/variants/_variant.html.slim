@@ -2,7 +2,7 @@
   = link_to variant_image_url(variant), class: 'thumbnail', title: variant.title, data: { gallery: '#variants-gallery', sub_html: ".variant-caption-#{variant.id}" } do
     = image_tag variant_image_url(variant, :grid), alt: variant.title
     span.hide class="variant-caption-#{variant.id}"
-      =' variant.title
+      => variant.title
       strong.price = number_to_currency(variant.price)
   .caption
     h5 = variant.name
