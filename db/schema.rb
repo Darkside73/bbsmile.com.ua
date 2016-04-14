@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 20160414095252) do
     t.integer  "status",                                               default: 0
     t.uuid     "uuid",                                                 default: -> { "uuid_generate_v4()" }
     t.decimal  "total_correction",             precision: 8, scale: 2, default: "0.0"
-    t.float    "commission"
+    t.float    "commission",                                           default: 0.0
   end
 
   create_table "pages", force: :cascade do |t|

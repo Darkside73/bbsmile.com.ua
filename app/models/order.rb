@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   include OrderObserver
   include ActionView::Helpers::NumberHelper
 
-  LIQPAY_COMMISSION = 0.05
+  LIQPAY_COMMISSION = 0.5/100
 
   belongs_to :user
   has_many   :suborders, dependent: :destroy do

@@ -8,8 +8,9 @@ scope :cart, controller: :cart, as: :cart do
   scope defaults: { format: :json } do
     post 'add_item'
     delete 'delete_item'
-    post 'update'
+    post 'update_item'
     get 'index'
+    post 'update'
   end
   get 'checkout'
   get 'cities'

@@ -10,7 +10,7 @@
           <div class="row" v-for="suborder in cartState.suborders">
             <cart-item :suborder="suborder" :index="$index" :delete-item="deleteItem" :update-item="updateItem"></cart-item>
           </div>
-          <cart-total v-ref:cart-total :total="cartState.total" v-if="!empty"></cart-total>
+          <cart-total v-ref:cart-total :cart-state="cartState" v-if="!empty"></cart-total>
           <div class="alert alert-info" role="alert" v-if="empty">
             <strong>Корзина пуста</strong>
           </div>

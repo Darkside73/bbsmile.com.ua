@@ -16,6 +16,7 @@
     data:
       cartState:
         total: 0
+        commission: 0
         size: 0
         suborders: []
       cartModalId: "cartModal"
@@ -41,28 +42,44 @@
           (data) =>
             @populateCartState(data)
             @openCart()
+            @$broadcast 'cartItemsChanged'
           'json'
         )
       deleteCartItem: (index) ->
         $.post(
           '/cart/delete_item'
           index: index, _method: 'delete'
-          (data) => @populateCartState(data)
+          (data) =>
+            @populateCartState(data)
+            @$broadcast 'cartItemsChanged'
           'json'
         )
       updateCartItem: (index, quantity) ->
         $.post(
-          '/cart/update'
+          '/cart/update_item'
           index: index, quantity: quantity
+          (data) =>
+            @populateCartState(data)
+            @$broadcast 'cartItemsChanged'
+          'json'
+        )
+      updateCart: (data) ->
+        $.post(
+          '/cart/update'
+          data
           (data) => @populateCartState(data)
           'json'
         )
       populateCartState: (data) ->
         @cartState.total = data.total_with_currency
+        @cartState.commission = 0
+        if data.commission
+          @cartState.commission = data.commission_with_currency
         @cartState.size = data.size
         @cartState.suborders = data.suborders
       emptyCart: ->
-        @cartState.total = ''
+        @cartState.total = 0
+        @cartState.commission = 0
         @cartState.size = 0
         @cartState.suborders = []
   )

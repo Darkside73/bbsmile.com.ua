@@ -27,6 +27,7 @@
 
   .text-right
     p => "Коррекция суммы: #{number_to_currency @order.total_correction}" if @order.total_correction != 0
+    p => "Комиссия: #{number_to_currency @order.commission}" if @order.commission > 0
     p: strong = "Всего: #{number_to_currency @order.total}"
 
   .row

@@ -112,7 +112,7 @@ describe Order do
 
       it 'takes into account liqpay commission' do
         subject.validate
-        commission = subject.total * 0.05
+        commission = subject.total * Order::LIQPAY_COMMISSION
         subject.payment_method = :liqpay
         expect { subject.validate }.to change { subject.total }
         expect(subject.commission).to be_within(0.01).of(commission)

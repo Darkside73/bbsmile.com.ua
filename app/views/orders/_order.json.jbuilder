@@ -1,4 +1,5 @@
-json.(cart, :number, :total, :size)
+json.(cart, :number, :total, :commission, :size)
+json.commission_with_currency number_to_currency(cart.commission)
 json.total_with_currency number_to_currency(cart.total)
 json.suborders do
   json.array! cart.suborders do |suborder|

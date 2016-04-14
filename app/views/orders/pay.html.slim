@@ -16,6 +16,6 @@
     .col-md-8.col-md-offset-2
       .row v-repeat="suborder in currentOrder.suborders"
         cart-item suborder="{{suborder}}"
-      cart-total total="{{currentOrder.total_with_currency}}"
+      cart-total :cart-state="currentOrder"
 
       == @pay_button

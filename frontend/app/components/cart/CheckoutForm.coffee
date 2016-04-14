@@ -12,7 +12,7 @@ module.exports = {
   components: {
     cartItem, cartTotal
   }
-  props: ['cartState', 'loading']
+  props: ['cartState', 'loading', 'updateCart']
   data: ->
     cities: []
     paymentMethod: 0
@@ -27,6 +27,7 @@ module.exports = {
         $('#checkout-exit').modal('show')
         new CallbackDialog('#checkout-exit')
     )
+    @$on 'cartItemsChanged', @onChangePaymentMethod
     $.get(
       '/cart/cities.json'
       (data) => @cities = data
@@ -44,6 +45,8 @@ module.exports = {
         false
     clearWarehouses: ->
       $('#select-warehouse').select2().val(null).trigger("change")
+    onChangePaymentMethod: ->
+      @updateCart(payment_method: @paymentMethod) if @paymentMethod
     onSubmit: (e) ->
       e.preventDefault()
       @loading = true
