@@ -2,6 +2,8 @@ class Order < ApplicationRecord
   include OrderObserver
   include ActionView::Helpers::NumberHelper
 
+  LIQPAY_COMMISSION = 0.05
+
   belongs_to :user
   has_many   :suborders, dependent: :destroy do
     def <<(suborder)
@@ -28,7 +30,7 @@ class Order < ApplicationRecord
 
   before_validation    :setup_user_validation, on: :create
   validates_associated :suborders
-  after_validation     :calculate_total
+  after_validation     :calculate_commission, :calculate_total
   before_create        :save_user
   before_save          :check_for_suborders, :save_delivery_info
 
@@ -65,7 +67,9 @@ class Order < ApplicationRecord
   end
 
   def original_total
-    total + total_correction
+    valid_suborders.inject(0) do |total, suborder|
+      total + suborder.total
+    end
   end
 
   def remove_suborder(index)
@@ -123,9 +127,13 @@ class Order < ApplicationRecord
   end
 
   def calculate_total
-    original_total = valid_suborders.inject(0) do |total, suborder|
-      total + suborder.total
+    self[:total] = original_total + total_correction + commission
+  end
+
+  def calculate_commission
+    self[:commission] = 0
+    if total && liqpay?
+      self[:commission] = total * LIQPAY_COMMISSION
     end
-    self[:total] = original_total + total_correction
   end
 end

@@ -100,15 +100,23 @@ describe Order do
         expect(subject.total).to be_within(0.01).of(
           suborder1.total + suborder2.total
         )
+        expect(subject.total).to be_within(0.01).of(subject.original_total)
       end
 
       it "takes into account total correction" do
         subject.validate
         subject.total_correction = -20.50
-        expect { subject.validate }.to change { subject.total }.by(-20.50)
-        expect(subject.original_total).to eq(subject.total - 20.50)
+        expect { subject.validate }.to change { subject.total }
+        expect(subject.original_total).to be_within(0.01).of(subject.total + 20.50)
       end
 
+      it 'takes into account liqpay commission' do
+        subject.validate
+        commission = subject.total * 0.05
+        subject.payment_method = :liqpay
+        expect { subject.validate }.to change { subject.total }
+        expect(subject.commission).to be_within(0.01).of(commission)
+      end
     end
 
     context "when suborder invalid" do
