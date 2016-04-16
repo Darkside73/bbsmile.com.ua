@@ -25,6 +25,7 @@
       = f.input :sex, label: 'Пол', collection: [:for_any_gender, :for_boys, :for_girls], label_method: lambda { |key| t("activerecord.attributes.product.sex.#{key}") }, include_blank: false
       = f.input :novelty, label: 'Новинка'
       = f.input :hit, label: 'Хит продаж'
+      = f.input :free_ship, label: 'Бесплатная доставка'
       = f.input :drop_price, label: 'Сниженная цена'
   => f.button :submit, @product.new_record? ? 'Создать' : 'Обновить', class: 'btn btn-primary'
   ' или

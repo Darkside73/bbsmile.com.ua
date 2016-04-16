@@ -17,12 +17,13 @@ module ProductsSync
   find_item { |id| Product.find id }
 
   item_to_push do |product|
-    data = product.as_json(only: [:id, :novelty, :hit, :drop_price, :sex, :age_from, :age_to])
+    data = product.as_json(only: [:id, :novelty, :hit, :drop_price, :free_ship, :sex, :age_from, :age_to])
                   .merge(brand: product.brand.try(:name))
                   .symbolize_keys
     data[:title]            = product.title
     data[:novelty]          = product.novelty ? '1' : '0'
     data[:hit]              = product.hit ? '1' : '0'
+    data[:free_ship]       = product.free_ship ? '1' : '0'
     data[:drop_price]       = product.drop_price ? '1' : '0'
     data[:age_from]         = data[:age_from].to_s.gsub('.', ',')
     data[:age_to]           = data[:age_to].to_s.gsub('.', ',')
@@ -42,6 +43,7 @@ module ProductsSync
     product.age_to                = row['age_to'].gsub(',', '.')
     product.sex                   = row['sex'] if row['sex'].present?
     product.drop_price            = row['drop_price'] == '1' ? true : false
+    product.free_ship             = row['free_ship'] == '1' ? true : false
     product.page.title            = row['title'] if row['title'].present?
     product.page.meta_keywords    = row['meta_keywords'] if row['meta_keywords'].present?
     product.page.meta_description = row['meta_description'] if row['meta_description'].present?

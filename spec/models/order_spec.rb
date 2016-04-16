@@ -177,4 +177,17 @@ describe Order do
       end
     end
   end
+
+  describe '#free_ship?' do
+    let(:product1) { create :product_with_variants, free_ship: true }
+    let(:product2) { create :product_with_variants, free_ship: true }
+    let(:order) { Order.new }
+    it 'true when all products are free ship' do
+      order.suborders = [
+        create(:suborder, variant: product1.master_variant),
+        create(:suborder, variant: product2.master_variant)
+      ]
+      expect(order).to be_free_ship
+    end
+  end
 end

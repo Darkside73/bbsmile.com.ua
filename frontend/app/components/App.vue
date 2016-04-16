@@ -18,6 +18,7 @@
         total: 0
         payment_method: ''
         commission: 0
+        free_ship: false
         size: 0
         suborders: []
       cartModalId: "cartModal"
@@ -74,6 +75,7 @@
       populateCartState: (data) ->
         @cartState.total = data.total_with_currency
         @cartState.payment_method = data.payment_method
+        @cartState.free_ship = data.free_ship
         @cartState.commission = 0
         if data.commission
           @cartState.commission = data.commission_with_currency

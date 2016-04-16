@@ -94,6 +94,12 @@ class Order < ApplicationRecord
     suborders.select(&:valid?)
   end
 
+  def free_ship?
+    valid_suborders.map { |s| s.variant.product.free_ship?  }.uniq == [true]
+  end
+
+  alias_method :free_ship, :free_ship?
+
   private
 
   def setup_user_validation

@@ -6,6 +6,7 @@ table.table.table-striped.table-hover
       th Хит продаж
       th Возраст
       th Пол
+      th Бесплатная доставка
       th Сниженная цена
       th Заголовок
       th Meta tags
@@ -33,6 +34,11 @@ table.table.table-striped.table-hover
             span.text-danger> = t("activerecord.attributes.product.sex.#{product.sex_was}")
             i.fa.fa-long-arrow-right>
             span.text-success> = t("activerecord.attributes.product.sex.#{product.sex}")
+        td
+          - if product.free_ship_changed?
+            span.text-danger> = product.free_ship_was ? 'да' : 'нет'
+            i.fa.fa-long-arrow-right>
+            span.text-success = product.free_ship ? 'да' : 'нет'
         td
           - if product.drop_price_changed?
             span.text-danger> = product.drop_price_was ? 'да' : 'нет'

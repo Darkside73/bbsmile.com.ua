@@ -9,6 +9,9 @@
       </span>
       <span class="price">{{cartState.commission}}</span>
     </p>
+    <p class="text-right" v-if="cartState.free_ship">
+      Доставка: <strong class="text-success">бесплатно</strong>
+    </p>
     <p class="lead text-right">
       Всего: <span class="price big">{{cartState.total}}</span>
     </p>
