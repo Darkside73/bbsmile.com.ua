@@ -1,7 +1,13 @@
 <template>
   <div>
     <p class="text-right" v-if="cartState.commission">
-      Комиссия Приватбанка <mark>0.5%</mark>: <span class="price">{{cartState.commission}}</span>
+      <span v-if="cartState.payment_method == 'liqpay'">
+        Комиссия Приватбанка <mark>0.5%</mark>:
+      </span>
+      <span v-if="cartState.payment_method == 'cash_on_delivery'">
+        Наложенный платеж <mark>2% + 20 грн</mark>:
+      </span>
+      <span class="price">{{cartState.commission}}</span>
     </p>
     <p class="lead text-right">
       Всего: <span class="price big">{{cartState.total}}</span>

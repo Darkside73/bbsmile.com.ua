@@ -40,7 +40,7 @@
                       option v-for="warehouse in cityWarehouses" id="{{warehouse.id}}" {{warehouse.text}}
                   input type="hidden" name="order[delivery_info]" value="{{selectedCity}} {{selectedWarehouse}}"
                 .col-md-6
-                  = f.input :payment_method, label: 'Способ оплаты', collection: [:liqpay, :cash_on_delivery, :cash_to_courier], label_method: lambda { |key| { liqpay: "Приват 24 / Карты Visa, Master Card", cash_on_delivery: "наложенный платеж", cash_to_courier: "наличными при получении" }.fetch(key) }, as: :radio_buttons, input_html: { "v-model" => "paymentMethod", "@change" => "onChangePaymentMethod" }
+                  = f.input :payment_method, label: 'Способ оплаты', collection: [:liqpay, :cash_on_delivery], label_method: lambda { |key| { liqpay: "Приват 24 / Карты Visa, Master Card", cash_on_delivery: "при получении (наложенный платеж)" }.fetch(key) }, as: :radio_buttons, input_html: { "v-model" => "paymentMethod", "@change" => "onChangePaymentMethod" }
                   = f.input :notes, label: "Дополнительная информация", input_html: { rows: 5 }
           .form-group = f.button :submit, "Оформить заказ", class: 'btn-success btn-lg', ":disabled" => "loading"
       cart-checkout-form :cart-state="cartState" :update-cart="updateCart"

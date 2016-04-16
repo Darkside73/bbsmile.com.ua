@@ -16,6 +16,7 @@
     data:
       cartState:
         total: 0
+        payment_method: ''
         commission: 0
         size: 0
         suborders: []
@@ -72,6 +73,7 @@
         )
       populateCartState: (data) ->
         @cartState.total = data.total_with_currency
+        @cartState.payment_method = data.payment_method
         @cartState.commission = 0
         if data.commission
           @cartState.commission = data.commission_with_currency

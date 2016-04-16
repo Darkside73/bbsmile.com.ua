@@ -2,7 +2,8 @@ class Order < ApplicationRecord
   include OrderObserver
   include ActionView::Helpers::NumberHelper
 
-  LIQPAY_COMMISSION = 0.5/100
+  LIQPAY_COMMISSION     = 0.5/100
+  NOVAPOSHTA_COMMISSION = 2.0/100
 
   belongs_to :user
   has_many   :suborders, dependent: :destroy do
@@ -132,8 +133,9 @@ class Order < ApplicationRecord
 
   def calculate_commission
     self[:commission] = 0
-    if total && liqpay?
-      self[:commission] = total * LIQPAY_COMMISSION
+    if total
+      self[:commission] = total * LIQPAY_COMMISSION if liqpay?
+      self[:commission] = total * NOVAPOSHTA_COMMISSION + 20 if cash_on_delivery?
     end
   end
 end
