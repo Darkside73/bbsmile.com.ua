@@ -5,7 +5,7 @@
         Комиссия Приватбанка <mark>0.5%</mark>:
       </span>
       <span v-if="cartState.payment_method == 'cash_on_delivery'">
-        Наложенный платеж <mark>2% + 20 грн</mark>:
+        Услуги Новой Почты <mark>2% + 20 грн</mark>:
       </span>
       <span class="price">{{cartState.commission}}</span>
     </p>
