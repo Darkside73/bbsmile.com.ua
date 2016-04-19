@@ -30,7 +30,7 @@ class Suborder < ApplicationRecord
   private
 
   def memorize_price
-    self[:price] = variant.price
+    self[:price] = variant.price if variant_id_changed?
   end
 
   def calculate_discount
