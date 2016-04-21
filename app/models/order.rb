@@ -32,8 +32,8 @@ class Order < ApplicationRecord
   before_validation    :setup_user_validation, on: :create
   validates_associated :suborders
   after_validation     :calculate_commission, :calculate_total
-  before_create        :save_user
-  before_save          :check_for_suborders, :save_delivery_info
+  before_create        :save_user, :add_delivery_info_to_notes
+  before_save          :check_for_suborders
 
   default_scope -> { order(created_at: :desc) }
 
@@ -119,7 +119,7 @@ class Order < ApplicationRecord
     throw(:abort) unless suborders.any?
   end
 
-  def save_delivery_info
+  def add_delivery_info_to_notes
     self[:notes] ||= ''
     self[:notes] << "\nДоставка: "
     if delivery_method.present?
