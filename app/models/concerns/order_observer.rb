@@ -20,6 +20,9 @@ module OrderObserver
     case changes[:status]
     when ["pending", "paid"]
       OrderMailer.paid(self).deliver_later
+      SmsSendJob.perform_later(
+        user_phone, I18n.t('mailers.order.paid.sms', order_id: number)
+      )
     when ["placed", "pending"]
       OrderMailer.approved(self).deliver_later
       SmsSendJob.perform_later(

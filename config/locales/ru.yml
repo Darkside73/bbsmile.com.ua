@@ -125,6 +125,7 @@ ru:
         sms: "Заказ №%{order_id} подтвержден. Приватбанк 5168-7420-6150-5198 Грабовский А.А. Сумма %{total}"
       paid:
         subject: "Заказ №%{order_id} оплачен"
+        sms: "Заказ №%{order_id} оплачен"
     variant:
       available:
         sms: "%{name} досупен для заказа. %{url}"

@@ -86,6 +86,7 @@ en:
         subject: "Order approved %{order_id}"
       paid:
         subject: "Order paid %{order_id}"
+        sms: "Order #%{order_id} has been paid"
     variant:
       available:
         sms: "Variant %{name} is available. %{url}"
