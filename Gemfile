@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.0.beta3'
+gem 'rails', '5.0.0.beta4'
 
 # fix https://github.com/rack/rack/pull/1009
 gem 'rack', github: 'rack/rack', branch: 'master'
@@ -78,11 +78,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails', github: 'rspec/rspec-rails'
-  gem 'rspec-core', github: 'rspec/rspec-core'
-  gem 'rspec-support', github: 'rspec/rspec-support'
-  gem 'rspec-expectations', github: 'rspec/rspec-expectations'
-  gem 'rspec-mocks', github: 'rspec/rspec-mocks'
+  gem 'rspec-rails', '>= 3.5.0.beta3'
   gem 'rails-controller-testing'
 
   gem 'rspec-its'

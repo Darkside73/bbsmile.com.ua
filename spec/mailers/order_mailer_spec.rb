@@ -11,7 +11,6 @@ describe OrderMailer do
     context "body" do
       subject { mail.body.encoded }
       it { should include(order.number) }
-      it { should include(order.suborders.sample.variant.title) }
     end
   end
 end
