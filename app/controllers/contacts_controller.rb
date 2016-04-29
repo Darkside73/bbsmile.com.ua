@@ -25,7 +25,7 @@ class ContactsController < ApplicationController
   end
 
   def message_with_alien_link?
-    contacts_params[:message].include?('http://') &&
-      !contacts_params[:message].include?('http://bbsmile')
+    contacts_params[:message].include?('http') &&
+      !contacts_params[:message].include?('bbsmile.com.ua')
   end
 end

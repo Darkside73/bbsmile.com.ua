@@ -1,4 +1,4 @@
-SitemapGenerator::Sitemap.default_host = "http://bbsmile.com.ua"
+SitemapGenerator::Sitemap.default_host = "https://bbsmile.com.ua"
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
