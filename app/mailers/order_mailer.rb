@@ -1,5 +1,6 @@
 class OrderMailer < ActionMailer::Base
   default from: "Babysmile <smile@bbsmile.com.ua>"
+  layout 'mailers_default'
 
   def new_order(order)
     @order = order
