@@ -37,6 +37,11 @@ module.exports = {
     cityWarehouses: ->
       city = @cities.filter((value) => value.text == @selectedCity).pop()
       city?.warehouses || []
+    deliveryInfo: ->
+      if @deliveryMethod == 'novaposhta'
+        "#{@selectedCity} #{@selectedWarehouse}"
+      else
+        @selectedCity
   methods:
     selectCityMatcher: (term, text) ->
       if not term.term? or text.text.toUpperCase().indexOf(term.term.toUpperCase()) == 0

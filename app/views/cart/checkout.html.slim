@@ -38,7 +38,7 @@
                     br
                     select#select-warehouse.skip-select2 v-select2="selectedWarehouse"
                       option v-for="warehouse in cityWarehouses" id="{{warehouse.id}}" {{warehouse.text}}
-                  input type="hidden" name="order[delivery_info]" value="{{selectedCity}} {{selectedWarehouse}}"
+                  input type="hidden" name="order[delivery_info]" value="{{deliveryInfo}}"
                 .col-md-6
                   = f.input :payment_method, label: 'Способ оплаты', collection: [:liqpay, :cash_on_delivery], label_method: lambda { |key| { liqpay: "Приват 24 / Карты Visa, Master Card", cash_on_delivery: "при получении (наложенный платеж)" }.fetch(key) }, as: :radio_buttons, input_html: { "v-model" => "paymentMethod", "@change" => "onChangePaymentMethod" }
                   = f.input :notes, label: "Дополнительная информация", input_html: { rows: 5 }
