@@ -11,7 +11,7 @@ module Service
     end
 
     def cities
-      Rails.cache.fetch('novaposhta/cities', expires_in: 1.day) do
+      Rails.cache.fetch('novaposhta/cities', expires_in: 90.days) do
         cities = invoke @options.build('Address', 'getCities')
         warehouses = invoke @options.build('Address', 'getWarehouses')
         cities[:data].map do |city|
