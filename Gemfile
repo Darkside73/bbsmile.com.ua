@@ -2,9 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '5.0.0.beta4'
 
-# fix https://github.com/rack/rack/pull/1009
-gem 'rack', github: 'rack/rack', branch: 'master'
-
 gem 'pg'
 gem 'pg_search'
 gem 'ancestry'
@@ -17,7 +14,7 @@ gem 'redis-namespace'
 gem 'daemons'
 gem 'newrelic_rpm'
 
-gem 'config'#, github: 'railsconfig/config'
+gem 'config'
 gem 'russian'
 gem 'exception_notification', github: 'smartinez87/exception_notification', branch: 'rails5'
 
@@ -51,14 +48,14 @@ gem 'lograge'
 
 group :development do
   gem 'rake'
-  # gem 'spring'
-  # gem 'spring-commands-rspec'
-  # gem 'spring-commands-cucumber'
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'spring-commands-cucumber'
   gem 'seedbank'
   gem 'rb-inotify', require: false
-  # gem 'guard', '>= 2.1.0'
-  # gem 'guard-rspec'
-  # gem 'guard-cucumber'
+  gem 'guard', '>= 2.1.0'
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'web-console'

@@ -40,14 +40,6 @@ GIT
     liqpay (0.0.1)
 
 GIT
-  remote: git://github.com/rack/rack.git
-  revision: a893d50ce83e616f06ce24fcac8b902edbee3e31
-  branch: master
-  specs:
-    rack (2.0.0.alpha)
-      json
-
-GIT
   remote: git://github.com/smartinez87/exception_notification.git
   revision: c3000b76c17dcaa7b0c70fe9fca902a9ffd381d8
   branch: rails5
@@ -194,6 +186,7 @@ GEM
     ffi (1.9.10)
     foreman (0.78.0)
       thor (~> 0.19.1)
+    formatador (0.2.5)
     gherkin (3.2.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -221,6 +214,22 @@ GEM
       multi_json (~> 1.11)
       os (~> 0.9)
       signet (~> 0.7)
+    guard (2.13.0)
+      formatador (>= 0.2.4)
+      listen (>= 2.7, <= 4.0)
+      lumberjack (~> 1.0)
+      nenv (~> 0.1)
+      notiffany (~> 0.0)
+      pry (>= 0.9.12)
+      shellany (~> 0.0)
+      thor (>= 0.18.1)
+    guard-compat (1.2.1)
+    guard-cucumber (2.0.0)
+      cucumber (~> 2.0)
+      guard-compat (~> 1.0)
+      nenv (~> 0.1)
+    guard-rspec (1.2.2)
+      guard (>= 1.1)
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -233,6 +242,9 @@ GEM
     launchy (2.4.3)
       addressable (~> 2.3)
     libv8 (3.16.14.13)
+    listen (3.0.6)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9.7)
     little-plugger (1.1.4)
     logging (2.0.0)
       little-plugger (~> 1.1)
@@ -243,6 +255,7 @@ GEM
       railties (>= 3)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
+    lumberjack (1.0.10)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
     memoist (0.14.0)
@@ -259,6 +272,7 @@ GEM
     multi_test (0.1.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    nenv (0.3.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.2)
@@ -266,6 +280,9 @@ GEM
     nio4r (1.2.1)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    notiffany (0.0.8)
+      nenv (~> 0.1)
+      shellany (~> 0.0)
     oauth (0.5.1)
     oauth2 (1.1.0)
       faraday (>= 0.8, < 0.10)
@@ -285,6 +302,12 @@ GEM
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    rack (2.0.0.alpha)
+      json
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.0.beta4)
@@ -323,6 +346,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (11.1.2)
+    rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
     redcarpet (3.3.4)
@@ -362,6 +386,7 @@ GEM
     russian (0.6.0)
       i18n (>= 0.5.0)
     seedbank (0.3.0)
+    shellany (0.0.1)
     shoulda (3.5.0)
       shoulda-context (~> 1.0, >= 1.0.1)
       shoulda-matchers (>= 1.4.1, < 3.0)
@@ -387,6 +412,12 @@ GEM
     slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
+    slop (3.6.0)
+    spring (1.6.3)
+    spring-commands-cucumber (1.0.1)
+      spring (>= 0.9.1)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     sprockets (3.6.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -454,6 +485,9 @@ DEPENDENCIES
   faker
   foreman
   google_drive
+  guard (>= 2.1.0)
+  guard-cucumber
+  guard-rspec
   httparty
   jbuilder
   json
@@ -467,7 +501,6 @@ DEPENDENCIES
   paperclip
   pg
   pg_search
-  rack!
   rails (= 5.0.0.beta4)
   rails-controller-testing
   rails-erd
@@ -488,6 +521,9 @@ DEPENDENCIES
   simple_form
   sitemap_generator
   slim
+  spring
+  spring-commands-cucumber
+  spring-commands-rspec
   therubyracer
   thin
   tinymce-rails
