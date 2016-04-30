@@ -53,9 +53,9 @@ group :development do
   gem 'spring-commands-cucumber'
   gem 'seedbank'
   gem 'rb-inotify', require: false
-  gem 'guard', '>= 2.1.0'
-  gem 'guard-rspec'
-  gem 'guard-cucumber'
+  # gem 'guard', '>= 2.1.0'
+  # gem 'guard-rspec'
+  # gem 'guard-cucumber'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'web-console'
