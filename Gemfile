@@ -28,6 +28,7 @@ gem 'simple_form'
 gem 'responders'
 gem 'auto_strip_attributes'
 gem 'kaminari', github: 'amatsuda/kaminari', branch: '0-17-stable'
+gem 'premailer-rails'
 
 gem 'json'
 gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-helpers'
