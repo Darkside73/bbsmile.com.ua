@@ -55,9 +55,6 @@ $ ->
     $(@).parents('.products-list').find('.line.hide').removeClass('hide')
     $(@).hide()
 
-  $('button.more').click (e) ->
-    $.scrollTo('.page-content', 500, offset: -40)
-
   $('[data-toggle=offcanvas]').click (e) ->
     $('.product-filters').toggle(
       => $('span', this).text 'Показать фильтры'
@@ -86,6 +83,7 @@ $ ->
       selector: "a[data-gallery='##{$(this).data('gallery-id')}']"
       download: false
       html: true
+      hideBarsDelay: 1e6 # set huge delay since no option to disable hiding
     )
 
   $('.footer .social').html '<a href="http://vk.com/babysmile_ua" target="_blank" rel="nofollow" title="Мы Вконтакте"><i class="fa fa-vk"></i> </a><a href="https://www.instagram.com/detskaja_odezhda_babysmile/" target="_blank" rel="nofollow" title="Instagram"><i class="fa fa-instagram"></i> </a><a href="http://www.facebook.com/babysmile.ua" target="_blank" rel="nofollow" title="Страница в Facebook"><i class="fa fa-facebook"></i> </a><a href="http://twitter.com/babysmileua" target="_blank" rel="nofollow" title="Читать наши твиты"><i class="fa fa-twitter"></i></a>'
