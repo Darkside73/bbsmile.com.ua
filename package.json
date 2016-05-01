@@ -8,9 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:dev": "webpack -v --config frontend/webpack.config.js --display-chunks --debug",
-    "build:production": "NODE_ENV=production webpack -v --config frontend/webpack.config.js --display-chunks",
-    "build:clean": "ls public/assets | xargs rm -rf",
+    "build:dev": "./node_modules/.bin/webpack -v --config frontend/webpack.config.js --display-chunks --debug",
+    "build:production": "NODE_ENV=production ./node_modules/.bin/webpack -v --config frontend/webpack.config.js --display-chunks",
     "build:dev:server": "node frontend/server.js"
   },
   "repository": {
