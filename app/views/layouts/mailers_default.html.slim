@@ -179,7 +179,6 @@ body bgcolor="#f6f6f6"
     tr
       td
       td.container bgcolor="#FFFFFF"
-
         .content
           table
             tr
@@ -188,29 +187,34 @@ body bgcolor="#f6f6f6"
               td
                 = yield
       td
-  table.footer-wrap
     tr
       td
-      td.container
-        .content
-          table
-            tr
-              td align="center"
-                p: strong С уважением, Онлайн-супермаркет детских товаров Babysmile)
-                p: a href="https://bbsmile.com.ua" bbsmile.com.ua
-                p
-                  | (096) 717-22-55
-                  br
-                  | (066) 717-37-07
-                  br
-                  | (093) 717-91-91
+      td
+        table.footer-wrap
+          tr
+            td
+            td.container
+              .content
+                table
+                  tr
+                    td align="center"
+                      | С уважением, Онлайн-супермаркет детских товаров Babysmile)
+                      br
+                      a href="https://bbsmile.com.ua" bbsmile.com.ua
+                      br
+                      | (096) 717-22-55
+                      br
+                      | (066) 717-37-07
+                      br
+                      | (093) 717-91-91
+                      br
+                      br
+                      => link_to "https://vk.com/babyua_vk", title: "Вконтакте" do
+                        = image_tag "social/vk32.png"
+                      => link_to "https://www.instagram.com/detskaja_odezhda_babysmile/", title: "Instagram" do
+                        = image_tag "social/instagram32.png"
+                      => link_to "http://www.facebook.com/babysmile.ua", title: "Facebook" do
+                        = image_tag "social/facebook32.png"
+            td
 
-                p
-                  br
-                  => link_to "https://vk.com/babyua_vk", title: "Вконтакте" do
-                    = image_tag "social/vk32.png"
-                  => link_to "https://www.instagram.com/detskaja_odezhda_babysmile/", title: "Instagram" do
-                    = image_tag "social/instagram32.png"
-                  => link_to "http://www.facebook.com/babysmile.ua", title: "Facebook" do
-                    = image_tag "social/facebook32.png"
       td

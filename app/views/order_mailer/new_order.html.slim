@@ -1,19 +1,29 @@
-h3 Спасибо за покупку!
-p
-  ' Номер вашего заказа
-  strong = @order.id
-  | .
+table
+  tr
+    td align="center"
+      h3 Спасибо за покупку!
+  tr
+    td
+      ' Номер вашего заказа
+      strong = @order.id
+      | .
 
-h4 Вы заказали:
-ol
+table
+  tr
+    td
+      h4 Вы заказали:
   - @order.suborders.each do |suborder|
-    li
-      strong => link_to suborder.variant.title, product_page_url(suborder.variant.product.url, host: 'bbsmile.com.ua')
-      ' за
-      strong = number_to_currency suborder.price
+    tr
+      td
+        strong => link_to suborder.variant.title, product_page_url(suborder.variant.product.url, host: 'bbsmile.com.ua')
+        ' за
+        strong = number_to_currency suborder.price
 
-- if @order.notes.present?
-  p: strong Дополнительная информация:
-  = simple_format @order.notes
-
-p Наш менеджер свяжется с вами в ближайшее время
+table
+  - if @order.notes.present?
+    tr
+      td
+        strong Дополнительная информация:
+        br
+        = simple_format @order.notes
+  tr: td Наш менеджер свяжется с вами в ближайшее время
