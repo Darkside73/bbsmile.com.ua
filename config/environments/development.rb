@@ -31,6 +31,8 @@ Rails.application.configure do
 
   config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
 
+  config.action_mailer.asset_host = "http://localhost:3000"
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
