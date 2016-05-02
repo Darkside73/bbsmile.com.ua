@@ -10,7 +10,7 @@ module.exports = {
   output: {
     filename: './bundle-[name]-[chunkhash].js',
     chunkFilename: 'bundle-[name]-[chunkhash].js',
-    publicPath: '/assets/'
+    publicPath: '/assets/webpack/'
   },
   module: {
     loaders: [
@@ -51,10 +51,10 @@ module.exports = {
     }),
     new CompressionPlugin({ test: /\.js$|\.css$/ }),
     new CleanPlugin(
-      path.join('public', 'assets'),
+      path.join('public', 'assets', 'webpack'),
       { root: path.join(process.cwd()) }
     ),
-    new RenameFilesPlugin(path.join(process.cwd(), 'public', 'assets'), [
+    new RenameFilesPlugin(path.join(process.cwd(), 'public', 'assets', 'webpack'), [
       {
         test: /^bundle-tinymce_content_styles-.+\.css$/,
         destination: 'tinymce_content_styles.css'

@@ -4,7 +4,7 @@ const webpack = require('webpack');
 module.exports = {
   context: __dirname,
   output: {
-    path: path.join(__dirname, '..', 'public', 'assets'),
+    path: path.join(__dirname, '..', 'public', 'assets', 'webpack'),
     filename: 'bundle-[name].js'
   },
   entry: {
@@ -45,7 +45,7 @@ module.exports = {
     new webpack.DefinePlugin({
       __RAILS_ENV__: JSON.stringify(process.env.RAILS_ENV || 'development'),
       __TINYMCE_CONTENT_STYLES__: JSON.stringify(
-        (process.env.NODE_ENV != 'production' ? 'http://localhost:3550' : '') + '/assets/tinymce_content_styles.css'
+        (process.env.NODE_ENV != 'production' ? 'http://localhost:3550' : '') + '/assets/webpack/tinymce_content_styles.css'
       ),
     })
   ]

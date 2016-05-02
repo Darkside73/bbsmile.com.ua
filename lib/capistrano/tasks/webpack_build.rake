@@ -52,10 +52,11 @@ namespace :deploy do
           fetch(:local_webpack_manifest),
           release_path.join('webpack-assets.json')
         )
+        execute(:mkdir, '-p', shared_path.join('public', 'assets', 'webpack'))
       end
       roles(:all).each do |host|
         run_locally do
-          `rsync -avzr #{fetch(:local_assets_dir)} #{host.user}@#{host.hostname}:#{shared_path.join('public')}`
+          `rsync -avzr --delete #{fetch(:local_assets_dir)} #{host.user}@#{host.hostname}:#{shared_path.join('public', 'assets')}`
         end
       end
     end
