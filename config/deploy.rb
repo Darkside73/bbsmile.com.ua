@@ -41,7 +41,7 @@ namespace :deploy do
       %w(404 500).each do |page|
         page_glob = "#{current_path}/public/#{fetch(:assets_prefix)}/#{page}*.html"
         asset_file = capture :ruby, %Q{-e "print Dir.glob('#{page_glob}').max_by { |file| File.mtime(file) }"}
-        if asset_file
+        if asset_file && asset_file != ''
           execute :cp, "#{asset_file} #{current_path}/public/#{page}.html"
         else
           error "Error #{page} asset does not exist"
