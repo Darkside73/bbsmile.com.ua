@@ -3,7 +3,7 @@ const WebpackDevServer = require('webpack-dev-server');
 const config = require('./webpack.config');
 const hotRailsPort = process.env.HOT_RAILS_PORT || 3550;
 
-config.output.publicPath = `http://localhost:${hotRailsPort}/assets/`;
+config.output.publicPath = `http://localhost:${hotRailsPort}/assets/webpack/`;
 ['application', 'main_page',
   'inner_page', 'product_page', 'admin_panel'].forEach(entryName => {
   config.entry[entryName].push(
