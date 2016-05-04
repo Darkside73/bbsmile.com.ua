@@ -72,6 +72,14 @@
 }
 
 @media (max-width: $screen-xs-max) {
+  #site-header.jumbotron {
+    h1 { font-size: $font-size-base * 3 !important; }
+  }
+  .form-search {
+    input.search-query {
+      font-size: $font-size-base * 1.3 !important;
+    }
+  }
   #site-header:not(.jumbotron) .contacts .actions .popover.bottom.visible {
     .arrow { display: none; }
     display: none;
