@@ -11,6 +11,11 @@ class Suborder < ApplicationRecord
 
   after_validation :memorize_price, :calculate_discount, unless: -> { errors.any? }
 
+  # deleted variants should be accessible as well
+  def variant
+    Variant.unscoped { super }
+  end
+
   def subtotal
     price * quantity
   end

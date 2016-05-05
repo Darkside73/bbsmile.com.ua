@@ -280,6 +280,9 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    permanent_records (4.1.5)
+      activerecord (>= 4.2.0)
+      activesupport (>= 4.2.0)
     pg (0.18.4)
     pg_search (1.0.5)
       activerecord (>= 3.1)
@@ -478,6 +481,7 @@ DEPENDENCIES
   minitest
   newrelic_rpm
   paperclip
+  permanent_records
   pg
   pg_search
   premailer-rails
@@ -511,4 +515,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.12.1
+   1.12.2

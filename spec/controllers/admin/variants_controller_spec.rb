@@ -43,9 +43,10 @@ describe Admin::VariantsController do
   describe 'DELETE' do
     let(:variant) { create :variant }
     it 'destroy variant' do
+      id = variant.id
       expect {
-        delete :destroy, xhr: true, params: { id: variant.id }
-        variant.reload
+        delete :destroy, xhr: true, params: { id: id }
+        Variant.find id
       }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end

@@ -6,7 +6,7 @@ class Admin::OrdersController < Admin::ApplicationController
   end
 
   def show
-    @order = Order.includes(suborders: [variant: :product]).find params[:id]
+    @order = Order.includes(:suborders).find params[:id]
   end
 
   def update

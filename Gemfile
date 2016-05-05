@@ -28,6 +28,7 @@ gem 'simple_form'
 gem 'responders'
 gem 'auto_strip_attributes'
 gem 'kaminari', github: 'amatsuda/kaminari', branch: '0-17-stable'
+gem 'permanent_records'
 gem 'premailer-rails'
 
 gem 'json'

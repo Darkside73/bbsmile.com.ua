@@ -1,6 +1,7 @@
 class Variant < ApplicationRecord
   include PgSearch
   include VariantObserver
+  include PermanentRecord
 
   belongs_to :product, touch: true
   has_one :image, as: :assetable, dependent: :destroy
