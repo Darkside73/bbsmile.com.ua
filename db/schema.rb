@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160416210145) do
+ActiveRecord::Schema.define(version: 20160505141348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,9 +29,8 @@ ActiveRecord::Schema.define(version: 20160416210145) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "top",              default: false
+    t.index ["article_theme_id"], name: "index_articles_on_article_theme_id", using: :btree
   end
-
-  add_index "articles", ["article_theme_id"], name: "index_articles_on_article_theme_id", using: :btree
 
   create_table "assets", force: :cascade do |t|
     t.datetime "created_at"
@@ -50,11 +49,10 @@ ActiveRecord::Schema.define(version: 20160416210145) do
     t.integer "variant_id"
     t.string  "email"
     t.string  "phone"
+    t.index ["variant_id", "email"], name: "index_availability_subscribers_on_variant_id_and_email", unique: true, using: :btree
+    t.index ["variant_id", "phone"], name: "index_availability_subscribers_on_variant_id_and_phone", unique: true, using: :btree
+    t.index ["variant_id"], name: "index_availability_subscribers_on_variant_id", using: :btree
   end
-
-  add_index "availability_subscribers", ["variant_id", "email"], name: "index_availability_subscribers_on_variant_id_and_email", unique: true, using: :btree
-  add_index "availability_subscribers", ["variant_id", "phone"], name: "index_availability_subscribers_on_variant_id_and_phone", unique: true, using: :btree
-  add_index "availability_subscribers", ["variant_id"], name: "index_availability_subscribers_on_variant_id", using: :btree
 
   create_table "brands", force: :cascade do |t|
     t.string   "name",             limit: 255
@@ -71,9 +69,8 @@ ActiveRecord::Schema.define(version: 20160416210145) do
     t.boolean  "leaf",                   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["position"], name: "index_categories_on_position", using: :btree
   end
-
-  add_index "categories", ["position"], name: "index_categories_on_position", using: :btree
 
   create_table "contents", force: :cascade do |t|
     t.text     "text"
@@ -90,10 +87,9 @@ ActiveRecord::Schema.define(version: 20160416210145) do
     t.integer  "position",         default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["product_id"], name: "index_offers_on_product_id", using: :btree
+    t.index ["product_offer_id"], name: "index_offers_on_product_offer_id", using: :btree
   end
-
-  add_index "offers", ["product_id"], name: "index_offers_on_product_id", using: :btree
-  add_index "offers", ["product_offer_id"], name: "index_offers_on_product_offer_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.string   "user_name",        limit: 255
@@ -122,10 +118,9 @@ ActiveRecord::Schema.define(version: 20160416210145) do
     t.string   "name",             limit: 255
     t.string   "meta_keywords"
     t.string   "meta_description"
+    t.index ["url"], name: "index_pages_on_url", unique: true, using: :btree
+    t.index ["url_old"], name: "index_pages_on_url_old", unique: true, using: :btree
   end
-
-  add_index "pages", ["url"], name: "index_pages_on_url", unique: true, using: :btree
-  add_index "pages", ["url_old"], name: "index_pages_on_url_old", unique: true, using: :btree
 
   create_table "payments", force: :cascade do |t|
     t.integer  "order_id"
@@ -135,17 +130,15 @@ ActiveRecord::Schema.define(version: 20160416210145) do
     t.string   "status"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["order_id"], name: "index_payments_on_order_id", using: :btree
   end
-
-  add_index "payments", ["order_id"], name: "index_payments_on_order_id", using: :btree
 
   create_table "price_ranges", force: :cascade do |t|
     t.integer "from"
     t.integer "to"
     t.integer "category_id"
+    t.index ["category_id"], name: "index_price_ranges_on_category_id", using: :btree
   end
-
-  add_index "price_ranges", ["category_id"], name: "index_price_ranges_on_category_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.integer  "category_id"
@@ -163,11 +156,10 @@ ActiveRecord::Schema.define(version: 20160416210145) do
     t.boolean  "drop_price",              default: false
     t.integer  "sex",                     default: 0
     t.boolean  "free_ship",               default: false
+    t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
+    t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+    t.index ["position"], name: "index_products_on_position", using: :btree
   end
-
-  add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree
-  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
-  add_index "products", ["position"], name: "index_products_on_position", using: :btree
 
   create_table "related_pages", force: :cascade do |t|
     t.integer  "page_id"
@@ -175,19 +167,17 @@ ActiveRecord::Schema.define(version: 20160416210145) do
     t.integer  "type_of"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["page_id"], name: "index_related_pages_on_page_id", using: :btree
   end
-
-  add_index "related_pages", ["page_id"], name: "index_related_pages_on_page_id", using: :btree
 
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+    t.index ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
   end
-
-  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
-  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
   create_table "suborders", force: :cascade do |t|
     t.integer "order_id"
@@ -195,10 +185,9 @@ ActiveRecord::Schema.define(version: 20160416210145) do
     t.float   "price"
     t.integer "quantity",   default: 1
     t.float   "discount",   default: 0.0
+    t.index ["order_id"], name: "index_suborders_on_order_id", using: :btree
+    t.index ["variant_id"], name: "index_suborders_on_variant_id", using: :btree
   end
-
-  add_index "suborders", ["order_id"], name: "index_suborders_on_order_id", using: :btree
-  add_index "suborders", ["variant_id"], name: "index_suborders_on_variant_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
@@ -208,17 +197,15 @@ ActiveRecord::Schema.define(version: 20160416210145) do
     t.string   "tagger_type",   limit: 255
     t.string   "context",       limit: 128
     t.datetime "created_at"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
   end
-
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string  "name",           limit: 255
     t.integer "taggings_count",             default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
   end
-
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -240,11 +227,11 @@ ActiveRecord::Schema.define(version: 20160416210145) do
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
+    t.index ["position"], name: "index_variants_on_position", using: :btree
+    t.index ["price"], name: "index_variants_on_price", using: :btree
+    t.index ["product_id"], name: "index_variants_on_product_id", using: :btree
   end
-
-  add_index "variants", ["position"], name: "index_variants_on_position", using: :btree
-  add_index "variants", ["price"], name: "index_variants_on_price", using: :btree
-  add_index "variants", ["product_id"], name: "index_variants_on_product_id", using: :btree
 
   add_foreign_key "availability_subscribers", "variants"
   add_foreign_key "offers", "products", column: "product_offer_id"
