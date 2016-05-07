@@ -12,6 +12,7 @@ class Page < ApplicationRecord
   validates :url_old, uniqueness: true, allow_blank: true
 
   before_create :set_name_as_title, unless: :name
+  after_save -> { pageable.touch }, if: :pageable
 
   auto_strip_attributes :name, :title, :url, :url_old
   auto_strip_attributes :url, :url_old, strip_slashes: true
