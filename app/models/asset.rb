@@ -16,6 +16,8 @@ class Asset < ApplicationRecord
 
   acts_as_list scope: [:assetable_id, :type]
   default_scope -> { order(:position) }
+  after_save    -> { assetable.touch }, if: :assetable
+  after_destroy -> { assetable.touch }, if: :assetable
 
   def attachment_url= url
     self.attachment = URI.parse(url) if url.present?

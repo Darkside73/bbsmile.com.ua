@@ -28,7 +28,9 @@ class Variant < ApplicationRecord
   validates :available, :master, inclusion: { in: [true, false] }
   validate :price_old_cannot_be_less_than_price
 
-  before_save :destroy_image, if: :delete_image
+  before_save   :destroy_image, if: :delete_image
+  after_save    :touch_product
+  after_destroy :touch_product
 
   def title
     [product.name, name, sku].reject(&:blank?).join(' ')
@@ -60,5 +62,9 @@ class Variant < ApplicationRecord
     if price_old && price_old <= price
       errors.add :price_old, I18n.t('errors.models.variant.price_old')
     end
+  end
+
+  def touch_product
+    product.touch
   end
 end
