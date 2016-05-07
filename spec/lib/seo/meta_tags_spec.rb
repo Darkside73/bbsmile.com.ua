@@ -3,7 +3,7 @@ require 'seo/meta_tags'
 
 describe Seo::MetaTags do
   context "when page has meta description" do
-    let(:page) { create :page, meta_description: 'foo', meta_keywords: 'bar' }
+    let(:page) { create :page, meta_description: 'foo' }
     subject { Seo::MetaTags.new page }
     it "use page attribute" do
       expect(subject.description).to eq(page.meta_description)

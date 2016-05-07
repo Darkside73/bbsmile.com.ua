@@ -1,7 +1,6 @@
 = simple_form_for [:admin, @brand] do |f|
   = f.input :name, label: 'Название'
   = f.input :country, label: 'Страна', as: :string
-  = f.input :meta_keywords
   = f.input :meta_description
   = f.simple_fields_for :content do |p|
     = p.input :text, label: false, input_html: {class: 'tinymce'}

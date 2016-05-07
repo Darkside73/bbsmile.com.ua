@@ -50,8 +50,7 @@ class Admin::ArticlesController < Admin::ApplicationController
     params.require(:article).permit(
       :article_theme_id, :top,
       page_attributes: [
-        :id, :title, :name, :url, :url_old, :hidden,
-        :meta_keywords, :meta_description
+        :id, :title, :name, :url, :url_old, :hidden, :meta_description
       ],
       content_attributes: [:id, :text],
       top_image_attributes: [:id, :attachment]
