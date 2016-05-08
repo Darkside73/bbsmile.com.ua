@@ -4,5 +4,5 @@
     .owl-carousel data={ owl_single_item: "true" }
       = render @product.offers
     .text-center: a.btn.btn-info onclick="$('#productOffers .owl-carousel').data('owlCarousel').next();" Смотреть еще
-    a.left.carousel-control href="#": i.fa.fa-angle-left
-    a.right.carousel-control href="#": i.fa.fa-angle-right
+    a.left.carousel-control.hidden-xs href="#": i.fa.fa-angle-left
+    a.right.carousel-control.hidden-xs href="#": i.fa.fa-angle-right
