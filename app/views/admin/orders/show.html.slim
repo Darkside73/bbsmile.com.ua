@@ -19,7 +19,15 @@
     tbody
       - @order.suborders.each do |suborder|
         tr
-          td = link_to suborder.variant.product
+          td
+            => link_to suborder.variant.title, suborder.variant.product
+            - if suborder.variant.available
+              br
+              = simple_form_for [:admin, suborder], html: { class: "form-inline" } do |f|
+                = f.hidden_field :variant_unavailable, value: true
+                = f.button :submit, class: "btn btn-sm btn-default", value: "уведомить об отсутствии"
+            - else
+              span.label.label-default нет в наличии
           td = suborder.quantity
           td
             s => number_to_currency(suborder.subtotal) if suborder.discount > 0

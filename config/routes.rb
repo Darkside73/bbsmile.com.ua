@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
     resources :brands
     resources :orders, only: [:index, :show, :update]
+    resources :suborders, only: :update
 
     get 'search-products.json' => 'search#autocomplete', format: :json, as: 'search_products'
   end

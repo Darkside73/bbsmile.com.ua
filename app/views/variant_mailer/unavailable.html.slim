@@ -1,0 +1,7 @@
+p
+  ' Здравствуйте,
+  strong = @user.name
+  ' !
+p
+  strong => link_to @variant.title, product_page_url(@variant.product.url, host: 'bbsmile.com.ua')
+  ' сейчас нет в наличии. Мы сообщим вам о поступлении товара на склад
