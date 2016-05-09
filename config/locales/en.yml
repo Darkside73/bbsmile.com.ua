@@ -90,7 +90,10 @@ en:
     variant:
       available:
         sms: "Variant %{name} is available. %{url}"
-        subject: "Product is available"
+        subject: "Variant is available"
+      unavailable:
+        sms: "Order %{order_id} is unavailable"
+        subject: "Variant is unavailable"
     contacts:
       new_contact:
         subject: New contact message

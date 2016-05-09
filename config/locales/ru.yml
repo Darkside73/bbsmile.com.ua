@@ -130,6 +130,9 @@ ru:
       available:
         sms: "%{name} досупен для заказа. %{url}"
         subject: "Ваш товар появился в наличии"
+      unavailable:
+        sms: "Заказ №%{order_id} - сейчас нет в наличии. Мы сообщим вам о поступлении на склад"
+        subject: "Товара нет в наличии"
     contacts:
       new_contact:
         subject: Сообщение с сайта

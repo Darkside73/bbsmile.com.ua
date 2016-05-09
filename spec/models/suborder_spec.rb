@@ -33,13 +33,28 @@ describe Suborder do
       expect(suborder.price).to eq(old_price)
     end
   end
-  describe "merge_with" do
+
+  describe "#merge_with" do
     let(:variant) { create :variant }
     let(:suborder_with_same_variant) { create :suborder, variant: variant, quantity: 2 }
     it "merge suborder with same variant" do
       suborder = Suborder.new variant: variant, quantity: 3
       suborder.merge_with suborder_with_same_variant
       expect(suborder.quantity).to eql(5)
+    end
+  end
+
+  describe '#make_variant_unavailable!' do
+    let(:suborder) { create(:order).suborders.first }
+    before(:each) { suborder.make_variant_unavailable! }
+    it 'makes variant unavailable' do
+      expect(suborder.variant.available).to be_falsy
+    end
+    it 'creates subscriber' do
+      subscriber = AvailabilitySubscriber.find_by(
+        variant_id: suborder.variant_id
+      )
+      expect(suborder).to be
     end
   end
 end

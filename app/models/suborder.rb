@@ -1,6 +1,7 @@
 class Suborder < ApplicationRecord
 
   belongs_to :variant
+  belongs_to :order
 
   attr_accessor :offer_id
 
@@ -30,6 +31,24 @@ class Suborder < ApplicationRecord
 
   def merge_with suborder
     self[:quantity] += suborder.quantity if variant == suborder.variant
+  end
+
+  def make_variant_unavailable!
+    if variant.available
+      variant.update(available: false)
+      subscriber = variant.availability_subscribers.create(
+        email: order.user.email, phone: order.user_phone
+      )
+      if order.user_phone
+        SmsSendJob.perform_later(
+          order.user_phone,
+          I18n.t('mailers.variant.unavailable.sms', order_id: order.id)
+        )
+      end
+      if order.user.email
+        VariantMailer.unavailable(variant, order.user.email).deliver_later
+      end
+    end
   end
 
   private
