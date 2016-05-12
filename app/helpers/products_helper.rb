@@ -31,8 +31,15 @@ module ProductsHelper
       extend ActiveSupport::Inflector
       brand_slug = transliterate(@product.brand.name).downcase
       content_tag :p do
-        link_to "Таблица размеров", article_path("tablitsa-razmerov-#{brand_slug}"), class: "btn btn-info"
+        link_to "Таблица размеров", article_path("tablitsa-razmerov-#{brand_slug}"), class: "btn btn-info", target: "_blank"
       end
+    end
+  end
+
+
+  def banner
+    if [166, 229, 227, 226, 225].include? @product.category.id
+      link_to image_tag('promotions/velik-v2.jpg'), article_path("dvuhkolesnyiy-velosiped-dlya-rebenka-vyibiraem-pravilno"), target: "_blank"
     end
   end
 end

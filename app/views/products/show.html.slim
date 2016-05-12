@@ -103,6 +103,7 @@
             h2 Видео
             = render partial: 'video', object: @product.video
       .col-md-4
+        = banner
         = link_to "http://www.otzyvua.net/internet-magazin-babysmile", target: "_blank" do
           = image_tag "content/otzyvua.jpg", class: "img-responsive"
         = render 'comments', item: @product
