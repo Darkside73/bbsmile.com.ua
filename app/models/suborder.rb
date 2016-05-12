@@ -46,7 +46,7 @@ class Suborder < ApplicationRecord
         )
       end
       if order.user.email
-        VariantMailer.unavailable(variant, order.user.email).deliver_later
+        VariantMailer.unavailable(variant, order.user).deliver_later
       end
     end
   end
