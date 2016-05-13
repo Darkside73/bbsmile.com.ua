@@ -20,6 +20,7 @@ set :linked_files, %w(config/database.yml config/secrets.yml)
 set :migration_role, [:all]
 set :assets_roles, [:all]
 set :webpack_dependencies, %w(frontend npm-shrinkwrap.json)
+set(:assets_dependencies, fetch(:webpack_dependencies) + %w(app/assets lib/assets vendor/assets Gemfile.lock config/routes.rb))
 set :local_assets_dir, proc { File.expand_path("../../public/#{fetch(:assets_prefix)}/webpack", __FILE__) }
 set :local_webpack_manifest, proc { File.expand_path("../../webpack-assets-deploy.json", __FILE__) }
 
