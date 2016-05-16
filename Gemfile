@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.0.beta4'
+gem 'rails', '5.0.0.rc1'
 
 gem 'pg'
 gem 'pg_search'
