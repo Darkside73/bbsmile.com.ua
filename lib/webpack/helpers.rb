@@ -6,7 +6,8 @@ module Webpack
       webpack_tags :js, entry
     end
 
-    def webpack_bundle_css_tags(entry)
+    def webpack_bundle_css_tags(entry, reload_manifest: false)
+      Kernel.load Rails.root.join("config/initializers/webpack.rb") if reload_manifest
       webpack_tags :css, entry
     end
 
