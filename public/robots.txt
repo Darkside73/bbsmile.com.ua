@@ -9,7 +9,7 @@ Disallow: /*&tags*
 Disallow: /*?tags*
 Disallow: /*gender=*
 Sitemap: https://bbsmile.com.ua/sitemap.xml.gz
-Host: bbsmile.com.ua
+Host: https://bbsmile.com.ua
 
 User-agent: BLEXBot
 Disallow: /
