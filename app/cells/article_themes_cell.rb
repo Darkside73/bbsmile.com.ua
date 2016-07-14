@@ -1,7 +1,7 @@
-class ArticleThemesCell < Cell::Rails
+class ArticleThemesCell < Cell::ViewModel
 
-  def display(current_theme = nil)
-    @current_theme = current_theme
+  def show
+    @current_theme = model
     @themes = ArticleTheme.visible
     render
   end

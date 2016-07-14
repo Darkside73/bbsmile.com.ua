@@ -5,7 +5,7 @@
 #articles-themes-list.container
   .page-header: h1.page-title Статьи
   .row
-    .col-md-4 = render_cell :article_themes, :display
+    .col-md-4 == cell :article_themes
     .col-md-8
       = render collection: @top_articles, partial: 'top_article'
       = render collection: @other_articles, partial: 'other_article'

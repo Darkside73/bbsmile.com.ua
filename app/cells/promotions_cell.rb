@@ -1,7 +1,6 @@
-class PromotionsCell < Cell::Rails
+class PromotionsCell < Cell::ViewModel
 
-  def category(args)
-    category = args[:category]
+  def show
     banners = {
       'mebel.jpg' => page_path(
         'duetyi-krovat-komod',
@@ -11,9 +10,9 @@ class PromotionsCell < Cell::Rails
       )
     }
     banners = banners.to_a.shuffle
-    @banners = if category.id == 12
+    @banners = if model.id == 12
       Hash[banners.slice(0..1)]
-    elsif category.root_id == 12
+    elsif model.root_id == 12
       Hash[[banners.slice(0)]]
     else
       []

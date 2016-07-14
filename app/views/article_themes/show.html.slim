@@ -6,7 +6,7 @@
     li = link_to "Статьи", articles_path
     li = link_to @theme.name, article_theme_path(@theme.url)
   .row
-    .col-md-4 = render_cell :article_themes, :display, @theme
+    .col-md-4 == cell :article_themes, @theme
     .col-md-8
       = render collection: @top_articles, partial: 'articles/top_article'
       = render collection: @other_articles, partial: 'articles/other_article'

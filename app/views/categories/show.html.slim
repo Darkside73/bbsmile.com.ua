@@ -43,7 +43,7 @@
             - @category.brands.each do |brand|
               = link_to_add_brand brand.name
         - else
-          .promotions = render_cell :promotions, :category, category: @category
+          .promotions == cell :promotions, @category
           = accordion_group "articles", "Интересные статьи", attrs: { class: "articles" } do
             - Article.random(5).each do |article|
               li = link_to article.name, article_path(article.url)

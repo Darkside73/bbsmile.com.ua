@@ -1,7 +1,7 @@
-class CatalogMenuCell < Cell::Rails
-  helper ApplicationHelper
+class CatalogMenuCell < Cell::ViewModel
+  include ApplicationHelper
 
-  def display
+  def show
     @categories = Category.arrange
     render
   end
