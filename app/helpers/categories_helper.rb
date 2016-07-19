@@ -86,7 +86,11 @@ module CategoriesHelper
   end
 
   def category_title
-    title_parts = "#{@category.title} #{selected_brands.join ', '}"
+    if @category.page.seo_title
+      @category.page.seo_title
+    else
+      "#{@category.title} #{selected_brands.join ', '}"
+    end
   end
 
   def offers_path_for_category
