@@ -63,6 +63,8 @@ ru:
         updated: Статья обновлена
         destroyed:
           success: Статья удалена
+      site_settings:
+        updated: Настройки сайта обновлены
   errors:
     messages:
       blank: "нужно заполнить"
@@ -83,6 +85,9 @@ ru:
       product:
         age_range: "задайте возраст от меньшего к большему"
 
+  models:
+    site_settings:
+      offline_mode: Режим оффлайн
   activerecord:
     attributes:
       variant:

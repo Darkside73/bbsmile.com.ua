@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     draw :admin_related_pages
     draw :admin_articles
     draw :admin_sync
+    draw :admin_settings
 
     resources :brands
     resources :orders, only: [:index, :show, :update]

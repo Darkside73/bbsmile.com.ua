@@ -73,9 +73,10 @@ $ ->
     $(".payment-help.#{$(this).val()}").fadeIn()
 
   $('#global-message button').click (e) ->
-    $.cookie 'hide-global-message-02-09', 1
+    $.cookie 'hide-global-message', 1, expires: 7
+    $('#global-message').toggleClass 'hide'
 
-  unless $.cookie('hide-global-message-02-09')
+  unless $.cookie('hide-global-message')
     $('#global-message').toggleClass 'hide'
 
   $('.lightgallery[data-gallery-id]').each ->

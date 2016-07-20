@@ -1,0 +1,19 @@
+= render layout: 'boxed', locals: {title: 'Настройки сайта'} do
+  script type="text/x-template" id="site-settings"
+    = simple_form_for [:admin, @settings], url: update_multiple_admin_settings_path do |f|
+      table.table.settings-list.table-striped.table-hover
+        thead
+          tr
+            th Название
+            th Значение
+        tbody
+        - SiteSettings::ATTRS.each do |attribute, config|
+          tr.item
+            td = t "models.site_settings.#{attribute}"
+            td
+              - if config[:type] == :boolean
+                = f.input attribute, label: false, as: :boolean
+      = f.button :submit, "Сохранить", class: 'btn btn-info'
+
+  site-settings
+

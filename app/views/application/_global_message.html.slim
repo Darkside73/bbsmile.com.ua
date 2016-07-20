@@ -1,0 +1,10 @@
+- if SiteSettings.get(:offline_mode)
+  #global-message.container.alert.alert-warning.alert-dismissable.hide
+    button type="button" class="close" data-dismiss="alert" aria-hidden="true" &times;
+    p.text-center: strong> Уважаемые посетители!
+    p
+      | Сегодня консультации по товарам и заказы мы принимаем через сайт. Всем покупателям персональные скидки и подарки!
+      br
+      em Приносим извинения за временные неудобства.
+    p.text-center: button.btn.btn-default type="button" Понятно
+

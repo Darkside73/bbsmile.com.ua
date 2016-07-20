@@ -77,6 +77,11 @@ en:
         updated: Article updated
         destroyed:
           success: Article destroyed
+      site_settings:
+        updated: Настройки сайта обновлены
+  models:
+    site_settings:
+      offline_mode: Режим оффлайн
   mailers:
     order:
       new_order:

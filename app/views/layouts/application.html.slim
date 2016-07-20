@@ -19,6 +19,7 @@ html
     #main-menu.navbar.navbar-fixed-top.navbar-default role="navigation"
       = render 'main_menu'
     = content_for?(:header) ? yield(:header) : render('header')
+    = render 'global_message'
     = yield
     a.floating-icon.go-top href="#" title="К началу страницы"
       i.fa.fa-long-arrow-up
