@@ -13,28 +13,10 @@ GIT
       activerecord (>= 4.0)
 
 GIT
-  remote: git://github.com/amatsuda/kaminari.git
-  revision: ac3ff9594a378b6d811e726f952603d800925289
-  branch: 0-17-stable
-  specs:
-    kaminari (0.17.0.alpha)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
-
-GIT
   remote: git://github.com/liqpay/sdk-ruby.git
   revision: 2970cc6a376835e84bfb812e3d9f5c7a108f5f71
   specs:
     liqpay (0.0.1)
-
-GIT
-  remote: git://github.com/smartinez87/exception_notification.git
-  revision: c3000b76c17dcaa7b0c70fe9fca902a9ffd381d8
-  branch: rails5
-  specs:
-    exception_notification (5.0.0)
-      actionmailer (~> 5.0.0.beta)
-      activesupport (~> 5.0.0.beta)
 
 GIT
   remote: git://github.com/swanandp/acts_as_list.git
@@ -161,6 +143,9 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     eventmachine (1.2.0.1)
+    exception_notification (4.2.1)
+      actionmailer (>= 4.0, < 6)
+      activesupport (>= 4.0, < 6)
     execjs (2.6.0)
     extlib (0.9.16)
     factory_girl (4.7.0)
@@ -211,6 +196,9 @@ GEM
       multi_json (~> 1.2)
     json (1.8.3)
     jwt (1.5.1)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     libv8 (3.16.14.15)
@@ -443,7 +431,7 @@ DEPENDENCIES
   config
   daemons
   database_cleaner
-  exception_notification!
+  exception_notification
   factory_girl_rails
   faker
   foreman
@@ -451,7 +439,7 @@ DEPENDENCIES
   httparty
   jbuilder
   json
-  kaminari!
+  kaminari
   launchy
   liqpay!
   lograge

@@ -16,7 +16,7 @@ gem 'newrelic_rpm'
 
 gem 'config'
 gem 'russian'
-gem 'exception_notification', github: 'smartinez87/exception_notification', branch: 'rails5'
+gem 'exception_notification'
 
 gem 'metamagic'
 gem 'sitemap_generator'
@@ -28,7 +28,7 @@ gem 'cells-slim'
 gem 'simple_form'
 gem 'responders'
 gem 'auto_strip_attributes'
-gem 'kaminari', github: 'amatsuda/kaminari', branch: '0-17-stable'
+gem 'kaminari'
 gem 'permanent_records'
 gem 'premailer-rails'
 
