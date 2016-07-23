@@ -12,7 +12,7 @@
             td = t "models.site_settings.#{attribute}"
             td
               - if config[:type] == :boolean
-                = f.input attribute, label: false, as: :boolean
+                = f.input_field attribute, as: :boolean
       = f.button :submit, "Сохранить", class: 'btn btn-info'
 
   site-settings
