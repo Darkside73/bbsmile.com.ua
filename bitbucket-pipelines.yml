@@ -7,3 +7,6 @@ pipelines:
           - ruby --version
           - bundler --version
           - bundle install
+          - bin/rails db:test:prepare
+          - bin/rspec
+          # - bin/cucmber
