@@ -28,7 +28,7 @@ gem 'cells-slim'
 gem 'simple_form'
 gem 'responders'
 gem 'auto_strip_attributes'
-gem 'kaminari'
+gem 'kaminari', github: 'amatsuda/kaminari'
 gem 'permanent_records'
 gem 'premailer-rails'
 

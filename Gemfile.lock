@@ -13,6 +13,14 @@ GIT
       activerecord (>= 4.0)
 
 GIT
+  remote: git://github.com/amatsuda/kaminari.git
+  revision: 7d3dbd8e396ddc30454d1bf156a00f21ed9adaf6
+  specs:
+    kaminari (1.0.0.alpha)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
+GIT
   remote: git://github.com/liqpay/sdk-ruby.git
   revision: 2970cc6a376835e84bfb812e3d9f5c7a108f5f71
   specs:
@@ -196,9 +204,6 @@ GEM
       multi_json (~> 1.2)
     json (1.8.3)
     jwt (1.5.1)
-    kaminari (0.16.3)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     libv8 (3.16.14.15)
@@ -439,7 +444,7 @@ DEPENDENCIES
   httparty
   jbuilder
   json
-  kaminari
+  kaminari!
   launchy
   liqpay!
   lograge
@@ -481,4 +486,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.12.3
+   1.12.5
