@@ -29,4 +29,4 @@ jQuery ->
         dataType: 'json'
         data: { position: position }
       )
-  ).disableSelection()
+  )
