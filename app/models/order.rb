@@ -51,8 +51,8 @@ class Order < ApplicationRecord
 
   def autosave_associated_records_for_user
     if user
-      self[:user_phone] = user.phone
-      self[:user_name]  = user.name
+      self[:user_phone] = user.phone if self[:user_phone].blank?
+      self[:user_name]  = user.name if self[:user_name].blank?
       if user.email.present?
         User.find_by(email: user.email).try(:tap) { |u| self.user = u }
       end
