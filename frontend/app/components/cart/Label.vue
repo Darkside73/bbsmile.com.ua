@@ -17,8 +17,6 @@
 </script>
 
 <style lang="sass">
-  @import '~libs/styles/bootstrap';
-
   #main-menu {
     li.cart {
       padding: 0;
@@ -31,7 +29,6 @@
         top: -15px;
         left: -10px;
         font-size: 110%;
-        background: darken($pinkLight, 25%);
         border-radius: 50%;
       }
     }
