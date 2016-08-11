@@ -18,8 +18,31 @@ $lg-path-images: "~lightgallery/src/img";
 @import "responsive";
 @import "content";
 
+@font-face {
+    font-family: 'Museo';
+    src: url(../fonts/museo300.woff) format("woff");
+    font-weight: 300;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Museo';
+    src: url(../fonts/museo500.woff) format("woff");
+    font-weight: 500;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Museo';
+    src: url(../fonts/museo700.woff) format("woff");
+    font-weight: 700;
+    font-style: normal
+}
+
 body {
   min-width: $screen-xxs-min;
+  font-family: 'Museo';
+  font-size: 15px;
 }
 
 a.thumbnail:hover {
