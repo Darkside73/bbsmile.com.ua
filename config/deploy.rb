@@ -12,17 +12,14 @@ set :bundle_flags, '--system --quiet'
 set :bundle_path, nil
 set :bundle_binstubs, nil
 
-set :log_level, :info
+set :log_level, :debug
 
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system data}
 set :linked_files, %w(config/database.yml config/secrets.yml)
 
 set :migration_role, [:all]
 set :assets_roles, [:all]
-set :webpack_dependencies, %w(frontend npm-shrinkwrap.json)
-set(:assets_dependencies, fetch(:webpack_dependencies) + %w(app/assets lib/assets vendor/assets Gemfile.lock config/routes.rb))
-set :local_assets_dir, proc { File.expand_path("../../public/#{fetch(:assets_prefix)}/webpack", __FILE__) }
-set :local_webpack_manifest, proc { File.expand_path("../../webpack-assets-deploy.json", __FILE__) }
+before 'deploy:compile_assets', 'deploy:webpacked:build'
 
 namespace :deploy do
   %w(start stop restart).each do |command|

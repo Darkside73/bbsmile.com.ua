@@ -1,6 +1,6 @@
 class MainController < ApplicationController
   layout "layout_main"
-  webpack_entry_name 'main_page'
+  webpacked_entry 'main_page'
   helper_method :novelties, :discounts, :hits
 
   def index

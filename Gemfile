@@ -43,6 +43,7 @@ gem 'tinymce-rails-langs'
 gem 'google_drive', require: false
 gem 'httparty', require: false
 gem 'liqpay', github: 'liqpay/sdk-ruby'
+gem 'webpacked'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', :platforms => :ruby

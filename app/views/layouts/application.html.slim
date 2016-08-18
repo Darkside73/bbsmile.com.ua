@@ -10,7 +10,7 @@ html
     = metamagic seo_meta_tags
     = csrf_meta_tag
     = favicon_link_tag
-    = webpack_bundle_css_tags webpack_bundle_name
+    = webpacked_css_tags webpacked_entry_name
     = render 'analytics'
     = yield :head
 
@@ -33,7 +33,7 @@ html
     javascript:
       var cartState = #{{render template: "orders/_order.json"}}
     cart-modal v-ref:cart-modal="" :id="cartModalId" :cart-state="cartState" :delete-item="deleteCartItem" :update-item="updateCartItem"
-    = webpack_bundle_js_tags webpack_bundle_name
+    = webpacked_js_tags webpacked_entry_name
     = yield :modals
     = yield :js_footer
     = render 'contacts/form'

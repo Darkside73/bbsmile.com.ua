@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Webpacked::ControllerHelper
   layout "layout_inner"
 
   SKIP_AUTHENTICATION = %w(orders#api_callback)
@@ -9,12 +10,8 @@ class ApplicationController < ActionController::Base
 
   before_action :current_page_from_slug
   attr_reader :current_page
-  attr_accessor :webpack_entry_name
-  helper_method :current_page, :seo_page, :cart, :webpack_entry_name
-
-  def self.webpack_entry_name(name)
-    before_action -> (c) { c.webpack_entry_name = name }
-  end
+  helper_method :current_page, :seo_page, :cart
+  webpacked_entry 'inner_page'
 
   protected
 

@@ -1,17 +1,8 @@
 module ApplicationHelper
-  include Webpack::Helpers
 
   def title(page_title)
     seo_page.title = page_title
     content_for(:title) { page_title }
-  end
-
-  def webpack_bundle_name
-    if webpack_entry_name
-      webpack_entry_name
-    else
-      'inner_page'
-    end
   end
 
   def link_to(*args)
