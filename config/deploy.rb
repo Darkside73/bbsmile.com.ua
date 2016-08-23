@@ -12,7 +12,7 @@ set :bundle_flags, '--system --quiet'
 set :bundle_path, nil
 set :bundle_binstubs, nil
 
-set :log_level, :debug
+set :log_level, :info
 
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system data}
 set :linked_files, %w(config/database.yml config/secrets.yml)
