@@ -406,7 +406,7 @@ GEM
       activemodel (>= 4.2)
       debug_inspector
       railties (>= 4.2)
-    webpacked (0.1.2)
+    webpacked (0.2.0)
       rails (>= 3.2.0)
     websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
