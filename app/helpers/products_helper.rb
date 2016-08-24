@@ -38,8 +38,9 @@ module ProductsHelper
 
 
   def banner
-    if [166, 229, 227, 226, 225].include? @product.category.id
-      link_to image_tag('promotions/velik-v2.jpg'), article_path("dvuhkolesnyiy-velosiped-dlya-rebenka-vyibiraem-pravilno"), target: "_blank"
+    case @product.category.id
+    when 166, 229, 227, 226, 225; link_to image_tag('promotions/velik-v2.jpg'), article_path("dvuhkolesnyiy-velosiped-dlya-rebenka-vyibiraem-pravilno"), target: "_blank"
+    when 14; link_to image_tag('promotions/krovatka_v2.jpg'), article_path("kak-vyibrat-detskuyu-krovatku-rekomendatsii-ot-babysmile"), target: "_blank"
     end
   end
 end
