@@ -5,7 +5,7 @@ html
       | Система администрирования
     meta charset="UTF-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
-    = webpacked_css_tags webpack_bundle_name
+    = webpacked_css_tags webpacked_entry_name
     = yield :head
 
   body
@@ -19,5 +19,5 @@ html
           .row = render 'breadcrumb'
           .row = yield
     footer.bs-footer: .container: p &copy; bbsmile.com.ua
-    = webpacked_js_tags webpack_bundle_name
+    = webpacked_js_tags webpacked_entry_name
     = yield :js
