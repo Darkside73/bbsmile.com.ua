@@ -1,7 +1,7 @@
 - if @product.category.root.id == 12
   - title "#{@product.title} | Купить, цена, отзывы"
 - else
-  - title @product.title
+  - title @product.page.seo_title ? @product.page.seo_title : @product.title
 
 - content_for :back_button do
   - if request.referer
