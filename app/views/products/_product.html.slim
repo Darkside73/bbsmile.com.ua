@@ -29,6 +29,8 @@
           small
             span title="Бренд" => product.brand.try(:full_name)
             em title="Артикул" = product.sku
+      - if product.free_ship
+        .free_ship Доставка бесплатно
     - if product.price
       .price
         - if product.price_old
