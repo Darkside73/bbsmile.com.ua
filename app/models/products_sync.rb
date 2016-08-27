@@ -5,7 +5,7 @@ module ProductsSync
   worksheet_columns_names [
     'id', 'title', 'brand', 'novelty', 'hit',
     'age_from', 'age_to', 'sex', 'drop_price',
-    'title', 'meta_description'
+    'title', 'meta_description', 'seo_title'
   ]
 
   items_to_sync do |category|
@@ -23,11 +23,12 @@ module ProductsSync
     data[:title]            = product.title
     data[:novelty]          = product.novelty ? '1' : '0'
     data[:hit]              = product.hit ? '1' : '0'
-    data[:free_ship]       = product.free_ship ? '1' : '0'
+    data[:free_ship]        = product.free_ship ? '1' : '0'
     data[:drop_price]       = product.drop_price ? '1' : '0'
     data[:age_from]         = data[:age_from].to_s.gsub('.', ',')
     data[:age_to]           = data[:age_to].to_s.gsub('.', ',')
     data[:meta_description] = product.page.meta_description
+    data[:seo_title]        = product.page.seo_title
     data
   end
 
@@ -45,5 +46,6 @@ module ProductsSync
     product.free_ship             = row['free_ship'] == '1' ? true : false
     product.page.title            = row['title'] if row['title'].present?
     product.page.meta_description = row['meta_description'] if row['meta_description'].present?
+    product.page.seo_title        = row['seo_title'] if row['seo_title'].present?
   end
 end
