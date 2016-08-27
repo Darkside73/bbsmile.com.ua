@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719125314) do
+ActiveRecord::Schema.define(version: 20160827180027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160719125314) do
     t.string   "country",          limit: 255
     t.string   "meta_keywords"
     t.string   "meta_description"
+    t.string   "seo_title"
   end
 
   create_table "categories", force: :cascade do |t|
