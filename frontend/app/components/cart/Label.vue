@@ -23,6 +23,11 @@
       a {
         position: relative;
         padding: 9px;
+        &:hover {
+          span.badge {
+            background: darken(#e7639b, 10%);
+          }
+        }
       }
       span.badge {
         position: relative;
@@ -30,6 +35,7 @@
         left: -10px;
         font-size: 110%;
         border-radius: 50%;
+        background: #e7639b;
       }
     }
   }
