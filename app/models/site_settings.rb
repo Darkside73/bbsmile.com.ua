@@ -37,6 +37,7 @@ class SiteSettings
 
   def self.get(attribute)
     store = Store.new.store
+    return nil unless ATTRS[attribute]
     type = ATTRS[attribute][:type]
     store.transaction do
       if (type == :boolean && !store[attribute].in?([true, false]))
