@@ -18,10 +18,11 @@
     - categories.each do |category, subcategories|
       = render 'category', category: category, subcategories: subcategories
 
-  .products-list
-    = landing_item_for novelties, id: 'novelties', icon: 'certificate', title: 'Новинки', page_path: novelties_path
-    = landing_item_for discounts, id: 'discounts', icon: 'fire', title: 'Скидки', page_path: discounts_path
-    = landing_item_for hits, id: 'hits', icon: 'heart-o', title: 'Хиты продаж', page_path: hits_path
+  - cache 3.hours do
+    .products-list
+      = landing_item_for novelties, id: 'novelties', icon: 'certificate', title: 'Новинки', page_path: novelties_path
+      = landing_item_for discounts, id: 'discounts', icon: 'fire', title: 'Скидки', page_path: discounts_path
+      = landing_item_for hits, id: 'hits', icon: 'heart-o', title: 'Хиты продаж', page_path: hits_path
 
 .container
   markdown:

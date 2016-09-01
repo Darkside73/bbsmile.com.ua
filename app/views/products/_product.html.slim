@@ -1,44 +1,43 @@
-- cache [product, product.brand]
-  .product.col-xs-12 class="#{local_assigns[:three_col] && three_col ? 'col-sm-4' : 'col-sm-12'}" class="#{local_assigns[:one_col] && one_col ? 'col-md-12' : 'col-md-4'}"
-    - if product.top_image?
-      = link_to "/#{product.url}", class: 'thumbnail' do
-        - if product.flagged?
-          .stickers
-            - if product.discount >= 5
-              .item.discount
-                p = "-#{product.discount}%"
-                i.fa.fa-certificate
-            - elsif product.drop_price
-              .item.discount
-                p -3%
-                i.fa.fa-certificate
-            - elsif product.novelty? && !(local_assigns[:hide_novelties] && hide_novelties)
-              .item.novelty
-                p новинка
-                i.fa.fa-certificate
-            - elsif product.hit? && !(local_assigns[:hide_hits] && hide_hits)
-              .item.hit
-                p хит продаж
-                i.fa.fa-certificate
-        = image_tag product.top_image(:grid), alt: product.name
-    .caption
-      h3
-        => link_to product
-        - if product.brand.present? || product.sku.present?
-          br
-          small
-            span title="Бренд" => product.brand.try(:full_name)
-            em title="Артикул" = product.sku
-      - if product.free_ship
-        .free_ship Доставка бесплатно
-    - if product.price
-      .price
-        - if product.price_old
-          span.old.medium => number_to_currency product.price_old
-        span.label => number_to_currency product.price
-        - unless local_assigns[:hide_buy_button] && hide_buy_button
-          - if product.available
-            cart-button :add-item="addCartItem" :open-cart="openCart" :cart-state="cartState" :variant-id="#{product.master_variant.id}"
-          - else
-            button.btn.btn-default disabled="disabled" нет в наличии
+.product.col-xs-12 class="#{local_assigns[:three_col] && three_col ? 'col-sm-4' : 'col-sm-12'}" class="#{local_assigns[:one_col] && one_col ? 'col-md-12' : 'col-md-4'}"
+  - if product.top_image?
+    = link_to "/#{product.url}", class: 'thumbnail' do
+      - if product.flagged?
+        .stickers
+          - if product.discount >= 5
+            .item.discount
+              p = "-#{product.discount}%"
+              i.fa.fa-certificate
+          - elsif product.drop_price
+            .item.discount
+              p -3%
+              i.fa.fa-certificate
+          - elsif product.novelty? && !(local_assigns[:hide_novelties] && hide_novelties)
+            .item.novelty
+              p новинка
+              i.fa.fa-certificate
+          - elsif product.hit? && !(local_assigns[:hide_hits] && hide_hits)
+            .item.hit
+              p хит продаж
+              i.fa.fa-certificate
+      = image_tag product.top_image(:grid), alt: product.name
+  .caption
+    h3
+      => link_to product
+      - if product.brand.present? || product.sku.present?
+        br
+        small
+          span title="Бренд" => product.brand.try(:full_name)
+          em title="Артикул" = product.sku
+    - if product.free_ship
+      .free_ship Доставка бесплатно
+  - if product.price
+    .price
+      - if product.price_old
+        span.old.medium => number_to_currency product.price_old
+      span.label => number_to_currency product.price
+      - unless local_assigns[:hide_buy_button] && hide_buy_button
+        - if product.available
+          cart-button :add-item="addCartItem" :open-cart="openCart" :cart-state="cartState" :variant-id="#{product.master_variant.id}"
+        - else
+          button.btn.btn-default disabled="disabled" нет в наличии
 
