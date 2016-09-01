@@ -12,7 +12,7 @@ Rails.application.configure do
 
   config.webpacked.load_manifest_on_initialize = true
 
-  config.force_ssl = true if Rails.env.production? && ENV['RAILS_IGNORE_SSL'].empty?
+  config.force_ssl = true if Rails.env.production? && ENV['RAILS_IGNORE_SSL'].blank?
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
