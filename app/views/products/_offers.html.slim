@@ -2,7 +2,8 @@
   .panel-heading: h3.panel-title.text-center Вместе дешевле
   .panel-body.owl-container
     .owl-carousel data={ owl_single_item: "true" }
-      = render @product.offers
+      - cache expires_in: 1.hour do
+        = render @product.offers
     .text-center: a.btn.btn-info onclick="$('#productOffers .owl-carousel').data('owlCarousel').next();" Смотреть еще
     a.left.carousel-control.hidden-xs href="#": i.fa.fa-angle-left
     a.right.carousel-control.hidden-xs href="#": i.fa.fa-angle-right

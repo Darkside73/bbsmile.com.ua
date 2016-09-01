@@ -2,7 +2,7 @@
   .panel-heading: h3.panel-title.text-center Варианты цветов
   .panel-body.owl-container
     .owl-carousel
-      - @product.variants.each do |variant|
-        = render variant
+      - cache @product.variants do
+        = render @product.variants
     a.left.carousel-control.hidden-xs href="#": i.fa.fa-angle-left
     a.right.carousel-control.hidden-xs href="#": i.fa.fa-angle-right

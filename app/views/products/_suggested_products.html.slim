@@ -4,7 +4,8 @@
     | Советуем также посмотреть
   .panel-body.owl-container
     .owl-carousel
-      - @product.page.suggested_pages.each do |page|
-        = render object: page.pageable, as: :product, partial: 'product_short'
+      - cache @product.page.suggested_pages do
+        - @product.page.suggested_pages.each do |page|
+          = render object: page.pageable, as: :product, partial: 'product_short'
     a.left.carousel-control.hidden-xs href="#": i.fa.fa-angle-left
     a.right.carousel-control.hidden-xs href="#": i.fa.fa-angle-right

@@ -18,7 +18,7 @@
     - categories.each do |category, subcategories|
       = render 'category', category: category, subcategories: subcategories
 
-  - cache 3.hours do
+  - cache expires_in: 3.hours do
     .products-list
       = landing_item_for novelties, id: 'novelties', icon: 'certificate', title: 'Новинки', page_path: novelties_path
       = landing_item_for discounts, id: 'discounts', icon: 'fire', title: 'Скидки', page_path: discounts_path

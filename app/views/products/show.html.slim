@@ -13,7 +13,8 @@
       small.text-muted itemprop="brand" = link_to @product.brand.full_name, brand_page_path(@product.brand.name)
   .row
     .gallery.col-md-4.col-sm-4.col-xs-3
-      = gallery_for(@product)
+      - cache @product do
+        = gallery_for(@product)
     .description.col-md-8.col-sm-8.col-xs-9
       .bages.pull-left
         - if @product.available
