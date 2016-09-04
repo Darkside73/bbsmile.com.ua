@@ -1,74 +1,74 @@
-- content_for :js_footer do
-  coffee:
-    $ ->
-      ga 'send', 'Категория', 'Просмотреть', $('#category-content').data('title')
+  - content_for :js_footer do
+    coffee:
+      $ ->
+        ga 'send', 'Категория', 'Просмотреть', $('#category-content').data('title')
 
-- title category_title
+  - title category_title
 
-#category-content.products-list.container.flashable data-title="#{@category.title}"
-  = render 'breadcrumb'
-  = render 'selected_filters' if any_filtering?
-  h1#products.page-title
-    => @category.title
-    small подбор товаров
-  p.visible-xs: button.btn.btn-primary.show-filters data-toggle="offcanvas"
-    i.fa.fa-chevron-down>
-    span Показать фильтры
-  .row
-    .product-filters.col-md-3.col-sm-4.col-xs-12
-      .panel-group
-        - cache [category_menu_items, @category.url] do
-          = accordion_group "filterByCategory", "Категория" do
-            - category_menu_items.each do |subcategory|
-              - if @category.url == subcategory.url
-                li.active = link_to subcategory
-              - else
-                li = link_to subcategory
-        - if @category.leaf?
-          - cache selected_prices, expires_in: 1.day do
-            = accordion_group "filterByPrice", "Цены", if: :find_price_ranges do
-              - @category.find_price_ranges.each do |range|
-                = link_to_add_price_range range do
-                  = render range
-          = accordion_group "filterByGender", "Пол", if: :divided_by_sex do
-            - %w(for_boys for_girls).each do |gender|
-              - if params[:gender] == gender
-                li.active = link_to t("activerecord.attributes.product.sex.#{gender}"), category_page_path(params.permit!.except(:gender))
-              - else
-                li = link_to t("activerecord.attributes.product.sex.#{gender}"), category_page_path(params.permit!.merge(gender: gender))
-          - cache [@category.brands, selected_brands] do
-            = accordion_group "filterByBrand", "Бренды", if: :brands do
-              - @category.brands.each do |brand|
-                = link_to_add_brand brand.name
+  #category-content.products-list.container.flashable data-title="#{@category.title}"
+    = render 'breadcrumb'
+    = render 'selected_filters' if any_filtering?
+    h1#products.page-title
+      => @category.title
+      small подбор товаров
+    p.visible-xs: button.btn.btn-primary.show-filters data-toggle="offcanvas"
+      i.fa.fa-chevron-down>
+      span Показать фильтры
+    .row
+      .product-filters.col-md-3.col-sm-4.col-xs-12
+        .panel-group
+          - cache [category_menu_items, @category.url] do
+            = accordion_group "filterByCategory", "Категория" do
+              - category_menu_items.each do |subcategory|
+                - if @category.url == subcategory.url
+                  li.active = link_to subcategory
+                - else
+                  li = link_to subcategory
+          - if @category.leaf?
+            - cache selected_prices, expires_in: 1.day do
+              = accordion_group "filterByPrice", "Цены", if: :find_price_ranges do
+                - @category.find_price_ranges.each do |range|
+                  = link_to_add_price_range range do
+                    = render range
+            = accordion_group "filterByGender", "Пол", if: :divided_by_sex do
+              - %w(for_boys for_girls).each do |gender|
+                - if params[:gender] == gender
+                  li.active = link_to t("activerecord.attributes.product.sex.#{gender}"), category_page_path(params.permit!.except(:gender))
+                - else
+                  li = link_to t("activerecord.attributes.product.sex.#{gender}"), category_page_path(params.permit!.merge(gender: gender))
+            - cache [@category.brands, selected_brands] do
+              = accordion_group "filterByBrand", "Бренды", if: :brands do
+                - @category.brands.each do |brand|
+                  = link_to_add_brand brand.name
+          - else
+            .promotions == cell :promotions, @category
+            - cache expires_in: 1.day do
+              = accordion_group "articles", "Интересные статьи", attrs: { class: "articles" } do
+                - Article.random(5).each do |article|
+                  li = link_to article.name, article_path(article.url)
+      .products-list.col-md-9.col-sm-8.col-xs-12
+        - if @products.any?
+          .show-options
+            ul.nav.nav-pills
+              li
+                button.btn.btn-default.disabled
+                  ' Всего товаров:
+                  strong = @products.count
+              - if @products.count > 1
+                = link_to_sortable_price "Сначала дешевле", "asc"
+                = link_to_sortable_price "Сначала дороже",  "desc"
+                = link_to offers_path_for_category do
+                  button.more.btn.btn-default
+                    i.fa.fa-gift>
+                    | Акции и скидки
+          - cache category_products_cache_key do
+            = render 'products'
+        - elsif @category.leaf?
+          .alert.alert-warning
+            strong> Извините,
+            | ничего не нашлось
         - else
-          .promotions == cell :promotions, @category
-          - cache expires_in: 1.day do
-            = accordion_group "articles", "Интересные статьи", attrs: { class: "articles" } do
-              - Article.random(5).each do |article|
-                li = link_to article.name, article_path(article.url)
-    .products-list.col-md-9.col-sm-8.col-xs-12
-      - if @products.any?
-        .show-options
-          ul.nav.nav-pills
-            li
-              button.btn.btn-default.disabled
-                ' Всего товаров:
-                strong = @products.count
-            - if @products.count > 1
-              = link_to_sortable_price "Сначала дешевле", "asc"
-              = link_to_sortable_price "Сначала дороже",  "desc"
-              = link_to offers_path_for_category do
-                button.more.btn.btn-default
-                  i.fa.fa-gift>
-                  | Акции и скидки
-        - cache [@products, @products.map(&:brand)] do
-          = render 'products'
-      - elsif @category.leaf?
-        .alert.alert-warning
-          strong> Извините,
-          | ничего не нашлось
-      - else
-        .offers = render 'special_products'
+          .offers = render 'special_products'
 
-  - if @category.description.present? && no_filtering?
-    .container.page-content == @category.description
+    - if @category.description.present? && no_filtering?
+      .container.page-content == @category.description
