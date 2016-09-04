@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160827180027) do
+ActiveRecord::Schema.define(version: 20160904142747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,9 @@ ActiveRecord::Schema.define(version: 20160827180027) do
     t.string   "attachment_content_type", limit: 255
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.index ["assetable_id"], name: "index_assets_on_assetable_id", using: :btree
+    t.index ["assetable_type"], name: "index_assets_on_assetable_type", using: :btree
+    t.index ["type"], name: "index_assets_on_type", using: :btree
   end
 
   create_table "availability_subscribers", force: :cascade do |t|
@@ -78,6 +81,8 @@ ActiveRecord::Schema.define(version: 20160827180027) do
     t.string   "contentable_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["contentable_id"], name: "index_contents_on_contentable_id", using: :btree
+    t.index ["contentable_type"], name: "index_contents_on_contentable_type", using: :btree
   end
 
   create_table "offers", force: :cascade do |t|
@@ -87,6 +92,7 @@ ActiveRecord::Schema.define(version: 20160827180027) do
     t.integer  "position",         default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["position"], name: "index_offers_on_position", using: :btree
     t.index ["product_id"], name: "index_offers_on_product_id", using: :btree
     t.index ["product_offer_id"], name: "index_offers_on_product_offer_id", using: :btree
   end
@@ -119,6 +125,8 @@ ActiveRecord::Schema.define(version: 20160827180027) do
     t.string   "meta_keywords"
     t.string   "meta_description"
     t.string   "seo_title"
+    t.index ["pageable_id"], name: "index_pages_on_pageable_id", using: :btree
+    t.index ["pageable_type"], name: "index_pages_on_pageable_type", using: :btree
     t.index ["url"], name: "index_pages_on_url", unique: true, using: :btree
     t.index ["url_old"], name: "index_pages_on_url_old", unique: true, using: :btree
   end
@@ -229,6 +237,7 @@ ActiveRecord::Schema.define(version: 20160827180027) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
+    t.index ["available", "price"], name: "index_variants_on_available_and_price", using: :btree
     t.index ["position"], name: "index_variants_on_position", using: :btree
     t.index ["price"], name: "index_variants_on_price", using: :btree
     t.index ["product_id"], name: "index_variants_on_product_id", using: :btree
