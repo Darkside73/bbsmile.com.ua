@@ -94,9 +94,7 @@ module CategoriesHelper
   end
 
   def offers_path_for_category
-    if Offer.root_categories.select { |root| root == @category.root }
-      category_offers_path(@category.root.url)
-    end
+    category_offers_path(@category.root.url)
   end
 
   private
