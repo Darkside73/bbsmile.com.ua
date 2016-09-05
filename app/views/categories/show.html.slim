@@ -42,7 +42,7 @@
                   = link_to_add_brand brand.name
           - else
             .promotions == cell :promotions, @category
-            - cache expires_in: 1.day do
+            - cache 'category/articles', expires_in: 1.day do
               = accordion_group "articles", "Интересные статьи", attrs: { class: "articles" } do
                 - Article.random(5).each do |article|
                   li = link_to article.name, article_path(article.url)
