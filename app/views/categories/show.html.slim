@@ -61,7 +61,7 @@
                   button.more.btn.btn-default
                     i.fa.fa-gift>
                     | Акции и скидки
-          - cache category_products_cache_key do
+          - cache @category.search_cache_key(@products) do
             = render 'products'
         - elsif @category.leaf?
           .alert.alert-warning

@@ -50,5 +50,9 @@ class Category
       grid = grid.where('age_to IN (?)', to) if to.any?
       grid
     end
+
+    def search_cache_key(grid)
+      Digest::MD5.hexdigest(grid.distinct.reorder(false).pluck(:updated_at, "brands.updated_at").flatten.join)
+    end
   end
 end

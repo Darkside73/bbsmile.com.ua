@@ -93,10 +93,6 @@ module CategoriesHelper
     end
   end
 
-  def category_products_cache_key
-    Digest::MD5.hexdigest(@products.map(&:updated_at).join + @products.map { |p| p.brand.try(:updated_at) }.join)
-  end
-
   def offers_path_for_category
     category_offers_path(@category.root.url)
   end
