@@ -33,12 +33,11 @@ class Category
     def apply_price_ranges(grid)
       return grid unless @options[:prices]
       @selected_price_ranges = PriceRange.where('id IN (?)', @options[:prices])
-      filtered = []
-      ranges = @options[:direction] == 'desc' ? selected_price_ranges.reverse : selected_price_ranges
-      ranges.each do |range|
-        filtered += grid.select { |product| product.in_range? range  }
+      @selected_price_ranges.each do |range|
+        grid = grid.where('variants.price >= ?', range.from) if range.from?
+        grid = grid.where('variants.price <= ?', range.to) if range.to?
       end
-      filtered
+      grid
     end
 
     def apply_age_ranges(grid)
@@ -52,7 +51,11 @@ class Category
     end
 
     def search_cache_key(grid)
-      Digest::MD5.hexdigest(grid.distinct.reorder(false).pluck(:updated_at, "brands.updated_at").flatten.join)
+      updated_at_ary = grid.distinct
+                           .pluck(:updated_at, 'brands.updated_at', 'variants.price', 'variants.available')
+                           .map {|p| p.slice(0..1)}
+                           .flatten
+      'products_search/' + Digest::MD5.hexdigest(updated_at_ary.join)
     end
   end
 end
