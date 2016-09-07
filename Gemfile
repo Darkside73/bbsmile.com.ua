@@ -85,8 +85,7 @@ group :test do
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'minitest'
-  # temporary disable due to rails 5 upgrade
-  # gem 'cucumber-rails', require: false, github: 'cucumber/cucumber-rails', branch: 'rails-5'
+  gem 'cucumber-rails', require: false
   gem 'capybara'
   gem 'shoulda'
   gem 'launchy'
