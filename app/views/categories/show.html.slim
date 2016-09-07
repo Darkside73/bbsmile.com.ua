@@ -25,7 +25,7 @@
                 - else
                   li = link_to subcategory
           - if @category.leaf?
-            - cache selected_prices, expires_in: 1.day do
+            - cache selected_prices do
               = accordion_group "filterByPrice", "Цены", if: :find_price_ranges do
                 - @category.find_price_ranges.each do |range|
                   = link_to_add_price_range range do
@@ -42,7 +42,7 @@
                   = link_to_add_brand brand.name
           - else
             .promotions == cell :promotions, @category
-            - cache 'category/articles', expires_in: 1.day do
+            - cache [@category, 'articles'], expires_in: 1.day do
               = accordion_group "articles", "Интересные статьи", attrs: { class: "articles" } do
                 - Article.random(5).each do |article|
                   li = link_to article.name, article_path(article.url)
