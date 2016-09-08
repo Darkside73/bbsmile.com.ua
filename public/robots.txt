@@ -8,7 +8,7 @@ Disallow: /*sort=price*
 Disallow: /*&tags*
 Disallow: /*?tags*
 Disallow: /*gender=*
-Sitemap: https://bbsmile.com.ua/sitemap.xml.gz
+Sitemap: https://bbsmile.com.ua/sitemap.xml
 Host: https://bbsmile.com.ua
 
 User-agent: BLEXBot

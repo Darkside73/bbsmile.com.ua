@@ -1,6 +1,6 @@
 set :application, 'bbsmile'
 
-linked_files = fetch(:linked_files) << 'public/sitemap.xml.gz'
+linked_files = fetch(:linked_files) << 'public/sitemap.xml'
 set :linked_files, linked_files
 
 linked_dirs = fetch(:linked_dirs) << 'public/uploads'
@@ -19,9 +19,9 @@ namespace :sitemap do
 
   task :ensure_exists do
     on roles(:all) do
-      unless test("[ -f #{shared_path}/public/sitemap.xml.gz ]")
+      unless test("[ -f #{shared_path}/public/sitemap.xml ]")
         invoke 'sitemap:refresh'
-        execute :mv, "#{current_path}/public/sitemap.xml.gz #{shared_path}/public/sitemap.xml.gz"
+        execute :mv, "#{current_path}/public/sitemap.xml #{shared_path}/public/sitemap.xml"
       end
     end
   end
