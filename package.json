@@ -40,12 +40,11 @@
     "sass-loader": "^3.2.3",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
-    "vue-hot-reload-api": "^1.2.0",
     "vue-html-loader": "^1.1.0",
     "vue-loader": "^8.0.2",
     "vue-style-loader": "^1.0.0",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.14.0",
+    "webpack-dev-server": "^1.15.1",
     "webpack-hot-middleware": "^2.6.0",
     "webpack-merge": "^0.14.0",
     "webpack-sources": "^0.1.0"
