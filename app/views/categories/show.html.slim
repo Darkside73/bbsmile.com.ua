@@ -8,9 +8,7 @@
   #category-content.products-list.container.flashable data-title="#{@category.title}"
     = render 'breadcrumb'
     = render 'selected_filters' if any_filtering?
-    h1#products.page-title
-      => @category.title
-      small подбор товаров
+    h1#products.page-title = @category.title
     p.visible-xs: button.btn.btn-primary.show-filters data-toggle="offcanvas"
       i.fa.fa-chevron-down>
       span Показать фильтры
