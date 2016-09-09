@@ -60,5 +60,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.middleware.insert_before 0, Rack::Static, urls: ['/uploads']
+  config.middleware.insert_before 0, Rack::Static, urls: ['/uploads'], root: 'public'
 end
