@@ -26,19 +26,4 @@ describe Converter::ProductsImporter do
     expect(product.old_id).to eq(5533)
     expect(product.video).to eq('video from youtube')
   end
-
-  before { allow_any_instance_of(Product::Image).to receive(:save_attached_files) }
-  it 'create product images' do
-    subject.data_base_path = data_base_path
-    subject.import
-    product = Page.find_by(url: 'url/old/sample').pageable
-    expect(product.images).to have(1).item
-  end
-
-  it "create content" do
-    allow_any_instance_of(Converter::ProductsImporter::ContentParser).
-      to receive(:content).and_return(double(:content).as_null_object)
-    subject.data_base_path = data_base_path
-    subject.import
-  end
 end
