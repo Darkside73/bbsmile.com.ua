@@ -1,7 +1,7 @@
 class Variant::Image < Asset
   has_attached_file :attachment,
                     styles: { grid: '300x200' },
-                    processors: [:compression],
+                    processors: [:thumbnail, :compression],
                     convert_options: { grid: '-background white -gravity Center -extent 300x200' },
                     url: DEFAULT_URL, path: DEFAULT_PATH
   validates_attachment_content_type :attachment, content_type: /^image\/(png|jpg|jpeg)/,

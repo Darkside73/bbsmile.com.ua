@@ -5,7 +5,7 @@ class Product::Image < Asset
                       grid: '-background white -gravity Center -extent 300x200',
                       thumb: '-background white -gravity Center -extent 98x112'
                     },
-                    processors: [:compression],
+                    processors: [:thumbnail, :compression],
                     url: DEFAULT_URL, path: DEFAULT_PATH
   validates_attachment_content_type :attachment, content_type: /^image\/(png|jpg|jpeg)/,
                                     message: I18n.t('errors.messages.paperclip.content_type_image')
