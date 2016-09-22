@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
 
   http_basic_authenticate_with Settings.http_auth.to_hash.merge(if: :need_authenticate?) if Settings.http_auth
 
-  protect_from_forgery
-
   before_action :current_page_from_slug
   attr_reader :current_page
   helper_method :current_page, :seo_page, :cart
