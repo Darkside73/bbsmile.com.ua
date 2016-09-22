@@ -4,8 +4,8 @@ class Category < ApplicationRecord
   include PgSearch
   include Category::Search
 
-  has_many :products
-  has_many :price_ranges
+  has_many :products, dependent: :restrict_with_error
+  has_many :price_ranges, dependent: :destroy
   has_many :brands, -> { reorder('brands.name').distinct }, through: :products
 
   has_ancestry orphan_strategy: :restrict
