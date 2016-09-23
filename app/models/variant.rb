@@ -65,6 +65,6 @@ class Variant < ApplicationRecord
   end
 
   def touch_product
-    product.touch
+    product&.touch
   end
 end
