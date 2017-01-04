@@ -7,7 +7,7 @@ server 'bbsmile.com.ua', user: fetch(:user), roles: :all
 set :repo_url, 'ssh://git@bitbucket.org/darkside73/rails.bbsmile.com.ua.git'
 set :deploy_to, proc { "/home/#{fetch(:user)}/projects/rails/#{fetch(:application)}" }
 
-set :rvm_ruby_version, proc { "2.3.1@#{fetch(:application)}" }
+set :rvm_ruby_version, proc { "2.4.0@#{fetch(:application)}" }
 set :bundle_flags, '--system --quiet'
 set :bundle_path, nil
 set :bundle_binstubs, nil

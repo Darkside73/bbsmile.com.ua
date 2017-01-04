@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.0.1'
+gem 'rails', '5.0.1'
 
 gem 'pg'
 gem 'pg_search'
 gem 'ancestry'
-gem 'acts_as_list', github: 'swanandp/acts_as_list'
-gem 'acts-as-taggable-on', github: 'F3pix/acts-as-taggable-on'
+gem 'acts_as_list'
+gem 'acts-as-taggable-on', '~> 4.0'
 gem 'redis-session-store'
 gem 'sidekiq'
 gem 'sidekiq-status'
@@ -32,13 +32,14 @@ gem 'kaminari', github: 'amatsuda/kaminari'
 gem 'permanent_records'
 gem 'premailer-rails'
 
-gem 'json'
+gem 'json', '~> 2.0'
+gem 'coffee-rails'
 gem 'bootstrap-components-helpers', github: 'Darkside73/bootstrap-components-helpers'
 gem 'paperclip'
 gem 'paperclip-compression'
 # gem 'dimensions-rails', github: 'Darkside73/dimensions-rails'
-gem 'coffee-script'
-gem 'tinymce-rails'
+# gem 'coffee-script'
+gem 'tinymce-rails', '4.3.12'
 gem 'tinymce-rails-langs'
 
 gem 'google_drive', require: false
@@ -47,7 +48,7 @@ gem 'liqpay', github: 'liqpay/sdk-ruby'
 gem 'webpacked'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', :platforms => :ruby
+# gem 'therubyracer', :platforms => :ruby
 
 gem 'lograge'
 
